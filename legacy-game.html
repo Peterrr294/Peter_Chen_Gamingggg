@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星屑收集 | Starlight Run</title>
+  <style>
+    :root { --ink: #16233b; --muted: #63708a; --paper: #f5f1e8; --coral: #ef6f61; --gold: #f7bd4f; --teal: #2c9c98; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: var(--ink); font-family: Georgia, "Microsoft YaHei", serif; background: radial-gradient(circle at 12% 12%, #fff9db 0 11%, transparent 28%), linear-gradient(135deg, #e5f1ea, #f5f1e8 55%, #f4d9c6); }
+    .shell { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 40px; }
+    header { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 24px; }
+    .kicker { margin: 0 0 8px; color: var(--coral); font: 700 12px/1.2 Arial, sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(34px, 6vw, 64px); line-height: .95; letter-spacing: -2px; }
+    .tagline { max-width: 290px; margin: 0; color: var(--muted); font: 15px/1.6 Arial, sans-serif; }
+    .game-frame { overflow: hidden; border: 1px solid rgba(22,35,59,.16); border-radius: 8px; background: rgba(255,255,255,.58); box-shadow: 0 22px 60px rgba(70,57,51,.14); }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 18px; border-bottom: 1px solid rgba(22,35,59,.12); font-family: Arial, sans-serif; }
+    .stats { display: flex; gap: 24px; }
+    .stat-label { display: block; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .stat-value { display: block; margin-top: 3px; font-size: 22px; font-weight: 700; }
+    button { border: 0; border-radius: 5px; padding: 11px 16px; color: #fff; background: var(--coral); font: 700 13px Arial, sans-serif; cursor: pointer; transition: transform .18s, background .18s; }
+    button:hover { transform: translateY(-2px); background: #d9554c; }
+    button:focus-visible { outline: 3px solid #f7bd4f; outline-offset: 3px; }
+    .stage-wrap { position: relative; padding: 18px; }
+    canvas { display: block; width: 100%; height: min(64vh, 580px); min-height: 390px; border-radius: 5px; background: #1d314f; cursor: crosshair; touch-action: none; }
+    .message { position: absolute; inset: 18px; display: grid; place-items: center; pointer-events: none; }
+    .message-card { max-width: 360px; padding: 24px; border: 1px solid rgba(255,255,255,.25); border-radius: 8px; color: #fff; text-align: center; background: rgba(22,35,59,.82); backdrop-filter: blur(8px); }
+    .message-card h2 { margin: 0 0 8px; font-size: 28px; }
+    .message-card p { margin: 0; color: #d7e1ef; font: 14px/1.6 Arial, sans-serif; }
+    .message.hidden { display: none; }
+    .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 20px 18px 22px; border-top: 1px solid rgba(22,35,59,.12); }
+    .note h3 { margin: 0 0 6px; font-size: 15px; }
+    .note p { margin: 0; color: var(--muted); font: 13px/1.6 Arial, sans-serif; }
+    @media (max-width: 650px) { .shell { width: min(100% - 20px, 540px); padding-top: 22px; } header { display: block; } .tagline { margin-top: 12px; } .topbar { align-items: flex-start; } .stats { gap: 13px; } .stat-value { font-size: 18px; } .stage-wrap { padding: 10px; } canvas { height: 68vh; min-height: 430px; } .message { inset: 10px; } .notes { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div><p class="kicker">Game 001 / First Prototype</p><h1>星屑收集</h1></div>
+      <p class="tagline">在夜色完全降临前，收集尽可能多的星屑，避开漂浮的暗影。</p>
+    </header>
+    <section class="game-frame" aria-label="星屑收集游戏">
+      <div class="topbar">
+        <div class="stats"><div><span class="stat-label">分数</span><span class="stat-value" id="score">0</span></div><div><span class="stat-label">剩余时间</span><span class="stat-value"><span id="time">30</span>s</span></div><div><span class="stat-label">最高分</span><span class="stat-value" id="best">0</span></div></div>
+        <button id="start" type="button">开始游戏</button>
+      </div>
+      <div class="stage-wrap">
+        <canvas id="game" aria-label="游戏画布"></canvas>
+        <div class="message" id="message"><div class="message-card"><h2>准备好了吗？</h2><p>点击开始，然后用鼠标或手指移动灯笼。<br>键盘也可以：使用方向键或 WASD。</p></div></div>
+      </div>
+      <div class="notes"><div class="note"><h3>收集星屑</h3><p>金色星屑 +10 分，连续收集会让灯笼变亮。</p></div><div class="note"><h3>躲开暗影</h3><p>碰到紫色暗影会扣除 3 秒，保持移动。</p></div></div>
+    </section>
+  </main>
+  <script>
+    const canvas = document.getElementById('game');
+    const context = canvas.getContext('2d');
+    const scoreElement = document.getElementById('score');
+    const timeElement = document.getElementById('time');
+    const bestElement = document.getElementById('best');
+    const startButton = document.getElementById('start');
+    const message = document.getElementById('message');
+    const messageCard = message.querySelector('.message-card');
+    const keys = new Set();
+    let animationFrame;
+    let game = null;
+    let best = Number(localStorage.getItem('starlight-best') || 0);
+    bestElement.textContent = best;
+
+    function resizeCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const bounds = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(bounds.width * ratio);
+      canvas.height = Math.floor(bounds.height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+    function randomBetween(min, max) { return min + Math.random() * (max - min); }
+    function distance(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+    function createGame() {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      return { width, height, score: 0, time: 30, lastTick: performance.now(), lastSpawn: 0, running: true,
+        lantern: { x: width / 2, y: height / 2, radius: 17, speed: 290 },
+        stars: [], shadows: [], sparks: [] };
+    }
+    function spawnStar() { game.stars.push({ x: randomBetween(25, game.width - 25), y: randomBetween(25, game.height - 25), radius: randomBetween(7, 11), phase: Math.random() * 6 }); }
+    function spawnShadow() { game.shadows.push({ x: randomBetween(35, game.width - 35), y: randomBetween(35, game.height - 35), radius: randomBetween(13, 21), dx: randomBetween(-28, 28), dy: randomBetween(-28, 28) }); }
+    function burst(x, y, color) { for (let i = 0; i < 10; i++) game.sparks.push({ x, y, dx: randomBetween(-80, 80), dy: randomBetween(-80, 80), life: .6, color }); }
+    function startGame() { cancelAnimationFrame(animationFrame); resizeCanvas(); game = createGame(); for (let i = 0; i < 5; i++) spawnStar(); for (let i = 0; i < 3; i++) spawnShadow(); scoreElement.textContent = '0'; timeElement.textContent = '30'; startButton.textContent = '重新开始'; message.classList.add('hidden'); animationFrame = requestAnimationFrame(loop); }
+    function finishGame(title, detail) { game.running = false; cancelAnimationFrame(animationFrame); if (game.score > best) { best = game.score; localStorage.setItem('starlight-best', best); bestElement.textContent = best; } messageCard.innerHTML = '<h2>' + title + '</h2><p>' + detail + '</p>'; message.classList.remove('hidden'); }
+    function update(delta, now) {
+      const lantern = game.lantern;
+      let dx = 0; let dy = 0;
+      if (keys.has('arrowleft') || keys.has('a')) dx--; if (keys.has('arrowright') || keys.has('d')) dx++; if (keys.has('arrowup') || keys.has('w')) dy--; if (keys.has('arrowdown') || keys.has('s')) dy++;
+      const length = Math.hypot(dx, dy) || 1;
+      lantern.x = Math.max(lantern.radius, Math.min(game.width - lantern.radius, lantern.x + dx / length * lantern.speed * delta));
+      lantern.y = Math.max(lantern.radius, Math.min(game.height - lantern.radius, lantern.y + dy / length * lantern.speed * delta));
+      game.time -= delta; timeElement.textContent = Math.max(0, Math.ceil(game.time));
+      if (now - game.lastSpawn > 1500) { spawnStar(); if (game.shadows.length < 7) spawnShadow(); game.lastSpawn = now; }
+      game.shadows.forEach(shadow => { shadow.x += shadow.dx * delta; shadow.y += shadow.dy * delta; if (shadow.x < shadow.radius || shadow.x > game.width - shadow.radius) shadow.dx *= -1; if (shadow.y < shadow.radius || shadow.y > game.height - shadow.radius) shadow.dy *= -1; });
+      game.stars = game.stars.filter(star => { if (distance(lantern, star) < lantern.radius + star.radius) { game.score += 10; scoreElement.textContent = game.score; burst(star.x, star.y, '#f7bd4f'); return false; } return true; });
+      if (game.shadows.some(shadow => distance(lantern, shadow) < lantern.radius + shadow.radius)) { game.time = Math.max(0, game.time - 3); burst(lantern.x, lantern.y, '#ef6f61'); lantern.x = game.width / 2; lantern.y = game.height / 2; }
+      game.sparks = game.sparks.filter(spark => { spark.life -= delta; spark.x += spark.dx * delta; spark.y += spark.dy * delta; return spark.life > 0; });
+      if (game.time <= 0) finishGame('夜色降临', '你收集了 ' + game.score + ' 分星屑。点击上方按钮再来一局。');
+    }
+    function draw(now) {
+      const width = game.width; const height = game.height; const gradient = context.createLinearGradient(0, 0, width, height); gradient.addColorStop(0, '#1d314f'); gradient.addColorStop(1, '#3f2855'); context.fillStyle = gradient; context.fillRect(0, 0, width, height);
+      context.fillStyle = 'rgba(255,255,255,.5)'; for (let i = 0; i < 55; i++) { const x = (i * 83) % width; const y = (i * 47) % height; context.globalAlpha = .25 + ((i * 13) % 6) / 20; context.fillRect(x, y, 1.5, 1.5); } context.globalAlpha = 1;
+      game.stars.forEach(star => { const pulse = 1 + Math.sin(now / 240 + star.phase) * .14; context.save(); context.translate(star.x, star.y); context.rotate(now / 1000); context.scale(pulse, pulse); context.fillStyle = '#f7bd4f'; context.shadowColor = '#ffe9a6'; context.shadowBlur = 18; context.beginPath(); for (let i = 0; i < 8; i++) { const radius = i % 2 ? star.radius * .38 : star.radius; const angle = i * Math.PI / 4; context.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius); } context.closePath(); context.fill(); context.restore(); });
+      game.shadows.forEach(shadow => { context.fillStyle = 'rgba(17, 12, 40, .72)'; context.shadowColor = '#b88cff'; context.shadowBlur = 15; context.beginPath(); context.arc(shadow.x, shadow.y, shadow.radius, 0, Math.PI * 2); context.fill(); context.shadowBlur = 0; context.strokeStyle = '#9d79d5'; context.globalAlpha = .65; context.stroke(); context.globalAlpha = 1; });
+      game.sparks.forEach(spark => { context.globalAlpha = Math.max(0, spark.life); context.fillStyle = spark.color; context.fillRect(spark.x, spark.y, 3, 3); }); context.globalAlpha = 1;
+      const lantern = game.lantern; const glow = context.createRadialGradient(lantern.x, lantern.y, 4, lantern.x, lantern.y, 60); glow.addColorStop(0, 'rgba(255,244,175,.72)'); glow.addColorStop(1, 'rgba(255,220,100,0)'); context.fillStyle = glow; context.beginPath(); context.arc(lantern.x, lantern.y, 60, 0, Math.PI * 2); context.fill(); context.fillStyle = '#fff2a8'; context.strokeStyle = '#f7bd4f'; context.lineWidth = 3; context.beginPath(); context.arc(lantern.x, lantern.y, lantern.radius, 0, Math.PI * 2); context.fill(); context.stroke();
+    }
+    function loop(now) { if (!game || !game.running) return; const delta = Math.min((now - game.lastTick) / 1000, .05); game.lastTick = now; update(delta, now); draw(now); animationFrame = requestAnimationFrame(loop); }
+    function moveLantern(event) { if (!game || !game.running) return; const bounds = canvas.getBoundingClientRect(); game.lantern.x = Math.max(18, Math.min(game.width - 18, event.clientX - bounds.left)); game.lantern.y = Math.max(18, Math.min(game.height - 18, event.clientY - bounds.top)); }
+    startButton.addEventListener('click', startGame); window.addEventListener('resize', () => { if (game && game.running) { resizeCanvas(); game.width = canvas.clientWidth; game.height = canvas.clientHeight; } }); window.addEventListener('keydown', event => { keys.add(event.key.toLowerCase()); if (['arrowleft', 'arrowright', 'arrowup', 'arrowdown', ' '].includes(event.key.toLowerCase())) event.preventDefault(); }); window.addEventListener('keyup', event => keys.delete(event.key.toLowerCase())); canvas.addEventListener('pointermove', moveLantern); canvas.addEventListener('pointerdown', moveLantern); resizeCanvas(); context.fillStyle = '#1d314f'; context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+  </script>
+</body>
+</html>
