@@ -186,18 +186,19 @@
   },
   "active": "a6a1783be60067bd",
   "lastOpenFiles": [
+    "firebase-debug.log",
+    "dist/assets/main-rM2SknG2.js",
+    "firebase.json",
+    "dist/assets/dev-CZHc6nzv.js",
+    "dist/assets/style-Azp5dzR8.js",
+    "dist/assets/main-CHKu6n0-.js",
+    "dist/assets/WEBSITE-FOUNDATION-BpqWZGJX.js",
+    "dist/assets/index-BotCdoDR.js",
+    "dist/assets/TUTORIAL-BnoRLG1-.js",
+    "dist/assets/REACT-THREE-FIBER-LEARNING-LOG-CxcJ0dTN.js",
+    "dist/assets/STYLE-GUIDE-BO9alLNn.js",
     "experiments/cellular-noise/README.md",
     "experiments/2026-09-28.append.md",
-    "dist/assets/portfolio-nVeGVXvM.js",
-    "dist/assets/typography-CUsySfTM.css",
-    "dist/assets/cellularNoise-DuXwsbyq.css",
-    "dist/assets/scene-B52kf4ar.css",
-    "dist/assets/main-CGV1fAun.css",
-    "dist/archive/portfolio/index.html",
-    "dist/archive/portfolio",
-    "dist/archive",
-    "dist/assets/voxelTerrain-C-zwNQZ7.css",
-    "dist/experiments/cellular-noise/index.html",
     "2026-09-28.md",
     "experiments/2026-09-28.next.md",
     "experiments/voxel-terrain/README.next.md",
@@ -220,7 +221,6 @@
     "node_modules/@babel/helper-string-parser/README.md",
     "node_modules/@babel/generator/README.md",
     "node_modules/@babel/helper-module-transforms/README.md",
-    "node_modules/@babel/code-frame/README.md",
-    "node_modules/@babel/helper-validator-identifier/README.md"
+    "node_modules/@babel/code-frame/README.md"
   ]
 }
