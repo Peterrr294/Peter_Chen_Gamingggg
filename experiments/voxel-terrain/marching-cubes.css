@@ -1,0 +1,1 @@
+.generate-button{width:calc(100% - 20px);min-height:46px;margin:10px;border-color:#1748d4;background:#002fa7;font-size:11px;letter-spacing:.08em}.generate-button:hover,.generate-button.dirty{background:#1748d4}.generate-button.dirty::before{content:'● ';color:#fff}.generate-button:disabled{opacity:.65;cursor:wait}.viewport-panel{min-width:0}

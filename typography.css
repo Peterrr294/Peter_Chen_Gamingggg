@@ -1,0 +1,20 @@
+/* 英文和中文使用不同字形范围；同一句中也可分别选择字体。 */
+@font-face {
+  font-family: "Lab Latin";
+  src: local("Helvetica"), local("Helvetica Neue"), local("DengXian"), local("Arial");
+  unicode-range: U+0000-024F, U+2000-206F, U+2190-21FF;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lab Chinese";
+  src: local("FangSong"), local("仿宋"), local("STFangsong"), local("SimFang");
+  unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF, U+20000-2FA1F;
+  font-display: swap;
+}
+/* 统一覆盖各独立页面和 GUI 自带字体，同时保留各自的字号与布局。 */
+*, *::before, *::after {
+  font-family: "Lab Latin", "Lab Chinese", Helvetica, "DengXian", Arial, "FangSong", "STFangsong", sans-serif !important;
+}
+:lang(zh), :lang(zh-CN) {
+  font-family: "Lab Chinese", "FangSong", "STFangsong", "Lab Latin", Helvetica, sans-serif !important;
+}

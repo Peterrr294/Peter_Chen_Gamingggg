@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>星屑收集 | Starlight Run</title>
+  <title>Starlight Collection | Starlight Run</title>
   <style>
     :root { --ink: #16233b; --muted: #63708a; --paper: #f5f1e8; --coral: #ef6f61; --gold: #f7bd4f; --teal: #2c9c98; }
     * { box-sizing: border-box; }
@@ -33,23 +33,23 @@
     .note p { margin: 0; color: var(--muted); font: 13px/1.6 Arial, sans-serif; }
     @media (max-width: 650px) { .shell { width: min(100% - 20px, 540px); padding-top: 22px; } header { display: block; } .tagline { margin-top: 12px; } .topbar { align-items: flex-start; } .stats { gap: 13px; } .stat-value { font-size: 18px; } .stage-wrap { padding: 10px; } canvas { height: 68vh; min-height: 430px; } .message { inset: 10px; } .notes { grid-template-columns: 1fr; } }
   </style>
-</head>
+<link rel="stylesheet" href="./typography.css" /></head>
 <body>
   <main class="shell">
     <header>
-      <div><p class="kicker">Game 001 / First Prototype</p><h1>星屑收集</h1></div>
-      <p class="tagline">在夜色完全降临前，收集尽可能多的星屑，避开漂浮的暗影。</p>
+      <div><p class="kicker">Game 001 / First Prototype</p><h1>Starlight Collection</h1></div>
+      <p class="tagline">Collect as much starlight as you can before nightfall, and avoid drifting shadows.</p>
     </header>
-    <section class="game-frame" aria-label="星屑收集游戏">
+    <section class="game-frame" aria-label="Starlight Collection game">
       <div class="topbar">
-        <div class="stats"><div><span class="stat-label">分数</span><span class="stat-value" id="score">0</span></div><div><span class="stat-label">剩余时间</span><span class="stat-value"><span id="time">30</span>s</span></div><div><span class="stat-label">最高分</span><span class="stat-value" id="best">0</span></div></div>
-        <button id="start" type="button">开始游戏</button>
+        <div class="stats"><div><span class="stat-label">Score</span><span class="stat-value" id="score">0</span></div><div><span class="stat-label">Time left</span><span class="stat-value"><span id="time">30</span>s</span></div><div><span class="stat-label">Best score</span><span class="stat-value" id="best">0</span></div></div>
+        <button id="start" type="button">Start game</button>
       </div>
       <div class="stage-wrap">
-        <canvas id="game" aria-label="游戏画布"></canvas>
-        <div class="message" id="message"><div class="message-card"><h2>准备好了吗？</h2><p>点击开始，然后用鼠标或手指移动灯笼。<br>键盘也可以：使用方向键或 WASD。</p></div></div>
+        <canvas id="game" aria-label="Starlight game canvas"></canvas>
+        <div class="message" id="message"><div class="message-card"><h2>Ready to play?</h2><p>Select Start game, then move the lantern with your mouse or touch.<br>You can also use arrow keys or WASD.</p></div></div>
       </div>
-      <div class="notes"><div class="note"><h3>收集星屑</h3><p>金色星屑 +10 分，连续收集会让灯笼变亮。</p></div><div class="note"><h3>躲开暗影</h3><p>碰到紫色暗影会扣除 3 秒，保持移动。</p></div></div>
+      <div class="notes"><div class="note"><h3>Collect starlight</h3><p>Each golden star earns 10 points. Keep collecting before time runs out.</p></div><div class="note"><h3>Avoid shadows</h3><p>Touching a purple shadow costs 3 seconds. Keep moving!</p></div></div>
     </section>
   </main>
   <script>
@@ -86,7 +86,7 @@
     function spawnStar() { game.stars.push({ x: randomBetween(25, game.width - 25), y: randomBetween(25, game.height - 25), radius: randomBetween(7, 11), phase: Math.random() * 6 }); }
     function spawnShadow() { game.shadows.push({ x: randomBetween(35, game.width - 35), y: randomBetween(35, game.height - 35), radius: randomBetween(13, 21), dx: randomBetween(-28, 28), dy: randomBetween(-28, 28) }); }
     function burst(x, y, color) { for (let i = 0; i < 10; i++) game.sparks.push({ x, y, dx: randomBetween(-80, 80), dy: randomBetween(-80, 80), life: .6, color }); }
-    function startGame() { cancelAnimationFrame(animationFrame); resizeCanvas(); game = createGame(); for (let i = 0; i < 5; i++) spawnStar(); for (let i = 0; i < 3; i++) spawnShadow(); scoreElement.textContent = '0'; timeElement.textContent = '30'; startButton.textContent = '重新开始'; message.classList.add('hidden'); animationFrame = requestAnimationFrame(loop); }
+    function startGame() { cancelAnimationFrame(animationFrame); resizeCanvas(); game = createGame(); for (let i = 0; i < 5; i++) spawnStar(); for (let i = 0; i < 3; i++) spawnShadow(); scoreElement.textContent = '0'; timeElement.textContent = '30'; startButton.textContent = 'Restart game'; message.classList.add('hidden'); animationFrame = requestAnimationFrame(loop); }
     function finishGame(title, detail) { game.running = false; cancelAnimationFrame(animationFrame); if (game.score > best) { best = game.score; localStorage.setItem('starlight-best', best); bestElement.textContent = best; } messageCard.innerHTML = '<h2>' + title + '</h2><p>' + detail + '</p>'; message.classList.remove('hidden'); }
     function update(delta, now) {
       const lantern = game.lantern;
@@ -101,7 +101,7 @@
       game.stars = game.stars.filter(star => { if (distance(lantern, star) < lantern.radius + star.radius) { game.score += 10; scoreElement.textContent = game.score; burst(star.x, star.y, '#f7bd4f'); return false; } return true; });
       if (game.shadows.some(shadow => distance(lantern, shadow) < lantern.radius + shadow.radius)) { game.time = Math.max(0, game.time - 3); burst(lantern.x, lantern.y, '#ef6f61'); lantern.x = game.width / 2; lantern.y = game.height / 2; }
       game.sparks = game.sparks.filter(spark => { spark.life -= delta; spark.x += spark.dx * delta; spark.y += spark.dy * delta; return spark.life > 0; });
-      if (game.time <= 0) finishGame('夜色降临', '你收集了 ' + game.score + ' 分星屑。点击上方按钮再来一局。');
+      if (game.time <= 0) finishGame('Night has fallen', 'You earned ' + game.score + ' points. Select Restart game to play again.');
     }
     function draw(now) {
       const width = game.width; const height = game.height; const gradient = context.createLinearGradient(0, 0, width, height); gradient.addColorStop(0, '#1d314f'); gradient.addColorStop(1, '#3f2855'); context.fillStyle = gradient; context.fillRect(0, 0, width, height);

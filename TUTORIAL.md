@@ -1,11 +1,13 @@
 # Build Your First Game with Prompts
 
+> **Archive note:** This lesson plan was written for the original standalone version of Starlight Run. That game source is no longer present in the current repository. The current root `index.html` launches the React Three Fiber scene, while `archive/portfolio/index.html` contains a later portfolio presentation rather than the tutorial's original game functions. Keep this note as a historical learning plan until the original prototype is restored or the lessons are rewritten for the current application.
+
 This tutorial teaches you how to understand and improve **Starlight Run** one small step at a time. You do not need to know everything before you begin. Read a lesson, use the prompt, test the result, and write down what you learned in Obsidian.
 
 ## 0. Setup
 
 1. Open this folder in VS Code.
-2. Open `index.html` in a browser. A local server is optional because the game has no dependencies.
+2. Restore or locate the original standalone game before following the coding exercises. Do not use the current root `index.html`, because it belongs to the React Three Fiber scene.
 3. Open `First lesson.md` in Obsidian. Use it as your progress checklist.
 4. Before asking an AI to edit code, make a copy or commit your working version with Git.
 

@@ -1,38 +1,38 @@
-# 星屑收集
+# Starlight Collection
 
 > Game 001 / First Prototype
 
-## 项目概念
+## Project Concept
 
-一款 30 秒的轻量收集小游戏。玩家操控一盏灯笼，在夜色降临前收集金色星屑，同时躲避会漂浮的暗影。
+A lightweight, 30-second collection game. The player controls a lantern, collects golden starlight before nightfall, and avoids floating shadows.
 
-## 当前版本
+## Current Version
 
-- **版本**：0.1.0
-- **状态**：可玩的第一版原型
-- **运行方式**：直接用浏览器打开 `index.html`
-- **技术**：HTML、CSS、原生 JavaScript Canvas
-- **依赖**：无
+- **Version:** 0.1.0
+- **Status:** first playable prototype
+- **How to run:** start `./dev.cmd`, open `http://localhost:5173/#game`, or open `legacy-game.html` directly
+- **Technology:** HTML, CSS, and native JavaScript Canvas
+- **Dependencies:** none
 
-## 操作
+## Controls
 
-- 鼠标或手指移动灯笼
-- 方向键或 `WASD` 移动
-- 金色星屑：+10 分
-- 碰到暗影：减少 3 秒
+- Move the lantern with the mouse or touch
+- Move with the arrow keys or `WASD`
+- Golden starlight: +10 points
+- Shadow collision: -3 seconds
 
-## 开发记录
+## Development Log
 
 ### 2026-09-02
 
-- 建立游戏项目结构
-- 完成游戏画面、计分、倒计时和最高分保存
-- 加入鼠标、触摸和键盘操作
-- 加入星屑、暗影、粒子效果和响应式布局
+- Created the game project structure
+- Completed the game view, scoring, countdown, and high-score storage
+- Added mouse, touch, and keyboard input
+- Added starlight, shadows, particles, and a responsive layout
 
-## 下一步
+## Next Steps
 
-- 增加不同种类的星屑和连击系统
-- 增加音效与背景音乐开关
-- 增加关卡速度曲线
-- 设计开始菜单和结算统计
+- Add more types of starlight and a combo system
+- Add sound-effect and background-music controls
+- Add a level difficulty curve
+- Design a start menu and end-of-round statistics

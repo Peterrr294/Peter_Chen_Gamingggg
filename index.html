@@ -3,10 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Three Fiber Scene</title>
-  </head>
+    <meta name="description" content="Peter's games, noise experiments, 3D lessons, and development notes." />
+    <title>Peter's Game Lab</title>
+    <link rel="stylesheet" href="./site.css" />
+  <link rel="stylesheet" href="./typography.css" /></head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <header class="site-header">
+      <a class="brand" href="#home">PETER'S GAME LAB <span>BUILD · TEST · LEARN</span></a>
+      <nav aria-label="Project categories">
+        <a href="#home">Home</a>
+        <a href="#game">Starlight Game</a>
+        <a href="#noise">Noise Experiment</a>
+        <a href="#voxel">Voxel Terrain</a>
+        <a href="#scene">3D Learning</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#files">Files & Notes</a>
+      </nav>
+    </header>
+    <div class="page-bar"><span id="sectionTitle"></span><a id="openPage" target="_blank" rel="noopener" hidden>Open Separately ↗</a></div>
+    <main id="content"></main>
+    <script type="module" src="./site.js"></script>
   </body>
 </html>

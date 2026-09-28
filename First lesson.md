@@ -1,30 +1,29 @@
+# Starlight Collection: Game Project Home
 
-# 星屑收集：游戏项目主页
+## One-Sentence Concept
 
-## 一句话概念
+Control a lantern through a 30-second night, collect starlight, avoid floating shadows, and earn the highest score possible.
 
-在 30 秒的夜色中操控灯笼收集星屑，躲开漂浮的暗影，获得尽可能高的分数。
+## Project Files
 
-## 项目文件
+- [[GAME]]: gameplay, version information, and development log
+- `archive/portfolio/index.html`: the preserved game page
+- [[TUTORIAL]]: learn and extend the game with AI prompts
+- [[REACT-THREE-FIBER-LEARNING-LOG]]: the current 3D learning process and level-by-level roadmap
 
-- [[GAME]]：玩法、版本和开发记录
-- [[index.html]]：可直接在浏览器打开的游戏
-- [[TUTORIAL]]：使用 AI Prompt 学习和扩展游戏
-- [[React Three Fiber 学习日志]]：当前 3D 学习过程与逐级路线
+## Current Progress
 
-## 当前进度
+- [x] Built the first playable prototype
+- [x] Added scoring and a countdown timer
+- [x] Added mouse, touch, WASD, and arrow-key controls
+- [x] Saved the local high score
+- [ ] Add sound and a combo system
+- [ ] Add more levels
 
-- [x] 建立第一个可玩的原型
-- [x] 完成计分和倒计时
-- [x] 支持鼠标、触摸和 WASD / 方向键
-- [x] 保存本地最高分
-- [ ] 增加音效和连击系统
-- [ ] 增加更多关卡
+## Lesson Record
 
-## 本课记录
+Today's goal was to finish the smallest version that could run and be played immediately. The first pass focused on four core feedback loops: movement, collection, collision, and the end-of-round result. Pacing can be adjusted after playtesting.
 
-今天的目标是先完成一个能够马上运行、马上试玩的最小版本。先把移动、收集、碰撞和结算这四个核心反馈做出来，再根据试玩感受调整节奏。
+## Playtest Entry
 
-## 试玩入口
-
-打开文件夹中的 `index.html` 即可开始游戏。
+Open `archive/portfolio/index.html` in a browser to view the preserved portfolio and game prototype.

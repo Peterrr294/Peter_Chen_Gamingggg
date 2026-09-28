@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Layered Cellular Noise terrain with simulation controls, infinite scrolling, and resolution calibration." />
+    <title>Cellular Noise / Terrain Simulation</title>
+    <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../../typography.css" /></head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home" target="_top" class="back-link">← GAME LAB</a>
+      <p>CELLULAR NOISE / 001</p>
+      <span class="status"><i></i> LIVE DEMO</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">ASSIGNMENT 2 / TERRAIN SIMULATION</p>
+          <h1>Layer noise.<br />Build continuous terrain.</h1>
+        </div>
+        <p class="lede">Low-frequency noise shapes the hills; higher frequencies add detail. The grayscale map and 3D terrain share one height field. Select a sample to inspect its values, or start the simulation to explore. Resolution changes sampling density.</p>
+      </section>
+
+      <section class="workspace">
+        <div class="views">
+          <div class="viewport-panel panel">
+          <div class="panel-head">
+            <span id="mapSizeReadout">2D NOISE / 64 × 64</span>
+            <span id="mapState">READY</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="mapCanvas" width="512" height="512" aria-label="Grayscale noise height map; select a cell to inspect its values"></canvas>
+            <div id="chunkOutline" aria-hidden="true"></div>
+          </div>
+          <div class="map-meta">
+            <span>CHUNK <strong id="chunkReadout">0, 0</strong></span>
+            <span>CELL <strong id="cellReadout">—</strong></span>
+            <span>F1 / HEIGHT 0–1 <strong id="valueReadout">—</strong></span>
+            <span>CHECKSUM <strong id="checksumReadout">—</strong></span>
+            <span>3D HEIGHT / 2D GRAY <strong id="heightReadout">—</strong></span>
+            <span>WORLD ORIGIN <strong id="worldReadout">0, 0</strong></span>
+          </div>
+          </div>
+
+          <div class="three-panel panel">
+            <div class="panel-head">
+              <span>3D TERRAIN / SIMULATION MAP</span>
+              <span id="simulationReadout">PAUSED</span>
+            </div>
+            <div class="three-canvas-wrap">
+              <canvas id="threeCanvas" aria-label="Rotatable 3D terrain driven by the shared noise height map"></canvas>
+            </div>
+            <div class="three-actions">
+              <button id="simulationToggle" class="secondary" aria-pressed="false">START SIMULATION</button>
+              <button id="wireframeToggle" class="secondary" aria-pressed="false">SHOW WIREFRAME</button>
+              <button id="resetWorld" class="secondary">RESET WORLD</button>
+            </div>
+            <p class="three-help">DRAG: ORBIT · WHEEL: ZOOM · ARROWS: SCROLL · SHIFT: FAST · W: WIREFRAME · SPACE: START / PAUSE</p>
+            <p id="calibrationReadout" class="three-help" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <aside class="inspector panel">
+          <div class="panel-head"><span>INSPECTOR</span><span>PARAMS</span></div>
+          <div id="guiMount" class="gui-mount"></div>
+          <button id="reverse" class="secondary">REVERSE CHUNK ORDER</button>
+
+          <div class="proof">
+            <p>ORDER TEST</p>
+            <strong id="orderResult">NOT RUN</strong>
+            <small>Forward and reverse chunk generation should produce identical checksums.</small>
+          </div>
+        </aside>
+      </section>
+
+      <section class="properties">
+        <article><span>01</span><h2>RANDOM ACCESS</h2><p>Query any sample independently from its world coordinates, without generating earlier samples.</p></article>
+        <article><span>02</span><h2>TRIVIALLY PARALLEL</h2><p>Samples read shared parameters without writing to one another, allowing independent worker computation.</p></article>
+        <article><span>03</span><h2>REPRODUCIBLE</h2><p>An integer hash replaces Math.random(). The same seed, coordinates, and parameters reproduce the same result.</p></article>
+        <article><span>04</span><h2>CHUNKABLE</h2><p>Samples are grouped into 16 × 16 chunks. Generate chunks in any order while preserving continuous boundaries.</p></article>
+      </section>
+
+      <section class="code-panel panel">
+        <div class="panel-head"><span>CORE / SHAPING OPERATION</span><span>KLEIN BLUE</span></div>
+        <pre><code><span class="keyword">function</span> <span class="function">shapeNoise</span>(distance, params) {
+  <span class="keyword">if</span> (params.shaping === <span class="function">'Threshold'</span>)
+    <span class="keyword">return</span> distance &lt;= params.threshold ? <span class="number">1</span> : <span class="number">0</span>;
+
+  <span class="keyword">if</span> (params.shaping === <span class="function">'Invert Threshold'</span>)
+    <span class="keyword">return</span> distance &gt; params.invertThreshold ? <span class="number">1</span> : <span class="number">0</span>;
+
+  <span class="keyword">const</span> fromBand = Math.<span class="function">abs</span>(distance - <span class="number">0.5</span>);
+  <span class="keyword">return</span> fromBand &lt;= params.bandWidth / <span class="number">2</span> ? <span class="number">1</span> : <span class="number">0</span>;
+}</code></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>
