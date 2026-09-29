@@ -1,3 +1,6 @@
+import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { auth, googleProvider } from './src/firebase.js';
+
 // 每个栏目描述它的名称与页面位置；新增页面时先在这里登记。
 export const sections = {
   home: { title: 'HOME / PROJECT HUB' },
@@ -23,6 +26,43 @@ const title = document.querySelector('#sectionTitle');
 const openPage = document.querySelector('#openPage');
 let activeSection;
 let fileRequest = 0;
+
+const authButton = document.querySelector('#authButton');
+const authStatus = document.querySelector('#authStatus');
+const userPhoto = document.querySelector('#userPhoto');
+
+onAuthStateChanged(auth, user => {
+  authButton.disabled = false;
+  if (user) {
+    authStatus.textContent = user.displayName || user.email || 'Signed in';
+    authButton.textContent = 'Sign out';
+    if (user.photoURL) {
+      userPhoto.src = user.photoURL;
+      userPhoto.alt = `${user.displayName || 'Signed-in user'} profile photo`;
+      userPhoto.hidden = false;
+    } else {
+      userPhoto.hidden = true;
+      userPhoto.removeAttribute('src');
+    }
+  } else {
+    authStatus.textContent = 'Signed out';
+    authButton.textContent = 'Sign in with Google';
+    userPhoto.hidden = true;
+    userPhoto.removeAttribute('src');
+  }
+});
+
+authButton.addEventListener('click', async () => {
+  authButton.disabled = true;
+  try {
+    if (auth.currentUser) await signOut(auth);
+    else await signInWithPopup(auth, googleProvider);
+  } catch (error) {
+    console.error('Firebase Authentication failed:', error);
+    authStatus.textContent = 'Login failed — try again';
+    authButton.disabled = false;
+  }
+});
 
 function showHome() {
   const intro = document.createElement('section');

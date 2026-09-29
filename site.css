@@ -3,8 +3,14 @@
 body { margin: 0; }
 a { color: inherit; text-decoration: none; }
 .site-header { padding: 22px 28px 0; border-bottom: 1px solid #28282f; background: #0b0b0d; }
+.header-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { display: inline-block; font: 700 18px/1.4 Consolas, monospace; letter-spacing: .05em; }
 .brand span { display: block; color: #a0a0aa; font-size: 10px; margin-top: 5px; }
+.auth-panel { display: flex; align-items: center; justify-content: flex-end; gap: 10px; color: #a0a0aa; font-size: 12px; }
+.auth-panel img { width: 30px; height: 30px; border-radius: 50%; }
+.auth-panel button { padding: 8px 12px; color: white; background: #1748d4; border: 1px solid #3866df; cursor: pointer; }
+.auth-panel button:hover { background: #2457df; }
+.auth-panel button:disabled { color: #777782; background: #202026; border-color: #34343d; cursor: wait; }
 nav { display: flex; gap: 6px; overflow-x: auto; margin-top: 22px; }
 nav a { flex-shrink: 0; padding: 14px 18px; color: #a0a0aa; border-bottom: 3px solid transparent; }
 nav a:hover { background: #121216; color: white; }
@@ -30,4 +36,4 @@ select { width: 100%; padding: 12px 8px; color: white; background: #121216; bord
 pre { margin: 0; padding: 24px; overflow: auto; max-height: calc(100dvh - 300px); white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.8 Consolas, monospace; tab-size: 2; }
 :focus-visible { outline: 2px solid #1748d4; outline-offset: 3px; }
 [hidden] { display: none !important; }
-@media (max-width: 700px) { .site-header { padding: 18px 16px 0; } nav a { padding: 12px; } .page-bar { padding-inline: 16px; } .library { grid-template-columns: 1fr; padding: 16px; } .hub { padding: 28px 16px; } pre { max-height: 65dvh; } }
+@media (max-width: 700px) { .site-header { padding: 18px 16px 0; } .header-top { align-items: flex-start; flex-direction: column; } .auth-panel { width: 100%; justify-content: flex-start; flex-wrap: wrap; } nav { margin-top: 14px; } nav a { padding: 12px; } .page-bar { padding-inline: 16px; } .library { grid-template-columns: 1fr; padding: 16px; } .hub { padding: 28px 16px; } pre { max-height: 65dvh; } }

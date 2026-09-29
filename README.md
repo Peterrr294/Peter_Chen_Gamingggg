@@ -4,6 +4,8 @@ A shared website for the first Starlight Collection game, Cellular Noise experim
 
 The architecture baseline, decisions, verification checklist, and personal-website roadmap are recorded in [WEBSITE-FOUNDATION.md](./WEBSITE-FOUNDATION.md). Read it before restructuring or expanding the website.
 
+The account login, per-user Firestore terrain configurations, local JSON backup, Hosting workflow, and Storage plan limitation are documented in [FIREBASE-TUTORIAL.md](./FIREBASE-TUTORIAL.md).
+
 Website UI and primary content are English. Shared `typography.css` uses local Helvetica/DengXian for English and FangSong for Chinese annotations, with system fallbacks. Chinese comments remain available in source files.
 
 ## Website Tabs

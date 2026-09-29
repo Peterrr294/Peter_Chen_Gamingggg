@@ -6,6 +6,9 @@ import { createDensityField } from './density-field.js';
 import { meshAlgorithms } from './mesh-algorithms.js';
 import { compareChunkSeam } from './marching-cubes.js';
 import { compareSharedVertices } from './mesh-audit.js';
+import { onAuthStateChanged } from 'firebase/auth';
+import { addDoc, collection, getDocs, serverTimestamp } from 'firebase/firestore';
+import { auth, db } from '../../src/firebase.js';
 
 const $=selector=>document.querySelector(selector);
 const canvas=$('#voxelCanvas'),scene=new THREE.Scene();scene.background=new THREE.Color(0x000000);
@@ -19,7 +22,8 @@ const parameters={algorithm:'Marching Cubes',chunkCount:3,cellsPerChunk:12,spaci
 const algorithmIds={'Marching Cubes':'MarchingCubes','Surface Nets':'SurfaceNets','Marching Tetrahedra':'MarchingTetrahedra'};
 const operationLabels={union:'Union',intersect:'Intersect',subtract:'Subtract',smoothUnion:'Smooth union'},shapeLabels={boxB:'Box B',cutterC:'Sphere C'};
 let operations=[{type:'union',shapeId:'boxB'},{type:'subtract',shapeId:'cutterC'}];
-const chunks=new Map();let gui;
+const chunks=new Map();let gui,currentUser=null;
+const savedConfigurations=new Map();
 
 function makeShapes(){return{sphereA:createShape('sphere',{position:{x:parameters.sphereX,y:parameters.sphereY,z:parameters.sphereZ},radius:parameters.sphereRadius}),boxB:createShape('box',{position:{x:parameters.boxX,y:parameters.boxY,z:parameters.boxZ},size:{x:parameters.boxWidth/2,y:parameters.boxHeight/2,z:parameters.boxDepth/2}}),cutterC:createShape('sphere',{position:{x:parameters.cutterX,y:parameters.cutterY,z:parameters.cutterZ},radius:parameters.cutterRadius})};}
 const activeOperations=()=>operations.slice(0,Number($('#stepRange').value)).map(step=>({...step,smoothing:parameters.smoothing}));
@@ -56,6 +60,52 @@ function renderOperationList(){const list=$('#operationList');list.replaceChildr
 function moveStep(from,to){if(to<0||to>=operations.length)return;const[step]=operations.splice(from,1);operations.splice(to,0,step);refreshSequence(true);}function refreshSequence(final=false){updateStepControl(final);renderOperationList();markDirty();}
 function updateGui(){gui.controllersRecursive().forEach(controller=>controller.updateDisplay());}
 function loadPreset(name){if(name==='sphere'){Object.assign(parameters,{sphereRadius:5,sphereX:0,sphereY:0,sphereZ:0});operations=[];}else if(name==='boxCut'){Object.assign(parameters,{sphereRadius:5,sphereX:0,boxX:3,boxY:0,boxZ:0,boxWidth:5,boxHeight:8,boxDepth:5});operations=[{type:'subtract',shapeId:'boxB'}];}else{Object.assign(parameters,{sphereRadius:5,sphereX:-1,boxX:3,boxY:0,boxZ:0,boxWidth:7,boxHeight:6,boxDepth:6,cutterRadius:2.5,cutterX:3,cutterY:0,cutterZ:0});operations=[{type:'union',shapeId:'boxB'},{type:'subtract',shapeId:'cutterC'}];}updateGui();refreshSequence(true);}
+
+const configName=$('#configName'),configSelect=$('#configSelect'),saveConfigButton=$('#saveConfig'),loadConfigButton=$('#loadConfig'),refreshConfigsButton=$('#refreshConfigs'),exportConfigButton=$('#exportConfig'),importConfigInput=$('#importConfig'),cloudStatus=$('#cloudStatus');
+function setCloudStatus(message,isError=false){cloudStatus.textContent=message;cloudStatus.classList.toggle('error',isError);}
+function setCloudControls(enabled){configName.disabled=!enabled;saveConfigButton.disabled=!enabled;refreshConfigsButton.disabled=!enabled;configSelect.disabled=!enabled;loadConfigButton.disabled=!enabled||!configSelect.value;}
+function serializeConfiguration(){return{schemaVersion:1,parameters:{...parameters},operations:operations.map(step=>({type:step.type,shapeId:step.shapeId}))};}
+function applyConfiguration(configuration){
+  if(!configuration?.parameters||!Array.isArray(configuration.operations))throw new Error('Invalid configuration data');
+  for(const key of Object.keys(parameters)){const value=configuration.parameters[key];if(typeof value===typeof parameters[key])parameters[key]=value;}
+  const validTypes=new Set(Object.keys(operationLabels)),validShapes=new Set(Object.keys(shapeLabels));
+  operations=configuration.operations.filter(step=>validTypes.has(step.type)&&validShapes.has(step.shapeId)).map(step=>({type:step.type,shapeId:step.shapeId}));
+  updateGui();refreshSequence(true);generateWorld();
+}
+async function refreshCloudConfigs(){
+  savedConfigurations.clear();configSelect.replaceChildren(option('','Choose a saved configuration…',''));
+  if(!currentUser){setCloudControls(false);return;}
+  setCloudStatus('Loading your configurations…');setCloudControls(false);
+  try{
+    const snapshot=await getDocs(collection(db,'users',currentUser.uid,'terrainConfigs'));
+    const documents=snapshot.docs.map(item=>({id:item.id,...item.data()})).sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
+    for(const configuration of documents){savedConfigurations.set(configuration.id,configuration);configSelect.append(option(configuration.id,configuration.name||'Untitled configuration',''));}
+    setCloudStatus(documents.length?`${documents.length} configuration${documents.length===1?'':'s'} saved for ${currentUser.displayName||currentUser.email}.`:'No saved configurations yet.');
+  }catch(error){console.error('Could not load Firestore configurations:',error);setCloudStatus(`Load failed: ${error.code||error.message}`,true);}
+  finally{setCloudControls(true);}
+}
+async function saveCloudConfig(){
+  const name=configName.value.trim();if(!currentUser){setCloudStatus('Sign in from the Game Lab header first.',true);return;}if(!name){setCloudStatus('Enter a configuration name first.',true);configName.focus();return;}
+  saveConfigButton.disabled=true;setCloudStatus('Saving configuration…');
+  try{await addDoc(collection(db,'users',currentUser.uid,'terrainConfigs'),{name:name.slice(0,60),...serializeConfiguration(),createdAt:serverTimestamp(),updatedAt:serverTimestamp()});configName.value='';await refreshCloudConfigs();setCloudStatus('Configuration saved to your account.');}
+  catch(error){console.error('Could not save Firestore configuration:',error);setCloudStatus(`Save failed: ${error.code||error.message}`,true);saveConfigButton.disabled=false;}
+}
+function loadCloudConfig(){const configuration=savedConfigurations.get(configSelect.value);if(!configuration){setCloudStatus('Choose a saved configuration first.',true);return;}try{applyConfiguration(configuration);setCloudStatus(`Loaded “${configuration.name||'Untitled configuration'}”.`);}catch(error){console.error(error);setCloudStatus('This configuration is invalid and could not be loaded.',true);}}
+function exportJsonConfig(){
+  const name=configName.value.trim()||'terrain-configuration',payload={name,exportedAt:new Date().toISOString(),...serializeConfiguration()};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),link=document.createElement('a');
+  link.href=url;link.download=`${name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'terrain-configuration'}.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);setCloudStatus('Configuration exported as a local JSON file.');
+}
+async function importJsonConfig(event){
+  const[file]=event.target.files;if(!file)return;
+  try{const configuration=JSON.parse(await file.text());applyConfiguration(configuration);if(typeof configuration.name==='string')configName.value=configuration.name.slice(0,60);setCloudStatus(`Imported “${configuration.name||file.name}” from JSON.`);}
+  catch(error){console.error('Could not import configuration:',error);setCloudStatus('Import failed: choose a valid terrain configuration JSON file.',true);}
+  finally{event.target.value='';}
+}
+
+onAuthStateChanged(auth,user=>{currentUser=user;if(user){setCloudStatus(`Signed in as ${user.displayName||user.email}.`);refreshCloudConfigs();}else{configSelect.replaceChildren(option('','Sign in to view configurations',''));setCloudStatus('Sign in from the Game Lab header to save configurations.');setCloudControls(false);}});
+saveConfigButton.addEventListener('click',saveCloudConfig);loadConfigButton.addEventListener('click',loadCloudConfig);refreshConfigsButton.addEventListener('click',refreshCloudConfigs);configSelect.addEventListener('change',()=>{loadConfigButton.disabled=!currentUser||!configSelect.value;});
+exportConfigButton.addEventListener('click',exportJsonConfig);importConfigInput.addEventListener('change',importJsonConfig);
 
 $('#generateButton').addEventListener('click',generateWorld);$('#presetSphere').addEventListener('click',()=>loadPreset('sphere'));$('#presetBoxCut').addEventListener('click',()=>loadPreset('boxCut'));$('#presetCave').addEventListener('click',()=>loadPreset('cave'));$('#addOperation').addEventListener('click',()=>{operations.push({type:'union',shapeId:'boxB'});refreshSequence(true);});$('#stepRange').addEventListener('input',()=>{updateStepControl();markDirty();});
 scene.add(new THREE.HemisphereLight(0xffffff,0x172044,2.2));const light=new THREE.DirectionalLight(0xffffff,2.5);light.position.set(12,20,15);scene.add(light);

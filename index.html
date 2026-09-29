@@ -9,7 +9,14 @@
   <link rel="stylesheet" href="./typography.css" /></head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#home">PETER'S GAME LAB <span>BUILD · TEST · LEARN</span></a>
+      <div class="header-top">
+        <a class="brand" href="#home">PETER'S GAME LAB <span>BUILD · TEST · LEARN</span></a>
+        <div class="auth-panel" aria-live="polite">
+          <img id="userPhoto" alt="" hidden />
+          <span id="authStatus">Checking login…</span>
+          <button id="authButton" type="button" disabled>Sign in with Google</button>
+        </div>
+      </div>
       <nav aria-label="Project categories">
         <a href="#home">Home</a>
         <a href="#game">Starlight Game</a>
