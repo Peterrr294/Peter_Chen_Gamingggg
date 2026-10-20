@@ -333,6 +333,12 @@ Automated evidence can prove references, masks, sampled heights, parents, config
 
 > Observation to complete after testing: Compare all five screenshots in order. Record any floating, submerged, overlapping, missing, or visually misleading building instance.
 
+## Local Model Files (not in Git)
+
+The page loads third-party models from `experiments/terrain-seam/`: `tiny_tokyo.glb` (reference asset), `04.glb`–`11.glb` (Japan standalone assets; `01`–`03` are excluded), and `v_01.glb`, `v_02.glb` (Venice). The folder also holds `.fbx` sources and further `.glb` files that the page does not request. All `*.glb` / `*.fbx` files are git-ignored (≈ 390 MB). Copy them into the folder by hand after cloning.
+
+Checked 2026-10-19 with Playwright: with the files present, the page loads all 11 model requests and exposes `window.__terrainSeamLab`. Without them, `tiny_tokyo.glb` returns 404 and the top-level `await` in `main.js` stops the script, so the scene and lab API never initialise. The same happens on the public site, where the model URL falls through the SPA rewrite to `index.html` ("Unexpected token '<'"). The Venice and standalone assets are caught individually and would only be marked `rejected`.
+
 ## Relevant Files
 
 - `experiments/terrain-seam/main.js` — focused scene construction, controls, and evidence API.

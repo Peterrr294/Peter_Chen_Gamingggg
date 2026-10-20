@@ -6,7 +6,7 @@ It is not a traditional game and not a visual copy of a city. The seed only prod
 
 > **Research question:** How can city characteristics be encoded as controllable procedural rules, and when those rules change continuously, mix, or are stitched together, how is city identity kept, weakened, or re-formed?
 
-**Live:** <https://gameeeee-zc626.web.app/#miniWorld> · **Source:** <https://github.com/Peterrr294/Peter_Chen_Gamingggg> (branch `experiment/terrain-seam`)
+**Live:** <https://gameeeee-zc626.web.app/#miniWorld> · **Source:** <https://github.com/Peterrr294/Peter_Chen_Gamingggg> (branch `main`)
 
 ![Live site, Mini World tab: 3 × 3 world, world seed 6201, one chunk switched to Amsterdam](./docs/assets/screenshots/procedural-mini-world/m01-live-world-grid-after.png)
 
@@ -59,6 +59,7 @@ npm run dev          # http://localhost:5173/
 npm run build                           # production build into dist/
 node scripts/verify-world-grid.mjs      # each task has scripts/verify-<name>.mjs
 node scripts/verify-markdown-links.mjs  # documentation link check
+npm run verify:live                     # check the deployed site (optional URL: node scripts/verify-live-release.mjs <url>)
 ```
 
 Deployment uses the existing Firebase project `gameeeee-zc626` (`firebase deploy --only hosting`). A push to `main` also deploys through `.github/workflows/firebase-hosting-merge.yml`.
@@ -85,9 +86,7 @@ site.js, index.html         Game Lab hub that hosts every experiment
 - **Performance:** the first world build takes about 17 s on the main thread (no worker).
 - **Tunnels:** a known tunnel-geometry defect (mountain seed 7922 with Chicago) is isolated, not fixed.
 - **Research calibration:** most DNA thresholds are assumptions without registered sources. Chicago and Amsterdam never win auto-match on the test terrains.
-- **Repository state:** the compass §5 table still lists T2–T6 as "Not started", while §1 records them as implemented. This awaits human review.
-- **Branches:** the deployed source is on `experiment/terrain-seam`, not `main`. A push to `main` would redeploy the older hub.
-- **Missing models:** the large `.glb` / `.fbx` models used by the archived Terrain Seam experiment are git-ignored (≈ 390 MB, third-party), so that page runs without models in a fresh clone.
+- **Terrain Seam models:** the archived Terrain Seam experiment needs ≈ 390 MB of third-party `.glb` / `.fbx` models that are git-ignored. Without `tiny_tokyo.glb` the page stops at load, both in a fresh clone and on the public site. See [Local model files](./docs/projects/flavor-clash/terrain-seam-building-scatter.md).
 
 ## Earlier work in this repository
 

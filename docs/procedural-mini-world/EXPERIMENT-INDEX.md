@@ -7,7 +7,7 @@ One table row per recorded task. This page is a map, not a second log: every num
 - **Lifecycle:** **Active** = code used by the current pipeline; **Superseded** = replaced by a later task, kept for history; **Archived** = earlier project, still runnable, not part of the current pipeline.
 - **Test:** *logged* = result recorded in the log entry; *re-run 2026-10-19* = the same verifier run again on 2026-10-19, during M02 or, where marked, during M01. "—" = no automated verifier exists.
 - **Review:** no task has been accepted yet. Every entry is **Pending review** in the log.
-- **Commit:** all Procedural Mini World work was uncommitted until M02. It first enters Git in commit `7b21c3e` on `experiment/terrain-seam`. The deployed state is tag `release/m01-2026-10-19` (`7b21c3e`).
+- **Commit:** all Procedural Mini World work was uncommitted until M02. It first enters Git in commit `7b21c3e` on `experiment/terrain-seam`, which `main` follows from M02b on. The deployed state is tag `release/m01-2026-10-19` (`7b21c3e`).
 
 Entry points (Vite dev server, `npm run dev`): single chunk `/experiments/seed-terrain/`, world `/experiments/world-grid/`. Online: <https://gameeeee-zc626.web.app/#miniWorld>.
 
@@ -81,8 +81,9 @@ Seed terrain (T1) → terrain analysis (T2) → City DNA match (T3) → road / c
 | ID | Purpose | Method · main files | Result (logged) | Evidence | Test | Lifecycle | Next (from log) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | OPS-01 | Agent + Obsidian rules aligned with the compass | [AGENTS.md](../../AGENTS.md) | Link check passed | text only | `verify-markdown-links.mjs` | Active | Human confirms §1 stage |
-| M01 | Publish the midterm build to the existing Firebase site | `vite.config.js`, `site.js`, `index.html` (hub entry only) | 11/11 smoke checks on the public URL, 0 browser errors | [img](../assets/screenshots/procedural-mini-world/m01-live-world-grid-after.png) | smoke script not in repo (session scratch) | Active (live) | Decide whether release source goes to `main` |
+| M01 | Publish the midterm build to the existing Firebase site | `vite.config.js`, `site.js`, `index.html` (hub entry only) | 11/11 smoke checks on the public URL, 0 browser errors | [img](../assets/screenshots/procedural-mini-world/m01-live-world-grid-after.png) | `verify-live-release.mjs` (added in M02b): 10/10 pass on the public URL, 2026-10-19 | Active (live) | Done in M02b: `main` fast-forwarded |
 | M02 | GitHub knowledge base: README, this index, link fixes, `.gitignore` | `README.md`, this page, [terrain-seam-building-scatter.md](../projects/flavor-clash/terrain-seam-building-scatter.md) | See log entry M02 | text only | `verify-markdown-links.mjs` | Active | — |
+| M02b | Follow-up: `main`, compass §5, Terrain Seam models note, live verifier | log §5, `scripts/verify-live-release.mjs`, `package.json` (`verify:live`) | See log entry M02b | text only | `verify-live-release.mjs` 10/10 | Active | Decide on the live Terrain Seam page |
 
 ## Archived experiments (before Procedural Mini World)
 
@@ -100,6 +101,6 @@ Earlier studies on the same site. They are kept runnable and are not part of the
 | Iceland Region | `experiments/iceland-region/` | [Flavor Clash README](../projects/flavor-clash/README.md) | re-run 2026-10-19 pass | Archived · **dependency** (`SurfaceQuery.js`) |
 | Road Projection | `experiments/road-projection/` | [Flavor Clash README](../projects/flavor-clash/README.md) | re-run 2026-10-19 pass | Archived |
 | Road Mesh | `experiments/road-mesh/` | [Flavor Clash README](../projects/flavor-clash/README.md) | re-run 2026-10-19 pass | Archived · **dependency** (`RoadMeshBuilder.js`, `config.js`) |
-| Terrain Seam (Venice / Japan) | `experiments/terrain-seam/` | [building scatter](../projects/flavor-clash/terrain-seam-building-scatter.md) | re-run 2026-10-19 pass | Archived; 06.3a reused its blend principle. Its `.glb` / `.fbx` models are git-ignored and missing in a fresh clone |
+| Terrain Seam (Venice / Japan) | `experiments/terrain-seam/` | [building scatter](../projects/flavor-clash/terrain-seam-building-scatter.md) | re-run 2026-10-19 pass | Archived; 06.3a reused its blend principle. Needs git-ignored local models ([list](../projects/flavor-clash/terrain-seam-building-scatter.md)). Without them, and on the public site, the page stops at load |
 
 Dated session summaries: [2026-10-18](../logs/2026-10-18.md), [2026-10-19](../logs/2026-10-19.md). Superseded plan: the "Original roadmap" table in log §5.

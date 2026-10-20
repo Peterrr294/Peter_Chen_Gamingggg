@@ -16,7 +16,8 @@
     "verify:iceland": "node scripts/verify-iceland-region.mjs",
     "verify:road-projection": "node scripts/verify-road-projection.mjs",
     "verify:road-mesh": "node scripts/verify-road-mesh.mjs",
-    "verify:terrain-seam": "node scripts/verify-terrain-seam.mjs"
+    "verify:terrain-seam": "node scripts/verify-terrain-seam.mjs",
+    "verify:live": "node scripts/verify-live-release.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.8",

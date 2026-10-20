@@ -52,12 +52,12 @@
 | --- | --- | --- | --- |
 | R | Research base: city longlist, families, prototype cities, Manhattan study | Docs, CSV, sources | Pending review |
 | T1 | Seed terrain: continuous height + water, slope, buildability fields | Same-seed reproducibility, 3 seeds, stats, 1 screenshot | Implemented, pending review |
-| T2 | Geographic feature detection (coast, rivers, ridges, flats, basins) | Feature maps + counts per seed | Not started |
-| T3 | City DNA matching to detected features | Match scores for ≥3 DNAs | Not started |
-| T4 | Road / canal network | Connectivity, hierarchy, boundary interface | Not started |
-| T5 | Blocks and parcels | Parcel stats, conflict checks | Not started |
-| T6 | Building extrusion | Density, height, coverage, collision checks | Not started |
-| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); no network joins yet |
+| T2 | Geographic feature detection (coast, rivers, ridges, flats, basins) | Feature maps + counts per seed | Implemented, pending review (02.5) |
+| T3 | City DNA matching to detected features | Match scores for ≥3 DNAs | Implemented, pending review (02.6; 6 DNAs in 06.1) |
+| T4 | Road / canal network | Connectivity, hierarchy, boundary interface | Implemented, pending review (03.1, 03.2, 03.3, 05.1b-2) |
+| T5 | Blocks and parcels | Parcel stats, conflict checks | Implemented, pending review (04.1, 04.1b, 04.2) |
+| T6 | Building extrusion | Density, height, coverage, collision checks | Implemented, pending review (05.1, 05.1b-1) |
+| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); no network joins yet |
 
 ### Original roadmap (superseded 2026-10-18, kept for history)
 
@@ -528,3 +528,16 @@ EXP-00 to EXP-00.2 used the original Chinese format below. From 2026-10-18, new 
 - **Open issues:** compass §5 still lists T2–T6 as "Not started" while §1 records them as implemented — needs a human decision (not changed here). The large Terrain Seam models are not in Git, so that archived page runs without models after a fresh clone. The release smoke test (M01) is not in `scripts/`. `main` does not contain this work yet; merging triggers a Firebase deploy.
 - **Review status:** Pending review.
 - **Next single task:** Human review of the README and index; then decide whether `experiment/terrain-seam` is merged into `main`.
+
+### M02b — Follow-up: main branch, compass §5, Terrain Seam models, live verifier
+
+- **Date / Stage / Single question:** 2026-10-19 / documentation + release (no stage change) / Can the four M02 open issues the user decided on be closed without changing generators or site features?
+- **Decisions (user, 2026-10-19):** fast-forward `main`; align §5 with §1; document the Terrain Seam models only; add the M01 smoke test to `scripts/`.
+- **Changed files:** this log §5 (Status column of T2–T7 only: "Implemented, pending review" + task IDs; T7 "Partial, pending review"; §1 unchanged); `docs/projects/flavor-clash/terrain-seam-building-scatter.md` (new "Local Model Files" section); new `scripts/verify-live-release.mjs` + `package.json` script `verify:live`; `README.md` (source branch, run step, limitations); `EXPERIMENT-INDEX.md` (M01, M02b, Terrain Seam rows).
+- **Pre-checks for `main`:** `npm ci --dry-run` accepts the lockfile; a build from a clean `git archive` of the commit gives the same 256 output files as the local build, with byte-identical world-grid, seed-terrain, and three.js chunks (other chunks differ only by CRLF inside preserved comments and bundled Markdown).
+- **Terrain Seam finding:** checked with Playwright. With the local models, the page loads 11 model requests and exposes `__terrainSeamLab`. With the models blocked (fresh clone), `tiny_tokyo.glb` returns 404 and the uncaught top-level `await` stops `main.js`. On the public site since M01 the same URL falls through the SPA rewrite to `index.html` ("Unexpected token '<'"), so the deployed Terrain Seam page does not initialise. The previous release (2026-09-28) had no Terrain Seam page. Not fixed (document-only decision); the M01 smoke test did not cover this page.
+- **Verification:** `node scripts/verify-live-release.mjs` against the public site: 10/10 checks, 51 / 51 requests 200, 0 browser errors (before the `main` push). `verify-markdown-links`: clean.
+- **Screenshots:** none (text-only).
+- **Open issues:** the live Terrain Seam page (see above); §1 "Current stage: T1" / "Current single task" / "Forbidden now" still describe T1 and were not changed.
+- **Review status:** Pending review.
+- **Next single task:** Decide how the Terrain Seam page should behave without its models (catch the reference-model load, drop it from the build, or ship the models).
