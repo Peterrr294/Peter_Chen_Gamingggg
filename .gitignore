@@ -1,6 +1,44 @@
+# Dependencies and build output
 node_modules/
 dist/
+.vite/
+.cache/
+coverage/
+
+# Bundled local Node runtime
 .tools/
 .tools-node.zip
-.vite/
+
+# Logs (Vite, npm, Firebase emulators)
 *.log
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Firebase CLI deploy cache (project id stays in .firebaserc)
+.firebase/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*service-account*.json
+*-firebase-adminsdk-*.json
+
+# Obsidian: keep shared settings, ignore per-device state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# Large third-party 3D models (≈ 390 MB, loaded only by experiments/terrain-seam
+# on the dev server; not part of the build). Keep them locally, do not commit.
+*.glb
+*.fbx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -88,7 +88,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 1 — Terrain references and scene attachment
 
-![Venice and Japan experimental terrain meshes with both building layers visible](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-014150-517/01-terrain-ownership.png)
+*Image not preserved in the repository: `2026-10-13-014150-517/01-terrain-ownership.png` — Venice and Japan experimental terrain meshes with both building layers visible.*
 
 **What this shows:** The focused scene contains separate Venice and Japan terrain meshes with their building layers visible.
 
@@ -98,7 +98,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 2 — Classification and water-mask binding
 
-![Water-mask overlay on both experimental terrain meshes with accepted buildings retained](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-014150-517/02-classification-water-mask.png)
+*Image not preserved in the repository: `2026-10-13-014150-517/02-classification-water-mask.png` — Water-mask overlay on both experimental terrain meshes with accepted buildings retained.*
 
 **What this shows:** Both experimental meshes display their own water-mask data while accepted buildings remain visible.
 
@@ -106,7 +106,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 3 — World coordinates and sampled height
 
-![Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-014150-517/03-world-height-placement.png)
+*Image not preserved in the repository: `2026-10-13-014150-517/03-world-height-placement.png` — Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces.*
 
 **What this shows:** An oblique close view makes the terrain-relative vertical placement and shared world-space seam visible.
 
@@ -114,7 +114,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 4 — Original Flavor Clash world isolation
 
-![Original four-region Flavor Clash world without experimental building controls or building layers](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-014150-517/04-original-world-isolation.png)
+*Image not preserved in the repository: `2026-10-13-014150-517/04-original-world-isolation.png` — Original four-region Flavor Clash world without experimental building controls or building layers.*
 
 **What this shows:** The original Iceland, Tokyo, Venice, and Hawaii world remains a separate four-region view.
 
@@ -122,7 +122,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 5 — Independent seeds and density controls
 
-![Venice and Japan seam controls showing independent building seeds and density values](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-014150-517/05-independent-controls.png)
+*Image not preserved in the repository: `2026-10-13-014150-517/05-independent-controls.png` — Venice and Japan seam controls showing independent building seeds and density values.*
 
 **What this shows:** Both layers remain visible while the form exposes separate Venice and Japan seed and density values.
 
@@ -138,7 +138,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 1 — Terrain references and scene attachment
 
-![Venice and Japan experimental terrain meshes with both building layers visible](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015513-978/01-terrain-ownership.png)
+*Image not preserved in the repository: `2026-10-13-015513-978/01-terrain-ownership.png` — Venice and Japan experimental terrain meshes with both building layers visible.*
 
 **What this shows:** The focused scene contains separate Venice and Japan terrain meshes with their building layers visible.
 
@@ -148,7 +148,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 2 — Classification and water-mask binding
 
-![Water-mask overlay on both experimental terrain meshes with accepted buildings retained](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015513-978/02-classification-water-mask.png)
+*Image not preserved in the repository: `2026-10-13-015513-978/02-classification-water-mask.png` — Water-mask overlay on both experimental terrain meshes with accepted buildings retained.*
 
 **What this shows:** Both experimental meshes display their own water-mask data while accepted buildings remain visible.
 
@@ -156,7 +156,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 3 — World coordinates and sampled height
 
-![Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015513-978/03-world-height-placement.png)
+*Image not preserved in the repository: `2026-10-13-015513-978/03-world-height-placement.png` — Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces.*
 
 **What this shows:** An oblique close view makes the terrain-relative vertical placement and shared world-space seam visible.
 
@@ -164,7 +164,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 4 — Original Flavor Clash world isolation
 
-![Original four-region Flavor Clash world without experimental building controls or building layers](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015513-978/04-original-world-isolation.png)
+*Image not preserved in the repository: `2026-10-13-015513-978/04-original-world-isolation.png` — Original four-region Flavor Clash world without experimental building controls or building layers.*
 
 **What this shows:** The original Iceland, Tokyo, Venice, and Hawaii world remains a separate four-region view.
 
@@ -172,7 +172,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 5 — Independent seeds and density controls
 
-![Venice and Japan seam controls showing independent building seeds and density values](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015513-978/05-independent-controls.png)
+*Image not preserved in the repository: `2026-10-13-015513-978/05-independent-controls.png` — Venice and Japan seam controls showing independent building seeds and density values.*
 
 **What this shows:** Both layers remain visible while the form exposes separate Venice and Japan seed and density values.
 
@@ -188,7 +188,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 1 — Terrain references and scene attachment
 
-![Venice and Japan experimental terrain meshes with both building layers visible](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015734-845/01-terrain-ownership.png)
+*Image not preserved in the repository: `2026-10-13-015734-845/01-terrain-ownership.png` — Venice and Japan experimental terrain meshes with both building layers visible.*
 
 **What this shows:** The focused scene contains separate Venice and Japan terrain meshes with their building layers visible.
 
@@ -198,7 +198,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 2 — Classification and water-mask binding
 
-![Water-mask overlay on both experimental terrain meshes with accepted buildings retained](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015734-845/02-classification-water-mask.png)
+*Image not preserved in the repository: `2026-10-13-015734-845/02-classification-water-mask.png` — Water-mask overlay on both experimental terrain meshes with accepted buildings retained.*
 
 **What this shows:** Both experimental meshes display their own water-mask data while accepted buildings remain visible.
 
@@ -206,7 +206,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 3 — World coordinates and sampled height
 
-![Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015734-845/03-world-height-placement.png)
+*Image not preserved in the repository: `2026-10-13-015734-845/03-world-height-placement.png` — Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces.*
 
 **What this shows:** An oblique close view makes the terrain-relative vertical placement and shared world-space seam visible.
 
@@ -214,7 +214,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 4 — Original Flavor Clash world isolation
 
-![Original four-region Flavor Clash world without experimental building controls or building layers](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015734-845/04-original-world-isolation.png)
+*Image not preserved in the repository: `2026-10-13-015734-845/04-original-world-isolation.png` — Original four-region Flavor Clash world without experimental building controls or building layers.*
 
 **What this shows:** The original Iceland, Tokyo, Venice, and Hawaii world remains a separate four-region view.
 
@@ -222,7 +222,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 5 — Independent seeds and density controls
 
-![Venice and Japan seam controls showing independent building seeds and density values](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-015734-845/05-independent-controls.png)
+*Image not preserved in the repository: `2026-10-13-015734-845/05-independent-controls.png` — Venice and Japan seam controls showing independent building seeds and density values.*
 
 **What this shows:** Both layers remain visible while the form exposes separate Venice and Japan seed and density values.
 
@@ -238,7 +238,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 1 — Terrain references and scene attachment
 
-![Venice and Japan experimental terrain meshes with both building layers visible](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-134832-299/01-terrain-ownership.png)
+*Image not preserved in the repository: `2026-10-13-134832-299/01-terrain-ownership.png` — Venice and Japan experimental terrain meshes with both building layers visible.*
 
 **What this shows:** The focused scene contains separate Venice and Japan terrain meshes with their building layers visible.
 
@@ -248,7 +248,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 2 — Classification and water-mask binding
 
-![Water-mask overlay on both experimental terrain meshes with accepted buildings retained](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-134832-299/02-classification-water-mask.png)
+*Image not preserved in the repository: `2026-10-13-134832-299/02-classification-water-mask.png` — Water-mask overlay on both experimental terrain meshes with accepted buildings retained.*
 
 **What this shows:** Both experimental meshes display their own water-mask data while accepted buildings remain visible.
 
@@ -256,7 +256,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 3 — World coordinates and sampled height
 
-![Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-134832-299/03-world-height-placement.png)
+*Image not preserved in the repository: `2026-10-13-134832-299/03-world-height-placement.png` — Oblique close view of Venice and Japan buildings placed on the connected terrain surfaces.*
 
 **What this shows:** An oblique close view makes the terrain-relative vertical placement and shared world-space seam visible.
 
@@ -264,7 +264,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 4 — Original Flavor Clash world isolation
 
-![Original four-region Flavor Clash world without experimental building controls or building layers](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-134832-299/04-original-world-isolation.png)
+*Image not preserved in the repository: `2026-10-13-134832-299/04-original-world-isolation.png` — Original four-region Flavor Clash world without experimental building controls or building layers.*
 
 **What this shows:** The original Iceland, Tokyo, Venice, and Hawaii world remains a separate four-region view.
 
@@ -272,7 +272,7 @@ The command opens both relevant pages in headless Chrome or Edge, checks the sam
 
 #### Step 5 — Independent seeds and density controls
 
-![Venice and Japan seam controls showing independent building seeds and density values](../../assets/screenshots/flavor-clash/terrain-seam-buildings/2026-10-13-134832-299/05-independent-controls.png)
+*Image not preserved in the repository: `2026-10-13-134832-299/05-independent-controls.png` — Venice and Japan seam controls showing independent building seeds and density values.*
 
 **What this shows:** Both layers remain visible while the form exposes separate Venice and Japan seed and density values.
 
