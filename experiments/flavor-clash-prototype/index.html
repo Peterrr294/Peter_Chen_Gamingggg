@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A finite four-region procedural map study using WFC roads, seeded terrain, splines, and Poisson-disk scattering." />
+    <title>Flavor Clash — Map Prototype 0.1</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← PETER'S GAME LAB</a>
+      <p>FLAVOR CLASH / MAP PROTOTYPE 0.1</p>
+      <span id="generationStatus">INITIALIZING</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">FINITE WORLD / FOUR CULTURAL REGIONS</p>
+          <h1>Four identities.<br />One shared map.</h1>
+        </div>
+        <div class="intro-copy">
+          <p class="lede">A controlled prototype for comparing terrain character, local road rules, regional scattering, and routes into a central plaza.</p>
+          <p>This is a bounded study—not an infinite world and not yet a complete game. Each region owns its seed and parameters so one area can change without silently changing the others.</p>
+          <div class="mode-switch" role="group" aria-label="Map view mode">
+            <button type="button" data-mode="Showcase" aria-pressed="true">Showcase</button>
+            <button type="button" data-mode="Systems" aria-pressed="false">Systems</button>
+          </div>
+        </div>
+      </section>
+
+      <nav class="lab-nav" aria-label="Flavor Clash experiment sequence">
+        <a href="./index.html" aria-current="page"><span>01</span><strong>Four-Region Map</strong><small>Seeded regions and local WFC roads</small></a>
+        <a href="../iceland-region/"><span>02</span><strong>Iceland Terrain</strong><small>Finite reproducible height field</small></a>
+        <a href="../road-projection/"><span>03</span><strong>Road Projection</strong><small>Surface queries and valid path samples</small></a>
+        <a href="../road-mesh/"><span>04</span><strong>Road Mesh</strong><small>Drawable ribbon geometry</small></a>
+        <a href="../terrain-seam/"><span>05</span><strong>Terrain Seam</strong><small>Two connected terrain zones</small></a>
+      </nav>
+
+      <section class="workspace">
+        <article class="viewport-panel">
+          <div class="panel-head"><span>FINITE MAP VIEW</span><strong id="activeMode">SHOWCASE</strong></div>
+          <canvas id="worldCanvas" aria-label="Flavor Clash finite map with Iceland, Tokyo, Venice, and Hawaii regions"></canvas>
+          <div class="legend">
+            <span><i class="iceland"></i>Iceland</span><span><i class="tokyo"></i>Tokyo</span>
+            <span><i class="venice"></i>Venice</span><span><i class="hawaii"></i>Hawaii</span>
+            <span>DRAG: ORBIT · WHEEL: ZOOM</span>
+          </div>
+        </article>
+        <aside class="control-panel">
+          <div class="panel-head"><span>PROCEDURAL CONTROLS</span><strong>LIVE CONFIG</strong></div>
+          <div id="guiMount"></div>
+        </aside>
+      </section>
+
+      <section class="stats-panel">
+        <div class="panel-head"><span>GENERATION REPORT</span><strong id="layoutStatus">CHECKING LAYOUT</strong></div>
+        <div id="regionStats" class="region-stats" aria-live="polite"></div>
+      </section>
+
+      <section class="region-guide">
+        <article><p class="eyebrow">NORTH-WEST</p><h2>Iceland</h2><p>Ridged pale ground, sparse rock-like instances, and a restrained road network.</p></article>
+        <article><p class="eyebrow">NORTH-EAST</p><h2>Tokyo</h2><p>Flatter urban terrain, denser modular streets, and compact tower placeholders.</p></article>
+        <article><p class="eyebrow">SOUTH-WEST</p><h2>Venice</h2><p>Low terrain around visible water, tight routes, and block-like architectural markers.</p></article>
+        <article><p class="eyebrow">SOUTH-EAST</p><h2>Hawaii</h2><p>A radial volcanic rise, curved route, and vegetation-like cone instances.</p></article>
+      </section>
+
+      <details class="learning-notes">
+        <summary>OPEN SYSTEM NOTES</summary>
+        <div>
+          <p><strong>Local roads:</strong> WFC selects compatible road modules inside each region. Boundary constraints leave one controlled exit facing the plaza.</p>
+          <p><strong>Main route:</strong> a Catmull–Rom spline connects the local road component to the central plaza; it is separate from the WFC grid.</p>
+          <p><strong>Objects:</strong> Poisson-disk candidates are filtered by water, slope, and road distance, then rendered with InstancedMesh.</p>
+          <p><strong>Determinism:</strong> the world seed plus a region ID and seed offset produces each region's independent random stream.</p>
+        </div>
+      </details>
+
+      <nav class="footer-nav" aria-label="Prototype navigation">
+        <a href="../../index.html#home">Back to project index</a>
+        <a href="../../index.html#files?file=./docs/projects/flavor-clash/README.md">Read the study record</a>
+        <a href="../../index.html#files?file=./docs/logs/2026-10-07-flavor-clash.md">Read today's progress</a>
+      </nav>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

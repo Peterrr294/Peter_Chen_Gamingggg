@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Five minimal Three.js shader experiments for learning vertices, fragments, uniforms, UVs, and coordinate spaces." />
+    <title>Learning to See the GPU — Shader Basics</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← PETER'S GAME LAB</a>
+      <p>SHADER STUDY / ROUND 01</p>
+      <span id="runState">RUNNING</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">MINIMAL GPU PIPELINE</p>
+          <h1>Learning to see<br />the GPU.</h1>
+        </div>
+        <div>
+          <p class="lede" id="researchQuestion">How does a fixed color travel from JavaScript to a pixel?</p>
+          <p class="scope">One plane. One material. No lights, textures, noise, terrain, or post-processing.</p>
+        </div>
+      </section>
+
+      <nav class="experiment-tabs" aria-label="Shader experiments">
+        <button type="button" data-experiment="0" aria-pressed="true"><span>A</span> Fixed Color</button>
+        <button type="button" data-experiment="1" aria-pressed="false"><span>B</span> UV View</button>
+        <button type="button" data-experiment="2" aria-pressed="false"><span>C</span> Repeat Grid</button>
+        <button type="button" data-experiment="3" aria-pressed="false"><span>D</span> Uniform Mix</button>
+        <button type="button" data-experiment="4" aria-pressed="false"><span>E</span> Coordinates</button>
+      </nav>
+
+      <section class="workspace">
+        <article class="panel viewport-panel">
+          <div class="panel-head">
+            <span>3D VIEW / SIMPLE PLANE</span>
+            <strong id="modeName">A · FIXED COLOR</strong>
+          </div>
+          <canvas id="shaderCanvas" aria-label="Interactive plane rendered with a custom vertex and fragment shader"></canvas>
+          <div class="viewport-footer">
+            <span id="frameReadout">FRAME 0000</span>
+            <span>DRAG: ORBIT · WHEEL: ZOOM</span>
+          </div>
+        </article>
+
+        <aside class="panel controls-panel">
+          <div class="panel-head"><span>JAVASCRIPT → UNIFORMS</span><strong id="controlMode">EXPERIMENT A</strong></div>
+
+          <section class="control-group" data-controls="0">
+            <h2>Fixed output</h2>
+            <label for="fixedColor">Fragment color <output id="fixedColorValue">#1748d4</output></label>
+            <input id="fixedColor" type="color" value="#1748d4" />
+            <p>The geometry stays unchanged. Only <code>uFixedColor</code> is updated.</p>
+          </section>
+
+          <section class="control-group" data-controls="1" hidden>
+            <h2>UV observation</h2>
+            <label for="uvMode">Display mode</label>
+            <select id="uvMode">
+              <option value="0">U only</option>
+              <option value="1">V only</option>
+              <option value="2" selected>U + V</option>
+              <option value="3">Hard boundary / step</option>
+              <option value="4">Smooth boundary / smoothstep</option>
+            </select>
+            <p>U increases left → right. V increases bottom → top.</p>
+          </section>
+
+          <section class="control-group" data-controls="2" hidden>
+            <h2>Repeated procedural grid</h2>
+            <label for="gridFocus">Change one variable</label>
+            <select id="gridFocus">
+              <option value="repeatX">Repeat X</option>
+              <option value="repeatY">Repeat Y</option>
+              <option value="lineWidth">Line Width</option>
+              <option value="edge">Hard / Smooth Edge</option>
+            </select>
+            <label for="repeatX">Repeat X <output id="repeatXValue">8</output></label>
+            <input id="repeatX" type="range" min="1" max="20" step="1" value="8" />
+            <label for="repeatY">Repeat Y <output id="repeatYValue">6</output></label>
+            <input id="repeatY" type="range" min="1" max="20" step="1" value="6" disabled />
+            <label for="lineWidth">Line Width <output id="lineWidthValue">0.060</output></label>
+            <input id="lineWidth" type="range" min="0.01" max="0.2" step="0.005" value="0.06" disabled />
+            <label for="edgeMode">Edge function</label>
+            <select id="edgeMode" disabled>
+              <option value="0">Hard / step</option>
+              <option value="1">Smooth / smoothstep</option>
+            </select>
+            <p>Disabled controls hold the comparison constant; choose a focus before changing it.</p>
+          </section>
+
+          <section class="control-group" data-controls="3" hidden>
+            <h2>Uniform color mix</h2>
+            <div class="color-pair">
+              <label for="colorA">uColorA<input id="colorA" type="color" value="#1748d4" /></label>
+              <label for="colorB">uColorB<input id="colorB" type="color" value="#ff5a36" /></label>
+            </div>
+            <label for="mixAmount">uMixAmount <output id="mixAmountValue">0.50</output></label>
+            <input id="mixAmount" type="range" min="0" max="1" step="0.01" value="0.5" />
+            <p>The uniform shifts one UV-driven mix. No geometry is recreated.</p>
+          </section>
+
+          <section class="control-group" data-controls="4" hidden>
+            <h2>Coordinate comparison</h2>
+            <label for="coordinateMode">Coordinate source</label>
+            <select id="coordinateMode">
+              <option value="0">UV coordinates</option>
+              <option value="1">Local position</option>
+              <option value="2">World position</option>
+              <option value="3">Screen coordinates</option>
+            </select>
+            <label for="planeX">Plane X <output id="planeXValue">0.00</output></label>
+            <input id="planeX" type="range" min="-1.5" max="1.5" step="0.05" value="0" />
+            <label for="cameraX">Camera X <output id="cameraXValue">0.00</output></label>
+            <input id="cameraX" type="range" min="-2.5" max="2.5" step="0.05" value="0" />
+            <div class="coordinate-facts" id="coordinateFacts"></div>
+          </section>
+
+          <div class="actions">
+            <button id="resetButton" type="button">RESET</button>
+            <button id="pauseButton" type="button" aria-pressed="false">PAUSE</button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="code-grid">
+        <article class="panel code-panel">
+          <div class="panel-head"><span>MINIMAL VERTEX SHADER</span><strong>ONE RUN PER VERTEX</strong></div>
+          <pre><code id="vertexCode"></code></pre>
+          <ol id="vertexExplanation"></ol>
+        </article>
+        <article class="panel code-panel">
+          <div class="panel-head"><span>MINIMAL FRAGMENT SHADER</span><strong>ONE RUN PER FRAGMENT</strong></div>
+          <pre><code id="fragmentCode"></code></pre>
+          <ol id="fragmentExplanation"></ol>
+        </article>
+      </section>
+
+      <details class="learning-notes">
+        <summary>OPEN LEARNING GUIDE</summary>
+        <div class="notes-grid">
+          <section><h2>Where is the shader?</h2><p>JavaScript creates geometry and a ShaderMaterial, then Three.js submits both to the GPU. The vertex stage places vertices; rasterization creates fragments between them; the fragment stage chooses their colors.</p></section>
+          <section><h2>How does a fragment know position?</h2><p>The vertex shader writes varyings such as <code>vUv</code> and <code>vWorldPosition</code>. The GPU interpolates them across the triangle. Screen position is also available as <code>gl_FragCoord</code>.</p></section>
+          <section><h2>What is shared?</h2><p>Attributes can differ per vertex. Uniforms stay constant for one draw call. Varyings begin per vertex and become interpolated values for each fragment.</p></section>
+          <section><h2>What is intentionally absent?</h2><p>No lights, textures, noise, FBM, PBR, terrain materials, ray marching, WFC, or post-processing are used in this round.</p></section>
+        </div>
+      </details>
+    </main>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

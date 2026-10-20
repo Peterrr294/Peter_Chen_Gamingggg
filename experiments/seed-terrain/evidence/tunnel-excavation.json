@@ -1,0 +1,326 @@
+{
+  "task": "05.1b-2",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:52:38.659Z",
+  "runs": [
+    {
+      "case": "A no tunnel",
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "solid": {
+        "vertices": 67074,
+        "edges": 201216,
+        "faces": 134144,
+        "eulerCharacteristic": 2,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 87666987.53199258,
+        "watertight": true,
+        "baseY": -60,
+        "minHeight": 18.115934371948242,
+        "maxHeight": 27.72130012512207,
+        "minThickness": 78.11593437194824,
+        "prismVolume": 87666987.53199247,
+        "excavatedVolume": 0,
+        "tunnels": 0,
+        "expectedEuler": 2,
+        "volumeRelativeError": 1.3597968050091604e-15,
+        "boundaryEdges": 1024,
+        "surfaceHeightMismatch": 0
+      },
+      "comparedWith051b1": true
+    },
+    {
+      "case": "A no tunnel",
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "solid": {
+        "vertices": 67074,
+        "edges": 201216,
+        "faces": 134144,
+        "eulerCharacteristic": 2,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 306338898.4060043,
+        "watertight": true,
+        "baseY": -60,
+        "minHeight": 150.6729736328125,
+        "maxHeight": 359.10272216796875,
+        "minThickness": 210.6729736328125,
+        "prismVolume": 306338898.4060014,
+        "excavatedVolume": 0,
+        "tunnels": 0,
+        "expectedEuler": 2,
+        "volumeRelativeError": 9.533975636758128e-15,
+        "boundaryEdges": 1024,
+        "surfaceHeightMismatch": 0
+      },
+      "comparedWith051b1": false
+    },
+    {
+      "case": "B tunnel",
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "solid": {
+        "vertices": 67626,
+        "edges": 202878,
+        "faces": 135252,
+        "eulerCharacteristic": 0,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 302576973.9518009,
+        "watertight": true,
+        "baseY": -60,
+        "minHeight": 139.63296508789062,
+        "maxHeight": 354.03277587890625,
+        "minThickness": 199.63296508789062,
+        "prismVolume": 302584649.76640034,
+        "excavatedVolume": 7675.816395999276,
+        "tunnels": 1,
+        "expectedEuler": 0,
+        "volumeRelativeError": 5.937476255122761e-12,
+        "boundaryEdges": 1024,
+        "surfaceHeightMismatch": 0
+      },
+      "records": [
+        {
+          "id": 26,
+          "tubeLength": 120.47866738880444,
+          "cutLengths": [
+            12.5,
+            10.5
+          ],
+          "lipHeights": [
+            0.484072611385443,
+            1.1494172858481022
+          ],
+          "grade": 0.045267701308862124,
+          "raysBlocked": [
+            false,
+            false,
+            false
+          ],
+          "floorError": 2.842170943040401e-14,
+          "clearance": 7,
+          "halfWidth": 4.500000000000028,
+          "minCover": 4.524226100915541,
+          "maxGradeChange": 0.19035589710964337,
+          "crossings": 0,
+          "sA": 13.5,
+          "sB": 133.97866738880444
+        }
+      ]
+    },
+    {
+      "case": "B tunnel",
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "solid": {
+        "vertices": 69443,
+        "edges": 208329,
+        "faces": 138886,
+        "eulerCharacteristic": 0,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 314398169.8680212,
+        "watertight": true,
+        "baseY": -60,
+        "minHeight": 156.4654998779297,
+        "maxHeight": 337.23248291015625,
+        "minThickness": 216.4654998779297,
+        "prismVolume": 314431891.5347908,
+        "excavatedVolume": 33721.66816081467,
+        "tunnels": 1,
+        "expectedEuler": 0,
+        "volumeRelativeError": 4.4248743866663175e-12,
+        "boundaryEdges": 1024,
+        "surfaceHeightMismatch": 0
+      },
+      "records": [
+        {
+          "id": 10,
+          "tubeLength": 601.2428046432924,
+          "cutLengths": [
+            14.5,
+            11
+          ],
+          "lipHeights": [
+            0.8531058556107212,
+            0.5490991106839829
+          ],
+          "grade": -0.0038101976908449975,
+          "raysBlocked": [
+            false,
+            false,
+            false
+          ],
+          "floorError": 2.842170943040401e-14,
+          "clearance": 7,
+          "halfWidth": 4.500000000000085,
+          "minCover": 3.3845388380702275,
+          "maxGradeChange": 0.12833682881695863,
+          "crossings": 0,
+          "sA": 16.5,
+          "sB": 617.7428046432924
+        }
+      ]
+    },
+    {
+      "case": "B tunnel",
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "solid": {
+        "vertices": 67642,
+        "edges": 202926,
+        "faces": 135284,
+        "eulerCharacteristic": 0,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 302576772.703249,
+        "watertight": true,
+        "baseY": -60,
+        "minHeight": 139.63296508789062,
+        "maxHeight": 354.03277587890625,
+        "minThickness": 199.63296508789062,
+        "prismVolume": 302584649.76640034,
+        "excavatedVolume": 7877.063684573618,
+        "tunnels": 1,
+        "expectedEuler": 0,
+        "volumeRelativeError": 1.7622739095196208e-12,
+        "boundaryEdges": 1024,
+        "surfaceHeightMismatch": 0
+      },
+      "records": [
+        {
+          "id": 30,
+          "tubeLength": 123.35956903370001,
+          "cutLengths": [
+            11.5,
+            13.5
+          ],
+          "lipHeights": [
+            0.7466476907421793,
+            0.24832750780799984
+          ],
+          "grade": 0.02523471588967487,
+          "raysBlocked": [
+            false,
+            false,
+            false
+          ],
+          "floorError": 2.842170943040401e-14,
+          "clearance": 7.000000000000028,
+          "halfWidth": 4.500000000000011,
+          "minCover": 4.37223367674207,
+          "maxGradeChange": 0.13895972581401428,
+          "crossings": 0,
+          "sA": 13,
+          "sB": 136.3595690337
+        }
+      ]
+    }
+  ],
+  "synthetic": {
+    "multi": {
+      "accepted": [
+        "real"
+      ],
+      "records": [
+        {
+          "id": "real",
+          "status": "accepted"
+        },
+        {
+          "id": "shifted+4m",
+          "status": "rejected",
+          "reason": "intersects tunnel real"
+        },
+        {
+          "id": "crossing60",
+          "status": "rejected",
+          "reason": "portal A cut would need fill (ground below road level)"
+        }
+      ],
+      "check": {
+        "vertices": 67626,
+        "edges": 202878,
+        "faces": 135252,
+        "eulerCharacteristic": 0,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "degenerateFaces": 0,
+        "duplicateFaces": 0,
+        "signedVolume": 302576973.9518009,
+        "watertight": true
+      }
+    },
+    "limit": [
+      {
+        "id": "real",
+        "status": "rejected",
+        "reason": "tunnel limit 0 per chunk reached"
+      }
+    ],
+    "raised": {
+      "records": [
+        {
+          "id": "raised+20m",
+          "status": "rejected",
+          "reason": "portal A road 20.0 m off the ground"
+        }
+      ],
+      "removed": 0,
+      "patch": 0
+    }
+  },
+  "illegal": [
+    {
+      "kind": "plain",
+      "records": [
+        {
+          "status": "rejected",
+          "reason": "no portal location (ground never covers the arch near a portal)"
+        }
+      ],
+      "removed": 0,
+      "patch": 0
+    },
+    {
+      "kind": "water",
+      "records": [
+        {
+          "status": "rejected",
+          "reason": "portal A road 0.6 m off the ground"
+        }
+      ],
+      "removed": 0,
+      "patch": 0
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/05-1b2-tunnel-portals.png",
+    "docs/assets/screenshots/procedural-mini-world/05-1b2-tunnel-xray.png"
+  ]
+}

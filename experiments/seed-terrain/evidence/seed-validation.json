@@ -1,0 +1,615 @@
+{
+  "task": "02.4",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:50:24.347Z",
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "stats": {
+        "landform": "plain",
+        "seed": 1101,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 66049,
+        "waterRatio": 0,
+        "buildableRatio": 1,
+        "minHeight": 18.115934371948242,
+        "maxHeight": 27.72130012512207,
+        "meanLandSlope": 0.9272917619576965,
+        "slopeP50": 0.8475978970527649,
+        "slopeP95": 1.8708422183990479,
+        "slopeP99": 2.5746023654937744,
+        "slopeHistogram": {
+          "<=5": 66010,
+          "<=10": 39,
+          "<=20": 0,
+          "<=30": 0,
+          "<=45": 0,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 68.66455078125,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "843E2178",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "stats": {
+        "landform": "plain",
+        "seed": 2202,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 66049,
+        "waterRatio": 0,
+        "buildableRatio": 1,
+        "minHeight": 17.822357177734375,
+        "maxHeight": 29.093517303466797,
+        "meanLandSlope": 0.9650852431658132,
+        "slopeP50": 0.9187584519386292,
+        "slopeP95": 1.853462815284729,
+        "slopeP99": 2.328927755355835,
+        "slopeHistogram": {
+          "<=5": 66049,
+          "<=10": 0,
+          "<=20": 0,
+          "<=30": 0,
+          "<=45": 0,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 61.98883056640625,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "A298E782",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "stats": {
+        "landform": "plain",
+        "seed": 3303,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 66049,
+        "waterRatio": 0,
+        "buildableRatio": 1,
+        "minHeight": 18.677968978881836,
+        "maxHeight": 26.95143699645996,
+        "meanLandSlope": 0.8407550696420354,
+        "slopeP50": 0.7683141827583313,
+        "slopeP95": 1.7294025421142578,
+        "slopeP99": 2.224076509475708,
+        "slopeHistogram": {
+          "<=5": 66049,
+          "<=10": 0,
+          "<=20": 0,
+          "<=30": 0,
+          "<=45": 0,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 82.96966552734375,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "D79F7CD9",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "stats": {
+        "landform": "riverValley",
+        "seed": 1101,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 2294,
+        "buildable": 32947,
+        "waterRatio": 0.03473179003467123,
+        "buildableRatio": 0.4988266287150449,
+        "minHeight": 25.97608184814453,
+        "maxHeight": 91.33307647705078,
+        "meanLandSlope": 10.46432142918893,
+        "slopeP50": 9.302258491516113,
+        "slopeP95": 25.909465789794922,
+        "slopeP99": 35.281288146972656,
+        "slopeHistogram": {
+          "<=5": 20183,
+          "<=10": 13817,
+          "<=20": 20574,
+          "<=30": 7714,
+          "<=45": 1261,
+          "<=60": 206,
+          "<=90": 0
+        },
+        "peaksPerKm2": 197.41058349609375,
+        "edgeWaterRuns": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "4D0E75F7",
+        "waterSignature": "F943EF0B",
+        "weightSignature": "C0AC21BD",
+        "river": {
+          "offChannelWater": 0,
+          "bankBelowSurface": 0,
+          "maxDepth": 3,
+          "crossesX": true,
+          "crossesZ": false
+        }
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "stats": {
+        "landform": "riverValley",
+        "seed": 2202,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 2225,
+        "buildable": 32550,
+        "waterRatio": 0.033687111084195066,
+        "buildableRatio": 0.49281593968114584,
+        "minHeight": 25.983476638793945,
+        "maxHeight": 91.72234344482422,
+        "meanLandSlope": 11.126830397916013,
+        "slopeP50": 9.520764350891113,
+        "slopeP95": 28.65899085998535,
+        "slopeP99": 42.14940643310547,
+        "slopeHistogram": {
+          "<=5": 18852,
+          "<=10": 14638,
+          "<=20": 20287,
+          "<=30": 7334,
+          "<=45": 2316,
+          "<=60": 397,
+          "<=90": 0
+        },
+        "peaksPerKm2": 225.067138671875,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "heightSignature": "B5E4E56E",
+        "waterSignature": "D4DC8E84",
+        "weightSignature": "C0AC21BD",
+        "river": {
+          "offChannelWater": 0,
+          "bankBelowSurface": 0,
+          "maxDepth": 2.999998092651367,
+          "crossesX": false,
+          "crossesZ": true
+        }
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "stats": {
+        "landform": "riverValley",
+        "seed": 3303,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 2159,
+        "buildable": 32849,
+        "waterRatio": 0.032687852957652655,
+        "buildableRatio": 0.49734288179987585,
+        "minHeight": 25.98373031616211,
+        "maxHeight": 89.846923828125,
+        "meanLandSlope": 10.175876296657782,
+        "slopeP50": 9.409856796264648,
+        "slopeP95": 24.440738677978516,
+        "slopeP99": 30.81418228149414,
+        "slopeHistogram": {
+          "<=5": 19688,
+          "<=10": 14153,
+          "<=20": 22075,
+          "<=30": 7149,
+          "<=45": 825,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 220.29876708984375,
+        "edgeWaterRuns": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "A778040A",
+        "waterSignature": "3ECD1930",
+        "weightSignature": "C0AC21BD",
+        "river": {
+          "offChannelWater": 0,
+          "bankBelowSurface": 0,
+          "maxDepth": 3,
+          "crossesX": true,
+          "crossesZ": false
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "stats": {
+        "landform": "coast",
+        "seed": 1101,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 11123,
+        "buildable": 39560,
+        "waterRatio": 0.16840527487168616,
+        "buildableRatio": 0.598949264939666,
+        "minHeight": -10.173066139221191,
+        "maxHeight": 43.27954864501953,
+        "meanLandSlope": 7.727584668935391,
+        "slopeP50": 6.763351917266846,
+        "slopeP95": 17.170501708984375,
+        "slopeP99": 22.78330421447754,
+        "slopeHistogram": {
+          "<=5": 18627,
+          "<=10": 21421,
+          "<=20": 13617,
+          "<=30": 1207,
+          "<=45": 54,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 123.02398681640625,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "heightSignature": "4A69CE05",
+        "waterSignature": "602F2BF4",
+        "weightSignature": "C0AC21BD",
+        "coast": {
+          "landSeaMismatch": 0,
+          "wetEdges": [
+            "maxX",
+            "minZ"
+          ],
+          "enclosedSea": false
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "stats": {
+        "landform": "coast",
+        "seed": 2202,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 5658,
+        "buildable": 38047,
+        "waterRatio": 0.08566367393904525,
+        "buildableRatio": 0.5760420294024133,
+        "minHeight": -6.635598659515381,
+        "maxHeight": 40.65610122680664,
+        "meanLandSlope": 8.602685852857494,
+        "slopeP50": 7.6866021156311035,
+        "slopeP95": 19.117176055908203,
+        "slopeP99": 24.411457061767578,
+        "slopeHistogram": {
+          "<=5": 17448,
+          "<=10": 22458,
+          "<=20": 18069,
+          "<=30": 2339,
+          "<=45": 77,
+          "<=60": 0,
+          "<=90": 0
+        },
+        "peaksPerKm2": 150.6805419921875,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "1F58CD06",
+        "waterSignature": "EEE91351",
+        "weightSignature": "C0AC21BD",
+        "coast": {
+          "landSeaMismatch": 0,
+          "wetEdges": [],
+          "enclosedSea": true
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "stats": {
+        "landform": "coast",
+        "seed": 3303,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 9443,
+        "buildable": 34921,
+        "waterRatio": 0.14296961346878834,
+        "buildableRatio": 0.5287135308634499,
+        "minHeight": -10.229635238647461,
+        "maxHeight": 44.5426025390625,
+        "meanLandSlope": 8.935355659233007,
+        "slopeP50": 7.744193077087402,
+        "slopeP95": 20.009971618652344,
+        "slopeP99": 26.81732940673828,
+        "slopeHistogram": {
+          "<=5": 16122,
+          "<=10": 20085,
+          "<=20": 17557,
+          "<=30": 2607,
+          "<=45": 219,
+          "<=60": 16,
+          "<=90": 0
+        },
+        "peaksPerKm2": 112.5335693359375,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 2
+        },
+        "heightSignature": "0A8E846F",
+        "waterSignature": "A0CC65DE",
+        "weightSignature": "C0AC21BD",
+        "coast": {
+          "landSeaMismatch": 0,
+          "wetEdges": [
+            "maxX",
+            "maxZ"
+          ],
+          "enclosedSea": false
+        }
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "stats": {
+        "landform": "mountain",
+        "seed": 1101,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 7226,
+        "waterRatio": 0,
+        "buildableRatio": 0.10940362458174992,
+        "minHeight": 156.4654998779297,
+        "maxHeight": 337.23248291015625,
+        "meanLandSlope": 27.558048810674542,
+        "slopeP50": 26.20425033569336,
+        "slopeP95": 53.73220443725586,
+        "slopeP99": 62.23720169067383,
+        "slopeHistogram": {
+          "<=5": 1874,
+          "<=10": 5352,
+          "<=20": 15719,
+          "<=30": 16205,
+          "<=45": 17943,
+          "<=60": 7891,
+          "<=90": 1065
+        },
+        "peaksPerKm2": 201.22528076171875,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "07062660",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "stats": {
+        "landform": "mountain",
+        "seed": 2202,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 10537,
+        "waterRatio": 0,
+        "buildableRatio": 0.15953307392996108,
+        "minHeight": 150.6729736328125,
+        "maxHeight": 359.10272216796875,
+        "meanLandSlope": 27.273494654328974,
+        "slopeP50": 24.585180282592773,
+        "slopeP95": 57.560935974121094,
+        "slopeP99": 66.7916030883789,
+        "slopeHistogram": {
+          "<=5": 3117,
+          "<=10": 7420,
+          "<=20": 15538,
+          "<=30": 13948,
+          "<=45": 14913,
+          "<=60": 8774,
+          "<=90": 2339
+        },
+        "peaksPerKm2": 173.5687255859375,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "5DA5F944",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "stats": {
+        "landform": "mountain",
+        "seed": 3303,
+        "variation": 0.5,
+        "transitionWidth": 128,
+        "samples": 66049,
+        "water": 0,
+        "buildable": 9728,
+        "waterRatio": 0,
+        "buildableRatio": 0.1472845917424942,
+        "minHeight": 139.63296508789062,
+        "maxHeight": 354.03277587890625,
+        "meanLandSlope": 29.63227852268527,
+        "slopeP50": 27.847692489624023,
+        "slopeP95": 60.420509338378906,
+        "slopeP99": 70.51126861572266,
+        "slopeHistogram": {
+          "<=5": 2496,
+          "<=10": 7232,
+          "<=20": 13370,
+          "<=30": 12322,
+          "<=45": 17226,
+          "<=60": 9937,
+          "<=90": 3466
+        },
+        "peaksPerKm2": 182.15179443359375,
+        "edgeWaterRuns": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "heightSignature": "D3F8DDF9",
+        "waterSignature": "D03A151F",
+        "weightSignature": "C0AC21BD"
+      }
+    }
+  ],
+  "transitionChecks": [
+    {
+      "width": 32,
+      "spacing": 4,
+      "maxStep": 0.18359999999999999,
+      "maxDiagonal": 0.24459999999999993,
+      "asymmetry": 0,
+      "outerEdgeMin": 1,
+      "interiorMax": 0,
+      "corners": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "innerOffsets": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "lineLengths": [
+        257
+      ],
+      "bound": 0.1875
+    },
+    {
+      "width": 128,
+      "spacing": 4,
+      "maxStep": 0.04680000000000001,
+      "maxDiagonal": 0.06180000000000002,
+      "asymmetry": 0,
+      "outerEdgeMin": 1,
+      "interiorMax": 0,
+      "corners": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "innerOffsets": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "lineLengths": [
+        257
+      ],
+      "bound": 0.046875
+    },
+    {
+      "width": 256,
+      "spacing": 4,
+      "maxStep": 0.023499999999999965,
+      "maxDiagonal": 0.03090000000000004,
+      "asymmetry": 0,
+      "outerEdgeMin": 1,
+      "interiorMax": 0,
+      "corners": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "innerOffsets": [
+        256,
+        256,
+        256,
+        256
+      ],
+      "lineLengths": [
+        257
+      ],
+      "bound": 0.0234375
+    }
+  ],
+  "neighbourCheck": {
+    "applied": [],
+    "refused": "Neighbour blending (minX) is reserved for a later task; 02.4 defines the interface only."
+  },
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/02-4-landforms-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/02-4-transition-debug.png"
+  ]
+}

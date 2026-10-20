@@ -1,0 +1,289 @@
+{
+  "task": "05.1",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:26:54.200Z",
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "stats": {
+        "parcels": 1836,
+        "buildings": 1679,
+        "occupancy": 0.914488017429194,
+        "meanHeight": 60.17510422870764,
+        "heightP10": 39.6,
+        "heightP50": 54,
+        "heightP90": 90,
+        "heightMax": 115.2,
+        "distinctFloors": 26,
+        "footprintArea": 486073.03936579346,
+        "coverageOfBuiltParcels": 0.7906201748793739,
+        "coverageOfAllParcels": 0.7251175785461865,
+        "courtyards": 0,
+        "corner": 236,
+        "canalFacing": 0,
+        "withPlinth": 336,
+        "inTransition": 758,
+        "vacantByReason": {
+          "density rule (occupancy #)": 157
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 8.945683088786852,
+      "footprintAreaRel": 0.00006797201884838174
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "stats": {
+        "parcels": 1862,
+        "buildings": 1702,
+        "occupancy": 0.9140708915145005,
+        "meanHeight": 60.12549941245611,
+        "heightP10": 36,
+        "heightP50": 54,
+        "heightP90": 90,
+        "heightMax": 115.2,
+        "distinctFloors": 25,
+        "footprintArea": 481871.1882407286,
+        "coverageOfBuiltParcels": 0.7919050327865502,
+        "coverageOfAllParcels": 0.7213785192047351,
+        "courtyards": 0,
+        "corner": 249,
+        "canalFacing": 0,
+        "withPlinth": 393,
+        "inTransition": 792,
+        "vacantByReason": {
+          "density rule (occupancy #)": 160
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 10.477840818694716,
+      "footprintAreaRel": 0.0003918303560766147
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "stats": {
+        "parcels": 1810,
+        "buildings": 1664,
+        "occupancy": 0.9193370165745857,
+        "meanHeight": 60.50120192307691,
+        "heightP10": 39.6,
+        "heightP50": 54,
+        "heightP90": 93.60000000000001,
+        "heightMax": 115.2,
+        "distinctFloors": 25,
+        "footprintArea": 483509.9107731303,
+        "coverageOfBuiltParcels": 0.7937831212435644,
+        "coverageOfAllParcels": 0.7300941627084838,
+        "courtyards": 0,
+        "corner": 238,
+        "canalFacing": 0,
+        "withPlinth": 236,
+        "inTransition": 736,
+        "vacantByReason": {
+          "density rule (occupancy #)": 146
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 9.59403116025516,
+      "footprintAreaRel": 0.0006657790584180052
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "stats": {
+        "parcels": 717,
+        "buildings": 589,
+        "occupancy": 0.8214783821478382,
+        "meanHeight": 5.633955857385441,
+        "heightP10": 3.2,
+        "heightP50": 6.4,
+        "heightP90": 6.4,
+        "heightMax": 9.600000000000001,
+        "distinctFloors": 3,
+        "footprintArea": 75803.43493967538,
+        "coverageOfBuiltParcels": 0.6931131719713444,
+        "coverageOfAllParcels": 0.5820187261161237,
+        "courtyards": 132,
+        "corner": 23,
+        "canalFacing": 0,
+        "withPlinth": 519,
+        "inTransition": 249,
+        "vacantByReason": {
+          "density rule (occupancy #)": 104,
+          "footprint width # m < # m": 24
+        }
+      },
+      "streetWallShare": 0.99830220713073,
+      "meanOrientationDeviation": 9.642026587279574,
+      "footprintAreaRel": 0.0014172832637581584
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "stats": {
+        "parcels": 676,
+        "buildings": 549,
+        "occupancy": 0.8121301775147929,
+        "meanHeight": 5.5081967213115135,
+        "heightP10": 3.2,
+        "heightP50": 6.4,
+        "heightP90": 6.4,
+        "heightMax": 9.600000000000001,
+        "distinctFloors": 3,
+        "footprintArea": 70517.39118070056,
+        "coverageOfBuiltParcels": 0.7086098987665954,
+        "coverageOfAllParcels": 0.5973171019988205,
+        "courtyards": 125,
+        "corner": 20,
+        "canalFacing": 0,
+        "withPlinth": 484,
+        "inTransition": 265,
+        "vacantByReason": {
+          "footprint width # m < # m": 36,
+          "density rule (occupancy #)": 90,
+          "ground drop # m > # m under footprint": 1
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 13.26783467729032,
+      "footprintAreaRel": 0.0031962495623668236
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "stats": {
+        "parcels": 660,
+        "buildings": 517,
+        "occupancy": 0.7833333333333333,
+        "meanHeight": 5.069245647969091,
+        "heightP10": 3.2,
+        "heightP50": 6.4,
+        "heightP90": 6.4,
+        "heightMax": 9.600000000000001,
+        "distinctFloors": 3,
+        "footprintArea": 64710.55854763561,
+        "coverageOfBuiltParcels": 0.7124285281486258,
+        "coverageOfAllParcels": 0.5786142760266939,
+        "courtyards": 98,
+        "corner": 36,
+        "canalFacing": 3,
+        "withPlinth": 485,
+        "inTransition": 145,
+        "vacantByReason": {
+          "footprint width # m < # m": 31,
+          "density rule (occupancy #)": 112
+        }
+      },
+      "streetWallShare": 0.9980657640232108,
+      "meanOrientationDeviation": 14.30832450379894,
+      "footprintAreaRel": 0.00020771652518651842
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "stats": {
+        "parcels": 520,
+        "buildings": 436,
+        "occupancy": 0.8384615384615385,
+        "meanHeight": 10.581192660550439,
+        "heightP10": 6.6,
+        "heightP50": 9.899999999999999,
+        "heightP90": 13.2,
+        "heightMax": 16.5,
+        "distinctFloors": 4,
+        "footprintArea": 41460.05063223897,
+        "coverageOfBuiltParcels": 0.633003979035876,
+        "coverageOfAllParcels": 0.5287844204195835,
+        "courtyards": 0,
+        "corner": 31,
+        "canalFacing": 0,
+        "withPlinth": 169,
+        "inTransition": 169,
+        "vacantByReason": {
+          "density rule (occupancy #)": 73,
+          "footprint width # m < # m": 11
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 9.348081224846233,
+      "footprintAreaRel": 0.003954393814308183
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "stats": {
+        "parcels": 465,
+        "buildings": 382,
+        "occupancy": 0.821505376344086,
+        "meanHeight": 10.807068062827197,
+        "heightP10": 6.6,
+        "heightP50": 9.899999999999999,
+        "heightP90": 13.2,
+        "heightMax": 16.5,
+        "distinctFloors": 4,
+        "footprintArea": 38744.51108237881,
+        "coverageOfBuiltParcels": 0.6431823321301917,
+        "coverageOfAllParcels": 0.5444872583446966,
+        "courtyards": 0,
+        "corner": 28,
+        "canalFacing": 0,
+        "withPlinth": 153,
+        "inTransition": 138,
+        "vacantByReason": {
+          "footprint width # m < # m": 18,
+          "density rule (occupancy #)": 65
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 11.334664708179437,
+      "footprintAreaRel": 0.001122453643271453
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "stats": {
+        "parcels": 472,
+        "buildings": 374,
+        "occupancy": 0.7923728813559322,
+        "meanHeight": 9.97058823529412,
+        "heightP10": 6.6,
+        "heightP50": 9.899999999999999,
+        "heightP90": 13.2,
+        "heightMax": 13.2,
+        "distinctFloors": 3,
+        "footprintArea": 35667.264061749,
+        "coverageOfBuiltParcels": 0.6254541436047161,
+        "coverageOfAllParcels": 0.49441703963725797,
+        "courtyards": 0,
+        "corner": 26,
+        "canalFacing": 0,
+        "withPlinth": 123,
+        "inTransition": 98,
+        "vacantByReason": {
+          "density rule (occupancy #)": 90,
+          "footprint width # m < # m": 8
+        }
+      },
+      "streetWallShare": 1,
+      "meanOrientationDeviation": 9.013610188016528,
+      "footprintAreaRel": 0.00013278109144557868
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/05-1-buildings-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/05-1-buildings-street-closeup.png"
+  ]
+}

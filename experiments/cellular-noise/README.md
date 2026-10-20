@@ -1,12 +1,62 @@
-# Cellular Noise: Binary Map Experiment
+# Cellular Noise — Reproducible Patterns and Chunked Generation
 
-> Independent exercise · 2026-09-09 · Current stage: working small-scale 2D demo
+> Independent exercise · Started 2026-09-09 · Current stage: continuous terrain and simulation implemented; headless-browser evidence captured, manual interactive review pending
+
+## Study Notebook Summary
+
+**Research question:** Can a seeded Cellular field be sampled in any order, divided into chunks, and reused by both a 2D explanation view and a 3D terrain view?
+
+**Why I explored it:** A procedural world needs repeatable values at arbitrary coordinates. The first assignment also needed a visible connection between a noise equation, stored samples, and displaced geometry.
+
+**Initial hypothesis:** Coordinate-hashed feature points would make F1 queries deterministic, and one shared array would keep the Canvas and Three.js results synchronized.
+
+**Implementation and parameters:** The first five stages used binary shaping. The later terrain mode stores continuous values in a `Float32Array`, samples a fixed world extent, and layers up to four Cellular frequencies. Defaults are resolution 64, extent 32, scale 10, three layers, detail weight 0.35, and grid height 2.
+
+**Observations:** Seeded random access and reverse chunk order reproduce the same field. Binary thresholding is useful for regions and terraces but discards gradual height variation; the continuous field produces more readable terrain while preserving determinism.
+
+**Problems and weaker approaches:** Treating resolution as world size changed the landscape instead of only its detail. Scrolling also exposed the need to separate integer array coordinates from floating-point world coordinates. Fixed extent and separate coordinate roles replaced those weaker assumptions.
+
+**What changed in my understanding:** Noise generation, shaping, storage, and rendering are separate stages. A deterministic raw field can support several visual interpretations without being regenerated differently for each view.
+
+**Current result:** Six automated tests passed, the production build includes the experiment, and the screenshot below records the current default 2D/3D result. Manual interaction and responsive review remain open.
+
+**Next question:** How can a halo-based update rule add chunkable diffusion or erosion without losing order independence?
+
+## Experiment Result
+
+![The same continuous Cellular field shown as a grayscale 2D map and a shaded 3D terrain](../../docs/assets/screenshots/cellular-noise.png)
+
+**What this shows:** The 2D Canvas, 3D grid, world-position readout, calibration panel, and generation controls are visible together.
+
+**Why it matters:** Distinctive light and dark regions correspond across both views, providing visual evidence that they consume the same stored field.
+
+**Parameters or conditions:** Default layered-terrain mode; resolution 64; world extent 32; noise scale 10; three layers; detail weight 0.35; grid height 2; simulation paused at capture.
 
 ## Project Location
 
 This experiment is stored in `experiments/cellular-noise/` and remains separate from the main React Three Fiber learning path. “Branch” refers to an independent exercise directory rather than a Git branch.
 
 Open [the demo](./index.html) directly to view it. A future update may add a “Small Experiment / Cellular Noise” entry to the project section in `archive/portfolio/index.html`. The experiment does not modify `src/App.jsx`. The file `dist/index.html` is generated output and should not be edited directly.
+## Experiment Path
+
+```mermaid
+flowchart LR
+  Q["Question: can samples be repeatable and chunkable?"] --> HASH["Coordinate hash + Cellular F1"]
+  HASH --> BINARY["Binary threshold map"]
+  BINARY --> SHARED["One shared 2D / 3D array"]
+  SHARED --> ISSUE["Finding: binary shaping limits height variation"]
+  ISSUE --> FLOAT["Continuous Float32Array heightMap"]
+  FLOAT --> FIXED["Fixed world extent + layered terrain"]
+  FIXED --> RESULT["Simulation and six automated tests"]
+```
+
+### How to read this map
+
+The path begins with reproducibility requirements, passes through the original binary representation, and then follows the documented finding that caused the continuous-height revision.
+
+### Key insight
+
+Cellular noise did not need replacement: binary shaping discarded its intermediate values. Keeping a `Float32Array` height map unlocked continuous terrain while preserving deterministic sampling.
 
 ## Four Requirements
 
@@ -209,7 +259,7 @@ Final implementation checks:
 - Chunk boundaries remain continuous.
 - The original main-path scene still opens normally.
 
-The original session handoff is recorded in [[2026-09-09]]. The current Assignment 2 handoff is [[2026-09-16]]; the learner's new request expands the earlier single-stage scope to the requirements in the assignment screenshot.
+The original session handoff is recorded in [2026-09-09 — Five-Stage Cellular Noise Prototype](../../docs/logs/2026-09-09.md). The current Assignment 2 handoff is [2026-09-16 — Terrain Simulation and Unified Website](../../docs/logs/2026-09-16.md); the learner's new request expands the earlier single-stage scope to the requirements in the assignment screenshot.
 
 ## Stage 6 — Continuous Terrain and Simulation Map
 

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="3 × 3 World Grid: fixed 1024 m chunks in one world frame, each with its own terrain seed and City ID." />
+    <title>Procedural Mini World — World Grid</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="../manhattan-terrain-greybox/style.css" />
+    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.seams{margin:6px 0 0;padding-left:16px;color:#c9d4d6;font-size:10px;line-height:1.5}.legend .edge{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .band{background:#3fd6c5}.legend .port{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .wet{background:linear-gradient(90deg,#4fa8ff 50%,#ff4fd8 50%)}.legend .sel{background:#ffd23f}</style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← GAME LAB</a>
+      <p>PROCEDURAL MINI WORLD / 06.2 WORLD GRID</p>
+      <span id="statusText">GENERATING</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">WORLD GRID / 3 × 3 CHUNKS</p><h1>Nine chunks,<br />one world frame.</h1></div>
+        <p>Each slot is a fixed 1024 m chunk at a fixed grid coordinate. Its terrain seed is derived from the world seed, the grid coordinate, and its landform; its City ID (empty, auto, or a City DNA) only drives the downstream city layers. Shared edges are harmonised inside the transition band where a natural slope is possible; edges that cannot be joined keep their raw step and are reported. No city influence is applied yet.</p>
+      </section>
+      <section class="workspace">
+        <article class="viewport">
+          <div class="panel-head"><span>3 × 3 · 3072 × 3072 M · CLICK A CHUNK TO SELECT</span><strong>DRAG / ORBIT · WHEEL / ZOOM</strong></div>
+          <canvas id="worldCanvas" aria-label="Three by three world grid of generated chunks"></canvas>
+        </article>
+        <aside>
+          <div class="panel-head"><span>WORLD</span><strong>CHANGED CHUNKS ONLY</strong></div>
+          <div id="gui"></div>
+          <dl class="stats">
+            <div><dt>World</dt><dd id="worldInfo">—</dd></div>
+            <div><dt>Selected chunk</dt><dd id="chunkInfo">—</dd></div>
+            <div><dt>Terrain</dt><dd id="terrainInfo">—</dd></div>
+            <div><dt>City ID</dt><dd id="cityInfo">—</dd></div>
+            <div><dt>Generated layers</dt><dd id="countInfo">—</dd></div>
+            <div><dt>Generation time</dt><dd id="timeInfo">—</dd></div>
+            <div><dt>Edges of this chunk (detection only)</dt><ol id="seamInfo" class="seams"></ol></div>
+            <div><dt>Saved config</dt><dd id="saveState">—</dd></div>
+          </dl>
+          <div class="legend">
+            <p><i class="sel"></i> Selected chunk outline</p>
+            <p><i class="edge"></i> Seam debug edge line: joined C¹ (height + slope) · joined C⁰ (height only) · unresolved (raw step kept); red risers = |Δh| &gt; 0.5 m</p>
+            <p><i class="band"></i> Inner limit of the transition band on both sides (harmonisation stops here)</p>
+            <p><i class="wet"></i> Water: on both sides (continuous) · one side only or level step (discontinuity)</p>
+            <p><i class="port"></i> Edge ports: paired · paired but elevation differs &gt; 2 m · unpaired</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

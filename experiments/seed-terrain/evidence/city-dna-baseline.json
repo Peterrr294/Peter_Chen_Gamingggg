@@ -1,0 +1,1271 @@
+{
+  "task": "06.1 baseline (before DNA expansion)",
+  "testedAt": "2026-10-19T02:57:11.676Z",
+  "ids": [
+    "manhattanGrid",
+    "veniceWaterNetwork",
+    "fezOrganicCore"
+  ],
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "259D4E0E",
+        "blocks": "7DC97D5A",
+        "parcels": "95D5B6C4",
+        "buildings": "0FA279C3"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "52A12860",
+        "blocks": "E717EFAE",
+        "parcels": "47375F17",
+        "buildings": "CFC629E8"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "41D1FD89",
+        "blocks": "15F6BEFF",
+        "parcels": "37FDE387",
+        "buildings": "592BB1DA"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "0F4D65C2",
+        "blocks": "9020F366",
+        "parcels": "DA50EEE3",
+        "buildings": "301436CA"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "27D279D7",
+        "blocks": "90D030B6",
+        "parcels": "50B69ABF",
+        "buildings": "D9C73D99"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "6757EEA4",
+        "blocks": "996045C9",
+        "parcels": "74D60240",
+        "buildings": "E1A16C2B"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "CA059E53",
+        "blocks": "EB482FFC",
+        "parcels": "EBBDD4A1",
+        "buildings": "58382157"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "E8945764",
+        "blocks": "DA49C4CF",
+        "parcels": "19880BDF",
+        "buildings": "8B9DC535"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "6B1087A4",
+        "blocks": "05F58110",
+        "parcels": "980C6CCE",
+        "buildings": "06B803EF"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "35B89829",
+        "blocks": "9EFB5D5D",
+        "parcels": "A55AB606",
+        "buildings": "996F6788"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2437,
+          "fit": 0.5686,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0526,
+          "fit": 0.0614,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "D44150A0",
+        "blocks": "B06009DE",
+        "parcels": "6BC1DD7D",
+        "buildings": "3911B555"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2437,
+          "fit": 0.5686,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0526,
+          "fit": 0.0614,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "14506159",
+        "blocks": "8BAA33F7",
+        "parcels": "38614C6B",
+        "buildings": "3404E34C"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2437,
+          "fit": 0.5686,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0526,
+          "fit": 0.0614,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "41D50338",
+        "blocks": "8B7831D2",
+        "parcels": "272366E4",
+        "buildings": "ECF7BF51"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2347,
+          "fit": 0.5476,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0429,
+          "fit": 0.05,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "92BF78C0",
+        "blocks": "4E089962",
+        "parcels": "B5E3402F",
+        "buildings": "25642142"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2347,
+          "fit": 0.5476,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0429,
+          "fit": 0.05,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "E1262D1B",
+        "blocks": "AF739D88",
+        "parcels": "47A8979A",
+        "buildings": "29C1B371"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2347,
+          "fit": 0.5476,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0429,
+          "fit": 0.05,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "57CB5A02",
+        "blocks": "88DD1E24",
+        "parcels": "6CE4A238",
+        "buildings": "667A7807"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2477,
+          "fit": 0.5781,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0477,
+          "fit": 0.0557,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "81BDB84E",
+        "blocks": "2F766E68",
+        "parcels": "2D0648DB",
+        "buildings": "F2F26894"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2477,
+          "fit": 0.5781,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0477,
+          "fit": 0.0557,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "3F953FBE",
+        "blocks": "5424560B",
+        "parcels": "6E8FE4BF",
+        "buildings": "DAB12FE5"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2477,
+          "fit": 0.5781,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0477,
+          "fit": 0.0557,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "13800DC8",
+        "blocks": "AF1C1577",
+        "parcels": "ACDF092F",
+        "buildings": "08B89DD6"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.5602,
+          "fit": 0.6535,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2345,
+          "fit": 0.3127,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "B725A28B",
+        "blocks": "5D3C81A6",
+        "parcels": "776661B0",
+        "buildings": "62834523"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.5602,
+          "fit": 0.6535,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2345,
+          "fit": 0.3127,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "45DF7292",
+        "blocks": "8B458B7D",
+        "parcels": "18AE08CD",
+        "buildings": "85122883"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.5602,
+          "fit": 0.6535,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2345,
+          "fit": 0.3127,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "05104B4E",
+        "blocks": "0248EDA2",
+        "parcels": "E1A67F91",
+        "buildings": "9C941A1B"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.4756,
+          "fit": 0.5548,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2204,
+          "fit": 0.2939,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "BCA48159",
+        "blocks": "B5BC6136",
+        "parcels": "1E02B5D4",
+        "buildings": "A1AC3104"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.4756,
+          "fit": 0.5548,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2204,
+          "fit": 0.2939,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "146A5946",
+        "blocks": "1057A7EC",
+        "parcels": "D78EDDD7",
+        "buildings": "1051365F"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.4756,
+          "fit": 0.5548,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2204,
+          "fit": 0.2939,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "B400D011",
+        "blocks": "DF1C23C8",
+        "parcels": "AD6F1E9D",
+        "buildings": "34129923"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.3959,
+          "fit": 0.9237,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.2193,
+          "fit": 0.2559,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2025,
+          "fit": 0.2699,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "EF842179",
+        "blocks": "F64D7E8E",
+        "parcels": "70704513",
+        "buildings": "CD4BECFD"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.3959,
+          "fit": 0.9237,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.2193,
+          "fit": 0.2559,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2025,
+          "fit": 0.2699,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "4980FC22",
+        "blocks": "F725D8DB",
+        "parcels": "CB613377",
+        "buildings": "F84BD180"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.3959,
+          "fit": 0.9237,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.2193,
+          "fit": 0.2559,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2025,
+          "fit": 0.2699,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "132AEB07",
+        "blocks": "EE39733E",
+        "parcels": "3ADE7DA5",
+        "buildings": "589E0DEB"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0692,
+          "fit": 0.1614,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "08BDC05F",
+        "blocks": "B7273FA5",
+        "parcels": "E292C4D8",
+        "buildings": "F9257CAC"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0692,
+          "fit": 0.1614,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "4BC7D506",
+        "blocks": "8CE0E0B4",
+        "parcels": "112B7913",
+        "buildings": "E814DAE5"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0692,
+          "fit": 0.1614,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "78D364DC",
+        "blocks": "76C83322",
+        "parcels": "12FFFE82",
+        "buildings": "FDBBC7A6"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0875,
+          "fit": 0.2041,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "65AE19D7",
+        "blocks": "A029D174",
+        "parcels": "C944A395",
+        "buildings": "1D2CEEA5"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0875,
+          "fit": 0.2041,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "signatures": {
+        "network": "BDE0CAD8",
+        "blocks": "784AB70A",
+        "parcels": "3E3849D2",
+        "buildings": "CE668029"
+      },
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0875,
+          "fit": 0.2041,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "F7D03527",
+        "blocks": "8C7E400F",
+        "parcels": "280519FB",
+        "buildings": "C399CEE8"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0695,
+          "fit": 0.1621,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "6AB18DB8",
+        "blocks": "C95CDF12",
+        "parcels": "661DBB3E",
+        "buildings": "164C3C30"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0695,
+          "fit": 0.1621,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "signatures": {
+        "network": "85F8CD14",
+        "blocks": "32183057",
+        "parcels": "7A9C842B",
+        "buildings": "47546A36"
+      },
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0695,
+          "fit": 0.1621,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    }
+  ]
+}

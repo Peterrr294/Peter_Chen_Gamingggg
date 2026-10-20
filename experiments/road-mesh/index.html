@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A deterministic ribbon-mesh study built from existing projected Iceland road data." />
+    <title>Road Mesh Lab — Drawing Projected Paths</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar"><a href="../../index.html#home">← PETER'S GAME LAB</a><p>FLAVOR CLASH / ROAD MESH LAB</p><span id="statusText">BUILDING</span></header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">PROJECTED DATA / RIBBON GEOMETRY</p><h1>Turn samples<br />into a road surface.</h1></div>
+        <div><p class="lede">A deterministic ribbon mesh built from one frozen ProjectedRoadData snapshot.</p><p class="scope">The lab calculates tangents, surface-aware side vectors, bounded miters, continuous UVs, and gaps over invalid samples. It does not re-project paths or modify terrain.</p></div>
+      </section>
+      <section class="workspace">
+        <article class="viewport-panel">
+          <div class="panel-head"><span>ROAD SURFACE PREVIEW</span><strong>VALID RIBBONS / INVALID BREAKS</strong></div>
+          <canvas id="roadCanvas" aria-label="Ribbon road mesh following the projected Iceland path"></canvas>
+          <div class="legend"><span><i class="road"></i>Road mesh</span><span><i class="center"></i>Centerline</span><span><i class="invalid"></i>Invalid skipped segment</span></div>
+        </article>
+        <aside class="control-panel">
+          <div class="panel-head"><span>MESH PARAMETERS</span><strong>NO RE-PROJECTION</strong></div>
+          <div id="guiMount"></div>
+          <dl class="stats">
+            <div><dt>Roads</dt><dd id="roadCount">—</dd></div>
+            <div><dt>Vertices</dt><dd id="vertexCount">—</dd></div>
+            <div><dt>Triangles</dt><dd id="triangleCount">—</dd></div>
+            <div><dt>Valid length</dt><dd id="roadLength">—</dd></div>
+            <div><dt>Invalid segments</dt><dd id="invalidSegments">—</dd></div>
+            <div><dt>Mesh signature</dt><dd id="meshSignature">—</dd></div>
+            <div><dt>Terrain signature</dt><dd id="terrainSignature">—</dd></div>
+            <div><dt>Projection runs</dt><dd id="projectionRuns">—</dd></div>
+          </dl>
+        </aside>
+      </section>
+      <section class="notes"><article><p class="eyebrow">FRAME</p><h2>Tangent, normal, side</h2><p>Each sample combines path direction with its stored surface normal to derive a left-right vector.</p></article><article><p class="eyebrow">CORNERS</p><h2>Bounded miter</h2><p>Adjacent side vectors meet at a miter whose length is capped to prevent sharp-corner spikes.</p></article><article><p class="eyebrow">GAPS</p><h2>Invalid data stays visible</h2><p>Invalid connections create no triangles and remain visible only as red diagnostic lines.</p></article></section>
+      <nav class="footer-nav"><a href="../road-projection/">← Road Projection Lab</a><a href="../../index.html#home">Back to project index</a></nav>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

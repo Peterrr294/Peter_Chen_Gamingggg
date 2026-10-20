@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A minimal Venice and Japan terrain study with independent building scatter across one deterministic blended seam." />
+    <title>Flavor Clash — Venice–Japan Terrain Seam</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../flavor-clash-prototype/">← FLAVOR CLASH LABS</a>
+      <p>CONNECTED TERRAIN ZONES / ROUND 01</p>
+      <span>SEAM PROTOTYPE</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">VENICE + JAPAN</p><h1>Two meshes.<br />One boundary.</h1></div>
+        <p>Separate seeds, height profiles, and materials blend toward one deterministic world-space height function. The green line marks the shared vertex boundary; red lines would reveal any height mismatch.</p>
+      </section>
+      <section class="workspace">
+        <div class="viewport"><canvas id="seamCanvas" aria-label="Two connected terrain zones with a green seam debug line"></canvas><p>DRAG: ORBIT · WHEEL: ZOOM</p></div>
+        <aside>
+          <h2>Seam Check</h2>
+          <dl>
+            <dt>Maximum height error</dt><dd id="heightError">—</dd>
+            <dt>Compared vertices</dt><dd id="sampleCount">—</dd>
+            <dt>Vertex spacing</dt><dd id="vertexSpacing">—</dd>
+            <dt>Shared boundary</dt><dd id="sharedBoundary">—</dd>
+            <dt>Left buildings</dt><dd id="leftBuildings">—</dd>
+            <dt>Right buildings</dt><dd id="rightBuildings">—</dd>
+            <dt>Japan GLB meshes</dt><dd id="japanGlbMeshes">—</dd>
+          </dl>
+          <form id="transitionForm">
+            <label for="boundaryIrregularity">Boundary irregularity</label>
+            <input id="boundaryIrregularity" name="irregularity" type="number" min="0" max="2.5" step="0.1" />
+            <label for="transitionWidth">Transition width</label>
+            <input id="transitionWidth" name="width" type="number" min="3" max="10" step="0.25" />
+            <label for="veniceBuildingSeed">Venice building seed</label>
+            <input id="veniceBuildingSeed" name="veniceSeed" type="number" min="0" max="999999" step="1" />
+            <label for="veniceBuildingDensity">Venice density</label>
+            <input id="veniceBuildingDensity" name="veniceDensity" type="number" min="0" max="1" step="0.01" />
+            <label for="veniceMainCanalWidth">Venice main canal width</label>
+            <input id="veniceMainCanalWidth" name="veniceMainWidth" type="number" min="0.35" max="1.2" step="0.01" />
+            <label for="veniceSecondaryCanalWidth">Venice secondary width</label>
+            <input id="veniceSecondaryCanalWidth" name="veniceSecondaryWidth" type="number" min="0.25" max="0.8" step="0.01" />
+            <label for="veniceBranchCanalWidth">Venice branch width</label>
+            <input id="veniceBranchCanalWidth" name="veniceBranchWidth" type="number" min="0.2" max="0.55" step="0.01" />
+            <label for="japanBuildingSeed">Japan building seed</label>
+            <input id="japanBuildingSeed" name="japanSeed" type="number" min="0" max="999999" step="1" />
+            <label for="japanBuildingDensity">Japan density</label>
+            <input id="japanBuildingDensity" name="japanDensity" type="number" min="0" max="1" step="0.01" />
+            <label for="veniceBuildingGridSpacing">Venice grid spacing</label>
+            <input id="veniceBuildingGridSpacing" name="veniceSpacing" type="number" min="1" max="3.5" step="0.05" />
+            <label for="japanBuildingGridSpacing">Japan grid spacing</label>
+            <input id="japanBuildingGridSpacing" name="japanSpacing" type="number" min="1" max="3.5" step="0.05" />
+            <div><button type="submit">Apply</button><button id="resetTransition" type="button">Reset</button></div>
+          </form>
+          <p><i class="swatch band"></i> Transition zone</p>
+          <p><i class="line green"></i> Noise-displaced biome boundary</p>
+          <p><i class="dot"></i> Matching geometric-edge vertices</p>
+          <p><i class="line red"></i> Height-error segments</p>
+        </aside>
+      </section>
+      <section class="notes">
+        <article><h2>Independent zones</h2><p>Both sides remain separate Region-owned meshes with different seeds, profiles, colors, and disposable resources.</p></article>
+        <article><h2>Shared seam</h2><p>Only the blend strip converges on a shared world-space height function. Outside it, each zone keeps its original terrain character.</p></article>
+        <article><h2>Scoped scattering</h2><p>Each building layer queries only its own experimental terrain, classification, and water mask in world space.</p></article>
+      </section>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

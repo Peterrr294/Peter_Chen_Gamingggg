@@ -1,13 +1,23 @@
 import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 import { auth, googleProvider } from './src/firebase.js';
+import { renderMarkdown } from './markdown-viewer.js';
 
 // 每个栏目描述它的名称与页面位置；新增页面时先在这里登记。
 export const sections = {
   home: { title: 'HOME / PROJECT HUB' },
+  miniWorld: { title: 'PROCEDURAL MINI WORLD / 3 × 3 WORLD GRID', page: './experiments/world-grid/index.html', description: 'Nine 1024 m chunks: seed terrain, City DNA per slot, roads, parcels, buildings, and harmonised seams.' },
+  seedTerrain: { title: 'PROCEDURAL MINI WORLD / SINGLE CHUNK', page: './experiments/seed-terrain/index.html', description: 'One seed-terrain chunk through the full chain: terrain fields, City DNA match, network, blocks, parcels, buildings.' },
   game: { title: 'STARLIGHT COLLECTION / FIRST GAME', page: './legacy-game.html', description: 'Guide a lantern, collect starlight, and avoid shadows in a 30-second game.' },
   noise: { title: 'Cellular Noise / TERRAIN EXPERIMENT', page: './experiments/cellular-noise/index.html', description: 'Explore layered noise, height fields, map simulation, and terrain resolution.' },
   voxel: { title: 'VOXEL TERRAIN / DENSITY FIELD', page: './experiments/voxel-terrain/index.html', description: 'Learn density fields, CSG, chunking, and surface meshing one stage at a time.' },
   scene: { title: '3D LEARNING / REACT THREE FIBER', page: './scene.html', description: 'Learn 3D scenes through geometry, coordinates, cameras, and lighting.' },
+  shader: { title: 'SHADER BASICS / GPU PIPELINE', page: './experiments/shader-basics/index.html', description: 'Compare vertex and fragment work, uniforms, UV patterns, and coordinate spaces on one plane.' },
+  pcg: { title: 'PCG TERRAIN LAB / CLASS 06', page: './experiments/pcg-terrain/index.html', description: 'Experiments in terrain scattering, spline paths, vector fields, particles, and procedural environmental systems.' },
+  flavor: { title: 'FLAVOR CLASH / REGIONAL WORLD LABS', page: './experiments/flavor-clash-prototype/index.html', description: 'Open the finite map and its focused Iceland terrain, surface-query, road-projection, and road-mesh studies.' },
+  iceland: { title: 'ICELAND REGION LAB / FINITE TERRAIN', page: './experiments/iceland-region/index.html', description: 'Shape one reproducible Iceland height field with layered noise, ridges, coastal falloff, and an independent sea level.', parent: 'flavor' },
+  roadProjection: { title: 'ROAD PROJECTION LAB / SURFACE PATHS', page: './experiments/road-projection/index.html', description: 'Project normalized road inputs onto terrain data, validate slope and water constraints, and export serializable path samples.', parent: 'flavor' },
+  roadMesh: { title: 'ROAD MESH LAB / RIBBON GEOMETRY', page: './experiments/road-mesh/index.html', description: 'Turn frozen projected paths into deterministic road ribbons with terrain normals, continuous UVs, and limited miter joins.', parent: 'flavor' },
+  terrainSeam: { title: 'TERRAIN SEAM / CONNECTED ZONES', page: './experiments/terrain-seam/index.html', description: 'Compare two separate terrain meshes blended toward one deterministic shared boundary.', parent: 'flavor' },
   portfolio: { title: 'PORTFOLIO / ORIGINAL WEBSITE', page: './archive/portfolio/index.html', description: 'Explore the original website, project stories, and development roadmap.' },
   files: { title: 'FILES & NOTES / PROJECT LIBRARY', description: 'Read learning notes, Markdown documents, and game and experiment source code.' },
 };
@@ -16,11 +26,17 @@ export const sections = {
 // 明确范围，避免把依赖、生成目录或本机配置放进网站。
 const files = import.meta.glob([
   './*.md', './*.html', './*.js', './*.css', './*.json', './*.cmd',
+  './docs/**/*.md',
   './src/**/*.{js,jsx,css}',
   './experiments/**/*.{md,html,js,css}',
   './archive/**/*.{md,html,js,css}',
   '!./package-lock.json',
 ], { query: '?raw', import: 'default' });
+const documentImages = import.meta.glob('./docs/assets/screenshots/*.{png,jpg,jpeg,webp,gif,svg}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
 const content = document.querySelector('#content');
 const title = document.querySelector('#sectionTitle');
 const openPage = document.querySelector('#openPage');
@@ -74,7 +90,7 @@ function showHome() {
     <div class="cards"></div>`;
   const cards = intro.querySelector('.cards');
   for (const [key, section] of Object.entries(sections)) {
-    if (key === 'home') continue;
+    if (key === 'home' || section.parent) continue;
     const card = document.createElement('a');
     card.href = '#' + key;
     card.className = 'card';
@@ -88,20 +104,36 @@ function showHome() {
   content.append(intro);
 }
 
-function showFiles() {
+function showFiles(initialPath = './docs/README.md') {
   const library = document.createElement('section');
   library.className = 'library';
   library.innerHTML = `<aside><label for="fileSelect">Project files</label><select id="fileSelect"></select>
-    <p class="hint">Notes are shown as Markdown text. Source files are available to read and are not executed here.</p></aside>
+    <p class="hint">Markdown opens in a safe rendered view. Switch to Source for the original text; downloads always preserve the original file.</p></aside>
     <article><div class="file-heading"><strong id="fileName"></strong>
-    <a id="downloadFile">Download file ↓</a></div><pre id="fileText" tabindex="0"></pre></article>`;
+    <div class="file-actions"><div class="view-controls" role="group" aria-label="Document view">
+    <button id="renderedView" type="button">Rendered</button><button id="sourceView" type="button">Source</button></div>
+    <a id="downloadFile">Download file ↓</a></div></div>
+    <div id="fileRendered" class="markdown-body" tabindex="0"></div><pre id="fileText" tabindex="0" hidden></pre></article>`;
   const select = library.querySelector('select');
-  const groups = ['NOTES / MARKDOWN', 'CODE & PROJECT FILES / SOURCE'];
-  for (const [i, label] of groups.entries()) {
+  const markdownGroups = [
+    ['START HERE', path => path === './README.md' || path === './docs/README.md' || path === './docs/ASSIGNMENT-1-CHECKLIST.md' || path.startsWith('./docs/_meta/')],
+    ['EXPLORATION MAPS', path => path === './docs/EXPLORATION-MAP.md'],
+    ['PLAYABLE PROJECTS', path => path === './docs/projects/README.md' || path.startsWith('./docs/projects/starlight-run/') || path.startsWith('./docs/projects/flavor-clash/')],
+    ['OPEN-SOURCE REFERENCES', path => path === './docs/OPEN_SOURCE_SOURCES.md'],
+    ['PROCEDURAL GENERATION EXPERIMENTS', path => path.startsWith('./docs/projects/cellular-noise/') || path.startsWith('./docs/projects/voxel-terrain/') || path.startsWith('./docs/learning/pcg-terrain/') || path.startsWith('./experiments/')],
+    ['3D LEARNING', path => path === './docs/learning/README.md' || path.startsWith('./docs/learning/react-three-fiber/') || path.startsWith('./docs/learning/shaders/')],
+    ['TUTORIALS & LEARNING MATERIALS', path => path.startsWith('./docs/learning/prompting-and-debugging/')],
+    ['WEBSITE & FIREBASE INFRASTRUCTURE', path => path.startsWith('./docs/infrastructure/')],
+    ['DESIGN & DOCUMENTATION STANDARDS', path => path.startsWith('./docs/standards/')],
+    ['DEVELOPMENT LOGS', path => path.startsWith('./docs/logs/')],
+  ];
+  const sortedPaths = Object.keys(files).sort();
+  for (const [label, matches] of markdownGroups) {
+    const matchingPaths = sortedPaths.filter(path => path.endsWith('.md') && matches(path));
+    if (!matchingPaths.length) continue;
     const group = document.createElement('optgroup');
     group.label = label;
-    for (const path of Object.keys(files).sort()) {
-      if (path.endsWith('.md') !== (i === 0)) continue;
+    for (const path of matchingPaths) {
       const option = document.createElement('option');
       option.value = path;
       option.textContent = path.slice(2);
@@ -109,14 +141,55 @@ function showFiles() {
     }
     select.append(group);
   }
+  const sourceGroup = document.createElement('optgroup');
+  sourceGroup.label = 'CODE & PROJECT FILES / SOURCE';
+  for (const path of sortedPaths.filter(path => !path.endsWith('.md'))) {
+    const option = document.createElement('option');
+    option.value = path;
+    option.textContent = path.slice(2);
+    sourceGroup.append(option);
+  }
+  select.append(sourceGroup);
   content.append(library);
+
+  const rendered = library.querySelector('#fileRendered');
+  const text = library.querySelector('#fileText');
+  const renderedButton = library.querySelector('#renderedView');
+  const sourceButton = library.querySelector('#sourceView');
   let downloadURL;
+  let preferredView = 'rendered';
+  let currentIsMarkdown = true;
+
+  function setView(requestedView, remember = true) {
+    const view = requestedView === 'rendered' && !currentIsMarkdown ? 'source' : requestedView;
+    if (remember && currentIsMarkdown) preferredView = view;
+    rendered.hidden = view !== 'rendered';
+    text.hidden = view !== 'source';
+    renderedButton.setAttribute('aria-pressed', String(view === 'rendered'));
+    sourceButton.setAttribute('aria-pressed', String(view === 'source'));
+    renderedButton.disabled = !currentIsMarkdown;
+  }
+
+  renderedButton.addEventListener('click', () => setView('rendered'));
+  sourceButton.addEventListener('click', () => setView('source'));
+  rendered.addEventListener('click', event => {
+    const link = event.target.closest('a[data-note-path]');
+    if (!link) return;
+    const option = [...select.options].find(item => item.value === link.dataset.notePath);
+    if (!option) return;
+    event.preventDefault();
+    select.value = option.value;
+    readFile();
+  });
+
   async function readFile() {
     const request = ++fileRequest;
     const path = select.value;
+    currentIsMarkdown = path.endsWith('.md');
     library.querySelector('#fileName').textContent = path.slice(2);
-    const text = library.querySelector('#fileText');
     text.textContent = 'Loading…';
+    rendered.textContent = currentIsMarkdown ? 'Rendering…' : '';
+    setView(currentIsMarkdown ? preferredView : 'source', false);
     try {
       const source = await files[path]();
       // 快速切换文件时，忽略较早请求，防止显示错文件。
@@ -128,11 +201,26 @@ function showFiles() {
       const download = library.querySelector('#downloadFile');
       download.href = downloadURL;
       download.download = path.split('/').pop();
-    } catch {
-      if (request === fileRequest) text.textContent = 'Could not load this file. Refresh and try again.';
+
+      if (currentIsMarkdown) {
+        const draft = document.createElement('div');
+        await renderMarkdown(source, draft, {
+          sourcePath: path,
+          resolveAsset: assetPath => documentImages[assetPath] || assetPath,
+        });
+        if (request !== fileRequest || activeSection !== 'files') return;
+        rendered.replaceChildren(...draft.childNodes);
+      }
+    } catch (error) {
+      console.error('Could not display project file:', error);
+      if (request === fileRequest) {
+        text.textContent = 'Could not load this file. Refresh and try again.';
+        rendered.textContent = 'Could not render this file. Switch to Source or refresh and try again.';
+      }
     }
   }
-  select.value = './PROJECT-STATE.md';
+
+  select.value = Object.hasOwn(files, initialPath) ? initialPath : './docs/README.md';
   select.addEventListener('change', readFile);
   readFile();
   // 离开栏目后释放下载地址。
@@ -141,7 +229,10 @@ function showFiles() {
 
 let cleanup;
 function navigate() {
-  const requested = location.hash.slice(1) || 'home';
+  const fragment = location.hash.slice(1);
+  const queryStart = fragment.indexOf('?');
+  const requested = (queryStart === -1 ? fragment : fragment.slice(0, queryStart)) || 'home';
+  const query = new URLSearchParams(queryStart === -1 ? '' : fragment.slice(queryStart + 1));
   const key = Object.hasOwn(sections, requested) ? requested : 'home';
   if (key === activeSection) return;
   cleanup?.();
@@ -166,7 +257,7 @@ function navigate() {
     frame.className = 'project-frame';
     content.append(frame);
   } else if (key === 'home') showHome();
-  else cleanup = showFiles();
+  else cleanup = showFiles(query.get('file') || './docs/README.md');
 }
 window.addEventListener('hashchange', navigate);
 navigate();

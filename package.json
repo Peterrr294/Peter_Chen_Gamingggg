@@ -6,19 +6,32 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "evidence:capture": "node scripts/capture-evidence.mjs",
+    "evidence:shader": "node scripts/capture-evidence.mjs shader-basics",
+    "evidence:flavor-buildings": "node scripts/capture-flavor-building-evidence.mjs",
+    "verify:pcg": "node scripts/verify-pcg-terrain.mjs",
+    "verify:flavor": "node scripts/verify-flavor-clash.mjs",
+    "verify:docs": "node scripts/verify-markdown-links.mjs",
+    "verify:iceland": "node scripts/verify-iceland-region.mjs",
+    "verify:road-projection": "node scripts/verify-road-projection.mjs",
+    "verify:road-mesh": "node scripts/verify-road-mesh.mjs",
+    "verify:terrain-seam": "node scripts/verify-terrain-seam.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "firebase": "^12.19.0",
     "lil-gui": "^0.21.0",
+    "poisson-disk-sampling": "^2.3.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "three": "^0.180.0"
+    "three": "^0.180.0",
+    "wavefunctioncollapse": "^2.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.4",
+    "playwright-core": "^1.63.0",
     "vite": "^7.1.3"
   }
 }

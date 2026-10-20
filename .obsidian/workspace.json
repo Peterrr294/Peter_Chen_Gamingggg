@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "15a0bf2d104741d6",
+        "id": "6fab892fba30f3d8",
         "type": "tabs",
         "children": [
           {
-            "id": "a6a1783be60067bd",
+            "id": "896d57eefa51653c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/projects/flavor-clash/Flavour Clash - Development Progress.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Flavour Clash - Development Progress"
             }
           }
         ]
@@ -51,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "japan",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +79,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -184,43 +189,57 @@
       "bases:新建数据库": false
     }
   },
-  "active": "a6a1783be60067bd",
+  "active": "896d57eefa51653c",
   "lastOpenFiles": [
     "firebase-debug.log",
-    "dist/assets/main-rM2SknG2.js",
-    "firebase.json",
-    "dist/assets/dev-CZHc6nzv.js",
-    "dist/assets/style-Azp5dzR8.js",
-    "dist/assets/main-CHKu6n0-.js",
-    "dist/assets/WEBSITE-FOUNDATION-BpqWZGJX.js",
-    "dist/assets/index-BotCdoDR.js",
-    "dist/assets/TUTORIAL-BnoRLG1-.js",
-    "dist/assets/REACT-THREE-FIBER-LEARNING-LOG-CxcJ0dTN.js",
-    "dist/assets/STYLE-GUIDE-BO9alLNn.js",
-    "experiments/cellular-noise/README.md",
-    "experiments/2026-09-28.append.md",
-    "2026-09-28.md",
-    "experiments/2026-09-28.next.md",
-    "experiments/voxel-terrain/README.next.md",
+    "dist/experiments/manhattan-terrain-greybox/index.html",
+    "dist/experiments/manhattan-terrain-greybox",
+    "dist/archive/portfolio/index.html",
+    "dist/archive/portfolio",
+    "dist/archive",
+    "dist/experiments/seed-terrain/index.html",
+    "dist/experiments/seed-terrain",
+    "dist/experiments/world-grid/index.html",
+    "dist/experiments/world-grid",
+    "dist/assets/mesh-algorithms-BrPdyp8T.js",
+    "dist/assets/voxel-surface-nets-CRq_Gl28.png",
+    "dist/assets/voxel-marching-tetrahedra-C5e5oGdf.png",
+    "dist/assets/voxel-sdf-sphere-DeB5Iz53.png",
+    "dist/assets/voxel-csg-box-cut-CdYbbJKW.png",
+    "dist/assets/voxel-chunk-cave-BQl_2u66.png",
+    "dist/assets/starlight-run-BwYHm5iN.png",
+    "dist/assets/shader-uv-gradient-CnR3Qeew.png",
+    "dist/assets/shader-uniform-mix-CEZ-Vi-s.png",
+    "dist/assets/shader-repeat-grid-BXugylPa.png",
+    "dist/assets/shader-fixed-color-4mC5zL7X.png",
+    "docs/logs/2026-10-19.md",
+    "docs/logs/2026-10-18.md",
+    "AGENTS.md",
+    "docs/procedural-mini-world/research/manhattan-spatial-study.md",
+    "docs/procedural-mini-world/research/prototype-city-selection.md",
+    "docs/procedural-mini-world/research/city-longlist-60.md",
+    "docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md",
+    "docs/procedural-mini-world/research/city-research-template.md",
+    "未命名.canvas",
+    "未命名 1.canvas",
+    "docs/projects/flavor-clash/terrain-seam-building-scatter.md",
+    "docs/projects/flavor-clash/README.md",
+    "docs/README.md",
+    "docs/projects/flavor-clash/Flavour Clash - Development Progress.md",
+    "docs/logs/2026-10-07-flavor-clash.md",
+    "node_modules/@monogrid/gainmap-js/CONTRIBUTING.md",
+    "docs/ASSIGNMENT-1-CHECKLIST.md",
+    "docs/logs/2026-09-29.md",
+    "docs/logs/2026-09-28.md",
+    "docs/logs/2026-09-16.md",
+    "docs/logs/2026-09-09.md",
     "experiments/voxel-terrain/README.md",
-    "WEBSITE-FOUNDATION.md",
-    "2026-09-16.md",
-    "2026-09-09.md",
-    "TUTORIAL.md",
-    "node_modules/lil-gui/README.md",
-    "node_modules/lil-gui/LICENSE.md",
-    "STYLE-GUIDE.md",
-    "REACT-THREE-FIBER-LEARNING-LOG.md",
-    "GAME.md",
-    "First lesson.md",
-    "PROJECT-STATE.md",
-    "React Three Fiber 学习日志.md",
     "README.md",
-    "node_modules/node-releases/README.md",
-    "node_modules/@babel/helper-globals/README.md",
-    "node_modules/@babel/helper-string-parser/README.md",
-    "node_modules/@babel/generator/README.md",
-    "node_modules/@babel/helper-module-transforms/README.md",
-    "node_modules/@babel/code-frame/README.md"
+    "node_modules/lru-cache/README.md",
+    "node_modules/troika-three-text/README.md",
+    "node_modules/zustand/README.md",
+    "experiments/cellular-noise/README.md",
+    "未命名 2.canvas",
+    "未命名 3.canvas"
   ]
 }

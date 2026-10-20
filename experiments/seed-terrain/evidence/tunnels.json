@@ -1,0 +1,2707 @@
+{
+  "task": "03.2",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:51:49.776Z",
+  "runs": [
+    {
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "minCoverRule": 10,
+      "strategy": "grid",
+      "analysis": "1779258E",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 1626.8829005943212,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 5,
+        "ports": 2
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "component",
+            "length": 220
+          },
+          "decision": "surface",
+          "reason": "detour 2.03 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 904.1560263353834,
+            "cost": 1682.816574943051,
+            "detourRatio": 2.0285818617840095
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 448
+          },
+          "decision": "surface",
+          "reason": "detour 1.03 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 42.83281572999748,
+            "cost": 61.447139209674745,
+            "detourRatio": 1.0256599194056395
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 172
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 777,
+            "feasible": 0,
+            "rejected": {
+              "grade": 775,
+              "daylight": 2
+            },
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 212
+          },
+          "decision": "surface",
+          "reason": "detour 1.30 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 225.89405852894143,
+            "cost": 345.8858301979701,
+            "detourRatio": 1.2995644454143305
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 148
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 135,
+            "feasible": 15,
+            "rejected": {
+              "grade": 45,
+              "daylight": 15,
+              "cover": 60,
+              "approachCrossesNetwork": 15
+            },
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [],
+      "profile": null
+    },
+    {
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "minCoverRule": 10,
+      "strategy": "organic",
+      "analysis": "1779258E",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 2832.113198980479,
+        "tunnels": 1,
+        "tunnelLength": 629.7428046432922,
+        "mountainConnectors": 6,
+        "ports": 3
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 448
+          },
+          "decision": "surface",
+          "reason": "detour 1.67 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 296.29304845796446,
+            "cost": 494.64374785056486,
+            "detourRatio": 1.6727177835539675
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 172
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 417,
+            "feasible": 0,
+            "rejected": {
+              "grade": 415,
+              "daylight": 2
+            },
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 212
+          },
+          "decision": "surface",
+          "reason": "detour 1.63 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 823.1922734303064,
+            "cost": 1425.517332274739,
+            "detourRatio": 1.6264683932021418
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 148
+          },
+          "decision": "tunnel",
+          "reason": "no feasible surface route",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 133,
+            "feasible": 21,
+            "rejected": {
+              "cover": 59,
+              "grade": 53
+            },
+            "bestCost": 6210.338645797602
+          }
+        }
+      ],
+      "tunnels": [
+        {
+          "id": 10,
+          "plan": 629.7428046432924,
+          "grade": -0.0038101976908449975,
+          "minCover": 11.230698450612635,
+          "daylight": 0,
+          "wet": 0,
+          "inTransition": 0,
+          "portalOffset": 0.00041796875001409717,
+          "surfaceAtPortals": [
+            true,
+            true
+          ],
+          "necessary": true,
+          "recordedMinCover": 11.230651376263069,
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 148
+          },
+          "alternative": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "cost": 6210.338645797602,
+          "candidates": {
+            "evaluated": 133,
+            "feasible": 21
+          },
+          "ends": [
+            {
+              "x": 28,
+              "y": 198.49658203125,
+              "z": -164
+            },
+            {
+              "x": 352,
+              "y": 196.09713745117188,
+              "z": 376
+            }
+          ]
+        }
+      ],
+      "profile": [
+        {
+          "d": 0,
+          "roadY": 198.5,
+          "crownY": 205.5,
+          "terrainY": 198.5,
+          "cover": -7
+        },
+        {
+          "d": 8,
+          "roadY": 198.47,
+          "crownY": 205.47,
+          "terrainY": 202.03,
+          "cover": -3.43
+        },
+        {
+          "d": 15.9,
+          "roadY": 198.44,
+          "crownY": 205.44,
+          "terrainY": 206.15,
+          "cover": 0.72
+        },
+        {
+          "d": 23.9,
+          "roadY": 198.41,
+          "crownY": 205.41,
+          "terrainY": 210.93,
+          "cover": 5.53
+        },
+        {
+          "d": 31.9,
+          "roadY": 198.38,
+          "crownY": 205.38,
+          "terrainY": 216.61,
+          "cover": 11.23
+        },
+        {
+          "d": 39.9,
+          "roadY": 198.34,
+          "crownY": 205.34,
+          "terrainY": 222.61,
+          "cover": 17.27
+        },
+        {
+          "d": 47.8,
+          "roadY": 198.31,
+          "crownY": 205.31,
+          "terrainY": 228.26,
+          "cover": 22.94
+        },
+        {
+          "d": 55.8,
+          "roadY": 198.28,
+          "crownY": 205.28,
+          "terrainY": 234.77,
+          "cover": 29.48
+        },
+        {
+          "d": 63.8,
+          "roadY": 198.25,
+          "crownY": 205.25,
+          "terrainY": 241.85,
+          "cover": 36.6
+        },
+        {
+          "d": 71.7,
+          "roadY": 198.22,
+          "crownY": 205.22,
+          "terrainY": 248.26,
+          "cover": 43.04
+        },
+        {
+          "d": 79.7,
+          "roadY": 198.19,
+          "crownY": 205.19,
+          "terrainY": 254.56,
+          "cover": 49.37
+        },
+        {
+          "d": 87.7,
+          "roadY": 198.16,
+          "crownY": 205.16,
+          "terrainY": 260.71,
+          "cover": 55.55
+        },
+        {
+          "d": 95.7,
+          "roadY": 198.13,
+          "crownY": 205.13,
+          "terrainY": 265.93,
+          "cover": 60.8
+        },
+        {
+          "d": 103.6,
+          "roadY": 198.1,
+          "crownY": 205.1,
+          "terrainY": 270.25,
+          "cover": 65.15
+        },
+        {
+          "d": 111.6,
+          "roadY": 198.07,
+          "crownY": 205.07,
+          "terrainY": 273.93,
+          "cover": 68.86
+        },
+        {
+          "d": 119.6,
+          "roadY": 198.04,
+          "crownY": 205.04,
+          "terrainY": 277.01,
+          "cover": 71.97
+        },
+        {
+          "d": 127.5,
+          "roadY": 198.01,
+          "crownY": 205.01,
+          "terrainY": 279.54,
+          "cover": 74.53
+        },
+        {
+          "d": 135.5,
+          "roadY": 197.98,
+          "crownY": 204.98,
+          "terrainY": 281.57,
+          "cover": 76.59
+        },
+        {
+          "d": 143.5,
+          "roadY": 197.95,
+          "crownY": 204.95,
+          "terrainY": 283.07,
+          "cover": 78.12
+        },
+        {
+          "d": 151.5,
+          "roadY": 197.92,
+          "crownY": 204.92,
+          "terrainY": 283.33,
+          "cover": 78.41
+        },
+        {
+          "d": 159.4,
+          "roadY": 197.89,
+          "crownY": 204.89,
+          "terrainY": 283,
+          "cover": 78.11
+        },
+        {
+          "d": 167.4,
+          "roadY": 197.86,
+          "crownY": 204.86,
+          "terrainY": 282.78,
+          "cover": 77.92
+        },
+        {
+          "d": 175.4,
+          "roadY": 197.83,
+          "crownY": 204.83,
+          "terrainY": 282.73,
+          "cover": 77.9
+        },
+        {
+          "d": 183.3,
+          "roadY": 197.8,
+          "crownY": 204.8,
+          "terrainY": 282.85,
+          "cover": 78.06
+        },
+        {
+          "d": 191.3,
+          "roadY": 197.77,
+          "crownY": 204.77,
+          "terrainY": 283.2,
+          "cover": 78.43
+        },
+        {
+          "d": 199.3,
+          "roadY": 197.74,
+          "crownY": 204.74,
+          "terrainY": 283.89,
+          "cover": 79.15
+        },
+        {
+          "d": 207.3,
+          "roadY": 197.71,
+          "crownY": 204.71,
+          "terrainY": 284.91,
+          "cover": 80.2
+        },
+        {
+          "d": 215.2,
+          "roadY": 197.68,
+          "crownY": 204.68,
+          "terrainY": 286.28,
+          "cover": 81.6
+        },
+        {
+          "d": 223.2,
+          "roadY": 197.65,
+          "crownY": 204.65,
+          "terrainY": 288.12,
+          "cover": 83.47
+        },
+        {
+          "d": 231.2,
+          "roadY": 197.62,
+          "crownY": 204.62,
+          "terrainY": 290.51,
+          "cover": 85.89
+        },
+        {
+          "d": 239.1,
+          "roadY": 197.59,
+          "crownY": 204.59,
+          "terrainY": 293.46,
+          "cover": 88.87
+        },
+        {
+          "d": 247.1,
+          "roadY": 197.56,
+          "crownY": 204.56,
+          "terrainY": 297.12,
+          "cover": 92.57
+        },
+        {
+          "d": 255.1,
+          "roadY": 197.52,
+          "crownY": 204.52,
+          "terrainY": 301.79,
+          "cover": 97.26
+        },
+        {
+          "d": 263.1,
+          "roadY": 197.49,
+          "crownY": 204.49,
+          "terrainY": 307.33,
+          "cover": 102.83
+        },
+        {
+          "d": 271,
+          "roadY": 197.46,
+          "crownY": 204.46,
+          "terrainY": 311.03,
+          "cover": 106.57
+        },
+        {
+          "d": 279,
+          "roadY": 197.43,
+          "crownY": 204.43,
+          "terrainY": 313.5,
+          "cover": 109.06
+        },
+        {
+          "d": 287,
+          "roadY": 197.4,
+          "crownY": 204.4,
+          "terrainY": 307.89,
+          "cover": 103.49
+        },
+        {
+          "d": 294.9,
+          "roadY": 197.37,
+          "crownY": 204.37,
+          "terrainY": 302.19,
+          "cover": 97.81
+        },
+        {
+          "d": 302.9,
+          "roadY": 197.34,
+          "crownY": 204.34,
+          "terrainY": 297.49,
+          "cover": 93.15
+        },
+        {
+          "d": 310.9,
+          "roadY": 197.31,
+          "crownY": 204.31,
+          "terrainY": 294.27,
+          "cover": 89.96
+        },
+        {
+          "d": 318.9,
+          "roadY": 197.28,
+          "crownY": 204.28,
+          "terrainY": 292.2,
+          "cover": 87.92
+        },
+        {
+          "d": 326.8,
+          "roadY": 197.25,
+          "crownY": 204.25,
+          "terrainY": 290.04,
+          "cover": 85.79
+        },
+        {
+          "d": 334.8,
+          "roadY": 197.22,
+          "crownY": 204.22,
+          "terrainY": 289.76,
+          "cover": 85.54
+        },
+        {
+          "d": 342.8,
+          "roadY": 197.19,
+          "crownY": 204.19,
+          "terrainY": 287.52,
+          "cover": 83.33
+        },
+        {
+          "d": 350.7,
+          "roadY": 197.16,
+          "crownY": 204.16,
+          "terrainY": 287.46,
+          "cover": 83.3
+        },
+        {
+          "d": 358.7,
+          "roadY": 197.13,
+          "crownY": 204.13,
+          "terrainY": 290.44,
+          "cover": 86.31
+        },
+        {
+          "d": 366.7,
+          "roadY": 197.1,
+          "crownY": 204.1,
+          "terrainY": 292.07,
+          "cover": 87.97
+        },
+        {
+          "d": 374.7,
+          "roadY": 197.07,
+          "crownY": 204.07,
+          "terrainY": 288.32,
+          "cover": 84.25
+        },
+        {
+          "d": 382.6,
+          "roadY": 197.04,
+          "crownY": 204.04,
+          "terrainY": 288.81,
+          "cover": 84.77
+        },
+        {
+          "d": 390.6,
+          "roadY": 197.01,
+          "crownY": 204.01,
+          "terrainY": 293.69,
+          "cover": 89.68
+        },
+        {
+          "d": 398.6,
+          "roadY": 196.98,
+          "crownY": 203.98,
+          "terrainY": 286.3,
+          "cover": 82.32
+        },
+        {
+          "d": 406.5,
+          "roadY": 196.95,
+          "crownY": 203.95,
+          "terrainY": 281.49,
+          "cover": 77.55
+        },
+        {
+          "d": 414.5,
+          "roadY": 196.92,
+          "crownY": 203.92,
+          "terrainY": 281.38,
+          "cover": 77.46
+        },
+        {
+          "d": 422.5,
+          "roadY": 196.89,
+          "crownY": 203.89,
+          "terrainY": 284.29,
+          "cover": 80.4
+        },
+        {
+          "d": 430.5,
+          "roadY": 196.86,
+          "crownY": 203.86,
+          "terrainY": 289.43,
+          "cover": 85.57
+        },
+        {
+          "d": 438.4,
+          "roadY": 196.83,
+          "crownY": 203.83,
+          "terrainY": 296.51,
+          "cover": 92.69
+        },
+        {
+          "d": 446.4,
+          "roadY": 196.8,
+          "crownY": 203.8,
+          "terrainY": 303.48,
+          "cover": 99.69
+        },
+        {
+          "d": 454.4,
+          "roadY": 196.77,
+          "crownY": 203.77,
+          "terrainY": 309.61,
+          "cover": 105.85
+        },
+        {
+          "d": 462.3,
+          "roadY": 196.73,
+          "crownY": 203.73,
+          "terrainY": 316.82,
+          "cover": 113.08
+        },
+        {
+          "d": 470.3,
+          "roadY": 196.7,
+          "crownY": 203.7,
+          "terrainY": 314.63,
+          "cover": 110.93
+        },
+        {
+          "d": 478.3,
+          "roadY": 196.67,
+          "crownY": 203.67,
+          "terrainY": 308.34,
+          "cover": 104.67
+        },
+        {
+          "d": 486.3,
+          "roadY": 196.64,
+          "crownY": 203.64,
+          "terrainY": 305.67,
+          "cover": 102.03
+        },
+        {
+          "d": 494.2,
+          "roadY": 196.61,
+          "crownY": 203.61,
+          "terrainY": 306.52,
+          "cover": 102.9
+        },
+        {
+          "d": 502.2,
+          "roadY": 196.58,
+          "crownY": 203.58,
+          "terrainY": 297.49,
+          "cover": 93.91
+        },
+        {
+          "d": 510.2,
+          "roadY": 196.55,
+          "crownY": 203.55,
+          "terrainY": 286.9,
+          "cover": 83.35
+        },
+        {
+          "d": 518.1,
+          "roadY": 196.52,
+          "crownY": 203.52,
+          "terrainY": 276.91,
+          "cover": 73.39
+        },
+        {
+          "d": 526.1,
+          "roadY": 196.49,
+          "crownY": 203.49,
+          "terrainY": 267.6,
+          "cover": 64.11
+        },
+        {
+          "d": 534.1,
+          "roadY": 196.46,
+          "crownY": 203.46,
+          "terrainY": 259.37,
+          "cover": 55.91
+        },
+        {
+          "d": 542.1,
+          "roadY": 196.43,
+          "crownY": 203.43,
+          "terrainY": 252.7,
+          "cover": 49.27
+        },
+        {
+          "d": 550,
+          "roadY": 196.4,
+          "crownY": 203.4,
+          "terrainY": 248.22,
+          "cover": 44.82
+        },
+        {
+          "d": 558,
+          "roadY": 196.37,
+          "crownY": 203.37,
+          "terrainY": 245.41,
+          "cover": 42.04
+        },
+        {
+          "d": 566,
+          "roadY": 196.34,
+          "crownY": 203.34,
+          "terrainY": 241.47,
+          "cover": 38.13
+        },
+        {
+          "d": 573.9,
+          "roadY": 196.31,
+          "crownY": 203.31,
+          "terrainY": 238.75,
+          "cover": 35.44
+        },
+        {
+          "d": 581.9,
+          "roadY": 196.28,
+          "crownY": 203.28,
+          "terrainY": 235.25,
+          "cover": 31.97
+        },
+        {
+          "d": 589.9,
+          "roadY": 196.25,
+          "crownY": 203.25,
+          "terrainY": 229.3,
+          "cover": 26.05
+        },
+        {
+          "d": 597.9,
+          "roadY": 196.22,
+          "crownY": 203.22,
+          "terrainY": 225.77,
+          "cover": 22.55
+        },
+        {
+          "d": 605.8,
+          "roadY": 196.19,
+          "crownY": 203.19,
+          "terrainY": 219.69,
+          "cover": 16.51
+        },
+        {
+          "d": 613.8,
+          "roadY": 196.16,
+          "crownY": 203.16,
+          "terrainY": 208.4,
+          "cover": 5.24
+        },
+        {
+          "d": 621.8,
+          "roadY": 196.13,
+          "crownY": 203.13,
+          "terrainY": 200.94,
+          "cover": -2.19
+        },
+        {
+          "d": 629.7,
+          "roadY": 196.1,
+          "crownY": 203.1,
+          "terrainY": 196.1,
+          "cover": -7
+        }
+      ]
+    },
+    {
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "minCoverRule": 10,
+      "strategy": "canalStreet",
+      "analysis": "1779258E",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 2794.3327929216703,
+        "tunnels": 1,
+        "tunnelLength": 629.7428046432922,
+        "mountainConnectors": 6,
+        "ports": 3
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 448
+          },
+          "decision": "surface",
+          "reason": "detour 1.80 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 274.18159227796275,
+            "cost": 468.09916429378796,
+            "detourRatio": 1.8032019956254592
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 172
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 417,
+            "feasible": 0,
+            "rejected": {
+              "grade": 415,
+              "daylight": 2
+            },
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 212
+          },
+          "decision": "surface",
+          "reason": "detour 1.63 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 823.1922734303064,
+            "cost": 1425.517332274739,
+            "detourRatio": 1.6264683932021418
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 148
+          },
+          "decision": "tunnel",
+          "reason": "no feasible surface route",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 133,
+            "feasible": 21,
+            "rejected": {
+              "cover": 59,
+              "grade": 53
+            },
+            "bestCost": 6210.338645797602
+          }
+        }
+      ],
+      "tunnels": [
+        {
+          "id": 10,
+          "plan": 629.7428046432924,
+          "grade": -0.0038101976908449975,
+          "minCover": 11.230698450612635,
+          "daylight": 0,
+          "wet": 0,
+          "inTransition": 0,
+          "portalOffset": 0.00041796875001409717,
+          "surfaceAtPortals": [
+            true,
+            true
+          ],
+          "necessary": true,
+          "recordedMinCover": 11.230651376263069,
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 148
+          },
+          "alternative": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "cost": 6210.338645797602,
+          "candidates": {
+            "evaluated": 133,
+            "feasible": 21
+          },
+          "ends": [
+            {
+              "x": 28,
+              "y": 198.49658203125,
+              "z": -164
+            },
+            {
+              "x": 352,
+              "y": 196.09713745117188,
+              "z": 376
+            }
+          ]
+        }
+      ],
+      "profile": [
+        {
+          "d": 0,
+          "roadY": 198.5,
+          "crownY": 205.5,
+          "terrainY": 198.5,
+          "cover": -7
+        },
+        {
+          "d": 8,
+          "roadY": 198.47,
+          "crownY": 205.47,
+          "terrainY": 202.03,
+          "cover": -3.43
+        },
+        {
+          "d": 15.9,
+          "roadY": 198.44,
+          "crownY": 205.44,
+          "terrainY": 206.15,
+          "cover": 0.72
+        },
+        {
+          "d": 23.9,
+          "roadY": 198.41,
+          "crownY": 205.41,
+          "terrainY": 210.93,
+          "cover": 5.53
+        },
+        {
+          "d": 31.9,
+          "roadY": 198.38,
+          "crownY": 205.38,
+          "terrainY": 216.61,
+          "cover": 11.23
+        },
+        {
+          "d": 39.9,
+          "roadY": 198.34,
+          "crownY": 205.34,
+          "terrainY": 222.61,
+          "cover": 17.27
+        },
+        {
+          "d": 47.8,
+          "roadY": 198.31,
+          "crownY": 205.31,
+          "terrainY": 228.26,
+          "cover": 22.94
+        },
+        {
+          "d": 55.8,
+          "roadY": 198.28,
+          "crownY": 205.28,
+          "terrainY": 234.77,
+          "cover": 29.48
+        },
+        {
+          "d": 63.8,
+          "roadY": 198.25,
+          "crownY": 205.25,
+          "terrainY": 241.85,
+          "cover": 36.6
+        },
+        {
+          "d": 71.7,
+          "roadY": 198.22,
+          "crownY": 205.22,
+          "terrainY": 248.26,
+          "cover": 43.04
+        },
+        {
+          "d": 79.7,
+          "roadY": 198.19,
+          "crownY": 205.19,
+          "terrainY": 254.56,
+          "cover": 49.37
+        },
+        {
+          "d": 87.7,
+          "roadY": 198.16,
+          "crownY": 205.16,
+          "terrainY": 260.71,
+          "cover": 55.55
+        },
+        {
+          "d": 95.7,
+          "roadY": 198.13,
+          "crownY": 205.13,
+          "terrainY": 265.93,
+          "cover": 60.8
+        },
+        {
+          "d": 103.6,
+          "roadY": 198.1,
+          "crownY": 205.1,
+          "terrainY": 270.25,
+          "cover": 65.15
+        },
+        {
+          "d": 111.6,
+          "roadY": 198.07,
+          "crownY": 205.07,
+          "terrainY": 273.93,
+          "cover": 68.86
+        },
+        {
+          "d": 119.6,
+          "roadY": 198.04,
+          "crownY": 205.04,
+          "terrainY": 277.01,
+          "cover": 71.97
+        },
+        {
+          "d": 127.5,
+          "roadY": 198.01,
+          "crownY": 205.01,
+          "terrainY": 279.54,
+          "cover": 74.53
+        },
+        {
+          "d": 135.5,
+          "roadY": 197.98,
+          "crownY": 204.98,
+          "terrainY": 281.57,
+          "cover": 76.59
+        },
+        {
+          "d": 143.5,
+          "roadY": 197.95,
+          "crownY": 204.95,
+          "terrainY": 283.07,
+          "cover": 78.12
+        },
+        {
+          "d": 151.5,
+          "roadY": 197.92,
+          "crownY": 204.92,
+          "terrainY": 283.33,
+          "cover": 78.41
+        },
+        {
+          "d": 159.4,
+          "roadY": 197.89,
+          "crownY": 204.89,
+          "terrainY": 283,
+          "cover": 78.11
+        },
+        {
+          "d": 167.4,
+          "roadY": 197.86,
+          "crownY": 204.86,
+          "terrainY": 282.78,
+          "cover": 77.92
+        },
+        {
+          "d": 175.4,
+          "roadY": 197.83,
+          "crownY": 204.83,
+          "terrainY": 282.73,
+          "cover": 77.9
+        },
+        {
+          "d": 183.3,
+          "roadY": 197.8,
+          "crownY": 204.8,
+          "terrainY": 282.85,
+          "cover": 78.06
+        },
+        {
+          "d": 191.3,
+          "roadY": 197.77,
+          "crownY": 204.77,
+          "terrainY": 283.2,
+          "cover": 78.43
+        },
+        {
+          "d": 199.3,
+          "roadY": 197.74,
+          "crownY": 204.74,
+          "terrainY": 283.89,
+          "cover": 79.15
+        },
+        {
+          "d": 207.3,
+          "roadY": 197.71,
+          "crownY": 204.71,
+          "terrainY": 284.91,
+          "cover": 80.2
+        },
+        {
+          "d": 215.2,
+          "roadY": 197.68,
+          "crownY": 204.68,
+          "terrainY": 286.28,
+          "cover": 81.6
+        },
+        {
+          "d": 223.2,
+          "roadY": 197.65,
+          "crownY": 204.65,
+          "terrainY": 288.12,
+          "cover": 83.47
+        },
+        {
+          "d": 231.2,
+          "roadY": 197.62,
+          "crownY": 204.62,
+          "terrainY": 290.51,
+          "cover": 85.89
+        },
+        {
+          "d": 239.1,
+          "roadY": 197.59,
+          "crownY": 204.59,
+          "terrainY": 293.46,
+          "cover": 88.87
+        },
+        {
+          "d": 247.1,
+          "roadY": 197.56,
+          "crownY": 204.56,
+          "terrainY": 297.12,
+          "cover": 92.57
+        },
+        {
+          "d": 255.1,
+          "roadY": 197.52,
+          "crownY": 204.52,
+          "terrainY": 301.79,
+          "cover": 97.26
+        },
+        {
+          "d": 263.1,
+          "roadY": 197.49,
+          "crownY": 204.49,
+          "terrainY": 307.33,
+          "cover": 102.83
+        },
+        {
+          "d": 271,
+          "roadY": 197.46,
+          "crownY": 204.46,
+          "terrainY": 311.03,
+          "cover": 106.57
+        },
+        {
+          "d": 279,
+          "roadY": 197.43,
+          "crownY": 204.43,
+          "terrainY": 313.5,
+          "cover": 109.06
+        },
+        {
+          "d": 287,
+          "roadY": 197.4,
+          "crownY": 204.4,
+          "terrainY": 307.89,
+          "cover": 103.49
+        },
+        {
+          "d": 294.9,
+          "roadY": 197.37,
+          "crownY": 204.37,
+          "terrainY": 302.19,
+          "cover": 97.81
+        },
+        {
+          "d": 302.9,
+          "roadY": 197.34,
+          "crownY": 204.34,
+          "terrainY": 297.49,
+          "cover": 93.15
+        },
+        {
+          "d": 310.9,
+          "roadY": 197.31,
+          "crownY": 204.31,
+          "terrainY": 294.27,
+          "cover": 89.96
+        },
+        {
+          "d": 318.9,
+          "roadY": 197.28,
+          "crownY": 204.28,
+          "terrainY": 292.2,
+          "cover": 87.92
+        },
+        {
+          "d": 326.8,
+          "roadY": 197.25,
+          "crownY": 204.25,
+          "terrainY": 290.04,
+          "cover": 85.79
+        },
+        {
+          "d": 334.8,
+          "roadY": 197.22,
+          "crownY": 204.22,
+          "terrainY": 289.76,
+          "cover": 85.54
+        },
+        {
+          "d": 342.8,
+          "roadY": 197.19,
+          "crownY": 204.19,
+          "terrainY": 287.52,
+          "cover": 83.33
+        },
+        {
+          "d": 350.7,
+          "roadY": 197.16,
+          "crownY": 204.16,
+          "terrainY": 287.46,
+          "cover": 83.3
+        },
+        {
+          "d": 358.7,
+          "roadY": 197.13,
+          "crownY": 204.13,
+          "terrainY": 290.44,
+          "cover": 86.31
+        },
+        {
+          "d": 366.7,
+          "roadY": 197.1,
+          "crownY": 204.1,
+          "terrainY": 292.07,
+          "cover": 87.97
+        },
+        {
+          "d": 374.7,
+          "roadY": 197.07,
+          "crownY": 204.07,
+          "terrainY": 288.32,
+          "cover": 84.25
+        },
+        {
+          "d": 382.6,
+          "roadY": 197.04,
+          "crownY": 204.04,
+          "terrainY": 288.81,
+          "cover": 84.77
+        },
+        {
+          "d": 390.6,
+          "roadY": 197.01,
+          "crownY": 204.01,
+          "terrainY": 293.69,
+          "cover": 89.68
+        },
+        {
+          "d": 398.6,
+          "roadY": 196.98,
+          "crownY": 203.98,
+          "terrainY": 286.3,
+          "cover": 82.32
+        },
+        {
+          "d": 406.5,
+          "roadY": 196.95,
+          "crownY": 203.95,
+          "terrainY": 281.49,
+          "cover": 77.55
+        },
+        {
+          "d": 414.5,
+          "roadY": 196.92,
+          "crownY": 203.92,
+          "terrainY": 281.38,
+          "cover": 77.46
+        },
+        {
+          "d": 422.5,
+          "roadY": 196.89,
+          "crownY": 203.89,
+          "terrainY": 284.29,
+          "cover": 80.4
+        },
+        {
+          "d": 430.5,
+          "roadY": 196.86,
+          "crownY": 203.86,
+          "terrainY": 289.43,
+          "cover": 85.57
+        },
+        {
+          "d": 438.4,
+          "roadY": 196.83,
+          "crownY": 203.83,
+          "terrainY": 296.51,
+          "cover": 92.69
+        },
+        {
+          "d": 446.4,
+          "roadY": 196.8,
+          "crownY": 203.8,
+          "terrainY": 303.48,
+          "cover": 99.69
+        },
+        {
+          "d": 454.4,
+          "roadY": 196.77,
+          "crownY": 203.77,
+          "terrainY": 309.61,
+          "cover": 105.85
+        },
+        {
+          "d": 462.3,
+          "roadY": 196.73,
+          "crownY": 203.73,
+          "terrainY": 316.82,
+          "cover": 113.08
+        },
+        {
+          "d": 470.3,
+          "roadY": 196.7,
+          "crownY": 203.7,
+          "terrainY": 314.63,
+          "cover": 110.93
+        },
+        {
+          "d": 478.3,
+          "roadY": 196.67,
+          "crownY": 203.67,
+          "terrainY": 308.34,
+          "cover": 104.67
+        },
+        {
+          "d": 486.3,
+          "roadY": 196.64,
+          "crownY": 203.64,
+          "terrainY": 305.67,
+          "cover": 102.03
+        },
+        {
+          "d": 494.2,
+          "roadY": 196.61,
+          "crownY": 203.61,
+          "terrainY": 306.52,
+          "cover": 102.9
+        },
+        {
+          "d": 502.2,
+          "roadY": 196.58,
+          "crownY": 203.58,
+          "terrainY": 297.49,
+          "cover": 93.91
+        },
+        {
+          "d": 510.2,
+          "roadY": 196.55,
+          "crownY": 203.55,
+          "terrainY": 286.9,
+          "cover": 83.35
+        },
+        {
+          "d": 518.1,
+          "roadY": 196.52,
+          "crownY": 203.52,
+          "terrainY": 276.91,
+          "cover": 73.39
+        },
+        {
+          "d": 526.1,
+          "roadY": 196.49,
+          "crownY": 203.49,
+          "terrainY": 267.6,
+          "cover": 64.11
+        },
+        {
+          "d": 534.1,
+          "roadY": 196.46,
+          "crownY": 203.46,
+          "terrainY": 259.37,
+          "cover": 55.91
+        },
+        {
+          "d": 542.1,
+          "roadY": 196.43,
+          "crownY": 203.43,
+          "terrainY": 252.7,
+          "cover": 49.27
+        },
+        {
+          "d": 550,
+          "roadY": 196.4,
+          "crownY": 203.4,
+          "terrainY": 248.22,
+          "cover": 44.82
+        },
+        {
+          "d": 558,
+          "roadY": 196.37,
+          "crownY": 203.37,
+          "terrainY": 245.41,
+          "cover": 42.04
+        },
+        {
+          "d": 566,
+          "roadY": 196.34,
+          "crownY": 203.34,
+          "terrainY": 241.47,
+          "cover": 38.13
+        },
+        {
+          "d": 573.9,
+          "roadY": 196.31,
+          "crownY": 203.31,
+          "terrainY": 238.75,
+          "cover": 35.44
+        },
+        {
+          "d": 581.9,
+          "roadY": 196.28,
+          "crownY": 203.28,
+          "terrainY": 235.25,
+          "cover": 31.97
+        },
+        {
+          "d": 589.9,
+          "roadY": 196.25,
+          "crownY": 203.25,
+          "terrainY": 229.3,
+          "cover": 26.05
+        },
+        {
+          "d": 597.9,
+          "roadY": 196.22,
+          "crownY": 203.22,
+          "terrainY": 225.77,
+          "cover": 22.55
+        },
+        {
+          "d": 605.8,
+          "roadY": 196.19,
+          "crownY": 203.19,
+          "terrainY": 219.69,
+          "cover": 16.51
+        },
+        {
+          "d": 613.8,
+          "roadY": 196.16,
+          "crownY": 203.16,
+          "terrainY": 208.4,
+          "cover": 5.24
+        },
+        {
+          "d": 621.8,
+          "roadY": 196.13,
+          "crownY": 203.13,
+          "terrainY": 200.94,
+          "cover": -2.19
+        },
+        {
+          "d": 629.7,
+          "roadY": 196.1,
+          "crownY": 203.1,
+          "terrainY": 196.1,
+          "cover": -7
+        }
+      ]
+    },
+    {
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "minCoverRule": 10,
+      "strategy": "grid",
+      "analysis": "3883C03F",
+      "stats": {
+        "roadComponents": 2,
+        "roadLength": 1635.3760254631393,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1,
+        "ports": 2
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 236
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 268
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 300
+          },
+          "decision": "surface",
+          "reason": "detour 1.26 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 1017.9093342613627,
+            "cost": 1397.4825459657654,
+            "detourRatio": 1.2610613561322128
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [],
+      "profile": null
+    },
+    {
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "minCoverRule": 10,
+      "strategy": "organic",
+      "analysis": "3883C03F",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 3590.4009195106064,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1,
+        "ports": 2
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 236
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 268
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 300
+          },
+          "decision": "surface",
+          "reason": "detour 1.54 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 274.76768919389156,
+            "cost": 450.45620226078364,
+            "detourRatio": 1.5417906742334928
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [],
+      "profile": null
+    },
+    {
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "minCoverRule": 10,
+      "strategy": "canalStreet",
+      "analysis": "3883C03F",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 2375.4322844310277,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1,
+        "ports": 2
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 236
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 268
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 300
+          },
+          "decision": "surface",
+          "reason": "detour 2.10 ≤ 3 or no tunnel eligible",
+          "surface": {
+            "feasible": true,
+            "length": 355.22229112440084,
+            "cost": 598.7209195370908,
+            "detourRatio": 2.104302930588399
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [],
+      "profile": null
+    },
+    {
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "minCoverRule": 10,
+      "strategy": "grid",
+      "analysis": "CD2BC892",
+      "stats": {
+        "roadComponents": 2,
+        "roadLength": 2008.5205151012558,
+        "tunnels": 1,
+        "tunnelLength": 146.47866738880444,
+        "mountainConnectors": 2,
+        "ports": 2
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "component",
+            "length": 484.25288262590766
+          },
+          "decision": "tunnel",
+          "reason": "no feasible surface route",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 18178,
+            "feasible": 47,
+            "rejected": {
+              "cover": 1073,
+              "daylight": 6197,
+              "grade": 10861,
+              "approachCrossesNetwork": 1
+            },
+            "bestCost": 1886.6373070798343
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 160
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": false,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 392
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": false,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 428
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": false,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [
+        {
+          "id": 26,
+          "plan": 146.47866738880444,
+          "grade": 0.045267701308862124,
+          "minCover": 21.646767898771373,
+          "daylight": 0,
+          "wet": 0,
+          "inTransition": 0,
+          "portalOffset": 0.00034167480470159717,
+          "surfaceAtPortals": [
+            true,
+            true
+          ],
+          "necessary": true,
+          "recordedMinCover": 21.646758888305925,
+          "demand": {
+            "type": "component",
+            "length": 484.25288262590766
+          },
+          "alternative": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "cost": 1886.6373070798343,
+          "candidates": {
+            "evaluated": 18178,
+            "feasible": 47
+          },
+          "ends": [
+            {
+              "x": -56,
+              "y": 172.61590576171875,
+              "z": -224
+            },
+            {
+              "x": 28,
+              "y": 179.2466583251953,
+              "z": -344
+            }
+          ]
+        }
+      ],
+      "profile": [
+        {
+          "d": 0,
+          "roadY": 172.62,
+          "crownY": 179.62,
+          "terrainY": 172.62,
+          "cover": -7
+        },
+        {
+          "d": 7.9,
+          "roadY": 172.97,
+          "crownY": 179.97,
+          "terrainY": 177.23,
+          "cover": -2.75
+        },
+        {
+          "d": 15.8,
+          "roadY": 173.33,
+          "crownY": 180.33,
+          "terrainY": 183.43,
+          "cover": 3.1
+        },
+        {
+          "d": 23.8,
+          "roadY": 173.69,
+          "crownY": 180.69,
+          "terrainY": 191.31,
+          "cover": 10.62
+        },
+        {
+          "d": 31.7,
+          "roadY": 174.05,
+          "crownY": 181.05,
+          "terrainY": 202.7,
+          "cover": 21.65
+        },
+        {
+          "d": 39.6,
+          "roadY": 174.41,
+          "crownY": 181.41,
+          "terrainY": 217.97,
+          "cover": 36.56
+        },
+        {
+          "d": 47.5,
+          "roadY": 174.77,
+          "crownY": 181.77,
+          "terrainY": 233.65,
+          "cover": 51.88
+        },
+        {
+          "d": 55.4,
+          "roadY": 175.12,
+          "crownY": 182.12,
+          "terrainY": 252.19,
+          "cover": 70.06
+        },
+        {
+          "d": 63.3,
+          "roadY": 175.48,
+          "crownY": 182.48,
+          "terrainY": 272.24,
+          "cover": 89.75
+        },
+        {
+          "d": 71.3,
+          "roadY": 175.84,
+          "crownY": 182.84,
+          "terrainY": 270.16,
+          "cover": 87.32
+        },
+        {
+          "d": 79.2,
+          "roadY": 176.2,
+          "crownY": 183.2,
+          "terrainY": 261.81,
+          "cover": 78.61
+        },
+        {
+          "d": 87.1,
+          "roadY": 176.56,
+          "crownY": 183.56,
+          "terrainY": 253.56,
+          "cover": 70.01
+        },
+        {
+          "d": 95,
+          "roadY": 176.92,
+          "crownY": 183.92,
+          "terrainY": 244.44,
+          "cover": 60.52
+        },
+        {
+          "d": 102.9,
+          "roadY": 177.28,
+          "crownY": 184.28,
+          "terrainY": 228.83,
+          "cover": 44.55
+        },
+        {
+          "d": 110.8,
+          "roadY": 177.63,
+          "crownY": 184.63,
+          "terrainY": 213.83,
+          "cover": 29.2
+        },
+        {
+          "d": 118.8,
+          "roadY": 177.99,
+          "crownY": 184.99,
+          "terrainY": 202.31,
+          "cover": 17.31
+        },
+        {
+          "d": 126.7,
+          "roadY": 178.35,
+          "crownY": 185.35,
+          "terrainY": 193.6,
+          "cover": 8.25
+        },
+        {
+          "d": 134.6,
+          "roadY": 178.71,
+          "crownY": 185.71,
+          "terrainY": 186.54,
+          "cover": 0.83
+        },
+        {
+          "d": 142.5,
+          "roadY": 179.07,
+          "crownY": 186.07,
+          "terrainY": 181.33,
+          "cover": -4.74
+        },
+        {
+          "d": 146.5,
+          "roadY": 179.25,
+          "crownY": 186.25,
+          "terrainY": 179.25,
+          "cover": -7
+        }
+      ]
+    },
+    {
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "minCoverRule": 10,
+      "strategy": "organic",
+      "analysis": "CD2BC892",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 2089.766387882275,
+        "tunnels": 1,
+        "tunnelLength": 150.3595690337,
+        "mountainConnectors": 2,
+        "ports": 1
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 160
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 392
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 460
+          },
+          "decision": "tunnel",
+          "reason": "no feasible surface route",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 18178,
+            "feasible": 47,
+            "rejected": {
+              "cover": 1073,
+              "daylight": 6197,
+              "grade": 10861
+            },
+            "bestCost": 1846.8948572856045
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 428
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": false,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [
+        {
+          "id": 30,
+          "plan": 150.3595690337,
+          "grade": 0.02523471588967487,
+          "minCover": 19.483905632547334,
+          "daylight": 0,
+          "wet": 0,
+          "inTransition": 0,
+          "portalOffset": 0.0001867675781284106,
+          "surfaceAtPortals": [
+            true,
+            true
+          ],
+          "necessary": true,
+          "recordedMinCover": 19.48402937363386,
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 460
+          },
+          "alternative": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "cost": 1846.8948572856045,
+          "candidates": {
+            "evaluated": 18178,
+            "feasible": 47
+          },
+          "ends": [
+            {
+              "x": -56,
+              "y": 172.61590576171875,
+              "z": -224
+            },
+            {
+              "x": 16,
+              "y": 176.41018676757812,
+              "z": -356
+            }
+          ]
+        }
+      ],
+      "profile": [
+        {
+          "d": 0,
+          "roadY": 172.62,
+          "crownY": 179.62,
+          "terrainY": 172.62,
+          "cover": -7
+        },
+        {
+          "d": 7.9,
+          "roadY": 172.82,
+          "crownY": 179.82,
+          "terrainY": 177.22,
+          "cover": -2.6
+        },
+        {
+          "d": 15.8,
+          "roadY": 173.02,
+          "crownY": 180.02,
+          "terrainY": 183.46,
+          "cover": 3.44
+        },
+        {
+          "d": 23.7,
+          "roadY": 173.22,
+          "crownY": 180.22,
+          "terrainY": 191.45,
+          "cover": 11.24
+        },
+        {
+          "d": 31.7,
+          "roadY": 173.41,
+          "crownY": 180.41,
+          "terrainY": 202.84,
+          "cover": 22.43
+        },
+        {
+          "d": 39.6,
+          "roadY": 173.61,
+          "crownY": 180.61,
+          "terrainY": 219.17,
+          "cover": 38.56
+        },
+        {
+          "d": 47.5,
+          "roadY": 173.81,
+          "crownY": 180.81,
+          "terrainY": 236.32,
+          "cover": 55.51
+        },
+        {
+          "d": 55.4,
+          "roadY": 174.01,
+          "crownY": 181.01,
+          "terrainY": 254.75,
+          "cover": 73.74
+        },
+        {
+          "d": 63.3,
+          "roadY": 174.21,
+          "crownY": 181.21,
+          "terrainY": 274.99,
+          "cover": 93.77
+        },
+        {
+          "d": 71.2,
+          "roadY": 174.41,
+          "crownY": 181.41,
+          "terrainY": 273.58,
+          "cover": 92.17
+        },
+        {
+          "d": 79.1,
+          "roadY": 174.61,
+          "crownY": 181.61,
+          "terrainY": 265.14,
+          "cover": 83.52
+        },
+        {
+          "d": 87.1,
+          "roadY": 174.81,
+          "crownY": 181.81,
+          "terrainY": 258.54,
+          "cover": 76.73
+        },
+        {
+          "d": 95,
+          "roadY": 175.01,
+          "crownY": 182.01,
+          "terrainY": 248.07,
+          "cover": 66.06
+        },
+        {
+          "d": 102.9,
+          "roadY": 175.21,
+          "crownY": 182.21,
+          "terrainY": 229.53,
+          "cover": 47.32
+        },
+        {
+          "d": 110.8,
+          "roadY": 175.41,
+          "crownY": 182.41,
+          "terrainY": 214.09,
+          "cover": 31.67
+        },
+        {
+          "d": 118.7,
+          "roadY": 175.61,
+          "crownY": 182.61,
+          "terrainY": 202.1,
+          "cover": 19.48
+        },
+        {
+          "d": 126.6,
+          "roadY": 175.81,
+          "crownY": 182.81,
+          "terrainY": 193.36,
+          "cover": 10.55
+        },
+        {
+          "d": 134.5,
+          "roadY": 176.01,
+          "crownY": 183.01,
+          "terrainY": 185.85,
+          "cover": 2.84
+        },
+        {
+          "d": 142.4,
+          "roadY": 176.21,
+          "crownY": 183.21,
+          "terrainY": 180.4,
+          "cover": -2.81
+        },
+        {
+          "d": 150.4,
+          "roadY": 176.41,
+          "crownY": 183.41,
+          "terrainY": 176.41,
+          "cover": -7
+        }
+      ]
+    },
+    {
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "minCoverRule": 10,
+      "strategy": "canalStreet",
+      "analysis": "CD2BC892",
+      "stats": {
+        "roadComponents": 1,
+        "roadLength": 1942.1677838245898,
+        "tunnels": 1,
+        "tunnelLength": 150.3595690337,
+        "mountainConnectors": 2,
+        "ports": 1
+      },
+      "decisions": [
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minX",
+            "runLength": 160
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxX",
+            "runLength": 392
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 460
+          },
+          "decision": "tunnel",
+          "reason": "no feasible surface route",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": true,
+            "eligible": true,
+            "evaluated": 18178,
+            "feasible": 47,
+            "rejected": {
+              "cover": 1073,
+              "daylight": 6197,
+              "grade": 10861
+            },
+            "bestCost": 1833.974399858092
+          }
+        },
+        {
+          "demand": {
+            "type": "edgePort",
+            "side": "maxZ",
+            "runLength": 428
+          },
+          "decision": "unresolved",
+          "reason": "no surface route and no valid tunnel",
+          "surface": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "tunnel": {
+            "considered": false,
+            "eligible": false,
+            "evaluated": 0,
+            "feasible": 0,
+            "rejected": {},
+            "bestCost": null
+          }
+        }
+      ],
+      "tunnels": [
+        {
+          "id": 24,
+          "plan": 150.3595690337,
+          "grade": 0.02523471588967487,
+          "minCover": 19.483905632547334,
+          "daylight": 0,
+          "wet": 0,
+          "inTransition": 0,
+          "portalOffset": 0.0001867675781284106,
+          "surfaceAtPortals": [
+            true,
+            true
+          ],
+          "necessary": true,
+          "recordedMinCover": 19.48402937363386,
+          "demand": {
+            "type": "edgePort",
+            "side": "minZ",
+            "runLength": 460
+          },
+          "alternative": {
+            "feasible": false,
+            "reason": "no grade-limited path"
+          },
+          "cost": 1833.974399858092,
+          "candidates": {
+            "evaluated": 18178,
+            "feasible": 47
+          },
+          "ends": [
+            {
+              "x": -56,
+              "y": 172.61590576171875,
+              "z": -224
+            },
+            {
+              "x": 16,
+              "y": 176.41018676757812,
+              "z": -356
+            }
+          ]
+        }
+      ],
+      "profile": [
+        {
+          "d": 0,
+          "roadY": 172.62,
+          "crownY": 179.62,
+          "terrainY": 172.62,
+          "cover": -7
+        },
+        {
+          "d": 7.9,
+          "roadY": 172.82,
+          "crownY": 179.82,
+          "terrainY": 177.22,
+          "cover": -2.6
+        },
+        {
+          "d": 15.8,
+          "roadY": 173.02,
+          "crownY": 180.02,
+          "terrainY": 183.46,
+          "cover": 3.44
+        },
+        {
+          "d": 23.7,
+          "roadY": 173.22,
+          "crownY": 180.22,
+          "terrainY": 191.45,
+          "cover": 11.24
+        },
+        {
+          "d": 31.7,
+          "roadY": 173.41,
+          "crownY": 180.41,
+          "terrainY": 202.84,
+          "cover": 22.43
+        },
+        {
+          "d": 39.6,
+          "roadY": 173.61,
+          "crownY": 180.61,
+          "terrainY": 219.17,
+          "cover": 38.56
+        },
+        {
+          "d": 47.5,
+          "roadY": 173.81,
+          "crownY": 180.81,
+          "terrainY": 236.32,
+          "cover": 55.51
+        },
+        {
+          "d": 55.4,
+          "roadY": 174.01,
+          "crownY": 181.01,
+          "terrainY": 254.75,
+          "cover": 73.74
+        },
+        {
+          "d": 63.3,
+          "roadY": 174.21,
+          "crownY": 181.21,
+          "terrainY": 274.99,
+          "cover": 93.77
+        },
+        {
+          "d": 71.2,
+          "roadY": 174.41,
+          "crownY": 181.41,
+          "terrainY": 273.58,
+          "cover": 92.17
+        },
+        {
+          "d": 79.1,
+          "roadY": 174.61,
+          "crownY": 181.61,
+          "terrainY": 265.14,
+          "cover": 83.52
+        },
+        {
+          "d": 87.1,
+          "roadY": 174.81,
+          "crownY": 181.81,
+          "terrainY": 258.54,
+          "cover": 76.73
+        },
+        {
+          "d": 95,
+          "roadY": 175.01,
+          "crownY": 182.01,
+          "terrainY": 248.07,
+          "cover": 66.06
+        },
+        {
+          "d": 102.9,
+          "roadY": 175.21,
+          "crownY": 182.21,
+          "terrainY": 229.53,
+          "cover": 47.32
+        },
+        {
+          "d": 110.8,
+          "roadY": 175.41,
+          "crownY": 182.41,
+          "terrainY": 214.09,
+          "cover": 31.67
+        },
+        {
+          "d": 118.7,
+          "roadY": 175.61,
+          "crownY": 182.61,
+          "terrainY": 202.1,
+          "cover": 19.48
+        },
+        {
+          "d": 126.6,
+          "roadY": 175.81,
+          "crownY": 182.81,
+          "terrainY": 193.36,
+          "cover": 10.55
+        },
+        {
+          "d": 134.5,
+          "roadY": 176.01,
+          "crownY": 183.01,
+          "terrainY": 185.85,
+          "cover": 2.84
+        },
+        {
+          "d": 142.4,
+          "roadY": 176.21,
+          "crownY": 183.21,
+          "terrainY": 180.4,
+          "cover": -2.81
+        },
+        {
+          "d": 150.4,
+          "roadY": 176.41,
+          "crownY": 183.41,
+          "terrainY": 176.41,
+          "cover": -7
+        }
+      ]
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/03-2-mountain-tunnels-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/03-2-tunnel-xray-profile.png"
+  ]
+}

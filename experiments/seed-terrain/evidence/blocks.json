@@ -1,0 +1,612 @@
+{
+  "task": "04.1",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:20:39.193Z",
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "7DC97D5A",
+      "stats": {
+        "blocks": 84,
+        "byEnclosure": {
+          "roads": 48,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 36
+        },
+        "byStatus": {
+          "buildable": 84,
+          "partial": 0,
+          "unbuildable": 0
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 800741.4948906783,
+          "blocksSampled": 802032,
+          "roads": 246544,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 802032,
+          "clippedBlocks": 214251.47772787765,
+          "enclosedBlocks": 586490.0171628008
+        }
+      },
+      "claimedArea": 802032
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "9020F366",
+      "stats": {
+        "blocks": 84,
+        "byEnclosure": {
+          "roads": 48,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 36
+        },
+        "byStatus": {
+          "buildable": 84,
+          "partial": 0,
+          "unbuildable": 0
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 801299.4909216983,
+          "blocksSampled": 802032,
+          "roads": 246544,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 802032,
+          "clippedBlocks": 214355.16566459666,
+          "enclosedBlocks": 586944.3252571016
+        }
+      },
+      "claimedArea": 802032
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "EB482FFC",
+      "stats": {
+        "blocks": 83,
+        "byEnclosure": {
+          "roads": 60,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 23
+        },
+        "byStatus": {
+          "buildable": 83,
+          "partial": 0,
+          "unbuildable": 0
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 15,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 782279.0635242393,
+          "blocksSampled": 784176.75,
+          "roads": 263904,
+          "water": 0,
+          "remnants": 495.25,
+          "residual": 0,
+          "buildableInBlocks": 782900,
+          "clippedBlocks": 49330.23068281212,
+          "enclosedBlocks": 732948.832841427
+        }
+      },
+      "claimedArea": 784600
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "8B458B7D",
+      "stats": {
+        "blocks": 8,
+        "byEnclosure": {
+          "roads": 4,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 4
+        },
+        "byStatus": {
+          "buildable": 5,
+          "partial": 3,
+          "unbuildable": 0
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 838855.6550633953,
+          "blocksSampled": 833911.75,
+          "roads": 38750,
+          "water": 175914.25,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 591668,
+          "clippedBlocks": 774831.3985469264,
+          "enclosedBlocks": 64024.256516468755
+        }
+      },
+      "claimedArea": 838572
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "1057A7EC",
+      "stats": {
+        "blocks": 10,
+        "byEnclosure": {
+          "roads": 5,
+          "roadsAndWater": 1,
+          "waterOnly": 0,
+          "clipped": 4
+        },
+        "byStatus": {
+          "buildable": 2,
+          "partial": 7,
+          "unbuildable": 1
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 3,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 916192.9301782773,
+          "blocksSampled": 911404,
+          "roads": 46425,
+          "water": 90707,
+          "remnants": 40,
+          "residual": 0,
+          "buildableInBlocks": 560612,
+          "clippedBlocks": 827982.597948836,
+          "enclosedBlocks": 88210.33222944132
+        }
+      },
+      "claimedArea": 915860
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "F725D8DB",
+      "stats": {
+        "blocks": 17,
+        "byEnclosure": {
+          "roads": 13,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 4
+        },
+        "byStatus": {
+          "buildable": 9,
+          "partial": 8,
+          "unbuildable": 0
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 860486.5786340272,
+          "blocksSampled": 854861.25,
+          "roads": 44697,
+          "water": 149017.75,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 512624,
+          "clippedBlocks": 789709.0789592564,
+          "enclosedBlocks": 70777.49967477053
+        }
+      },
+      "claimedArea": 860308
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "B06009DE",
+      "stats": {
+        "blocks": 12,
+        "byEnclosure": {
+          "roads": 3,
+          "roadsAndWater": 2,
+          "waterOnly": 0,
+          "clipped": 7
+        },
+        "byStatus": {
+          "buildable": 7,
+          "partial": 4,
+          "unbuildable": 1
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 78,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 977143.0906818602,
+          "blocksSampled": 974035.5,
+          "roads": 35495.5,
+          "water": 38270.5,
+          "remnants": 774.5,
+          "residual": 0,
+          "buildableInBlocks": 504288,
+          "clippedBlocks": 935593.1998342872,
+          "enclosedBlocks": 41549.89084757304
+        }
+      },
+      "claimedArea": 976936
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "4E089962",
+      "stats": {
+        "blocks": 14,
+        "byEnclosure": {
+          "roads": 4,
+          "roadsAndWater": 3,
+          "waterOnly": 0,
+          "clipped": 7
+        },
+        "byStatus": {
+          "buildable": 7,
+          "partial": 6,
+          "unbuildable": 1
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 71,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 977230.2229587454,
+          "blocksSampled": 973578.5,
+          "roads": 36815,
+          "water": 37179.5,
+          "remnants": 1003,
+          "residual": 0,
+          "buildableInBlocks": 499592,
+          "clippedBlocks": 948757.3506431789,
+          "enclosedBlocks": 28472.87231556645
+        }
+      },
+      "claimedArea": 978408
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "2F766E68",
+      "stats": {
+        "blocks": 13,
+        "byEnclosure": {
+          "roads": 5,
+          "roadsAndWater": 4,
+          "waterOnly": 0,
+          "clipped": 4
+        },
+        "byStatus": {
+          "buildable": 5,
+          "partial": 4,
+          "unbuildable": 4
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 130,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 979189.4681134165,
+          "blocksSampled": 975684,
+          "roads": 35303,
+          "water": 36029.5,
+          "remnants": 1559.5,
+          "residual": 0,
+          "buildableInBlocks": 507060,
+          "clippedBlocks": 946061.0405230423,
+          "enclosedBlocks": 33128.42759037399
+        }
+      },
+      "claimedArea": 979920
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "EE39733E",
+      "stats": {
+        "blocks": 2,
+        "byEnclosure": {
+          "roads": 0,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 2
+        },
+        "byStatus": {
+          "buildable": 0,
+          "partial": 0,
+          "unbuildable": 2
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 11,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1034790.6180019685,
+          "blocksSampled": 1034399,
+          "roads": 14166,
+          "water": 0,
+          "remnants": 11,
+          "residual": 0,
+          "buildableInBlocks": 107016,
+          "clippedBlocks": 1034790.6180019685,
+          "enclosedBlocks": 0
+        }
+      },
+      "claimedArea": 1035208
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "76C83322",
+      "stats": {
+        "blocks": 2,
+        "byEnclosure": {
+          "roads": 0,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 2
+        },
+        "byStatus": {
+          "buildable": 0,
+          "partial": 0,
+          "unbuildable": 2
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1033250.0947941064,
+          "blocksSampled": 1032914.5,
+          "roads": 15661.5,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 155524,
+          "clippedBlocks": 1033250.0947941064,
+          "enclosedBlocks": 0
+        }
+      },
+      "claimedArea": 1033560
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "strategy": "grid",
+      "tunnels": 1,
+      "tunnelInvariant": true,
+      "signature": "8C7E400F",
+      "stats": {
+        "blocks": 2,
+        "byEnclosure": {
+          "roads": 0,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 2
+        },
+        "byStatus": {
+          "buildable": 1,
+          "partial": 0,
+          "unbuildable": 1
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1024099.1729205393,
+          "blocksSampled": 1024061,
+          "roads": 24515,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 133224,
+          "clippedBlocks": 1024099.1729205393,
+          "enclosedBlocks": 0
+        }
+      },
+      "claimedArea": 1024448
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 1,
+      "tunnelInvariant": true,
+      "signature": "8CE0E0B4",
+      "stats": {
+        "blocks": 2,
+        "byEnclosure": {
+          "roads": 0,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 2
+        },
+        "byStatus": {
+          "buildable": 0,
+          "partial": 0,
+          "unbuildable": 2
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 20,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1036788.3617835866,
+          "blocksSampled": 1036077.5,
+          "roads": 12478.5,
+          "water": 0,
+          "remnants": 20,
+          "residual": 0,
+          "buildableInBlocks": 110000,
+          "clippedBlocks": 1036788.3617835866,
+          "enclosedBlocks": 0
+        }
+      },
+      "claimedArea": 1037364
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 0,
+      "tunnelInvariant": null,
+      "signature": "784AB70A",
+      "stats": {
+        "blocks": 8,
+        "byEnclosure": {
+          "roads": 6,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 2
+        },
+        "byStatus": {
+          "buildable": 4,
+          "partial": 2,
+          "unbuildable": 2
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1029457.4358901666,
+          "blocksSampled": 1027219,
+          "roads": 21357,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 148708,
+          "clippedBlocks": 1017791.5918752658,
+          "enclosedBlocks": 11665.844014900787
+        }
+      },
+      "claimedArea": 1029468
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "tunnels": 1,
+      "tunnelInvariant": true,
+      "signature": "32183057",
+      "stats": {
+        "blocks": 6,
+        "byEnclosure": {
+          "roads": 5,
+          "roadsAndWater": 0,
+          "waterOnly": 0,
+          "clipped": 1
+        },
+        "byStatus": {
+          "buildable": 5,
+          "partial": 0,
+          "unbuildable": 1
+        },
+        "invalid": 0,
+        "fragmentInvalid": 0,
+        "simplifiedFallbacks": 0,
+        "remnants": 0,
+        "area": {
+          "chunk": 1048576,
+          "blocks": 1040226.2929338902,
+          "blocksSampled": 1038837.5,
+          "roads": 9738.5,
+          "water": 0,
+          "remnants": 0,
+          "residual": 0,
+          "buildableInBlocks": 147736,
+          "clippedBlocks": 1026893.6756726594,
+          "enclosedBlocks": 13332.617261230793
+        }
+      },
+      "claimedArea": 1040248
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/04-1-blocks-strategies.png",
+    "docs/assets/screenshots/procedural-mini-world/04-1-blocks-grid-debug.png"
+  ]
+}

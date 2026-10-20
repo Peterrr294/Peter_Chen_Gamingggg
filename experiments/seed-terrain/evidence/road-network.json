@@ -1,0 +1,1696 @@
+{
+  "task": "03.1",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:18:46.135Z",
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "strategy": "grid",
+      "signature": "259D4E0E",
+      "stats": {
+        "nodes": 101,
+        "edges": 148,
+        "edgesByKind": {
+          "road": 148,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 5120,
+          "secondary": 13312
+        },
+        "roadLength": 18432,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 65,
+        "deadEnds": 0,
+        "deadEndRatio": 0,
+        "meanDegree": 2.9306930693069306,
+        "degreeHistogram": {
+          "1": 36,
+          "4": 65
+        },
+        "orientationEntropy": 0.8524051786494786,
+        "straightness": 1,
+        "ports": 36,
+        "portsBySide": {
+          "minX": 5,
+          "maxX": 5,
+          "minZ": 13,
+          "maxZ": 13
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "strategy": "organic",
+      "signature": "41D1FD89",
+      "stats": {
+        "nodes": 49,
+        "edges": 56,
+        "edgesByKind": {
+          "road": 56,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 4279.342109750476
+        },
+        "roadLength": 6327.342109750477,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 31,
+        "deadEnds": 14,
+        "deadEndRatio": 0.2857142857142857,
+        "meanDegree": 2.2857142857142856,
+        "degreeHistogram": {
+          "1": 18,
+          "3": 30,
+          "4": 1
+        },
+        "orientationEntropy": 1.2108888071762454,
+        "straightness": 0.9578330528843755,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "strategy": "canalStreet",
+      "signature": "52A12860",
+      "stats": {
+        "nodes": 29,
+        "edges": 30,
+        "edgesByKind": {
+          "road": 30,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 1474.1263781480855
+        },
+        "roadLength": 3522.1263781480857,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 14,
+        "deadEnds": 9,
+        "deadEndRatio": 0.3103448275862069,
+        "meanDegree": 2.0689655172413794,
+        "degreeHistogram": {
+          "1": 13,
+          "2": 2,
+          "3": 13,
+          "4": 1
+        },
+        "orientationEntropy": 1.0236073896211555,
+        "straightness": 0.9825357873052282,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "strategy": "grid",
+      "signature": "0F4D65C2",
+      "stats": {
+        "nodes": 101,
+        "edges": 148,
+        "edgesByKind": {
+          "road": 148,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 5120,
+          "secondary": 13312
+        },
+        "roadLength": 18432,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 65,
+        "deadEnds": 0,
+        "deadEndRatio": 0,
+        "meanDegree": 2.9306930693069306,
+        "degreeHistogram": {
+          "1": 36,
+          "4": 65
+        },
+        "orientationEntropy": 0.8524051786494786,
+        "straightness": 1,
+        "ports": 36,
+        "portsBySide": {
+          "minX": 5,
+          "maxX": 5,
+          "minZ": 13,
+          "maxZ": 13
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "strategy": "organic",
+      "signature": "6757EEA4",
+      "stats": {
+        "nodes": 54,
+        "edges": 63,
+        "edgesByKind": {
+          "road": 63,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 4526.215634775239
+        },
+        "roadLength": 6574.21563477524,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 35,
+        "deadEnds": 15,
+        "deadEndRatio": 0.2777777777777778,
+        "meanDegree": 2.3333333333333335,
+        "degreeHistogram": {
+          "1": 19,
+          "3": 33,
+          "4": 2
+        },
+        "orientationEntropy": 1.236788482241588,
+        "straightness": 0.9309443811082054,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "strategy": "canalStreet",
+      "signature": "27D279D7",
+      "stats": {
+        "nodes": 25,
+        "edges": 25,
+        "edgesByKind": {
+          "road": 25,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 1983.5979797464465
+        },
+        "roadLength": 4031.5979797464465,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 12,
+        "deadEnds": 9,
+        "deadEndRatio": 0.36,
+        "meanDegree": 2,
+        "degreeHistogram": {
+          "1": 13,
+          "3": 11,
+          "4": 1
+        },
+        "orientationEntropy": 1.0697853927107475,
+        "straightness": 0.95464997645006,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "strategy": "grid",
+      "signature": "CA059E53",
+      "stats": {
+        "nodes": 116,
+        "edges": 175,
+        "edgesByKind": {
+          "road": 175,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 6144,
+          "secondary": 13312
+        },
+        "roadLength": 19456,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 78,
+        "deadEnds": 0,
+        "deadEndRatio": 0,
+        "meanDegree": 3.0172413793103448,
+        "degreeHistogram": {
+          "1": 38,
+          "4": 78
+        },
+        "orientationEntropy": 0.8997437586982626,
+        "straightness": 1,
+        "ports": 38,
+        "portsBySide": {
+          "minX": 6,
+          "maxX": 6,
+          "minZ": 13,
+          "maxZ": 13
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "strategy": "organic",
+      "signature": "6B1087A4",
+      "stats": {
+        "nodes": 47,
+        "edges": 54,
+        "edgesByKind": {
+          "road": 54,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 4411.807382485113
+        },
+        "roadLength": 6459.807382485113,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 30,
+        "deadEnds": 13,
+        "deadEndRatio": 0.2765957446808511,
+        "meanDegree": 2.297872340425532,
+        "degreeHistogram": {
+          "1": 17,
+          "3": 29,
+          "4": 1
+        },
+        "orientationEntropy": 1.354522995937504,
+        "straightness": 0.9399771638777515,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "strategy": "canalStreet",
+      "signature": "E8945764",
+      "stats": {
+        "nodes": 31,
+        "edges": 33,
+        "edgesByKind": {
+          "road": 33,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2048,
+          "lane": 2224.181444068749
+        },
+        "roadLength": 4272.1814440687485,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 17,
+        "deadEnds": 10,
+        "deadEndRatio": 0.3225806451612903,
+        "meanDegree": 2.129032258064516,
+        "degreeHistogram": {
+          "1": 14,
+          "3": 16,
+          "4": 1
+        },
+        "orientationEntropy": 0.9965386655720391,
+        "straightness": 0.975927657261744,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "strategy": "grid",
+      "signature": "35B89829",
+      "stats": {
+        "nodes": 68,
+        "edges": 61,
+        "edgesByKind": {
+          "road": 61,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 1610.690843813804,
+          "secondary": 2917.5549354892846
+        },
+        "roadLength": 4528.245779303088,
+        "roadComponents": 7,
+        "canalComponents": 0,
+        "junctions": 17,
+        "deadEnds": 45,
+        "deadEndRatio": 0.6617647058823529,
+        "meanDegree": 1.7941176470588236,
+        "degreeHistogram": {
+          "1": 47,
+          "2": 4,
+          "3": 1,
+          "4": 16
+        },
+        "orientationEntropy": 0.9390547058029697,
+        "straightness": 1,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "strategy": "organic",
+      "signature": "14506159",
+      "stats": {
+        "nodes": 50,
+        "edges": 54,
+        "edgesByKind": {
+          "road": 54,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2299.0253480423116,
+          "lane": 2858.913317647555
+        },
+        "roadLength": 5157.938665689867,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 29,
+        "deadEnds": 19,
+        "deadEndRatio": 0.38,
+        "meanDegree": 2.16,
+        "degreeHistogram": {
+          "1": 21,
+          "3": 29
+        },
+        "orientationEntropy": 1.7479518040858826,
+        "straightness": 0.865635251087589,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "strategy": "canalStreet",
+      "signature": "D44150A0",
+      "stats": {
+        "nodes": 62,
+        "edges": 67,
+        "edgesByKind": {
+          "road": 61,
+          "canal": 1,
+          "bridgeCandidate": 5,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "canal": 1205.3859191265592,
+          "primary": 4152.9371001148,
+          "lane": 1811.2138080610018,
+          "secondary": 376,
+          "bridge": 183.55417527999327
+        },
+        "roadLength": 6523.705083455796,
+        "roadComponents": 1,
+        "canalComponents": 1,
+        "junctions": 32,
+        "deadEnds": 12,
+        "deadEndRatio": 0.2,
+        "meanDegree": 2.2,
+        "degreeHistogram": {
+          "1": 20,
+          "2": 8,
+          "3": 32
+        },
+        "orientationEntropy": 2.2214379872238856,
+        "straightness": 0.8508041615648843,
+        "ports": 10,
+        "portsBySide": {
+          "minX": 4,
+          "maxX": 4,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 5,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "strategy": "grid",
+      "signature": "41D50338",
+      "stats": {
+        "nodes": 86,
+        "edges": 81,
+        "edgesByKind": {
+          "road": 81,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2074.8821320997695,
+          "secondary": 3836.256818668905
+        },
+        "roadLength": 5911.1389507686745,
+        "roadComponents": 5,
+        "canalComponents": 0,
+        "junctions": 26,
+        "deadEnds": 53,
+        "deadEndRatio": 0.6162790697674418,
+        "meanDegree": 1.8837209302325582,
+        "degreeHistogram": {
+          "1": 58,
+          "2": 2,
+          "3": 4,
+          "4": 22
+        },
+        "orientationEntropy": 1.644108660961702,
+        "straightness": 0.9640539789761828,
+        "ports": 5,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 2,
+          "maxZ": 2
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 2
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "strategy": "organic",
+      "signature": "E1262D1B",
+      "stats": {
+        "nodes": 44,
+        "edges": 44,
+        "edgesByKind": {
+          "road": 44,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2081.5502456369522,
+          "lane": 1985.80518341739
+        },
+        "roadLength": 4067.355429054343,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 22,
+        "deadEnds": 19,
+        "deadEndRatio": 0.4318181818181818,
+        "meanDegree": 2,
+        "degreeHistogram": {
+          "1": 22,
+          "3": 22
+        },
+        "orientationEntropy": 1.5711678454873264,
+        "straightness": 0.8961488226219251,
+        "ports": 3,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "strategy": "canalStreet",
+      "signature": "92BF78C0",
+      "stats": {
+        "nodes": 55,
+        "edges": 60,
+        "edgesByKind": {
+          "road": 55,
+          "canal": 1,
+          "bridgeCandidate": 4,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "canal": 1133.6650413815084,
+          "primary": 3853.5576398961484,
+          "lane": 1658.2245160471034,
+          "secondary": 738.186601839818,
+          "bridge": 151.59797974644667
+        },
+        "roadLength": 6401.566737529518,
+        "roadComponents": 1,
+        "canalComponents": 1,
+        "junctions": 30,
+        "deadEnds": 10,
+        "deadEndRatio": 0.18867924528301888,
+        "meanDegree": 2.2264150943396226,
+        "degreeHistogram": {
+          "1": 18,
+          "2": 5,
+          "3": 30
+        },
+        "orientationEntropy": 2.1932674316986027,
+        "straightness": 0.8193034588583487,
+        "ports": 10,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 4,
+          "maxZ": 4
+        },
+        "bridges": 4,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "strategy": "grid",
+      "signature": "57CB5A02",
+      "stats": {
+        "nodes": 82,
+        "edges": 78,
+        "edgesByKind": {
+          "road": 78,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2001.244534254516,
+          "secondary": 4005.547962908838
+        },
+        "roadLength": 6006.792497163354,
+        "roadComponents": 4,
+        "canalComponents": 0,
+        "junctions": 26,
+        "deadEnds": 51,
+        "deadEndRatio": 0.6219512195121951,
+        "meanDegree": 1.9024390243902438,
+        "degreeHistogram": {
+          "1": 56,
+          "3": 4,
+          "4": 22
+        },
+        "orientationEntropy": 1.4099110009924865,
+        "straightness": 0.9804134877782285,
+        "ports": 5,
+        "portsBySide": {
+          "minX": 2,
+          "maxX": 2,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "strategy": "organic",
+      "signature": "3F953FBE",
+      "stats": {
+        "nodes": 34,
+        "edges": 33,
+        "edgesByKind": {
+          "road": 33,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "lane": 3214.1646280304067,
+          "primary": 873.1772311733868
+        },
+        "roadLength": 4087.341859203794,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 16,
+        "deadEnds": 17,
+        "deadEndRatio": 0.5,
+        "meanDegree": 1.9411764705882353,
+        "degreeHistogram": {
+          "1": 18,
+          "3": 16
+        },
+        "orientationEntropy": 1.9173261901959262,
+        "straightness": 0.830811328531512,
+        "ports": 1,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 0,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "strategy": "canalStreet",
+      "signature": "81BDB84E",
+      "stats": {
+        "nodes": 62,
+        "edges": 68,
+        "edgesByKind": {
+          "road": 63,
+          "canal": 1,
+          "bridgeCandidate": 4,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "canal": 1160.0394074094481,
+          "primary": 3970.2226957114754,
+          "lane": 1969.0598500944768,
+          "secondary": 24,
+          "bridge": 141.64011047410946
+        },
+        "roadLength": 6104.922656280061,
+        "roadComponents": 1,
+        "canalComponents": 1,
+        "junctions": 34,
+        "deadEnds": 12,
+        "deadEndRatio": 0.2,
+        "meanDegree": 2.2333333333333334,
+        "degreeHistogram": {
+          "1": 20,
+          "2": 6,
+          "3": 34
+        },
+        "orientationEntropy": 2.1059967918947997,
+        "straightness": 0.8631656348212701,
+        "ports": 10,
+        "portsBySide": {
+          "minX": 4,
+          "maxX": 4,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 4,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "strategy": "grid",
+      "signature": "13800DC8",
+      "stats": {
+        "nodes": 113,
+        "edges": 104,
+        "edgesByKind": {
+          "road": 104,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2145.949585195728,
+          "secondary": 5192.516936856406
+        },
+        "roadLength": 7338.466522052135,
+        "roadComponents": 9,
+        "canalComponents": 0,
+        "junctions": 34,
+        "deadEnds": 63,
+        "deadEndRatio": 0.5575221238938053,
+        "meanDegree": 1.8407079646017699,
+        "degreeHistogram": {
+          "1": 71,
+          "2": 8,
+          "3": 15,
+          "4": 19
+        },
+        "orientationEntropy": 1.5479817755296505,
+        "straightness": 0.9818923500337504,
+        "ports": 8,
+        "portsBySide": {
+          "minX": 3,
+          "maxX": 2,
+          "minZ": 1,
+          "maxZ": 2
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 6
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "strategy": "organic",
+      "signature": "45DF7292",
+      "stats": {
+        "nodes": 53,
+        "edges": 56,
+        "edgesByKind": {
+          "road": 56,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 2501.0436499474827,
+          "lane": 3615.1865479455705
+        },
+        "roadLength": 6116.230197893052,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 29,
+        "deadEnds": 20,
+        "deadEndRatio": 0.37735849056603776,
+        "meanDegree": 2.1132075471698113,
+        "degreeHistogram": {
+          "1": 24,
+          "3": 28,
+          "4": 1
+        },
+        "orientationEntropy": 1.657182844087906,
+        "straightness": 0.9153791779325122,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "strategy": "canalStreet",
+      "signature": "B725A28B",
+      "stats": {
+        "nodes": 38,
+        "edges": 40,
+        "edgesByKind": {
+          "road": 39,
+          "canal": 1,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "canal": 548,
+          "primary": 2894.994213686571,
+          "lane": 2317.991964764219
+        },
+        "roadLength": 5212.986178450791,
+        "roadComponents": 1,
+        "canalComponents": 1,
+        "junctions": 21,
+        "deadEnds": 9,
+        "deadEndRatio": 0.25,
+        "meanDegree": 2.1666666666666665,
+        "degreeHistogram": {
+          "1": 15,
+          "3": 21
+        },
+        "orientationEntropy": 2.0688237214218765,
+        "straightness": 0.8571040352291606,
+        "ports": 8,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 3,
+          "minZ": 3,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "strategy": "grid",
+      "signature": "05104B4E",
+      "stats": {
+        "nodes": 95,
+        "edges": 81,
+        "edgesByKind": {
+          "road": 80,
+          "canal": 0,
+          "bridgeCandidate": 1,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 1835.1322132498026,
+          "bridge": 34,
+          "secondary": 3646.3371884014828
+        },
+        "roadLength": 5515.469401651286,
+        "roadComponents": 14,
+        "canalComponents": 0,
+        "junctions": 22,
+        "deadEnds": 59,
+        "deadEndRatio": 0.6210526315789474,
+        "meanDegree": 1.7052631578947368,
+        "degreeHistogram": {
+          "1": 64,
+          "2": 9,
+          "3": 8,
+          "4": 14
+        },
+        "orientationEntropy": 1.3292272197487676,
+        "straightness": 0.9835837926876401,
+        "ports": 5,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 4
+        },
+        "bridges": 1,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "strategy": "organic",
+      "signature": "146A5946",
+      "stats": {
+        "nodes": 56,
+        "edges": 60,
+        "edgesByKind": {
+          "road": 60,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 3547.7789355477094,
+          "lane": 3561.484469727721
+        },
+        "roadLength": 7109.263405275432,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 32,
+        "deadEnds": 20,
+        "deadEndRatio": 0.35714285714285715,
+        "meanDegree": 2.142857142857143,
+        "degreeHistogram": {
+          "1": 24,
+          "3": 32
+        },
+        "orientationEntropy": 2.070543780230831,
+        "straightness": 0.8561652572307039,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "strategy": "canalStreet",
+      "signature": "BCA48159",
+      "stats": {
+        "nodes": 34,
+        "edges": 34,
+        "edgesByKind": {
+          "road": 34,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 3722.7887664463315,
+          "lane": 1833.8851213716584
+        },
+        "roadLength": 5556.6738878179885,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 17,
+        "deadEnds": 13,
+        "deadEndRatio": 0.38235294117647056,
+        "meanDegree": 2,
+        "degreeHistogram": {
+          "1": 17,
+          "3": 17
+        },
+        "orientationEntropy": 2.16758316433671,
+        "straightness": 0.8057423157147247,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "strategy": "grid",
+      "signature": "B400D011",
+      "stats": {
+        "nodes": 98,
+        "edges": 90,
+        "edgesByKind": {
+          "road": 89,
+          "canal": 0,
+          "bridgeCandidate": 1,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 1909.204372191287,
+          "bridge": 29.999999999999982,
+          "secondary": 4727.958107499898
+        },
+        "roadLength": 6667.162479691184,
+        "roadComponents": 8,
+        "canalComponents": 0,
+        "junctions": 29,
+        "deadEnds": 51,
+        "deadEndRatio": 0.5204081632653061,
+        "meanDegree": 1.836734693877551,
+        "degreeHistogram": {
+          "1": 58,
+          "2": 11,
+          "3": 16,
+          "4": 13
+        },
+        "orientationEntropy": 1.9113588305348592,
+        "straightness": 0.971096911191661,
+        "ports": 7,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 2,
+          "minZ": 3,
+          "maxZ": 2
+        },
+        "bridges": 1,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 7
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "strategy": "organic",
+      "signature": "4980FC22",
+      "stats": {
+        "nodes": 61,
+        "edges": 73,
+        "edgesByKind": {
+          "road": 73,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 3038.5734370748714,
+          "lane": 3957.5487852708793
+        },
+        "roadLength": 6996.122222345751,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 42,
+        "deadEnds": 15,
+        "deadEndRatio": 0.2459016393442623,
+        "meanDegree": 2.3934426229508197,
+        "degreeHistogram": {
+          "1": 19,
+          "3": 41,
+          "4": 1
+        },
+        "orientationEntropy": 1.765254026368887,
+        "straightness": 0.8771508404561564,
+        "ports": 4,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 1,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "strategy": "canalStreet",
+      "signature": "EF842179",
+      "stats": {
+        "nodes": 40,
+        "edges": 42,
+        "edgesByKind": {
+          "road": 41,
+          "canal": 1,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "canal": 540,
+          "primary": 3421.1815596266056,
+          "lane": 2026.3537676853377
+        },
+        "roadLength": 5447.5353273119445,
+        "roadComponents": 1,
+        "canalComponents": 1,
+        "junctions": 22,
+        "deadEnds": 9,
+        "deadEndRatio": 0.23684210526315788,
+        "meanDegree": 2.1578947368421053,
+        "degreeHistogram": {
+          "1": 16,
+          "3": 22
+        },
+        "orientationEntropy": 2.067577211894763,
+        "straightness": 0.8301817273338398,
+        "ports": 9,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 3,
+          "minZ": 1,
+          "maxZ": 4
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 0
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "strategy": "grid",
+      "signature": "132AEB07",
+      "stats": {
+        "nodes": 15,
+        "edges": 14,
+        "edgesByKind": {
+          "road": 14,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 220,
+          "secondary": 1406.8829005943212
+        },
+        "roadLength": 1626.8829005943212,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 5,
+        "deadEnds": 6,
+        "deadEndRatio": 0.4,
+        "meanDegree": 1.8666666666666667,
+        "degreeHistogram": {
+          "1": 8,
+          "2": 2,
+          "3": 4,
+          "4": 1
+        },
+        "orientationEntropy": 2.632083015077403,
+        "straightness": 0.7465368631527864,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 5
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "strategy": "organic",
+      "signature": "4BC7D506",
+      "stats": {
+        "nodes": 12,
+        "edges": 11,
+        "edgesByKind": {
+          "road": 10,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 1
+        },
+        "lengthByClass": {
+          "lane": 268.6491106406735,
+          "secondary": 1933.7212836965134,
+          "primary": 629.7428046432922
+        },
+        "roadLength": 2832.113198980479,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 4,
+        "deadEnds": 3,
+        "deadEndRatio": 0.25,
+        "meanDegree": 1.8333333333333333,
+        "degreeHistogram": {
+          "1": 6,
+          "2": 2,
+          "3": 4
+        },
+        "orientationEntropy": 2.8148126592498164,
+        "straightness": 0.7700547465538947,
+        "ports": 3,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 1,
+        "tunnelLength": 629.7428046432922,
+        "mountainConnectors": 6
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "strategy": "canalStreet",
+      "signature": "08BDC05F",
+      "stats": {
+        "nodes": 12,
+        "edges": 11,
+        "edgesByKind": {
+          "road": 10,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 1
+        },
+        "lengthByClass": {
+          "lane": 252.9801607618664,
+          "secondary": 1911.609827516512,
+          "primary": 629.7428046432922
+        },
+        "roadLength": 2794.3327929216703,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 4,
+        "deadEnds": 3,
+        "deadEndRatio": 0.25,
+        "meanDegree": 1.8333333333333333,
+        "degreeHistogram": {
+          "1": 6,
+          "2": 2,
+          "3": 4
+        },
+        "orientationEntropy": 2.8648896387396516,
+        "straightness": 0.7690737600899886,
+        "ports": 3,
+        "portsBySide": {
+          "minX": 1,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 1,
+        "tunnelLength": 629.7428046432922,
+        "mountainConnectors": 6
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "strategy": "grid",
+      "signature": "78D364DC",
+      "stats": {
+        "nodes": 12,
+        "edges": 10,
+        "edgesByKind": {
+          "road": 10,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "primary": 223.99999999999994,
+          "secondary": 1411.3760254631393
+        },
+        "roadLength": 1635.3760254631393,
+        "roadComponents": 2,
+        "canalComponents": 0,
+        "junctions": 3,
+        "deadEnds": 6,
+        "deadEndRatio": 0.5,
+        "meanDegree": 1.6666666666666667,
+        "degreeHistogram": {
+          "1": 8,
+          "2": 1,
+          "3": 2,
+          "4": 1
+        },
+        "orientationEntropy": 2.8577295660405513,
+        "straightness": 0.8711460185135957,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "strategy": "organic",
+      "signature": "BDE0CAD8",
+      "stats": {
+        "nodes": 44,
+        "edges": 49,
+        "edgesByKind": {
+          "road": 49,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "lane": 2144.5197188142947,
+          "primary": 1171.1135115024185,
+          "secondary": 274.76768919389156
+        },
+        "roadLength": 3590.4009195106064,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 27,
+        "deadEnds": 15,
+        "deadEndRatio": 0.3409090909090909,
+        "meanDegree": 2.227272727272727,
+        "degreeHistogram": {
+          "1": 17,
+          "3": 27
+        },
+        "orientationEntropy": 1.9005985701318147,
+        "straightness": 0.8226518877364845,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "strategy": "canalStreet",
+      "signature": "65AE19D7",
+      "stats": {
+        "nodes": 22,
+        "edges": 22,
+        "edgesByKind": {
+          "road": 22,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 0
+        },
+        "lengthByClass": {
+          "lane": 1205.5358222089933,
+          "primary": 814.6741710976337,
+          "secondary": 355.22229112440084
+        },
+        "roadLength": 2375.4322844310277,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 11,
+        "deadEnds": 9,
+        "deadEndRatio": 0.4090909090909091,
+        "meanDegree": 2,
+        "degreeHistogram": {
+          "1": 11,
+          "3": 11
+        },
+        "orientationEntropy": 2.317962543121617,
+        "straightness": 0.8183452941409388,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 1,
+          "minZ": 0,
+          "maxZ": 1
+        },
+        "bridges": 0,
+        "tunnels": 0,
+        "tunnelLength": 0,
+        "mountainConnectors": 1
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "strategy": "grid",
+      "signature": "F7D03527",
+      "stats": {
+        "nodes": 29,
+        "edges": 27,
+        "edgesByKind": {
+          "road": 26,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 1
+        },
+        "lengthByClass": {
+          "primary": 764.4786673888044,
+          "secondary": 1244.0418477124513
+        },
+        "roadLength": 2008.5205151012558,
+        "roadComponents": 2,
+        "canalComponents": 0,
+        "junctions": 8,
+        "deadEnds": 16,
+        "deadEndRatio": 0.5517241379310345,
+        "meanDegree": 1.8620689655172413,
+        "degreeHistogram": {
+          "1": 18,
+          "2": 3,
+          "3": 2,
+          "4": 6
+        },
+        "orientationEntropy": 2.095986002018313,
+        "straightness": 0.8966437390093012,
+        "ports": 2,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 2,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 1,
+        "tunnelLength": 146.47866738880444,
+        "mountainConnectors": 2
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "strategy": "organic",
+      "signature": "85F8CD14",
+      "stats": {
+        "nodes": 27,
+        "edges": 31,
+        "edgesByKind": {
+          "road": 30,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 1
+        },
+        "lengthByClass": {
+          "lane": 1534.938430145708,
+          "secondary": 404.46838870286706,
+          "primary": 150.3595690337
+        },
+        "roadLength": 2089.766387882275,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 16,
+        "deadEnds": 7,
+        "deadEndRatio": 0.25925925925925924,
+        "meanDegree": 2.2962962962962963,
+        "degreeHistogram": {
+          "1": 8,
+          "2": 3,
+          "3": 16
+        },
+        "orientationEntropy": 2.204493798558742,
+        "straightness": 0.8313104104690623,
+        "ports": 1,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 1,
+        "tunnelLength": 150.3595690337,
+        "mountainConnectors": 2
+      },
+      "warnings": []
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "strategy": "canalStreet",
+      "signature": "6AB18DB8",
+      "stats": {
+        "nodes": 21,
+        "edges": 25,
+        "edgesByKind": {
+          "road": 24,
+          "canal": 0,
+          "bridgeCandidate": 0,
+          "tunnel": 1
+        },
+        "lengthByClass": {
+          "lane": 1396.9966803375153,
+          "secondary": 394.8115344533747,
+          "primary": 150.3595690337
+        },
+        "roadLength": 1942.1677838245898,
+        "roadComponents": 1,
+        "canalComponents": 0,
+        "junctions": 13,
+        "deadEnds": 4,
+        "deadEndRatio": 0.19047619047619047,
+        "meanDegree": 2.380952380952381,
+        "degreeHistogram": {
+          "1": 5,
+          "2": 3,
+          "3": 13
+        },
+        "orientationEntropy": 2.3018352195660357,
+        "straightness": 0.8090922213485368,
+        "ports": 1,
+        "portsBySide": {
+          "minX": 0,
+          "maxX": 0,
+          "minZ": 1,
+          "maxZ": 0
+        },
+        "bridges": 0,
+        "tunnels": 1,
+        "tunnelLength": 150.3595690337,
+        "mountainConnectors": 2
+      },
+      "warnings": [
+        "canalStreet: no water body ≥ canalRegionMinArea; only land streets were generated (cityMatch conflict noWater applies)"
+      ]
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/03-1-network-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/03-1-network-strategies-debug.png"
+  ]
+}

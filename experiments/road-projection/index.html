@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A deterministic road projection study over the finite Iceland terrain height field." />
+    <title>Road Projection Lab — Surface-Aligned Path Data</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← PETER'S GAME LAB</a>
+      <p>FLAVOR CLASH / ROAD PROJECTION LAB</p>
+      <span id="statusText">PROJECTING</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">ROAD DATA / SURFACE QUERY</p><h1>Project paths,<br />not road meshes.</h1></div>
+        <div><p class="lede">A deterministic conversion from normalized road control points to surface-aligned, validated, serializable path samples.</p><p class="scope">Gray shows the original XZ input. Green and red show valid and invalid projected segments. This round does not create road geometry, WFC, buildings, or environment scattering.</p></div>
+      </section>
+
+      <section class="workspace">
+        <article class="viewport-panel">
+          <div class="panel-head"><span>PROJECTION DEBUG VIEW</span><strong>RAW / VALID / INVALID / NORMALS</strong></div>
+          <canvas id="projectionCanvas" aria-label="Road paths projected onto the finite Iceland terrain"></canvas>
+          <div class="legend"><span><i class="raw"></i>Raw XZ</span><span><i class="valid"></i>Valid projection</span><span><i class="invalid"></i>Invalid projection</span><span><i class="normal"></i>Surface normal</span></div>
+        </article>
+        <aside class="control-panel">
+          <div class="panel-head"><span>PROJECTION PARAMETERS</span><strong>NO TERRAIN REBUILD</strong></div>
+          <div id="guiMount"></div>
+          <dl class="stats">
+            <div><dt>Paths</dt><dd id="pathCount">—</dd></div>
+            <div><dt>Samples</dt><dd id="sampleCount">—</dd></div>
+            <div><dt>Invalid ranges</dt><dd id="invalidRangeCount">—</dd></div>
+            <div><dt>Valid samples</dt><dd id="validSampleCount">—</dd></div>
+            <div><dt>Terrain signature</dt><dd id="terrainSignature">—</dd></div>
+            <div><dt>Terrain rebuilds</dt><dd id="terrainRebuilds">—</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="output-panel">
+        <div class="panel-head"><span>SERIALIZABLE OUTPUT PREVIEW</span><strong id="outputStatus">READY</strong></div>
+        <pre id="outputPreview"></pre>
+      </section>
+
+      <nav class="footer-nav"><a href="../iceland-region/">← Iceland Region Lab</a><a href="../../index.html#home">Back to project index</a></nav>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

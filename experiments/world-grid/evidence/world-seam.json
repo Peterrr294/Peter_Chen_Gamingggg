@@ -1,0 +1,2394 @@
+{
+  "task": "06.3a Multi-Chunk Terrain & Water Seam",
+  "experiment": "/experiments/world-grid/",
+  "testedAt": "2026-10-19T04:57:35.425Z",
+  "rules": {
+    "maxTransitionSlopeDeg": 35,
+    "createdSlopeMargin": 2,
+    "maxIterations": 8,
+    "waterLevelTolerance": 1,
+    "exchangeRounds": 2,
+    "freeboard": 1
+  },
+  "default": {
+    "worldSeed": 6201,
+    "transitionWidth": 128,
+    "raw": {
+      "edgesResolved": 0,
+      "edgesC1": 0,
+      "edgesUnresolved": 0,
+      "maxSeamStepResolved": 0,
+      "maxSeamStepAll": 296.36,
+      "maxBandSlopeResolved": 0,
+      "maxBandSlopeAll": 74.7,
+      "maxKinkResolved": 0,
+      "medianKinkResolved": [],
+      "maxNormalResolved": 0,
+      "waterDiscontinuousEdges": 6,
+      "waterOneSidedSamples": 489,
+      "cornersClosed": 0,
+      "maxCornerSpread": 250.74
+    },
+    "harmonized": {
+      "edgesResolved": 4,
+      "edgesC1": 4,
+      "edgesUnresolved": 8,
+      "maxSeamStepResolved": 0,
+      "maxSeamStepAll": 296.36,
+      "maxBandSlopeResolved": 34.3,
+      "maxBandSlopeAll": 74.7,
+      "maxKinkResolved": 8.58,
+      "medianKinkResolved": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxNormalResolved": 8.93,
+      "waterDiscontinuousEdges": 4,
+      "waterOneSidedSamples": 443,
+      "cornersClosed": 1,
+      "maxCornerSpread": 248.14
+    },
+    "rawLoadMs": 24093,
+    "loadMs": 23710,
+    "harmonyMs": 537,
+    "edges": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 163.53,
+        "reason": "join would create slopes up to 73.7° (> 35°) inside 128 m; raw step 163.5 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 163.53,
+        "heightMean": 44.23,
+        "slope": {
+          "kinkMaxDeg": 88.04,
+          "kinkP95Deg": 65.4,
+          "kinkMedianDeg": 23.22,
+          "bandMaxSlopeDeg": 73.4
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 0,
+          "status": "n/a (empty slot on one side)"
+        }
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 296.36,
+        "reason": "join would create slopes up to 74.0° (> 35°) inside 128 m; raw step 296.4 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 296.36,
+        "heightMean": 200.15,
+        "slope": {
+          "kinkMaxDeg": 62.05,
+          "kinkP95Deg": 44.15,
+          "kinkMedianDeg": 8.573,
+          "bandMaxSlopeDeg": 74.7
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 0,
+          "status": "n/a (empty slot on one side)"
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 234.84,
+        "reason": "join would create slopes up to 72.7° (> 35°) inside 128 m; raw step 234.8 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 234.84,
+        "heightMean": 137.3,
+        "slope": {
+          "kinkMaxDeg": 59.06,
+          "kinkP95Deg": 48.78,
+          "kinkMedianDeg": 6.925,
+          "bandMaxSlopeDeg": 69.8
+        },
+        "water": {
+          "status": "discontinuous",
+          "oneSided": 8,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): river 31 m | mountain, no water body": 8
+          }
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 8,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 1,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 289.86,
+        "reason": "join would create slopes up to 73.4° (> 35°) inside 128 m; raw step 289.9 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 289.86,
+        "heightMean": 227.42,
+        "slope": {
+          "kinkMaxDeg": 60.4,
+          "kinkP95Deg": 51.04,
+          "kinkMedianDeg": 18.71,
+          "bandMaxSlopeDeg": 71.4
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 12,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 25.29,
+        "reason": "join would create slopes up to 37.5° (> 35°) inside 128 m; raw step 25.3 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 25.29,
+        "heightMean": 10.44,
+        "slope": {
+          "kinkMaxDeg": 34.62,
+          "kinkP95Deg": 22.5,
+          "kinkMedianDeg": 7.413,
+          "bandMaxSlopeDeg": 44.3
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 1,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "rawMaxStep": 5.18,
+        "reason": null,
+        "slopeNote": null,
+        "positionError": 0,
+        "heightMax": 0,
+        "heightMean": 0,
+        "slope": {
+          "kinkMaxDeg": 8.58,
+          "kinkP95Deg": 6.45,
+          "kinkMedianDeg": 0,
+          "bandMaxSlopeDeg": 11.2
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 6,
+          "unpaired": 0,
+          "status": "all paired"
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "rawMaxStep": 34.1,
+        "reason": null,
+        "slopeNote": null,
+        "positionError": 0,
+        "heightMax": 0,
+        "heightMean": 0,
+        "slope": {
+          "kinkMaxDeg": 5.87,
+          "kinkP95Deg": 4.02,
+          "kinkMedianDeg": 0,
+          "bandMaxSlopeDeg": 29.6
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 10,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 53.9,
+        "reason": "join would create slopes up to 44.0° (> 35°) inside 128 m; raw step 53.9 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 54.85,
+        "heightMean": 26.6,
+        "slope": {
+          "kinkMaxDeg": 23.33,
+          "kinkP95Deg": 21.06,
+          "kinkMedianDeg": 5.571,
+          "bandMaxSlopeDeg": 49.6
+        },
+        "water": {
+          "status": "discontinuous",
+          "oneSided": 9,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): river 29 m | plain, no water body": 9
+          }
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 9,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 7,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "rawMaxStep": 26.01,
+        "reason": null,
+        "slopeNote": null,
+        "positionError": 0,
+        "heightMax": 0,
+        "heightMean": 0,
+        "slope": {
+          "kinkMaxDeg": 5.87,
+          "kinkP95Deg": 4.04,
+          "kinkMedianDeg": 0,
+          "bandMaxSlopeDeg": 34.3
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 11,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 100.86,
+        "reason": "join would create slopes up to 51.3° (> 35°) inside 128 m; raw step 100.9 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 100.86,
+        "heightMean": 82.55,
+        "slope": {
+          "kinkMaxDeg": 33.72,
+          "kinkP95Deg": 25.26,
+          "kinkMedianDeg": 8.86,
+          "bandMaxSlopeDeg": 47.1
+        },
+        "water": {
+          "status": "discontinuous",
+          "oneSided": 257,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 29 m": 66,
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 30 m": 125,
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 31 m": 66
+          }
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 257,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 0,
+          "status": "no ports"
+        }
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "rawMaxStep": 17.53,
+        "reason": null,
+        "slopeNote": null,
+        "positionError": 0,
+        "heightMax": 0,
+        "heightMean": 0,
+        "slope": {
+          "kinkMaxDeg": 8.58,
+          "kinkP95Deg": 7.04,
+          "kinkMedianDeg": 0,
+          "bandMaxSlopeDeg": 32.5
+        },
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "rawWaterCounts": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 3,
+          "status": "unpaired ports"
+        }
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "status": "unresolved",
+        "continuity": "none",
+        "rawMaxStep": 47.1,
+        "reason": "join would create slopes up to 40.6° (> 35°) inside 128 m; raw step 47.1 m",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "positionError": 0,
+        "heightMax": 47.09,
+        "heightMean": 19.14,
+        "slope": {
+          "kinkMaxDeg": 21.77,
+          "kinkP95Deg": 13.41,
+          "kinkMedianDeg": 2.661,
+          "bandMaxSlopeDeg": 38.3
+        },
+        "water": {
+          "status": "discontinuous",
+          "oneSided": 169,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): sea 0 m | coast, sea level 0 m": 169
+          }
+        },
+        "rawWaterCounts": {
+          "both": 88,
+          "onlyA": 146,
+          "onlyB": 23,
+          "runsA": 1,
+          "runsB": 1
+        },
+        "ports": {
+          "paired": 0,
+          "unpaired": 1,
+          "status": "unpaired ports"
+        }
+      }
+    ],
+    "harmonyEdges": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "a": "chunk_-1_-1",
+        "b": "chunk_0_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "rawMaxStep": 163.53,
+        "madeSteepCells": 2377,
+        "maxCreatedSlope": 73.7,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 73.7° (> 35°) inside 128 m; raw step 163.5 m"
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "a": "chunk_-1_-1",
+        "b": "chunk_-1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "rawMaxStep": 296.36,
+        "madeSteepCells": 9939,
+        "maxCreatedSlope": 74,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 74.0° (> 35°) inside 128 m; raw step 296.4 m"
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "a": "chunk_0_-1",
+        "b": "chunk_1_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "rawMaxStep": 234.84,
+        "madeSteepCells": 6378,
+        "maxCreatedSlope": 72.7,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 72.7° (> 35°) inside 128 m; raw step 234.8 m"
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "a": "chunk_0_-1",
+        "b": "chunk_0_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "rawMaxStep": 289.86,
+        "madeSteepCells": 10240,
+        "maxCreatedSlope": 73.4,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 73.4° (> 35°) inside 128 m; raw step 289.9 m"
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "a": "chunk_1_-1",
+        "b": "chunk_1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "rawMaxStep": 25.29,
+        "madeSteepCells": 7,
+        "maxCreatedSlope": 37.5,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 37.5° (> 35°) inside 128 m; raw step 25.3 m"
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "a": "chunk_-1_0",
+        "b": "chunk_0_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "resolved",
+        "rawMaxStep": 5.18,
+        "madeSteepCells": 0,
+        "maxCreatedSlope": 0,
+        "unresolvedAt": null,
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "reason": null
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "a": "chunk_-1_0",
+        "b": "chunk_-1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "rawMaxStep": 34.1,
+        "madeSteepCells": 0,
+        "maxCreatedSlope": 0,
+        "unresolvedAt": null,
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "reason": null
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "a": "chunk_0_0",
+        "b": "chunk_1_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "rawMaxStep": 53.9,
+        "madeSteepCells": 29,
+        "maxCreatedSlope": 44,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 44.0° (> 35°) inside 128 m; raw step 53.9 m"
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "a": "chunk_0_0",
+        "b": "chunk_0_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "rawMaxStep": 26.01,
+        "madeSteepCells": 0,
+        "maxCreatedSlope": 0,
+        "unresolvedAt": null,
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "reason": null
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "a": "chunk_1_0",
+        "b": "chunk_1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "rawMaxStep": 100.86,
+        "madeSteepCells": 659,
+        "maxCreatedSlope": 51.3,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 51.3° (> 35°) inside 128 m; raw step 100.9 m"
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "a": "chunk_-1_1",
+        "b": "chunk_0_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "resolved",
+        "rawMaxStep": 17.53,
+        "madeSteepCells": 0,
+        "maxCreatedSlope": 0,
+        "unresolvedAt": null,
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "reason": null
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "a": "chunk_0_1",
+        "b": "chunk_1_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "rawMaxStep": 47.1,
+        "madeSteepCells": 39,
+        "maxCreatedSlope": 40.6,
+        "unresolvedAt": "alone",
+        "continuity": "none",
+        "slopeNote": "slope match dropped (edge alone): C¹ join made terrain too steep",
+        "reason": "join would create slopes up to 40.6° (> 35°) inside 128 m; raw step 47.1 m"
+      }
+    ],
+    "corners": [
+      {
+        "at": {
+          "x": -512,
+          "z": -512
+        },
+        "chunks": [
+          "chunk_-1_-1",
+          "chunk_-1_0",
+          "chunk_0_-1",
+          "chunk_0_0"
+        ],
+        "groupTargets": [
+          210.026,
+          21.797,
+          269.94,
+          21.797
+        ],
+        "groups": 3,
+        "rawSpread": 250.73,
+        "closed": false
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": -512
+        },
+        "chunks": [
+          "chunk_0_-1",
+          "chunk_0_0",
+          "chunk_1_-1",
+          "chunk_1_0"
+        ],
+        "groupTargets": [
+          236.408,
+          25.451,
+          63.514,
+          79.349
+        ],
+        "groups": 4,
+        "rawSpread": 210.96,
+        "closed": false
+      },
+      {
+        "at": {
+          "x": -512,
+          "z": 512
+        },
+        "chunks": [
+          "chunk_-1_0",
+          "chunk_-1_1",
+          "chunk_0_0",
+          "chunk_0_1"
+        ],
+        "groupTargets": [
+          30.679,
+          30.679,
+          30.679,
+          30.679
+        ],
+        "groups": 1,
+        "rawSpread": 25.28,
+        "closed": true
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": 512
+        },
+        "chunks": [
+          "chunk_0_0",
+          "chunk_0_1",
+          "chunk_1_0",
+          "chunk_1_1"
+        ],
+        "groupTargets": [
+          9.252,
+          9.252,
+          64.099,
+          -10.44
+        ],
+        "groups": 3,
+        "rawSpread": 74.54,
+        "closed": false
+      }
+    ],
+    "measuredCorners": [
+      {
+        "at": {
+          "x": -512,
+          "z": -512
+        },
+        "heightSpread": 248.14,
+        "positionSpread": 0
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": -512
+        },
+        "heightSpread": 210.96,
+        "positionSpread": 0
+      },
+      {
+        "at": {
+          "x": -512,
+          "z": 512
+        },
+        "heightSpread": 0,
+        "positionSpread": 0
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": 512
+        },
+        "heightSpread": 74.54,
+        "positionSpread": 0
+      }
+    ],
+    "normals": [
+      {
+        "pairId": "chunk_-1_-1|chunk_0_-1",
+        "maxDeg": 93.51,
+        "p95Deg": 74.7,
+        "medianDeg": 34.663
+      },
+      {
+        "pairId": "chunk_-1_-1|chunk_-1_0",
+        "maxDeg": 72.65,
+        "p95Deg": 66.63,
+        "medianDeg": 30.112
+      },
+      {
+        "pairId": "chunk_0_-1|chunk_1_-1",
+        "maxDeg": 65.82,
+        "p95Deg": 59.62,
+        "medianDeg": 16.81
+      },
+      {
+        "pairId": "chunk_0_-1|chunk_0_0",
+        "maxDeg": 59.88,
+        "p95Deg": 50.83,
+        "medianDeg": 28.484
+      },
+      {
+        "pairId": "chunk_1_-1|chunk_1_0",
+        "maxDeg": 40.54,
+        "p95Deg": 28.38,
+        "medianDeg": 12.966
+      },
+      {
+        "pairId": "chunk_-1_0|chunk_0_0",
+        "maxDeg": 8.64,
+        "p95Deg": 6.59,
+        "medianDeg": 0.061
+      },
+      {
+        "pairId": "chunk_-1_0|chunk_-1_1",
+        "maxDeg": 5.99,
+        "p95Deg": 4.58,
+        "medianDeg": 0.387
+      },
+      {
+        "pairId": "chunk_0_0|chunk_1_0",
+        "maxDeg": 28.27,
+        "p95Deg": 25.47,
+        "medianDeg": 10.225
+      },
+      {
+        "pairId": "chunk_0_0|chunk_0_1",
+        "maxDeg": 5.67,
+        "p95Deg": 4.22,
+        "medianDeg": 0.626
+      },
+      {
+        "pairId": "chunk_1_0|chunk_1_1",
+        "maxDeg": 35.98,
+        "p95Deg": 29.59,
+        "medianDeg": 13.703
+      },
+      {
+        "pairId": "chunk_-1_1|chunk_0_1",
+        "maxDeg": 8.93,
+        "p95Deg": 7.04,
+        "medianDeg": 1.026
+      },
+      {
+        "pairId": "chunk_0_1|chunk_1_1",
+        "maxDeg": 33.19,
+        "p95Deg": 16.26,
+        "medianDeg": 5.923
+      }
+    ],
+    "sampling": [
+      {
+        "pairId": "chunk_-1_-1|chunk_0_-1",
+        "maxDifference": 163.20811069488457
+      },
+      {
+        "pairId": "chunk_-1_-1|chunk_-1_0",
+        "maxDifference": 295.03985351085606
+      },
+      {
+        "pairId": "chunk_0_-1|chunk_1_-1",
+        "maxDifference": 234.60388122558595
+      },
+      {
+        "pairId": "chunk_0_-1|chunk_0_0",
+        "maxDifference": 289.7778811168671
+      },
+      {
+        "pairId": "chunk_1_-1|chunk_1_0",
+        "maxDifference": 25.065207548141508
+      },
+      {
+        "pairId": "chunk_-1_0|chunk_0_0",
+        "maxDifference": 0
+      },
+      {
+        "pairId": "chunk_-1_0|chunk_-1_1",
+        "maxDifference": 0
+      },
+      {
+        "pairId": "chunk_0_0|chunk_1_0",
+        "maxDifference": 54.446912190913594
+      },
+      {
+        "pairId": "chunk_0_0|chunk_0_1",
+        "maxDifference": 0
+      },
+      {
+        "pairId": "chunk_1_0|chunk_1_1",
+        "maxDifference": 100.83296950340272
+      },
+      {
+        "pairId": "chunk_-1_1|chunk_0_1",
+        "maxDifference": 0
+      },
+      {
+        "pairId": "chunk_0_1|chunk_1_1",
+        "maxDifference": 47.005865120887826
+      }
+    ],
+    "differences": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "changedCells": 0,
+        "changedOutsideBand": 0,
+        "changedShare": 0,
+        "maxDelta": 0,
+        "meanDeltaChanged": 0,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "changedCells": 0,
+        "changedOutsideBand": 0,
+        "changedShare": 0,
+        "maxDelta": 0,
+        "meanDeltaChanged": 0,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "changedCells": 0,
+        "changedOutsideBand": 0,
+        "changedShare": 0,
+        "maxDelta": 0,
+        "meanDeltaChanged": 0,
+        "wetRaw": 2302,
+        "wetNow": 2302,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "changedCells": 15424,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 17.05,
+        "meanDeltaChanged": 2,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "changedCells": 15423,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 10.9,
+        "meanDeltaChanged": 1.59,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "changedCells": 0,
+        "changedOutsideBand": 0,
+        "changedShare": 0,
+        "maxDelta": 0,
+        "meanDeltaChanged": 0,
+        "wetRaw": 2256,
+        "wetNow": 2256,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "changedCells": 15424,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 17.05,
+        "meanDeltaChanged": 2.5,
+        "wetRaw": 20850,
+        "wetNow": 19585,
+        "wetChanged": 1265
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "changedCells": 15424,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 17.74,
+        "meanDeltaChanged": 2.4,
+        "wetRaw": 11040,
+        "wetNow": 10660,
+        "wetChanged": 380
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "changedCells": 0,
+        "changedOutsideBand": 0,
+        "changedShare": 0,
+        "maxDelta": 0,
+        "meanDeltaChanged": 0,
+        "wetRaw": 21913,
+        "wetNow": 21913,
+        "wetChanged": 0
+      }
+    ],
+    "solids": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 2.2892239485366656e-15
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 2.094673760196418e-14
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 1.4139857902795446e-14
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 9.185382302252822e-15
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 6.111868773749201e-15
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 5.85777583564147e-15
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 9.997121210935836e-15
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 1.285487507804797e-14
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0,
+        "volumeRelativeError": 6.5932224984071816e-15
+      }
+    ],
+    "waterEdges": [
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "rawOneSided": 8,
+        "after": "discontinuous",
+        "afterOneSided": 8,
+        "terrain": "unresolved",
+        "outcome": "retained discontinuity",
+        "reasons": {
+          "terrain step (edge unresolved): river 31 m | mountain, no water body": 8
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "rawOneSided": 60,
+        "after": "no water",
+        "afterOneSided": 0,
+        "terrain": "resolved",
+        "outcome": "resolved",
+        "reasons": {}
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "rawOneSided": 9,
+        "after": "discontinuous",
+        "afterOneSided": 9,
+        "terrain": "unresolved",
+        "outcome": "retained discontinuity",
+        "reasons": {
+          "terrain step (edge unresolved): river 29 m | plain, no water body": 9
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "rawOneSided": 9,
+        "after": "no water",
+        "afterOneSided": 0,
+        "terrain": "resolved",
+        "outcome": "resolved",
+        "reasons": {}
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "rawOneSided": 257,
+        "after": "discontinuous",
+        "afterOneSided": 257,
+        "terrain": "unresolved",
+        "outcome": "retained discontinuity",
+        "reasons": {
+          "terrain step (edge unresolved): sea 0 m | riverValley, river level 29 m": 66,
+          "terrain step (edge unresolved): sea 0 m | riverValley, river level 30 m": 125,
+          "terrain step (edge unresolved): sea 0 m | riverValley, river level 31 m": 66
+        }
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "rawOneSided": 146,
+        "after": "discontinuous",
+        "afterOneSided": 169,
+        "terrain": "unresolved",
+        "outcome": "retained discontinuity",
+        "reasons": {
+          "terrain step (edge unresolved): sea 0 m | coast, sea level 0 m": 169
+        }
+      }
+    ],
+    "iterations": 1,
+    "exchanges": [
+      {
+        "round": 0,
+        "edge": "chunk_0_1|chunk_1_1",
+        "into": "chunk_1_1",
+        "seeds": 2
+      }
+    ]
+  },
+  "autoMatchChanges": [
+    {
+      "chunkId": "chunk_-1_-1",
+      "cityMode": "empty",
+      "raw": null,
+      "harmonized": null,
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_0_-1",
+      "cityMode": "auto",
+      "raw": "fezOrganicCore",
+      "harmonized": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "cityMode": "manual",
+      "raw": "fezOrganicCore",
+      "harmonized": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "cityMode": "manual",
+      "raw": "chicagoGrid",
+      "harmonized": "chicagoGrid",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_0_0",
+      "cityMode": "manual",
+      "raw": "manhattanGrid",
+      "harmonized": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "cityMode": "auto",
+      "raw": "fezOrganicCore",
+      "harmonized": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "cityMode": "manual",
+      "raw": "amsterdamCanalRing",
+      "harmonized": "amsterdamCanalRing",
+      "changed": false
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "cityMode": "auto",
+      "raw": "lisbonHillCore",
+      "harmonized": "manhattanGrid",
+      "changed": true
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "cityMode": "manual",
+      "raw": "lisbonHillCore",
+      "harmonized": "lisbonHillCore",
+      "changed": false
+    }
+  ],
+  "cityIndependence": {
+    "change": "chunk_0_1 → amsterdamCanalRing",
+    "build": {
+      "prepare": {
+        "raw": [],
+        "harmony": false,
+        "harmonyMs": 0,
+        "ms": 6
+      },
+      "chunks": [
+        {
+          "chunkId": "chunk_0_1",
+          "ran": {
+            "terrain": false,
+            "city": true
+          },
+          "dataMs": 3874,
+          "renderMs": 68
+        }
+      ],
+      "totalMs": 3963
+    },
+    "terrainUnchanged": true
+  },
+  "orderIndependent": true,
+  "reloadIdentical": true,
+  "widths": [
+    {
+      "transitionWidth": 64,
+      "edgesResolved": 5,
+      "edgesC1": 4,
+      "edgesUnresolved": 7,
+      "maxSeamStepResolved": 0,
+      "maxSeamStepAll": 296.36,
+      "maxBandSlopeResolved": 36.6,
+      "maxBandSlopeAll": 74.7,
+      "maxKinkResolved": 34.69,
+      "medianKinkResolved": [
+        7.406,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxNormalResolved": 32.33,
+      "waterDiscontinuousEdges": 4,
+      "waterOneSidedSamples": 432,
+      "cornersClosed": 1,
+      "maxCornerSpread": 248.14,
+      "harmonyMs": 0,
+      "rebuildMs": 23678,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 163.53,
+          "heightMax": 163.53,
+          "kinkMax": 88.04,
+          "bandMaxSlope": 73.4,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 296.36,
+          "heightMax": 296.36,
+          "kinkMax": 61.74,
+          "bandMaxSlope": 74.7,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 234.84,
+          "heightMax": 234.84,
+          "kinkMax": 59.06,
+          "bandMaxSlope": 67.2,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 289.86,
+          "heightMax": 289.86,
+          "kinkMax": 60.4,
+          "bandMaxSlope": 61.2,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 25.29,
+          "heightMax": 0,
+          "kinkMax": 34.69,
+          "bandMaxSlope": 36.6,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 5.18,
+          "heightMax": 0,
+          "kinkMax": 5.45,
+          "bandMaxSlope": 16.1,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 34.1,
+          "heightMax": 0,
+          "kinkMax": 2.68,
+          "bandMaxSlope": 26.7,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 53.9,
+          "heightMax": 54.85,
+          "kinkMax": 23.33,
+          "bandMaxSlope": 49.6,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 26.01,
+          "heightMax": 0,
+          "kinkMax": 3.58,
+          "bandMaxSlope": 29.5,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 100.86,
+          "heightMax": 100.86,
+          "kinkMax": 33.72,
+          "bandMaxSlope": 46.3,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 17.53,
+          "heightMax": 0,
+          "kinkMax": 7.1,
+          "bandMaxSlope": 28.3,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 47.1,
+          "heightMax": 47.09,
+          "kinkMax": 21.77,
+          "bandMaxSlope": 36.1,
+          "water": "discontinuous"
+        }
+      ]
+    },
+    {
+      "transitionWidth": 256,
+      "edgesResolved": 5,
+      "edgesC1": 3,
+      "edgesUnresolved": 7,
+      "maxSeamStepResolved": 0,
+      "maxSeamStepAll": 296.36,
+      "maxBandSlopeResolved": 44.5,
+      "maxBandSlopeAll": 74.7,
+      "maxKinkResolved": 25.19,
+      "medianKinkResolved": [
+        0,
+        0,
+        0,
+        6.286,
+        2.72
+      ],
+      "maxNormalResolved": 24.59,
+      "waterDiscontinuousEdges": 3,
+      "waterOneSidedSamples": 255,
+      "cornersClosed": 1,
+      "maxCornerSpread": 248.14,
+      "harmonyMs": 0,
+      "rebuildMs": 21996,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 163.53,
+          "heightMax": 163.53,
+          "kinkMax": 88.04,
+          "bandMaxSlope": 73.4,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 296.36,
+          "heightMax": 296.36,
+          "kinkMax": 62.24,
+          "bandMaxSlope": 74.7,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 234.84,
+          "heightMax": 234.84,
+          "kinkMax": 59.06,
+          "bandMaxSlope": 69.8,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 289.86,
+          "heightMax": 289.86,
+          "kinkMax": 60.4,
+          "bandMaxSlope": 73.7,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 25.29,
+          "heightMax": 25.29,
+          "kinkMax": 34.62,
+          "bandMaxSlope": 53.2,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 5.18,
+          "heightMax": 0,
+          "kinkMax": 14.87,
+          "bandMaxSlope": 12.6,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 34.1,
+          "heightMax": 0,
+          "kinkMax": 1.25,
+          "bandMaxSlope": 38,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 53.9,
+          "heightMax": 61.41,
+          "kinkMax": 23.96,
+          "bandMaxSlope": 49.6,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 26.01,
+          "heightMax": 0,
+          "kinkMax": 1.25,
+          "bandMaxSlope": 34.2,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 100.86,
+          "heightMax": 100.86,
+          "kinkMax": 33.72,
+          "bandMaxSlope": 47.1,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 17.53,
+          "heightMax": 0,
+          "kinkMax": 25.19,
+          "bandMaxSlope": 34.3,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 47.1,
+          "heightMax": 0,
+          "kinkMax": 21.75,
+          "bandMaxSlope": 44.5,
+          "water": "continuous"
+        }
+      ]
+    },
+    {
+      "transitionWidth": 128,
+      "edgesResolved": 4,
+      "edgesC1": 4,
+      "edgesUnresolved": 8,
+      "maxSeamStepResolved": 0,
+      "maxSeamStepAll": 296.36,
+      "maxBandSlopeResolved": 34.3,
+      "maxBandSlopeAll": 74.7,
+      "maxKinkResolved": 8.58,
+      "medianKinkResolved": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxNormalResolved": 8.93,
+      "waterDiscontinuousEdges": 4,
+      "waterOneSidedSamples": 443,
+      "cornersClosed": 1,
+      "maxCornerSpread": 248.14,
+      "harmonyMs": 0,
+      "rebuildMs": 21007,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 163.53,
+          "heightMax": 163.53,
+          "kinkMax": 88.04,
+          "bandMaxSlope": 73.4,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 296.36,
+          "heightMax": 296.36,
+          "kinkMax": 62.05,
+          "bandMaxSlope": 74.7,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 234.84,
+          "heightMax": 234.84,
+          "kinkMax": 59.06,
+          "bandMaxSlope": 69.8,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 289.86,
+          "heightMax": 289.86,
+          "kinkMax": 60.4,
+          "bandMaxSlope": 71.4,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 25.29,
+          "heightMax": 25.29,
+          "kinkMax": 34.62,
+          "bandMaxSlope": 44.3,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 5.18,
+          "heightMax": 0,
+          "kinkMax": 8.58,
+          "bandMaxSlope": 11.2,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 34.1,
+          "heightMax": 0,
+          "kinkMax": 5.87,
+          "bandMaxSlope": 29.6,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 53.9,
+          "heightMax": 54.85,
+          "kinkMax": 23.33,
+          "bandMaxSlope": 49.6,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 26.01,
+          "heightMax": 0,
+          "kinkMax": 5.87,
+          "bandMaxSlope": 34.3,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 100.86,
+          "heightMax": 100.86,
+          "kinkMax": 33.72,
+          "bandMaxSlope": 47.1,
+          "water": "discontinuous"
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 17.53,
+          "heightMax": 0,
+          "kinkMax": 8.58,
+          "bandMaxSlope": 32.5,
+          "water": "no water"
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 47.1,
+          "heightMax": 47.09,
+          "kinkMax": 21.77,
+          "bandMaxSlope": 38.3,
+          "water": "discontinuous"
+        }
+      ]
+    }
+  ],
+  "seeds": [
+    {
+      "worldSeed": 6201,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesC1": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 296.36,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 74.7,
+        "maxKinkResolved": 0,
+        "medianKinkResolved": [],
+        "maxNormalResolved": 0,
+        "waterDiscontinuousEdges": 6,
+        "waterOneSidedSamples": 489,
+        "cornersClosed": 0,
+        "maxCornerSpread": 250.74,
+        "loadMs": 23244
+      },
+      "harmonized": {
+        "edgesResolved": 4,
+        "edgesC1": 4,
+        "edgesUnresolved": 8,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 296.36,
+        "maxBandSlopeResolved": 34.3,
+        "maxBandSlopeAll": 74.7,
+        "maxKinkResolved": 8.58,
+        "medianKinkResolved": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "maxNormalResolved": 8.93,
+        "waterDiscontinuousEdges": 4,
+        "waterOneSidedSamples": 443,
+        "cornersClosed": 1,
+        "maxCornerSpread": 248.14,
+        "loadMs": 23158,
+        "harmonyMs": 539
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 163.53,
+          "reason": "join would create slopes up to 73.7° (> 35°) inside 128 m; raw step 163.5 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 296.36,
+          "reason": "join would create slopes up to 74.0° (> 35°) inside 128 m; raw step 296.4 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 234.84,
+          "reason": "join would create slopes up to 72.7° (> 35°) inside 128 m; raw step 234.8 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): river 31 m | mountain, no water body": 8
+          }
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 289.86,
+          "reason": "join would create slopes up to 73.4° (> 35°) inside 128 m; raw step 289.9 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 25.29,
+          "reason": "join would create slopes up to 37.5° (> 35°) inside 128 m; raw step 25.3 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 5.18,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 34.1,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 53.9,
+          "reason": "join would create slopes up to 44.0° (> 35°) inside 128 m; raw step 53.9 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): river 29 m | plain, no water body": 9
+          }
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 26.01,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 100.86,
+          "reason": "join would create slopes up to 51.3° (> 35°) inside 128 m; raw step 100.9 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 29 m": 66,
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 30 m": 125,
+            "terrain step (edge unresolved): sea 0 m | riverValley, river level 31 m": 66
+          }
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 17.53,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 47.1,
+          "reason": "join would create slopes up to 40.6° (> 35°) inside 128 m; raw step 47.1 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): sea 0 m | coast, sea level 0 m": 169
+          }
+        }
+      ],
+      "isolation": [],
+      "changedShare": [
+        [
+          "chunk_-1_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_0_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_1_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_-1_0",
+          0.2335,
+          17.05,
+          0
+        ],
+        [
+          "chunk_0_0",
+          0.2335,
+          10.9,
+          0
+        ],
+        [
+          "chunk_1_0",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_-1_1",
+          0.2335,
+          17.05,
+          1265
+        ],
+        [
+          "chunk_0_1",
+          0.2335,
+          17.74,
+          380
+        ],
+        [
+          "chunk_1_1",
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "worldSeed": 6202,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesC1": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 314.69,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 74.7,
+        "maxKinkResolved": 0,
+        "medianKinkResolved": [],
+        "maxNormalResolved": 0,
+        "waterDiscontinuousEdges": 3,
+        "waterOneSidedSamples": 34,
+        "cornersClosed": 0,
+        "maxCornerSpread": 244.92,
+        "loadMs": 23861
+      },
+      "harmonized": {
+        "edgesResolved": 6,
+        "edgesC1": 4,
+        "edgesUnresolved": 6,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 314.69,
+        "maxBandSlopeResolved": 45.8,
+        "maxBandSlopeAll": 74.7,
+        "maxKinkResolved": 41.81,
+        "medianKinkResolved": [
+          10.058,
+          0,
+          0,
+          0,
+          0,
+          7.558
+        ],
+        "maxNormalResolved": 40.31,
+        "waterDiscontinuousEdges": 2,
+        "waterOneSidedSamples": 20,
+        "cornersClosed": 1,
+        "maxCornerSpread": 244.45,
+        "loadMs": 24493,
+        "harmonyMs": 605
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 139.18,
+          "reason": "join would create slopes up to 65.9° (> 35°) inside 128 m; raw step 139.2 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 237.8,
+          "reason": "join would create slopes up to 67.0° (> 35°) inside 128 m; raw step 237.8 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 260.16,
+          "reason": "join would create slopes up to 71.8° (> 35°) inside 128 m; raw step 260.2 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): river 31 m | mountain, no water body": 8
+          }
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 314.69,
+          "reason": "join would create slopes up to 72.3° (> 35°) inside 128 m; raw step 314.7 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 51.45,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 4.07,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 15.81,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 62.65,
+          "reason": "join would create slopes up to 45.8° (> 35°) inside 128 m; raw step 62.6 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 15.88,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 43.48,
+          "reason": "join would create slopes up to 46.4° (> 35°) inside 128 m; raw step 43.5 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): river 31 m | coast, sea level 0 m": 12
+          }
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 27.48,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 17.71,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        }
+      ],
+      "isolation": [],
+      "changedShare": [
+        [
+          "chunk_-1_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_0_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_1_-1",
+          0.1245,
+          25.73,
+          0
+        ],
+        [
+          "chunk_-1_0",
+          0.2335,
+          8.33,
+          0
+        ],
+        [
+          "chunk_0_0",
+          0.2335,
+          7.94,
+          0
+        ],
+        [
+          "chunk_1_0",
+          0.1245,
+          25.73,
+          291
+        ],
+        [
+          "chunk_-1_1",
+          0.2335,
+          15.74,
+          0
+        ],
+        [
+          "chunk_0_1",
+          0.3425,
+          13.74,
+          83
+        ],
+        [
+          "chunk_1_1",
+          0.1245,
+          8.85,
+          0
+        ]
+      ]
+    },
+    {
+      "worldSeed": 6203,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesC1": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 293.49,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 67,
+        "maxKinkResolved": 0,
+        "medianKinkResolved": [],
+        "maxNormalResolved": 0,
+        "waterDiscontinuousEdges": 6,
+        "waterOneSidedSamples": 811,
+        "cornersClosed": 0,
+        "maxCornerSpread": 254.92,
+        "loadMs": 22273
+      },
+      "harmonized": {
+        "edgesResolved": 4,
+        "edgesC1": 3,
+        "edgesUnresolved": 8,
+        "maxSeamStepResolved": 0,
+        "maxSeamStepAll": 293.49,
+        "maxBandSlopeResolved": 37.5,
+        "maxBandSlopeAll": 67,
+        "maxKinkResolved": 24.32,
+        "medianKinkResolved": [
+          0,
+          0,
+          0,
+          4.715
+        ],
+        "maxNormalResolved": 24.06,
+        "waterDiscontinuousEdges": 3,
+        "waterOneSidedSamples": 471,
+        "cornersClosed": 1,
+        "maxCornerSpread": 250.39,
+        "loadMs": 21587,
+        "harmonyMs": 636
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 115.67,
+          "reason": "join would create slopes up to 58.9° (> 35°) inside 128 m; raw step 115.7 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 293.49,
+          "reason": "join would create slopes up to 62.9° (> 35°) inside 128 m; raw step 293.5 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 224.09,
+          "reason": "join would create slopes up to 69.4° (> 35°) inside 128 m; raw step 224.1 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 249.35,
+          "reason": "join would create slopes up to 62.1° (> 35°) inside 128 m; raw step 249.4 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 41.82,
+          "reason": "join would create slopes up to 39.7° (> 35°) inside 128 m; raw step 41.8 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): river 29 m | riverValley, river level 31 m": 8,
+            "river reaches the edge; neighbour has no channel (not extended)": 2,
+            "terrain step (edge unresolved): river 31 m | riverValley, river level 29 m": 7
+          }
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 9.06,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 32.83,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 54.43,
+          "reason": "join would create slopes up to 41.9° (> 35°) inside 128 m; raw step 54.4 m",
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "continuity": "C1 (height + slope)",
+          "rawMaxStep": 30.26,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "resolved",
+          "continuity": "C0 (height only)",
+          "rawMaxStep": 43.88,
+          "reason": null,
+          "water": "no water",
+          "waterReasons": {}
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 61.08,
+          "reason": "join would create slopes up to 37.9° (> 35°) inside 128 m; raw step 61.1 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): sea 0 m | coast, sea level 0 m": 240
+          }
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "continuity": "none",
+          "rawMaxStep": 51.22,
+          "reason": "join would create slopes up to 39.7° (> 35°) inside 128 m; raw step 51.2 m",
+          "water": "discontinuous",
+          "waterReasons": {
+            "terrain step (edge unresolved): sea 0 m | coast, sea level 0 m": 214
+          }
+        }
+      ],
+      "isolation": [],
+      "changedShare": [
+        [
+          "chunk_-1_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_0_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_1_-1",
+          0,
+          0,
+          0
+        ],
+        [
+          "chunk_-1_0",
+          0.2335,
+          16.1,
+          0
+        ],
+        [
+          "chunk_0_0",
+          0.2335,
+          15.17,
+          0
+        ],
+        [
+          "chunk_1_0",
+          0.1245,
+          21.94,
+          106
+        ],
+        [
+          "chunk_-1_1",
+          0.1245,
+          16.73,
+          1210
+        ],
+        [
+          "chunk_0_1",
+          0.1245,
+          15.13,
+          5532
+        ],
+        [
+          "chunk_1_1",
+          0.1245,
+          21.94,
+          0
+        ]
+      ]
+    }
+  ],
+  "tunnels": {
+    "knownFailure": {
+      "worldSeed": 6202,
+      "isolation": [
+        {
+          "chunkId": "chunk_0_-1",
+          "accepted": [
+            8
+          ],
+          "nonManifold": 6,
+          "inconsistent": 6,
+          "euler": 6,
+          "expectedEuler": 0,
+          "reason": "tunnel cut left the solid open (known 05.1b-2 defect); cut removed, tunnel not rendered"
+        }
+      ],
+      "solid": {
+        "watertight": true,
+        "euler": 2,
+        "expected": 2,
+        "tunnels": 0
+      }
+    },
+    "valid": {
+      "worldSeed": 6203,
+      "isolation": [],
+      "solid": {
+        "watertight": true,
+        "euler": 0,
+        "expected": 0,
+        "tunnels": 1
+      }
+    }
+  },
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/06-3a-world-harmonized-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3a-seam-closeup-compare.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3a-seam-debug.png"
+  ],
+  "browserErrors": []
+}

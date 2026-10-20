@@ -1,0 +1,1110 @@
+{
+  "task": "03.3",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:22:15.178Z",
+  "runs": [
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "64C680AE",
+        "blocksSignature": "24E84F80",
+        "cycles": 0,
+        "deadEndRatio": 0.4489795918367347,
+        "roadLength": 5684.5888308611975,
+        "entropy": 1.6459091027876802,
+        "straightness": 0.9101582810889387,
+        "ports": [
+          "maxX:-48.00:road",
+          "maxZ:-92.00:road",
+          "minX:84.00:road",
+          "minZ:-428.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 4,
+          "enclosed": 0,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 0,
+          "blocksArea": 840500.3208047621,
+          "roadArea": 36745
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "45DF7292",
+        "blocksSignature": "8B458B7D",
+        "cycles": 4,
+        "deadEndRatio": 0.37735849056603776,
+        "roadLength": 6116.230197893052,
+        "entropy": 1.657182844087906,
+        "straightness": 0.9153791779325122,
+        "ports": [
+          "maxX:-48.00:road",
+          "maxZ:-92.00:road",
+          "minX:84.00:road",
+          "minZ:-428.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 2,
+            "branch": 2
+          },
+          "deadEndsBefore": 22,
+          "deadEndsAfter": 20,
+          "links": 4
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 8,
+          "enclosed": 4,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 64024.256516468755,
+          "blocksArea": 838855.6550633953,
+          "roadArea": 38750
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "4A53F6F4",
+        "blocksSignature": "BF32C094",
+        "cycles": 0,
+        "deadEndRatio": 0.4375,
+        "roadLength": 6438.277868831526,
+        "entropy": 2.1409695537649434,
+        "straightness": 0.8511609322779233,
+        "ports": [
+          "maxX:428.00:road",
+          "maxZ:-256.00:road",
+          "minX:184.00:road",
+          "minZ:-304.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 5,
+          "enclosed": 1,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 3,
+          "enclosedArea": 723.7077360907078,
+          "blocksArea": 918745.7950868907,
+          "roadArea": 43446
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "146A5946",
+        "blocksSignature": "1057A7EC",
+        "cycles": 5,
+        "deadEndRatio": 0.35714285714285715,
+        "roadLength": 7109.263405275432,
+        "entropy": 2.070543780230831,
+        "straightness": 0.8561652572307039,
+        "ports": [
+          "maxX:428.00:road",
+          "maxZ:-256.00:road",
+          "minX:184.00:road",
+          "minZ:-304.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 1,
+            "branch": 4
+          },
+          "deadEndsBefore": 21,
+          "deadEndsAfter": 20,
+          "links": 5
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 10,
+          "enclosed": 6,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 3,
+          "enclosedArea": 88210.33222944132,
+          "blocksArea": 916192.9301782773,
+          "roadArea": 46425
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "8C348A7C",
+        "blocksSignature": "EAEEB72D",
+        "cycles": 0,
+        "deadEndRatio": 0.4444444444444444,
+        "roadLength": 5790.605506706936,
+        "entropy": 1.7673116627060996,
+        "straightness": 0.8652359700686305,
+        "ports": [
+          "maxX:-112.00:road",
+          "maxZ:-444.00:road",
+          "minX:352.00:road",
+          "minZ:108.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 4,
+          "enclosed": 0,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 0,
+          "blocksArea": 865036.6774542115,
+          "roadArea": 39191
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "4980FC22",
+        "blocksSignature": "F725D8DB",
+        "cycles": 13,
+        "deadEndRatio": 0.2459016393442623,
+        "roadLength": 6996.122222345751,
+        "entropy": 1.765254026368887,
+        "straightness": 0.8771508404561564,
+        "ports": [
+          "maxX:-112.00:road",
+          "maxZ:-444.00:road",
+          "minX:352.00:road",
+          "minZ:108.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 1,
+            "deadEnd": 6,
+            "branch": 6
+          },
+          "deadEndsBefore": 24,
+          "deadEndsAfter": 15,
+          "links": 13
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 2,
+        "blocks": {
+          "count": 17,
+          "enclosed": 13,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 70777.49967477053,
+          "blocksArea": 860486.5786340272,
+          "roadArea": 44697
+        }
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "4D872CDC",
+        "blocksSignature": "050022A3",
+        "cycles": 0,
+        "deadEndRatio": 0.4418604651162791,
+        "roadLength": 5247.795278159997,
+        "entropy": 1.2316388822284146,
+        "straightness": 0.9525286534279342,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 4,
+          "enclosed": 0,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 0,
+          "blocksArea": 1019689.9452613895,
+          "roadArea": 33833
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "41D1FD89",
+        "blocksSignature": "15F6BEFF",
+        "cycles": 8,
+        "deadEndRatio": 0.2857142857142857,
+        "roadLength": 6327.342109750477,
+        "entropy": 1.2108888071762454,
+        "straightness": 0.9578330528843755,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 3,
+            "branch": 5
+          },
+          "deadEndsBefore": 19,
+          "deadEndsAfter": 14,
+          "links": 8
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 1,
+        "blocks": {
+          "count": 12,
+          "enclosed": 8,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 131281.3794383093,
+          "blocksArea": 1015512.7152589062,
+          "roadArea": 38876
+        }
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "5423B869",
+        "blocksSignature": "8B7856D3",
+        "cycles": 0,
+        "deadEndRatio": 0.4444444444444444,
+        "roadLength": 5382.071371566832,
+        "entropy": 1.1903016730412392,
+        "straightness": 0.9567258938615648,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 4,
+          "enclosed": 0,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 0,
+          "blocksArea": 1019175.8253632941,
+          "roadArea": 34516
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "6757EEA4",
+        "blocksSignature": "996045C9",
+        "cycles": 10,
+        "deadEndRatio": 0.2777777777777778,
+        "roadLength": 6574.21563477524,
+        "entropy": 1.236788482241588,
+        "straightness": 0.9309443811082054,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 4,
+            "branch": 6
+          },
+          "deadEndsBefore": 20,
+          "deadEndsAfter": 15,
+          "links": 10
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 14,
+          "enclosed": 10,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 103878.83171525632,
+          "blocksArea": 1014620.7898723064,
+          "roadArea": 40132
+        }
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "strategy": "organic",
+      "before": {
+        "strategy": "organic",
+        "signature": "DB6CDC65",
+        "blocksSignature": "2315E3A3",
+        "cycles": 0,
+        "deadEndRatio": 0.43902439024390244,
+        "roadLength": 5408.504523214961,
+        "entropy": 1.2116196403361423,
+        "straightness": 0.9401864677706648,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 4,
+          "enclosed": 0,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 0,
+          "blocksArea": 1019026.5892586579,
+          "roadArea": 34659
+        }
+      },
+      "after": {
+        "strategy": "organic",
+        "signature": "6B1087A4",
+        "blocksSignature": "05F58110",
+        "cycles": 8,
+        "deadEndRatio": 0.2765957446808511,
+        "roadLength": 6459.807382485113,
+        "entropy": 1.354522995937504,
+        "straightness": 0.9399771638777515,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:0.00:road",
+          "minX:0.00:road",
+          "minZ:0.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 5,
+            "branch": 3
+          },
+          "deadEndsBefore": 18,
+          "deadEndsAfter": 13,
+          "links": 8
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 12,
+          "enclosed": 8,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 0,
+          "enclosedArea": 154296.14762548546,
+          "blocksArea": 1014995.1240950557,
+          "roadArea": 39512
+        }
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "14B4B345",
+        "blocksSignature": "D9E5C4F5",
+        "cycles": 4,
+        "deadEndRatio": 0.23214285714285715,
+        "roadLength": 6343.705083455794,
+        "entropy": 2.2421965924129275,
+        "straightness": 0.8494779417506882,
+        "ports": [
+          "maxX:164.00:road",
+          "maxX:192.00:canal",
+          "maxX:216.00:road",
+          "maxX:292.00:road",
+          "maxZ:32.00:road",
+          "minX:-48.00:road",
+          "minX:128.00:road",
+          "minX:60.00:road",
+          "minX:92.00:canal",
+          "minZ:-220.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 9,
+          "enclosed": 2,
+          "clipped": 7,
+          "invalid": 0,
+          "remnants": 78,
+          "enclosedArea": 38039.02565999508,
+          "blocksArea": 977802.7811521222,
+          "roadArea": 34675.5
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "D44150A0",
+        "blocksSignature": "B06009DE",
+        "cycles": 7,
+        "deadEndRatio": 0.2,
+        "roadLength": 6523.705083455796,
+        "entropy": 2.2214379872238856,
+        "straightness": 0.8508041615648843,
+        "ports": [
+          "maxX:164.00:road",
+          "maxX:192.00:canal",
+          "maxX:216.00:road",
+          "maxX:292.00:road",
+          "maxZ:32.00:road",
+          "minX:-48.00:road",
+          "minX:128.00:road",
+          "minX:60.00:road",
+          "minX:92.00:canal",
+          "minZ:-220.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 1,
+            "branch": 2
+          },
+          "deadEndsBefore": 21,
+          "deadEndsAfter": 20,
+          "links": 3
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 12,
+          "enclosed": 5,
+          "clipped": 7,
+          "invalid": 0,
+          "remnants": 78,
+          "enclosedArea": 41549.89084757304,
+          "blocksArea": 977143.0906818602,
+          "roadArea": 35495.5
+        }
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "8AB7DA16",
+        "blocksSignature": "8490D86F",
+        "cycles": 3,
+        "deadEndRatio": 0.22916666666666666,
+        "roadLength": 6105.566737529518,
+        "entropy": 2.231103777024863,
+        "straightness": 0.8273529535324153,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:100.00:road",
+          "maxZ:124.00:canal",
+          "maxZ:148.00:road",
+          "maxZ:40.00:road",
+          "minX:364.00:road",
+          "minZ:-64.00:road",
+          "minZ:32.00:canal",
+          "minZ:52.00:road",
+          "minZ:8.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 10,
+          "enclosed": 3,
+          "clipped": 7,
+          "invalid": 0,
+          "remnants": 71,
+          "enclosedArea": 19925.435089956958,
+          "blocksArea": 978354.2535317393,
+          "roadArea": 35445
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "92BF78C0",
+        "blocksSignature": "4E089962",
+        "cycles": 7,
+        "deadEndRatio": 0.18867924528301888,
+        "roadLength": 6401.566737529518,
+        "entropy": 2.1932674316986027,
+        "straightness": 0.8193034588583487,
+        "ports": [
+          "maxX:0.00:road",
+          "maxZ:100.00:road",
+          "maxZ:124.00:canal",
+          "maxZ:148.00:road",
+          "maxZ:40.00:road",
+          "minX:364.00:road",
+          "minZ:-64.00:road",
+          "minZ:32.00:canal",
+          "minZ:52.00:road",
+          "minZ:8.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 2,
+            "branch": 2
+          },
+          "deadEndsBefore": 17,
+          "deadEndsAfter": 15,
+          "links": 4
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 14,
+          "enclosed": 7,
+          "clipped": 7,
+          "invalid": 0,
+          "remnants": 71,
+          "enclosedArea": 28472.87231556645,
+          "blocksArea": 977230.2229587454,
+          "roadArea": 36815
+        }
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "71185465",
+        "blocksSignature": "A03A8C00",
+        "cycles": 3,
+        "deadEndRatio": 0.26785714285714285,
+        "roadLength": 5679.644114219556,
+        "entropy": 2.1024857890530275,
+        "straightness": 0.8693214646170095,
+        "ports": [
+          "maxX:-72.00:road",
+          "maxX:12.00:road",
+          "maxX:40.00:canal",
+          "maxX:64.00:road",
+          "maxZ:340.00:road",
+          "minX:-172.00:road",
+          "minX:-40.00:road",
+          "minX:-64.00:canal",
+          "minX:-88.00:road",
+          "minZ:-36.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 7,
+          "enclosed": 3,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 135,
+          "enclosedArea": 397.9068419922179,
+          "blocksArea": 980604.9123302608,
+          "roadArea": 33588
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "81BDB84E",
+        "blocksSignature": "2F766E68",
+        "cycles": 8,
+        "deadEndRatio": 0.2,
+        "roadLength": 6104.922656280061,
+        "entropy": 2.1059967918947997,
+        "straightness": 0.8631656348212701,
+        "ports": [
+          "maxX:-72.00:road",
+          "maxX:12.00:road",
+          "maxX:40.00:canal",
+          "maxX:64.00:road",
+          "maxZ:340.00:road",
+          "minX:-172.00:road",
+          "minX:-40.00:road",
+          "minX:-64.00:canal",
+          "minX:-88.00:road",
+          "minZ:-36.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 3,
+            "branch": 2
+          },
+          "deadEndsBefore": 21,
+          "deadEndsAfter": 18,
+          "links": 5
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 13,
+          "enclosed": 9,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 130,
+          "enclosedArea": 33128.42759037399,
+          "blocksArea": 979189.4681134165,
+          "roadArea": 35303
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "3F1A50C0",
+        "blocksSignature": "D2B36A63",
+        "cycles": 0,
+        "deadEndRatio": 0.34375,
+        "roadLength": 4820.509236541504,
+        "entropy": 2.1000608667031337,
+        "straightness": 0.8516826704477461,
+        "ports": [
+          "maxX:-204.00:road",
+          "maxX:-360.00:canal",
+          "maxX:-48.00:road",
+          "maxZ:-92.00:road",
+          "minX:84.00:road",
+          "minZ:-292.00:road",
+          "minZ:-428.00:road",
+          "minZ:116.00:canal"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 16,
+          "enclosed": 10,
+          "clipped": 6,
+          "invalid": 0,
+          "remnants": 82,
+          "enclosedArea": 1487.0305519651622,
+          "blocksArea": 847012.3012799424,
+          "roadArea": 28271
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "B725A28B",
+        "blocksSignature": "5D3C81A6",
+        "cycles": 4,
+        "deadEndRatio": 0.25,
+        "roadLength": 5212.986178450791,
+        "entropy": 2.0688237214218765,
+        "straightness": 0.8571040352291606,
+        "ports": [
+          "maxX:-204.00:road",
+          "maxX:-360.00:canal",
+          "maxX:-48.00:road",
+          "maxZ:-92.00:road",
+          "minX:84.00:road",
+          "minZ:-292.00:road",
+          "minZ:-428.00:road",
+          "minZ:116.00:canal"
+        ],
+        "loops": {
+          "added": {
+            "extension": 1,
+            "deadEnd": 1,
+            "branch": 2
+          },
+          "deadEndsBefore": 11,
+          "deadEndsAfter": 9,
+          "links": 4
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 19,
+          "enclosed": 13,
+          "clipped": 6,
+          "invalid": 0,
+          "remnants": 83,
+          "enclosedArea": 45850.177928517034,
+          "blocksArea": 845552.5699508907,
+          "roadArea": 30005
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "25D9B6C3",
+        "blocksSignature": "8B03B5FB",
+        "cycles": 0,
+        "deadEndRatio": 0.4117647058823529,
+        "roadLength": 5428.596993167928,
+        "entropy": 2.144940377784744,
+        "straightness": 0.8151356308322518,
+        "ports": [
+          "maxX:428.00:road",
+          "maxZ:-256.00:road",
+          "minX:184.00:road",
+          "minZ:-304.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 10,
+          "enclosed": 6,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 30,
+          "enclosedArea": 961.114097516351,
+          "blocksArea": 928729.0139652105,
+          "roadArea": 32583
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "BCA48159",
+        "blocksSignature": "B5BC6136",
+        "cycles": 1,
+        "deadEndRatio": 0.38235294117647056,
+        "roadLength": 5556.6738878179885,
+        "entropy": 2.16758316433671,
+        "straightness": 0.8057423157147247,
+        "ports": [
+          "maxX:428.00:road",
+          "maxZ:-256.00:road",
+          "minX:184.00:road",
+          "minZ:-304.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 1,
+            "branch": 0
+          },
+          "deadEndsBefore": 14,
+          "deadEndsAfter": 13,
+          "links": 1
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 11,
+          "enclosed": 7,
+          "clipped": 4,
+          "invalid": 0,
+          "remnants": 30,
+          "enclosedArea": 10090.966059274644,
+          "blocksArea": 928231.754431599,
+          "roadArea": 33095
+        }
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "strategy": "canalStreet",
+      "before": {
+        "strategy": "canalStreet",
+        "signature": "954AE962",
+        "blocksSignature": "282028EA",
+        "cycles": 0,
+        "deadEndRatio": 0.3333333333333333,
+        "roadLength": 5075.67038549693,
+        "entropy": 2.1122805817193564,
+        "straightness": 0.8384614572093936,
+        "ports": [
+          "maxX:-112.00:road",
+          "maxX:-28.00:road",
+          "maxX:248.00:canal",
+          "maxZ:-444.00:road",
+          "maxZ:-52.00:road",
+          "maxZ:-84.00:road",
+          "maxZ:236.00:canal",
+          "minX:352.00:road",
+          "minZ:108.00:road"
+        ],
+        "loops": null,
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 0,
+        "blocks": {
+          "count": 19,
+          "enclosed": 14,
+          "clipped": 5,
+          "invalid": 0,
+          "remnants": 24,
+          "enclosedArea": 2979.1158810964885,
+          "blocksArea": 872228.4869276044,
+          "roadArea": 30452
+        }
+      },
+      "after": {
+        "strategy": "canalStreet",
+        "signature": "EF842179",
+        "blocksSignature": "F64D7E8E",
+        "cycles": 4,
+        "deadEndRatio": 0.23684210526315788,
+        "roadLength": 5447.5353273119445,
+        "entropy": 2.067577211894763,
+        "straightness": 0.8301817273338398,
+        "ports": [
+          "maxX:-112.00:road",
+          "maxX:-28.00:road",
+          "maxX:248.00:canal",
+          "maxZ:-444.00:road",
+          "maxZ:-52.00:road",
+          "maxZ:-84.00:road",
+          "maxZ:236.00:canal",
+          "minX:352.00:road",
+          "minZ:108.00:road"
+        ],
+        "loops": {
+          "added": {
+            "extension": 0,
+            "deadEnd": 2,
+            "branch": 2
+          },
+          "deadEndsBefore": 12,
+          "deadEndsAfter": 9,
+          "links": 4
+        },
+        "linkIssues": {
+          "inTransition": 0,
+          "water": 0,
+          "steep": 0,
+          "tooLong": 0,
+          "perimeter": 0,
+          "goalOffNetwork": 0
+        },
+        "endpointLinks": 1,
+        "blocks": {
+          "count": 23,
+          "enclosed": 18,
+          "clipped": 5,
+          "invalid": 0,
+          "remnants": 24,
+          "enclosedArea": 35718.93693633597,
+          "blocksArea": 871004.0537276882,
+          "roadArea": 31858
+        }
+      }
+    }
+  ],
+  "browserErrors": [],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/03-3-loops-network-before-after.png",
+    "docs/assets/screenshots/procedural-mini-world/03-3-loops-blocks-before-after.png"
+  ]
+}

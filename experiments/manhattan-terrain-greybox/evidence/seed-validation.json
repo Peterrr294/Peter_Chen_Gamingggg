@@ -1,0 +1,79 @@
+{
+  "task": "02.1",
+  "experiment": "/experiments/manhattan-terrain-greybox/",
+  "testedAt": "2026-10-18T18:32:44.359Z",
+  "seeds": [
+    {
+      "seed": "MANHATTAN-1101",
+      "signatures": [
+        "7A91A32A",
+        "7A91A32A"
+      ],
+      "reproducible": true,
+      "snapshot": {
+        "seed": "MANHATTAN-1101",
+        "numericSeed": 3105461683,
+        "signature": "7A91A32A",
+        "vertices": 12769,
+        "buildableVertices": 7637,
+        "waterVertices": 3208,
+        "blockedVertices": 1924,
+        "mapWidth": 44,
+        "mapDepth": 72,
+        "resolution": 112,
+        "waterLevel": 0,
+        "shoreSetback": 2.8,
+        "maxBuildableSlope": 8
+      }
+    },
+    {
+      "seed": "MANHATTAN-2202",
+      "signatures": [
+        "1DE833E4",
+        "1DE833E4"
+      ],
+      "reproducible": true,
+      "snapshot": {
+        "seed": "MANHATTAN-2202",
+        "numericSeed": 1633368232,
+        "signature": "1DE833E4",
+        "vertices": 12769,
+        "buildableVertices": 7765,
+        "waterVertices": 3090,
+        "blockedVertices": 1914,
+        "mapWidth": 44,
+        "mapDepth": 72,
+        "resolution": 112,
+        "waterLevel": 0,
+        "shoreSetback": 2.8,
+        "maxBuildableSlope": 8
+      }
+    },
+    {
+      "seed": "MANHATTAN-3303",
+      "signatures": [
+        "9654BA61",
+        "9654BA61"
+      ],
+      "reproducible": true,
+      "snapshot": {
+        "seed": "MANHATTAN-3303",
+        "numericSeed": 3537406049,
+        "signature": "9654BA61",
+        "vertices": 12769,
+        "buildableVertices": 7723,
+        "waterVertices": 3132,
+        "blockedVertices": 1914,
+        "mapWidth": 44,
+        "mapDepth": 72,
+        "resolution": 112,
+        "waterLevel": 0,
+        "shoreSetback": 2.8,
+        "maxBuildableSlope": 8
+      }
+    }
+  ],
+  "uniqueSignatures": true,
+  "browserErrors": [],
+  "screenshot": "docs/assets/screenshots/procedural-mini-world/manhattan-terrain-greybox.png"
+}

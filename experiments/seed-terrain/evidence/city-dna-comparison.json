@@ -1,0 +1,6758 @@
+{
+  "task": "06.1 City DNA 3 → 6",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:11:53.777Z",
+  "parameters": {
+    "landforms": [
+      "plain",
+      "riverValley",
+      "coast",
+      "mountain"
+    ],
+    "seeds": [
+      1101,
+      2202,
+      3303
+    ],
+    "variation": "default",
+    "transitionWidth": "default (128 m)",
+    "shared": {
+      "landform": "coast",
+      "seed": 1101
+    },
+    "chunk": "1024 m, 257² samples"
+  },
+  "configs": {
+    "manhattanGrid": {
+      "label": "Manhattan — orthogonal grid",
+      "family": "F2 Strong orthogonal grid",
+      "strategy": "grid",
+      "params": {
+        "label": "Grid",
+        "primarySpacing": 200,
+        "secondarySpacing": 80,
+        "widths": {
+          "primary": 20,
+          "secondary": 12,
+          "bridge": 20
+        },
+        "maxSlopeDeg": 10,
+        "minStubLength": 16,
+        "bridgePrimaryOnly": true,
+        "maxBridgeSpan": 80
+      },
+      "parcel": {
+        "label": "regular frontage lots (M2)",
+        "targetFrontage": 15,
+        "jitter": 0,
+        "maxDepth": 32,
+        "minFrontage": 6,
+        "minArea": 90
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.92,
+        "sideSetback": 0.4,
+        "frontSetback": 0,
+        "maxDepth": 26,
+        "floors": [
+          3,
+          32
+        ],
+        "floorHeight": 3.6,
+        "weights": {
+          "centre": 0.65,
+          "road": 0.2,
+          "area": 0.15
+        },
+        "jitter": 0.25,
+        "centreRadius": 380,
+        "courtyard": null
+      },
+      "unsupported": []
+    },
+    "veniceWaterNetwork": {
+      "label": "Venice — water network and islands",
+      "family": "F1 Water network — island fabric",
+      "strategy": "canalStreet",
+      "params": {
+        "label": "Canal-Street",
+        "maxSlopeDeg": 15,
+        "widths": {
+          "canal": 10,
+          "primary": 6,
+          "lane": 4,
+          "bridge": 6
+        },
+        "canalRegionMinArea": 10000,
+        "canalCentrePull": 6,
+        "quayOffsetCells": 2,
+        "quayOffPenalty": 4,
+        "bridgeInterval": 260,
+        "maxBridgeSpan": 70,
+        "slopePenalty": 3,
+        "climbPenalty": 0.5,
+        "reuseDiscount": 0.35,
+        "laneTargets": 14,
+        "laneAttempts": 160,
+        "laneMinLength": 40,
+        "laneMaxLength": 260,
+        "loops": {
+          "maxLinkLength": 140,
+          "maxExtension": 100,
+          "minPerimeter": 140,
+          "maxPerimeter": 700,
+          "minDetourRatio": 2.5,
+          "closeShare": 0.6,
+          "branchLinks": 6,
+          "branchSampleSpacing": 40,
+          "clearanceCells": 2,
+          "minBuildableShare": 0.5
+        },
+        "gateMinRun": 40,
+        "secondaryCentres": 2,
+        "secondaryCentreMinArea": 10000
+      },
+      "parcel": {
+        "label": "narrow lots along quays and lanes (V3)",
+        "targetFrontage": 9,
+        "jitter": 0.25,
+        "maxDepth": 20,
+        "minFrontage": 5,
+        "minArea": 50
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.85,
+        "sideSetback": 0.4,
+        "frontSetback": 0,
+        "maxDepth": 14,
+        "floors": [
+          2,
+          6
+        ],
+        "floorHeight": 3.3,
+        "weights": {
+          "centre": 0.35,
+          "road": 0.25,
+          "area": 0.15
+        },
+        "jitter": 0.25,
+        "centreRadius": 320,
+        "courtyard": null
+      },
+      "unsupported": []
+    },
+    "fezOrganicCore": {
+      "label": "Fez — organic historic core",
+      "family": "F4 Organic historic core",
+      "strategy": "organic",
+      "params": {
+        "label": "Organic",
+        "maxSlopeDeg": 20,
+        "widths": {
+          "primary": 8,
+          "lane": 4
+        },
+        "slopePenalty": 3,
+        "climbPenalty": 0.5,
+        "reuseDiscount": 0.35,
+        "gateMinRun": 40,
+        "secondaryCentres": 3,
+        "secondaryCentreMinArea": 10000,
+        "laneTargets": 26,
+        "laneAttempts": 220,
+        "laneMinLength": 40,
+        "laneMaxLength": 320,
+        "loops": {
+          "maxLinkLength": 200,
+          "maxExtension": 120,
+          "minPerimeter": 180,
+          "maxPerimeter": 1000,
+          "minDetourRatio": 2.5,
+          "closeShare": 0.5,
+          "branchLinks": 6,
+          "branchSampleSpacing": 40,
+          "clearanceCells": 2,
+          "minBuildableShare": 0.5
+        }
+      },
+      "parcel": {
+        "label": "irregular small lots (F3, courtyards TBD)",
+        "targetFrontage": 10,
+        "jitter": 0.35,
+        "maxDepth": 22,
+        "minFrontage": 5,
+        "minArea": 50
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.85,
+        "sideSetback": 0.4,
+        "frontSetback": 0,
+        "maxDepth": 16,
+        "floors": [
+          1,
+          4
+        ],
+        "floorHeight": 3.2,
+        "weights": {
+          "centre": 0.3,
+          "road": 0.2,
+          "area": 0.2
+        },
+        "jitter": 0.3,
+        "centreRadius": 300,
+        "courtyard": {
+          "minParcelArea": 140,
+          "ringWidth": 4.5,
+          "minVoidArea": 12
+        }
+      },
+      "unsupported": []
+    },
+    "chicagoGrid": {
+      "label": "Chicago — survey grid with river cut",
+      "family": "F2 Strong orthogonal grid",
+      "strategy": "grid",
+      "params": {
+        "label": "Grid",
+        "primarySpacing": 200,
+        "secondarySpacing": 100,
+        "widths": {
+          "primary": 30,
+          "secondary": 20,
+          "bridge": 30
+        },
+        "maxSlopeDeg": 10,
+        "minStubLength": 16,
+        "bridgePrimaryOnly": false,
+        "maxBridgeSpan": 120,
+        "fixedAxisDeg": 0
+      },
+      "parcel": {
+        "label": "regular 25 × 125 ft lots (src TBD)",
+        "targetFrontage": 7.6,
+        "jitter": 0,
+        "maxDepth": 38,
+        "minFrontage": 6,
+        "minArea": 120
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.9,
+        "sideSetback": 0.9,
+        "frontSetback": 0,
+        "maxDepth": 30,
+        "floors": [
+          2,
+          45
+        ],
+        "floorHeight": 3.8,
+        "weights": {
+          "centre": 0.9,
+          "road": 0.08,
+          "area": 0.02
+        },
+        "jitter": 0.15,
+        "centreRadius": 220,
+        "courtyard": null
+      },
+      "unsupported": [
+        {
+          "feature": "Mid-block service alleys",
+          "needs": "third street family in the grid strategy (service class, ≈ 5 m) and alley-side parcel backs"
+        },
+        {
+          "feature": "Height peaks at transport nodes (Loop \"L\" stations)",
+          "needs": "node-centrality or transit-node input to the building height field instead of one seeded centre"
+        },
+        {
+          "feature": "Lakefront edge vs river edge distinction",
+          "needs": "terrainAnalysis metric for straight open shore vs channel"
+        },
+        {
+          "feature": "Diagonal arterial streets",
+          "needs": "grid + diagonal overlay rule"
+        }
+      ]
+    },
+    "amsterdamCanalRing": {
+      "label": "Amsterdam — canal ring",
+      "family": "F1 Water network — island fabric",
+      "strategy": "canalStreet",
+      "params": {
+        "label": "Canal-Street",
+        "maxSlopeDeg": 10,
+        "widths": {
+          "canal": 20,
+          "primary": 8,
+          "lane": 5,
+          "bridge": 8
+        },
+        "canalRegionMinArea": 10000,
+        "canalCentrePull": 6,
+        "quayOffsetCells": 2,
+        "quayOffPenalty": 4,
+        "bridgeInterval": 120,
+        "maxBridgeSpan": 70,
+        "slopePenalty": 3,
+        "climbPenalty": 0.5,
+        "reuseDiscount": 0.35,
+        "laneTargets": 24,
+        "laneAttempts": 160,
+        "laneMinLength": 40,
+        "laneMaxLength": 260,
+        "loops": {
+          "maxLinkLength": 120,
+          "maxExtension": 100,
+          "minPerimeter": 120,
+          "maxPerimeter": 600,
+          "minDetourRatio": 2.5,
+          "closeShare": 0.85,
+          "branchLinks": 6,
+          "branchSampleSpacing": 40,
+          "clearanceCells": 2,
+          "minBuildableShare": 0.5
+        },
+        "gateMinRun": 40,
+        "secondaryCentres": 2,
+        "secondaryCentreMinArea": 10000
+      },
+      "parcel": {
+        "label": "narrow deep canal-house lots (row 02)",
+        "targetFrontage": 7,
+        "jitter": 0.1,
+        "maxDepth": 30,
+        "minFrontage": 4,
+        "minArea": 60
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.95,
+        "sideSetback": 0.1,
+        "frontSetback": 0,
+        "maxDepth": 18,
+        "floors": [
+          3,
+          5
+        ],
+        "floorHeight": 3.4,
+        "weights": {
+          "centre": 0.15,
+          "road": 0.3,
+          "area": 0.1
+        },
+        "jitter": 0.2,
+        "centreRadius": 400,
+        "courtyard": null
+      },
+      "unsupported": [
+        {
+          "feature": "Concentric ring canals (grachtengordel)",
+          "needs": "a canal-excavation rule that writes water into the height field — changes upstream terrain, so outside 06.1"
+        },
+        {
+          "feature": "Lots perpendicular to the canal with water-side frontage",
+          "needs": "quay-facing parcel orientation (canal-street lots rarely face water, known 04.2 issue)"
+        },
+        {
+          "feature": "Back gardens / block interiors",
+          "needs": "rear-yard rule in parcels and buildings"
+        }
+      ]
+    },
+    "lisbonHillCore": {
+      "label": "Lisbon — hills and valley axis",
+      "family": "F6 Mountain — slope adaptation",
+      "strategy": "organic",
+      "params": {
+        "label": "Organic",
+        "maxSlopeDeg": 20,
+        "widths": {
+          "primary": 10,
+          "lane": 4
+        },
+        "slopePenalty": 1.5,
+        "climbPenalty": 2,
+        "reuseDiscount": 0.35,
+        "gateMinRun": 40,
+        "secondaryCentres": 5,
+        "secondaryCentreMinArea": 5000,
+        "laneTargets": 32,
+        "laneAttempts": 220,
+        "laneMinLength": 40,
+        "laneMaxLength": 320,
+        "loops": {
+          "maxLinkLength": 200,
+          "maxExtension": 120,
+          "minPerimeter": 180,
+          "maxPerimeter": 1000,
+          "minDetourRatio": 2.5,
+          "closeShare": 0.5,
+          "branchLinks": 6,
+          "branchSampleSpacing": 40,
+          "clearanceCells": 2,
+          "minBuildableShare": 0.5
+        }
+      },
+      "parcel": {
+        "label": "small irregular hillside lots (row 35)",
+        "targetFrontage": 8,
+        "jitter": 0.3,
+        "maxDepth": 18,
+        "minFrontage": 4,
+        "minArea": 45
+      },
+      "building": {
+        "type": "streetFrontage",
+        "occupancy": 0.9,
+        "sideSetback": 0.3,
+        "frontSetback": 0,
+        "maxDepth": 14,
+        "floors": [
+          3,
+          6
+        ],
+        "floorHeight": 3.2,
+        "weights": {
+          "centre": 0.25,
+          "road": 0.35,
+          "area": 0.1
+        },
+        "jitter": 0.3,
+        "centreRadius": 300,
+        "courtyard": null
+      },
+      "unsupported": [
+        {
+          "feature": "Pedestrian stairs (escadinhas) and funiculars",
+          "needs": "pedestrian edge class allowed above maxSlopeDeg with its own geometry"
+        },
+        {
+          "feature": "Orthogonal Baixa grid in the valley floor",
+          "needs": "hybrid rule: grid strategy inside a valley mask, organic on slopes"
+        },
+        {
+          "feature": "Hill-top centres and viewpoints (miradouros)",
+          "needs": "terrainAnalysis peak detection feeding organic centres"
+        },
+        {
+          "feature": "Terraced building platforms",
+          "needs": "stepped plinth rule (05.1 only absorbs ≤ 4 m)"
+        }
+      ]
+    }
+  },
+  "configChecks": [
+    {
+      "id": "manhattanGrid",
+      "problems": []
+    },
+    {
+      "id": "veniceWaterNetwork",
+      "problems": []
+    },
+    {
+      "id": "fezOrganicCore",
+      "problems": []
+    },
+    {
+      "id": "chicagoGrid",
+      "problems": []
+    },
+    {
+      "id": "amsterdamCanalRing",
+      "problems": []
+    },
+    {
+      "id": "lisbonHillCore",
+      "problems": []
+    }
+  ],
+  "successRate": {
+    "runs": 72,
+    "ok": 72,
+    "nonEmpty": 72,
+    "byDNA": {
+      "manhattanGrid": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      },
+      "veniceWaterNetwork": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      },
+      "fezOrganicCore": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      },
+      "chicagoGrid": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      },
+      "amsterdamCanalRing": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      },
+      "lisbonHillCore": {
+        "ok": 12,
+        "nonEmpty": 12,
+        "of": 12
+      }
+    }
+  },
+  "timingMs": {
+    "mean": 1983,
+    "max": 4706
+  },
+  "reproducibility": [
+    {
+      "dna": "manhattanGrid",
+      "identical": true,
+      "signatures": {
+        "network": "13800DC8",
+        "blocks": "AF1C1577",
+        "parcels": "ACDF092F",
+        "buildings": "08B89DD6"
+      }
+    },
+    {
+      "dna": "veniceWaterNetwork",
+      "identical": true,
+      "signatures": {
+        "network": "B725A28B",
+        "blocks": "5D3C81A6",
+        "parcels": "776661B0",
+        "buildings": "62834523"
+      }
+    },
+    {
+      "dna": "fezOrganicCore",
+      "identical": true,
+      "signatures": {
+        "network": "45DF7292",
+        "blocks": "8B458B7D",
+        "parcels": "18AE08CD",
+        "buildings": "85122883"
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "identical": true,
+      "signatures": {
+        "network": "2E229945",
+        "blocks": "1F354331",
+        "parcels": "975E0B06",
+        "buildings": "98A79F4F"
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "identical": true,
+      "signatures": {
+        "network": "5BB850F1",
+        "blocks": "F0C7C120",
+        "parcels": "48D65017",
+        "buildings": "2F339027"
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "identical": true,
+      "signatures": {
+        "network": "289CD1EA",
+        "blocks": "7CBCD42B",
+        "parcels": "5A07359E",
+        "buildings": "E6746B0D"
+      }
+    }
+  ],
+  "switchBackStable": true,
+  "regression": {
+    "identical": 36,
+    "of": 36
+  },
+  "autoChanges": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "before": "fezOrganicCore",
+      "after": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "before": "fezOrganicCore",
+      "after": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "before": "fezOrganicCore",
+      "after": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "before": "fezOrganicCore",
+      "after": "lisbonHillCore",
+      "changed": true
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "before": "fezOrganicCore",
+      "after": "fezOrganicCore",
+      "changed": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "before": "manhattanGrid",
+      "after": "manhattanGrid",
+      "changed": false
+    }
+  ],
+  "autoRanking": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2437,
+          "fit": 0.5686,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.2298,
+          "fit": 0.2954,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.1791,
+          "fit": 0.3134,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1281,
+          "fit": 0.1922,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0526,
+          "fit": 0.0614,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2347,
+          "fit": 0.5476,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.2222,
+          "fit": 0.2857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.1806,
+          "fit": 0.316,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1186,
+          "fit": 0.1779,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0429,
+          "fit": 0.05,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2477,
+          "fit": 0.5781,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.226,
+          "fit": 0.2906,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2014,
+          "fit": 0.3525,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1204,
+          "fit": 0.1806,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0477,
+          "fit": 0.0557,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.5602,
+          "fit": 0.6535,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.4579,
+          "fit": 0.5888,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4515,
+          "fit": 0.7902,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.3072,
+          "fit": 0.4609,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2345,
+          "fit": 0.3127,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.4756,
+          "fit": 0.5548,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4745,
+          "fit": 0.8304,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.3921,
+          "fit": 0.5041,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2204,
+          "fit": 0.2939,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1327,
+          "fit": 0.199,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4555,
+          "fit": 0.7972,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.3959,
+          "fit": 0.9237,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.2418,
+          "fit": 0.3626,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.2193,
+          "fit": 0.2559,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2025,
+          "fit": 0.2699,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.1928,
+          "fit": 0.2479,
+          "coverage": 0.7778,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0714,
+          "fit": 0.125,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0692,
+          "fit": 0.1614,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0875,
+          "fit": 0.2041,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0747,
+          "fit": 0.1307,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0732,
+          "fit": 0.1281,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0695,
+          "fit": 0.1621,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ]
+    }
+  ],
+  "suitable": {
+    "manhattanGrid": {
+      "landform": "plain",
+      "seed": 1101,
+      "score": 0.8
+    },
+    "veniceWaterNetwork": {
+      "landform": "coast",
+      "seed": 1101,
+      "score": 0.2345
+    },
+    "fezOrganicCore": {
+      "landform": "coast",
+      "seed": 1101,
+      "score": 0.4286
+    },
+    "chicagoGrid": {
+      "landform": "plain",
+      "seed": 1101,
+      "score": 0.6222
+    },
+    "amsterdamCanalRing": {
+      "landform": "coast",
+      "seed": 1101,
+      "score": 0.3072
+    },
+    "lisbonHillCore": {
+      "landform": "coast",
+      "seed": 2202,
+      "score": 0.4745
+    }
+  },
+  "similarity": [
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "plain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.188,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.167,
+        "network.junctions": 0.231,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0.214,
+        "blocks.meanAreaM2": 0.125,
+        "parcels.count": 0.188,
+        "parcels.meanFrontage": 0.59,
+        "parcels.meanArea": 0.411,
+        "buildings.count": 0.166,
+        "buildings.meanHeight": 0.334,
+        "buildings.p90": 0.053,
+        "buildings.far": 0.642
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "plain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.167,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.167,
+        "network.junctions": 0.231,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0.214,
+        "blocks.meanAreaM2": 0.126,
+        "parcels.count": 0.162,
+        "parcels.meanFrontage": 0.588,
+        "parcels.meanArea": 0.398,
+        "buildings.count": 0.146,
+        "buildings.meanHeight": 0.341,
+        "buildings.p90": 0.013,
+        "buildings.far": 0.652
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "plain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.154,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.105,
+        "network.junctions": 0.154,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0.337,
+        "blocks.meanAreaM2": 0.247,
+        "parcels.count": 0.117,
+        "parcels.meanFrontage": 0.581,
+        "parcels.meanArea": 0.426,
+        "buildings.count": 0.094,
+        "buildings.meanHeight": 0.322,
+        "buildings.p90": 0.015,
+        "buildings.far": 0.664
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "riverValley",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.316,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.147,
+        "network.junctions": 0.19,
+        "network.deadEndRatio": 0.157,
+        "network.bridges": 1,
+        "blocks.count": 0.316,
+        "blocks.meanAreaM2": 0.346,
+        "parcels.count": 0.171,
+        "parcels.meanFrontage": 0.585,
+        "parcels.meanArea": 0.346,
+        "buildings.count": 0.155,
+        "buildings.meanHeight": 0.128,
+        "buildings.p90": 0.342,
+        "buildings.far": 0.514
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "riverValley",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.161,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.03,
+        "network.junctions": 0.346,
+        "network.deadEndRatio": 0.161,
+        "network.bridges": 1,
+        "blocks.count": 0.056,
+        "blocks.meanAreaM2": 0.085,
+        "parcels.count": 0.104,
+        "parcels.meanFrontage": 0.605,
+        "parcels.meanArea": 0.327,
+        "buildings.count": 0.1,
+        "buildings.meanHeight": 0.279,
+        "buildings.p90": 0.094,
+        "buildings.far": 0.61
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "riverValley",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.185,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.06,
+        "network.junctions": 0.192,
+        "network.deadEndRatio": 0.185,
+        "network.bridges": 1,
+        "blocks.count": 0.125,
+        "blocks.meanAreaM2": 0.093,
+        "parcels.count": 0.021,
+        "parcels.meanFrontage": 0.596,
+        "parcels.meanArea": 0.343,
+        "buildings.count": 0.067,
+        "buildings.meanHeight": 0.051,
+        "buildings.p90": 0.282,
+        "buildings.far": 0.552
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "coast",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.2,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.095,
+        "network.junctions": 0.235,
+        "network.deadEndRatio": 0.023,
+        "network.bridges": 0,
+        "blocks.count": 0.2,
+        "blocks.meanAreaM2": 0.238,
+        "parcels.count": 0.084,
+        "parcels.meanFrontage": 0.566,
+        "parcels.meanArea": 0.331,
+        "buildings.count": 0.115,
+        "buildings.meanHeight": 0.316,
+        "buildings.p90": 0.126,
+        "buildings.far": 0.68
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "coast",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.074,
+      "lowDifference": true,
+      "diffs": {
+        "network.roadKm": 0.014,
+        "network.junctions": 0.043,
+        "network.deadEndRatio": 0.043,
+        "network.bridges": 0,
+        "blocks.count": 0.125,
+        "blocks.meanAreaM2": 0.074,
+        "parcels.count": 0.034,
+        "parcels.meanFrontage": 0.558,
+        "parcels.meanArea": 0.29,
+        "buildings.count": 0.063,
+        "buildings.meanHeight": 0.495,
+        "buildings.p90": 0.536,
+        "buildings.far": 0.752
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "coast",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.256,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.219,
+        "network.junctions": 0.241,
+        "network.deadEndRatio": 0.111,
+        "network.bridges": 1,
+        "blocks.count": 0.545,
+        "blocks.meanAreaM2": 0.533,
+        "parcels.count": 0.251,
+        "parcels.meanFrontage": 0.573,
+        "parcels.meanArea": 0.221,
+        "buildings.count": 0.284,
+        "buildings.meanHeight": 0.256,
+        "buildings.p90": 0.126,
+        "buildings.far": 0.716
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "mountain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.095,
+      "lowDifference": true,
+      "diffs": {
+        "network.roadKm": 0.446,
+        "network.junctions": 0,
+        "network.deadEndRatio": 0.029,
+        "network.bridges": 0,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0.007,
+        "parcels.count": 0.273,
+        "parcels.meanFrontage": 0.56,
+        "parcels.meanArea": 0.095,
+        "buildings.count": 0.31,
+        "buildings.meanHeight": 0.129,
+        "buildings.p90": 0.053,
+        "buildings.far": 0.595
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "mountain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.184,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.184,
+        "network.junctions": 0.25,
+        "network.deadEndRatio": 0.049,
+        "network.bridges": 0,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0.015,
+        "parcels.count": 0.073,
+        "parcels.meanFrontage": 0.54,
+        "parcels.meanArea": 0.455,
+        "buildings.count": 0.089,
+        "buildings.meanHeight": 0.365,
+        "buildings.p90": 0.709,
+        "buildings.far": 0.195
+      }
+    },
+    {
+      "dna": "chicagoGrid",
+      "sibling": "manhattanGrid",
+      "landform": "mountain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.318,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.318,
+        "network.junctions": 0.25,
+        "network.deadEndRatio": 0.172,
+        "network.bridges": 0,
+        "blocks.count": 0.5,
+        "blocks.meanAreaM2": 0.496,
+        "parcels.count": 0.045,
+        "parcels.meanFrontage": 0.573,
+        "parcels.meanArea": 0.319,
+        "buildings.count": 0.095,
+        "buildings.meanHeight": 0.531,
+        "buildings.p90": 0.296,
+        "buildings.far": 0.733
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "plain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.253,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.297,
+        "network.junctions": 0.3,
+        "network.deadEndRatio": 0.253,
+        "network.bridges": 0,
+        "blocks.count": 0.167,
+        "blocks.meanAreaM2": 0.156,
+        "parcels.count": 0.426,
+        "parcels.meanFrontage": 0.277,
+        "parcels.meanArea": 0.147,
+        "buildings.count": 0.481,
+        "buildings.meanHeight": 0.034,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.517
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "plain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.277,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.224,
+        "network.junctions": 0.5,
+        "network.deadEndRatio": 0.048,
+        "network.bridges": 0,
+        "blocks.count": 0.286,
+        "blocks.meanAreaM2": 0.294,
+        "parcels.count": 0.344,
+        "parcels.meanFrontage": 0.277,
+        "parcels.meanArea": 0.153,
+        "buildings.count": 0.416,
+        "buildings.meanHeight": 0.034,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.463
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "plain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.19,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.19,
+        "network.junctions": 0.056,
+        "network.deadEndRatio": 0.161,
+        "network.bridges": 0,
+        "blocks.count": 0.286,
+        "blocks.meanAreaM2": 0.278,
+        "parcels.count": 0.334,
+        "parcels.meanFrontage": 0.268,
+        "parcels.meanArea": 0.155,
+        "buildings.count": 0.4,
+        "buildings.meanHeight": 0.069,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.466
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "riverValley",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.253,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.079,
+        "network.junctions": 0.396,
+        "network.deadEndRatio": 0.355,
+        "network.bridges": 0.444,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0.001,
+        "parcels.count": 0.263,
+        "parcels.meanFrontage": 0.253,
+        "parcels.meanArea": 0.184,
+        "buildings.count": 0.327,
+        "buildings.meanHeight": 0.062,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.457
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "riverValley",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.211,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.005,
+        "network.junctions": 0.211,
+        "network.deadEndRatio": 0.026,
+        "network.bridges": 0.2,
+        "blocks.count": 0.214,
+        "blocks.meanAreaM2": 0.212,
+        "parcels.count": 0.371,
+        "parcels.meanFrontage": 0.241,
+        "parcels.meanArea": 0.078,
+        "buildings.count": 0.432,
+        "buildings.meanHeight": 0.122,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.511
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "riverValley",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.105,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.032,
+        "network.junctions": 0.105,
+        "network.deadEndRatio": 0.085,
+        "network.bridges": 0.2,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0.004,
+        "parcels.count": 0.406,
+        "parcels.meanFrontage": 0.229,
+        "parcels.meanArea": 0.1,
+        "buildings.count": 0.494,
+        "buildings.meanHeight": 0.174,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.614
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "coast",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.146,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.083,
+        "network.junctions": 0.125,
+        "network.deadEndRatio": 0.282,
+        "network.bridges": 0,
+        "blocks.count": 0.421,
+        "blocks.meanAreaM2": 0.414,
+        "parcels.count": 0.051,
+        "parcels.meanFrontage": 0.259,
+        "parcels.meanArea": 0.181,
+        "buildings.count": 0.146,
+        "buildings.meanHeight": 0.12,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.312
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "coast",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.186,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.073,
+        "network.junctions": 0.261,
+        "network.deadEndRatio": 0.128,
+        "network.bridges": 0,
+        "blocks.count": 0.364,
+        "blocks.meanAreaM2": 0.355,
+        "parcels.count": 0.016,
+        "parcels.meanFrontage": 0.256,
+        "parcels.meanArea": 0.186,
+        "buildings.count": 0.109,
+        "buildings.meanHeight": 0.187,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.328
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "coast",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.181,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.325,
+        "network.junctions": 0.182,
+        "network.deadEndRatio": 0.181,
+        "network.bridges": 0,
+        "blocks.count": 0.348,
+        "blocks.meanAreaM2": 0.352,
+        "parcels.count": 0.211,
+        "parcels.meanFrontage": 0.247,
+        "parcels.meanArea": 0.096,
+        "buildings.count": 0.102,
+        "buildings.meanHeight": 0.091,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.011
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "mountain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.009,
+      "lowDifference": true,
+      "diffs": {
+        "network.roadKm": 0.004,
+        "network.junctions": 0,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0,
+        "parcels.count": 0.009,
+        "parcels.meanFrontage": 0.244,
+        "parcels.meanArea": 0.088,
+        "buildings.count": 0.044,
+        "buildings.meanHeight": 0.187,
+        "buildings.p90": 0.272,
+        "buildings.far": 0.273
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "mountain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.151,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.147,
+        "network.junctions": 0.182,
+        "network.deadEndRatio": 0.047,
+        "network.bridges": 0,
+        "blocks.count": 0.333,
+        "blocks.meanAreaM2": 0.333,
+        "parcels.count": 0.082,
+        "parcels.meanFrontage": 0.315,
+        "parcels.meanArea": 0.151,
+        "buildings.count": 0.223,
+        "buildings.meanHeight": 0.061,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.29
+      }
+    },
+    {
+      "dna": "amsterdamCanalRing",
+      "sibling": "veniceWaterNetwork",
+      "landform": "mountain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.156,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.021,
+        "network.junctions": 0,
+        "network.deadEndRatio": 0.208,
+        "network.bridges": 0,
+        "blocks.count": 0.167,
+        "blocks.meanAreaM2": 0.166,
+        "parcels.count": 0.05,
+        "parcels.meanFrontage": 0.281,
+        "parcels.meanArea": 0.092,
+        "buildings.count": 0.156,
+        "buildings.meanHeight": 0.204,
+        "buildings.p90": 0.029,
+        "buildings.far": 0.329
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "plain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.229,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.115,
+        "network.junctions": 0.184,
+        "network.deadEndRatio": 0.007,
+        "network.bridges": 0,
+        "blocks.count": 0.143,
+        "blocks.meanAreaM2": 0.149,
+        "parcels.count": 0.283,
+        "parcels.meanFrontage": 0.229,
+        "parcels.meanArea": 0.369,
+        "buildings.count": 0.313,
+        "buildings.meanHeight": 0.525,
+        "buildings.p90": 0.6,
+        "buildings.far": 0.488
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "plain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.258,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.055,
+        "network.junctions": 0.029,
+        "network.deadEndRatio": 0.165,
+        "network.bridges": 0,
+        "blocks.count": 0.214,
+        "blocks.meanAreaM2": 0.21,
+        "parcels.count": 0.266,
+        "parcels.meanFrontage": 0.258,
+        "parcels.meanArea": 0.371,
+        "buildings.count": 0.298,
+        "buildings.meanHeight": 0.573,
+        "buildings.p90": 0.6,
+        "buildings.far": 0.531
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "plain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.232,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.089,
+        "network.junctions": 0.143,
+        "network.deadEndRatio": 0.004,
+        "network.bridges": 0,
+        "blocks.count": 0.143,
+        "blocks.meanAreaM2": 0.148,
+        "parcels.count": 0.262,
+        "parcels.meanFrontage": 0.232,
+        "parcels.meanArea": 0.361,
+        "buildings.count": 0.296,
+        "buildings.meanHeight": 0.538,
+        "buildings.p90": 0.6,
+        "buildings.far": 0.505
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "riverValley",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.256,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.116,
+        "network.junctions": 0.256,
+        "network.deadEndRatio": 0.108,
+        "network.bridges": 0,
+        "blocks.count": 0.333,
+        "blocks.meanAreaM2": 0.337,
+        "parcels.count": 0.227,
+        "parcels.meanFrontage": 0.212,
+        "parcels.meanArea": 0.343,
+        "buildings.count": 0.251,
+        "buildings.meanHeight": 0.538,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.494
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "riverValley",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.24,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.121,
+        "network.junctions": 0.185,
+        "network.deadEndRatio": 0.021,
+        "network.bridges": 0,
+        "blocks.count": 0.167,
+        "blocks.meanAreaM2": 0.172,
+        "parcels.count": 0.24,
+        "parcels.meanFrontage": 0.245,
+        "parcels.meanArea": 0.351,
+        "buildings.count": 0.245,
+        "buildings.meanHeight": 0.528,
+        "buildings.p90": 0.6,
+        "buildings.far": 0.455
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "riverValley",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.21,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.113,
+        "network.junctions": 0.304,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0.006,
+        "parcels.count": 0.21,
+        "parcels.meanFrontage": 0.213,
+        "parcels.meanArea": 0.326,
+        "buildings.count": 0.18,
+        "buildings.meanHeight": 0.534,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.425
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "coast",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.28,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.133,
+        "network.junctions": 0.216,
+        "network.deadEndRatio": 0.074,
+        "network.bridges": 0,
+        "blocks.count": 0.273,
+        "blocks.meanAreaM2": 0.28,
+        "parcels.count": 0.284,
+        "parcels.meanFrontage": 0.223,
+        "parcels.meanArea": 0.335,
+        "buildings.count": 0.32,
+        "buildings.meanHeight": 0.529,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.531
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "coast",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.208,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.097,
+        "network.junctions": 0.059,
+        "network.deadEndRatio": 0.034,
+        "network.bridges": 0,
+        "blocks.count": 0.167,
+        "blocks.meanAreaM2": 0.177,
+        "parcels.count": 0.208,
+        "parcels.meanFrontage": 0.229,
+        "parcels.meanArea": 0.32,
+        "buildings.count": 0.241,
+        "buildings.meanHeight": 0.526,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.476
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "coast",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.135,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.01,
+        "network.junctions": 0,
+        "network.deadEndRatio": 0.125,
+        "network.bridges": 0,
+        "blocks.count": 0.118,
+        "blocks.meanAreaM2": 0.11,
+        "parcels.count": 0.135,
+        "parcels.meanFrontage": 0.255,
+        "parcels.meanArea": 0.308,
+        "buildings.count": 0.211,
+        "buildings.meanHeight": 0.568,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.498
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "mountain",
+      "seed": 1101,
+      "sameNetwork": false,
+      "medianRelDiff": 0.167,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.004,
+        "network.junctions": 0,
+        "network.deadEndRatio": 0,
+        "network.bridges": 0,
+        "blocks.count": 0,
+        "blocks.meanAreaM2": 0,
+        "parcels.count": 0.167,
+        "parcels.meanFrontage": 0.24,
+        "parcels.meanArea": 0.289,
+        "buildings.count": 0.211,
+        "buildings.meanHeight": 0.575,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.52
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "mountain",
+      "seed": 2202,
+      "sameNetwork": false,
+      "medianRelDiff": 0.227,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.065,
+        "network.junctions": 0.036,
+        "network.deadEndRatio": 0.067,
+        "network.bridges": 0,
+        "blocks.count": 0.111,
+        "blocks.meanAreaM2": 0.114,
+        "parcels.count": 0.227,
+        "parcels.meanFrontage": 0.29,
+        "parcels.meanArea": 0.348,
+        "buildings.count": 0.25,
+        "buildings.meanHeight": 0.582,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.522
+      }
+    },
+    {
+      "dna": "lisbonHillCore",
+      "sibling": "fezOrganicCore",
+      "landform": "mountain",
+      "seed": 3303,
+      "sameNetwork": false,
+      "medianRelDiff": 0.176,
+      "lowDifference": false,
+      "diffs": {
+        "network.roadKm": 0.014,
+        "network.junctions": 0.158,
+        "network.deadEndRatio": 0.004,
+        "network.bridges": 0,
+        "blocks.count": 0.143,
+        "blocks.meanAreaM2": 0.143,
+        "parcels.count": 0.176,
+        "parcels.meanFrontage": 0.212,
+        "parcels.meanArea": 0.333,
+        "buildings.count": 0.198,
+        "buildings.meanHeight": 0.637,
+        "buildings.p90": 0.5,
+        "buildings.far": 0.543
+      }
+    }
+  ],
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3241,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "259D4E0E",
+        "blocks": "7DC97D5A",
+        "parcels": "95D5B6C4",
+        "buildings": "0FA279C3"
+      },
+      "network": {
+        "roadKm": 18.43,
+        "edges": 148,
+        "junctions": 65,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.852,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 84,
+        "invalid": 0,
+        "meanAreaM2": 9533,
+        "roadHa": 24.7
+      },
+      "parcels": {
+        "count": 1836,
+        "meanFrontage": 16.6,
+        "meanArea": 365,
+        "meanDepth": 28.4,
+        "utilisation": 0.864,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1679,
+        "meanHeight": 60.2,
+        "p10": 39.6,
+        "p50": 54,
+        "p90": 90,
+        "max": 115.2,
+        "coverage": 0.791,
+        "footprintHa": 48.61,
+        "gfaHa": 817.3,
+        "far": 10.54,
+        "courtyards": 0,
+        "distinctFloors": 26
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 1367,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "52A12860",
+        "blocks": "E717EFAE",
+        "parcels": "47375F17",
+        "buildings": "CFC629E8"
+      },
+      "network": {
+        "roadKm": 3.52,
+        "edges": 30,
+        "junctions": 14,
+        "deadEndRatio": 0.31,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.024,
+        "straightness": 0.983,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 6,
+        "invalid": 0,
+        "meanAreaM2": 171756,
+        "roadHa": 2.1
+      },
+      "parcels": {
+        "count": 682,
+        "meanFrontage": 8.3,
+        "meanArea": 157,
+        "meanDepth": 18.7,
+        "utilisation": 0.104,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 573,
+        "meanHeight": 11.3,
+        "p10": 9.9,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.609,
+        "footprintHa": 5.4,
+        "gfaHa": 18.5,
+        "far": 0.18,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2068,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "41D1FD89",
+        "blocks": "15F6BEFF",
+        "parcels": "37FDE387",
+        "buildings": "592BB1DA"
+      },
+      "network": {
+        "roadKm": 6.33,
+        "edges": 56,
+        "junctions": 31,
+        "deadEndRatio": 0.286,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.211,
+        "straightness": 0.958,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 84626,
+        "roadHa": 3.9
+      },
+      "parcels": {
+        "count": 1059,
+        "meanFrontage": 9.6,
+        "meanArea": 195,
+        "meanDepth": 20.3,
+        "utilisation": 0.204,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 912,
+        "meanHeight": 5.6,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.683,
+        "footprintHa": 12.18,
+        "gfaHa": 21.8,
+        "far": 0.216,
+        "courtyards": 217,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 4706,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "6097A097",
+        "blocks": "4469E0A9",
+        "parcels": "C14A2A8F",
+        "buildings": "948F4C5E"
+      },
+      "network": {
+        "roadKm": 15.36,
+        "edges": 115,
+        "junctions": 50,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.918,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 66,
+        "invalid": 0,
+        "meanAreaM2": 10896,
+        "roadHa": 32.8
+      },
+      "parcels": {
+        "count": 2260,
+        "meanFrontage": 6.8,
+        "meanArea": 215,
+        "meanDepth": 34.5,
+        "utilisation": 0.698,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 2013,
+        "meanHeight": 40.1,
+        "p10": 19,
+        "p50": 22.8,
+        "p90": 95,
+        "max": 171,
+        "coverage": 0.578,
+        "footprintHa": 25.07,
+        "gfaHa": 263.4,
+        "far": 3.774,
+        "courtyards": 0,
+        "distinctFloors": 42
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 3643,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "E1C2ED25",
+        "blocks": "C9D5FDAB",
+        "parcels": "6F1138A6",
+        "buildings": "1A9708A5"
+      },
+      "network": {
+        "roadKm": 5.01,
+        "edges": 41,
+        "junctions": 20,
+        "deadEndRatio": 0.415,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.123,
+        "straightness": 0.955,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 203542,
+        "roadHa": 3.3
+      },
+      "parcels": {
+        "count": 1188,
+        "meanFrontage": 6,
+        "meanArea": 184,
+        "meanDepth": 27.7,
+        "utilisation": 0.216,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1104,
+        "meanHeight": 11.7,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.574,
+        "footprintHa": 11.02,
+        "gfaHa": 37.7,
+        "far": 0.373,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2080,
+      "heightSignature": "843E2178",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "17541CDE",
+        "blocks": "A3BF4AE3",
+        "parcels": "496E8010",
+        "buildings": "E71E0BDC"
+      },
+      "network": {
+        "roadKm": 7.15,
+        "edges": 68,
+        "junctions": 38,
+        "deadEndRatio": 0.288,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.237,
+        "straightness": 0.958,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 14,
+        "invalid": 0,
+        "meanAreaM2": 72021,
+        "roadHa": 4.7
+      },
+      "parcels": {
+        "count": 1476,
+        "meanFrontage": 7.4,
+        "meanArea": 123,
+        "meanDepth": 16.6,
+        "utilisation": 0.182,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1327,
+        "meanHeight": 11.8,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 16,
+        "max": 16,
+        "coverage": 0.698,
+        "footprintHa": 11.55,
+        "gfaHa": 42.3,
+        "far": 0.422,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3727,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "0F4D65C2",
+        "blocks": "9020F366",
+        "parcels": "DA50EEE3",
+        "buildings": "301436CA"
+      },
+      "network": {
+        "roadKm": 18.43,
+        "edges": 148,
+        "junctions": 65,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.852,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 84,
+        "invalid": 0,
+        "meanAreaM2": 9539,
+        "roadHa": 24.7
+      },
+      "parcels": {
+        "count": 1862,
+        "meanFrontage": 16,
+        "meanArea": 359,
+        "meanDepth": 28.4,
+        "utilisation": 0.864,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1702,
+        "meanHeight": 60.1,
+        "p10": 36,
+        "p50": 54,
+        "p90": 90,
+        "max": 115.2,
+        "coverage": 0.792,
+        "footprintHa": 48.19,
+        "gfaHa": 812.8,
+        "far": 10.511,
+        "courtyards": 0,
+        "distinctFloors": 25
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 1625,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "27D279D7",
+        "blocks": "90D030B6",
+        "parcels": "50B69ABF",
+        "buildings": "D9C73D99"
+      },
+      "network": {
+        "roadKm": 4.03,
+        "edges": 25,
+        "junctions": 12,
+        "deadEndRatio": 0.36,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.07,
+        "straightness": 0.955,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 205706,
+        "roadHa": 2.4
+      },
+      "parcels": {
+        "count": 769,
+        "meanFrontage": 8.3,
+        "meanArea": 155,
+        "meanDepth": 18.7,
+        "utilisation": 0.117,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 641,
+        "meanHeight": 11.3,
+        "p10": 9.9,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.608,
+        "footprintHa": 6.04,
+        "gfaHa": 20.7,
+        "far": 0.202,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2133,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "6757EEA4",
+        "blocks": "996045C9",
+        "parcels": "74D60240",
+        "buildings": "E1A16C2B"
+      },
+      "network": {
+        "roadKm": 6.57,
+        "edges": 63,
+        "junctions": 35,
+        "deadEndRatio": 0.278,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.237,
+        "straightness": 0.931,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 14,
+        "invalid": 0,
+        "meanAreaM2": 72473,
+        "roadHa": 4
+      },
+      "parcels": {
+        "count": 1070,
+        "meanFrontage": 9.7,
+        "meanArea": 194,
+        "meanDepth": 20.2,
+        "utilisation": 0.206,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 911,
+        "meanHeight": 5,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.684,
+        "footprintHa": 12.18,
+        "gfaHa": 19.1,
+        "far": 0.189,
+        "courtyards": 214,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 4385,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "B6847738",
+        "blocks": "86E6F207",
+        "parcels": "732CCE50",
+        "buildings": "8DE4FB16"
+      },
+      "network": {
+        "roadKm": 15.36,
+        "edges": 115,
+        "junctions": 50,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.918,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 66,
+        "invalid": 0,
+        "meanAreaM2": 10908,
+        "roadHa": 32.8
+      },
+      "parcels": {
+        "count": 2222,
+        "meanFrontage": 6.6,
+        "meanArea": 216,
+        "meanDepth": 34.1,
+        "utilisation": 0.679,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1992,
+        "meanHeight": 39.6,
+        "p10": 15.2,
+        "p50": 22.8,
+        "p90": 91.2,
+        "max": 171,
+        "coverage": 0.58,
+        "footprintHa": 24.92,
+        "gfaHa": 258.6,
+        "far": 3.656,
+        "courtyards": 0,
+        "distinctFloors": 42
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 3235,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "F336C80F",
+        "blocks": "6B09A3A4",
+        "parcels": "B4B80C16",
+        "buildings": "26C6BD06"
+      },
+      "network": {
+        "roadKm": 5.19,
+        "edges": 47,
+        "junctions": 24,
+        "deadEndRatio": 0.378,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.074,
+        "straightness": 0.95,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 7,
+        "invalid": 0,
+        "meanAreaM2": 145264,
+        "roadHa": 3.4
+      },
+      "parcels": {
+        "count": 1173,
+        "meanFrontage": 6,
+        "meanArea": 183,
+        "meanDepth": 27.5,
+        "utilisation": 0.212,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1097,
+        "meanHeight": 11.7,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.578,
+        "footprintHa": 11.01,
+        "gfaHa": 37.9,
+        "far": 0.376,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 1967,
+      "heightSignature": "A298E782",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "F1D30E68",
+        "blocks": "A6B29F18",
+        "parcels": "8A37B900",
+        "buildings": "C29EAE18"
+      },
+      "network": {
+        "roadKm": 6.95,
+        "edges": 63,
+        "junctions": 34,
+        "deadEndRatio": 0.333,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.231,
+        "straightness": 0.942,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 91737,
+        "roadHa": 4.6
+      },
+      "parcels": {
+        "count": 1457,
+        "meanFrontage": 7.2,
+        "meanArea": 122,
+        "meanDepth": 16.6,
+        "utilisation": 0.177,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1297,
+        "meanHeight": 11.7,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 16,
+        "max": 16,
+        "coverage": 0.695,
+        "footprintHa": 11.05,
+        "gfaHa": 40.4,
+        "far": 0.403,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3628,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "CA059E53",
+        "blocks": "EB482FFC",
+        "parcels": "EBBDD4A1",
+        "buildings": "58382157"
+      },
+      "network": {
+        "roadKm": 19.46,
+        "edges": 175,
+        "junctions": 78,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.9,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 83,
+        "invalid": 0,
+        "meanAreaM2": 9425,
+        "roadHa": 26.4
+      },
+      "parcels": {
+        "count": 1810,
+        "meanFrontage": 16,
+        "meanArea": 366,
+        "meanDepth": 28.5,
+        "utilisation": 0.863,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1664,
+        "meanHeight": 60.5,
+        "p10": 39.6,
+        "p50": 54,
+        "p90": 93.6,
+        "max": 115.2,
+        "coverage": 0.794,
+        "footprintHa": 48.35,
+        "gfaHa": 814.2,
+        "far": 10.612,
+        "courtyards": 0,
+        "distinctFloors": 25
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 1534,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "E8945764",
+        "blocks": "DA49C4CF",
+        "parcels": "19880BDF",
+        "buildings": "8B9DC535"
+      },
+      "network": {
+        "roadKm": 4.27,
+        "edges": 33,
+        "junctions": 17,
+        "deadEndRatio": 0.323,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.997,
+        "straightness": 0.976,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 7,
+        "invalid": 0,
+        "meanAreaM2": 146793,
+        "roadHa": 2.5
+      },
+      "parcels": {
+        "count": 853,
+        "meanFrontage": 8.2,
+        "meanArea": 153,
+        "meanDepth": 18.6,
+        "utilisation": 0.128,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 723,
+        "meanHeight": 10.8,
+        "p10": 9.9,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.608,
+        "footprintHa": 6.75,
+        "gfaHa": 22.3,
+        "far": 0.218,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2044,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "6B1087A4",
+        "blocks": "05F58110",
+        "parcels": "980C6CCE",
+        "buildings": "06B803EF"
+      },
+      "network": {
+        "roadKm": 6.46,
+        "edges": 54,
+        "junctions": 30,
+        "deadEndRatio": 0.277,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.355,
+        "straightness": 0.94,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 84583,
+        "roadHa": 4
+      },
+      "parcels": {
+        "count": 1091,
+        "meanFrontage": 9.5,
+        "meanArea": 191,
+        "meanDepth": 20.2,
+        "utilisation": 0.206,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 904,
+        "meanHeight": 5.4,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.686,
+        "footprintHa": 11.86,
+        "gfaHa": 20.2,
+        "far": 0.2,
+        "courtyards": 202,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 4057,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "2F991144",
+        "blocks": "789C5B2D",
+        "parcels": "5994F3BA",
+        "buildings": "9561571A"
+      },
+      "network": {
+        "roadKm": 17.41,
+        "edges": 149,
+        "junctions": 66,
+        "deadEndRatio": 0,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.937,
+        "straightness": 1,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 55,
+        "invalid": 0,
+        "meanAreaM2": 12522,
+        "roadHa": 35.8
+      },
+      "parcels": {
+        "count": 2050,
+        "meanFrontage": 6.7,
+        "meanArea": 210,
+        "meanDepth": 33.4,
+        "utilisation": 0.634,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1837,
+        "meanHeight": 41,
+        "p10": 19,
+        "p50": 26.6,
+        "p90": 95,
+        "max": 171,
+        "coverage": 0.581,
+        "footprintHa": 22.37,
+        "gfaHa": 241.7,
+        "far": 3.564,
+        "courtyards": 0,
+        "distinctFloors": 42
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 3431,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "B4B81A6D",
+        "blocks": "EA29A00C",
+        "parcels": "72800176",
+        "buildings": "9AAB385B"
+      },
+      "network": {
+        "roadKm": 5.27,
+        "edges": 39,
+        "junctions": 18,
+        "deadEndRatio": 0.385,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.118,
+        "straightness": 0.954,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 203278,
+        "roadHa": 3.4
+      },
+      "parcels": {
+        "count": 1280,
+        "meanFrontage": 6,
+        "meanArea": 181,
+        "meanDepth": 27.9,
+        "utilisation": 0.23,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1205,
+        "meanHeight": 11.6,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.57,
+        "footprintHa": 12.13,
+        "gfaHa": 41.2,
+        "far": 0.408,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2447,
+      "heightSignature": "D79F7CD9",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "9FECC4D4",
+        "blocks": "914B74E5",
+        "parcels": "42BE42F9",
+        "buildings": "BE4BA89C"
+      },
+      "network": {
+        "roadKm": 7.09,
+        "edges": 63,
+        "junctions": 35,
+        "deadEndRatio": 0.278,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.174,
+        "straightness": 0.93,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 14,
+        "invalid": 0,
+        "meanAreaM2": 72043,
+        "roadHa": 4.7
+      },
+      "parcels": {
+        "count": 1478,
+        "meanFrontage": 7.3,
+        "meanArea": 122,
+        "meanDepth": 16.6,
+        "utilisation": 0.179,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 1284,
+        "meanHeight": 11.7,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 16,
+        "max": 16,
+        "coverage": 0.698,
+        "footprintHa": 11.04,
+        "gfaHa": 40.4,
+        "far": 0.404,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1718,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "35B89829",
+        "blocks": "9EFB5D5D",
+        "parcels": "A55AB606",
+        "buildings": "996F6788"
+      },
+      "network": {
+        "roadKm": 4.53,
+        "edges": 61,
+        "junctions": 17,
+        "deadEndRatio": 0.662,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.939,
+        "straightness": 1,
+        "components": 7,
+        "gridAxisDeg": 179
+      },
+      "blocks": {
+        "count": 13,
+        "invalid": 0,
+        "meanAreaM2": 72588,
+        "roadHa": 6.7
+      },
+      "parcels": {
+        "count": 388,
+        "meanFrontage": 16.4,
+        "meanArea": 355,
+        "meanDepth": 27,
+        "utilisation": 0.301,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 355,
+        "meanHeight": 64.1,
+        "p10": 43.2,
+        "p50": 61.2,
+        "p90": 90,
+        "max": 108,
+        "coverage": 0.795,
+        "footprintHa": 10.1,
+        "gfaHa": 181.5,
+        "far": 3.969,
+        "courtyards": 0,
+        "distinctFloors": 22
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "ms": 1655,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "D44150A0",
+        "blocks": "B06009DE",
+        "parcels": "6BC1DD7D",
+        "buildings": "3911B555"
+      },
+      "network": {
+        "roadKm": 6.52,
+        "edges": 67,
+        "junctions": 32,
+        "deadEndRatio": 0.2,
+        "canals": 1,
+        "bridges": 5,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.221,
+        "straightness": 0.851,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 81429,
+        "roadHa": 3.5
+      },
+      "parcels": {
+        "count": 520,
+        "meanFrontage": 8.7,
+        "meanArea": 151,
+        "meanDepth": 17.8,
+        "utilisation": 0.158,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 436,
+        "meanHeight": 10.6,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.633,
+        "footprintHa": 4.15,
+        "gfaHa": 13.4,
+        "far": 0.27,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1771,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "14506159",
+        "blocks": "8BAA33F7",
+        "parcels": "38614C6B",
+        "buildings": "3404E34C"
+      },
+      "network": {
+        "roadKm": 5.16,
+        "edges": 54,
+        "junctions": 29,
+        "deadEndRatio": 0.38,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.748,
+        "straightness": 0.866,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 8,
+        "invalid": 0,
+        "meanAreaM2": 122529,
+        "roadHa": 3.3
+      },
+      "parcels": {
+        "count": 466,
+        "meanFrontage": 9.9,
+        "meanArea": 181,
+        "meanDepth": 18.8,
+        "utilisation": 0.171,
+        "canalFacing": 2
+      },
+      "buildings": {
+        "count": 384,
+        "meanHeight": 5.5,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.704,
+        "footprintHa": 4.97,
+        "gfaHa": 8.8,
+        "far": 0.179,
+        "courtyards": 81,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "chicagoGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1740,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "9BC4E38E",
+        "blocks": "5A3CD43A",
+        "parcels": "B9F1A1F8",
+        "buildings": "D445D76A"
+      },
+      "network": {
+        "roadKm": 5.31,
+        "edges": 69,
+        "junctions": 21,
+        "deadEndRatio": 0.558,
+        "canals": 0,
+        "bridges": 1,
+        "tunnels": 0,
+        "mountainRoads": 3,
+        "orientationEntropy": 1.654,
+        "straightness": 0.957,
+        "components": 8,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 19,
+        "invalid": 0,
+        "meanAreaM2": 47456,
+        "roadHa": 11.1
+      },
+      "parcels": {
+        "count": 468,
+        "meanFrontage": 6.8,
+        "meanArea": 232,
+        "meanDepth": 33.5,
+        "utilisation": 0.258,
+        "canalFacing": 1
+      },
+      "buildings": {
+        "count": 420,
+        "meanHeight": 55.9,
+        "p10": 15.2,
+        "p50": 41.8,
+        "p90": 136.8,
+        "max": 163.4,
+        "coverage": 0.603,
+        "footprintHa": 5.85,
+        "gfaHa": 81.4,
+        "far": 1.93,
+        "courtyards": 0,
+        "distinctFloors": 40
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "fezOrganicCore",
+      "ms": 2743,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "4CB03F60",
+        "blocks": "76F678EE",
+        "parcels": "1D72BA0F",
+        "buildings": "0BD73E45"
+      },
+      "network": {
+        "roadKm": 7.08,
+        "edges": 104,
+        "junctions": 53,
+        "deadEndRatio": 0.129,
+        "canals": 1,
+        "bridges": 9,
+        "tunnels": 0,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.249,
+        "straightness": 0.867,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 81545,
+        "roadHa": 3.4
+      },
+      "parcels": {
+        "count": 706,
+        "meanFrontage": 6.5,
+        "meanArea": 185,
+        "meanDepth": 24.7,
+        "utilisation": 0.265,
+        "canalFacing": 1
+      },
+      "buildings": {
+        "count": 648,
+        "meanHeight": 11.3,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.628,
+        "footprintHa": 7.34,
+        "gfaHa": 24.4,
+        "far": 0.497,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "dna": "lisbonHillCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1582,
+      "heightSignature": "4D0E75F7",
+      "waterSignature": "F943EF0B",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "91050C5F",
+        "blocks": "00D798F3",
+        "parcels": "D44ED509",
+        "buildings": "FCB6D9F8"
+      },
+      "network": {
+        "roadKm": 5.84,
+        "edges": 70,
+        "junctions": 39,
+        "deadEndRatio": 0.339,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.646,
+        "straightness": 0.85,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 81287,
+        "roadHa": 3.9
+      },
+      "parcels": {
+        "count": 603,
+        "meanFrontage": 7.8,
+        "meanArea": 119,
+        "meanDepth": 15.7,
+        "utilisation": 0.146,
+        "canalFacing": 2
+      },
+      "buildings": {
+        "count": 513,
+        "meanHeight": 11.9,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.726,
+        "footprintHa": 4.63,
+        "gfaHa": 17.3,
+        "far": 0.354,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1831,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "41D50338",
+        "blocks": "8B7831D2",
+        "parcels": "272366E4",
+        "buildings": "ECF7BF51"
+      },
+      "network": {
+        "roadKm": 5.91,
+        "edges": 81,
+        "junctions": 26,
+        "deadEndRatio": 0.616,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 2,
+        "orientationEntropy": 1.644,
+        "straightness": 0.964,
+        "components": 5,
+        "gridAxisDeg": 83.7
+      },
+      "blocks": {
+        "count": 17,
+        "invalid": 0,
+        "meanAreaM2": 54682,
+        "roadHa": 8.2
+      },
+      "parcels": {
+        "count": 432,
+        "meanFrontage": 16.7,
+        "meanArea": 336,
+        "meanDepth": 26.7,
+        "utilisation": 0.333,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 394,
+        "meanHeight": 54.9,
+        "p10": 32.4,
+        "p50": 54,
+        "p90": 79.2,
+        "max": 100.8,
+        "coverage": 0.813,
+        "footprintHa": 10.81,
+        "gfaHa": 165.4,
+        "far": 3.798,
+        "courtyards": 0,
+        "distinctFloors": 22
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "ms": 1528,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "92BF78C0",
+        "blocks": "4E089962",
+        "parcels": "B5E3402F",
+        "buildings": "25642142"
+      },
+      "network": {
+        "roadKm": 6.4,
+        "edges": 60,
+        "junctions": 30,
+        "deadEndRatio": 0.189,
+        "canals": 1,
+        "bridges": 4,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 2.193,
+        "straightness": 0.819,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 14,
+        "invalid": 0,
+        "meanAreaM2": 69802,
+        "roadHa": 3.7
+      },
+      "parcels": {
+        "count": 465,
+        "meanFrontage": 8.7,
+        "meanArea": 153,
+        "meanDepth": 17.6,
+        "utilisation": 0.145,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 382,
+        "meanHeight": 10.8,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.643,
+        "footprintHa": 3.87,
+        "gfaHa": 12.9,
+        "far": 0.262,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1800,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "E1262D1B",
+        "blocks": "AF739D88",
+        "parcels": "47A8979A",
+        "buildings": "29C1B371"
+      },
+      "network": {
+        "roadKm": 4.07,
+        "edges": 44,
+        "junctions": 22,
+        "deadEndRatio": 0.432,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.571,
+        "straightness": 0.896,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 197317,
+        "roadHa": 2.7
+      },
+      "parcels": {
+        "count": 392,
+        "meanFrontage": 9.8,
+        "meanArea": 185,
+        "meanDepth": 19.2,
+        "utilisation": 0.147,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 333,
+        "meanHeight": 5.9,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.702,
+        "footprintHa": 4.44,
+        "gfaHa": 8.4,
+        "far": 0.17,
+        "courtyards": 77,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "chicagoGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1453,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "E6622771",
+        "blocks": "35F85869",
+        "parcels": "CF3888DB",
+        "buildings": "2909EB31"
+      },
+      "network": {
+        "roadKm": 5.73,
+        "edges": 54,
+        "junctions": 17,
+        "deadEndRatio": 0.517,
+        "canals": 0,
+        "bridges": 1,
+        "tunnels": 0,
+        "mountainRoads": 3,
+        "orientationEntropy": 1.875,
+        "straightness": 0.942,
+        "components": 4,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 18,
+        "invalid": 0,
+        "meanAreaM2": 50031,
+        "roadHa": 11.3
+      },
+      "parcels": {
+        "count": 482,
+        "meanFrontage": 6.6,
+        "meanArea": 226,
+        "meanDepth": 33,
+        "utilisation": 0.262,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 438,
+        "meanHeight": 39.6,
+        "p10": 15.2,
+        "p50": 26.6,
+        "p90": 87.4,
+        "max": 136.8,
+        "coverage": 0.6,
+        "footprintHa": 5.94,
+        "gfaHa": 61.4,
+        "far": 1.48,
+        "courtyards": 0,
+        "distinctFloors": 32
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "fezOrganicCore",
+      "ms": 2548,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "55F4FD10",
+        "blocks": "1C645649",
+        "parcels": "21D188DF",
+        "buildings": "7BB1E129"
+      },
+      "network": {
+        "roadKm": 6.43,
+        "edges": 81,
+        "junctions": 38,
+        "deadEndRatio": 0.194,
+        "canals": 1,
+        "bridges": 5,
+        "tunnels": 1,
+        "mountainRoads": 3,
+        "orientationEntropy": 2.47,
+        "straightness": 0.845,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 88616,
+        "roadHa": 3.9
+      },
+      "parcels": {
+        "count": 739,
+        "meanFrontage": 6.6,
+        "meanArea": 166,
+        "meanDepth": 24.3,
+        "utilisation": 0.256,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 673,
+        "meanHeight": 12.3,
+        "p10": 10.2,
+        "p50": 13.6,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.649,
+        "footprintHa": 7.11,
+        "gfaHa": 25.7,
+        "far": 0.536,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "dna": "lisbonHillCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1654,
+      "heightSignature": "B5E4E56E",
+      "waterSignature": "D4DC8E84",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "0E16033D",
+        "blocks": "14A00953",
+        "parcels": "EB0A7221",
+        "buildings": "0AC9D109"
+      },
+      "network": {
+        "roadKm": 4.63,
+        "edges": 53,
+        "junctions": 27,
+        "deadEndRatio": 0.423,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.507,
+        "straightness": 0.877,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 6,
+        "invalid": 0,
+        "meanAreaM2": 163366,
+        "roadHa": 3.4
+      },
+      "parcels": {
+        "count": 516,
+        "meanFrontage": 7.4,
+        "meanArea": 120,
+        "meanDepth": 16.2,
+        "utilisation": 0.127,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 441,
+        "meanHeight": 12.5,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 16,
+        "max": 16,
+        "coverage": 0.716,
+        "footprintHa": 3.89,
+        "gfaHa": 15.2,
+        "far": 0.312,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1534,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "57CB5A02",
+        "blocks": "88DD1E24",
+        "parcels": "6CE4A238",
+        "buildings": "667A7807"
+      },
+      "network": {
+        "roadKm": 6.01,
+        "edges": 78,
+        "junctions": 26,
+        "deadEndRatio": 0.622,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 1.41,
+        "straightness": 0.98,
+        "components": 4,
+        "gridAxisDeg": 4.3
+      },
+      "blocks": {
+        "count": 24,
+        "invalid": 0,
+        "meanAreaM2": 38725,
+        "roadHa": 8.3
+      },
+      "parcels": {
+        "count": 473,
+        "meanFrontage": 16.6,
+        "meanArea": 338,
+        "meanDepth": 27.1,
+        "utilisation": 0.365,
+        "canalFacing": 5
+      },
+      "buildings": {
+        "count": 445,
+        "meanHeight": 60.5,
+        "p10": 32.4,
+        "p50": 61.2,
+        "p90": 90,
+        "max": 111.6,
+        "coverage": 0.808,
+        "footprintHa": 12.16,
+        "gfaHa": 203.9,
+        "far": 4.658,
+        "courtyards": 0,
+        "distinctFloors": 25
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "ms": 1407,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "81BDB84E",
+        "blocks": "2F766E68",
+        "parcels": "2D0648DB",
+        "buildings": "F2F26894"
+      },
+      "network": {
+        "roadKm": 6.1,
+        "edges": 68,
+        "junctions": 34,
+        "deadEndRatio": 0.2,
+        "canals": 1,
+        "bridges": 4,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.106,
+        "straightness": 0.863,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 13,
+        "invalid": 0,
+        "meanAreaM2": 75322,
+        "roadHa": 3.5
+      },
+      "parcels": {
+        "count": 472,
+        "meanFrontage": 8.3,
+        "meanArea": 153,
+        "meanDepth": 18.1,
+        "utilisation": 0.144,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 374,
+        "meanHeight": 10,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 13.2,
+        "coverage": 0.625,
+        "footprintHa": 3.57,
+        "gfaHa": 10.9,
+        "far": 0.219,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1813,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "3F953FBE",
+        "blocks": "5424560B",
+        "parcels": "6E8FE4BF",
+        "buildings": "DAB12FE5"
+      },
+      "network": {
+        "roadKm": 4.09,
+        "edges": 33,
+        "junctions": 16,
+        "deadEndRatio": 0.5,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.917,
+        "straightness": 0.831,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 496072,
+        "roadHa": 2.3
+      },
+      "parcels": {
+        "count": 368,
+        "meanFrontage": 9.4,
+        "meanArea": 178,
+        "meanDepth": 19.3,
+        "utilisation": 0.131,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 314,
+        "meanHeight": 5.5,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.701,
+        "footprintHa": 4.09,
+        "gfaHa": 7.3,
+        "far": 0.145,
+        "courtyards": 71,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "chicagoGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 1483,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "D4AE183D",
+        "blocks": "142F2D4E",
+        "parcels": "89FEFAA4",
+        "buildings": "17D7AD1D"
+      },
+      "network": {
+        "roadKm": 5.65,
+        "edges": 69,
+        "junctions": 21,
+        "deadEndRatio": 0.507,
+        "canals": 0,
+        "bridges": 3,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 1.453,
+        "straightness": 0.982,
+        "components": 3,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 21,
+        "invalid": 0,
+        "meanAreaM2": 42678,
+        "roadHa": 11.9
+      },
+      "parcels": {
+        "count": 463,
+        "meanFrontage": 6.7,
+        "meanArea": 222,
+        "meanDepth": 33.5,
+        "utilisation": 0.25,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 415,
+        "meanHeight": 57.4,
+        "p10": 15.2,
+        "p50": 41.8,
+        "p90": 125.4,
+        "max": 159.6,
+        "coverage": 0.599,
+        "footprintHa": 5.57,
+        "gfaHa": 85.8,
+        "far": 2.087,
+        "courtyards": 0,
+        "distinctFloors": 39
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "fezOrganicCore",
+      "ms": 2161,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "586FFECC",
+        "blocks": "04624F9C",
+        "parcels": "D464B220",
+        "buildings": "6F1BCDC0"
+      },
+      "network": {
+        "roadKm": 6.3,
+        "edges": 81,
+        "junctions": 38,
+        "deadEndRatio": 0.183,
+        "canals": 1,
+        "bridges": 5,
+        "tunnels": 0,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.097,
+        "straightness": 0.878,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 13,
+        "invalid": 0,
+        "meanAreaM2": 75027,
+        "roadHa": 3.9
+      },
+      "parcels": {
+        "count": 795,
+        "meanFrontage": 6.4,
+        "meanArea": 170,
+        "meanDepth": 24.6,
+        "utilisation": 0.28,
+        "canalFacing": 2
+      },
+      "buildings": {
+        "count": 739,
+        "meanHeight": 12.1,
+        "p10": 10.2,
+        "p50": 13.6,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.642,
+        "footprintHa": 7.66,
+        "gfaHa": 27.5,
+        "far": 0.568,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "dna": "lisbonHillCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1639,
+      "heightSignature": "A778040A",
+      "waterSignature": "3ECD1930",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "54BF0EAB",
+        "blocks": "9016A23B",
+        "parcels": "248464BF",
+        "buildings": "B57D1710"
+      },
+      "network": {
+        "roadKm": 4.61,
+        "edges": 47,
+        "junctions": 23,
+        "deadEndRatio": 0.5,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.863,
+        "straightness": 0.844,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 492977,
+        "roadHa": 2.9
+      },
+      "parcels": {
+        "count": 466,
+        "meanFrontage": 7.4,
+        "meanArea": 120,
+        "meanDepth": 16,
+        "utilisation": 0.112,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 383,
+        "meanHeight": 11.8,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.716,
+        "footprintHa": 3.37,
+        "gfaHa": 12.5,
+        "far": 0.252,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3201,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "13800DC8",
+        "blocks": "AF1C1577",
+        "parcels": "ACDF092F",
+        "buildings": "08B89DD6"
+      },
+      "network": {
+        "roadKm": 7.34,
+        "edges": 104,
+        "junctions": 34,
+        "deadEndRatio": 0.558,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 6,
+        "orientationEntropy": 1.548,
+        "straightness": 0.982,
+        "components": 9,
+        "gridAxisDeg": 19.9
+      },
+      "blocks": {
+        "count": 8,
+        "invalid": 0,
+        "meanAreaM2": 96612,
+        "roadHa": 10
+      },
+      "parcels": {
+        "count": 585,
+        "meanFrontage": 15.9,
+        "meanArea": 363,
+        "meanDepth": 28,
+        "utilisation": 0.399,
+        "canalFacing": 5
+      },
+      "buildings": {
+        "count": 529,
+        "meanHeight": 57,
+        "p10": 32.4,
+        "p50": 50.4,
+        "p90": 86.4,
+        "max": 111.6,
+        "coverage": 0.792,
+        "footprintHa": 14.99,
+        "gfaHa": 241.7,
+        "far": 4.543,
+        "courtyards": 0,
+        "distinctFloors": 25
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 2063,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "B725A28B",
+        "blocks": "5D3C81A6",
+        "parcels": "776661B0",
+        "buildings": "62834523"
+      },
+      "network": {
+        "roadKm": 5.21,
+        "edges": 40,
+        "junctions": 21,
+        "deadEndRatio": 0.25,
+        "canals": 1,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.069,
+        "straightness": 0.857,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 19,
+        "invalid": 0,
+        "meanAreaM2": 44503,
+        "roadHa": 3
+      },
+      "parcels": {
+        "count": 535,
+        "meanFrontage": 8.5,
+        "meanArea": 149,
+        "meanDepth": 18,
+        "utilisation": 0.131,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 438,
+        "meanHeight": 10.3,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.636,
+        "footprintHa": 4.3,
+        "gfaHa": 13.5,
+        "far": 0.221,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2423,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "45DF7292",
+        "blocks": "8B458B7D",
+        "parcels": "18AE08CD",
+        "buildings": "85122883"
+      },
+      "network": {
+        "roadKm": 6.12,
+        "edges": 56,
+        "junctions": 29,
+        "deadEndRatio": 0.377,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.657,
+        "straightness": 0.915,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 8,
+        "invalid": 0,
+        "meanAreaM2": 104857,
+        "roadHa": 3.9
+      },
+      "parcels": {
+        "count": 717,
+        "meanFrontage": 9.4,
+        "meanArea": 182,
+        "meanDepth": 19.5,
+        "utilisation": 0.219,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 589,
+        "meanHeight": 5.6,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.693,
+        "footprintHa": 7.58,
+        "gfaHa": 13.6,
+        "far": 0.228,
+        "courtyards": 132,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 2798,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "2E229945",
+        "blocks": "1F354331",
+        "parcels": "975E0B06",
+        "buildings": "98A79F4F"
+      },
+      "network": {
+        "roadKm": 6.64,
+        "edges": 83,
+        "junctions": 26,
+        "deadEndRatio": 0.571,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 7,
+        "orientationEntropy": 1.853,
+        "straightness": 0.969,
+        "components": 8,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 10,
+        "invalid": 0,
+        "meanAreaM2": 73651,
+        "roadHa": 13.7
+      },
+      "parcels": {
+        "count": 536,
+        "meanFrontage": 6.9,
+        "meanArea": 243,
+        "meanDepth": 33.5,
+        "utilisation": 0.259,
+        "canalFacing": 1
+      },
+      "buildings": {
+        "count": 468,
+        "meanHeight": 39,
+        "p10": 15.2,
+        "p50": 22.8,
+        "p90": 98.8,
+        "max": 163.4,
+        "coverage": 0.612,
+        "footprintHa": 6.85,
+        "gfaHa": 72.9,
+        "far": 1.454,
+        "courtyards": 0,
+        "distinctFloors": 39
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 2882,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "5BB850F1",
+        "blocks": "F0C7C120",
+        "parcels": "48D65017",
+        "buildings": "2F339027"
+      },
+      "network": {
+        "roadKm": 5.68,
+        "edges": 48,
+        "junctions": 24,
+        "deadEndRatio": 0.348,
+        "canals": 1,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.102,
+        "straightness": 0.833,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 75905,
+        "roadHa": 3.8
+      },
+      "parcels": {
+        "count": 564,
+        "meanFrontage": 6.3,
+        "meanArea": 182,
+        "meanDepth": 25.4,
+        "utilisation": 0.173,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 513,
+        "meanHeight": 11.7,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.623,
+        "footprintHa": 5.57,
+        "gfaHa": 19.1,
+        "far": 0.321,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 2184,
+      "heightSignature": "4A69CE05",
+      "waterSignature": "602F2BF4",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "289CD1EA",
+        "blocks": "7CBCD42B",
+        "parcels": "5A07359E",
+        "buildings": "E6746B0D"
+      },
+      "network": {
+        "roadKm": 7.06,
+        "edges": 69,
+        "junctions": 37,
+        "deadEndRatio": 0.349,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.573,
+        "straightness": 0.918,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 75489,
+        "roadHa": 4.8
+      },
+      "parcels": {
+        "count": 1001,
+        "meanFrontage": 7.3,
+        "meanArea": 121,
+        "meanDepth": 16.2,
+        "utilisation": 0.206,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 866,
+        "meanHeight": 11.9,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.71,
+        "footprintHa": 7.62,
+        "gfaHa": 28.6,
+        "far": 0.486,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3196,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "05104B4E",
+        "blocks": "0248EDA2",
+        "parcels": "E1A67F91",
+        "buildings": "9C941A1B"
+      },
+      "network": {
+        "roadKm": 5.52,
+        "edges": 81,
+        "junctions": 22,
+        "deadEndRatio": 0.621,
+        "canals": 0,
+        "bridges": 1,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 1.329,
+        "straightness": 0.984,
+        "components": 14,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 8,
+        "invalid": 0,
+        "meanAreaM2": 109869,
+        "roadHa": 8
+      },
+      "parcels": {
+        "count": 355,
+        "meanFrontage": 15.4,
+        "meanArea": 352,
+        "meanDepth": 27.3,
+        "utilisation": 0.235,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 320,
+        "meanHeight": 53.9,
+        "p10": 28.8,
+        "p50": 43.2,
+        "p90": 90,
+        "max": 115.2,
+        "coverage": 0.798,
+        "footprintHa": 8.91,
+        "gfaHa": 133.7,
+        "far": 2.512,
+        "courtyards": 0,
+        "distinctFloors": 26
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 1602,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "BCA48159",
+        "blocks": "B5BC6136",
+        "parcels": "1E02B5D4",
+        "buildings": "A1AC3104"
+      },
+      "network": {
+        "roadKm": 5.56,
+        "edges": 34,
+        "junctions": 17,
+        "deadEndRatio": 0.382,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.168,
+        "straightness": 0.806,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 84385,
+        "roadHa": 3.3
+      },
+      "parcels": {
+        "count": 543,
+        "meanFrontage": 8.6,
+        "meanArea": 149,
+        "meanDepth": 17.2,
+        "utilisation": 0.14,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 427,
+        "meanHeight": 10,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 13.2,
+        "coverage": 0.638,
+        "footprintHa": 4.27,
+        "gfaHa": 13.1,
+        "far": 0.227,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 1934,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "146A5946",
+        "blocks": "1057A7EC",
+        "parcels": "D78EDDD7",
+        "buildings": "1051365F"
+      },
+      "network": {
+        "roadKm": 7.11,
+        "edges": 60,
+        "junctions": 32,
+        "deadEndRatio": 0.357,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.071,
+        "straightness": 0.856,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 10,
+        "invalid": 0,
+        "meanAreaM2": 91619,
+        "roadHa": 4.6
+      },
+      "parcels": {
+        "count": 676,
+        "meanFrontage": 9.6,
+        "meanArea": 175,
+        "meanDepth": 18.7,
+        "utilisation": 0.209,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 549,
+        "meanHeight": 5.5,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.709,
+        "footprintHa": 7.05,
+        "gfaHa": 12.5,
+        "far": 0.221,
+        "courtyards": 125,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 3067,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "01D08320",
+        "blocks": "86B50747",
+        "parcels": "FE5D35DB",
+        "buildings": "D75BA546"
+      },
+      "network": {
+        "roadKm": 5.44,
+        "edges": 80,
+        "junctions": 23,
+        "deadEndRatio": 0.649,
+        "canals": 0,
+        "bridges": 1,
+        "tunnels": 0,
+        "mountainRoads": 3,
+        "orientationEntropy": 1.264,
+        "straightness": 0.996,
+        "components": 14,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 7,
+        "invalid": 0,
+        "meanAreaM2": 118709,
+        "roadHa": 12.9
+      },
+      "parcels": {
+        "count": 343,
+        "meanFrontage": 6.8,
+        "meanArea": 250,
+        "meanDepth": 32.8,
+        "utilisation": 0.173,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 300,
+        "meanHeight": 27.2,
+        "p10": 15.2,
+        "p50": 19,
+        "p90": 41.8,
+        "max": 163.4,
+        "coverage": 0.624,
+        "footprintHa": 4.62,
+        "gfaHa": 30.8,
+        "far": 0.622,
+        "courtyards": 0,
+        "distinctFloors": 25
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 2839,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "3888369F",
+        "blocks": "29C0D7D1",
+        "parcels": "A426F8C2",
+        "buildings": "AF60DFD9"
+      },
+      "network": {
+        "roadKm": 6,
+        "edges": 47,
+        "junctions": 23,
+        "deadEndRatio": 0.438,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.246,
+        "straightness": 0.781,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 7,
+        "invalid": 0,
+        "meanAreaM2": 130912,
+        "roadHa": 4.3
+      },
+      "parcels": {
+        "count": 552,
+        "meanFrontage": 6.4,
+        "meanArea": 183,
+        "meanDepth": 24.4,
+        "utilisation": 0.179,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 479,
+        "meanHeight": 12.3,
+        "p10": 10.2,
+        "p50": 13.6,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.643,
+        "footprintHa": 5.34,
+        "gfaHa": 19,
+        "far": 0.338,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 1987,
+      "heightSignature": "1F58CD06",
+      "waterSignature": "EEE91351",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "1652F055",
+        "blocks": "02C686D1",
+        "parcels": "505AC5E6",
+        "buildings": "AD666BED"
+      },
+      "network": {
+        "roadKm": 7.87,
+        "edges": 63,
+        "junctions": 34,
+        "deadEndRatio": 0.345,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.868,
+        "straightness": 0.809,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 12,
+        "invalid": 0,
+        "meanAreaM2": 75442,
+        "roadHa": 5.9
+      },
+      "parcels": {
+        "count": 854,
+        "meanFrontage": 7.4,
+        "meanArea": 119,
+        "meanDepth": 15.9,
+        "utilisation": 0.183,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 723,
+        "meanHeight": 11.6,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.724,
+        "footprintHa": 6.4,
+        "gfaHa": 23.4,
+        "far": 0.422,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "lisbonHillCore",
+      "ms": 2551,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "B400D011",
+        "blocks": "DF1C23C8",
+        "parcels": "AD6F1E9D",
+        "buildings": "34129923"
+      },
+      "network": {
+        "roadKm": 6.67,
+        "edges": 90,
+        "junctions": 29,
+        "deadEndRatio": 0.52,
+        "canals": 0,
+        "bridges": 1,
+        "tunnels": 0,
+        "mountainRoads": 7,
+        "orientationEntropy": 1.911,
+        "straightness": 0.971,
+        "components": 8,
+        "gridAxisDeg": 136.9
+      },
+      "blocks": {
+        "count": 11,
+        "invalid": 0,
+        "meanAreaM2": 73988,
+        "roadHa": 8.7
+      },
+      "parcels": {
+        "count": 422,
+        "meanFrontage": 15.7,
+        "meanArea": 340,
+        "meanDepth": 25.9,
+        "utilisation": 0.302,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 387,
+        "meanHeight": 58.1,
+        "p10": 32.4,
+        "p50": 54,
+        "p90": 86.4,
+        "max": 111.6,
+        "coverage": 0.798,
+        "footprintHa": 10.36,
+        "gfaHa": 171.2,
+        "far": 3.601,
+        "courtyards": 0,
+        "distinctFloors": 23
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "lisbonHillCore",
+      "ms": 1445,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "EF842179",
+        "blocks": "F64D7E8E",
+        "parcels": "70704513",
+        "buildings": "CD4BECFD"
+      },
+      "network": {
+        "roadKm": 5.45,
+        "edges": 42,
+        "junctions": 22,
+        "deadEndRatio": 0.237,
+        "canals": 1,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 2.068,
+        "straightness": 0.83,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 23,
+        "invalid": 0,
+        "meanAreaM2": 37870,
+        "roadHa": 3.2
+      },
+      "parcels": {
+        "count": 436,
+        "meanFrontage": 8.5,
+        "meanArea": 142,
+        "meanDepth": 17.5,
+        "utilisation": 0.116,
+        "canalFacing": 2
+      },
+      "buildings": {
+        "count": 344,
+        "meanHeight": 10,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 13.2,
+        "coverage": 0.652,
+        "footprintHa": 3.23,
+        "gfaHa": 9.9,
+        "far": 0.185,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "lisbonHillCore",
+      "ms": 2090,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "4980FC22",
+        "blocks": "F725D8DB",
+        "parcels": "CB613377",
+        "buildings": "F84BD180"
+      },
+      "network": {
+        "roadKm": 7,
+        "edges": 73,
+        "junctions": 42,
+        "deadEndRatio": 0.246,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.765,
+        "straightness": 0.877,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 17,
+        "invalid": 0,
+        "meanAreaM2": 50617,
+        "roadHa": 4.5
+      },
+      "parcels": {
+        "count": 660,
+        "meanFrontage": 10.2,
+        "meanArea": 169,
+        "meanDepth": 18.2,
+        "utilisation": 0.217,
+        "canalFacing": 4
+      },
+      "buildings": {
+        "count": 517,
+        "meanHeight": 5.1,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 9.6,
+        "coverage": 0.712,
+        "footprintHa": 6.47,
+        "gfaHa": 10.7,
+        "far": 0.208,
+        "courtyards": 98,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "chicagoGrid",
+      "autoTop": "lisbonHillCore",
+      "ms": 2097,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "65FD94B5",
+        "blocks": "2392F4B8",
+        "parcels": "A502C437",
+        "buildings": "B28C75C8"
+      },
+      "network": {
+        "roadKm": 5.21,
+        "edges": 72,
+        "junctions": 22,
+        "deadEndRatio": 0.585,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 2,
+        "orientationEntropy": 1.495,
+        "straightness": 0.979,
+        "components": 10,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 158295,
+        "roadHa": 11
+      },
+      "parcels": {
+        "count": 316,
+        "meanFrontage": 6.7,
+        "meanArea": 265,
+        "meanDepth": 33.6,
+        "utilisation": 0.182,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 277,
+        "meanHeight": 43.2,
+        "p10": 15.2,
+        "p50": 26.6,
+        "p90": 98.8,
+        "max": 167.2,
+        "coverage": 0.604,
+        "footprintHa": 4.18,
+        "gfaHa": 47.1,
+        "far": 1.022,
+        "courtyards": 0,
+        "distinctFloors": 35
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "lisbonHillCore",
+      "ms": 2053,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "CED2EC31",
+        "blocks": "B175B7FE",
+        "parcels": "403C99C3",
+        "buildings": "B38EDA6E"
+      },
+      "network": {
+        "roadKm": 3.68,
+        "edges": 35,
+        "junctions": 18,
+        "deadEndRatio": 0.194,
+        "canals": 1,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 3,
+        "orientationEntropy": 2.822,
+        "straightness": 0.859,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 15,
+        "invalid": 0,
+        "meanAreaM2": 58405,
+        "roadHa": 2.3
+      },
+      "parcels": {
+        "count": 344,
+        "meanFrontage": 6.4,
+        "meanArea": 157,
+        "meanDepth": 25.7,
+        "utilisation": 0.1,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 309,
+        "meanHeight": 11,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.636,
+        "footprintHa": 3.09,
+        "gfaHa": 10.1,
+        "far": 0.187,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "dna": "lisbonHillCore",
+      "autoTop": "lisbonHillCore",
+      "ms": 2296,
+      "heightSignature": "0A8E846F",
+      "waterSignature": "A0CC65DE",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "C3F7D556",
+        "blocks": "00E02BDA",
+        "parcels": "BF5068C1",
+        "buildings": "AC4832B9"
+      },
+      "network": {
+        "roadKm": 7.07,
+        "edges": 74,
+        "junctions": 42,
+        "deadEndRatio": 0.281,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 1.733,
+        "straightness": 0.87,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 15,
+        "invalid": 0,
+        "meanAreaM2": 56875,
+        "roadHa": 5.2
+      },
+      "parcels": {
+        "count": 763,
+        "meanFrontage": 7.6,
+        "meanArea": 117,
+        "meanDepth": 15.7,
+        "utilisation": 0.175,
+        "canalFacing": 4
+      },
+      "buildings": {
+        "count": 655,
+        "meanHeight": 11.8,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.727,
+        "footprintHa": 5.72,
+        "gfaHa": 21.2,
+        "far": 0.414,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 691,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "132AEB07",
+        "blocks": "EE39733E",
+        "parcels": "3ADE7DA5",
+        "buildings": "589E0DEB"
+      },
+      "network": {
+        "roadKm": 1.63,
+        "edges": 14,
+        "junctions": 5,
+        "deadEndRatio": 0.4,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 5,
+        "orientationEntropy": 2.632,
+        "straightness": 0.747,
+        "components": 1,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 517395,
+        "roadHa": 1.4
+      },
+      "parcels": {
+        "count": 44,
+        "meanFrontage": 15.9,
+        "meanArea": 284,
+        "meanDepth": 23.5,
+        "utilisation": 0.125,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 42,
+        "meanHeight": 43.3,
+        "p10": 28.8,
+        "p50": 43.2,
+        "p90": 61.2,
+        "max": 72,
+        "coverage": 0.817,
+        "footprintHa": 0.99,
+        "gfaHa": 12.7,
+        "far": 1.275,
+        "courtyards": 0,
+        "distinctFloors": 13
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 740,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "08BDC05F",
+        "blocks": "B7273FA5",
+        "parcels": "E292C4D8",
+        "buildings": "F9257CAC"
+      },
+      "network": {
+        "roadKm": 2.79,
+        "edges": 11,
+        "junctions": 4,
+        "deadEndRatio": 0.25,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 6,
+        "orientationEntropy": 2.865,
+        "straightness": 0.769,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 518496,
+        "roadHa": 1.2
+      },
+      "parcels": {
+        "count": 109,
+        "meanFrontage": 8.2,
+        "meanArea": 134,
+        "meanDepth": 17.5,
+        "utilisation": 0.143,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 87,
+        "meanHeight": 9.1,
+        "p10": 6.6,
+        "p50": 9.9,
+        "p90": 9.9,
+        "max": 13.2,
+        "coverage": 0.665,
+        "footprintHa": 0.78,
+        "gfaHa": 2.2,
+        "far": 0.213,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 845,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "4BC7D506",
+        "blocks": "8CE0E0B4",
+        "parcels": "112B7913",
+        "buildings": "E814DAE5"
+      },
+      "network": {
+        "roadKm": 2.83,
+        "edges": 11,
+        "junctions": 4,
+        "deadEndRatio": 0.25,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 6,
+        "orientationEntropy": 2.815,
+        "straightness": 0.77,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 518394,
+        "roadHa": 1.2
+      },
+      "parcels": {
+        "count": 110,
+        "meanFrontage": 9.6,
+        "meanArea": 152,
+        "meanDepth": 17.6,
+        "utilisation": 0.163,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 90,
+        "meanHeight": 5.1,
+        "p10": 3.2,
+        "p50": 6.4,
+        "p90": 6.4,
+        "max": 6.4,
+        "coverage": 0.741,
+        "footprintHa": 0.98,
+        "gfaHa": 1.7,
+        "far": 0.164,
+        "courtyards": 14,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 684,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "5F44870B",
+        "blocks": "67400AF5",
+        "parcels": "C2DD8819",
+        "buildings": "0A67A5C4"
+      },
+      "network": {
+        "roadKm": 2.94,
+        "edges": 15,
+        "junctions": 5,
+        "deadEndRatio": 0.412,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 6,
+        "orientationEntropy": 2.834,
+        "straightness": 0.794,
+        "components": 2,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 513951,
+        "roadHa": 2.1
+      },
+      "parcels": {
+        "count": 32,
+        "meanFrontage": 7,
+        "meanArea": 257,
+        "meanDepth": 31.2,
+        "utilisation": 0.085,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 29,
+        "meanHeight": 37.7,
+        "p10": 15.2,
+        "p50": 38,
+        "p90": 64.6,
+        "max": 87.4,
+        "coverage": 0.657,
+        "footprintHa": 0.48,
+        "gfaHa": 5,
+        "far": 0.517,
+        "courtyards": 0,
+        "distinctFloors": 14
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 836,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "8AE2438D",
+        "blocks": "40A9024D",
+        "parcels": "7D07DBD9",
+        "buildings": "BA1327FE"
+      },
+      "network": {
+        "roadKm": 2.8,
+        "edges": 11,
+        "junctions": 4,
+        "deadEndRatio": 0.25,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 6,
+        "orientationEntropy": 2.866,
+        "straightness": 0.769,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 518357,
+        "roadHa": 1.2
+      },
+      "parcels": {
+        "count": 108,
+        "meanFrontage": 6.2,
+        "meanArea": 147,
+        "meanDepth": 23,
+        "utilisation": 0.156,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 91,
+        "meanHeight": 11.2,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.709,
+        "footprintHa": 0.91,
+        "gfaHa": 3,
+        "far": 0.293,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 789,
+      "heightSignature": "07062660",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "02371BA1",
+        "blocks": "C9D94687",
+        "parcels": "9B8E27F5",
+        "buildings": "D1B3491F"
+      },
+      "network": {
+        "roadKm": 2.82,
+        "edges": 11,
+        "junctions": 4,
+        "deadEndRatio": 0.25,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 6,
+        "orientationEntropy": 2.807,
+        "straightness": 0.771,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 518409,
+        "roadHa": 1.2
+      },
+      "parcels": {
+        "count": 132,
+        "meanFrontage": 7.3,
+        "meanArea": 108,
+        "meanDepth": 15.6,
+        "utilisation": 0.138,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 114,
+        "meanHeight": 12,
+        "p10": 9.6,
+        "p50": 12.8,
+        "p90": 12.8,
+        "max": 12.8,
+        "coverage": 0.737,
+        "footprintHa": 0.94,
+        "gfaHa": 3.5,
+        "far": 0.342,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "manhattanGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 861,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "78D364DC",
+        "blocks": "76C83322",
+        "parcels": "12FFFE82",
+        "buildings": "FDBBC7A6"
+      },
+      "network": {
+        "roadKm": 1.64,
+        "edges": 10,
+        "junctions": 3,
+        "deadEndRatio": 0.5,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 2.858,
+        "straightness": 0.871,
+        "components": 2,
+        "gridAxisDeg": 84.6
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 516625,
+        "roadHa": 1.6
+      },
+      "parcels": {
+        "count": 89,
+        "meanFrontage": 15,
+        "meanArea": 396,
+        "meanDepth": 28.9,
+        "utilisation": 0.237,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 82,
+        "meanHeight": 35.9,
+        "p10": 28.8,
+        "p50": 32.4,
+        "p90": 43.2,
+        "max": 61.2,
+        "coverage": 0.771,
+        "footprintHa": 2.5,
+        "gfaHa": 25.1,
+        "far": 1.692,
+        "courtyards": 0,
+        "distinctFloors": 11
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "fezOrganicCore",
+      "ms": 1040,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "65AE19D7",
+        "blocks": "A029D174",
+        "parcels": "C944A395",
+        "buildings": "1D2CEEA5"
+      },
+      "network": {
+        "roadKm": 2.38,
+        "edges": 22,
+        "junctions": 11,
+        "deadEndRatio": 0.409,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 2.318,
+        "straightness": 0.818,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 3,
+        "invalid": 0,
+        "meanAreaM2": 345768,
+        "roadHa": 1.3
+      },
+      "parcels": {
+        "count": 214,
+        "meanFrontage": 9.2,
+        "meanArea": 146,
+        "meanDepth": 16.2,
+        "utilisation": 0.207,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 167,
+        "meanHeight": 10.8,
+        "p10": 9.9,
+        "p50": 9.9,
+        "p90": 13.2,
+        "max": 16.5,
+        "coverage": 0.669,
+        "footprintHa": 1.75,
+        "gfaHa": 5.8,
+        "far": 0.384,
+        "courtyards": 0,
+        "distinctFloors": 4
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "fezOrganicCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1329,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "BDE0CAD8",
+        "blocks": "784AB70A",
+        "parcels": "3E3849D2",
+        "buildings": "CE668029"
+      },
+      "network": {
+        "roadKm": 3.59,
+        "edges": 49,
+        "junctions": 27,
+        "deadEndRatio": 0.341,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 1.901,
+        "straightness": 0.823,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 8,
+        "invalid": 0,
+        "meanAreaM2": 128682,
+        "roadHa": 2.1
+      },
+      "parcels": {
+        "count": 316,
+        "meanFrontage": 10.7,
+        "meanArea": 164,
+        "meanDepth": 17.1,
+        "utilisation": 0.362,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 258,
+        "meanHeight": 4.6,
+        "p10": 3.2,
+        "p50": 3.2,
+        "p90": 6.4,
+        "max": 6.4,
+        "coverage": 0.747,
+        "footprintHa": 3.21,
+        "gfaHa": 4.8,
+        "far": 0.335,
+        "courtyards": 50,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "chicagoGrid",
+      "autoTop": "fezOrganicCore",
+      "ms": 698,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "A04C3438",
+        "blocks": "E0C41E80",
+        "parcels": "AD09DF7E",
+        "buildings": "6E3F7107"
+      },
+      "network": {
+        "roadKm": 2.01,
+        "edges": 16,
+        "junctions": 4,
+        "deadEndRatio": 0.526,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.434,
+        "straightness": 0.885,
+        "components": 3,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 508648,
+        "roadHa": 3.2
+      },
+      "parcels": {
+        "count": 96,
+        "meanFrontage": 6.9,
+        "meanArea": 216,
+        "meanDepth": 31.8,
+        "utilisation": 0.155,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 90,
+        "meanHeight": 56.5,
+        "p10": 19,
+        "p50": 26.6,
+        "p90": 148.2,
+        "max": 163.4,
+        "coverage": 0.608,
+        "footprintHa": 1.19,
+        "gfaHa": 18.3,
+        "far": 1.362,
+        "courtyards": 0,
+        "distinctFloors": 21
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "fezOrganicCore",
+      "ms": 1223,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "36A509F7",
+        "blocks": "44B401CA",
+        "parcels": "4CD5E0FD",
+        "buildings": "A02E0C8D"
+      },
+      "network": {
+        "roadKm": 2.03,
+        "edges": 20,
+        "junctions": 9,
+        "deadEndRatio": 0.429,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 2.467,
+        "straightness": 0.813,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 518588,
+        "roadHa": 1.2
+      },
+      "parcels": {
+        "count": 233,
+        "meanFrontage": 6.3,
+        "meanArea": 172,
+        "meanDepth": 24.1,
+        "utilisation": 0.266,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 215,
+        "meanHeight": 11.5,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 13.6,
+        "max": 13.6,
+        "coverage": 0.656,
+        "footprintHa": 2.42,
+        "gfaHa": 8.2,
+        "far": 0.541,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "dna": "lisbonHillCore",
+      "autoTop": "fezOrganicCore",
+      "ms": 1098,
+      "heightSignature": "5DA5F944",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "AA578852",
+        "blocks": "17A9E5EC",
+        "parcels": "24628E5F",
+        "buildings": "C5C14472"
+      },
+      "network": {
+        "roadKm": 3.84,
+        "edges": 50,
+        "junctions": 28,
+        "deadEndRatio": 0.318,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 1,
+        "orientationEntropy": 1.986,
+        "straightness": 0.829,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 9,
+        "invalid": 0,
+        "meanAreaM2": 114023,
+        "roadHa": 2.5
+      },
+      "parcels": {
+        "count": 409,
+        "meanFrontage": 7.6,
+        "meanArea": 107,
+        "meanDepth": 15.1,
+        "utilisation": 0.311,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 344,
+        "meanHeight": 11,
+        "p10": 9.6,
+        "p50": 9.6,
+        "p90": 12.8,
+        "max": 16,
+        "coverage": 0.748,
+        "footprintHa": 2.82,
+        "gfaHa": 9.8,
+        "far": 0.701,
+        "courtyards": 0,
+        "distinctFloors": 3
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "manhattanGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 1029,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "manhattanGrid",
+      "mode": "manual",
+      "guiLabel": "Manhattan — orthogonal grid",
+      "strategy": "grid",
+      "signatures": {
+        "network": "F7D03527",
+        "blocks": "8C7E400F",
+        "parcels": "280519FB",
+        "buildings": "C399CEE8"
+      },
+      "network": {
+        "roadKm": 2.01,
+        "edges": 27,
+        "junctions": 8,
+        "deadEndRatio": 0.552,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.096,
+        "straightness": 0.897,
+        "components": 2,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 2,
+        "invalid": 0,
+        "meanAreaM2": 512050,
+        "roadHa": 2.5
+      },
+      "parcels": {
+        "count": 112,
+        "meanFrontage": 15.7,
+        "meanArea": 354,
+        "meanDepth": 27.3,
+        "utilisation": 0.311,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 105,
+        "meanHeight": 78.1,
+        "p10": 57.6,
+        "p50": 79.2,
+        "p90": 97.2,
+        "max": 108,
+        "coverage": 0.804,
+        "footprintHa": 2.98,
+        "gfaHa": 64,
+        "far": 5.018,
+        "courtyards": 0,
+        "distinctFloors": 17
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "veniceWaterNetwork",
+      "autoTop": "manhattanGrid",
+      "ms": 869,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "veniceWaterNetwork",
+      "mode": "manual",
+      "guiLabel": "Venice — water network and islands",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "6AB18DB8",
+        "blocks": "C95CDF12",
+        "parcels": "661DBB3E",
+        "buildings": "164C3C30"
+      },
+      "network": {
+        "roadKm": 1.94,
+        "edges": 25,
+        "junctions": 13,
+        "deadEndRatio": 0.19,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.302,
+        "straightness": 0.809,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 6,
+        "invalid": 0,
+        "meanAreaM2": 173476,
+        "roadHa": 0.9
+      },
+      "parcels": {
+        "count": 171,
+        "meanFrontage": 8.9,
+        "meanArea": 139,
+        "meanDepth": 16.9,
+        "utilisation": 0.166,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 135,
+        "meanHeight": 8.2,
+        "p10": 6.6,
+        "p50": 6.6,
+        "p90": 9.9,
+        "max": 9.9,
+        "coverage": 0.666,
+        "footprintHa": 1.32,
+        "gfaHa": 3.4,
+        "far": 0.237,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "fezOrganicCore",
+      "autoTop": "manhattanGrid",
+      "ms": 991,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "fezOrganicCore",
+      "mode": "manual",
+      "guiLabel": "Fez — organic historic core",
+      "strategy": "organic",
+      "signatures": {
+        "network": "85F8CD14",
+        "blocks": "32183057",
+        "parcels": "7A9C842B",
+        "buildings": "47546A36"
+      },
+      "network": {
+        "roadKm": 2.09,
+        "edges": 31,
+        "junctions": 16,
+        "deadEndRatio": 0.259,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.204,
+        "straightness": 0.831,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 6,
+        "invalid": 0,
+        "meanAreaM2": 173371,
+        "roadHa": 1
+      },
+      "parcels": {
+        "count": 154,
+        "meanFrontage": 10.4,
+        "meanArea": 180,
+        "meanDepth": 18.6,
+        "utilisation": 0.196,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 130,
+        "meanHeight": 3.7,
+        "p10": 3.2,
+        "p50": 3.2,
+        "p90": 6.4,
+        "max": 6.4,
+        "coverage": 0.706,
+        "footprintHa": 1.73,
+        "gfaHa": 2.1,
+        "far": 0.149,
+        "courtyards": 24,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "chicagoGrid",
+      "autoTop": "manhattanGrid",
+      "ms": 815,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "chicagoGrid",
+      "mode": "manual",
+      "guiLabel": "Chicago — survey grid with river cut",
+      "strategy": "grid",
+      "signatures": {
+        "network": "404F8DD8",
+        "blocks": "34A44623",
+        "parcels": "963EE97B",
+        "buildings": "65DFE3C2"
+      },
+      "network": {
+        "roadKm": 1.37,
+        "edges": 21,
+        "junctions": 6,
+        "deadEndRatio": 0.667,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 0,
+        "mountainRoads": 0,
+        "orientationEntropy": 0.993,
+        "straightness": 1,
+        "components": 3,
+        "gridAxisDeg": 0
+      },
+      "blocks": {
+        "count": 1,
+        "invalid": 0,
+        "meanAreaM2": 1015354,
+        "roadHa": 3.3
+      },
+      "parcels": {
+        "count": 107,
+        "meanFrontage": 6.7,
+        "meanArea": 241,
+        "meanDepth": 33.2,
+        "utilisation": 0.215,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 95,
+        "meanHeight": 36.6,
+        "p10": 19,
+        "p50": 26.6,
+        "p90": 68.4,
+        "max": 114,
+        "coverage": 0.609,
+        "footprintHa": 1.42,
+        "gfaHa": 16.1,
+        "far": 1.339,
+        "courtyards": 0,
+        "distinctFloors": 18
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "amsterdamCanalRing",
+      "autoTop": "manhattanGrid",
+      "ms": 1314,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "amsterdamCanalRing",
+      "mode": "manual",
+      "guiLabel": "Amsterdam — canal ring",
+      "strategy": "canalStreet",
+      "signatures": {
+        "network": "82481BF6",
+        "blocks": "37E8076F",
+        "parcels": "4731BE1A",
+        "buildings": "69AAC7EB"
+      },
+      "network": {
+        "roadKm": 1.9,
+        "edges": 28,
+        "junctions": 13,
+        "deadEndRatio": 0.24,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.47,
+        "straightness": 0.812,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 5,
+        "invalid": 0,
+        "meanAreaM2": 207930,
+        "roadHa": 0.9
+      },
+      "parcels": {
+        "count": 180,
+        "meanFrontage": 6.4,
+        "meanArea": 153,
+        "meanDepth": 23.1,
+        "utilisation": 0.196,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 160,
+        "meanHeight": 10.3,
+        "p10": 10.2,
+        "p50": 10.2,
+        "p90": 10.2,
+        "max": 13.6,
+        "coverage": 0.67,
+        "footprintHa": 1.63,
+        "gfaHa": 5,
+        "far": 0.353,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "dna": "lisbonHillCore",
+      "autoTop": "manhattanGrid",
+      "ms": 834,
+      "heightSignature": "D3F8DDF9",
+      "waterSignature": "D03A151F",
+      "selected": "lisbonHillCore",
+      "mode": "manual",
+      "guiLabel": "Lisbon — hills and valley axis",
+      "strategy": "organic",
+      "signatures": {
+        "network": "AD10DA1C",
+        "blocks": "A0AC89BF",
+        "parcels": "AD8FFF0D",
+        "buildings": "6EB1D39E"
+      },
+      "network": {
+        "roadKm": 2.12,
+        "edges": 36,
+        "junctions": 19,
+        "deadEndRatio": 0.258,
+        "canals": 0,
+        "bridges": 0,
+        "tunnels": 1,
+        "mountainRoads": 2,
+        "orientationEntropy": 2.188,
+        "straightness": 0.84,
+        "components": 1,
+        "gridAxisDeg": null
+      },
+      "blocks": {
+        "count": 7,
+        "invalid": 0,
+        "meanAreaM2": 148590,
+        "roadHa": 1
+      },
+      "parcels": {
+        "count": 187,
+        "meanFrontage": 8.2,
+        "meanArea": 120,
+        "meanDepth": 15.7,
+        "utilisation": 0.158,
+        "canalFacing": 0
+      },
+      "buildings": {
+        "count": 162,
+        "meanHeight": 10.2,
+        "p10": 9.6,
+        "p50": 9.6,
+        "p90": 12.8,
+        "max": 12.8,
+        "coverage": 0.736,
+        "footprintHa": 1.45,
+        "gfaHa": 4.6,
+        "far": 0.326,
+        "courtyards": 0,
+        "distinctFloors": 2
+      },
+      "problems": [],
+      "ok": true,
+      "empty": false
+    }
+  ],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/06-1-six-cities-shared-terrain.png",
+    "docs/assets/screenshots/procedural-mini-world/06-1-six-cities-suitable-terrain.png"
+  ],
+  "browserErrors": []
+}

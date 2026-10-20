@@ -1,0 +1,2793 @@
+{
+  "task": "06.2 World Grid & City Placement",
+  "experiment": "/experiments/world-grid/",
+  "testedAt": "2026-10-20T01:31:12.485Z",
+  "world": {
+    "version": 1,
+    "worldSeed": 6201,
+    "transitionWidth": 128,
+    "variation": 0.5,
+    "terrainMode": "raw",
+    "chunkSize": 1024,
+    "slots": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "gridX": -1,
+        "gridY": -1,
+        "worldOrigin": {
+          "x": -1024,
+          "z": -1024
+        },
+        "landform": "mountain",
+        "terrainSeed": 5704,
+        "cityId": null,
+        "cityMode": "empty"
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "gridX": 0,
+        "gridY": -1,
+        "worldOrigin": {
+          "x": 0,
+          "z": -1024
+        },
+        "landform": "mountain",
+        "terrainSeed": 2264,
+        "cityId": "auto",
+        "cityMode": "auto"
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "gridX": 1,
+        "gridY": -1,
+        "worldOrigin": {
+          "x": 1024,
+          "z": -1024
+        },
+        "landform": "riverValley",
+        "terrainSeed": 9187,
+        "cityId": "fezOrganicCore",
+        "cityMode": "manual"
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "gridX": -1,
+        "gridY": 0,
+        "worldOrigin": {
+          "x": -1024,
+          "z": 0
+        },
+        "landform": "plain",
+        "terrainSeed": 5718,
+        "cityId": "chicagoGrid",
+        "cityMode": "manual"
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "gridX": 0,
+        "gridY": 0,
+        "worldOrigin": {
+          "x": 0,
+          "z": 0
+        },
+        "landform": "plain",
+        "terrainSeed": 2085,
+        "cityId": "manhattanGrid",
+        "cityMode": "manual"
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "gridX": 1,
+        "gridY": 0,
+        "worldOrigin": {
+          "x": 1024,
+          "z": 0
+        },
+        "landform": "riverValley",
+        "terrainSeed": 2361,
+        "cityId": "auto",
+        "cityMode": "auto"
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "gridX": -1,
+        "gridY": 1,
+        "worldOrigin": {
+          "x": -1024,
+          "z": 1024
+        },
+        "landform": "coast",
+        "terrainSeed": 1385,
+        "cityId": "amsterdamCanalRing",
+        "cityMode": "manual"
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "gridX": 0,
+        "gridY": 1,
+        "worldOrigin": {
+          "x": 0,
+          "z": 1024
+        },
+        "landform": "coast",
+        "terrainSeed": 3051,
+        "cityId": "auto",
+        "cityMode": "auto"
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "gridX": 1,
+        "gridY": 1,
+        "worldOrigin": {
+          "x": 1024,
+          "z": 1024
+        },
+        "landform": "coast",
+        "terrainSeed": 6678,
+        "cityId": "lisbonHillCore",
+        "cityMode": "manual"
+      }
+    ]
+  },
+  "seedCheck": {
+    "formula": true,
+    "changedByEditingOneSlot": [
+      "chunk_1_1"
+    ],
+    "changedByWorldSeed": 9,
+    "seeds": [
+      [
+        "chunk_-1_-1",
+        "mountain",
+        5704
+      ],
+      [
+        "chunk_0_-1",
+        "mountain",
+        2264
+      ],
+      [
+        "chunk_1_-1",
+        "riverValley",
+        9187
+      ],
+      [
+        "chunk_-1_0",
+        "plain",
+        5718
+      ],
+      [
+        "chunk_0_0",
+        "plain",
+        2085
+      ],
+      [
+        "chunk_1_0",
+        "riverValley",
+        2361
+      ],
+      [
+        "chunk_-1_1",
+        "coast",
+        1385
+      ],
+      [
+        "chunk_0_1",
+        "coast",
+        3051
+      ],
+      [
+        "chunk_1_1",
+        "coast",
+        6678
+      ]
+    ]
+  },
+  "performance": {
+    "firstLoadMs": 19128,
+    "reloadMs": 18432,
+    "firstBuild": {
+      "prepare": {
+        "raw": [
+          "chunk_-1_-1",
+          "chunk_0_-1",
+          "chunk_1_-1",
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_1_0",
+          "chunk_-1_1",
+          "chunk_0_1",
+          "chunk_1_1"
+        ],
+        "harmony": true,
+        "harmonyMs": 0,
+        "ms": 252
+      },
+      "chunks": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 77,
+          "renderMs": 93
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 1153,
+          "renderMs": 105
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 1610,
+          "renderMs": 112
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 4564,
+          "renderMs": 150
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 3171,
+          "renderMs": 129
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 1649,
+          "renderMs": 96
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 2083,
+          "renderMs": 114
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 1740,
+          "renderMs": 109
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "ran": {
+            "terrain": true,
+            "city": true
+          },
+          "dataMs": 1294,
+          "renderMs": 98
+        }
+      ],
+      "totalMs": 18895
+    },
+    "cityChange": {
+      "prepare": {
+        "raw": [],
+        "harmony": false,
+        "harmonyMs": 0,
+        "ms": 6
+      },
+      "chunks": [
+        {
+          "chunkId": "chunk_1_0",
+          "ran": {
+            "terrain": false,
+            "city": true
+          },
+          "dataMs": 2434,
+          "renderMs": 42
+        }
+      ],
+      "totalMs": 2493
+    },
+    "restoreMs": 5573,
+    "jsHeapMB": 431
+  },
+  "placement": {
+    "chunks": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "origin": {
+          "x": -1024,
+          "z": -1024
+        },
+        "dataOrigin": {
+          "originX": -1024,
+          "originZ": -1024,
+          "size": 1024
+        },
+        "meshMin": [
+          -1536,
+          -1536
+        ],
+        "meshMax": [
+          -512,
+          -512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "origin": {
+          "x": 0,
+          "z": -1024
+        },
+        "dataOrigin": {
+          "originX": 0,
+          "originZ": -1024,
+          "size": 1024
+        },
+        "meshMin": [
+          -512,
+          -1536
+        ],
+        "meshMax": [
+          512,
+          -512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "origin": {
+          "x": 1024,
+          "z": -1024
+        },
+        "dataOrigin": {
+          "originX": 1024,
+          "originZ": -1024,
+          "size": 1024
+        },
+        "meshMin": [
+          512,
+          -1536
+        ],
+        "meshMax": [
+          1536,
+          -512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "origin": {
+          "x": -1024,
+          "z": 0
+        },
+        "dataOrigin": {
+          "originX": -1024,
+          "originZ": 0,
+          "size": 1024
+        },
+        "meshMin": [
+          -1536,
+          -512
+        ],
+        "meshMax": [
+          -512,
+          512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "origin": {
+          "x": 0,
+          "z": 0
+        },
+        "dataOrigin": {
+          "originX": 0,
+          "originZ": 0,
+          "size": 1024
+        },
+        "meshMin": [
+          -512,
+          -512
+        ],
+        "meshMax": [
+          512,
+          512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "origin": {
+          "x": 1024,
+          "z": 0
+        },
+        "dataOrigin": {
+          "originX": 1024,
+          "originZ": 0,
+          "size": 1024
+        },
+        "meshMin": [
+          512,
+          -512
+        ],
+        "meshMax": [
+          1536,
+          512
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "origin": {
+          "x": -1024,
+          "z": 1024
+        },
+        "dataOrigin": {
+          "originX": -1024,
+          "originZ": 1024,
+          "size": 1024
+        },
+        "meshMin": [
+          -1536,
+          512
+        ],
+        "meshMax": [
+          -512,
+          1536
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "origin": {
+          "x": 0,
+          "z": 1024
+        },
+        "dataOrigin": {
+          "originX": 0,
+          "originZ": 1024,
+          "size": 1024
+        },
+        "meshMin": [
+          -512,
+          512
+        ],
+        "meshMax": [
+          512,
+          1536
+        ],
+        "meshError": 0,
+        "dataOk": true
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "origin": {
+          "x": 1024,
+          "z": 1024
+        },
+        "dataOrigin": {
+          "originX": 1024,
+          "originZ": 1024,
+          "size": 1024
+        },
+        "meshMin": [
+          512,
+          512
+        ],
+        "meshMax": [
+          1536,
+          1536
+        ],
+        "meshError": 0,
+        "dataOk": true
+      }
+    ],
+    "overlapArea": 0,
+    "coveredArea": 9437184
+  },
+  "chunks": [
+    {
+      "chunkId": "chunk_-1_-1",
+      "gridX": -1,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": -1024,
+        "z": -1024
+      },
+      "landform": "mountain",
+      "terrainSeed": 5704,
+      "cityId": null,
+      "cityMode": "empty",
+      "resolvedDNA": null,
+      "resolvedLabel": null,
+      "autoTopId": null,
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready (terrain only)",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": -1024,
+        "originZ": -1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "574F94EB",
+        "height": "574F94EB",
+        "water": "D03A151F",
+        "network": null,
+        "blocks": null,
+        "parcels": null,
+        "buildings": null
+      },
+      "counts": null,
+      "ms": {
+        "raw": 24,
+        "terrain": 77,
+        "city": 0,
+        "stages": {}
+      }
+    },
+    {
+      "chunkId": "chunk_0_-1",
+      "gridX": 0,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": 0,
+        "z": -1024
+      },
+      "landform": "mountain",
+      "terrainSeed": 2264,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "fezOrganicCore",
+      "resolvedLabel": "Fez — organic historic core",
+      "autoTopId": "fezOrganicCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 0,
+        "originZ": -1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "79F96715",
+        "height": "79F96715",
+        "water": "D03A151F",
+        "network": "3AD8A120",
+        "blocks": "C3BCC35B",
+        "parcels": "2685B82E",
+        "buildings": "DC4E8DD2"
+      },
+      "counts": {
+        "roadKm": 3.51,
+        "ports": 1,
+        "tunnels": 0,
+        "blocks": 12,
+        "parcels": 353,
+        "buildings": 305,
+        "meanHeight": 4.8
+      },
+      "ms": {
+        "raw": 22,
+        "terrain": 65,
+        "city": 1088,
+        "stages": {
+          "match": 4,
+          "network": 319,
+          "blocks": 212,
+          "parcels": 348,
+          "buildings": 205
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "gridX": 1,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": 1024,
+        "z": -1024
+      },
+      "landform": "riverValley",
+      "terrainSeed": 9187,
+      "cityId": "fezOrganicCore",
+      "cityMode": "manual",
+      "resolvedDNA": "fezOrganicCore",
+      "resolvedLabel": "Fez — organic historic core",
+      "autoTopId": "fezOrganicCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 1024,
+        "originZ": -1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "28C65DAD",
+        "height": "28C65DAD",
+        "water": "80816A77",
+        "network": "FA36E4F0",
+        "blocks": "8BF1E379",
+        "parcels": "B035919A",
+        "buildings": "946D7C6F"
+      },
+      "counts": {
+        "roadKm": 4.01,
+        "ports": 1,
+        "tunnels": 0,
+        "blocks": 10,
+        "parcels": 422,
+        "buildings": 346,
+        "meanHeight": 5.9
+      },
+      "ms": {
+        "raw": 45,
+        "terrain": 82,
+        "city": 1527,
+        "stages": {
+          "match": 4,
+          "network": 598,
+          "blocks": 283,
+          "parcels": 455,
+          "buildings": 187
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "gridX": -1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": -1024,
+        "z": 0
+      },
+      "landform": "plain",
+      "terrainSeed": 5718,
+      "cityId": "chicagoGrid",
+      "cityMode": "manual",
+      "resolvedDNA": "chicagoGrid",
+      "resolvedLabel": "Chicago — survey grid with river cut",
+      "autoTopId": "manhattanGrid",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": -1024,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "CCEF4DE9",
+        "height": "CCEF4DE9",
+        "water": "D03A151F",
+        "network": "230C0704",
+        "blocks": "B0AE1A4C",
+        "parcels": "E2F3AC38",
+        "buildings": "6E462AED"
+      },
+      "counts": {
+        "roadKm": 16.38,
+        "ports": 32,
+        "tunnels": 0,
+        "blocks": 64,
+        "parcels": 2360,
+        "buildings": 2119,
+        "meanHeight": 40.2
+      },
+      "ms": {
+        "raw": 17,
+        "terrain": 69,
+        "city": 4495,
+        "stages": {
+          "match": 7,
+          "network": 5,
+          "blocks": 217,
+          "parcels": 3246,
+          "buildings": 1021
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_0_0",
+      "gridX": 0,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 0,
+        "z": 0
+      },
+      "landform": "plain",
+      "terrainSeed": 2085,
+      "cityId": "manhattanGrid",
+      "cityMode": "manual",
+      "resolvedDNA": "manhattanGrid",
+      "resolvedLabel": "Manhattan — orthogonal grid",
+      "autoTopId": "manhattanGrid",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 0,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "9C20C3F5",
+        "height": "9C20C3F5",
+        "water": "D03A151F",
+        "network": "EF5B4A9D",
+        "blocks": "1C659922",
+        "parcels": "BBDACB99",
+        "buildings": "BE83E626"
+      },
+      "counts": {
+        "roadKm": 18.43,
+        "ports": 36,
+        "tunnels": 0,
+        "blocks": 78,
+        "parcels": 1759,
+        "buildings": 1619,
+        "meanHeight": 63
+      },
+      "ms": {
+        "raw": 17,
+        "terrain": 83,
+        "city": 3088,
+        "stages": {
+          "match": 2,
+          "network": 4,
+          "blocks": 229,
+          "parcels": 2012,
+          "buildings": 841
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "gridX": 1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 0
+      },
+      "landform": "riverValley",
+      "terrainSeed": 2361,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "fezOrganicCore",
+      "resolvedLabel": "Fez — organic historic core",
+      "autoTopId": "fezOrganicCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 1024,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "875DFA79",
+        "height": "875DFA79",
+        "water": "18166045",
+        "network": "ABA9908A",
+        "blocks": "C770A6EA",
+        "parcels": "7D4585D1",
+        "buildings": "9752A1A3"
+      },
+      "counts": {
+        "roadKm": 5.4,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 9,
+        "parcels": 510,
+        "buildings": 416,
+        "meanHeight": 5.5
+      },
+      "ms": {
+        "raw": 38,
+        "terrain": 67,
+        "city": 1582,
+        "stages": {
+          "match": 1,
+          "network": 399,
+          "blocks": 270,
+          "parcels": 673,
+          "buildings": 239
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "gridX": -1,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": -1024,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 1385,
+      "cityId": "amsterdamCanalRing",
+      "cityMode": "manual",
+      "resolvedDNA": "amsterdamCanalRing",
+      "resolvedLabel": "Amsterdam — canal ring",
+      "autoTopId": "lisbonHillCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": -1024,
+        "originZ": 1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "BCD9FFD0",
+        "height": "BCD9FFD0",
+        "water": "27C1A30D",
+        "network": "5AA7BA69",
+        "blocks": "2C176FAF",
+        "parcels": "6884EA0C",
+        "buildings": "2A5A98F1"
+      },
+      "counts": {
+        "roadKm": 5.27,
+        "ports": 7,
+        "tunnels": 0,
+        "blocks": 13,
+        "parcels": 394,
+        "buildings": 343,
+        "meanHeight": 11.4
+      },
+      "ms": {
+        "raw": 22,
+        "terrain": 52,
+        "city": 2030,
+        "stages": {
+          "match": 1,
+          "network": 479,
+          "blocks": 231,
+          "parcels": 728,
+          "buildings": 592
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "gridX": 0,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": 0,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 3051,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "lisbonHillCore",
+      "resolvedLabel": "Lisbon — hills and valley axis",
+      "autoTopId": "lisbonHillCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 0,
+        "originZ": 1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "CF8AAE89",
+        "height": "CF8AAE89",
+        "water": "D52363C5",
+        "network": "871BC977",
+        "blocks": "1ADD0652",
+        "parcels": "14056C79",
+        "buildings": "490830EF"
+      },
+      "counts": {
+        "roadKm": 8.07,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 16,
+        "parcels": 1014,
+        "buildings": 881,
+        "meanHeight": 11.5
+      },
+      "ms": {
+        "raw": 22,
+        "terrain": 102,
+        "city": 1638,
+        "stages": {
+          "match": 2,
+          "network": 500,
+          "blocks": 242,
+          "parcels": 647,
+          "buildings": 247
+        }
+      }
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "gridX": 1,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 6678,
+      "cityId": "lisbonHillCore",
+      "cityMode": "manual",
+      "resolvedDNA": "lisbonHillCore",
+      "resolvedLabel": "Lisbon — hills and valley axis",
+      "autoTopId": "veniceWaterNetwork",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 1024,
+        "originZ": 1024,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "D35380A4",
+        "height": "D35380A4",
+        "water": "FA99625A",
+        "network": "125C8C11",
+        "blocks": "37C7FB28",
+        "parcels": "A57FE1C4",
+        "buildings": "ABAAFAF5"
+      },
+      "counts": {
+        "roadKm": 6.66,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 19,
+        "parcels": 814,
+        "buildings": 691,
+        "meanHeight": 11.4
+      },
+      "ms": {
+        "raw": 21,
+        "terrain": 56,
+        "city": 1238,
+        "stages": {
+          "match": 3,
+          "network": 336,
+          "blocks": 206,
+          "parcels": 519,
+          "buildings": 176
+        }
+      }
+    }
+  ],
+  "cityChange": {
+    "target": "chunk_1_0",
+    "to": "amsterdamCanalRing",
+    "before": {
+      "chunkId": "chunk_1_0",
+      "gridX": 1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 0
+      },
+      "landform": "riverValley",
+      "terrainSeed": 2361,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "fezOrganicCore",
+      "resolvedLabel": "Fez — organic historic core",
+      "autoTopId": "fezOrganicCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 1
+      },
+      "grid": {
+        "originX": 1024,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "875DFA79",
+        "height": "875DFA79",
+        "water": "18166045",
+        "network": "ABA9908A",
+        "blocks": "C770A6EA",
+        "parcels": "7D4585D1",
+        "buildings": "9752A1A3"
+      },
+      "counts": {
+        "roadKm": 5.4,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 9,
+        "parcels": 510,
+        "buildings": 416,
+        "meanHeight": 5.5
+      },
+      "ms": {
+        "raw": 38,
+        "terrain": 67,
+        "city": 1582,
+        "stages": {
+          "match": 1,
+          "network": 399,
+          "blocks": 270,
+          "parcels": 673,
+          "buildings": 239
+        }
+      }
+    },
+    "after": {
+      "chunkId": "chunk_1_0",
+      "gridX": 1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 0
+      },
+      "landform": "riverValley",
+      "terrainSeed": 2361,
+      "cityId": "amsterdamCanalRing",
+      "cityMode": "manual",
+      "resolvedDNA": "amsterdamCanalRing",
+      "resolvedLabel": "Amsterdam — canal ring",
+      "autoTopId": "fezOrganicCore",
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 2
+      },
+      "grid": {
+        "originX": 1024,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "875DFA79",
+        "height": "875DFA79",
+        "water": "18166045",
+        "network": "769A7148",
+        "blocks": "7F2DB0F6",
+        "parcels": "14AEB516",
+        "buildings": "715FF277"
+      },
+      "counts": {
+        "roadKm": 5.82,
+        "ports": 7,
+        "tunnels": 0,
+        "blocks": 14,
+        "parcels": 778,
+        "buildings": 725,
+        "meanHeight": 11.3
+      },
+      "ms": {
+        "raw": 38,
+        "terrain": 67,
+        "city": 2434,
+        "stages": {
+          "match": 1,
+          "network": 366,
+          "blocks": 282,
+          "parcels": 833,
+          "buildings": 951
+        }
+      }
+    },
+    "otherChunksUnchanged": true,
+    "selection": {
+      "selected": "chunk_1_0",
+      "uiCity": "amsterdamCanalRing",
+      "guiCity": "Raw chunks (06.2)",
+      "panel": "cityId amsterdamCanalRing · manual → Amsterdam — canal ring (amsterdamCanalRing)"
+    },
+    "guiLabels": [
+      "Raw chunks (06.2)",
+      "chunk_1_0",
+      "Amsterdam — canal ring"
+    ]
+  },
+  "emptySlot": {
+    "emptied": {
+      "chunkId": "chunk_0_0",
+      "gridX": 0,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 0,
+        "z": 0
+      },
+      "landform": "plain",
+      "terrainSeed": 2085,
+      "cityId": null,
+      "cityMode": "empty",
+      "resolvedDNA": null,
+      "resolvedLabel": null,
+      "autoTopId": null,
+      "terrainMode": "raw",
+      "transitionWidth": 128,
+      "status": "ready (terrain only)",
+      "error": null,
+      "builds": {
+        "raw": 1,
+        "terrain": 1,
+        "city": 2
+      },
+      "grid": {
+        "originX": 0,
+        "originZ": 0,
+        "size": 1024
+      },
+      "signatures": {
+        "raw": "9C20C3F5",
+        "height": "9C20C3F5",
+        "water": "D03A151F",
+        "network": null,
+        "blocks": null,
+        "parcels": null,
+        "buildings": null
+      },
+      "counts": null,
+      "ms": {
+        "raw": 17,
+        "terrain": 83,
+        "city": 0,
+        "stages": {}
+      }
+    },
+    "emptyTunnels": {
+      "accepted": [],
+      "errors": [],
+      "records": []
+    },
+    "refilledEqualsOriginal": true
+  },
+  "saveRestore": {
+    "saved": {
+      "version": 1,
+      "worldSeed": 6201,
+      "transitionWidth": 128,
+      "variation": 0.5,
+      "terrainMode": "raw",
+      "slots": [
+        {
+          "gridX": -1,
+          "gridY": -1,
+          "landform": "mountain",
+          "cityId": null,
+          "terrainSeed": 5704
+        },
+        {
+          "gridX": 0,
+          "gridY": -1,
+          "landform": "mountain",
+          "cityId": "auto",
+          "terrainSeed": 2264
+        },
+        {
+          "gridX": 1,
+          "gridY": -1,
+          "landform": "riverValley",
+          "cityId": "fezOrganicCore",
+          "terrainSeed": 9187
+        },
+        {
+          "gridX": -1,
+          "gridY": 0,
+          "landform": "plain",
+          "cityId": "chicagoGrid",
+          "terrainSeed": 5718
+        },
+        {
+          "gridX": 0,
+          "gridY": 0,
+          "landform": "plain",
+          "cityId": "manhattanGrid",
+          "terrainSeed": 2085
+        },
+        {
+          "gridX": 1,
+          "gridY": 0,
+          "landform": "riverValley",
+          "cityId": "amsterdamCanalRing",
+          "terrainSeed": 2361
+        },
+        {
+          "gridX": -1,
+          "gridY": 1,
+          "landform": "coast",
+          "cityId": "amsterdamCanalRing",
+          "terrainSeed": 1385
+        },
+        {
+          "gridX": 0,
+          "gridY": 1,
+          "landform": "coast",
+          "cityId": "auto",
+          "terrainSeed": 3051
+        },
+        {
+          "gridX": 1,
+          "gridY": 1,
+          "landform": "coast",
+          "cityId": "lisbonHillCore",
+          "terrainSeed": 6678
+        }
+      ]
+    },
+    "restoredEqual": true,
+    "tamperRejected": "Seed mismatch at chunk_-1_-1: saved 5705, derived 5704"
+  },
+  "solids": [
+    {
+      "chunkId": "chunk_-1_-1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 2.2892239485366656e-15
+    },
+    {
+      "chunkId": "chunk_0_-1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 2.094673760196418e-14
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 1.4139857902795446e-14
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 8.490017308183069e-15
+    },
+    {
+      "chunkId": "chunk_0_0",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 4.417244280472976e-15
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 5.85777583564147e-15
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 1.9118260797758343e-14
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 2.709765275096983e-15
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "tunnels": 0,
+      "watertight": true,
+      "euler": 2,
+      "expectedEuler": 2,
+      "volumeRelativeError": 6.5932224984071816e-15
+    }
+  ],
+  "tunnelCheck": {
+    "valid": {
+      "worldSeed": 6203,
+      "chunkId": "chunk_0_-1",
+      "terrainSeed": 5326,
+      "origin": {
+        "x": 0,
+        "z": -1024
+      },
+      "records": [
+        {
+          "id": 12,
+          "planLength": 288.2498915871435,
+          "status": "accepted",
+          "sA": 14.5,
+          "sB": 276.7498915871435,
+          "u0": 1.5,
+          "u1": 287.2498915871435,
+          "tubeLength": 262.2498915871435,
+          "cutLengths": [
+            13,
+            10.5
+          ],
+          "grade": 0.05359693361086226,
+          "lipHeights": [
+            0.6480360657034794,
+            0.6180195151042653
+          ]
+        }
+      ],
+      "isolation": [],
+      "world": {
+        "tunnels": 1,
+        "watertight": true,
+        "euler": 0,
+        "expectedEuler": 0,
+        "nonManifold": 0,
+        "inconsistent": 0,
+        "degenerate": 0,
+        "excavatedVolume": 15307.053852798777,
+        "volumeRelativeError": 1.1602836299923172e-12
+      },
+      "singleAtOrigin": {
+        "tunnels": 1,
+        "watertight": true,
+        "euler": 0,
+        "expectedEuler": 0,
+        "nonManifold": 0,
+        "inconsistent": 0,
+        "degenerate": 0,
+        "excavatedVolume": 15307.053852798641,
+        "volumeRelativeError": 4.3481878268714065e-13
+      },
+      "sameOutcome": true
+    },
+    "knownDefect": {
+      "worldSeed": 6202,
+      "chunkId": "chunk_0_-1",
+      "terrainSeed": 7922,
+      "origin": {
+        "x": 0,
+        "z": -1024
+      },
+      "records": [],
+      "isolation": [
+        {
+          "chunkId": "chunk_0_-1",
+          "accepted": [
+            8
+          ],
+          "nonManifold": 6,
+          "inconsistent": 6,
+          "euler": 6,
+          "expectedEuler": 0,
+          "reason": "tunnel cut left the solid open (known 05.1b-2 defect); cut removed, tunnel not rendered"
+        }
+      ],
+      "world": {
+        "tunnels": 0,
+        "watertight": true,
+        "euler": 2,
+        "expectedEuler": 2,
+        "nonManifold": 0,
+        "inconsistent": 0,
+        "degenerate": 0,
+        "excavatedVolume": 0,
+        "volumeRelativeError": 5.169356228006551e-15
+      },
+      "singleAtOrigin": {
+        "tunnels": 1,
+        "watertight": false,
+        "euler": 6,
+        "expectedEuler": 0,
+        "nonManifold": 6,
+        "inconsistent": 6,
+        "degenerate": 8,
+        "excavatedVolume": null,
+        "volumeRelativeError": null
+      },
+      "sameOutcome": false
+    }
+  },
+  "centreSingle": {
+    "signatures": {
+      "height": "9C20C3F5",
+      "water": "D03A151F",
+      "network": "EF5B4A9D",
+      "blocks": "1C659922",
+      "parcels": "BBDACB99",
+      "buildings": "BE83E626"
+    },
+    "counts": {
+      "edges": 162,
+      "ports": 36,
+      "blocks": 78,
+      "parcels": 1759,
+      "buildings": 1619
+    }
+  },
+  "translation": [
+    {
+      "chunkId": "chunk_0_-1",
+      "dna": "fezOrganicCore",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 3.51,
+        "ports": 1,
+        "tunnels": 0,
+        "blocks": 12,
+        "parcels": 353,
+        "buildings": 305,
+        "meanHeight": 4.8
+      },
+      "singleAtOrigin": {
+        "edges": 56,
+        "ports": 1,
+        "blocks": 12,
+        "parcels": 353,
+        "buildings": 305
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "dna": "fezOrganicCore",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 4.01,
+        "ports": 1,
+        "tunnels": 0,
+        "blocks": 10,
+        "parcels": 422,
+        "buildings": 346,
+        "meanHeight": 5.9
+      },
+      "singleAtOrigin": {
+        "edges": 55,
+        "ports": 1,
+        "blocks": 10,
+        "parcels": 422,
+        "buildings": 346
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "dna": "chicagoGrid",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 16.38,
+        "ports": 32,
+        "tunnels": 0,
+        "blocks": 64,
+        "parcels": 2360,
+        "buildings": 2119,
+        "meanHeight": 40.2
+      },
+      "singleAtOrigin": {
+        "edges": 136,
+        "ports": 32,
+        "blocks": 64,
+        "parcels": 2360,
+        "buildings": 2119
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "dna": "fezOrganicCore",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 5.4,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 9,
+        "parcels": 510,
+        "buildings": 416,
+        "meanHeight": 5.5
+      },
+      "singleAtOrigin": {
+        "edges": 58,
+        "ports": 3,
+        "blocks": 9,
+        "parcels": 510,
+        "buildings": 416
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "dna": "amsterdamCanalRing",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 5.27,
+        "ports": 7,
+        "tunnels": 0,
+        "blocks": 13,
+        "parcels": 394,
+        "buildings": 343,
+        "meanHeight": 11.4
+      },
+      "singleAtOrigin": {
+        "edges": 56,
+        "ports": 7,
+        "blocks": 13,
+        "parcels": 394,
+        "buildings": 343
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "dna": "lisbonHillCore",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 8.07,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 16,
+        "parcels": 1014,
+        "buildings": 881,
+        "meanHeight": 11.5
+      },
+      "singleAtOrigin": {
+        "edges": 79,
+        "ports": 3,
+        "blocks": 16,
+        "parcels": 1014,
+        "buildings": 881
+      },
+      "countsEqual": true
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "dna": "lisbonHillCore",
+      "heightEqual": true,
+      "world": {
+        "roadKm": 6.66,
+        "ports": 3,
+        "tunnels": 0,
+        "blocks": 19,
+        "parcels": 814,
+        "buildings": 691,
+        "meanHeight": 11.4
+      },
+      "singleAtOrigin": {
+        "edges": 73,
+        "ports": 3,
+        "blocks": 19,
+        "parcels": 814,
+        "buildings": 691
+      },
+      "countsEqual": true
+    }
+  ],
+  "seams": {
+    "rules": {
+      "heightTolerance": 0.5,
+      "portTolerance": 16,
+      "portElevationTolerance": 2,
+      "waterLevelTolerance": 1
+    },
+    "pairs": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "a": "chunk_-1_-1",
+        "b": "chunk_0_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 163.53,
+          "mean": 44.23,
+          "p95": 131.05,
+          "overTolerance": 256
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "n/a (empty slot on one side)",
+          "a": null,
+          "b": 0,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": []
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": false
+        },
+        "slope": {
+          "kinkMaxDeg": 88.04,
+          "kinkP95Deg": 65.4,
+          "kinkMedianDeg": 23.22,
+          "bandMaxSlopeDeg": 73.4
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "a": "chunk_-1_-1",
+        "b": "chunk_-1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 296.36,
+          "mean": 200.32,
+          "p95": 279.59,
+          "overTolerance": 257
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "n/a (empty slot on one side)",
+          "a": null,
+          "b": 10,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": []
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": false
+        },
+        "slope": {
+          "kinkMaxDeg": 61.69,
+          "kinkP95Deg": 44.15,
+          "kinkMedianDeg": 8.573,
+          "bandMaxSlopeDeg": 74.7
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "a": "chunk_0_-1",
+        "b": "chunk_1_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 234.84,
+          "mean": 137.3,
+          "p95": 221.24,
+          "overTolerance": 257
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 8,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 1,
+          "b": 0,
+          "matched": [],
+          "unmatchedA": [
+            {
+              "id": 0,
+              "type": "road",
+              "position": -804,
+              "elevation": 157.82
+            }
+          ],
+          "unmatchedB": []
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 59.06,
+          "kinkP95Deg": 48.78,
+          "kinkMedianDeg": 6.925,
+          "bandMaxSlopeDeg": 69.8
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 8,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 31 m | mountain, no water body": 8
+          }
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "a": "chunk_0_-1",
+        "b": "chunk_0_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 289.86,
+          "mean": 227.25,
+          "p95": 282.16,
+          "overTolerance": 257
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 0,
+          "b": 12,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": [
+            {
+              "id": 12,
+              "type": "road",
+              "position": -440.7,
+              "elevation": 23.9
+            },
+            {
+              "id": 14,
+              "type": "road",
+              "position": -360.7,
+              "elevation": 24.28
+            },
+            {
+              "id": 16,
+              "type": "road",
+              "position": -280.7,
+              "elevation": 24.65
+            },
+            {
+              "id": 18,
+              "type": "road",
+              "position": -200.7,
+              "elevation": 25.81
+            },
+            {
+              "id": 20,
+              "type": "road",
+              "position": -120.7,
+              "elevation": 25.87
+            },
+            {
+              "id": 22,
+              "type": "road",
+              "position": -40.7,
+              "elevation": 25.82
+            },
+            {
+              "id": 24,
+              "type": "road",
+              "position": 39.3,
+              "elevation": 26.25
+            },
+            {
+              "id": 26,
+              "type": "road",
+              "position": 119.3,
+              "elevation": 25.96
+            },
+            {
+              "id": 28,
+              "type": "road",
+              "position": 199.3,
+              "elevation": 26.57
+            },
+            {
+              "id": 30,
+              "type": "road",
+              "position": 279.3,
+              "elevation": 26.37
+            },
+            {
+              "id": 32,
+              "type": "road",
+              "position": 359.3,
+              "elevation": 26.48
+            },
+            {
+              "id": 34,
+              "type": "road",
+              "position": 439.3,
+              "elevation": 25.78
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 60.4,
+          "kinkP95Deg": 51.04,
+          "kinkMedianDeg": 18.71,
+          "bandMaxSlopeDeg": 71.4
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "a": "chunk_1_-1",
+        "b": "chunk_1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 25.29,
+          "mean": 10.44,
+          "p95": 21.11,
+          "overTolerance": 256
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 0,
+          "b": 1,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": [
+            {
+              "id": 0,
+              "type": "road",
+              "position": 1204,
+              "elevation": 59.56
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 34.62,
+          "kinkP95Deg": 22.5,
+          "kinkMedianDeg": 7.413,
+          "bandMaxSlopeDeg": 44.3
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "a": "chunk_-1_0",
+        "b": "chunk_0_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 5.18,
+          "mean": 2.31,
+          "p95": 5,
+          "overTolerance": 229
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 6,
+          "b": 6,
+          "matched": [
+            {
+              "a": 1,
+              "b": 0,
+              "type": "road",
+              "positionA": -495.6,
+              "positionB": -505.1,
+              "offset": 9.48,
+              "elevationDiff": 5.07,
+              "elevationOk": false
+            },
+            {
+              "a": 3,
+              "b": 2,
+              "type": "road",
+              "positionA": -295.6,
+              "positionB": -305.1,
+              "offset": 9.48,
+              "elevationDiff": 4.1,
+              "elevationOk": false
+            },
+            {
+              "a": 5,
+              "b": 4,
+              "type": "road",
+              "positionA": -95.6,
+              "positionB": -105.1,
+              "offset": 9.48,
+              "elevationDiff": 2.05,
+              "elevationOk": false
+            },
+            {
+              "a": 7,
+              "b": 6,
+              "type": "road",
+              "positionA": 104.4,
+              "positionB": 94.9,
+              "offset": 9.48,
+              "elevationDiff": 0.41,
+              "elevationOk": true
+            },
+            {
+              "a": 9,
+              "b": 8,
+              "type": "road",
+              "positionA": 304.4,
+              "positionB": 294.9,
+              "offset": 9.48,
+              "elevationDiff": 1.46,
+              "elevationOk": true
+            },
+            {
+              "a": 11,
+              "b": 10,
+              "type": "road",
+              "positionA": 504.4,
+              "positionB": 494.9,
+              "offset": 9.48,
+              "elevationDiff": 0.36,
+              "elevationOk": true
+            }
+          ],
+          "unmatchedA": [],
+          "unmatchedB": []
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 2.88,
+          "kinkP95Deg": 2.08,
+          "kinkMedianDeg": 0.505,
+          "bandMaxSlopeDeg": 2.6
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "a": "chunk_-1_0",
+        "b": "chunk_-1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 34.1,
+          "mean": 11.79,
+          "p95": 32.13,
+          "overTolerance": 252
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 60,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 10,
+          "b": 3,
+          "matched": [
+            {
+              "a": 29,
+              "b": 4,
+              "type": "road",
+              "positionA": -673.7,
+              "positionB": -672,
+              "offset": 1.72,
+              "elevationDiff": 3,
+              "elevationOk": false
+            }
+          ],
+          "unmatchedA": [
+            {
+              "id": 13,
+              "type": "road",
+              "position": -1473.7,
+              "elevation": 27.39
+            },
+            {
+              "id": 15,
+              "type": "road",
+              "position": -1373.7,
+              "elevation": 25.36
+            },
+            {
+              "id": 17,
+              "type": "road",
+              "position": -1273.7,
+              "elevation": 26.04
+            },
+            {
+              "id": 19,
+              "type": "road",
+              "position": -1173.7,
+              "elevation": 25.13
+            },
+            {
+              "id": 21,
+              "type": "road",
+              "position": -1073.7,
+              "elevation": 24.87
+            },
+            {
+              "id": 23,
+              "type": "road",
+              "position": -973.7,
+              "elevation": 25.24
+            },
+            {
+              "id": 25,
+              "type": "road",
+              "position": -873.7,
+              "elevation": 24.76
+            },
+            {
+              "id": 27,
+              "type": "road",
+              "position": -773.7,
+              "elevation": 23.31
+            },
+            {
+              "id": 31,
+              "type": "road",
+              "position": -573.7,
+              "elevation": 21.92
+            }
+          ],
+          "unmatchedB": [
+            {
+              "id": 0,
+              "type": "canal",
+              "position": -1416,
+              "elevation": 0
+            },
+            {
+              "id": 3,
+              "type": "road",
+              "position": -1292,
+              "elevation": 0.68
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 12.78,
+          "kinkP95Deg": 9.69,
+          "kinkMedianDeg": 2.628,
+          "bandMaxSlopeDeg": 26
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 60,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 0 m | plain, no water body": 60
+          }
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "a": "chunk_0_0",
+        "b": "chunk_1_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 53.9,
+          "mean": 25.9,
+          "p95": 51.62,
+          "overTolerance": 257
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 9,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 6,
+          "b": 1,
+          "matched": [],
+          "unmatchedA": [
+            {
+              "id": 1,
+              "type": "road",
+              "position": -505.1,
+              "elevation": 25.42
+            },
+            {
+              "id": 3,
+              "type": "road",
+              "position": -305.1,
+              "elevation": 23.61
+            },
+            {
+              "id": 5,
+              "type": "road",
+              "position": -105.1,
+              "elevation": 25.51
+            },
+            {
+              "id": 7,
+              "type": "road",
+              "position": 94.9,
+              "elevation": 23.28
+            },
+            {
+              "id": 9,
+              "type": "road",
+              "position": 294.9,
+              "elevation": 20.77
+            },
+            {
+              "id": 11,
+              "type": "road",
+              "position": 494.9,
+              "elevation": 20.17
+            }
+          ],
+          "unmatchedB": [
+            {
+              "id": 1,
+              "type": "road",
+              "position": -16,
+              "elevation": 31.32
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 23.33,
+          "kinkP95Deg": 21.06,
+          "kinkMedianDeg": 5.571,
+          "bandMaxSlopeDeg": 49.6
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 9,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 29 m | plain, no water body": 9
+          }
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "a": "chunk_0_0",
+        "b": "chunk_0_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 26.01,
+          "mean": 10.24,
+          "p95": 25.6,
+          "overTolerance": 247
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 9,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 12,
+          "b": 1,
+          "matched": [],
+          "unmatchedA": [
+            {
+              "id": 13,
+              "type": "road",
+              "position": -440.7,
+              "elevation": 21.62
+            },
+            {
+              "id": 15,
+              "type": "road",
+              "position": -360.7,
+              "elevation": 20.95
+            },
+            {
+              "id": 17,
+              "type": "road",
+              "position": -280.7,
+              "elevation": 21.45
+            },
+            {
+              "id": 19,
+              "type": "road",
+              "position": -200.7,
+              "elevation": 21.27
+            },
+            {
+              "id": 21,
+              "type": "road",
+              "position": -120.7,
+              "elevation": 20.41
+            },
+            {
+              "id": 23,
+              "type": "road",
+              "position": -40.7,
+              "elevation": 20.22
+            },
+            {
+              "id": 25,
+              "type": "road",
+              "position": 39.3,
+              "elevation": 20.84
+            },
+            {
+              "id": 27,
+              "type": "road",
+              "position": 119.3,
+              "elevation": 21.32
+            },
+            {
+              "id": 29,
+              "type": "road",
+              "position": 199.3,
+              "elevation": 21.91
+            },
+            {
+              "id": 31,
+              "type": "road",
+              "position": 279.3,
+              "elevation": 21.66
+            },
+            {
+              "id": 33,
+              "type": "road",
+              "position": 359.3,
+              "elevation": 21.25
+            },
+            {
+              "id": 35,
+              "type": "road",
+              "position": 439.3,
+              "elevation": 20.72
+            }
+          ],
+          "unmatchedB": [
+            {
+              "id": 0,
+              "type": "road",
+              "position": 156,
+              "elevation": 24.98
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 19.42,
+          "kinkP95Deg": 13.78,
+          "kinkMedianDeg": 4.298,
+          "bandMaxSlopeDeg": 35
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 9,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 0 m | plain, no water body": 9
+          }
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "a": "chunk_1_0",
+        "b": "chunk_1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "axis": "x",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world x)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 100.86,
+          "mean": 82.55,
+          "p95": 98.44,
+          "overTolerance": 257
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 257,
+          "runsA": 0,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "no ports",
+          "a": 0,
+          "b": 0,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": []
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": false
+        },
+        "slope": {
+          "kinkMaxDeg": 33.72,
+          "kinkP95Deg": 25.26,
+          "kinkMedianDeg": 8.86,
+          "bandMaxSlopeDeg": 47.1
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 257,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 0 m | riverValley, river level 29 m": 66,
+            "terrain step (edge unresolved): dry 0 m | riverValley, river level 30 m": 125,
+            "terrain step (edge unresolved): dry 0 m | riverValley, river level 31 m": 66
+          }
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "a": "chunk_-1_1",
+        "b": "chunk_0_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 17.52,
+          "mean": 6.78,
+          "p95": 15.1,
+          "overTolerance": 241
+        },
+        "water": {
+          "both": 0,
+          "onlyA": 0,
+          "onlyB": 0,
+          "runsA": 0,
+          "runsB": 0
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 1,
+          "b": 1,
+          "matched": [],
+          "unmatchedA": [
+            {
+              "id": 6,
+              "type": "road",
+              "position": 1024,
+              "elevation": 22.54
+            }
+          ],
+          "unmatchedB": [
+            {
+              "id": 1,
+              "type": "road",
+              "position": 1292,
+              "elevation": 30.5
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": false,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 25.19,
+          "kinkP95Deg": 18.99,
+          "kinkMedianDeg": 5.595,
+          "bandMaxSlopeDeg": 30.6
+        },
+        "waterInterface": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        },
+        "harmony": null
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "a": "chunk_0_1",
+        "b": "chunk_1_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "axis": "z",
+        "samples": 257,
+        "positionError": 0,
+        "sampleOrder": "aligned (both increasing world z)",
+        "transitionWidth": {
+          "a": 128,
+          "b": 128
+        },
+        "height": {
+          "max": 47.09,
+          "mean": 18.44,
+          "p95": 45.53,
+          "overTolerance": 251
+        },
+        "water": {
+          "both": 111,
+          "onlyA": 146,
+          "onlyB": 0,
+          "runsA": 1,
+          "runsB": 1
+        },
+        "ports": {
+          "status": "unpaired ports",
+          "a": 0,
+          "b": 1,
+          "matched": [],
+          "unmatchedA": [],
+          "unmatchedB": [
+            {
+              "id": 0,
+              "type": "road",
+              "position": 1048,
+              "elevation": 5.41
+            }
+          ]
+        },
+        "flags": {
+          "heightDiscontinuity": true,
+          "waterInterfaceMismatch": true,
+          "portMismatch": true
+        },
+        "slope": {
+          "kinkMaxDeg": 21.77,
+          "kinkP95Deg": 13.41,
+          "kinkMedianDeg": 2.763,
+          "bandMaxSlopeDeg": 38.3
+        },
+        "waterInterface": {
+          "status": "discontinuous",
+          "oneSided": 146,
+          "levelSteps": 0,
+          "reasons": {
+            "terrain step (edge unresolved): dry 0 m | coast, sea level 0 m": 146
+          }
+        },
+        "harmony": null
+      }
+    ],
+    "corners": [
+      {
+        "at": {
+          "x": -512,
+          "z": -512
+        },
+        "chunks": [
+          "chunk_-1_-1",
+          "chunk_0_-1",
+          "chunk_-1_0",
+          "chunk_0_0"
+        ],
+        "positionSpread": 0,
+        "heightSpread": 250.74,
+        "heights": [
+          210.026,
+          269.94,
+          19.205,
+          24.388
+        ]
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": -512
+        },
+        "chunks": [
+          "chunk_0_-1",
+          "chunk_1_-1",
+          "chunk_0_0",
+          "chunk_1_0"
+        ],
+        "positionSpread": 0,
+        "heightSpread": 210.96,
+        "heights": [
+          236.408,
+          63.514,
+          25.451,
+          79.349
+        ]
+      },
+      {
+        "at": {
+          "x": -512,
+          "z": 512
+        },
+        "chunks": [
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_-1_1",
+          "chunk_0_1"
+        ],
+        "positionSpread": 0,
+        "heightSpread": 25.28,
+        "heights": [
+          22.112,
+          21.684,
+          31.955,
+          46.963
+        ]
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": 512
+        },
+        "chunks": [
+          "chunk_0_0",
+          "chunk_1_0",
+          "chunk_0_1",
+          "chunk_1_1"
+        ],
+        "positionSpread": 0,
+        "heightSpread": 74.54,
+        "heights": [
+          20.156,
+          64.099,
+          -1.652,
+          -10.44
+        ]
+      }
+    ]
+  },
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/06-2-world-grid-overall.png",
+    "docs/assets/screenshots/procedural-mini-world/06-2-world-grid-selected-chunk.png",
+    "docs/assets/screenshots/procedural-mini-world/06-2-world-grid-seams-debug.png"
+  ],
+  "browserErrors": []
+}

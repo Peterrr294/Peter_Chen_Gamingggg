@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A finite seeded Iceland terrain study built from reusable Cellular noise." />
+    <title>Iceland Region Lab — Finite Seeded Terrain</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← PETER'S GAME LAB</a>
+      <p>FLAVOR CLASH / ICELAND REGION LAB</p>
+      <span id="statusText">GENERATING</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">FINITE TERRAIN / ROUND 01</p>
+          <h1>Shape one region<br />before building four.</h1>
+        </div>
+        <div>
+          <p class="lede">A bounded, repeatable Iceland terrain study using two noise scales, ridge shaping, and a controllable coastal falloff.</p>
+          <p class="scope">This round adds road input validation and debug lines only. It does not create a formal road mesh, WFC, buildings, scattering, players, map stitching, or infinite generation.</p>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <article class="viewport-panel">
+          <div class="panel-head"><span>3D REGION VIEW</span><strong>SEEDED HEIGHT FIELD</strong></div>
+          <canvas id="terrainCanvas" aria-label="Finite procedurally generated Iceland terrain surrounded by water"></canvas>
+          <div class="viewport-footer"><span>DRAG: ORBIT</span><span>WHEEL: ZOOM</span><span>RIGHT DRAG: PAN</span></div>
+        </article>
+        <aside class="controls-panel">
+          <div class="panel-head"><span>REGION PARAMETERS</span><strong>ON FINISH REBUILD</strong></div>
+          <div id="guiMount"></div>
+          <dl class="stats">
+            <div><dt>Seed hash</dt><dd id="seedHash">—</dd></div>
+            <div><dt>Terrain signature</dt><dd id="signature">—</dd></div>
+            <div><dt>Vertices</dt><dd id="vertices">—</dd></div>
+            <div><dt>Generation</dt><dd id="generationTime">—</dd></div>
+            <div><dt>Rebuilds</dt><dd id="generationCount">—</dd></div>
+            <div><dt>Disposed geometries</dt><dd id="disposedCount">—</dd></div>
+          </dl>
+          <section class="road-report" aria-live="polite">
+            <h2>Road input validation</h2>
+            <p id="roadValidation">Not checked</p>
+            <p id="roadCounts">—</p>
+          </section>
+        </aside>
+      </section>
+
+      <section class="surface-readout">
+        <div class="panel-head"><span>CLICKED SURFACE QUERY</span><strong>HEIGHT DATA / BILINEAR INTERPOLATION</strong></div>
+        <dl>
+          <div><dt>World XZ</dt><dd id="queryPosition">Click the terrain</dd></div>
+          <div><dt>Height</dt><dd id="queryHeight">—</dd></div>
+          <div><dt>Slope</dt><dd id="querySlope">—</dd></div>
+          <div><dt>Normal</dt><dd id="queryNormal">—</dd></div>
+          <div><dt>State</dt><dd id="queryState">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="notes">
+        <article><p class="eyebrow">LARGE FORM</p><h2>Landmass and ridges</h2><p>Large-scale Cellular height establishes broad relief. Ridge shaping strengthens folded mountain bands without adding roads or objects.</p></article>
+        <article><p class="eyebrow">DETAIL</p><h2>Surface variation</h2><p>A second, smaller feature scale adds local height variation while remaining derived from the same fixed seed.</p></article>
+        <article><p class="eyebrow">BOUNDARY</p><h2>Finite coast</h2><p>The coast mask lowers the outer edge beneath the independent water plane, keeping this experiment visibly bounded.</p></article>
+      </section>
+
+      <nav class="footer-nav">
+        <a href="../../index.html#home">Back to project index</a>
+        <a href="../flavor-clash-prototype/">Open the four-region prototype</a>
+      </nav>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

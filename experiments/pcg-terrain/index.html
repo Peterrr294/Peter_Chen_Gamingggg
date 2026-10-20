@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Class 06 experiments in deterministic terrain scattering and later procedural environmental systems." />
+    <title>PCG Terrain Lab — Random Scattering</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← PETER'S GAME LAB</a>
+      <p>CLASS 06 / PROCEDURAL CONTENT GENERATION</p>
+      <span id="experimentStatus">SCATTERING / READY</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">PCG TERRAIN LAB / ROUND 01</p>
+          <h1>Populate the terrain,<br />one rule at a time.</h1>
+        </div>
+        <div>
+          <p class="lede">A progressive study of how procedural terrain can be populated, connected, and animated.</p>
+          <p class="scope" id="researchQuestion">How can seeded candidates become repeatable instances on a real terrain surface?</p>
+        </div>
+      </section>
+
+      <nav class="lab-tabs" aria-label="PCG Terrain Lab experiments">
+        <button type="button" data-lab-tab="scattering" aria-pressed="true">Scattering</button>
+        <button type="button" data-lab-tab="paths" aria-pressed="false">Paths &amp; Splines</button>
+        <button type="button" data-lab-tab="fields" aria-pressed="false">Particles &amp; Fields</button>
+      </nav>
+
+      <section data-lab-panel="scattering">
+        <div class="workspace">
+          <article class="panel viewport-panel">
+            <div class="panel-head"><span>3D TERRAIN VIEW</span><strong>RANDOM SCATTERING</strong></div>
+            <canvas id="terrainCanvas" aria-label="Seeded tree instances scattered across a procedural height field"></canvas>
+            <div class="legend" aria-label="Debug color legend">
+              <span><i class="candidate"></i>Candidate</span>
+              <span><i class="accepted"></i>Accepted</span>
+              <span><i class="rejected"></i>Rejected</span>
+              <span>DRAG: ORBIT · WHEEL: ZOOM</span>
+            </div>
+          </article>
+
+          <aside class="panel controls-panel">
+            <div class="panel-head"><span>SCATTER PARAMETERS</span><strong id="activePreset">MEDIUM</strong></div>
+            <section class="control-group presets" aria-label="Comparison presets">
+              <button type="button" data-preset="Sparse">Sparse</button>
+              <button type="button" data-preset="Medium" aria-pressed="true">Medium</button>
+              <button type="button" data-preset="Dense">Dense</button>
+            </section>
+            <section class="control-group">
+              <label for="seed">Seed <output id="seedValue">CLASS-06</output></label>
+              <input id="seed" type="text" value="CLASS-06" spellcheck="false" />
+              <label for="assetCount">Asset Count <output id="assetCountValue">140</output></label>
+              <input id="assetCount" type="range" min="1" max="1200" step="1" value="140" />
+              <label for="maximumAttempts">Maximum Attempts <output id="maximumAttemptsValue">320</output></label>
+              <input id="maximumAttempts" type="range" min="1" max="2500" step="1" value="320" />
+              <label for="minimumScale">Minimum Scale <output id="minimumScaleValue">0.65</output></label>
+              <input id="minimumScale" type="range" min="0.25" max="2" step="0.05" value="0.65" />
+              <label for="maximumScale">Maximum Scale <output id="maximumScaleValue">1.35</output></label>
+              <input id="maximumScale" type="range" min="0.25" max="2" step="0.05" value="1.35" />
+              <label class="check"><input id="randomYaw" type="checkbox" checked /> Random Yaw</label>
+            </section>
+            <section class="control-group debug-controls">
+              <h2>Debug display</h2>
+              <label class="check"><input id="showCandidates" type="checkbox" /> Show Candidate Points</label>
+              <label class="check"><input id="showAccepted" type="checkbox" checked /> Show Accepted Points</label>
+              <label class="check"><input id="showRejected" type="checkbox" checked /> Show Rejected Points</label>
+            </section>
+            <section class="actions">
+              <button id="regenerateButton" type="button">REGENERATE</button>
+              <button id="resetButton" type="button">RESET</button>
+            </section>
+          </aside>
+        </div>
+
+        <section class="panel debug-panel">
+          <div class="panel-head"><span>GENERATION DEBUG</span><strong id="generationState">COMPLETE</strong></div>
+          <dl class="stats">
+            <div><dt>Requested</dt><dd id="statRequested">—</dd></div>
+            <div><dt>Attempts</dt><dd id="statAttempts">—</dd></div>
+            <div><dt>Accepted</dt><dd id="statAccepted">—</dd></div>
+            <div><dt>Rejected</dt><dd id="statRejected">—</dd></div>
+            <div><dt>Acceptance Rate</dt><dd id="statRate">—</dd></div>
+            <div><dt>Generation Time</dt><dd id="statTime">—</dd></div>
+            <div><dt>Instance Count</dt><dd id="statInstances">—</dd></div>
+            <div><dt>Seed</dt><dd id="statSeed">—</dd></div>
+          </dl>
+        </section>
+      </section>
+
+      <section class="panel future-panel" data-lab-panel="paths" hidden>
+        <p class="eyebrow">PATHS &amp; SPLINES</p><h2>Coming in a later experiment.</h2>
+        <p>No spline generation or path placement is implemented in Random Scattering Round 01.</p>
+      </section>
+      <section class="panel future-panel" data-lab-panel="fields" hidden>
+        <p class="eyebrow">PARTICLES &amp; FIELDS</p><h2>Coming in a later experiment.</h2>
+        <p>No vector field, particle system, or fluid simulation is implemented in Random Scattering Round 01.</p>
+      </section>
+
+      <details class="learning-notes" open>
+        <summary>OPEN LEARNING GUIDE</summary>
+        <div class="notes-grid">
+          <section><h2>What is scattering?</h2><p>Scattering proposes many XZ positions, asks the terrain whether a surface exists there, and places only accepted instances.</p></section>
+          <section><h2>Candidate vs. accepted</h2><p>A candidate is an attempt. An accepted point has a downward ray intersection; a rejected point lies outside the mesh or has no valid hit.</p></section>
+          <section><h2>Why use a seed?</h2><p>The seed initializes a deterministic random sequence. The same seed and parameters repeat the same candidates, scales, and yaw values.</p></section>
+          <section><h2>Why query the surface?</h2><p>A fixed Y ignores hills and valleys. This round casts down onto the rendered height-field mesh and uses the first intersection.</p></section>
+          <section><h2>Why InstancedMesh?</h2><p>All trunks share one geometry and material; all crowns share another. Per-instance matrices vary position, scale, and yaw without one Mesh per tree.</p></section>
+          <section><h2>What is still weak?</h2><p>Uniform random points can cluster and overlap. There are no slope, biome, shoreline, spacing, or multi-species rules yet.</p></section>
+        </div>
+      </details>
+
+      <nav class="experiment-sequence" aria-label="Experiment sequence">
+        <a href="../voxel-terrain/">← Previous: Voxel Terrain</a>
+        <a href="../../index.html#files?file=./docs/learning/pcg-terrain/random-scattering.md">Open the learning record in Files &amp; Notes</a>
+        <span>Next: Noise Distribution — future round →</span>
+      </nav>
+    </main>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1018 @@
+{
+  "task": "02.6",
+  "experiment": "/experiments/seed-terrain/",
+  "testedAt": "2026-10-19T03:07:54.857Z",
+  "runs": [
+    {
+      "landform": "plain",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "continuousLand: largestBuildableShare=1 → 1.00 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=0.999 → 1.00 (w2, A)",
+        "waterAsEdge: waterEdgeRole=none → 0.60 (w1, V+I)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 1,
+        "buildableFraction": 1,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 0.9994049072265625,
+        "mixedSlopeShareOfLand": 0.0005950927734375,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "continuousLand: largestBuildableShare=1 → 1.00 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=1 → 1.00 (w2, A)",
+        "waterAsEdge: waterEdgeRole=none → 0.60 (w1, V+I)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 1,
+        "buildableFraction": 1,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 1,
+        "mixedSlopeShareOfLand": 0,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    },
+    {
+      "landform": "plain",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.8,
+          "fit": 0.9333,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.6222,
+          "fit": 0.8,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2857,
+          "fit": 0.6667,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2143,
+          "fit": 0.375,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "continuousLand: largestBuildableShare=1 → 1.00 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=1 → 1.00 (w2, A)",
+        "waterAsEdge: waterEdgeRole=none → 0.60 (w1, V+I)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 1,
+        "buildableFraction": 1,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 1,
+        "mixedSlopeShareOfLand": 0,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2437,
+          "fit": 0.5686,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.2298,
+          "fit": 0.2954,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.1791,
+          "fit": 0.3134,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1281,
+          "fit": 0.1922,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0526,
+          "fit": 0.0614,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ],
+      "selected": "fezOrganicCore",
+      "topReasons": [
+        "terrainFollowingPaths: mixedSlopeShareOfLand=0.52 → 1.00 (w1, I+A)",
+        "compactCoreLand: largestBuildableShare=0.138 → 0.35 (w2, A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.13820648193359375,
+        "buildableFraction": 0.498809814453125,
+        "waterFraction": 0.03482818603515625,
+        "highSuitabilityShareOfLand": 0.3170298876741999,
+        "mixedSlopeShareOfLand": 0.5201293209071435,
+        "landBodies": {
+          "count": 2,
+          "significant": 2,
+          "islands": 0
+        },
+        "waterEdgeRole": "splitsLand",
+        "landDivision": "split",
+        "largestWaterEnclosed": "open"
+      },
+      "orientation": {
+        "axisDeg": 179,
+        "source": "terrainAnalysis.dominantDirection.waterAxis (value 5.532 ≥ 4)"
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2347,
+          "fit": 0.5476,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.2222,
+          "fit": 0.2857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.1806,
+          "fit": 0.316,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1186,
+          "fit": 0.1779,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0429,
+          "fit": 0.05,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ],
+      "selected": "fezOrganicCore",
+      "topReasons": [
+        "terrainFollowingPaths: mixedSlopeShareOfLand=0.528 → 1.00 (w1, I+A)",
+        "compactCoreLand: largestBuildableShare=0.13 → 0.32 (w2, A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.1303558349609375,
+        "buildableFraction": 0.49243927001953125,
+        "waterFraction": 0.03382110595703125,
+        "highSuitabilityShareOfLand": 0.29571459029209013,
+        "mixedSlopeShareOfLand": 0.5284864852059792,
+        "landBodies": {
+          "count": 2,
+          "significant": 2,
+          "islands": 0
+        },
+        "waterEdgeRole": "splitsLand",
+        "landDivision": "split",
+        "largestWaterEnclosed": "open"
+      },
+      "orientation": {
+        "axisDeg": 83.7,
+        "source": "terrainAnalysis.dominantDirection.waterAxis (value 10.377 ≥ 4)"
+      }
+    },
+    {
+      "landform": "riverValley",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.2477,
+          "fit": 0.5781,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.226,
+          "fit": 0.2906,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.2014,
+          "fit": 0.3525,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.1875,
+          "fit": 0.25,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1204,
+          "fit": 0.1806,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0477,
+          "fit": 0.0557,
+          "coverage": 0.8571,
+          "weak": true
+        }
+      ],
+      "selected": "fezOrganicCore",
+      "topReasons": [
+        "terrainFollowingPaths: mixedSlopeShareOfLand=0.549 → 1.00 (w1, I+A)",
+        "compactCoreLand: largestBuildableShare=0.142 → 0.37 (w2, A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.1417694091796875,
+        "buildableFraction": 0.4972190856933594,
+        "waterFraction": 0.03279876708984375,
+        "highSuitabilityShareOfLand": 0.30855150544674337,
+        "mixedSlopeShareOfLand": 0.5485947323168182,
+        "landBodies": {
+          "count": 2,
+          "significant": 2,
+          "islands": 0
+        },
+        "waterEdgeRole": "splitsLand",
+        "landDivision": "split",
+        "largestWaterEnclosed": "open"
+      },
+      "orientation": {
+        "axisDeg": 4.3,
+        "source": "terrainAnalysis.dominantDirection.waterAxis (value 14.332 ≥ 4)"
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.5602,
+          "fit": 0.6535,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.4579,
+          "fit": 0.5888,
+          "coverage": 0.7778,
+          "weak": false
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4515,
+          "fit": 0.7902,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.3072,
+          "fit": 0.4609,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2345,
+          "fit": 0.3127,
+          "coverage": 0.75,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "continuousLand: largestBuildableShare=0.571 → 0.93 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=0.334 → 0.07 (w2, A)",
+        "waterAsEdge: waterEdgeRole=boundaryOnly → 1.00 (w1, V+I)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.5713043212890625,
+        "buildableFraction": 0.5993766784667969,
+        "waterFraction": 0.16762161254882812,
+        "highSuitabilityShareOfLand": 0.3341292282874204,
+        "mixedSlopeShareOfLand": 0.6321636274478353,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "boundaryOnly",
+        "landDivision": "single",
+        "largestWaterEnclosed": "open"
+      },
+      "orientation": {
+        "axisDeg": 19.9,
+        "source": "terrainAnalysis.dominantDirection.shoreline (value 6.116 ≥ 3)"
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.4756,
+          "fit": 0.5548,
+          "coverage": 0.8571,
+          "weak": false
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4745,
+          "fit": 0.8304,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.4286,
+          "fit": 1,
+          "coverage": 0.4286,
+          "weak": false
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.3921,
+          "fit": 0.5041,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2204,
+          "fit": 0.2939,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.1327,
+          "fit": 0.199,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "lowSlopeLand: highSuitabilityShareOfLand=0.263 → 0.00 (w2, A)",
+        "continuousLand: largestBuildableShare=0.511 → 0.78 (w3, I+A)",
+        "waterAsEdge: waterEdgeRole=boundaryOnly → 1.00 (w1, V+I)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.510528564453125,
+        "buildableFraction": 0.5750770568847656,
+        "waterFraction": 0.086334228515625,
+        "highSuitabilityShareOfLand": 0.26346905374261,
+        "mixedSlopeShareOfLand": 0.6643591970339691,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "boundaryOnly",
+        "landDivision": "single",
+        "largestWaterEnclosed": "enclosed"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    },
+    {
+      "landform": "coast",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "lisbonHillCore",
+          "score": 0.4555,
+          "fit": 0.7972,
+          "coverage": 0.5714,
+          "weak": false
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.3959,
+          "fit": 0.9237,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0.2418,
+          "fit": 0.3626,
+          "coverage": 0.6667,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.2193,
+          "fit": 0.2559,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0.2025,
+          "fit": 0.2699,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.1928,
+          "fit": 0.2479,
+          "coverage": 0.7778,
+          "weak": true
+        }
+      ],
+      "selected": "lisbonHillCore",
+      "topReasons": [
+        "waterAsEdge: waterEdgeRole=boundaryOnly → 1.00 (w1, I)",
+        "buildableCore: largestBuildableShare=0.271 → 0.89 (w1, A)",
+        "hillyLand: mixedSlopeShareOfLand=0.661 → 0.65 (w2, I+A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.27138519287109375,
+        "buildableFraction": 0.5290985107421875,
+        "waterFraction": 0.14196395874023438,
+        "highSuitabilityShareOfLand": 0.2656349336901867,
+        "mixedSlopeShareOfLand": 0.6606173503638926,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "boundaryOnly",
+        "landDivision": "single",
+        "largestWaterEnclosed": "open"
+      },
+      "orientation": {
+        "axisDeg": 136.9,
+        "source": "terrainAnalysis.dominantDirection.shoreline (value 9.162 ≥ 3)"
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 1101,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0714,
+          "fit": 0.125,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0692,
+          "fit": 0.1614,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "conflict noContinuousLand: largestBuildableShare=0.012 < 0.1 → cap 0.1",
+        "continuousLand: largestBuildableShare=0.012 → 0.00 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=0.028 → 0.00 (w2, A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.0118255615234375,
+        "buildableFraction": 0.109466552734375,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 0.02832794189453125,
+        "mixedSlopeShareOfLand": 0.319427490234375,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 2202,
+      "ranking": [
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0875,
+          "fit": 0.2041,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0747,
+          "fit": 0.1307,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "fezOrganicCore",
+      "topReasons": [
+        "compactCoreLand: largestBuildableShare=0.056 → 0.02 (w2, A)",
+        "terrainFollowingPaths: mixedSlopeShareOfLand=0.348 → 0.57 (w1, I+A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.055728912353515625,
+        "buildableFraction": 0.15967941284179688,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 0.047161102294921875,
+        "mixedSlopeShareOfLand": 0.3482398986816406,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": 84.6,
+        "source": "terrainAnalysis.dominantDirection.reliefGrain (value 0.523 ≥ 0.3)"
+      }
+    },
+    {
+      "landform": "mountain",
+      "seed": 3303,
+      "ranking": [
+        {
+          "id": "manhattanGrid",
+          "score": 0.0857,
+          "fit": 0.1,
+          "coverage": 0.8571,
+          "weak": true
+        },
+        {
+          "id": "lisbonHillCore",
+          "score": 0.0732,
+          "fit": 0.1281,
+          "coverage": 0.5714,
+          "weak": true
+        },
+        {
+          "id": "fezOrganicCore",
+          "score": 0.0695,
+          "fit": 0.1621,
+          "coverage": 0.4286,
+          "weak": true
+        },
+        {
+          "id": "chicagoGrid",
+          "score": 0.0667,
+          "fit": 0.0857,
+          "coverage": 0.7778,
+          "weak": true
+        },
+        {
+          "id": "veniceWaterNetwork",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.75,
+          "weak": true
+        },
+        {
+          "id": "amsterdamCanalRing",
+          "score": 0,
+          "fit": 0,
+          "coverage": 0.6667,
+          "weak": true
+        }
+      ],
+      "selected": "manhattanGrid",
+      "topReasons": [
+        "conflict noContinuousLand: largestBuildableShare=0.053 < 0.1 → cap 0.1",
+        "continuousLand: largestBuildableShare=0.053 → 0.00 (w3, I+A)",
+        "lowSlopeLand: highSuitabilityShareOfLand=0.038 → 0.00 (w2, A)"
+      ],
+      "metrics": {
+        "largestBuildableShare": 0.053070068359375,
+        "buildableFraction": 0.14745330810546875,
+        "waterFraction": 0,
+        "highSuitabilityShareOfLand": 0.03780364990234375,
+        "mixedSlopeShareOfLand": 0.3115806579589844,
+        "landBodies": {
+          "count": 1,
+          "significant": 1,
+          "islands": 0
+        },
+        "waterEdgeRole": "none",
+        "landDivision": "single",
+        "largestWaterEnclosed": "none"
+      },
+      "orientation": {
+        "axisDeg": null,
+        "source": "unknown (no direction with passing evidence)"
+      }
+    }
+  ],
+  "missing": {
+    "empty": [
+      {
+        "id": "manhattanGrid",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd"
+        ]
+      },
+      {
+        "id": "veniceWaterNetwork",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "fezOrganicCore",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "tbd",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "chicagoGrid",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "amsterdamCanalRing",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "lisbonHillCore",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      }
+    ],
+    "partial": [
+      {
+        "id": "amsterdamCanalRing",
+        "score": 0.3333,
+        "statuses": [
+          "scored",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "veniceWaterNetwork",
+        "score": 0.1875,
+        "statuses": [
+          "scored",
+          "missing",
+          "scored",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "manhattanGrid",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd"
+        ]
+      },
+      {
+        "id": "fezOrganicCore",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "tbd",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "chicagoGrid",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      },
+      {
+        "id": "lisbonHillCore",
+        "score": 0,
+        "statuses": [
+          "missing",
+          "missing",
+          "missing",
+          "tbd",
+          "tbd"
+        ]
+      }
+    ],
+    "emptySelected": "manhattanGrid"
+  },
+  "browserErrors": [],
+  "screenshot": "docs/assets/screenshots/procedural-mini-world/02-6-city-match-auto-vs-manual.png"
+}
