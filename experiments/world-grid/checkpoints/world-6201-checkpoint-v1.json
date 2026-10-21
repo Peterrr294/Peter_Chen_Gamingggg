@@ -1,0 +1,446 @@
+{
+  "kind": "procedural-mini-world/world-checkpoint",
+  "checkpointVersion": 1,
+  "createdAt": "2026-10-21T05:28:43.179Z",
+  "note": "M06 release checkpoint: default working world (world seed 6201, W 128, coordinated terrain 06.3a-R2 + 06.3c, joined roads 06.3b)",
+  "world": {
+    "version": 1,
+    "worldSeed": 6201,
+    "transitionWidth": 128,
+    "variation": 0.5,
+    "terrainMode": "coordinated",
+    "roadMode": "joined",
+    "slots": [
+      {
+        "gridX": -1,
+        "gridY": -1,
+        "landform": "mountain",
+        "cityId": null,
+        "terrainSeed": 5704
+      },
+      {
+        "gridX": 0,
+        "gridY": -1,
+        "landform": "mountain",
+        "cityId": "auto",
+        "terrainSeed": 2264
+      },
+      {
+        "gridX": 1,
+        "gridY": -1,
+        "landform": "riverValley",
+        "cityId": "fezOrganicCore",
+        "terrainSeed": 9187
+      },
+      {
+        "gridX": -1,
+        "gridY": 0,
+        "landform": "plain",
+        "cityId": "chicagoGrid",
+        "terrainSeed": 5718
+      },
+      {
+        "gridX": 0,
+        "gridY": 0,
+        "landform": "plain",
+        "cityId": "manhattanGrid",
+        "terrainSeed": 2085
+      },
+      {
+        "gridX": 1,
+        "gridY": 0,
+        "landform": "riverValley",
+        "cityId": "auto",
+        "terrainSeed": 2361
+      },
+      {
+        "gridX": -1,
+        "gridY": 1,
+        "landform": "coast",
+        "cityId": "amsterdamCanalRing",
+        "terrainSeed": 1385
+      },
+      {
+        "gridX": 0,
+        "gridY": 1,
+        "landform": "coast",
+        "cityId": "auto",
+        "terrainSeed": 3051
+      },
+      {
+        "gridX": 1,
+        "gridY": 1,
+        "landform": "coast",
+        "cityId": "lisbonHillCore",
+        "terrainSeed": 6678
+      }
+    ]
+  },
+  "layout": [
+    {
+      "chunkId": "chunk_-1_-1",
+      "gridX": -1,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": -1024,
+        "z": -1024
+      },
+      "landform": "mountain",
+      "terrainSeed": 5704,
+      "cityId": null,
+      "cityMode": "empty",
+      "resolvedDNA": null
+    },
+    {
+      "chunkId": "chunk_0_-1",
+      "gridX": 0,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": 0,
+        "z": -1024
+      },
+      "landform": "mountain",
+      "terrainSeed": 2264,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "manhattanGrid"
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "gridX": 1,
+      "gridY": -1,
+      "worldOrigin": {
+        "x": 1024,
+        "z": -1024
+      },
+      "landform": "riverValley",
+      "terrainSeed": 9187,
+      "cityId": "fezOrganicCore",
+      "cityMode": "manual",
+      "resolvedDNA": "fezOrganicCore"
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "gridX": -1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": -1024,
+        "z": 0
+      },
+      "landform": "plain",
+      "terrainSeed": 5718,
+      "cityId": "chicagoGrid",
+      "cityMode": "manual",
+      "resolvedDNA": "chicagoGrid"
+    },
+    {
+      "chunkId": "chunk_0_0",
+      "gridX": 0,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 0,
+        "z": 0
+      },
+      "landform": "plain",
+      "terrainSeed": 2085,
+      "cityId": "manhattanGrid",
+      "cityMode": "manual",
+      "resolvedDNA": "manhattanGrid"
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "gridX": 1,
+      "gridY": 0,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 0
+      },
+      "landform": "riverValley",
+      "terrainSeed": 2361,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "fezOrganicCore"
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "gridX": -1,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": -1024,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 1385,
+      "cityId": "amsterdamCanalRing",
+      "cityMode": "manual",
+      "resolvedDNA": "amsterdamCanalRing"
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "gridX": 0,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": 0,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 3051,
+      "cityId": "auto",
+      "cityMode": "auto",
+      "resolvedDNA": "manhattanGrid"
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "gridX": 1,
+      "gridY": 1,
+      "worldOrigin": {
+        "x": 1024,
+        "z": 1024
+      },
+      "landform": "coast",
+      "terrainSeed": 6678,
+      "cityId": "lisbonHillCore",
+      "cityMode": "manual",
+      "resolvedDNA": "lisbonHillCore"
+    }
+  ],
+  "rules": {
+    "activeTerrainMode": "coordinated",
+    "activeRoadMode": "joined",
+    "chunk": {
+      "version": "T1 (02.3)",
+      "size": 1024,
+      "segments": 256
+    },
+    "landforms": {
+      "version": "T1 (02.4)",
+      "parameters": {
+        "plain": {
+          "label": "Plain",
+          "baseHeight": 20,
+          "relief": 7
+        },
+        "riverValley": {
+          "label": "River valley",
+          "baseHeight": 30,
+          "relief": 70,
+          "riverGradient": 0.002,
+          "channelWidth": 32,
+          "channelDepth": 3,
+          "bankWidth": 18,
+          "bankHeight": 1.6,
+          "valleyHalfWidth": 230,
+          "meanderAmplitude": 150
+        },
+        "coast": {
+          "label": "Coast",
+          "seaLevel": 0,
+          "relief": 45,
+          "beachGradient": 0.012,
+          "shelfGradient": 0.03,
+          "shelfDepth": 24,
+          "shorelineNoise": 90
+        },
+        "mountain": {
+          "label": "Mountain",
+          "baseHeight": 120,
+          "relief": 300
+        }
+      }
+    },
+    "terrain": {
+      "coordinated": {
+        "version": "06.3a-R2 + 06.3c corner pin",
+        "parameters": {
+          "macroDatum": 20,
+          "macroAmplitude": 6,
+          "macroWavelength": 4096,
+          "boundarySmoothing": 64,
+          "cornerPinBands": 1,
+          "maxTransitionSlopeDeg": 35,
+          "createdSlopeMargin": 2,
+          "smoothKinkTargetDeg": 2,
+          "waterLevelTolerance": 1,
+          "exchangeRounds": 2,
+          "freeboard": 1
+        }
+      },
+      "macroRamp": {
+        "version": "06.3a-R",
+        "parameters": {
+          "rampDistance": {
+            "plain": 0,
+            "coast": 128,
+            "riverValley": 384,
+            "mountain": 512
+          },
+          "sharedReliefShare": 0.35,
+          "sharedWavelength": 400,
+          "boundarySmoothing": 64,
+          "maxTransitionSlopeDeg": 35,
+          "createdSlopeMargin": 2,
+          "waterLevelTolerance": 1,
+          "exchangeRounds": 2,
+          "freeboard": 1
+        }
+      },
+      "harmonized": {
+        "version": "06.3a",
+        "parameters": {
+          "maxTransitionSlopeDeg": 35,
+          "createdSlopeMargin": 2,
+          "maxIterations": 8,
+          "waterLevelTolerance": 1,
+          "exchangeRounds": 2,
+          "freeboard": 1
+        }
+      },
+      "raw": {
+        "version": "06.2"
+      }
+    },
+    "roads": {
+      "version": "06.3b",
+      "parameters": {
+        "maxLateralShiftDeg": 25,
+        "maxApproachDeg": 60,
+        "maxBendDeg": 40,
+        "elevationTolerance": 0.5,
+        "maxClassGap": 1,
+        "snapToNodeDistance": 2
+      }
+    },
+    "seamCheck": {
+      "version": "06.2 / 06.3a",
+      "parameters": {
+        "heightTolerance": 0.5,
+        "portTolerance": 16,
+        "portElevationTolerance": 2,
+        "waterLevelTolerance": 1
+      }
+    },
+    "seamClasses": {
+      "version": "06.3c",
+      "parameters": {
+        "smoothKinkTargetDeg": 2,
+        "escarpmentMaxSlopeDeg": 75,
+        "escarpmentLandforms": [
+          "mountain",
+          "riverValley",
+          "coast"
+        ],
+        "overshootTolerance": 1,
+        "roadMaxSlopeDeg": 20,
+        "minCrossingRunM": 40
+      }
+    }
+  },
+  "expected": {
+    "signatures": {
+      "chunk_-1_-1": {
+        "raw": "574F94EB",
+        "height": "037D6209",
+        "water": "D03A151F",
+        "network": null,
+        "rawNetwork": null,
+        "blocks": null,
+        "parcels": null,
+        "buildings": null
+      },
+      "chunk_0_-1": {
+        "raw": "79F96715",
+        "height": "8C13CDBB",
+        "water": "D03A151F",
+        "network": "34121CC6",
+        "rawNetwork": "34121CC6",
+        "blocks": "7728B29F",
+        "parcels": "5E4D125E",
+        "buildings": "E94A2D82"
+      },
+      "chunk_1_-1": {
+        "raw": "28C65DAD",
+        "height": "412AB4D0",
+        "water": "C33F3DC4",
+        "network": "6A64AB81",
+        "rawNetwork": "6A64AB81",
+        "blocks": "38A97B2A",
+        "parcels": "9197A13B",
+        "buildings": "493CACC3"
+      },
+      "chunk_-1_0": {
+        "raw": "CCEF4DE9",
+        "height": "5173C67F",
+        "water": "5FCA58C4",
+        "network": "6BA24F44",
+        "rawNetwork": "55E85867",
+        "blocks": "43A53C89",
+        "parcels": "5A955A0F",
+        "buildings": "22135814"
+      },
+      "chunk_0_0": {
+        "raw": "9C20C3F5",
+        "height": "DE5D5A12",
+        "water": "6DF68F52",
+        "network": "1FA62496",
+        "rawNetwork": "BA0031AC",
+        "blocks": "2EE52FE6",
+        "parcels": "CD36F701",
+        "buildings": "63C268B7"
+      },
+      "chunk_1_0": {
+        "raw": "875DFA79",
+        "height": "7F8774B9",
+        "water": "48A752D8",
+        "network": "5F615249",
+        "rawNetwork": "5F615249",
+        "blocks": "1A6C84D9",
+        "parcels": "687244FE",
+        "buildings": "DF69DAD0"
+      },
+      "chunk_-1_1": {
+        "raw": "BCD9FFD0",
+        "height": "93F36527",
+        "water": "6B04F4EA",
+        "network": "C862DE03",
+        "rawNetwork": "C862DE03",
+        "blocks": "D19EF17E",
+        "parcels": "741638A5",
+        "buildings": "741638A5"
+      },
+      "chunk_0_1": {
+        "raw": "CF8AAE89",
+        "height": "AB9C3493",
+        "water": "3021AE0D",
+        "network": "33832C64",
+        "rawNetwork": "E943228C",
+        "blocks": "43E5DBA3",
+        "parcels": "6D3F810D",
+        "buildings": "6A191E3C"
+      },
+      "chunk_1_1": {
+        "raw": "D35380A4",
+        "height": "10D23764",
+        "water": "0E298351",
+        "network": "FEEE37AC",
+        "rawNetwork": "FEEE37AC",
+        "blocks": "B70F2C7A",
+        "parcels": "172ED617",
+        "buildings": "004245BC"
+      }
+    },
+    "seamClasses": {
+      "chunk_-1_-1|chunk_0_-1": "escarpment",
+      "chunk_-1_-1|chunk_-1_0": "escarpment",
+      "chunk_0_-1|chunk_1_-1": "escarpment",
+      "chunk_0_-1|chunk_0_0": "escarpment",
+      "chunk_1_-1|chunk_1_0": "smooth",
+      "chunk_-1_0|chunk_0_0": "smooth",
+      "chunk_-1_0|chunk_-1_1": "smooth",
+      "chunk_0_0|chunk_1_0": "escarpment",
+      "chunk_0_0|chunk_0_1": "smooth",
+      "chunk_1_0|chunk_1_1": "escarpment",
+      "chunk_-1_1|chunk_0_1": "smooth",
+      "chunk_0_1|chunk_1_1": "escarpment"
+    }
+  }
+}

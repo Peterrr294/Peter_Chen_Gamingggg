@@ -1,0 +1,4615 @@
+{
+  "task": "06.3b Road Network Seam",
+  "experiment": "/experiments/world-grid/",
+  "testedAt": "2026-10-21T01:59:33.255Z",
+  "rules": {
+    "maxLateralShiftDeg": 25,
+    "maxApproachDeg": 60,
+    "maxBendDeg": 40,
+    "elevationTolerance": 0.5,
+    "maxClassGap": 1,
+    "snapToNodeDistance": 2
+  },
+  "maxPairOffset": 119.37,
+  "default": {
+    "worldSeed": 6201,
+    "transitionWidth": 128,
+    "loadMs": 22364,
+    "independentLoadMs": 22541,
+    "roadSeamMs": 7,
+    "stats": {
+      "sharedEdges": 12,
+      "edgesWithConnections": 2,
+      "ports": 68,
+      "connected": 14,
+      "rejected": 44,
+      "pending": 10,
+      "connections": 8,
+      "pairs": 6,
+      "stubs": 2,
+      "chunksChanged": [
+        "chunk_-1_0",
+        "chunk_0_0",
+        "chunk_0_1"
+      ],
+      "reasons": {
+        "pending: neighbour slot chunk_#_# is empty (joins when a city is assigned)": 10,
+        "rejected: terrain edge unresolved in #a (raw step # m kept; a road would need a ramp or wall)": 22,
+        "rejected: no counterpart within # m; stub: no road of chunk_#_# inside its # m band to continue into": 13,
+        "rejected: no counterpart within # m; stub: nearest road in the neighbour band needs a #° turn (> #°)": 6,
+        "rejected: no counterpart within # m; stub: stub: connector crosses terrain at #° (> #° road limit of this DNA)": 1,
+        "rejected: pair: re#route would lean #° (> #°) inside the # m band; stub: stub: connector crosses terrain at #° (> #° road limit of this DNA)": 2
+      },
+      "worldComponents": 10,
+      "crossChunkComponents": [
+        [
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_0_1"
+        ]
+      ],
+      "maxJointElevationDiff": 0,
+      "maxJointPositionError": 0,
+      "maxConnectorGradeDeg": 8.71,
+      "maxConnectorDepth": 71.27,
+      "newCrossings": 0,
+      "buildingConflicts": 0,
+      "reachablePairs": [
+        "chunk_-1_0→chunk_0_0 1313.33 m, 1 seam link(s)",
+        "chunk_-1_0→chunk_0_1 1932.48 m, 2 seam link(s)",
+        "chunk_0_0→chunk_0_1 619.15 m, 1 seam link(s)"
+      ],
+      "edgesJoinedTerrain": 4
+    },
+    "edges": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "a": "chunk_-1_-1",
+        "b": "chunk_0_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "a": "chunk_-1_-1",
+        "b": "chunk_-1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 10,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 10
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "a": "chunk_0_-1",
+        "b": "chunk_1_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 1,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "a": "chunk_0_-1",
+        "b": "chunk_0_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 12,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 12,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "a": "chunk_1_-1",
+        "b": "chunk_1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "a": "chunk_-1_0",
+        "b": "chunk_0_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "joined C1",
+        "summary": {
+          "portsA": 6,
+          "portsB": 6,
+          "pairs": 6,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 12,
+          "rejected": 0,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "a": "chunk_-1_0",
+        "b": "chunk_-1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "joined C1",
+        "summary": {
+          "portsA": 10,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 10,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "a": "chunk_0_0",
+        "b": "chunk_1_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 6,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 7,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "a": "chunk_0_0",
+        "b": "chunk_0_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "joined C1",
+        "summary": {
+          "portsA": 10,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 2,
+          "connected": 2,
+          "rejected": 9,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "a": "chunk_1_0",
+        "b": "chunk_1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "a": "chunk_-1_1",
+        "b": "chunk_0_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "joined C1",
+        "summary": {
+          "portsA": 0,
+          "portsB": 3,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 3,
+          "pending": 0
+        }
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "a": "chunk_0_1",
+        "b": "chunk_1_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "terrain": "unresolved",
+        "summary": {
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        }
+      }
+    ],
+    "connections": [
+      {
+        "id": 0,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": -495.65,
+          "nodeId": 11
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": -505.13,
+          "nodeId": 0
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": -500.3896475536749,
+          "yA": 21.72,
+          "yB": 21.72
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 2.59,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": -500.39
+              },
+              {
+                "x": -573.72,
+                "z": -495.65
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": -500.39
+              },
+              {
+                "x": -440.73,
+                "z": -505.13
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 1,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": -295.65,
+          "nodeId": 23
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": -305.13,
+          "nodeId": 14
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": -300.3896475536749,
+          "yA": 23.28,
+          "yB": 23.28
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 2.62,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": -300.39
+              },
+              {
+                "x": -573.72,
+                "z": -295.65
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": -300.39
+              },
+              {
+                "x": -440.73,
+                "z": -305.13
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 2,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": -95.65,
+          "nodeId": 35
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": -105.13,
+          "nodeId": 28
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": -100.38964755367488,
+          "yA": 22.68,
+          "yB": 22.68
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 1.43,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": -100.39
+              },
+              {
+                "x": -573.72,
+                "z": -95.65
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": -100.39
+              },
+              {
+                "x": -440.73,
+                "z": -105.13
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 3,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": 104.35,
+          "nodeId": 47
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": 94.87,
+          "nodeId": 42
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": 99.61035244632512,
+          "yA": 22.31,
+          "yB": 22.31
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 0.98,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": 99.61
+              },
+              {
+                "x": -573.72,
+                "z": 104.35
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": 99.61
+              },
+              {
+                "x": -440.73,
+                "z": 94.87
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 4,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": 304.35,
+          "nodeId": 59
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": 294.87,
+          "nodeId": 56
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": 299.6103524463251,
+          "yA": 22.47,
+          "yB": 22.47
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 1.68,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": 299.61
+              },
+              {
+                "x": -573.72,
+                "z": 304.35
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": 299.61
+              },
+              {
+                "x": -440.73,
+                "z": 294.87
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 5,
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "a": {
+          "chunkId": "chunk_-1_0",
+          "position": 504.35,
+          "nodeId": 71
+        },
+        "b": {
+          "chunkId": "chunk_0_0",
+          "position": 494.87,
+          "nodeId": 70
+        },
+        "kind": "pair",
+        "joint": {
+          "x": -512,
+          "z": 499.6103524463251,
+          "yA": 30.48,
+          "yB": 30.48
+        },
+        "offset": 9.48,
+        "shiftA": 4.74,
+        "shiftB": 4.74,
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 8.11,
+        "maxBendDeg": 0,
+        "maxLeanDeg": 4.39,
+        "connectors": [
+          {
+            "chunkId": "chunk_-1_0",
+            "width": 30,
+            "points": [
+              {
+                "x": -512,
+                "z": 499.61
+              },
+              {
+                "x": -573.72,
+                "z": 504.35
+              }
+            ]
+          },
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": -512,
+                "z": 499.61
+              },
+              {
+                "x": -440.73,
+                "z": 494.87
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 6,
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "a": {
+          "chunkId": "chunk_0_0",
+          "position": 119.27,
+          "nodeId": 100
+        },
+        "b": {
+          "chunkId": "chunk_0_1",
+          "position": 119.27,
+          "nodeId": 93
+        },
+        "kind": "stub",
+        "joint": {
+          "x": 119.27312463521957,
+          "z": 512,
+          "yA": 22.68,
+          "yB": 22.68
+        },
+        "offset": 0,
+        "stubLength": 67.39,
+        "into": "chunk_0_1",
+        "classA": "secondary",
+        "classB": "secondary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 8.71,
+        "maxBendDeg": 19.91,
+        "maxLeanDeg": 0,
+        "connectors": [
+          {
+            "chunkId": "chunk_0_1",
+            "width": 12,
+            "points": [
+              {
+                "x": 119.27,
+                "z": 512
+              },
+              {
+                "x": 142.22,
+                "z": 575.36
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      },
+      {
+        "id": 7,
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "a": {
+          "chunkId": "chunk_0_0",
+          "position": 151.12,
+          "nodeId": 110
+        },
+        "b": {
+          "chunkId": "chunk_0_1",
+          "position": 151.12,
+          "nodeId": 7
+        },
+        "kind": "stub",
+        "joint": {
+          "x": 151.12261468212782,
+          "z": 512,
+          "yA": 23.25,
+          "yB": 23.25
+        },
+        "offset": 0,
+        "stubLength": 17.13,
+        "into": "chunk_0_0",
+        "classA": "primary",
+        "classB": "primary",
+        "elevationDiff": 0,
+        "maxGradeDeg": 1.83,
+        "maxBendDeg": 8,
+        "maxLeanDeg": 0,
+        "connectors": [
+          {
+            "chunkId": "chunk_0_0",
+            "width": 20,
+            "points": [
+              {
+                "x": 151.12,
+                "z": 512
+              },
+              {
+                "x": 151.12,
+                "z": 494.87
+              }
+            ]
+          }
+        ],
+        "positionError": 0,
+        "nodeElevationDiff": 0
+      }
+    ],
+    "ports": [
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -1473.72,
+        "elevation": 23.26,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -1373.72,
+        "elevation": 22.82,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -1273.72,
+        "elevation": 20.88,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -1173.72,
+        "elevation": 22.34,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -1073.72,
+        "elevation": 23.15,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -973.72,
+        "elevation": 22.5,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -873.72,
+        "elevation": 20.63,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -773.72,
+        "elevation": 20.71,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -673.72,
+        "elevation": 19.55,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_-1|chunk_-1_0",
+        "side": "minZ",
+        "position": -573.72,
+        "elevation": 20.38,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "pending",
+        "reason": "neighbour slot chunk_-1_-1 is empty (joins when a city is assigned)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "edgeId": "chunk_0_-1|chunk_1_-1",
+        "side": "maxX",
+        "position": -804,
+        "elevation": 157.82,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 234.84 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -440.73,
+        "elevation": 22.82,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -360.73,
+        "elevation": 24.28,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -280.73,
+        "elevation": 24.65,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -200.73,
+        "elevation": 25.81,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -120.73,
+        "elevation": 25.87,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": -40.73,
+        "elevation": 25.82,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 39.27,
+        "elevation": 26.25,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 119.27,
+        "elevation": 25.96,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 199.27,
+        "elevation": 26.57,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 279.27,
+        "elevation": 26.37,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 359.27,
+        "elevation": 26.48,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_-1|chunk_0_0",
+        "side": "minZ",
+        "position": 439.27,
+        "elevation": 25.78,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 289.86 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "edgeId": "chunk_1_-1|chunk_1_0",
+        "side": "minZ",
+        "position": 1204,
+        "elevation": 59.56,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 25.29 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": -495.65,
+        "elevation": 21.72,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 0
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": -295.65,
+        "elevation": 23.27,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 1
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": -95.65,
+        "elevation": 22.64,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 2
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": 104.35,
+        "elevation": 22.33,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 3
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": 304.35,
+        "elevation": 22.46,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 4
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "maxX",
+        "position": 504.35,
+        "elevation": 30.6,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 5
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": -505.13,
+        "elevation": 21.74,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 0
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": -305.13,
+        "elevation": 23.29,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 1
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": -105.13,
+        "elevation": 22.74,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 2
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": 94.87,
+        "elevation": 22.3,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 3
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": 294.87,
+        "elevation": 22.51,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 4
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_-1_0|chunk_0_0",
+        "side": "minX",
+        "position": 494.87,
+        "elevation": 30.3,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "paired, re-routed inside the band (offset 9.48 m)",
+        "connectionId": 5
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -1473.72,
+        "elevation": 11.54,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -1373.72,
+        "elevation": 11.59,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -1273.72,
+        "elevation": 14.06,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -1173.72,
+        "elevation": 22.6,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -1073.72,
+        "elevation": 28.28,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -973.72,
+        "elevation": 28.98,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -873.72,
+        "elevation": 28.16,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -773.72,
+        "elevation": 25.36,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -673.72,
+        "elevation": 21.15,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "edgeId": "chunk_-1_0|chunk_-1_1",
+        "side": "maxZ",
+        "position": -573.72,
+        "elevation": 26.82,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": -505.13,
+        "elevation": 25.42,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": -305.13,
+        "elevation": 23.61,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": -105.13,
+        "elevation": 25.51,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": 94.87,
+        "elevation": 23.28,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": 294.87,
+        "elevation": 20.77,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "maxX",
+        "position": 494.87,
+        "elevation": 9.81,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "edgeId": "chunk_0_0|chunk_1_0",
+        "side": "minX",
+        "position": -16,
+        "elevation": 31.32,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 53.9 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": -440.73,
+        "elevation": 31.99,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 72° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": -360.73,
+        "elevation": 26.44,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 67° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": -200.73,
+        "elevation": 20.63,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 41° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": -120.73,
+        "elevation": 24,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 40° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": -40.73,
+        "elevation": 26.07,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: stub: connector crosses terrain at 19.1° (> 10° road limit of this DNA)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": 39.27,
+        "elevation": 26.98,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "pair: re-route would lean 73.0° (> 25°) inside the 128 m band; stub: stub: connector crosses terrain at 10.2° (> 10° road limit of this DNA)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": 119.27,
+        "elevation": 22.68,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "connected",
+        "reason": "stub into chunk_0_1 (67.39 m to its road)",
+        "connectionId": 6,
+        "pairAttempt": "re-route would lean 42.9° (> 25°) inside the 128 m band"
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": 199.27,
+        "elevation": 24.47,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "pair: re-route would lean 54.6° (> 25°) inside the 128 m band; stub: stub: connector crosses terrain at 14.0° (> 10° road limit of this DNA)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": 279.27,
+        "elevation": 20.9,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 40° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "maxZ",
+        "position": 439.27,
+        "elevation": 11.42,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: nearest road in the neighbour band needs a 72° turn (> 40°)",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "edgeId": "chunk_0_0|chunk_0_1",
+        "side": "minZ",
+        "position": 151.12,
+        "elevation": 23.25,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "connected",
+        "reason": "stub into chunk_0_0 (17.13 m to its road)",
+        "connectionId": 7,
+        "pairAttempt": "re-route would lean 42.9° (> 25°) inside the 128 m band"
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "edgeId": "chunk_-1_1|chunk_0_1",
+        "side": "minX",
+        "position": 725.78,
+        "elevation": 35.94,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "edgeId": "chunk_-1_1|chunk_0_1",
+        "side": "minX",
+        "position": 806.56,
+        "elevation": 32.45,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "edgeId": "chunk_-1_1|chunk_0_1",
+        "side": "minX",
+        "position": 1452.85,
+        "elevation": 24.01,
+        "type": "road",
+        "roadClass": "secondary",
+        "status": "rejected",
+        "reason": "no counterpart within 119 m; stub: no road of chunk_-1_1 inside its 128 m band to continue into",
+        "connectionId": null
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "edgeId": "chunk_0_1|chunk_1_1",
+        "side": "minX",
+        "position": 1048,
+        "elevation": 5.41,
+        "type": "road",
+        "roadClass": "primary",
+        "status": "rejected",
+        "reason": "terrain edge unresolved in 06.3a (raw step 47.1 m kept; a road would need a ramp or wall)",
+        "connectionId": null
+      }
+    ],
+    "audit": {
+      "connections": [
+        {
+          "id": 0,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 1,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 2,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 4,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 5,
+          "kind": "pair",
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 6,
+          "kind": "stub",
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": 7,
+          "kind": "stub",
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "found": true,
+          "positionError": 0,
+          "elevationDiff": 0,
+          "kinds": [
+            "port",
+            "port"
+          ],
+          "degrees": [
+            1,
+            1
+          ]
+        }
+      ],
+      "visualOnly": [],
+      "crossings": [
+        {
+          "chunkId": "chunk_0_-1",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "own": 0,
+          "stitched": 0
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "own": 0,
+          "stitched": 0
+        }
+      ],
+      "connectors": [
+        {
+          "connectionId": 0,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 2.61,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 2.59
+        },
+        {
+          "connectionId": 0,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.81,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 1.78
+        },
+        {
+          "connectionId": 1,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 2.67,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 2.62
+        },
+        {
+          "connectionId": 1,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.7,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 1.63
+        },
+        {
+          "connectionId": 2,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.17,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 1.12
+        },
+        {
+          "connectionId": 2,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.56,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 1.43
+        },
+        {
+          "connectionId": 3,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.89,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 0.98
+        },
+        {
+          "connectionId": 3,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 0.91,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 0.87
+        },
+        {
+          "connectionId": 4,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.53,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 1.32
+        },
+        {
+          "connectionId": 4,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 1.95,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 1.68
+        },
+        {
+          "connectionId": 5,
+          "chunkId": "chunk_-1_0",
+          "wetSamples": 0,
+          "maxCellSlope": 7.43,
+          "slopeLimit": 10,
+          "maxDepth": 61.72,
+          "withinBand": true,
+          "maxGradeDeg": 8.12
+        },
+        {
+          "connectionId": 5,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 4.44,
+          "slopeLimit": 10,
+          "maxDepth": 71.27,
+          "withinBand": true,
+          "maxGradeDeg": 2.44
+        },
+        {
+          "connectionId": 6,
+          "chunkId": "chunk_0_1",
+          "wetSamples": 0,
+          "maxCellSlope": 9.78,
+          "slopeLimit": 10,
+          "maxDepth": 63.36,
+          "withinBand": true,
+          "maxGradeDeg": 8.71
+        },
+        {
+          "connectionId": 7,
+          "chunkId": "chunk_0_0",
+          "wetSamples": 0,
+          "maxCellSlope": 2.44,
+          "slopeLimit": 10,
+          "maxDepth": 17.13,
+          "withinBand": true,
+          "maxGradeDeg": 1.83
+        }
+      ],
+      "cities": [
+        {
+          "chunkId": "chunk_0_-1",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": false,
+          "corridors": 0,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 3.515,
+            "ports": 1,
+            "blocks": 12,
+            "parcels": 353,
+            "buildings": 305
+          }
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": false,
+          "corridors": 0,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 4.01,
+            "ports": 1,
+            "blocks": 10,
+            "parcels": 422,
+            "buildings": 346
+          }
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": true,
+          "corridors": 6,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 16.337,
+            "ports": 32,
+            "blocks": 63,
+            "parcels": 2300,
+            "buildings": 2056
+          }
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": true,
+          "corridors": 7,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 18.302,
+            "ports": 35,
+            "blocks": 74,
+            "parcels": 1732,
+            "buildings": 1597
+          }
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": false,
+          "corridors": 0,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 5.402,
+            "ports": 3,
+            "blocks": 9,
+            "parcels": 510,
+            "buildings": 416
+          }
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": false,
+          "corridors": 0,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 0,
+            "ports": 2,
+            "blocks": 1,
+            "parcels": 0,
+            "buildings": 0
+          }
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": true,
+          "corridors": 1,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 6.746,
+            "ports": 6,
+            "blocks": 13,
+            "parcels": 462,
+            "buildings": 405
+          }
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "stitchedIsCurrent": true,
+          "blocksOnStitched": true,
+          "changed": false,
+          "corridors": 0,
+          "buildingConflicts": 0,
+          "counts": {
+            "roadKm": 6.66,
+            "ports": 3,
+            "blocks": 19,
+            "parcels": 814,
+            "buildings": 691
+          }
+        }
+      ],
+      "unresolvedJoins": 0,
+      "unexplained": 0,
+      "ok": true
+    },
+    "reach": {
+      "anchors": {
+        "chunk_0_-1": "chunk_0_-1/14",
+        "chunk_1_-1": "chunk_1_-1/38",
+        "chunk_-1_0": "chunk_-1_0/29",
+        "chunk_0_0": "chunk_0_0/49",
+        "chunk_1_0": "chunk_1_0/39",
+        "chunk_-1_1": null,
+        "chunk_0_1": "chunk_0_1/13",
+        "chunk_1_1": "chunk_1_1/17"
+      },
+      "components": [
+        {
+          "id": 0,
+          "nodes": 213,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        }
+      ],
+      "paths": [
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_1_-1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_-1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_0_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_-1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_0_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_-1",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_-1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_0_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_-1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_0_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_-1",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_-1_0",
+          "to": "chunk_0_0",
+          "reachable": true,
+          "fromNode": "chunk_-1_0/29",
+          "toNode": "chunk_0_0/49",
+          "length": 1313.33,
+          "nodes": 16,
+          "seamLinks": 1,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_0_0"
+          ]
+        },
+        {
+          "from": "chunk_-1_0",
+          "to": "chunk_1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_-1_0",
+          "to": "chunk_-1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_-1_0",
+          "to": "chunk_0_1",
+          "reachable": true,
+          "fromNode": "chunk_-1_0/29",
+          "toNode": "chunk_0_1/9",
+          "length": 1932.48,
+          "nodes": 23,
+          "seamLinks": 2,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        },
+        {
+          "from": "chunk_-1_0",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_0",
+          "to": "chunk_1_0",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_0",
+          "to": "chunk_-1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_0",
+          "to": "chunk_0_1",
+          "reachable": true,
+          "fromNode": "chunk_0_0/49",
+          "toNode": "chunk_0_1/9",
+          "length": 619.15,
+          "nodes": 8,
+          "seamLinks": 1,
+          "chunks": [
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        },
+        {
+          "from": "chunk_0_0",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_0",
+          "to": "chunk_-1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_0",
+          "to": "chunk_0_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_1_0",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_-1_1",
+          "to": "chunk_0_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_-1_1",
+          "to": "chunk_1_1",
+          "reachable": false
+        },
+        {
+          "from": "chunk_0_1",
+          "to": "chunk_1_1",
+          "reachable": false
+        }
+      ],
+      "viaConnections": [
+        {
+          "id": 0,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 1,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 2,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 3,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 4,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 5,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 6,
+          "reachable": true,
+          "length": 0
+        },
+        {
+          "id": 7,
+          "reachable": true,
+          "length": 0
+        }
+      ]
+    },
+    "independentPorts": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 0
+        }
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "ports": {
+          "paired": 0,
+          "unpaired": 0
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 1
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "ports": {
+          "paired": 0,
+          "unpaired": 12
+        }
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "ports": {
+          "paired": 0,
+          "unpaired": 1
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "ports": {
+          "paired": 6,
+          "unpaired": 0
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 10
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "ports": {
+          "paired": 0,
+          "unpaired": 7
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 11
+        }
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 0
+        }
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 3
+        }
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "ports": {
+          "paired": 0,
+          "unpaired": 1
+        }
+      }
+    ],
+    "changedCounts": [
+      {
+        "chunkId": "chunk_-1_0",
+        "dna": "chicagoGrid",
+        "independent": {
+          "roadKm": 16.34,
+          "ports": 32,
+          "tunnels": 0,
+          "blocks": 63,
+          "parcels": 2300,
+          "buildings": 2066,
+          "meanHeight": 40.5
+        },
+        "joined": {
+          "roadKm": 16.34,
+          "ports": 32,
+          "tunnels": 0,
+          "blocks": 63,
+          "parcels": 2300,
+          "buildings": 2056,
+          "meanHeight": 39.8
+        }
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "dna": "manhattanGrid",
+        "independent": {
+          "roadKm": 18.28,
+          "ports": 34,
+          "tunnels": 0,
+          "blocks": 73,
+          "parcels": 1739,
+          "buildings": 1599,
+          "meanHeight": 63.2
+        },
+        "joined": {
+          "roadKm": 18.3,
+          "ports": 35,
+          "tunnels": 0,
+          "blocks": 74,
+          "parcels": 1732,
+          "buildings": 1597,
+          "meanHeight": 58.8
+        }
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "dna": "manhattanGrid",
+        "independent": {
+          "roadKm": 6.68,
+          "ports": 5,
+          "tunnels": 0,
+          "blocks": 12,
+          "parcels": 464,
+          "buildings": 416,
+          "meanHeight": 50.3
+        },
+        "joined": {
+          "roadKm": 6.75,
+          "ports": 6,
+          "tunnels": 0,
+          "blocks": 13,
+          "parcels": 462,
+          "buildings": 405,
+          "meanHeight": 50.4
+        }
+      }
+    ]
+  },
+  "orderIndependent": true,
+  "reloadIdentical": true,
+  "solids": [
+    {
+      "chunkId": "chunk_-1_-1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_0_-1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_1_-1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_-1_0",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_0_0",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_1_0",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_-1_1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_0_1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    },
+    {
+      "chunkId": "chunk_1_1",
+      "watertight": true,
+      "euler": 2,
+      "expected": 2
+    }
+  ],
+  "cityChange": {
+    "toAmsterdam": {
+      "cityId": "amsterdamCanalRing",
+      "networksRebuilt": [
+        "chunk_0_1"
+      ],
+      "cityRebuilt": [
+        "chunk_0_1",
+        "chunk_0_0"
+      ],
+      "stitchedChanged": [
+        "chunk_0_0",
+        "chunk_0_1"
+      ],
+      "connections": 12,
+      "edges": [
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 10,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 6,
+          "connected": 6,
+          "rejected": 5,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 3,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 3,
+          "pending": 1
+        }
+      ],
+      "totalMs": 8169
+    },
+    "back": {
+      "cityId": "auto",
+      "networksRebuilt": [
+        "chunk_0_1"
+      ],
+      "cityRebuilt": [
+        "chunk_0_1",
+        "chunk_0_0"
+      ],
+      "stitchedChanged": [
+        "chunk_0_0",
+        "chunk_0_1"
+      ],
+      "connections": 8,
+      "edges": [
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 10,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 2,
+          "connected": 2,
+          "rejected": 9,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 0,
+          "portsB": 3,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 3,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        }
+      ],
+      "totalMs": 7359
+    }
+  },
+  "seeds": [
+    {
+      "worldSeed": 6201,
+      "loadMs": 21353,
+      "roadSeamMs": 12.399999999441206,
+      "signature": "A8E7F748",
+      "reproducible": true,
+      "stats": {
+        "sharedEdges": 12,
+        "edgesWithConnections": 2,
+        "ports": 68,
+        "connected": 14,
+        "rejected": 44,
+        "pending": 10,
+        "connections": 8,
+        "pairs": 6,
+        "stubs": 2,
+        "chunksChanged": [
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_0_1"
+        ],
+        "reasons": {
+          "pending: neighbour slot chunk_#_# is empty (joins when a city is assigned)": 10,
+          "rejected: terrain edge unresolved in #a (raw step # m kept; a road would need a ramp or wall)": 22,
+          "rejected: no counterpart within # m; stub: no road of chunk_#_# inside its # m band to continue into": 13,
+          "rejected: no counterpart within # m; stub: nearest road in the neighbour band needs a #° turn (> #°)": 6,
+          "rejected: no counterpart within # m; stub: stub: connector crosses terrain at #° (> #° road limit of this DNA)": 1,
+          "rejected: pair: re#route would lean #° (> #°) inside the # m band; stub: stub: connector crosses terrain at #° (> #° road limit of this DNA)": 2
+        },
+        "worldComponents": 10,
+        "crossChunkComponents": [
+          [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        ],
+        "maxJointElevationDiff": 0,
+        "maxJointPositionError": 0,
+        "maxConnectorGradeDeg": 8.71,
+        "maxConnectorDepth": 71.27,
+        "newCrossings": 0,
+        "buildingConflicts": 0,
+        "reachablePairs": [
+          "chunk_-1_0→chunk_0_0 1313.33 m, 1 seam link(s)",
+          "chunk_-1_0→chunk_0_1 1932.48 m, 2 seam link(s)",
+          "chunk_0_0→chunk_0_1 619.15 m, 1 seam link(s)"
+        ],
+        "edgesJoinedTerrain": 4
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 10,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 10
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 12,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 12,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "terrain": "joined C1",
+          "portsA": 6,
+          "portsB": 6,
+          "pairs": 6,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 12,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "terrain": "joined C1",
+          "portsA": 10,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 10,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "terrain": "unresolved",
+          "portsA": 6,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 7,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 10,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 2,
+          "connected": 2,
+          "rejected": 9,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 0,
+          "portsB": 3,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 3,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        }
+      ],
+      "connections": [
+        {
+          "id": 0,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -495.65,
+            "nodeId": 11
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -505.13,
+            "nodeId": 0
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -500.3896475536749,
+            "yA": 21.72,
+            "yB": 21.72
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.59,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 1,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -295.65,
+            "nodeId": 23
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -305.13,
+            "nodeId": 14
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -300.3896475536749,
+            "yA": 23.28,
+            "yB": 23.28
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.62,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 2,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -95.65,
+            "nodeId": 35
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -105.13,
+            "nodeId": 28
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -100.38964755367488,
+            "yA": 22.68,
+            "yB": 22.68
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.43,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 3,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 104.35,
+            "nodeId": 47
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 94.87,
+            "nodeId": 42
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": 99.61035244632512,
+            "yA": 22.31,
+            "yB": 22.31
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.98,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 4,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 304.35,
+            "nodeId": 59
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 294.87,
+            "nodeId": 56
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": 299.6103524463251,
+            "yA": 22.47,
+            "yB": 22.47
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.68,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 5,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 504.35,
+            "nodeId": 71
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 494.87,
+            "nodeId": 70
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": 499.6103524463251,
+            "yA": 30.48,
+            "yB": 30.48
+          },
+          "offset": 9.48,
+          "shiftA": 4.74,
+          "shiftB": 4.74,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 8.11,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 4.39,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 6,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 119.27,
+            "nodeId": 100
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 119.27,
+            "nodeId": 93
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 119.27312463521957,
+            "z": 512,
+            "yA": 22.68,
+            "yB": 22.68
+          },
+          "offset": 0,
+          "stubLength": 67.39,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 8.71,
+          "maxBendDeg": 19.91,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 7,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 151.12,
+            "nodeId": 110
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 151.12,
+            "nodeId": 7
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 151.12261468212782,
+            "z": 512,
+            "yA": 23.25,
+            "yB": 23.25
+          },
+          "offset": 0,
+          "stubLength": 17.13,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.83,
+          "maxBendDeg": 8,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        }
+      ],
+      "components": [
+        {
+          "id": 0,
+          "nodes": 213,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        }
+      ]
+    },
+    {
+      "worldSeed": 6202,
+      "loadMs": 22894,
+      "roadSeamMs": 8.899999999441206,
+      "signature": "4BC5958F",
+      "reproducible": true,
+      "stats": {
+        "sharedEdges": 12,
+        "edgesWithConnections": 6,
+        "ports": 71,
+        "connected": 26,
+        "rejected": 34,
+        "pending": 11,
+        "connections": 26,
+        "pairs": 0,
+        "stubs": 26,
+        "chunksChanged": [
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_1_0",
+          "chunk_-1_1",
+          "chunk_0_1",
+          "chunk_1_1"
+        ],
+        "reasons": {
+          "pending: neighbour slot chunk_#_# is empty (joins when a city is assigned)": 11,
+          "rejected: terrain edge unresolved in #a (raw step # m kept; a road would need a ramp or wall)": 22,
+          "rejected: no counterpart within # m; stub: nearest road in the neighbour band is lane (class gap > # from primary)": 1,
+          "rejected: no counterpart within # m; stub: nearest road in the neighbour band needs a #° turn (> #°)": 4,
+          "rejected: no counterpart within # m; stub: stub: connector crosses terrain at #° (> #° road limit of this DNA)": 1,
+          "rejected: pair: re#route would lean #° (> #°) inside the # m band; stub: nearest road in the neighbour band needs a #° turn (> #°)": 5,
+          "rejected: no counterpart within # m; stub: no road of chunk_#_# inside its # m band to continue into": 1
+        },
+        "worldComponents": 5,
+        "crossChunkComponents": [
+          [
+            "chunk_-1_0",
+            "chunk_-1_1",
+            "chunk_0_0",
+            "chunk_0_1",
+            "chunk_1_1"
+          ],
+          [
+            "chunk_1_-1",
+            "chunk_1_0"
+          ]
+        ],
+        "maxJointElevationDiff": 0,
+        "maxJointPositionError": 0,
+        "maxConnectorGradeDeg": 16.12,
+        "maxConnectorDepth": 112,
+        "newCrossings": 0,
+        "buildingConflicts": 0,
+        "reachablePairs": [
+          "chunk_1_-1→chunk_1_0 1127.65 m, 1 seam link(s)",
+          "chunk_-1_0→chunk_0_0 1108.43 m, 1 seam link(s)",
+          "chunk_-1_0→chunk_-1_1 1441.46 m, 1 seam link(s)",
+          "chunk_-1_0→chunk_0_1 2101.51 m, 2 seam link(s)",
+          "chunk_-1_0→chunk_1_1 5210 m, 3 seam link(s)",
+          "chunk_0_0→chunk_-1_1 2549.89 m, 2 seam link(s)",
+          "chunk_0_0→chunk_0_1 1471.66 m, 1 seam link(s)",
+          "chunk_0_0→chunk_1_1 4580.16 m, 2 seam link(s)",
+          "chunk_-1_1→chunk_0_1 1821.02 m, 1 seam link(s)",
+          "chunk_-1_1→chunk_1_1 4929.52 m, 2 seam link(s)",
+          "chunk_0_1→chunk_1_1 3108.49 m, 1 seam link(s)"
+        ],
+        "edgesJoinedTerrain": 6
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 1
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 10,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 10
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 13,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 13,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "terrain": "joined C0",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 1,
+          "connected": 1,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "terrain": "joined C1",
+          "portsA": 5,
+          "portsB": 5,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 10,
+          "connected": 10,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "terrain": "joined C1",
+          "portsA": 9,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 3,
+          "connected": 3,
+          "rejected": 7,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "terrain": "unresolved",
+          "portsA": 5,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 6,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 11,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 9,
+          "connected": 9,
+          "rejected": 3,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 2,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 1,
+          "connected": 1,
+          "rejected": 1,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "terrain": "joined C0",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 2,
+          "connected": 2,
+          "rejected": 0,
+          "pending": 0
+        }
+      ],
+      "connections": [
+        {
+          "id": 0,
+          "edgeId": "chunk_1_-1|chunk_1_0",
+          "a": {
+            "chunkId": "chunk_1_-1",
+            "position": 1160,
+            "nodeId": 50
+          },
+          "b": {
+            "chunkId": "chunk_1_0",
+            "position": 1160,
+            "nodeId": 72
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 1160,
+            "z": -512,
+            "yA": 54.47,
+            "yB": 54.47
+          },
+          "offset": 0,
+          "stubLength": 105.6,
+          "into": "chunk_1_0",
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 13.57,
+          "maxBendDeg": 24.62,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 1,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -482.48,
+            "nodeId": 81
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -482.48,
+            "nodeId": 0
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -482.4788849800825,
+            "yA": 20.82,
+            "yB": 20.82
+          },
+          "offset": 0,
+          "stubLength": 55.88,
+          "into": "chunk_-1_0",
+          "classA": "secondary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.13,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 2,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -421.23,
+            "nodeId": 11
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -421.23,
+            "nodeId": 101
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -421.23259264044464,
+            "yA": 21.37,
+            "yB": 21.37
+          },
+          "offset": 0,
+          "stubLength": 11.3,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.5,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 3,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -282.48,
+            "nodeId": 83
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -282.48,
+            "nodeId": 15
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -282.4788849800825,
+            "yA": 20.96,
+            "yB": 20.96
+          },
+          "offset": 0,
+          "stubLength": 55.88,
+          "into": "chunk_-1_0",
+          "classA": "secondary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.27,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 4,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -221.23,
+            "nodeId": 23
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -221.23,
+            "nodeId": 103
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -221.23259264044464,
+            "yA": 20.98,
+            "yB": 20.98
+          },
+          "offset": 0,
+          "stubLength": 11.3,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.24,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 5,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -82.48,
+            "nodeId": 85
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -82.48,
+            "nodeId": 30
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -82.47888498008251,
+            "yA": 20.79,
+            "yB": 20.79
+          },
+          "offset": 0,
+          "stubLength": 55.88,
+          "into": "chunk_-1_0",
+          "classA": "secondary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.79,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 6,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -21.23,
+            "nodeId": 35
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -21.23,
+            "nodeId": 105
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": -21.232592640444636,
+            "yA": 20.42,
+            "yB": 20.42
+          },
+          "offset": 0,
+          "stubLength": 11.3,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.3,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 7,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 117.52,
+            "nodeId": 87
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 117.52,
+            "nodeId": 45
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": 117.52111501991749,
+            "yA": 21.26,
+            "yB": 21.26
+          },
+          "offset": 0,
+          "stubLength": 55.88,
+          "into": "chunk_-1_0",
+          "classA": "secondary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.31,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 8,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 178.77,
+            "nodeId": 47
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 178.77,
+            "nodeId": 107
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": 178.76740735955536,
+            "yA": 21.5,
+            "yB": 21.5
+          },
+          "offset": 0,
+          "stubLength": 11.3,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.04,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 9,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 317.52,
+            "nodeId": 89
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 317.52,
+            "nodeId": 60
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": 317.5211150199175,
+            "yA": 21.41,
+            "yB": 21.41
+          },
+          "offset": 0,
+          "stubLength": 55.88,
+          "into": "chunk_-1_0",
+          "classA": "secondary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.27,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 10,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 378.77,
+            "nodeId": 59
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 378.77,
+            "nodeId": 110
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": 378.76740735955536,
+            "yA": 21.79,
+            "yB": 21.79
+          },
+          "offset": 0,
+          "stubLength": 11.3,
+          "into": "chunk_0_0",
+          "classA": "primary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.68,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 11,
+          "edgeId": "chunk_-1_0|chunk_-1_1",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -1467.88,
+            "nodeId": 61
+          },
+          "b": {
+            "chunkId": "chunk_-1_1",
+            "position": -1467.88,
+            "nodeId": 51
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -1467.8823339762166,
+            "z": 512,
+            "yA": 27.12,
+            "yB": 27.12
+          },
+          "offset": 0,
+          "stubLength": 32.96,
+          "into": "chunk_-1_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 4.37,
+          "maxBendDeg": 13.84,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 12,
+          "edgeId": "chunk_-1_0|chunk_-1_1",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -1367.88,
+            "nodeId": 63
+          },
+          "b": {
+            "chunkId": "chunk_-1_1",
+            "position": -1367.88,
+            "nodeId": 53
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -1367.8823339762166,
+            "z": 512,
+            "yA": 31.86,
+            "yB": 31.86
+          },
+          "offset": 0,
+          "stubLength": 44,
+          "into": "chunk_-1_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 9.6,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 13,
+          "edgeId": "chunk_-1_0|chunk_-1_1",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -1167.88,
+            "nodeId": 67
+          },
+          "b": {
+            "chunkId": "chunk_-1_1",
+            "position": -1167.88,
+            "nodeId": 55
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -1167.8823339762166,
+            "z": 512,
+            "yA": 25.44,
+            "yB": 25.44
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_-1_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.83,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 14,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -500.7,
+            "nodeId": 109
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -500.7,
+            "nodeId": 62
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -500.70310804992914,
+            "z": 512,
+            "yA": 24.06,
+            "yB": 24.06
+          },
+          "offset": 0,
+          "stubLength": 112.1,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 16.12,
+          "maxBendDeg": 2.4,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 15,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -420.7,
+            "nodeId": 77
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -420.7,
+            "nodeId": 63
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -420.70310804992914,
+            "z": 512,
+            "yA": 25.73,
+            "yB": 25.73
+          },
+          "offset": 0,
+          "stubLength": 59.4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 11.92,
+          "maxBendDeg": 28.9,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 16,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -180.7,
+            "nodeId": 83
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -180.7,
+            "nodeId": 65
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -180.70310804992914,
+            "z": 512,
+            "yA": 22.23,
+            "yB": 22.23
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.05,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 17,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -100.7,
+            "nodeId": 85
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -100.7,
+            "nodeId": 67
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -100.70310804992914,
+            "z": 512,
+            "yA": 21.83,
+            "yB": 21.83
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.06,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 18,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -20.7,
+            "nodeId": 87
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -20.7,
+            "nodeId": 69
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -20.703108049929142,
+            "z": 512,
+            "yA": 22.92,
+            "yB": 22.92
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.16,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 19,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 139.3,
+            "nodeId": 91
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 139.3,
+            "nodeId": 70
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 139.29689195007086,
+            "z": 512,
+            "yA": 17.37,
+            "yB": 17.37
+          },
+          "offset": 0,
+          "stubLength": 4.06,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 4.43,
+          "maxBendDeg": 9.97,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 20,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 219.3,
+            "nodeId": 93
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 219.3,
+            "nodeId": 72
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 219.29689195007086,
+            "z": 512,
+            "yA": 16.76,
+            "yB": 16.76
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.68,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 21,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 299.3,
+            "nodeId": 95
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 299.3,
+            "nodeId": 74
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 299.29689195007086,
+            "z": 512,
+            "yA": 18,
+            "yB": 18
+          },
+          "offset": 0,
+          "stubLength": 8,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.86,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 22,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 459.3,
+            "nodeId": 99
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 459.3,
+            "nodeId": 77
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 459.29689195007086,
+            "z": 512,
+            "yA": 26.54,
+            "yB": 26.54
+          },
+          "offset": 0,
+          "stubLength": 92.94,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 7.97,
+          "maxBendDeg": 30.59,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 23,
+          "edgeId": "chunk_-1_1|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_-1_1",
+            "position": 1024,
+            "nodeId": 47
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 1024,
+            "nodeId": 79
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -512,
+            "z": 1024,
+            "yA": 30.26,
+            "yB": 30.26
+          },
+          "offset": 0,
+          "stubLength": 144.28,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 8.76,
+          "maxBendDeg": 17.31,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 24,
+          "edgeId": "chunk_0_1|chunk_1_1",
+          "a": {
+            "chunkId": "chunk_0_1",
+            "position": 1312,
+            "nodeId": 81
+          },
+          "b": {
+            "chunkId": "chunk_1_1",
+            "position": 1312,
+            "nodeId": 43
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 512,
+            "z": 1312,
+            "yA": 30.43,
+            "yB": 30.43
+          },
+          "offset": 0,
+          "stubLength": 37.74,
+          "into": "chunk_0_1",
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 9.06,
+          "maxBendDeg": 32.01,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 25,
+          "edgeId": "chunk_0_1|chunk_1_1",
+          "a": {
+            "chunkId": "chunk_0_1",
+            "position": 1456,
+            "nodeId": 57
+          },
+          "b": {
+            "chunkId": "chunk_1_1",
+            "position": 1456,
+            "nodeId": 56
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 512,
+            "z": 1456,
+            "yA": 22.8,
+            "yB": 22.8
+          },
+          "offset": 0,
+          "stubLength": 95.08,
+          "into": "chunk_1_1",
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 9.03,
+          "maxBendDeg": 14.62,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        }
+      ],
+      "components": [
+        {
+          "id": 0,
+          "nodes": 396,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_-1_1",
+            "chunk_0_0",
+            "chunk_0_1",
+            "chunk_1_1"
+          ]
+        },
+        {
+          "id": 4,
+          "nodes": 124,
+          "chunks": [
+            "chunk_1_-1",
+            "chunk_1_0"
+          ]
+        }
+      ]
+    },
+    {
+      "worldSeed": 6203,
+      "loadMs": 21588,
+      "roadSeamMs": 8.399999999441206,
+      "signature": "6ADEC124",
+      "reproducible": true,
+      "stats": {
+        "sharedEdges": 12,
+        "edgesWithConnections": 2,
+        "ports": 71,
+        "connected": 14,
+        "rejected": 45,
+        "pending": 12,
+        "connections": 9,
+        "pairs": 5,
+        "stubs": 4,
+        "chunksChanged": [
+          "chunk_-1_0",
+          "chunk_0_0",
+          "chunk_0_1"
+        ],
+        "reasons": {
+          "pending: neighbour slot chunk_#_# is empty (joins when a city is assigned)": 11,
+          "rejected: terrain edge unresolved in #a (raw step # m kept; a road would need a ramp or wall)": 27,
+          "rejected: no counterpart within # m; stub: no road of chunk_#_# inside its # m band to continue into": 10,
+          "rejected: no counterpart within # m; stub: nearest road in the neighbour band needs a #° turn (> #°)": 5,
+          "rejected: pair: re#route would lean #° (> #°) inside the # m band; stub: nearest road in the neighbour band needs a #° turn (> #°)": 2,
+          "rejected: no counterpart within # m; stub: nearest road in the neighbour band is lane (class gap > # from primary)": 1,
+          "pending: canal port: canal joins are not part of #b": 1
+        },
+        "worldComponents": 5,
+        "crossChunkComponents": [
+          [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        ],
+        "maxJointElevationDiff": 0,
+        "maxJointPositionError": 0,
+        "maxConnectorGradeDeg": 10.91,
+        "maxConnectorDepth": 112,
+        "newCrossings": 0,
+        "buildingConflicts": 0,
+        "reachablePairs": [
+          "chunk_-1_0→chunk_0_0 1041.48 m, 1 seam link(s)",
+          "chunk_-1_0→chunk_0_1 2644.25 m, 2 seam link(s)",
+          "chunk_0_0→chunk_0_1 1603.45 m, 1 seam link(s)"
+        ],
+        "edgesJoinedTerrain": 4
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "terrain": "unresolved",
+          "portsA": 0,
+          "portsB": 11,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 0,
+          "pending": 11
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 2,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 13,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 14,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 2,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "terrain": "joined C1",
+          "portsA": 5,
+          "portsB": 5,
+          "pairs": 5,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 10,
+          "rejected": 0,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "terrain": "joined C1",
+          "portsA": 10,
+          "portsB": 0,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 10,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "terrain": "unresolved",
+          "portsA": 5,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 6,
+          "pending": 0
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "terrain": "joined C1",
+          "portsA": 9,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 4,
+          "connected": 4,
+          "rejected": 6,
+          "pending": 0
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "terrain": "joined C0",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 2,
+          "pending": 0
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 1,
+          "pending": 1
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "terrain": "unresolved",
+          "portsA": 1,
+          "portsB": 1,
+          "pairs": 0,
+          "pairsSamePosition": 0,
+          "stubs": 0,
+          "connected": 0,
+          "rejected": 2,
+          "pending": 0
+        }
+      ],
+      "connections": [
+        {
+          "id": 0,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -456.03,
+            "nodeId": 12
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -438.86,
+            "nodeId": 0
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -447.44581986498207,
+            "yA": 23.61,
+            "yB": 23.61
+          },
+          "offset": 17.18,
+          "shiftA": 8.59,
+          "shiftB": 8.59,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.36,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 21.72,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 1,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -256.03,
+            "nodeId": 25
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -238.86,
+            "nodeId": 15
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -247.4456675560789,
+            "yA": 22.87,
+            "yB": 22.87
+          },
+          "offset": 17.18,
+          "shiftA": 8.59,
+          "shiftB": 8.59,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.48,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 21.72,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 2,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": -56.03,
+            "nodeId": 38
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": -38.86,
+            "nodeId": 30
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": -47.44551524717567,
+            "yA": 23.5,
+            "yB": 23.5
+          },
+          "offset": 17.18,
+          "shiftA": 8.59,
+          "shiftB": 8.59,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.17,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 21.72,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 3,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 143.97,
+            "nodeId": 51
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 161.14,
+            "nodeId": 45
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": 152.55463706172753,
+            "yA": 23.42,
+            "yB": 23.42
+          },
+          "offset": 17.18,
+          "shiftA": 8.59,
+          "shiftB": 8.59,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.76,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 21.72,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 4,
+          "edgeId": "chunk_-1_0|chunk_0_0",
+          "a": {
+            "chunkId": "chunk_-1_0",
+            "position": 343.97,
+            "nodeId": 64
+          },
+          "b": {
+            "chunkId": "chunk_0_0",
+            "position": 361.14,
+            "nodeId": 60
+          },
+          "kind": "pair",
+          "joint": {
+            "x": -512,
+            "z": 352.5547893706307,
+            "yA": 21.51,
+            "yB": 21.51
+          },
+          "offset": 17.18,
+          "shiftA": 8.59,
+          "shiftB": 8.59,
+          "classA": "primary",
+          "classB": "primary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 1.47,
+          "maxBendDeg": 0,
+          "maxLeanDeg": 21.72,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 5,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -475.68,
+            "nodeId": 76
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -475.68,
+            "nodeId": 61
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -475.6762617064273,
+            "z": 512,
+            "yA": 7.21,
+            "yB": 7.21
+          },
+          "offset": 0,
+          "stubLength": 104,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 7.82,
+          "maxBendDeg": 0.08,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 6,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": -395.68,
+            "nodeId": 78
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": -395.68,
+            "nodeId": 63
+          },
+          "kind": "stub",
+          "joint": {
+            "x": -395.6761398593047,
+            "z": 512,
+            "yA": 7.25,
+            "yB": 7.25
+          },
+          "offset": 0,
+          "stubLength": 129.16,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "lane",
+          "elevationDiff": 0,
+          "maxGradeDeg": 10.91,
+          "maxBendDeg": 29.77,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 7,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 4.32,
+            "nodeId": 88
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 4.32,
+            "nodeId": 65
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 4.324469376308114,
+            "z": 512,
+            "yA": 8.99,
+            "yB": 8.99
+          },
+          "offset": 0,
+          "stubLength": 4,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 0.3,
+          "maxBendDeg": 0.1,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        },
+        {
+          "id": 8,
+          "edgeId": "chunk_0_0|chunk_0_1",
+          "a": {
+            "chunkId": "chunk_0_0",
+            "position": 84.32,
+            "nodeId": 90
+          },
+          "b": {
+            "chunkId": "chunk_0_1",
+            "position": 84.32,
+            "nodeId": 67
+          },
+          "kind": "stub",
+          "joint": {
+            "x": 84.32459122343069,
+            "z": 512,
+            "yA": 7.89,
+            "yB": 7.89
+          },
+          "offset": 0,
+          "stubLength": 26.98,
+          "into": "chunk_0_1",
+          "classA": "secondary",
+          "classB": "secondary",
+          "elevationDiff": 0,
+          "maxGradeDeg": 2.39,
+          "maxBendDeg": 27.08,
+          "maxLeanDeg": 0,
+          "positionError": 0,
+          "nodeElevationDiff": 0
+        }
+      ],
+      "components": [
+        {
+          "id": 0,
+          "nodes": 256,
+          "chunks": [
+            "chunk_-1_0",
+            "chunk_0_0",
+            "chunk_0_1"
+          ]
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/06-3b-road-seam-overall-after.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3b-road-pair-closeup-compare.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3b-road-stub-closeup-compare.png"
+  ],
+  "browserErrors": []
+}

@@ -1,0 +1,3420 @@
+{
+  "task": "06.3a-R World-Coherent Terrain",
+  "experiment": "/experiments/world-grid/",
+  "testedAt": "2026-10-21T02:56:15.416Z",
+  "default": {
+    "worldSeed": 6201,
+    "transitionWidth": 128,
+    "modes": {
+      "raw": {
+        "loadMs": 22536,
+        "harmonyMs": 0,
+        "edgesResolved": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStep": 296.36,
+        "edgesWithStep": 12,
+        "maxCornerSpread": 250.74,
+        "cornersClosed": 0,
+        "maxKinkAll": 88.04,
+        "maxKinkResolved": 0,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 295.03985351085606,
+        "maxNormalDeg": 93.51,
+        "waterDiscontinuousEdges": 6,
+        "waterOneSided": 489,
+        "crossableShareMean": 0.015,
+        "edgesCrossable": 1,
+        "roadJoins": 0,
+        "memoryMB": 365
+      },
+      "harmonized": {
+        "loadMs": 22069,
+        "harmonyMs": 526,
+        "edgesResolved": 4,
+        "edgesUnresolved": 8,
+        "maxSeamStep": 296.36,
+        "edgesWithStep": 8,
+        "maxCornerSpread": 248.14,
+        "cornersClosed": 1,
+        "maxKinkAll": 88.04,
+        "maxKinkResolved": 8.58,
+        "maxBandSlopeResolved": 34.3,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 295.03985351085606,
+        "maxNormalDeg": 93.51,
+        "waterDiscontinuousEdges": 4,
+        "waterOneSided": 443,
+        "crossableShareMean": 0.248,
+        "edgesCrossable": 4,
+        "roadJoins": 8,
+        "memoryMB": 358
+      },
+      "coordinated": {
+        "loadMs": 22254,
+        "harmonyMs": 696,
+        "edgesResolved": 7,
+        "edgesUnresolved": 5,
+        "maxSeamStep": 0,
+        "edgesWithStep": 0,
+        "maxCornerSpread": 0,
+        "cornersClosed": 4,
+        "maxKinkAll": 27.38,
+        "maxKinkResolved": 6.23,
+        "maxBandSlopeResolved": 35.6,
+        "maxBandSlopeAll": 73,
+        "maxSamplerDiff": 0,
+        "maxNormalDeg": 26.41,
+        "waterDiscontinuousEdges": 1,
+        "waterOneSided": 11,
+        "crossableShareMean": 0.492,
+        "edgesCrossable": 12,
+        "roadJoins": 22,
+        "memoryMB": 324
+      }
+    },
+    "macro": {
+      "chunk_-1_-1": {
+        "base": 237.89,
+        "relief": 300,
+        "rampDistance": 512
+      },
+      "chunk_0_-1": {
+        "base": 222.18,
+        "relief": 300,
+        "rampDistance": 512
+      },
+      "chunk_1_-1": {
+        "base": 52.64,
+        "relief": 70,
+        "rampDistance": 384
+      },
+      "chunk_-1_0": {
+        "base": 23.69,
+        "relief": 7,
+        "rampDistance": 128
+      },
+      "chunk_0_0": {
+        "base": 23.64,
+        "relief": 7,
+        "rampDistance": 128
+      },
+      "chunk_1_0": {
+        "base": 51.67,
+        "relief": 70,
+        "rampDistance": 384
+      },
+      "chunk_-1_1": {
+        "base": 0,
+        "relief": 45,
+        "rampDistance": 128
+      },
+      "chunk_0_1": {
+        "base": 0,
+        "relief": 45,
+        "rampDistance": 128
+      },
+      "chunk_1_1": {
+        "base": 0,
+        "relief": 45,
+        "rampDistance": 128
+      }
+    },
+    "edges": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "a": "chunk_-1_-1",
+        "b": "chunk_0_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 163.53,
+        "madeSteepCells": 5550,
+        "steepInBand": 4098,
+        "steepInRamp": 1452,
+        "maxCreatedSlope": 73.05,
+        "bandMaxSlope": 73.05,
+        "edgeBase": {
+          "mid": 230.04,
+          "corners": [
+            230.04,
+            28.37
+          ]
+        },
+        "edgeRelief": 300,
+        "reason": "coordination leaves 5550 cells steeper than 35° (max 73.0°; 4098 in the band, 1452 in the ramp); raw step 163.5 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 608 m (> 256 m slider max) by explicit choice, or a smaller relief contrast between chunk_-1_-1 and chunk_0_-1 (landform pair), or a dedicated escarpment rule",
+        "suggestion": "mostly inside the 128 m band: transition width ≈ 608 m (> 256 m slider max) by explicit choice, or a smaller relief contrast between chunk_-1_-1 and chunk_0_-1 (landform pair), or a dedicated escarpment rule"
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "a": "chunk_-1_-1",
+        "b": "chunk_-1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 296.36,
+        "madeSteepCells": 2298,
+        "steepInBand": 11,
+        "steepInRamp": 2287,
+        "maxCreatedSlope": 62.66,
+        "bandMaxSlope": 45.09,
+        "edgeBase": {
+          "mid": 28.57,
+          "corners": [
+            28.57,
+            28.37
+          ]
+        },
+        "edgeRelief": 13.68,
+        "reason": "coordination leaves 2298 cells steeper than 35° (max 62.7°; 11 in the band, 2287 in the ramp); raw step 296.4 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+        "suggestion": "mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule"
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "a": "chunk_0_-1",
+        "b": "chunk_1_-1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 234.84,
+        "madeSteepCells": 1734,
+        "steepInBand": 202,
+        "steepInRamp": 1532,
+        "maxCreatedSlope": 63.19,
+        "bandMaxSlope": 55.95,
+        "edgeBase": {
+          "mid": 84.71,
+          "corners": [
+            84.71,
+            32.09
+          ]
+        },
+        "edgeRelief": 113.51,
+        "reason": "coordination leaves 1734 cells steeper than 35° (max 63.2°; 202 in the band, 1532 in the ramp); raw step 234.8 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+        "suggestion": "mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule"
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "a": "chunk_0_-1",
+        "b": "chunk_0_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "unresolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 289.86,
+        "madeSteepCells": 1040,
+        "steepInBand": 22,
+        "steepInRamp": 1018,
+        "maxCreatedSlope": 63.01,
+        "bandMaxSlope": 49.49,
+        "edgeBase": {
+          "mid": 28.17,
+          "corners": [
+            28.37,
+            32.09
+          ]
+        },
+        "edgeRelief": 13.68,
+        "reason": "coordination leaves 1040 cells steeper than 35° (max 63.0°; 22 in the band, 1018 in the ramp); raw step 289.9 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+        "suggestion": "mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule"
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "a": "chunk_1_-1",
+        "b": "chunk_1_0",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 25.29,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 34.44,
+        "edgeBase": {
+          "mid": 52.15,
+          "corners": [
+            32.09,
+            52.15
+          ]
+        },
+        "edgeRelief": 70,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "a": "chunk_-1_0",
+        "b": "chunk_0_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 5.18,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 5.74,
+        "edgeBase": {
+          "mid": 23.67,
+          "corners": [
+            28.37,
+            20.48
+          ]
+        },
+        "edgeRelief": 7,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "a": "chunk_-1_0",
+        "b": "chunk_-1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 34.1,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 27.32,
+        "edgeBase": {
+          "mid": 20.5,
+          "corners": [
+            20.5,
+            20.48
+          ]
+        },
+        "edgeRelief": 12.12,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "a": "chunk_0_0",
+        "b": "chunk_1_0",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 53.9,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 17.56,
+        "edgeBase": {
+          "mid": 26.19,
+          "corners": [
+            32.09,
+            20.42
+          ]
+        },
+        "edgeRelief": 12.73,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "a": "chunk_0_0",
+        "b": "chunk_0_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 26.01,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 30.73,
+        "edgeBase": {
+          "mid": 20.46,
+          "corners": [
+            20.48,
+            20.42
+          ]
+        },
+        "edgeRelief": 12.12,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "a": "chunk_1_0",
+        "b": "chunk_1_1",
+        "sideA": "maxZ",
+        "sideB": "minZ",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 100.86,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 35.59,
+        "edgeBase": {
+          "mid": 20.22,
+          "corners": [
+            20.42,
+            20.22
+          ]
+        },
+        "edgeRelief": 54.78,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "a": "chunk_-1_1",
+        "b": "chunk_0_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "resolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 17.53,
+        "madeSteepCells": 0,
+        "steepInBand": 0,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 0,
+        "bandMaxSlope": 27.18,
+        "edgeBase": {
+          "mid": 0,
+          "corners": [
+            20.48,
+            0
+          ]
+        },
+        "edgeRelief": 45,
+        "reason": null,
+        "suggestion": null
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "a": "chunk_0_1",
+        "b": "chunk_1_1",
+        "sideA": "maxX",
+        "sideB": "minX",
+        "status": "unresolved",
+        "continuity": "C1 (height + slope)",
+        "slopeNote": null,
+        "rawMaxStep": 47.1,
+        "madeSteepCells": 27,
+        "steepInBand": 27,
+        "steepInRamp": 0,
+        "maxCreatedSlope": 40,
+        "bandMaxSlope": 40.22,
+        "edgeBase": {
+          "mid": 0,
+          "corners": [
+            20.42,
+            0
+          ]
+        },
+        "edgeRelief": 45,
+        "reason": "coordination leaves 27 cells steeper than 35° (max 40.0°; 27 in the band, 0 in the ramp); raw step 47.1 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 160 m by explicit choice, or a smaller relief contrast between chunk_0_1 and chunk_1_1 (landform pair), or a dedicated escarpment rule",
+        "suggestion": "mostly inside the 128 m band: transition width ≈ 160 m by explicit choice, or a smaller relief contrast between chunk_0_1 and chunk_1_1 (landform pair), or a dedicated escarpment rule"
+      }
+    ],
+    "pairs": [
+      {
+        "id": "chunk_-1_-1|chunk_0_-1",
+        "status": "unresolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 27.38,
+        "kinkMedian": 4.024,
+        "bandMaxSlope": 73,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_-1_-1|chunk_-1_0",
+        "status": "unresolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.25,
+        "kinkMedian": 0.332,
+        "bandMaxSlope": 45.1,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_1_-1",
+        "status": "unresolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 9.75,
+        "kinkMedian": 2.224,
+        "bandMaxSlope": 56,
+        "water": {
+          "status": "discontinuous",
+          "oneSided": 11,
+          "levelSteps": 0,
+          "reasons": {
+            "dry water on one side only": 3,
+            "river reaches the edge; neighbour has no channel (not extended)": 8
+          }
+        }
+      },
+      {
+        "id": "chunk_0_-1|chunk_0_0",
+        "status": "unresolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.71,
+        "kinkMedian": 0.402,
+        "bandMaxSlope": 49.5,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_1_-1|chunk_1_0",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 6.23,
+        "kinkMedian": 1.283,
+        "bandMaxSlope": 34.4,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_0_0",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.07,
+        "kinkMedian": 0.242,
+        "bandMaxSlope": 5.7,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_-1_0|chunk_-1_1",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.31,
+        "kinkMedian": 0.316,
+        "bandMaxSlope": 27.3,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_1_0",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.55,
+        "kinkMedian": 0.398,
+        "bandMaxSlope": 17.6,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_0_0|chunk_0_1",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 1.55,
+        "kinkMedian": 0.307,
+        "bandMaxSlope": 30.7,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_1_0|chunk_1_1",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 6.12,
+        "kinkMedian": 1.099,
+        "bandMaxSlope": 35.6,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_-1_1|chunk_0_1",
+        "status": "resolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 4.2,
+        "kinkMedian": 1.091,
+        "bandMaxSlope": 27.2,
+        "water": {
+          "status": "no water",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      },
+      {
+        "id": "chunk_0_1|chunk_1_1",
+        "status": "unresolved",
+        "heightMax": 0,
+        "heightMean": 0,
+        "kinkMax": 4.36,
+        "kinkMedian": 0.401,
+        "bandMaxSlope": 40.2,
+        "water": {
+          "status": "continuous",
+          "oneSided": 0,
+          "levelSteps": 0,
+          "reasons": {}
+        }
+      }
+    ],
+    "corners": [
+      {
+        "at": {
+          "x": -512,
+          "z": -512
+        },
+        "heightSpread": 0
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": -512
+        },
+        "heightSpread": 0
+      },
+      {
+        "at": {
+          "x": -512,
+          "z": 512
+        },
+        "heightSpread": 0
+      },
+      {
+        "at": {
+          "x": 512,
+          "z": 512
+        },
+        "heightSpread": 0
+      }
+    ],
+    "landform": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "landform": "mountain",
+        "reliefRaw": 128.1,
+        "relief": 267.8,
+        "meanSlopeRaw": 32,
+        "meanSlope": 30.36,
+        "wetShareRaw": 0,
+        "wetShare": 0,
+        "buildableShare": 0.1168,
+        "untouchedShare": 0.2519
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "landform": "mountain",
+        "reliefRaw": 140.7,
+        "relief": 227,
+        "meanSlopeRaw": 28.97,
+        "meanSlope": 26.61,
+        "wetShareRaw": 0,
+        "wetShare": 0,
+        "buildableShare": 0.1602,
+        "untouchedShare": 0.002
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "landform": "riverValley",
+        "reliefRaw": 48.8,
+        "relief": 61.9,
+        "meanSlopeRaw": 11.16,
+        "meanSlope": 11.64,
+        "wetShareRaw": 0.0349,
+        "wetShare": 0.0359,
+        "buildableShare": 0.4824,
+        "untouchedShare": 0.3925
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "landform": "plain",
+        "reliefRaw": 5.7,
+        "relief": 5.2,
+        "meanSlopeRaw": 0.93,
+        "meanSlope": 1.32,
+        "wetShareRaw": 0,
+        "wetShare": 0,
+        "buildableShare": 1,
+        "untouchedShare": 0.6575
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "landform": "plain",
+        "reliefRaw": 5.1,
+        "relief": 10.3,
+        "meanSlopeRaw": 0.89,
+        "meanSlope": 1.55,
+        "wetShareRaw": 0,
+        "wetShare": 0,
+        "buildableShare": 1,
+        "untouchedShare": 0.564
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "landform": "riverValley",
+        "reliefRaw": 48.6,
+        "relief": 52.6,
+        "meanSlopeRaw": 11.07,
+        "meanSlope": 8.92,
+        "wetShareRaw": 0.0342,
+        "wetShare": 0.0314,
+        "buildableShare": 0.5659,
+        "untouchedShare": 0.1584
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "landform": "coast",
+        "reliefRaw": 45,
+        "relief": 44.2,
+        "meanSlopeRaw": 6.72,
+        "meanSlope": 6.72,
+        "wetShareRaw": 0.3157,
+        "wetShare": 0.2916,
+        "buildableShare": 0.4749,
+        "untouchedShare": 0.7665
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "landform": "coast",
+        "reliefRaw": 43.9,
+        "relief": 39.5,
+        "meanSlopeRaw": 6.84,
+        "meanSlope": 6.81,
+        "wetShareRaw": 0.1671,
+        "wetShare": 0.113,
+        "buildableShare": 0.636,
+        "untouchedShare": 0.6575
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "landform": "coast",
+        "reliefRaw": 45.3,
+        "relief": 40.8,
+        "meanSlopeRaw": 6.52,
+        "meanSlope": 8.06,
+        "wetShareRaw": 0.3318,
+        "wetShare": 0.2156,
+        "buildableShare": 0.4855,
+        "untouchedShare": 0.7665
+      }
+    ],
+    "water": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "landform": "mountain",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "landform": "mountain",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "landform": "riverValley",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 2299,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "landform": "plain",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "landform": "plain",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "landform": "riverValley",
+        "sea": 0,
+        "seaLevelDev": 0,
+        "river": 2072,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "landform": "coast",
+        "sea": 19258,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "landform": "coast",
+        "sea": 7465,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "landform": "coast",
+        "sea": 14240,
+        "seaLevelDev": 0,
+        "river": 0,
+        "riverOutsideRaw": 0
+      }
+    ],
+    "differences": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "changedCells": 49408,
+        "changedOutsideBand": 27840,
+        "changedShare": 0.7481,
+        "maxDelta": 308.29,
+        "meanDeltaChanged": 72.09,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "changedCells": 65920,
+        "changedOutsideBand": 37152,
+        "changedShare": 0.998,
+        "maxDelta": 304.3,
+        "meanDeltaChanged": 78.98,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "changedCells": 40128,
+        "changedOutsideBand": 20608,
+        "changedShare": 0.6075,
+        "maxDelta": 44.98,
+        "meanDeltaChanged": 9.07,
+        "wetRaw": 2302,
+        "wetNow": 2370,
+        "wetChanged": 74
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "changedCells": 22624,
+        "changedOutsideBand": 0,
+        "changedShare": 0.3425,
+        "maxDelta": 9.37,
+        "meanDeltaChanged": 2.07,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "changedCells": 28800,
+        "changedOutsideBand": 0,
+        "changedShare": 0.436,
+        "maxDelta": 11.52,
+        "meanDeltaChanged": 2.12,
+        "wetRaw": 0,
+        "wetNow": 0,
+        "wetChanged": 0
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "changedCells": 55584,
+        "changedOutsideBand": 28864,
+        "changedShare": 0.8416,
+        "maxDelta": 69.31,
+        "meanDeltaChanged": 13.86,
+        "wetRaw": 2256,
+        "wetNow": 2072,
+        "wetChanged": 184
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "changedCells": 15424,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 30.24,
+        "meanDeltaChanged": 4.95,
+        "wetRaw": 20850,
+        "wetNow": 19258,
+        "wetChanged": 1592
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "changedCells": 22624,
+        "changedOutsideBand": 0,
+        "changedShare": 0.3425,
+        "maxDelta": 24.56,
+        "meanDeltaChanged": 5.56,
+        "wetRaw": 11040,
+        "wetNow": 7465,
+        "wetChanged": 3575
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "changedCells": 15424,
+        "changedOutsideBand": 0,
+        "changedShare": 0.2335,
+        "maxDelta": 40.55,
+        "meanDeltaChanged": 13.61,
+        "wetRaw": 21913,
+        "wetNow": 14240,
+        "wetChanged": 8073
+      }
+    ],
+    "solids": [
+      {
+        "chunkId": "chunk_-1_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_0_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_1_-1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_-1_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_0_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_1_0",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_-1_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_0_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      },
+      {
+        "chunkId": "chunk_1_1",
+        "watertight": true,
+        "euler": 2,
+        "expected": 2
+      }
+    ]
+  },
+  "orderIndependent": true,
+  "reloadIdentical": true,
+  "cityChange": {
+    "change": "chunk_0_1 → amsterdamCanalRing",
+    "terrainUnchanged": true,
+    "build": {
+      "raw": [],
+      "harmony": false,
+      "harmonyMs": 0,
+      "ms": 6,
+      "roadSeam": true,
+      "roadSeamMs": 6,
+      "cityStale": [
+        "chunk_0_0",
+        "chunk_0_1"
+      ]
+    }
+  },
+  "widths": [
+    {
+      "transitionWidth": 64,
+      "edgesResolved": 5,
+      "edgesUnresolved": 7,
+      "maxSeamStep": 0,
+      "edgesWithStep": 0,
+      "maxCornerSpread": 0,
+      "cornersClosed": 4,
+      "maxKinkAll": 38.31,
+      "maxKinkResolved": 5.55,
+      "maxBandSlopeResolved": 27.2,
+      "maxBandSlopeAll": 69.5,
+      "maxSamplerDiff": 0,
+      "maxNormalDeg": 28.5,
+      "waterDiscontinuousEdges": 1,
+      "waterOneSided": 11,
+      "crossableShareMean": 0.614,
+      "edgesCrossable": 11,
+      "roadJoins": 10,
+      "memoryMB": 328,
+      "rebuildMs": 18936,
+      "harmonyMs": 599,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "madeSteepCells": 4995,
+          "steepInBand": 3218,
+          "steepInRamp": 1777,
+          "maxCreatedSlope": 69.47,
+          "bandMaxSlope": 69.47
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "madeSteepCells": 2288,
+          "steepInBand": 0,
+          "steepInRamp": 2288,
+          "maxCreatedSlope": 62.66,
+          "bandMaxSlope": 29.42
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "madeSteepCells": 1882,
+          "steepInBand": 297,
+          "steepInRamp": 1585,
+          "maxCreatedSlope": 63.19,
+          "bandMaxSlope": 54.27
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "madeSteepCells": 1020,
+          "steepInBand": 0,
+          "steepInRamp": 1020,
+          "maxCreatedSlope": 63.01,
+          "bandMaxSlope": 26.65
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "madeSteepCells": 53,
+          "steepInBand": 53,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 43.44,
+          "bandMaxSlope": 43.44
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 10.72
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 24.99
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 16.01
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 21.69
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "madeSteepCells": 144,
+          "steepInBand": 144,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 41.53,
+          "bandMaxSlope": 41.94
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.24
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "madeSteepCells": 6,
+          "steepInBand": 6,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 37.52,
+          "bandMaxSlope": 37.52
+        }
+      ]
+    },
+    {
+      "transitionWidth": 256,
+      "edgesResolved": 8,
+      "edgesUnresolved": 4,
+      "maxSeamStep": 0,
+      "edgesWithStep": 0,
+      "maxCornerSpread": 0,
+      "cornersClosed": 4,
+      "maxKinkAll": 26.73,
+      "maxKinkResolved": 5.83,
+      "maxBandSlopeResolved": 53,
+      "maxBandSlopeAll": 68.5,
+      "maxSamplerDiff": 0,
+      "maxNormalDeg": 25.95,
+      "waterDiscontinuousEdges": 1,
+      "waterOneSided": 11,
+      "crossableShareMean": 0.467,
+      "edgesCrossable": 11,
+      "roadJoins": 29,
+      "memoryMB": 339,
+      "rebuildMs": 22083,
+      "harmonyMs": 946,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "madeSteepCells": 6445,
+          "steepInBand": 6054,
+          "steepInRamp": 391,
+          "maxCreatedSlope": 66.71,
+          "bandMaxSlope": 68.45
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "madeSteepCells": 3939,
+          "steepInBand": 2300,
+          "steepInRamp": 1639,
+          "maxCreatedSlope": 62.66,
+          "bandMaxSlope": 62.03
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "madeSteepCells": 2132,
+          "steepInBand": 646,
+          "steepInRamp": 1486,
+          "maxCreatedSlope": 63.19,
+          "bandMaxSlope": 51.48
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "madeSteepCells": 1185,
+          "steepInBand": 720,
+          "steepInRamp": 465,
+          "maxCreatedSlope": 63.01,
+          "bandMaxSlope": 59.83
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 52.96
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 5.16
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 38.02
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 19.64
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 16.41
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 26.59
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.89
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 44.55
+        }
+      ]
+    },
+    {
+      "transitionWidth": 128,
+      "edgesResolved": 7,
+      "edgesUnresolved": 5,
+      "maxSeamStep": 0,
+      "edgesWithStep": 0,
+      "maxCornerSpread": 0,
+      "cornersClosed": 4,
+      "maxKinkAll": 27.38,
+      "maxKinkResolved": 6.23,
+      "maxBandSlopeResolved": 35.6,
+      "maxBandSlopeAll": 73,
+      "maxSamplerDiff": 0,
+      "maxNormalDeg": 26.41,
+      "waterDiscontinuousEdges": 1,
+      "waterOneSided": 11,
+      "crossableShareMean": 0.492,
+      "edgesCrossable": 12,
+      "roadJoins": 12,
+      "memoryMB": 326,
+      "rebuildMs": 18438,
+      "harmonyMs": 861,
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "madeSteepCells": 5550,
+          "steepInBand": 4098,
+          "steepInRamp": 1452,
+          "maxCreatedSlope": 73.05,
+          "bandMaxSlope": 73.05
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "madeSteepCells": 2298,
+          "steepInBand": 11,
+          "steepInRamp": 2287,
+          "maxCreatedSlope": 62.66,
+          "bandMaxSlope": 45.09
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "madeSteepCells": 1734,
+          "steepInBand": 202,
+          "steepInRamp": 1532,
+          "maxCreatedSlope": 63.19,
+          "bandMaxSlope": 55.95
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "madeSteepCells": 1040,
+          "steepInBand": 22,
+          "steepInRamp": 1018,
+          "maxCreatedSlope": 63.01,
+          "bandMaxSlope": 49.49
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 34.44
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 5.74
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.32
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 17.56
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 30.73
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 35.59
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.18
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "madeSteepCells": 27,
+          "steepInBand": 27,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 40,
+          "bandMaxSlope": 40.22
+        }
+      ]
+    }
+  ],
+  "seeds": [
+    {
+      "worldSeed": 6201,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStep": 296.36,
+        "edgesWithStep": 12,
+        "maxCornerSpread": 250.74,
+        "cornersClosed": 0,
+        "maxKinkAll": 88.04,
+        "maxKinkResolved": 0,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 295.03985351085606,
+        "maxNormalDeg": 93.51,
+        "waterDiscontinuousEdges": 6,
+        "waterOneSided": 489,
+        "crossableShareMean": 0.015,
+        "edgesCrossable": 1,
+        "roadJoins": 0,
+        "memoryMB": 351,
+        "loadMs": 22738
+      },
+      "harmonized": {
+        "edgesResolved": 4,
+        "edgesUnresolved": 8,
+        "maxSeamStep": 296.36,
+        "edgesWithStep": 8,
+        "maxCornerSpread": 248.14,
+        "cornersClosed": 1,
+        "maxKinkAll": 88.04,
+        "maxKinkResolved": 8.58,
+        "maxBandSlopeResolved": 34.3,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 295.03985351085606,
+        "maxNormalDeg": 93.51,
+        "waterDiscontinuousEdges": 4,
+        "waterOneSided": 443,
+        "crossableShareMean": 0.248,
+        "edgesCrossable": 4,
+        "roadJoins": 8,
+        "memoryMB": 361,
+        "loadMs": 22471,
+        "harmonyMs": 493
+      },
+      "coordinated": {
+        "edgesResolved": 7,
+        "edgesUnresolved": 5,
+        "maxSeamStep": 0,
+        "edgesWithStep": 0,
+        "maxCornerSpread": 0,
+        "cornersClosed": 4,
+        "maxKinkAll": 27.38,
+        "maxKinkResolved": 6.23,
+        "maxBandSlopeResolved": 35.6,
+        "maxBandSlopeAll": 73,
+        "maxSamplerDiff": 0,
+        "maxNormalDeg": 26.41,
+        "waterDiscontinuousEdges": 1,
+        "waterOneSided": 11,
+        "crossableShareMean": 0.492,
+        "edgesCrossable": 12,
+        "roadJoins": 22,
+        "memoryMB": 328,
+        "loadMs": 22649,
+        "harmonyMs": 736
+      },
+      "macro": {
+        "chunk_-1_-1": {
+          "base": 237.89,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_0_-1": {
+          "base": 222.18,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_1_-1": {
+          "base": 52.64,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_0": {
+          "base": 23.69,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_0_0": {
+          "base": 23.64,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_1_0": {
+          "base": 51.67,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_0_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        }
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 163.53,
+          "madeSteepCells": 5550,
+          "steepInBand": 4098,
+          "steepInRamp": 1452,
+          "maxCreatedSlope": 73.05,
+          "bandMaxSlope": 73.05,
+          "kinkMax": 27.38,
+          "edgeBase": {
+            "mid": 230.04,
+            "corners": [
+              230.04,
+              28.37
+            ]
+          },
+          "reason": "coordination leaves 5550 cells steeper than 35° (max 73.0°; 4098 in the band, 1452 in the ramp); raw step 163.5 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 608 m (> 256 m slider max) by explicit choice, or a smaller relief contrast between chunk_-1_-1 and chunk_0_-1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.062
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 296.36,
+          "madeSteepCells": 2298,
+          "steepInBand": 11,
+          "steepInRamp": 2287,
+          "maxCreatedSlope": 62.66,
+          "bandMaxSlope": 45.09,
+          "kinkMax": 1.25,
+          "edgeBase": {
+            "mid": 28.57,
+            "corners": [
+              28.57,
+              28.37
+            ]
+          },
+          "reason": "coordination leaves 2298 cells steeper than 35° (max 62.7°; 11 in the band, 2287 in the ramp); raw step 296.4 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.054
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 234.84,
+          "madeSteepCells": 1734,
+          "steepInBand": 202,
+          "steepInRamp": 1532,
+          "maxCreatedSlope": 63.19,
+          "bandMaxSlope": 55.95,
+          "kinkMax": 9.75,
+          "edgeBase": {
+            "mid": 84.71,
+            "corners": [
+              84.71,
+              32.09
+            ]
+          },
+          "reason": "coordination leaves 1734 cells steeper than 35° (max 63.2°; 202 in the band, 1532 in the ramp); raw step 234.8 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "discontinuous",
+          "waterReasons": {
+            "dry water on one side only": 3,
+            "river reaches the edge; neighbour has no channel (not extended)": 8
+          },
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.206
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 289.86,
+          "madeSteepCells": 1040,
+          "steepInBand": 22,
+          "steepInRamp": 1018,
+          "maxCreatedSlope": 63.01,
+          "bandMaxSlope": 49.49,
+          "kinkMax": 1.71,
+          "edgeBase": {
+            "mid": 28.17,
+            "corners": [
+              28.37,
+              32.09
+            ]
+          },
+          "reason": "coordination leaves 1040 cells steeper than 35° (max 63.0°; 22 in the band, 1018 in the ramp); raw step 289.9 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.455
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 25.29,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 34.44,
+          "kinkMax": 6.23,
+          "edgeBase": {
+            "mid": 52.15,
+            "corners": [
+              32.09,
+              52.15
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.58
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 5.18,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 5.74,
+          "kinkMax": 1.07,
+          "edgeBase": {
+            "mid": 23.67,
+            "corners": [
+              28.37,
+              20.48
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.109,
+          "crossableHarmonized": 1,
+          "crossable": 1
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 34.1,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.32,
+          "kinkMax": 1.31,
+          "edgeBase": {
+            "mid": 20.5,
+            "corners": [
+              20.5,
+              20.48
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.012,
+          "crossableHarmonized": 0.603,
+          "crossable": 0.638
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 53.9,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 17.56,
+          "kinkMax": 1.55,
+          "edgeBase": {
+            "mid": 26.19,
+            "corners": [
+              32.09,
+              20.42
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.957
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 26.01,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 30.73,
+          "kinkMax": 1.55,
+          "edgeBase": {
+            "mid": 20.46,
+            "corners": [
+              20.48,
+              20.42
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.023,
+          "crossableHarmonized": 0.693,
+          "crossable": 0.887
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 100.86,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 35.59,
+          "kinkMax": 6.12,
+          "edgeBase": {
+            "mid": 20.22,
+            "corners": [
+              20.42,
+              20.22
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.089
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 17.53,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 27.18,
+          "kinkMax": 4.2,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.48,
+              0
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.035,
+          "crossableHarmonized": 0.677,
+          "crossable": 0.903
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 47.1,
+          "madeSteepCells": 27,
+          "steepInBand": 27,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 40,
+          "bandMaxSlope": 40.22,
+          "kinkMax": 4.36,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.42,
+              0
+            ]
+          },
+          "reason": "coordination leaves 27 cells steeper than 35° (max 40.0°; 27 in the band, 0 in the ramp); raw step 47.1 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 160 m by explicit choice, or a smaller relief contrast between chunk_0_1 and chunk_1_1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "continuous",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.07
+        }
+      ],
+      "landform": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "reliefRaw": 128.1,
+          "relief": 267.8,
+          "meanSlopeRaw": 32,
+          "meanSlope": 30.36,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1168,
+          "untouchedShare": 0.2519
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "reliefRaw": 140.7,
+          "relief": 227,
+          "meanSlopeRaw": 28.97,
+          "meanSlope": 26.61,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1602,
+          "untouchedShare": 0.002
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "reliefRaw": 48.8,
+          "relief": 61.9,
+          "meanSlopeRaw": 11.16,
+          "meanSlope": 11.64,
+          "wetShareRaw": 0.0349,
+          "wetShare": 0.0359,
+          "buildableShare": 0.4824,
+          "untouchedShare": 0.3925
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "reliefRaw": 5.7,
+          "relief": 5.2,
+          "meanSlopeRaw": 0.93,
+          "meanSlope": 1.32,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "reliefRaw": 5.1,
+          "relief": 10.3,
+          "meanSlopeRaw": 0.89,
+          "meanSlope": 1.55,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.564
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "reliefRaw": 48.6,
+          "relief": 52.6,
+          "meanSlopeRaw": 11.07,
+          "meanSlope": 8.92,
+          "wetShareRaw": 0.0342,
+          "wetShare": 0.0314,
+          "buildableShare": 0.5659,
+          "untouchedShare": 0.1584
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "reliefRaw": 45,
+          "relief": 44.2,
+          "meanSlopeRaw": 6.72,
+          "meanSlope": 6.72,
+          "wetShareRaw": 0.3157,
+          "wetShare": 0.2916,
+          "buildableShare": 0.4749,
+          "untouchedShare": 0.7665
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "reliefRaw": 43.9,
+          "relief": 39.5,
+          "meanSlopeRaw": 6.84,
+          "meanSlope": 6.81,
+          "wetShareRaw": 0.1671,
+          "wetShare": 0.113,
+          "buildableShare": 0.636,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "reliefRaw": 45.3,
+          "relief": 40.8,
+          "meanSlopeRaw": 6.52,
+          "meanSlope": 8.06,
+          "wetShareRaw": 0.3318,
+          "wetShare": 0.2156,
+          "buildableShare": 0.4855,
+          "untouchedShare": 0.7665
+        }
+      ],
+      "water": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 2299,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 2072,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "sea": 19258,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "sea": 7465,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "sea": 14240,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        }
+      ],
+      "roads": {
+        "raw": {
+          "connections": 0,
+          "pairs": 0,
+          "stubs": 0,
+          "connected": 0,
+          "crossChunkComponents": []
+        },
+        "harmonized": {
+          "connections": 8,
+          "pairs": 6,
+          "stubs": 2,
+          "connected": 14,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_0_0",
+              "chunk_0_1"
+            ]
+          ]
+        },
+        "coordinated": {
+          "connections": 22,
+          "pairs": 7,
+          "stubs": 15,
+          "connected": 29,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_0_0",
+              "chunk_0_1",
+              "chunk_1_-1",
+              "chunk_1_0",
+              "chunk_1_1"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "worldSeed": 6202,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStep": 314.69,
+        "edgesWithStep": 12,
+        "maxCornerSpread": 244.92,
+        "cornersClosed": 0,
+        "maxKinkAll": 83.79,
+        "maxKinkResolved": 0,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 314.17667545795445,
+        "maxNormalDeg": 98.3,
+        "waterDiscontinuousEdges": 3,
+        "waterOneSided": 34,
+        "crossableShareMean": 0.017,
+        "edgesCrossable": 1,
+        "roadJoins": 0,
+        "memoryMB": 311,
+        "loadMs": 23496
+      },
+      "harmonized": {
+        "edgesResolved": 6,
+        "edgesUnresolved": 6,
+        "maxSeamStep": 314.69,
+        "edgesWithStep": 6,
+        "maxCornerSpread": 244.45,
+        "cornersClosed": 1,
+        "maxKinkAll": 83.79,
+        "maxKinkResolved": 41.81,
+        "maxBandSlopeResolved": 45.8,
+        "maxBandSlopeAll": 74.7,
+        "maxSamplerDiff": 314.17667545795445,
+        "maxNormalDeg": 98.3,
+        "waterDiscontinuousEdges": 2,
+        "waterOneSided": 20,
+        "crossableShareMean": 0.276,
+        "edgesCrossable": 6,
+        "roadJoins": 26,
+        "memoryMB": 319,
+        "loadMs": 22978,
+        "harmonyMs": 493
+      },
+      "coordinated": {
+        "edgesResolved": 6,
+        "edgesUnresolved": 6,
+        "maxSeamStep": 0,
+        "edgesWithStep": 0,
+        "maxCornerSpread": 0,
+        "cornersClosed": 4,
+        "maxKinkAll": 23.8,
+        "maxKinkResolved": 6.33,
+        "maxBandSlopeResolved": 38.2,
+        "maxBandSlopeAll": 70.7,
+        "maxSamplerDiff": 0,
+        "maxNormalDeg": 20.2,
+        "waterDiscontinuousEdges": 0,
+        "waterOneSided": 0,
+        "crossableShareMean": 0.479,
+        "edgesCrossable": 11,
+        "roadJoins": 37,
+        "memoryMB": 333,
+        "loadMs": 24415,
+        "harmonyMs": 752
+      },
+      "macro": {
+        "chunk_-1_-1": {
+          "base": 223.05,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_0_-1": {
+          "base": 236.88,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_1_-1": {
+          "base": 52.61,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_0": {
+          "base": 23.59,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_0_0": {
+          "base": 23.78,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_1_0": {
+          "base": 51.99,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_0_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        }
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 139.18,
+          "madeSteepCells": 5477,
+          "steepInBand": 4348,
+          "steepInRamp": 1129,
+          "maxCreatedSlope": 66.21,
+          "bandMaxSlope": 70.67,
+          "kinkMax": 23.8,
+          "edgeBase": {
+            "mid": 229.97,
+            "corners": [
+              229.97,
+              28.39
+            ]
+          },
+          "reason": "coordination leaves 5477 cells steeper than 35° (max 66.2°; 4348 in the band, 1129 in the ramp); raw step 139.2 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 416 m (> 256 m slider max) by explicit choice, or a smaller relief contrast between chunk_-1_-1 and chunk_0_-1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.058
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 237.8,
+          "madeSteepCells": 3228,
+          "steepInBand": 0,
+          "steepInRamp": 3228,
+          "maxCreatedSlope": 64.98,
+          "bandMaxSlope": 30.54,
+          "kinkMax": 1.08,
+          "edgeBase": {
+            "mid": 28.14,
+            "corners": [
+              28.14,
+              28.39
+            ]
+          },
+          "reason": "coordination leaves 3228 cells steeper than 35° (max 65.0°; 0 in the band, 3228 in the ramp); raw step 237.8 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.008
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 260.16,
+          "madeSteepCells": 924,
+          "steepInBand": 98,
+          "steepInRamp": 826,
+          "maxCreatedSlope": 55.89,
+          "bandMaxSlope": 55.64,
+          "kinkMax": 8.47,
+          "edgeBase": {
+            "mid": 87.48,
+            "corners": [
+              87.48,
+              32.51
+            ]
+          },
+          "reason": "coordination leaves 924 cells steeper than 35° (max 55.9°; 98 in the band, 826 in the ramp); raw step 260.2 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.175
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 314.69,
+          "madeSteepCells": 2252,
+          "steepInBand": 27,
+          "steepInRamp": 2225,
+          "maxCreatedSlope": 56.95,
+          "bandMaxSlope": 42.37,
+          "kinkMax": 1.67,
+          "edgeBase": {
+            "mid": 28.64,
+            "corners": [
+              28.39,
+              32.51
+            ]
+          },
+          "reason": "coordination leaves 2252 cells steeper than 35° (max 57.0°; 27 in the band, 2225 in the ramp); raw step 314.7 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.241
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 51.45,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 33.33,
+          "kinkMax": 6.33,
+          "edgeBase": {
+            "mid": 52.3,
+            "corners": [
+              32.51,
+              52.3
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0.058,
+          "crossable": 0.272
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 4.07,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 4.82,
+          "kinkMax": 1.19,
+          "edgeBase": {
+            "mid": 23.69,
+            "corners": [
+              28.39,
+              20.5
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.121,
+          "crossableHarmonized": 1,
+          "crossable": 1
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 15.81,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 26.48,
+          "kinkMax": 0.8,
+          "edgeBase": {
+            "mid": 20.41,
+            "corners": [
+              20.41,
+              20.5
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0.774,
+          "crossable": 0.817
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 62.65,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 16.65,
+          "kinkMax": 1.67,
+          "edgeBase": {
+            "mid": 26.35,
+            "corners": [
+              32.51,
+              20.54
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 1
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 15.88,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 38.17,
+          "kinkMax": 1.81,
+          "edgeBase": {
+            "mid": 20.58,
+            "corners": [
+              20.5,
+              20.54
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.039,
+          "crossableHarmonized": 0.767,
+          "crossable": 0.63
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 43.48,
+          "madeSteepCells": 2,
+          "steepInBand": 0,
+          "steepInRamp": 2,
+          "maxCreatedSlope": 35.52,
+          "bandMaxSlope": 27.61,
+          "kinkMax": 5.09,
+          "edgeBase": {
+            "mid": 20.35,
+            "corners": [
+              20.54,
+              20.35
+            ]
+          },
+          "reason": "coordination leaves 2 cells steeper than 35° (max 35.5°; 0 in the band, 2 in the ramp); raw step 43.5 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.023,
+          "crossableHarmonized": 0.023,
+          "crossable": 0.658
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 27.48,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 36.32,
+          "kinkMax": 3.63,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.5,
+              0
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.012,
+          "crossableHarmonized": 0.42,
+          "crossable": 0.595
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 17.71,
+          "madeSteepCells": 9,
+          "steepInBand": 9,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 36.98,
+          "bandMaxSlope": 45.08,
+          "kinkMax": 5.16,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.54,
+              0
+            ]
+          },
+          "reason": "coordination leaves 9 cells steeper than 35° (max 37.0°; 9 in the band, 0 in the ramp); raw step 17.7 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 144 m by explicit choice, or a smaller relief contrast between chunk_0_1 and chunk_1_1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.008,
+          "crossableHarmonized": 0.272,
+          "crossable": 0.296
+        }
+      ],
+      "landform": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "reliefRaw": 129,
+          "relief": 270.8,
+          "meanSlopeRaw": 23.35,
+          "meanSlope": 26.07,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1908,
+          "untouchedShare": 0.2519
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "reliefRaw": 136.5,
+          "relief": 210.7,
+          "meanSlopeRaw": 27.58,
+          "meanSlope": 24.02,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1588,
+          "untouchedShare": 0.002
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "reliefRaw": 48.4,
+          "relief": 63.7,
+          "meanSlopeRaw": 10.88,
+          "meanSlope": 11.67,
+          "wetShareRaw": 0.0335,
+          "wetShare": 0.0317,
+          "buildableShare": 0.4536,
+          "untouchedShare": 0.3925
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "reliefRaw": 7.4,
+          "relief": 8,
+          "meanSlopeRaw": 0.97,
+          "meanSlope": 1.34,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "reliefRaw": 4.8,
+          "relief": 8.6,
+          "meanSlopeRaw": 0.92,
+          "meanSlope": 1.49,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.564
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "reliefRaw": 52.2,
+          "relief": 54,
+          "meanSlopeRaw": 10.97,
+          "meanSlope": 9.52,
+          "wetShareRaw": 0.0358,
+          "wetShare": 0.0274,
+          "buildableShare": 0.561,
+          "untouchedShare": 0.1584
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "reliefRaw": 38.1,
+          "relief": 37.1,
+          "meanSlopeRaw": 7.89,
+          "meanSlope": 7.29,
+          "wetShareRaw": 0.1864,
+          "wetShare": 0.1864,
+          "buildableShare": 0.5173,
+          "untouchedShare": 0.7665
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "reliefRaw": 40.1,
+          "relief": 37.8,
+          "meanSlopeRaw": 7.53,
+          "meanSlope": 7.21,
+          "wetShareRaw": 0.1721,
+          "wetShare": 0.1659,
+          "buildableShare": 0.5389,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "reliefRaw": 41.5,
+          "relief": 42,
+          "meanSlopeRaw": 8.11,
+          "meanSlope": 8.08,
+          "wetShareRaw": 0.1874,
+          "wetShare": 0.1874,
+          "buildableShare": 0.4827,
+          "untouchedShare": 0.7665
+        }
+      ],
+      "water": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 2071,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 1811,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "sea": 12313,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "sea": 10960,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "sea": 12378,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        }
+      ],
+      "roads": {
+        "raw": {
+          "connections": 0,
+          "pairs": 0,
+          "stubs": 0,
+          "connected": 0,
+          "crossChunkComponents": []
+        },
+        "harmonized": {
+          "connections": 26,
+          "pairs": 0,
+          "stubs": 26,
+          "connected": 26,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_-1_1",
+              "chunk_0_0",
+              "chunk_0_1",
+              "chunk_1_1"
+            ],
+            [
+              "chunk_1_-1",
+              "chunk_1_0"
+            ]
+          ]
+        },
+        "coordinated": {
+          "connections": 37,
+          "pairs": 2,
+          "stubs": 35,
+          "connected": 39,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_-1_1",
+              "chunk_0_0",
+              "chunk_0_1",
+              "chunk_1_-1",
+              "chunk_1_0"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "worldSeed": 6203,
+      "raw": {
+        "edgesResolved": 0,
+        "edgesUnresolved": 0,
+        "maxSeamStep": 293.49,
+        "edgesWithStep": 12,
+        "maxCornerSpread": 254.92,
+        "cornersClosed": 0,
+        "maxKinkAll": 79.22,
+        "maxKinkResolved": 0,
+        "maxBandSlopeResolved": 0,
+        "maxBandSlopeAll": 67,
+        "maxSamplerDiff": 293.1442216920837,
+        "maxNormalDeg": 84.12,
+        "waterDiscontinuousEdges": 6,
+        "waterOneSided": 811,
+        "crossableShareMean": 0.005,
+        "edgesCrossable": 1,
+        "roadJoins": 0,
+        "memoryMB": 309,
+        "loadMs": 20359
+      },
+      "harmonized": {
+        "edgesResolved": 4,
+        "edgesUnresolved": 8,
+        "maxSeamStep": 293.49,
+        "edgesWithStep": 8,
+        "maxCornerSpread": 250.39,
+        "cornersClosed": 1,
+        "maxKinkAll": 79.22,
+        "maxKinkResolved": 24.32,
+        "maxBandSlopeResolved": 37.5,
+        "maxBandSlopeAll": 67,
+        "maxSamplerDiff": 292.8189081048963,
+        "maxNormalDeg": 84.12,
+        "waterDiscontinuousEdges": 3,
+        "waterOneSided": 471,
+        "crossableShareMean": 0.183,
+        "edgesCrossable": 4,
+        "roadJoins": 9,
+        "memoryMB": 368,
+        "loadMs": 20837,
+        "harmonyMs": 540
+      },
+      "coordinated": {
+        "edgesResolved": 5,
+        "edgesUnresolved": 7,
+        "maxSeamStep": 0,
+        "edgesWithStep": 0,
+        "maxCornerSpread": 0,
+        "cornersClosed": 4,
+        "maxKinkAll": 16.81,
+        "maxKinkResolved": 3.68,
+        "maxBandSlopeResolved": 38,
+        "maxBandSlopeAll": 62.6,
+        "maxSamplerDiff": 0,
+        "maxNormalDeg": 25.36,
+        "waterDiscontinuousEdges": 1,
+        "waterOneSided": 21,
+        "crossableShareMean": 0.429,
+        "edgesCrossable": 12,
+        "roadJoins": 18,
+        "memoryMB": 327,
+        "loadMs": 21225,
+        "harmonyMs": 740
+      },
+      "macro": {
+        "chunk_-1_-1": {
+          "base": 215.15,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_0_-1": {
+          "base": 236.44,
+          "relief": 300,
+          "rampDistance": 512
+        },
+        "chunk_1_-1": {
+          "base": 53.14,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_0": {
+          "base": 23.6,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_0_0": {
+          "base": 23.82,
+          "relief": 7,
+          "rampDistance": 128
+        },
+        "chunk_1_0": {
+          "base": 50.37,
+          "relief": 70,
+          "rampDistance": 384
+        },
+        "chunk_-1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_0_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        },
+        "chunk_1_1": {
+          "base": 0,
+          "relief": 45,
+          "rampDistance": 128
+        }
+      },
+      "edges": [
+        {
+          "id": "chunk_-1_-1|chunk_0_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 115.67,
+          "madeSteepCells": 6114,
+          "steepInBand": 3662,
+          "steepInRamp": 2452,
+          "maxCreatedSlope": 67.44,
+          "bandMaxSlope": 62.56,
+          "kinkMax": 16.81,
+          "edgeBase": {
+            "mid": 225.79,
+            "corners": [
+              225.79,
+              28.32
+            ]
+          },
+          "reason": "coordination leaves 6114 cells steeper than 35° (max 67.4°; 3662 in the band, 2452 in the ramp); raw step 115.7 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 448 m (> 256 m slider max) by explicit choice, or a smaller relief contrast between chunk_-1_-1 and chunk_0_-1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.082
+        },
+        {
+          "id": "chunk_-1_-1|chunk_-1_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 293.49,
+          "madeSteepCells": 3191,
+          "steepInBand": 1,
+          "steepInRamp": 3190,
+          "maxCreatedSlope": 65.39,
+          "bandMaxSlope": 35.11,
+          "kinkMax": 1.42,
+          "edgeBase": {
+            "mid": 27.97,
+            "corners": [
+              27.97,
+              28.32
+            ]
+          },
+          "reason": "coordination leaves 3191 cells steeper than 35° (max 65.4°; 1 in the band, 3190 in the ramp); raw step 293.5 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.07
+        },
+        {
+          "id": "chunk_0_-1|chunk_1_-1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 224.09,
+          "madeSteepCells": 2877,
+          "steepInBand": 92,
+          "steepInRamp": 2785,
+          "maxCreatedSlope": 62.29,
+          "bandMaxSlope": 42.74,
+          "kinkMax": 10.49,
+          "edgeBase": {
+            "mid": 87.82,
+            "corners": [
+              87.82,
+              32.44
+            ]
+          },
+          "reason": "coordination leaves 2877 cells steeper than 35° (max 62.3°; 92 in the band, 2785 in the ramp); raw step 224.1 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.183
+        },
+        {
+          "id": "chunk_0_-1|chunk_0_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 249.35,
+          "madeSteepCells": 1552,
+          "steepInBand": 0,
+          "steepInRamp": 1552,
+          "maxCreatedSlope": 68.67,
+          "bandMaxSlope": 28.41,
+          "kinkMax": 1.92,
+          "edgeBase": {
+            "mid": 28.67,
+            "corners": [
+              28.32,
+              32.44
+            ]
+          },
+          "reason": "coordination leaves 1552 cells steeper than 35° (max 68.7°; 0 in the band, 1552 in the ramp); raw step 249.4 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.35
+        },
+        {
+          "id": "chunk_1_-1|chunk_1_0",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 41.82,
+          "madeSteepCells": 7,
+          "steepInBand": 7,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 39.15,
+          "bandMaxSlope": 49.78,
+          "kinkMax": 8.61,
+          "edgeBase": {
+            "mid": 51.75,
+            "corners": [
+              32.44,
+              51.75
+            ]
+          },
+          "reason": "coordination leaves 7 cells steeper than 35° (max 39.2°; 7 in the band, 0 in the ramp); raw step 41.8 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 160 m by explicit choice, or a smaller relief contrast between chunk_1_-1 and chunk_1_0 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "discontinuous",
+          "waterReasons": {
+            "dry water on one side only": 4,
+            "river reaches the edge; neighbour has no channel (not extended)": 17
+          },
+          "crossableRaw": 0.004,
+          "crossableHarmonized": 0.004,
+          "crossable": 0.405
+        },
+        {
+          "id": "chunk_-1_0|chunk_0_0",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 9.06,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 6.88,
+          "kinkMax": 1.03,
+          "edgeBase": {
+            "mid": 23.71,
+            "corners": [
+              28.32,
+              20.52
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.047,
+          "crossableHarmonized": 1,
+          "crossable": 1
+        },
+        {
+          "id": "chunk_-1_0|chunk_-1_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 32.83,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 25.25,
+          "kinkMax": 1.24,
+          "edgeBase": {
+            "mid": 20.42,
+            "corners": [
+              20.42,
+              20.52
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.004,
+          "crossableHarmonized": 0.591,
+          "crossable": 0.759
+        },
+        {
+          "id": "chunk_0_0|chunk_1_0",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 54.43,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 17.84,
+          "kinkMax": 1.6,
+          "edgeBase": {
+            "mid": 26.23,
+            "corners": [
+              32.44,
+              20.45
+            ]
+          },
+          "reason": null,
+          "waterRaw": "no water",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 1
+        },
+        {
+          "id": "chunk_0_0|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 30.26,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 22,
+          "kinkMax": 2.39,
+          "edgeBase": {
+            "mid": 20.61,
+            "corners": [
+              20.52,
+              20.45
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0.202,
+          "crossable": 0.412
+        },
+        {
+          "id": "chunk_1_0|chunk_1_1",
+          "status": "unresolved",
+          "harmonizedStatus": "resolved",
+          "rawMaxStep": 43.88,
+          "madeSteepCells": 107,
+          "steepInBand": 0,
+          "steepInRamp": 107,
+          "maxCreatedSlope": 39.57,
+          "bandMaxSlope": 26.09,
+          "kinkMax": 4.31,
+          "edgeBase": {
+            "mid": 19.71,
+            "corners": [
+              20.45,
+              19.71
+            ]
+          },
+          "reason": "coordination leaves 107 cells steeper than 35° (max 39.6°; 0 in the band, 107 in the ramp); raw step 43.9 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly in the landform ramp (outside the band): a longer ramp distance for the rougher landform, a smaller relief contrast (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "no water",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0.004,
+          "crossableHarmonized": 0.381,
+          "crossable": 0.619
+        },
+        {
+          "id": "chunk_-1_1|chunk_0_1",
+          "status": "resolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 61.08,
+          "madeSteepCells": 0,
+          "steepInBand": 0,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 0,
+          "bandMaxSlope": 38.04,
+          "kinkMax": 3.68,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.52,
+              0
+            ]
+          },
+          "reason": null,
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "no water",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0.016,
+          "crossable": 0.086
+        },
+        {
+          "id": "chunk_0_1|chunk_1_1",
+          "status": "unresolved",
+          "harmonizedStatus": "unresolved",
+          "rawMaxStep": 51.22,
+          "madeSteepCells": 6,
+          "steepInBand": 6,
+          "steepInRamp": 0,
+          "maxCreatedSlope": 38.59,
+          "bandMaxSlope": 38.59,
+          "kinkMax": 5.2,
+          "edgeBase": {
+            "mid": 0,
+            "corners": [
+              20.45,
+              0
+            ]
+          },
+          "reason": "coordination leaves 6 cells steeper than 35° (max 38.6°; 6 in the band, 0 in the ramp); raw step 51.2 m. Terrain stays continuous; edge not usable for roads. Feasible: mostly inside the 128 m band: transition width ≈ 160 m by explicit choice, or a smaller relief contrast between chunk_0_1 and chunk_1_1 (landform pair), or a dedicated escarpment rule",
+          "waterRaw": "discontinuous",
+          "waterHarmonized": "discontinuous",
+          "water": "continuous",
+          "waterReasons": {},
+          "crossableRaw": 0,
+          "crossableHarmonized": 0,
+          "crossable": 0.179
+        }
+      ],
+      "landform": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "reliefRaw": 120.4,
+          "relief": 246.6,
+          "meanSlopeRaw": 26.5,
+          "meanSlope": 27.66,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1099,
+          "untouchedShare": 0.2519
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "reliefRaw": 107,
+          "relief": 230.5,
+          "meanSlopeRaw": 24.97,
+          "meanSlope": 25.16,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 0.1467,
+          "untouchedShare": 0.002
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "reliefRaw": 48,
+          "relief": 63,
+          "meanSlopeRaw": 10.88,
+          "meanSlope": 11.58,
+          "wetShareRaw": 0.0334,
+          "wetShare": 0.0346,
+          "buildableShare": 0.4559,
+          "untouchedShare": 0.3925
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "reliefRaw": 5.7,
+          "relief": 5.5,
+          "meanSlopeRaw": 1.03,
+          "meanSlope": 1.4,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "reliefRaw": 8.3,
+          "relief": 14.1,
+          "meanSlopeRaw": 1.04,
+          "meanSlope": 1.67,
+          "wetShareRaw": 0,
+          "wetShare": 0,
+          "buildableShare": 1,
+          "untouchedShare": 0.564
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "reliefRaw": 45.1,
+          "relief": 52.3,
+          "meanSlopeRaw": 10.28,
+          "meanSlope": 8.93,
+          "wetShareRaw": 0.0341,
+          "wetShare": 0.0315,
+          "buildableShare": 0.5945,
+          "untouchedShare": 0.1584
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "reliefRaw": 46.3,
+          "relief": 42.7,
+          "meanSlopeRaw": 6.3,
+          "meanSlope": 7.34,
+          "wetShareRaw": 0.3361,
+          "wetShare": 0.2439,
+          "buildableShare": 0.4715,
+          "untouchedShare": 0.7665
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "reliefRaw": 43.7,
+          "relief": 38.8,
+          "meanSlopeRaw": 7.79,
+          "meanSlope": 8.82,
+          "wetShareRaw": 0.1836,
+          "wetShare": 0.061,
+          "buildableShare": 0.5765,
+          "untouchedShare": 0.6575
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "reliefRaw": 45.7,
+          "relief": 46.6,
+          "meanSlopeRaw": 6.8,
+          "meanSlope": 7.43,
+          "wetShareRaw": 0.2964,
+          "wetShare": 0.2501,
+          "buildableShare": 0.4541,
+          "untouchedShare": 0.7665
+        }
+      ],
+      "water": [
+        {
+          "chunkId": "chunk_-1_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_-1",
+          "landform": "mountain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_-1",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 2208,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_0",
+          "landform": "plain",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_0",
+          "landform": "riverValley",
+          "sea": 0,
+          "seaLevelDev": 0,
+          "river": 2014,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_-1_1",
+          "landform": "coast",
+          "sea": 16111,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_0_1",
+          "landform": "coast",
+          "sea": 4032,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        },
+        {
+          "chunkId": "chunk_1_1",
+          "landform": "coast",
+          "sea": 16517,
+          "seaLevelDev": 0,
+          "river": 0,
+          "riverOutsideRaw": 0
+        }
+      ],
+      "roads": {
+        "raw": {
+          "connections": 0,
+          "pairs": 0,
+          "stubs": 0,
+          "connected": 0,
+          "crossChunkComponents": []
+        },
+        "harmonized": {
+          "connections": 9,
+          "pairs": 5,
+          "stubs": 4,
+          "connected": 14,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_0_0",
+              "chunk_0_1"
+            ]
+          ]
+        },
+        "coordinated": {
+          "connections": 18,
+          "pairs": 5,
+          "stubs": 13,
+          "connected": 23,
+          "crossChunkComponents": [
+            [
+              "chunk_-1_0",
+              "chunk_0_0",
+              "chunk_0_1",
+              "chunk_1_0"
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "docs/assets/screenshots/procedural-mini-world/06-3a-r-world-before.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3a-r-world-after.png",
+    "docs/assets/screenshots/procedural-mini-world/06-3a-r-seam-debug.png"
+  ],
+  "browserErrors": []
+}

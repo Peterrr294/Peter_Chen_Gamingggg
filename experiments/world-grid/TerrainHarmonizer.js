@@ -224,8 +224,6 @@ export function harmonizeWorld(chunks, transitionWidth, rules = HARMONY_RULES) {
   }
 
   // ---------- water ----------
-  const fb = rules.freeboard;
-  const typeOfChunk = c => (c.landform === 'coast' ? WATER.sea : c.landform === 'riverValley' ? WATER.river : WATER.none);
   const band = new Map(); // cells inside the band of an active edge
   for (const c of list) {
     const mask = new Uint8Array(c.height.length);
@@ -236,6 +234,39 @@ export function harmonizeWorld(chunks, transitionWidth, rules = HARMONY_RULES) {
     }
     band.set(c.chunkId, mask);
   }
+  const { water, exchanges } = floodWater(list, heights, new Map(list.map(c => [c.chunkId, c.waterSurface])), band, edges, W, rules);
+
+  const out = new Map();
+  for (const c of list) {
+    const H = heights.get(c.chunkId);
+    let changed = 0; let maxDelta = 0;
+    for (let k = 0; k < H.length; k += 1) { const delta = Math.abs(H[k] - c.height[k]); if (delta > 1e-6) changed += 1; maxDelta = Math.max(maxDelta, delta); }
+    out.set(c.chunkId, { height: H, ...water.get(c.chunkId), band: band.get(c.chunkId), changedCells: changed, maxDelta });
+  }
+
+  return {
+    rules, transitionWidth: W, iterations: iterations + 1, chunks: out, exchanges,
+    edges: edges.map(e => ({ id: e.id, a: e.a, b: e.b, sideA: e.sideA, sideB: e.sideB, status: e.active ? 'resolved' : 'unresolved', rawMaxStep: +e.rawMaxStep.toFixed(2), madeSteepCells: e.blame, maxCreatedSlope: +e.maxCreatedSlope.toFixed(1), unresolvedAt: e.unresolvedAt, continuity: e.active ? (e.slopeMatch ? 'C1 (height + slope)' : 'C0 (height only)') : 'none', slopeNote: e.slopeNote, reason: e.active ? null : `join would create slopes up to ${e.maxCreatedSlope.toFixed(1)}° (> ${rules.maxTransitionSlopeDeg}°) inside ${W} m; raw step ${e.rawMaxStep.toFixed(1)} m` })),
+    corners: [...corners.values()].filter(c => c.members.length === 4).map(c => {
+      const incident = c.edges;
+      const targets = c.members.map(m => +groupTarget(c, m.chunkId).toFixed(3));
+      return { at: { x: c.x, z: c.z }, chunks: c.members.map(m => m.chunkId), groupTargets: targets, groups: new Set(targets).size, rawSpread: +c.rawSpread.toFixed(2), closed: incident.length === 4 && incident.every(e => e.active) };
+    }),
+  };
+}
+
+// Connected water flooding shared by 06.3a (harmonised) and 06.3a-R (coordinated) terrain.
+//   list: chunks (canonical order) with { chunkId, landform, height (raw), waterSurface (raw) }; heights: Map → new
+//   heights; levels: Map → water level per cell (raw surface, or the coordinated river surface); region: Map → cells
+//   whose height may differ from raw (flooding may enter them); edges: shared edges { id, a, b, sideA, sideB } (sea exchange).
+// riverSpread false keeps river water in its raw wet cells (no spreading over lowered ground: no fake lakes).
+// Returns per chunk { waterSurface, waterType } and the sea exchanges across edges.
+export function floodWater(list, heights, levels, region, edges, W, rules = HARMONY_RULES, { riverSpread = true } = {}) {
+  const { segments, columns, spacing } = list[0].grid;
+  const byId = new Map(list.map(c => [c.chunkId, c]));
+  const fb = rules.freeboard;
+  const typeOfChunk = c => (c.landform === 'coast' ? WATER.sea : c.landform === 'riverValley' ? WATER.river : WATER.none);
+  const band = region;
   const state = new Map(list.map(c => [c.chunkId, { type: new Uint8Array(c.height.length), level: new Float32Array(c.height.length).fill(NaN) }]));
   const flood = (c, seeds, type, levelAt, allowed) => {
     const st = state.get(c.chunkId); const H = heights.get(c.chunkId);
@@ -254,11 +285,11 @@ export function harmonizeWorld(chunks, transitionWidth, rules = HARMONY_RULES) {
   // Own water bodies: raw wet cells seed; outside the band only raw wet cells are reachable (heights unchanged there).
   for (const c of list) {
     const type = typeOfChunk(c); if (!type) continue;
-    const mask = band.get(c.chunkId);
+    const mask = band.get(c.chunkId); const lv = levels.get(c.chunkId);
     const rawWet = k => Number.isFinite(c.waterSurface[k]) && c.height[k] < c.waterSurface[k];
     const seeds = [];
-    for (let k = 0; k < c.height.length; k += 1) if (rawWet(k)) seeds.push([k, c.waterSurface[k]]);
-    flood(c, seeds, type, (n, from) => (type === WATER.sea ? from : c.waterSurface[n]), n => mask[n] || rawWet(n));
+    for (let k = 0; k < c.height.length; k += 1) if (rawWet(k)) seeds.push([k, lv[k]]);
+    flood(c, seeds, type, (n, from) => (type === WATER.sea ? from : lv[n]), n => (type === WATER.river && !riverSpread ? rawWet(n) : mask[n] || rawWet(n)));
   }
   // Sea crosses an edge only where the neighbour's edge sample lies below sea level (+ freeboard); it stays in that band.
   const exchanges = [];
@@ -285,13 +316,13 @@ export function harmonizeWorld(chunks, transitionWidth, rules = HARMONY_RULES) {
 
   // Output water level per cell: flooded → its level; band cell not flooded → raw level only if it stays above it
   // (shore semantics unchanged), otherwise no water; outside the band → raw level (identical to the raw chunk).
-  const out = new Map();
+  const water = new Map();
   for (const c of list) {
-    const H = heights.get(c.chunkId); const st = state.get(c.chunkId); const mask = band.get(c.chunkId);
+    const H = heights.get(c.chunkId); const st = state.get(c.chunkId); const mask = band.get(c.chunkId); const lv = levels.get(c.chunkId);
     const surface = new Float32Array(c.height.length);
     const waterType = new Uint8Array(c.height.length);
     for (let k = 0; k < H.length; k += 1) {
-      const raw = c.waterSurface[k];
+      const raw = lv[k];
       if (!mask[k] && !st.type[k]) { surface[k] = raw; continue; }
       if (st.type[k]) { surface[k] = st.level[k]; if (H[k] < st.level[k]) waterType[k] = st.type[k]; continue; }
       surface[k] = Number.isFinite(raw) && H[k] >= raw ? raw : NaN;
@@ -307,18 +338,7 @@ export function harmonizeWorld(chunks, transitionWidth, rules = HARMONY_RULES) {
         if (waterType[n]) { surface[k] = st.level[n]; break; }
       }
     }
-    let changed = 0; let maxDelta = 0;
-    for (let k = 0; k < H.length; k += 1) { const delta = Math.abs(H[k] - c.height[k]); if (delta > 1e-6) changed += 1; maxDelta = Math.max(maxDelta, delta); }
-    out.set(c.chunkId, { height: H, waterSurface: surface, waterType, band: mask, changedCells: changed, maxDelta });
+    water.set(c.chunkId, { waterSurface: surface, waterType });
   }
-
-  return {
-    rules, transitionWidth: W, iterations: iterations + 1, chunks: out, exchanges,
-    edges: edges.map(e => ({ id: e.id, a: e.a, b: e.b, sideA: e.sideA, sideB: e.sideB, status: e.active ? 'resolved' : 'unresolved', rawMaxStep: +e.rawMaxStep.toFixed(2), madeSteepCells: e.blame, maxCreatedSlope: +e.maxCreatedSlope.toFixed(1), unresolvedAt: e.unresolvedAt, continuity: e.active ? (e.slopeMatch ? 'C1 (height + slope)' : 'C0 (height only)') : 'none', slopeNote: e.slopeNote, reason: e.active ? null : `join would create slopes up to ${e.maxCreatedSlope.toFixed(1)}° (> ${rules.maxTransitionSlopeDeg}°) inside ${W} m; raw step ${e.rawMaxStep.toFixed(1)} m` })),
-    corners: [...corners.values()].filter(c => c.members.length === 4).map(c => {
-      const incident = c.edges;
-      const targets = c.members.map(m => +groupTarget(c, m.chunkId).toFixed(3));
-      return { at: { x: c.x, z: c.z }, chunks: c.members.map(m => m.chunkId), groupTargets: targets, groups: new Set(targets).size, rawSpread: +c.rawSpread.toFixed(2), closed: incident.length === 4 && incident.every(e => e.active) };
-    }),
-  };
+  return { water, exchanges };
 }

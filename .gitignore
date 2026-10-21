@@ -33,10 +33,21 @@ ui-debug.log*
 .obsidian/cache
 .trash/
 
-# Large third-party 3D models (≈ 390 MB, loaded only by experiments/terrain-seam
-# on the dev server; not part of the build). Keep them locally, do not commit.
+# Large third-party 3D models. Keep inactive files local; the explicit Terrain
+# Seam exceptions below are its active runtime assets and must ship with builds.
 *.glb
 *.fbx
+!experiments/terrain-seam/tiny_tokyo.glb
+!experiments/terrain-seam/04.glb
+!experiments/terrain-seam/05.glb
+!experiments/terrain-seam/06.glb
+!experiments/terrain-seam/07.glb
+!experiments/terrain-seam/08.glb
+!experiments/terrain-seam/09.glb
+!experiments/terrain-seam/10.glb
+!experiments/terrain-seam/11.glb
+!experiments/terrain-seam/v_01.glb
+!experiments/terrain-seam/v_02.glb
 
 # OS files
 .DS_Store

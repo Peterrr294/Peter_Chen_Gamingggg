@@ -31,6 +31,8 @@ Semester targets (compass §3): three distinct City DNAs ✔ (six by configurati
 
 | Start here | For |
 | --- | --- |
+| [Knowledge base home](./docs/procedural-mini-world/README.md) | The six-part structure: foundation, city research, generative system, experiments, midterm review, release |
+| [Midterm Review](./docs/procedural-mini-world/midterm-review/00-midterm-review.md) | Seven short chapters in reading order: statement, workflow, parameters, experiments, results, limitations, next steps |
 | [Experiment index](./docs/procedural-mini-world/EXPERIMENT-INDEX.md) | Every task by category with purpose, files, screenshots, test status, lifecycle (active / superseded / archived), and next step |
 | [Final experiment log](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md) | Compass (§1–5) and the full record of each task (§7) |
 | [Research](./docs/procedural-mini-world/research/city-longlist-60.md) | 60-city research database, prototype selection, Manhattan study |

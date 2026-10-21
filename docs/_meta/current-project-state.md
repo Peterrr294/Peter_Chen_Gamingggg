@@ -1,5 +1,7 @@
 # Current Project State — Active Work and Resume Guide
 
+> **Superseded (marked 2026-10-20, DOC-01):** this page records the Game Lab state as of 2026-10-07, before Procedural Mini World. Current status: [project compass §1](../procedural-mini-world/FINAL-EXPERIMENT-LOG.md) and the [knowledge base home](../procedural-mini-world/README.md). The content below is kept unchanged as history.
+
 > Last saved: 2026-10-07
 > Main-path milestone: React Three Fiber Level 0 complete / Level 1 paused
 > Active exercise: Flavor Clash Map Prototype 0.1 technically verified; personal observations and screenshots next

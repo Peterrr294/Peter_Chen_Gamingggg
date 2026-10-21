@@ -6,6 +6,17 @@ import { qualitySettings } from '../flavor-clash-prototype/config/worldConfig.js
 import { Region } from '../flavor-clash-prototype/world/Region.js';
 import { createSeamRegionConfigs, DEFAULT_TRANSITION, TERRAIN_SEAM_WORLD_SEED } from './config.js';
 import { createSeamDebug } from './SeamDebug.js';
+import tinyTokyoUrl from './tiny_tokyo.glb?url';
+import japan04Url from './04.glb?url';
+import japan05Url from './05.glb?url';
+import japan06Url from './06.glb?url';
+import japan07Url from './07.glb?url';
+import japan08Url from './08.glb?url';
+import japan09Url from './09.glb?url';
+import japan10Url from './10.glb?url';
+import japan11Url from './11.glb?url';
+import veniceV01Url from './v_01.glb?url';
+import veniceV02Url from './v_02.glb?url';
 
 const query = new URLSearchParams(location.search);
 const clampParameter = (name, fallback, minimum, maximum) => {
@@ -76,7 +87,7 @@ const testAssetRoot = new THREE.Group();
 testAssetRoot.name = 'Japan GLB test asset';
 right.result.object3D.add(testAssetRoot);
 const assetCache = createModularAssetCache();
-const assetUrl = '/experiments/terrain-seam/tiny_tokyo.glb';
+const assetUrl = tinyTokyoUrl;
 const sourceAsset = await assetCache.loadSource(assetUrl);
 const assetBounds = new THREE.Box3().setFromObject(sourceAsset.scene);
 const assetSize = assetBounds.getSize(new THREE.Vector3());
@@ -116,10 +127,16 @@ const assetInventory = {
   separableBuildings: false,
   segmentationNote: 'Flat component groups; semantic names mix roofs, props, infrastructure, and building parts. Manual segmentation required.',
 };
-const standaloneAssets = Array.from({ length: 11 }, (_, index) => {
-  const id = String(index + 1).padStart(2, '0');
-  return { id: `glb-${id}`, url: `/experiments/terrain-seam/${id}.glb`, format: 'gltf', weight: 1 };
-}).filter(asset => !['glb-01', 'glb-02', 'glb-03'].includes(asset.id));
+const standaloneAssets = [
+  ['glb-04', japan04Url],
+  ['glb-05', japan05Url],
+  ['glb-06', japan06Url],
+  ['glb-07', japan07Url],
+  ['glb-08', japan08Url],
+  ['glb-09', japan09Url],
+  ['glb-10', japan10Url],
+  ['glb-11', japan11Url],
+].map(([id, url]) => ({ id, url, format: 'gltf', weight: 1 }));
 const assetAudit = [];
 const japanAssetOrientationOverrides = {
   'glb-02': { x: 0, z: -Math.PI / 2 },
@@ -243,11 +260,10 @@ for (const entry of assetAudit) if (!processedAssetIds.has(entry.id) && entry.st
 // intentionally not loaded here. Each source keeps its own materials and
 // proportions while the instance root is normalized to the Venice grid.
 const veniceAssetCache = createModularAssetCache();
-// Venice placement is intentionally empty until the replacement models are uploaded.
-// Existing GLB files remain on disk as scale references and backups.
+// Only the two active Venice models are bundled; local alternatives stay excluded.
 const veniceAssetDefinitions = [
-  { id: 'venice-v01', url: '/experiments/terrain-seam/v_01.glb', format: 'gltf', weight: 1, span: { u: 2, v: 2 } },
-  { id: 'venice-v02', url: '/experiments/terrain-seam/v_02.glb', format: 'gltf', weight: 1, span: { u: 1, v: 2 } },
+  { id: 'venice-v01', url: veniceV01Url, format: 'gltf', weight: 1, span: { u: 2, v: 2 } },
+  { id: 'venice-v02', url: veniceV02Url, format: 'gltf', weight: 1, span: { u: 1, v: 2 } },
 ];
 const veniceAssetAudit = [];
 const veniceAssetYaw = { 'venice-v01': Math.PI / 2, 'venice-v02': 0 };

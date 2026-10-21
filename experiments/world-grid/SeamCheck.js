@@ -130,7 +130,7 @@ export function checkSeams(chunks, harmony = null) {
           status: water.both + water.onlyA + water.onlyB === 0 ? 'no water' : water.onlyA + water.onlyB === 0 && !levelSteps ? 'continuous' : 'discontinuous',
           oneSided: water.onlyA + water.onlyB, levelSteps, reasons,
         },
-        harmony: harmonyEdge ? { status: harmonyEdge.status, continuity: harmonyEdge.continuity, rawMaxStep: harmonyEdge.rawMaxStep, reason: harmonyEdge.reason, slopeNote: harmonyEdge.slopeNote } : null,
+        harmony: harmonyEdge ? { status: harmonyEdge.status, continuity: harmonyEdge.continuity, rawMaxStep: harmonyEdge.rawMaxStep, reason: harmonyEdge.reason, slopeNote: harmonyEdge.slopeNote, escarpments: harmonyEdge.escarpmentCandidates ?? [] } : null,
         profile: samples,
       });
     }

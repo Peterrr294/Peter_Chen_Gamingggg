@@ -1,100 +1,101 @@
-# 城市研究统一模板
+# Unified City Research Template
 
-## 使用原则
+*Translated to English on 2026-10-20; the original wording is in Git history (commit `7b21c3e`). The [CSV](./city-research-template.csv) is unchanged: its header row still uses the original (Chinese) field names, in the same order as the 40 fields below, so the English names map to the CSV columns one-to-one by position.*
 
-- 本模板服务于“可控的程序化世界”：研究城市身份如何通过地形、道路、地块和建筑规则被保持、改变与混合。
-- 每个城市必须明确区分三类内容：
-  - **资料事实**：可靠来源直接支持、可核查的描述或测量。
-  - **分析推断**：研究者依据资料事实得到的归纳、比较或因果判断，必须写明推断依据。
-  - **艺术化处理**：为可读性、表现力或系统限制而作的设计选择，不得伪装成事实。
-- 每座城市至少需要两个可靠来源。两个来源应能交叉核验关键事实；若来源冲突，应在“不确定项/备注”中记录。
-- 每座城市最终必须压缩成三条可以编程的核心规则。每条规则至少说明输入、触发条件或约束，以及可观察输出。
-- Seed 只负责可复现变化，不代表城市身份。城市身份必须来自可解释的地形、网络、地块、建筑及其接口规则。
-- 60 座城市构成研究数据库，不代表本学期要实现 60 座城市。实施范围由“最终决策”控制。
+## Principles
 
-## 字段定义
+- This template serves a "controllable procedural world": it studies how city identity is kept, changed, and mixed through terrain, street, plot, and building rules.
+- Each city must clearly separate three kinds of content:
+  - **Source facts:** descriptions or measurements directly supported by reliable sources and checkable.
+  - **Analytical inferences:** generalisations, comparisons, or causal judgements the researcher derives from source facts; the basis of each inference must be stated.
+  - **Artistic choices:** design decisions made for legibility, expressiveness, or system limits; they must never be presented as facts.
+- Each city needs at least two reliable sources. The two sources should cross-check the key facts; if they conflict, record it under "Uncertainties / notes".
+- Each city must finally be condensed into three programmable core rules. Each rule states at least its input, its trigger condition or constraint, and an observable output.
+- A seed only provides reproducible variation; it does not represent city identity. City identity must come from explainable terrain, network, plot, and building rules and their interfaces.
+- The 60 cities form a research database; they do not mean that 60 cities will be implemented this semester. The scope of implementation is controlled by "Final decision".
 
-Markdown 与 CSV 使用以下 40 个字段，名称和顺序完全一致。
+## Field definitions
 
-| 字段 | 定义 |
+The Markdown and the CSV use the following 40 fields, in exactly this order.
+
+| Field | Definition |
 | --- | --- |
-| 编号 | 城市记录的唯一编号。建立正式记录时填写；不得用 Seed 代替。 |
-| 研究状态 | 当前工作阶段，例如“待研究”“研究中”“已复核”“已决策”。 |
-| 城市 | 研究对象的城市或明确命名的城市片区。 |
-| 国家/地区 | 城市所属国家、地区或适用的行政与文化语境。 |
-| 研究范围 | 本条记录覆盖的空间边界与尺度，例如历史核心区、行政区或指定样区。 |
-| 城市家族 | 依据空间结构与生成逻辑形成的研究分组，用于比较城市，不等同于行政或风格标签。 |
-| 资料状态 | 来源收集与核验情况，说明是否满足至少两个可靠来源及是否仍有缺口。 |
-| 地貌类型 | 研究范围内占主导作用的地形类别及组合。 |
-| 水域关系 | 水体与城市边界、交通、地块及建筑布局之间的关系。 |
-| 地形起伏（1–5） | 地形高差与坡度对建设和移动约束的强度评分。 |
-| 水域影响（1–5） | 水体对道路、街区、地块、建筑和公共空间组织的影响评分。 |
-| 地理约束摘要 | 用可追溯事实概括地形、水体、海岸线、坡度等限制条件。 |
-| 路网类型 | 道路网络的主要拓扑或形态类型，可记录多种类型及其适用区域。 |
-| 路网规律度（1–5） | 道路方向、间距和连接方式服从可重复规则的程度评分。 |
-| 道路密度（1–5） | 单位建设用地内道路中心线总长度的相对评分。 |
-| 道路层级清晰度（1–5） | 道路能否稳定区分为主干、次干、支路等层级的评分。 |
-| 主要方向 | 路网、地块或建筑排列的主导方位；无稳定方向时明确记录“无单一主方向”。 |
-| 街区尺度（1–5） | 典型街区面积在统一比较集中的相对大小评分。 |
-| 地块尺度（1–5） | 典型地块面积在统一比较集中的相对大小评分。 |
-| 地块规则度（1–5） | 地块边界、角度、长宽比和排列服从重复几何规则的程度评分。 |
-| 建筑密度（1–5） | 统一密度指标（建筑数量、建筑面积或容积率之一）在比较集中的相对评分；所用指标必须注明。 |
-| 建筑高度（1–5） | 典型建筑高度或层数在统一比较集中的相对评分；所用统计量必须注明。 |
-| 建筑覆盖率（1–5） | 建筑基底面积占可建设土地面积比例的评分。 |
-| 主要建筑类型 | 在研究范围内主导空间组织的建筑类型及其组合。 |
-| 公共空间类型 | 主要公共空间类别，以及它们与道路、水体、街区或建筑的连接方式。 |
-| 模块边界接口 | 该城市规则模块需要从相邻模块接收或向外提供的边界数据，例如高程、道路端点、水岸线或地块连接。 |
-| 核心生成规则1 | 由研究结论压缩得到的第一条可编程规则，必须包含输入、条件和可观察输出。 |
-| 核心生成规则2 | 由研究结论压缩得到的第二条可编程规则，必须包含输入、条件和可观察输出。 |
-| 核心生成规则3 | 由研究结论压缩得到的第三条可编程规则，必须包含输入、条件和可观察输出。 |
-| 地形家族 | 可复用的地形生成规则组名称。 |
-| 网络家族 | 可复用的道路、路径或水路网络规则组名称。 |
-| 建筑家族 | 可复用的建筑体量、类型或布置规则组名称。 |
-| 原型代表性（1–5） | 三条核心规则覆盖城市关键空间特征的比例评分。 |
-| 视觉辨识度（1–5） | 在不显示城市名称时，测试者仅依据生成结果正确识别该城市的比例评分。 |
-| 实现可行性（1–5） | 核心规则中可由当前程序化管线直接实现的比例评分。 |
-| 证据强度（1–5） | 关键事实与推断中获得可靠来源交叉支持的比例评分。 |
-| 来源1 | 第一项可靠来源的完整引文或稳定链接，并标明其支持的字段或结论。 |
-| 来源2 | 第二项可靠来源的完整引文或稳定链接，并标明其支持的字段或结论。 |
-| 不确定项/备注 | 记录资料冲突、尺度偏差、待核验内容、方法限制及评分依据。 |
-| 最终决策 | 研究完成后的处置结论，例如进入原型、合并为家族参考、保留研究或暂缓。 |
+| ID | Unique ID of the city record. Filled in when a formal record is created; must not be replaced by a seed. |
+| Research status | Current stage of work, e.g. "to be researched", "in research", "reviewed", "decided". |
+| City | The city or the explicitly named urban district being studied. |
+| Country / region | The country or region the city belongs to, or the applicable administrative and cultural context. |
+| Study area | The spatial boundary and scale covered by this record, e.g. historic core, administrative district, or a defined sample area. |
+| City family | A research grouping based on spatial structure and generation logic, used to compare cities; not an administrative or style label. |
+| Source status | State of source collection and verification: whether at least two reliable sources exist and which gaps remain. |
+| Landform type | The dominant terrain category (or combination) in the study area. |
+| Water relation | How water bodies relate to the city boundary, movement, plots, and building layout. |
+| Terrain relief (1–5) | Score for how strongly height differences and slopes constrain building and movement. |
+| Water influence (1–5) | Score for how strongly water shapes the organisation of streets, blocks, plots, buildings, and public space. |
+| Geographic constraint summary | Traceable facts summarising limits set by terrain, water, coastline, slope, etc. |
+| Network type | The main topological or morphological type of the street network; several types and their areas may be recorded. |
+| Network regularity (1–5) | Score for how far street direction, spacing, and connection follow repeatable rules. |
+| Street density (1–5) | Relative score of total street-centreline length per unit of buildable land. |
+| Street hierarchy clarity (1–5) | Score for how reliably streets can be divided into levels such as arterial, secondary, and local. |
+| Main orientation | Dominant orientation of streets, plots, or buildings; if there is none, record "no single main orientation". |
+| Block scale (1–5) | Relative score of the typical block area within the common comparison set. |
+| Plot scale (1–5) | Relative score of the typical plot area within the common comparison set. |
+| Plot regularity (1–5) | Score for how far plot boundaries, angles, proportions, and arrangement follow repeated geometric rules. |
+| Building density (1–5) | Relative score of one common density measure (building count, floor area, or floor-area ratio) within the comparison set; the measure used must be stated. |
+| Building height (1–5) | Relative score of typical building height or floor count within the comparison set; the statistic used must be stated. |
+| Building coverage (1–5) | Score of building footprint area as a share of buildable land. |
+| Main building types | The building types (and combinations) that dominate spatial organisation in the study area. |
+| Public space types | The main kinds of public space and how they connect to streets, water, blocks, or buildings. |
+| Module boundary interface | Boundary data this city's rule module needs to receive from, or provide to, neighbouring modules, e.g. elevation, street end points, waterline, or plot connections. |
+| Core generation rule 1 | The first programmable rule condensed from the research findings; must contain input, condition, and observable output. |
+| Core generation rule 2 | The second programmable rule condensed from the research findings; must contain input, condition, and observable output. |
+| Core generation rule 3 | The third programmable rule condensed from the research findings; must contain input, condition, and observable output. |
+| Terrain family | Name of a reusable group of terrain generation rules. |
+| Network family | Name of a reusable group of street, path, or waterway network rules. |
+| Building family | Name of a reusable group of rules for building volume, type, or placement. |
+| Prototype representativeness (1–5) | Score of the share of the city's key spatial features covered by the three core rules. |
+| Visual recognisability (1–5) | Score of the share of testers who correctly identify the city from the generated result alone, without its name shown. |
+| Implementation feasibility (1–5) | Score of the share of the core rules that the current procedural pipeline can implement directly. |
+| Evidence strength (1–5) | Score of the share of key facts and inferences cross-supported by reliable sources. |
+| Source 1 | Full citation or stable link of the first reliable source, with the fields or conclusions it supports. |
+| Source 2 | Full citation or stable link of the second reliable source, with the fields or conclusions it supports. |
+| Uncertainties / notes | Source conflicts, scale bias, items to verify, method limits, and the basis of each score. |
+| Final decision | The outcome after research, e.g. enter the prototype set, merge as a family reference, keep as research, or postpone. |
 
-## 统一的 1–5 评分标准
+## Unified 1–5 scoring standard
 
-### 通用规则
+### General rules
 
-- 评分只使用整数 1、2、3、4、5；资料不足时留空，不以 0 代替。
-- 所有评分都以本数据库采用的同一研究范围、测量口径和 60 城市比较集为基准。比较集尚未完成时，评分应标为暂定，并在“不确定项/备注”记录依据。
-- 对“比例型”指标统一使用：1 = 0–20%，2 = >20–40%，3 = >40–60%，4 = >60–80%，5 = >80–100%。
-- 对“相对尺度或密度型”指标统一使用比较集五分位：1 = 第 1 五分位（最小的 20%），2 = 第 2 五分位，3 = 第 3 五分位，4 = 第 4 五分位，5 = 第 5 五分位（最大的 20%）。
-- 同一字段在所有城市必须使用同一原始指标。更换指标时必须重算全部城市，不能把不同口径的分数直接比较。
+- Scores use only the integers 1, 2, 3, 4, 5. When data are insufficient, leave the score empty; do not use 0.
+- All scores use the same study area, the same measurement basis, and the 60-city comparison set of this database. While the comparison set is incomplete, mark scores as provisional and record the basis under "Uncertainties / notes".
+- **Ratio-type** measures always use: 1 = 0–20 %, 2 = >20–40 %, 3 = >40–60 %, 4 = >60–80 %, 5 = >80–100 %.
+- **Relative scale or density** measures always use quintiles of the comparison set: 1 = 1st quintile (smallest 20 %), 2 = 2nd quintile, 3 = 3rd quintile, 4 = 4th quintile, 5 = 5th quintile (largest 20 %).
+- A field must use the same raw measure for every city. If the measure changes, all cities must be recalculated; scores based on different measures must not be compared directly.
 
-### 各评分字段的测量口径
+### Measurement basis per scored field
 
-| 评分字段 | 1–5 的计算依据 |
+| Scored field | Basis of the 1–5 score |
 | --- | --- |
-| 地形起伏（1–5） | 先以研究范围的高程极差除以等效直径得到相对起伏率，再按 60 城市比较集五分位评分。 |
-| 水域影响（1–5） | 统计道路、街区、地块、建筑、公共空间五类系统中，直接被水体边界或通行条件约束的类别比例，按比例型标准评分。 |
-| 路网规律度（1–5） | 统计可归入重复方向、间距或连接规则的道路中心线长度比例，按比例型标准评分。 |
-| 道路密度（1–5） | 使用道路中心线总长度 ÷ 可建设土地面积，并按比较集五分位评分。 |
-| 道路层级清晰度（1–5） | 统计可依据宽度、连通性或功能稳定归入预设道路层级的道路中心线长度比例，按比例型标准评分。 |
-| 街区尺度（1–5） | 使用研究范围内街区面积中位数，并按比较集五分位评分；1 表示最小的一组，5 表示最大的一组。 |
-| 地块尺度（1–5） | 使用研究范围内地块面积中位数，并按比较集五分位评分；1 表示最小的一组，5 表示最大的一组。 |
-| 地块规则度（1–5） | 统计可由重复角度、长宽比或分割逻辑解释的地块数量比例，按比例型标准评分。 |
-| 建筑密度（1–5） | 全部城市统一选择“建筑数量 ÷ 可建设土地面积”或“总建筑面积 ÷ 可建设土地面积”之一，并按比较集五分位评分。 |
-| 建筑高度（1–5） | 使用典型建筑高度中位数或层数中位数，全库统一一种口径，并按比较集五分位评分。 |
-| 建筑覆盖率（1–5） | 使用建筑基底总面积 ÷ 可建设土地面积，按比例型标准评分。 |
-| 原型代表性（1–5） | 将城市关键空间特征列成核验清单，计算三条核心规则所覆盖的特征比例，按比例型标准评分。 |
-| 视觉辨识度（1–5） | 在隐藏城市名称的测试中，计算测试者正确识别城市的比例，按比例型标准评分；记录样本量和测试条件。 |
-| 实现可行性（1–5） | 将三条核心规则拆成可验收的实现项，计算当前管线无需新增基础系统即可完成的项目比例，按比例型标准评分。 |
-| 证据强度（1–5） | 计算关键事实和分析推断中被至少两个可靠来源交叉支持的条目比例，按比例型标准评分。 |
+| Terrain relief (1–5) | Elevation range of the study area divided by its equivalent diameter gives a relative relief ratio, scored by 60-city quintiles. |
+| Water influence (1–5) | Of five systems (streets, blocks, plots, buildings, public space), the share directly constrained by a water boundary or by water-crossing conditions; ratio-type score. |
+| Network regularity (1–5) | Share of street-centreline length that follows repeated direction, spacing, or connection rules; ratio-type score. |
+| Street density (1–5) | Total street-centreline length ÷ buildable land area, scored by comparison-set quintiles. |
+| Street hierarchy clarity (1–5) | Share of street-centreline length that can be reliably assigned to a predefined level by width, connectivity, or function; ratio-type score. |
+| Block scale (1–5) | Median block area in the study area, scored by comparison-set quintiles (1 = smallest group, 5 = largest). |
+| Plot scale (1–5) | Median plot area in the study area, scored by comparison-set quintiles (1 = smallest group, 5 = largest). |
+| Plot regularity (1–5) | Share of plots explained by repeated angles, proportions, or subdivision logic; ratio-type score. |
+| Building density (1–5) | One measure for all cities, either "building count ÷ buildable land" or "total floor area ÷ buildable land", scored by comparison-set quintiles. |
+| Building height (1–5) | Median typical building height or median floor count, one basis for the whole database, scored by comparison-set quintiles. |
+| Building coverage (1–5) | Total building footprint area ÷ buildable land area; ratio-type score. |
+| Prototype representativeness (1–5) | List the city's key spatial features as a checklist and compute the share covered by the three core rules; ratio-type score. |
+| Visual recognisability (1–5) | In a test with the city name hidden, the share of testers who identify the city correctly; ratio-type score; record sample size and test conditions. |
+| Implementation feasibility (1–5) | Split the three core rules into acceptance items and compute the share the current pipeline can deliver without new base systems; ratio-type score. |
+| Evidence strength (1–5) | Share of key facts and analytical inferences supported by at least two reliable sources; ratio-type score. |
 
-## 填写与复核流程
+## Filling-in and review process
 
-1. 先固定“研究范围”，再收集来源；不同空间尺度的数据不得直接混用。
-2. 将资料事实写入相应字段，并在“来源1”“来源2”中标明支持关系。
-3. 将分析推断和艺术化处理明确标注在“不确定项/备注”，避免与资料事实混淆。
-4. 依据统一口径计算评分；无法计算时留空。
-5. 将研究结论压缩为三条核心生成规则，检查每条规则是否能转译为程序条件与输出。
-6. 复核模块边界接口、三类家族与最终决策，再决定是否进入本学期原型实现。
-
+1. Fix the "Study area" first, then collect sources; data at different spatial scales must not be mixed directly.
+2. Enter source facts in their fields and state in "Source 1" / "Source 2" what each source supports.
+3. Mark analytical inferences and artistic choices explicitly under "Uncertainties / notes", so they are not confused with source facts.
+4. Compute scores with the unified basis; leave them empty when they cannot be computed.
+5. Condense the research findings into three core generation rules and check that each can be translated into program conditions and outputs.
+6. Review the module boundary interface, the three families, and the final decision, then decide whether the city enters this semester's prototype implementation.

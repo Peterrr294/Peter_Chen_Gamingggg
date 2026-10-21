@@ -9,6 +9,10 @@ One table row per recorded task. This page is a map, not a second log: every num
 - **Review:** no task has been accepted yet. Every entry is **Pending review** in the log.
 - **Commit:** all Procedural Mini World work was uncommitted until M02. It first enters Git in commit `7b21c3e` on `experiment/terrain-seam`, which `main` follows from M02b on. The deployed state is tag `release/m01-2026-10-19` (`7b21c3e`).
 
+Midterm reading route: [Midterm Review](./midterm-review/00-midterm-review.md). Knowledge base home: [HOME](./README.md).
+
+**Per-task cards** (date, question, method, reused code, seed / parameters, test numbers, screenshots, conclusion, open issues, commit): [Terrain](./04-experiments/terrain-experiments.md) · [Network](./04-experiments/network-experiments.md) · [Urban Form](./04-experiments/urban-form-experiments.md) · [World](./04-experiments/world-experiments.md) · [Archived](./04-experiments/archived-experiments.md). System descriptions: [System Architecture](./03-generative-system/system-architecture.md).
+
 Entry points (Vite dev server, `npm run dev`): single chunk `/experiments/seed-terrain/`, world `/experiments/world-grid/`. Online: <https://gameeeee-zc626.web.app/#miniWorld>.
 
 ## Pipeline at a glance
@@ -23,7 +27,7 @@ Seed terrain (T1) → terrain analysis (T2) → City DNA match (T3) → road / c
 | ID | Purpose | Method · main files | Result (logged) | Evidence | Test | Lifecycle | Next (from log) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | EXP-00 | Shrink the city-world idea into a verifiable research frame | Research template + 40-field CSV · [template](./research/city-research-template.md), [CSV](./research/city-research-template.csv) | Template structure check passed (40 fields in doc = CSV) | text only | manual structure check | Active (research base) | 60-city longlist |
-| EXP-00.2 | Global candidate set by dominant spatial logic | 10 families × 6 cities · [city-longlist-60.md](./research/city-longlist-60.md) | 60 unique cities, 10 families, IDs 01–60 complete; most features "待验证" | text only | manual count check | Active (research database, not an implementation target) | Two-source checks; pick 3 prototypes |
+| EXP-00.2 | Global candidate set by dominant spatial logic | 10 families × 6 cities · [city-longlist-60.md](./research/city-longlist-60.md) | 60 unique cities, 10 families, IDs 01–60 complete; most features "to be verified" | text only | manual count check | Active (research database, not an implementation target) | Two-source checks; pick 3 prototypes |
 | 00.3 / 01.1 | Prototype selection; Manhattan spatial study | [prototype-city-selection.md](./research/prototype-city-selection.md), [manhattan-spatial-study.md](./research/manhattan-spatial-study.md) | **No log entry.** Files exist; status not recorded (flagged in OPS-01) | — | — | **Pending verification** | Human decides whether to log them |
 | 02.6 | Rank City DNAs by terrain fit (fit ≠ identity) | `cityMatchRules.js`, `CityMatcher.js` | 12/12 pass; plain → Manhattan 0.80; mountain weak for all | [img](../assets/screenshots/procedural-mini-world/02-6-city-match-auto-vs-manual.png) | logged pass · re-run 2026-10-19 pass | Active | Review rule table |
 | 06.1 | City DNA 3 → 6 (Chicago, Amsterdam, Lisbon) by configuration only | `networkStrategies.js`, `cityMatchRules.js`, `parcelRules.js`, `buildingRules.js` · `scripts/verify-city-dna.mjs` | 72/72 runs ok; original 3 DNAs bit-identical to baseline; Chicago / Amsterdam never win auto-match | [shared terrain](../assets/screenshots/procedural-mini-world/06-1-six-cities-shared-terrain.png), [suitable terrain](../assets/screenshots/procedural-mini-world/06-1-six-cities-suitable-terrain.png) | logged pass · re-run 2026-10-19 (M01) pass | Active | Terrain rule for river plain / canal belt, or keep manual |

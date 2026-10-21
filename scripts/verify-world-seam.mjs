@@ -55,9 +55,12 @@ try {
   page.on('pageerror', error => browserErrors.push(`page: ${error.message}`));
   page.on('response', response => { if (response.status() >= 400) browserErrors.push(`http ${response.status()}: ${response.url()}`); });
   const lab = (fn, arg) => page.evaluate(fn, arg);
+  // 06.3a measures terrain seams with each chunk's own network (06.3b road joins off; verify-road-seam.mjs covers them).
   const openWorld = async query => {
     const started = Date.now();
-    await page.goto(`${base}${entry}${query ? `?${query}` : ''}`, { waitUntil: 'networkidle' });
+    query = `${query}${query ? '&' : ''}roads=independent`;
+    if (!query.includes('terrain=')) query += '&terrain=harmonized'; // 06.3a edge-local joins (06.3a-R made coordinated terrain the default)
+    await page.goto(`${base}${entry}?${query}`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.__worldGridLab?.ready === true, null, { timeout: 600000 });
     return Date.now() - started;
   };

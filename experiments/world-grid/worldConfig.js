@@ -44,8 +44,11 @@ export function createWorldConfig(input = {}) {
   const worldSeed = Math.max(1, Math.round(Number(input.worldSeed ?? WORLD.defaultWorldSeed))) || WORLD.defaultWorldSeed;
   const transitionWidth = snapTransitionWidth(input.transitionWidth ?? DEFAULT_SELECTION.transitionWidth);
   const variation = Math.min(1, Math.max(0, Number(input.variation ?? DEFAULT_SELECTION.variation)));
-  // 06.3a: 'harmonized' (shared edges joined, default) or 'raw' (independent chunks, the 06.2 behaviour).
-  const terrainMode = input.terrainMode === 'raw' ? 'raw' : 'harmonized';
+  // 06.3a-R2: 'coordinated' (world datum + band-only seam correction, core preserved, default); 06.3a-R: 'macroRamp'
+  // (macro ramps up to 512 m); 06.3a: 'harmonized' (edge-local joins); 'raw' (independent chunks, the 06.2 behaviour).
+  const terrainMode = ['raw', 'harmonized', 'macroRamp'].includes(input.terrainMode) ? input.terrainMode : 'coordinated';
+  // 06.3b: 'joined' (road ports joined across harmonised edges, default) or 'independent' (each chunk's own network, 06.3a).
+  const roadMode = input.roadMode === 'independent' ? 'independent' : 'joined';
   const given = new Map((input.slots ?? []).map(slot => [chunkIdOf(slot.gridX, slot.gridY), slot]));
   const slots = DEFAULT_LAYOUT.map(base => {
     const slot = { ...base, ...(given.get(chunkIdOf(base.gridX, base.gridY)) ?? {}) };
@@ -62,13 +65,13 @@ export function createWorldConfig(input = {}) {
       cityMode: cityModeOf(slot.cityId),
     };
   });
-  return { version: WORLD.configVersion, worldSeed, transitionWidth, variation, terrainMode, chunkSize: WORLD.chunkSize, slots };
+  return { version: WORLD.configVersion, worldSeed, transitionWidth, variation, terrainMode, roadMode, chunkSize: WORLD.chunkSize, slots };
 }
 
 // Minimal saved form: only user choices; seeds and origins are re-derived (and checked on restore).
 export function serialiseWorld(config) {
   return {
-    version: config.version, worldSeed: config.worldSeed, transitionWidth: config.transitionWidth, variation: config.variation, terrainMode: config.terrainMode,
+    version: config.version, worldSeed: config.worldSeed, transitionWidth: config.transitionWidth, variation: config.variation, terrainMode: config.terrainMode, roadMode: config.roadMode,
     slots: config.slots.map(({ gridX, gridY, landform, cityId, terrainSeed }) => ({ gridX, gridY, landform, cityId, terrainSeed })),
   };
 }

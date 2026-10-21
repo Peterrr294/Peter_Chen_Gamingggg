@@ -1,184 +1,185 @@
-# 任务 00.2｜60 座城市长名单与初步分类
+# Task 00.2 — 60-City Longlist and Initial Classification
 
-> 状态：候选研究集。本文不是完整城市 DNA，也不表示原型已经入选。除“来源锚点”明确支持的内容外，所有空间特征与生成规则均为待验证假设，进入原型选择前必须完成至少两个可靠来源的交叉核验。
+> Status: candidate research set. This is not a complete City DNA and does not mean any prototype has been selected. Except where a "source anchor" explicitly supports it, every spatial feature and generation rule is a hypothesis to be verified; before prototype selection, each must be cross-checked against at least two reliable sources.
+>
+> *Translated to English on 2026-10-20; the original wording is in Git history (commit `7b21c3e`).*
 
-## 1. 分类方法
+## 1. Classification method
 
-本长名单按“主导空间生成逻辑”分类，而不是按国家、建筑风格或年代分类。判断顺序沿用项目罗盘：地形与水域 → 网络 → 街区与地块 → 建筑组织。每座城市只分配一个主要家族，便于统计；可能存在的次要家族在后续城市 DNA 研究中记录。
+The longlist is classified by **dominant spatial generation logic**, not by country, architectural style, or period. The order of judgement follows the project compass: terrain and water → network → blocks and plots → building organisation. Each city gets one main family to keep the statistics simple; possible secondary families are recorded in later City DNA research.
 
-研究优先级只表示下一阶段的资料收集顺序，不代表最终原型选择：
+Research priority only sets the order of source collection in the next stage; it does not decide the final prototypes:
 
-- **高：** 用于校准一个家族的核心规则，优先完成双来源研究。
-- **中：** 用于检验同一家族内部的变化范围。
-- **低：** 用于扩大地理与形态覆盖，在核心家族稳定后研究。
+- **High:** used to calibrate a family's core rules; two-source research done first.
+- **Medium:** used to test the range of variation within a family.
+- **Low:** used to widen geographic and morphological coverage; researched after the core families are stable.
 
-## 2. 十个城市家族
+## 2. Ten city families
 
-| 编号 | 城市家族 | 共享空间规律 | 代表城市 | 与其他家族的主要区别 |
+| ID | City family | Shared spatial pattern | Representative cities | Main difference from other families |
 | --- | --- | --- | --- | --- |
-| F1 | 水网—岛屿织构 | 水体先于道路决定通行、边界和可建造土地；岛、岸、桥和水路共同形成网络 | 威尼斯 | 水体是主要网络，不只是城市边缘或防洪条件 |
-| F2 | 强正交网格 | 少数主方向、重复街区和可递归地块分割形成高规律度结构 | 曼哈顿、巴塞罗那 | 由连续网格控制整体，而不是由中心、地形或城墙控制 |
-| F3 | 放射—轴线—环路 | 重要节点、纪念性轴线、放射道路和环路组织城市层级 | 巴黎、华盛顿 | 先生成中心和轴线，再生成填充网络 |
-| F4 | 有机历史核心 | 路径随地形、入口、市场和公共节点逐步生长；小地块和院落形成高密度织构 | 非斯古城 | 不依赖统一网格；边界存在但不是唯一生成控制 |
-| F5 | 城墙—城门边界 | 明确边界、有限城门和内部主街共同控制街区、地块和密度 | 斋浦尔古城 | 城墙与城门是首要生成条件，内部可包含网格或有机结构 |
-| F6 | 山地—坡地适应 | 高程和坡度先决定可建造带，路径沿等高线、山脊或谷地组织 | 重庆、瓦尔帕莱索 | 地形坡度比水网、网格或行政轴线更强地控制网络 |
-| F7 | 河流—三角洲—洪泛适应 | 河道、湿地、堤防、港池与洪泛风险共同划分可建造区和基础设施 | 鹿特丹、新奥尔良 | 水体主要表现为区域水文与风险系统，而不是细密城市水路 |
-| F8 | 现代主义规划—超级街区 | 功能分区、道路层级、超级街区和连续开放空间由总体规划一次性设定 | 巴西利亚、昌迪加尔 | 以大尺度规划单元和道路分级代替传统细街区生长 |
-| F9 | 海岸—狭长走廊 | 海岸、山体或半岛形成狭长建设带；一条或数条主走廊串联片区 | 里约热内卢、孟买 | 边缘约束形成线性结构，而不是完整二维网格或多中心网络 |
-| F10 | 多中心—网络节点 | 多个中心依靠轨道、快速路或区域网络连接，密度围绕节点形成多个峰值 | 东京、新加坡 | 不设单一中心；世界结构由节点、走廊与重叠服务范围生成 |
+| F1 | Water network–island fabric | water decides movement, boundaries, and buildable land before streets do; islands, banks, bridges, and waterways form the network together | Venice | water is the main network, not just a city edge or a flood condition |
+| F2 | Strong orthogonal grid | a few main directions, repeated blocks, and recursive plot subdivision form a highly regular structure | Manhattan, Barcelona | the whole is controlled by a continuous grid, not by a centre, terrain, or city wall |
+| F3 | Radial–axis–ring | key nodes, monumental axes, radial streets, and ring roads organise the urban hierarchy | Paris, Washington | centres and axes are generated first, then the infill network |
+| F4 | Organic historic core | paths grow step by step along terrain, entrances, markets, and public nodes; small plots and courtyards form a dense fabric | Fez el-Bali | no uniform grid; a boundary exists but is not the only control |
+| F5 | City wall–gate boundary | a clear boundary, a few gates, and internal main streets together control blocks, plots, and density | Jaipur old city | the wall and gates are the first generation condition; the interior may be a grid or organic |
+| F6 | Mountain–slope adaptation | elevation and slope decide the buildable bands first; paths follow contours, ridges, or valleys | Chongqing, Valparaíso | terrain slope controls the network more strongly than water, grid, or administrative axes |
+| F7 | River–delta–flood adaptation | river channels, wetlands, dykes, harbour basins, and flood risk together divide buildable areas and infrastructure | Rotterdam, New Orleans | water appears mainly as a regional hydrological and risk system, not as fine urban waterways |
+| F8 | Modernist planning–superblock | functional zoning, street hierarchy, superblocks, and continuous open space set at once by a master plan | Brasília, Chandigarh | large planning units and street hierarchy replace the growth of traditional fine blocks |
+| F9 | Coast–narrow corridor | coast, mountains, or a peninsula form a narrow buildable band; one or a few main corridors link the districts | Rio de Janeiro, Mumbai | edge constraints create a linear structure rather than a full 2D grid or a polycentric network |
+| F10 | Polycentric–network nodes | several centres are linked by rail, expressways, or regional networks; density forms several peaks around nodes | Tokyo, Singapore | no single centre; the structure is generated by nodes, corridors, and overlapping service areas |
 
-## 3. 60 座候选城市
+## 3. Sixty candidate cities
 
-### F1｜水网—岛屿织构
+### F1 — Water network–island fabric
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 01 | 威尼斯 | 意大利 | 历史城市与中央泻湖岛群 | 岛屿聚落；运河主网络；桥梁连接高密度低层织构 | 先生成泻湖水网与岛屿，再沿岸布置路径和连续建筑地块 | 高 |
-| 02 | 阿姆斯特丹 | 荷兰 | 中央运河带 | 同心运河；放射连接；狭长滨水地块 | 生成多级环形水道，以桥和放射街连接，再垂直岸线切分地块 | 中 |
-| 03 | 苏州 | 中国 | 姑苏古城 | 河街并行；桥梁节点；细密小街区 | 以正交水路和街道双网络共同分割地块，并在交叉点提升公共性 | 中 |
-| 04 | 布鲁日 | 比利时 | 历史中心与内城水道 | 曲折水道；桥头节点；紧凑历史街区 | 用低密度水网切割有机街区，桥头形成道路与公共空间节点 | 低 |
-| 05 | 斯德哥尔摩 | 瑞典 | 老城与中央内港岛屿 | 多岛边界；水上视廊；桥梁走廊 | 生成大小不同的岛屿模块，以少量桥梁决定跨岛主轴和密度梯度 | 低 |
-| 06 | 曼谷 | 泰国 | 拉达那哥欣与吞武里水道区 | 河流主轴；支渠网络；水陆混合边界 | 从主河生成分支水道，在水陆交界布置线性地块并补充道路网络 | 低 |
+| 01 | Venice | Italy | historic city and central lagoon islands | island settlements; canals as the main network; bridges linking a dense low-rise fabric | generate the lagoon water network and islands first, then lay paths and continuous building plots along the banks | High |
+| 02 | Amsterdam | Netherlands | central canal belt | concentric canals; radial connections; narrow waterfront plots | generate multi-level ring waterways, connect them with bridges and radial streets, then cut plots perpendicular to the banks | Medium |
+| 03 | Suzhou | China | Gusu old city | parallel rivers and streets; bridge nodes; fine small blocks | divide plots with a dual orthogonal network of waterways and streets, raising public character at crossings | Medium |
+| 04 | Bruges | Belgium | historic centre and inner-city waterways | winding waterways; bridgehead nodes; compact historic blocks | cut organic blocks with a sparse water network; bridgeheads become street and public-space nodes | Low |
+| 05 | Stockholm | Sweden | old town and the central inner-harbour islands | multi-island boundaries; view corridors over water; bridge corridors | generate island modules of different sizes; a few bridges decide the cross-island main axes and the density gradient | Low |
+| 06 | Bangkok | Thailand | Rattanakosin and the Thonburi canal area | river as main axis; network of side canals; mixed water–land edges | branch waterways from the main river, place linear plots on the water–land edge, and add a street network | Low |
 
-### F2｜强正交网格
+### F2 — Strong orthogonal grid
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 07 | 曼哈顿（纽约） | 美国 | 1811 网格覆盖区 | 编号街道网格；狭长街区；南北向大道层级 | 设定主方向和街区比例，重复网格后按大道等级与节点调整密度 | 高 |
-| 08 | 巴塞罗那 | 西班牙 | 扩展区 Eixample | 方格街区；切角转角；连续街墙与内院 | 生成等距网格和切角街区，再按覆盖率形成周边式建筑与内部空地 | 中 |
-| 09 | 京都 | 日本 | 中央历史网格区 | 正交街路；层级尺度；细长町屋地块 | 以大网格建立骨架，再用多级细分形成窄面宽、深进深地块 | 中 |
-| 10 | 芝加哥 | 美国 | Loop 与近中心网格区 | 大尺度正交网；河流切割；高层集中 | 生成连续网格，被河道裁切后在交通节点施加高度与密度梯度 | 低 |
-| 11 | 布宜诺斯艾利斯 | 阿根廷 | 中央城区与规则街区区 | 重复方格；街区内部细分；轴线大道插入 | 以标准方格铺展，在规则间隔插入宽大道和广场扰动 | 低 |
-| 12 | 墨尔本 | 澳大利亚 | Hoddle Grid | 正交主街；后巷网络；规则街区 | 生成主网格后在街区内部添加平行后巷，形成两级通行系统 | 低 |
+| 07 | Manhattan (New York) | USA | area covered by the 1811 grid | numbered street grid; long narrow blocks; hierarchy of north–south avenues | set the main direction and block proportions, repeat the grid, then adjust density by avenue level and nodes | High |
+| 08 | Barcelona | Spain | Eixample extension | square blocks; chamfered corners; continuous street walls and inner courtyards | generate an even grid of chamfered blocks, then form perimeter buildings and inner open space by coverage | Medium |
+| 09 | Kyoto | Japan | central historic grid | orthogonal streets; hierarchical scales; long narrow machiya plots | build a skeleton with a large grid, then subdivide in several levels into narrow-frontage, deep plots | Medium |
+| 10 | Chicago | USA | the Loop and the near-centre grid | large orthogonal grid; river cut; concentration of high-rises | generate a continuous grid cut by the river, then apply height and density gradients at transport nodes | Low |
+| 11 | Buenos Aires | Argentina | central city and regular block area | repeated squares; subdivision inside blocks; inserted axial avenues | spread a standard square grid and insert wide avenues and plazas at regular intervals as disturbances | Low |
+| 12 | Melbourne | Australia | Hoddle Grid | orthogonal main streets; network of back lanes; regular blocks | after the main grid, add parallel back lanes inside blocks to form a two-level movement system | Low |
 
-### F3｜放射—轴线—环路
+### F3 — Radial–axis–ring
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 13 | 巴黎 | 法国 | 中央城区与主要林荫大道系统 | 放射节点；贯通轴线；不规则街区填充 | 先放置公共节点和视线轴，再以次级街道填充轴线之间的多边形区域 | 高 |
-| 14 | 华盛顿特区 | 美国 | L'Enfant 规划核心区 | 网格叠加斜向大道；纪念节点；开放空间序列 | 叠加正交底网和节点放射轴，在交点生成广场与地标保留区 | 中 |
-| 15 | 新德里 | 印度 | Central Vista 与规划核心 | 纪念轴线；环岛节点；宽大道与大地块 | 用主轴连接行政节点，以环岛分配放射道路并保留大尺度开放空间 | 中 |
-| 16 | 卡尔斯鲁厄 | 德国 | 宫殿与中央扇形城区 | 单一焦点；扇形道路；外围环向连接 | 从核心点按角度阵列生成放射线，并用环路控制距离层级 | 低 |
-| 17 | 堪培拉 | 澳大利亚 | Parliamentary Triangle 与中央规划区 | 三角轴线；湖面分隔；行政节点 | 放置三大节点形成几何骨架，再让道路与水岸围绕轴线组织 | 低 |
-| 18 | 莫斯科 | 俄罗斯 | 历史核心与主要环路 | 同心环路；放射干道；中心密度峰值 | 生成多级同心环与放射走廊，并按距中心距离改变街区和高度 | 低 |
+| 13 | Paris | France | central city and the main boulevard system | radial nodes; through axes; irregular block infill | place public nodes and sight axes first, then fill the polygons between axes with secondary streets | High |
+| 14 | Washington, D.C. | USA | core of the L'Enfant plan | grid overlaid with diagonal avenues; monumental nodes; sequence of open spaces | overlay an orthogonal base grid with radial axes from nodes; create squares and landmark reserves at intersections | Medium |
+| 15 | New Delhi | India | Central Vista and the planned core | monumental axis; roundabout nodes; wide avenues and large plots | link government nodes with a main axis, distribute radial streets at roundabouts, keep large open spaces | Medium |
+| 16 | Karlsruhe | Germany | palace and central fan-shaped district | single focus; fan of streets; outer ring connections | generate radial lines by angle from a core point and control distance levels with ring roads | Low |
+| 17 | Canberra | Australia | Parliamentary Triangle and central planned area | triangular axes; separation by a lake; government nodes | place three main nodes to form a geometric skeleton, then organise streets and shores around the axes | Low |
+| 18 | Moscow | Russia | historic core and main ring roads | concentric rings; radial arterials; central density peak | generate multi-level concentric rings and radial corridors, and vary blocks and heights by distance from the centre | Low |
 
-### F4｜有机历史核心
+### F4 — Organic historic core
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 19 | 非斯古城 | 摩洛哥 | Fez el-Bali | 分支巷道；高密度小地块；院落与公共节点 | 从城门、市场和宗教节点生长分级路径，再用不规则院落地块填充 | 高 |
-| 20 | 马拉喀什 | 摩洛哥 | 麦地那与集市区 | 曲折巷道；集市走廊；庭院建筑 | 以主要市场路径串联节点，次级巷道递归分支并生成内向院落 | 中 |
-| 21 | 瓦拉纳西 | 印度 | 恒河河岸与旧城巷道 | 河岸台阶；垂直河岸通道；高密度巷道 | 先生成河岸公共边缘，再让窄巷从内部节点向河岸汇聚 | 中 |
-| 22 | 突尼斯 | 突尼斯 | 突尼斯麦地那 | 有机街巷；市场主轴；庭院住宅 | 用商业主轴建立方向，局部巷道按可达性分支并形成封闭地块 | 低 |
-| 23 | 萨那 | 也门 | 萨那古城 | 紧凑有机织构；多层塔楼住宅；内部花园斑块 | 在围合范围内生成高覆盖率有机地块，保留少量花园并提高垂直密度 | 低 |
-| 24 | 那不勒斯 | 意大利 | 历史中心 | 古代街路叠层；狭窄街区；院落建筑 | 以旧有主街骨架叠加后期路径，在狭长地块中生成连续街墙和院落 | 低 |
+| 19 | Fez el-Bali | Morocco | Fez el-Bali | branching lanes; dense small plots; courtyards and public nodes | grow hierarchical paths from gates, markets, and religious nodes, then fill with irregular courtyard plots | High |
+| 20 | Marrakesh | Morocco | medina and souk area | winding lanes; market corridors; courtyard buildings | link nodes with the main market paths; secondary lanes branch recursively and form inward-facing courtyards | Medium |
+| 21 | Varanasi | India | Ganges riverbank and old-city lanes | riverside steps (ghats); passages perpendicular to the bank; dense lanes | generate the public riverbank edge first, then let narrow lanes converge from inner nodes towards the river | Medium |
+| 22 | Tunis | Tunisia | Medina of Tunis | organic lanes; market main axis; courtyard houses | set direction with the commercial main axis; local lanes branch by accessibility and form closed plots | Low |
+| 23 | Sana'a | Yemen | Old City of Sana'a | compact organic fabric; multi-storey tower houses; inner garden patches | generate high-coverage organic plots inside the enclosure, keep a few gardens, and raise vertical density | Low |
+| 24 | Naples | Italy | historic centre | layered ancient street pattern; narrow blocks; courtyard buildings | overlay later paths on the old main-street skeleton and create continuous street walls and courtyards in narrow plots | Low |
 
-### F5｜城墙—城门边界
+### F5 — City wall–gate boundary
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 25 | 斋浦尔 | 印度 | 历史城墙城区 | 城墙与城门；规划网格；市场广场和连续界面 | 先建立墙体和城门，再用主轴网格连接城门并划分市场街区 | 高 |
-| 26 | 西安 | 中国 | 明城墙以内城区 | 矩形城界；十字主轴；层级街巷 | 用矩形边界和城门确定主轴，再向内递归细分街区 | 中 |
-| 27 | 杜布罗夫尼克 | 克罗地亚 | 城墙内老城 | 防御边界；主街骨架；坡地支巷 | 用不规则防御边界裁切网格，以主街连接城门并让支巷适应坡度 | 中 |
-| 28 | 平遥 | 中国 | 古城墙以内 | 完整城界；主街节点；院落地块 | 以城门和主街构成骨架，将内部划分为窄长院落单元 | 低 |
-| 29 | 尼科西亚 | 塞浦路斯 | 威尼斯城墙以内 | 星形防御边界；城门节点；混合有机街网 | 生成堡垒状边界和有限入口，让内部网络在入口之间逐步生长 | 低 |
-| 30 | 卡塔赫纳 | 哥伦比亚 | 城墙历史中心 | 海岸防御边界；规则与有机混合街区；内院建筑 | 以海岸和城墙形成闭合边界，在内部生成受入口控制的混合网格 | 低 |
+| 25 | Jaipur | India | historic walled city | walls and gates; planned grid; market squares and continuous frontages | build the wall and gates first, then connect the gates with a main-axis grid and divide market blocks | High |
+| 26 | Xi'an | China | inside the Ming city wall | rectangular city boundary; cross-shaped main axes; hierarchical streets and lanes | fix the main axes by the rectangular boundary and gates, then subdivide blocks recursively inwards | Medium |
+| 27 | Dubrovnik | Croatia | old town inside the walls | defensive boundary; main-street skeleton; side lanes on slopes | cut a grid with an irregular defensive boundary, link gates with the main street, and fit side lanes to the slope | Medium |
+| 28 | Pingyao | China | inside the ancient city wall | complete city boundary; main-street nodes; courtyard plots | form the skeleton from gates and main streets and divide the interior into long narrow courtyard units | Low |
+| 29 | Nicosia | Cyprus | inside the Venetian walls | star-shaped defensive boundary; gate nodes; mixed organic street network | generate a bastioned boundary and a few entrances, and let the internal network grow between the entrances | Low |
+| 30 | Cartagena | Colombia | walled historic centre | coastal defensive boundary; mixed regular and organic blocks; courtyard buildings | form a closed boundary from coast and wall, and generate an entrance-controlled mixed grid inside | Low |
 
-### F6｜山地—坡地适应
+### F6 — Mountain–slope adaptation
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 31 | 重庆 | 中国 | 渝中半岛 | 两江边界；山脊道路；多层高差连接 | 先生成半岛高程和山脊，主路沿缓坡，垂直连接处理不同标高 | 高 |
-| 32 | 瓦尔帕莱索 | 智利 | 港区与历史山丘 | 狭窄滨海平地；陡坡聚落；缆车与阶梯连接 | 在海岸平地生成主轴，建筑沿坡面分层，垂直交通连接高程带 | 中 |
-| 33 | 拉巴斯 | 玻利维亚 | 中央谷地与两侧坡地 | 深谷地形；坡面密度；高程分层交通 | 以谷底为主走廊，沿坡度阈值生成台地和高度分区 | 中 |
-| 34 | 香港 | 中国香港 | 香港岛北岸建成带 | 山海夹持；填海平台；高密度垂直节点 | 生成山海之间的窄平台，以交通节点提高密度并限制陡坡建设 | 低 |
-| 35 | 里斯本 | 葡萄牙 | 历史山丘与Baixa连接区 | 多山丘；谷地轴线；阶梯和观景节点 | 以谷地道路连接多个山丘中心，次级路径沿等高线和坡向生成 | 低 |
-| 36 | 麦德林 | 哥伦比亚 | Aburrá Valley 中心与坡地 | 狭长谷地；线性交通；坡地社区 | 沿谷底生成连续主轴和节点，再按坡度向两侧扩展不规则织构 | 低 |
+| 31 | Chongqing | China | Yuzhong peninsula | two rivers as boundaries; ridge roads; multi-level height connections | generate the peninsula's elevation and ridges first; main roads follow gentle slopes; vertical links connect different levels | High |
+| 32 | Valparaíso | Chile | port area and historic hills | narrow coastal flat; steep hillside settlements; funiculars and stairs | generate a main axis on the coastal flat, layer buildings along the slopes, and link elevation bands with vertical transport | Medium |
+| 33 | La Paz | Bolivia | central valley and its slopes | deep valley terrain; density on slopes; elevation-layered transport | use the valley floor as the main corridor and generate terraces and height zones by slope threshold | Medium |
+| 34 | Hong Kong | Hong Kong, China | built-up north shore of Hong Kong Island | squeezed between mountains and sea; reclaimed platforms; dense vertical nodes | generate a narrow platform between mountain and sea, raise density at transport nodes, and limit building on steep slopes | Low |
+| 35 | Lisbon | Portugal | historic hills and the Baixa connection area | many hills; valley axis; stairs and viewpoint nodes | link several hill centres by valley roads; secondary paths follow contours and slope aspect | Low |
+| 36 | Medellín | Colombia | centre and slopes of the Aburrá Valley | long narrow valley; linear transport; hillside communities | generate a continuous main axis and nodes along the valley floor, then extend an irregular fabric up both sides by slope | Low |
 
-### F7｜河流—三角洲—洪泛适应
+### F7 — River–delta–flood adaptation
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 37 | 鹿特丹 | 荷兰 | 中央港区与Nieuwe Maas两岸 | 河港基础设施；堤防与低地；跨河连接 | 先生成河道、港池和防洪边界，再沿可建设高地区布置路网与节点 | 高 |
-| 38 | 新奥尔良 | 美国 | 密西西比河湾与低地区 | 河湾边界；堤防走廊；高低地差异 | 用高程与洪泛掩膜限制建设，沿堤防生成主轴并向安全区域扩展 | 中 |
-| 39 | 达卡 | 孟加拉国 | 中央城区与周边水系 | 洪泛平原；季节水体；不连续可建造斑块 | 生成动态水域与安全岛，网络只连接满足高程和排水条件的斑块 | 中 |
-| 40 | 上海 | 中国 | 黄浦江—苏州河中央城区 | 双河交汇；滨水工业转换；跨河节点 | 以主河和支流切割网格，在桥隧节点形成多中心密度峰值 | 低 |
-| 41 | 汉堡 | 德国 | 易北河港与内城 | 港池与岛地；河岸基础设施；仓储街区 | 生成港池和堤岸形成大尺度地块，再用桥梁控制跨水连接 | 低 |
-| 42 | 加尔各答 | 印度 | 胡格利河东岸与东部湿地过渡区 | 河岸城市轴；低洼湿地边缘；密集街区 | 在河岸与湿地之间生成可建设带，密度随排水和交通条件变化 | 低 |
+| 37 | Rotterdam | Netherlands | central port area and both banks of the Nieuwe Maas | river-port infrastructure; dykes and lowlands; cross-river connections | generate the river channel, harbour basins, and flood boundary first, then place streets and nodes on the buildable higher ground | High |
+| 38 | New Orleans | USA | Mississippi bend and low-lying areas | river-bend boundary; levee corridors; high / low ground differences | limit building with elevation and flood masks, generate main axes along the levees, and extend towards safe areas | Medium |
+| 39 | Dhaka | Bangladesh | central city and the surrounding water system | flood plain; seasonal water bodies; discontinuous buildable patches | generate dynamic water areas and safe islands; the network only connects patches that meet elevation and drainage conditions | Medium |
+| 40 | Shanghai | China | central city at the Huangpu River and Suzhou Creek | confluence of two rivers; conversion of waterfront industry; cross-river nodes | cut the grid with the main river and its tributary, and form polycentric density peaks at bridge and tunnel nodes | Low |
+| 41 | Hamburg | Germany | Elbe port and inner city | harbour basins and islands; riverbank infrastructure; warehouse blocks | generate harbour basins and quays as large plots, then control water crossings with bridges | Low |
+| 42 | Kolkata | India | east bank of the Hooghly and the transition to the East Kolkata Wetlands | riverbank urban axis; low wetland edge; dense blocks | generate a buildable band between riverbank and wetland, with density varying by drainage and transport conditions | Low |
 
-### F8｜现代主义规划—超级街区
+### F8 — Modernist planning–superblock
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 43 | 巴西利亚 | 巴西 | Plano Piloto | 两条主轴；功能分区；超级街区与连续绿地 | 先生成纪念轴与交通轴，再布置标准化邻里单元和开放空间 | 高 |
-| 44 | 昌迪加尔 | 印度 | 规划扇区与行政核心 | 扇区单元；道路等级；行政轴与绿地系统 | 用道路等级划分固定扇区，在扇区内生成独立生活单元 | 中 |
-| 45 | 伊斯兰堡 | 巴基斯坦 | 规划扇区与中央轴带 | 规则扇区；山麓边界；功能分区 | 在山麓约束下铺设模块化扇区，并以分级道路连接中心设施 | 中 |
-| 46 | 阿布贾 | 尼日利亚 | 中央区与初期规划片区 | 中央轴线；功能片区；宽道路和低覆盖率 | 先确定中央轴和功能带，再用大街区与景观间隔控制开发 | 低 |
-| 47 | 新孟买 | 印度 | 规划节点与交通走廊 | 多节点新城；交通连接；分区街区 | 沿区域交通轴布置多个标准化中心，每个中心生成独立服务范围 | 低 |
-| 48 | 松岛 | 韩国 | 国际商务区 | 填海地基；超级街区；集中开放空间 | 在规则填海边界内生成大街区，以公共空间和主轴控制高层密度 | 低 |
+| 43 | Brasília | Brazil | Plano Piloto | two main axes; functional zoning; superblocks and continuous green space | generate the monumental and traffic axes first, then place standardised neighbourhood units and open space | High |
+| 44 | Chandigarh | India | planned sectors and the government core | sector units; street hierarchy; government axis and green system | divide fixed sectors by street hierarchy and generate self-contained living units inside each sector | Medium |
+| 45 | Islamabad | Pakistan | planned sectors and the central axial belt | regular sectors; foothill boundary; functional zoning | lay modular sectors under the foothill constraint and link central facilities with a street hierarchy | Medium |
+| 46 | Abuja | Nigeria | central area and the first planned districts | central axis; functional districts; wide roads and low coverage | fix the central axis and functional bands first, then control development with large blocks and landscape gaps | Low |
+| 47 | Navi Mumbai | India | planned nodes and transport corridors | multi-node new town; transport links; zoned blocks | place several standardised centres along a regional transport axis, each generating its own service area | Low |
+| 48 | Songdo | South Korea | international business district | reclaimed land base; superblocks; concentrated open space | generate large blocks inside the regular reclamation boundary and control high-rise density with public space and a main axis | Low |
 
-### F9｜海岸—狭长走廊
+### F9 — Coast–narrow corridor
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 49 | 里约热内卢 | 巴西 | 南区海湾与山体之间 | 海湾弧线；山体阻隔；片区串联 | 用海岸和山体生成多个狭长建设袋，以沿海走廊串联片区 | 高 |
-| 50 | 孟买 | 印度 | Island City | 半岛边界；南北主轴；填海连接 | 生成狭长半岛和多条纵向走廊，横向连接受水岸和历史填海控制 | 中 |
-| 51 | 惠灵顿 | 新西兰 | 港湾核心与沿岸建成带 | 港湾弧线；陡坡边界；有限平地走廊 | 沿港湾生成连续主路和节点，建设向谷地与坡脚有限扩展 | 中 |
-| 52 | 开普敦 | 南非 | City Bowl 与海岸前缘 | 山体背景；盆地建成区；港湾边缘 | 以山体不可建掩膜和海岸边界限定盆地，在开口方向生成主走廊 | 低 |
-| 53 | 卑尔根 | 挪威 | 内港与周边山谷 | 峡湾港口；山体包围；谷地通道 | 从内港生成中心，沿可通行谷地放射少量线性发展走廊 | 低 |
-| 54 | 利马 | 秘鲁 | 中央城区至海岸台地样区 | 海岸悬崖；干旱平地；内陆—海岸轴 | 生成海岸高差边界和内陆网格，以少量横向走廊连接海岸节点 | 低 |
+| 49 | Rio de Janeiro | Brazil | between the South Zone bays and the mountains | curving bays; mountain barriers; districts linked in series | generate several narrow building pockets from coast and mountains and link them with a coastal corridor | High |
+| 50 | Mumbai | India | Island City | peninsula boundary; north–south main axes; reclamation links | generate a long narrow peninsula with several longitudinal corridors; cross connections are controlled by the waterfront and historic reclamation | Medium |
+| 51 | Wellington | New Zealand | harbour core and coastal built-up band | curving harbour; steep-slope boundary; limited flat corridors | generate a continuous main road and nodes along the harbour; building extends only a little into valleys and slope foot | Medium |
+| 52 | Cape Town | South Africa | City Bowl and the coastal front | mountain backdrop; built-up basin; harbour edge | bound the basin with an unbuildable mountain mask and the coastline, and generate main corridors towards the opening | Low |
+| 53 | Bergen | Norway | inner harbour and surrounding valleys | fjord harbour; enclosed by mountains; valley passages | generate a centre from the inner harbour and radiate a few linear development corridors along passable valleys | Low |
+| 54 | Lima | Peru | sample from the central city to the coastal terraces | coastal cliffs; arid flatland; inland–coast axis | generate a coastal height-difference boundary and an inland grid, and link coastal nodes with a few cross corridors | Low |
 
-### F10｜多中心—网络节点
+### F10 — Polycentric–network nodes
 
-| # | 城市 | 国家/地区 | 研究区域 | 3 个候选空间特征（待验证） | 潜在生成规则（待验证） | 优先级 |
+| # | City | Country / region | Study area | 3 candidate spatial features (to be verified) | Potential generation rule (to be verified) | Priority |
 | --- | --- | --- | --- | --- | --- | --- |
-| 55 | 东京 | 日本 | 23区主要轨道节点体系 | 多个轨道中心；环线与放射线；节点密度峰值 | 先生成轨道图和换乘节点，再让密度与功能随节点可达性梯度变化 | 高 |
-| 56 | 新加坡 | 新加坡 | 中央区与新镇体系 | 主中心与新镇；轨道走廊；绿地和水体间隔 | 生成多个层级中心，以轨道连接并用绿地、水体分隔服务范围 | 中 |
-| 57 | 首尔 | 韩国 | 汉江两岸与主要轨道中心 | 跨江多中心；山体分隔；轨道节点密度 | 以河流和山体切分片区，再由跨河交通和轨道节点建立多中心 | 中 |
-| 58 | 伦敦 | 英国 | Greater London 中心与轨道走廊 | 历史核心叠层；多个副中心；放射轨道 | 从旧核心和外围节点共同生成密度场，以轨道走廊连接重叠片区 | 低 |
-| 59 | 洛杉矶 | 美国 | Los Angeles Basin 多中心样区 | 分散中心；高速路网络；低密度连续织构 | 生成快速路图和多个活动中心，以可达性而非单一中心控制密度 | 低 |
-| 60 | 约翰内斯堡 | 南非 | 都市核心与北部副中心走廊 | 多核心迁移；道路走廊；低密度间隔 | 放置不同等级中心并沿区域走廊扩展，保留中心之间的密度落差 | 低 |
+| 55 | Tokyo | Japan | main rail-node system of the 23 wards | several rail centres; loop and radial lines; density peaks at nodes | generate the rail graph and interchange nodes first, then vary density and function by the accessibility gradient of nodes | High |
+| 56 | Singapore | Singapore | central area and the new-town system | main centre and new towns; rail corridors; separation by green space and water | generate centres at several levels, link them by rail, and separate service areas with green space and water | Medium |
+| 57 | Seoul | South Korea | both banks of the Han River and the main rail centres | polycentric across the river; separation by mountains; density at rail nodes | divide districts by river and mountains, then build multiple centres from cross-river transport and rail nodes | Medium |
+| 58 | London | United Kingdom | Greater London centre and rail corridors | layered historic core; several sub-centres; radial rail | generate a density field from the old core and outer nodes together, and link overlapping districts with rail corridors | Low |
+| 59 | Los Angeles | USA | polycentric sample of the Los Angeles Basin | dispersed centres; freeway network; continuous low-density fabric | generate a freeway graph and several activity centres, controlling density by accessibility rather than one centre | Low |
+| 60 | Johannesburg | South Africa | metropolitan core and the northern sub-centre corridor | shifting multiple cores; road corridors; low-density gaps | place centres of different levels and extend along regional corridors, keeping the density drop between centres | Low |
 
-## 4. 分类统计
+## 4. Classification statistics
 
-| 城市家族 | 数量 | 高优先级 | 中优先级 | 低优先级 |
+| City family | Count | High priority | Medium priority | Low priority |
 | --- | ---: | ---: | ---: | ---: |
-| F1 水网—岛屿织构 | 6 | 1 | 2 | 3 |
-| F2 强正交网格 | 6 | 1 | 2 | 3 |
-| F3 放射—轴线—环路 | 6 | 1 | 2 | 3 |
-| F4 有机历史核心 | 6 | 1 | 2 | 3 |
-| F5 城墙—城门边界 | 6 | 1 | 2 | 3 |
-| F6 山地—坡地适应 | 6 | 1 | 2 | 3 |
-| F7 河流—三角洲—洪泛适应 | 6 | 1 | 2 | 3 |
-| F8 现代主义规划—超级街区 | 6 | 1 | 2 | 3 |
-| F9 海岸—狭长走廊 | 6 | 1 | 2 | 3 |
-| F10 多中心—网络节点 | 6 | 1 | 2 | 3 |
-| **总计** | **60** | **10** | **20** | **30** |
+| F1 Water network–island fabric | 6 | 1 | 2 | 3 |
+| F2 Strong orthogonal grid | 6 | 1 | 2 | 3 |
+| F3 Radial–axis–ring | 6 | 1 | 2 | 3 |
+| F4 Organic historic core | 6 | 1 | 2 | 3 |
+| F5 City wall–gate boundary | 6 | 1 | 2 | 3 |
+| F6 Mountain–slope adaptation | 6 | 1 | 2 | 3 |
+| F7 River–delta–flood adaptation | 6 | 1 | 2 | 3 |
+| F8 Modernist planning–superblock | 6 | 1 | 2 | 3 |
+| F9 Coast–narrow corridor | 6 | 1 | 2 | 3 |
+| F10 Polycentric–network nodes | 6 | 1 | 2 | 3 |
+| **Total** | **60** | **10** | **20** | **30** |
 
-## 5. 来源锚点与验证边界
+## 5. Source anchors and verification limits
 
-以下来源只用于确认部分代表城市的初步分类逻辑，不替代下一阶段“每城至少两个可靠来源”的要求：
+The following sources only confirm the initial classification logic of some representative cities; they do not replace the next stage's requirement of "at least two reliable sources per city":
 
-- [UNESCO：Venice and its Lagoon](https://whc.unesco.org/en/list/394/)：支持威尼斯的岛屿—泻湖—运河城市系统判断。
-- [UNESCO：Medina of Fez](https://whc.unesco.org/en/list/170/)：支持非斯古城的高密度历史织构、分区与围合边界判断。
-- [NYC Municipal Archives：Randel's map for the 1811 Manhattan grid](https://a860-collectionguides.nyc.gov/repositories/2/accessions/1612)：支持曼哈顿规划编号网格的研究范围。
-- [UNESCO：Jaipur City, Rajasthan](https://whc.unesco.org/en/list/1605/)：支持城墙、城门、网格、市场和公共空间共同组织的判断。
-- [UNESCO：Brasilia](https://whc.unesco.org/en/list/445/)：支持主轴、功能组织、邻里单元和超级街区的判断。
-- [UNESCO：Historic Quarter of Valparaíso](https://whc.unesco.org/en/list/959/)：支持滨海平地、陡坡织构与垂直交通适应的判断。
-- [UNESCO：Old City of Sana'a](https://whc.unesco.org/en/list/385/)：支持紧凑历史织构、多层塔楼住宅与内部花园的初步判断。
+- [UNESCO: Venice and its Lagoon](https://whc.unesco.org/en/list/394/): supports the judgement of Venice as an island–lagoon–canal urban system.
+- [UNESCO: Medina of Fez](https://whc.unesco.org/en/list/170/): supports the judgement of Fez el-Bali's dense historic fabric, districts, and enclosed boundary.
+- [NYC Municipal Archives: Randel's map for the 1811 Manhattan grid](https://a860-collectionguides.nyc.gov/repositories/2/accessions/1612): supports the study area of Manhattan's planned numbered grid.
+- [UNESCO: Jaipur City, Rajasthan](https://whc.unesco.org/en/list/1605/): supports the judgement that walls, gates, grid, markets, and public spaces organise the city together.
+- [UNESCO: Brasilia](https://whc.unesco.org/en/list/445/): supports the judgement of main axes, functional organisation, neighbourhood units, and superblocks.
+- [UNESCO: Historic Quarter of Valparaíso](https://whc.unesco.org/en/list/959/): supports the judgement of a coastal flat, steep-slope fabric, and adaptation by vertical transport.
+- [UNESCO: Old City of Sana'a](https://whc.unesco.org/en/list/385/): supports the initial judgement of a compact historic fabric, multi-storey tower houses, and inner gardens.
 
-当前没有任何城市完成完整 DNA。其余条目以及以上城市尚未被第二来源覆盖的特征全部标记为待验证，不得直接转换为最终参数。
+No city has a complete DNA yet. All other entries, and the features of the cities above that a second source does not yet cover, are marked as to be verified and must not be converted directly into final parameters.
 
-## 6. 待验证问题
+## 6. Open questions to verify
 
-1. 60 个研究区域的边界和尺度尚未统一，需要在原型筛选前确定可比较的样区面积或等效范围。
-2. 城市可能跨越多个家族；当前只记录主导家族，次要家族与混合比例尚未定义。
-3. “候选空间特征”和“潜在生成规则”是研究假设，不是资料事实。
-4. 研究优先级只服务资料收集顺序；威尼斯、曼哈顿和非斯古城仍不预设最终入选。
-5. 每座城市仍需至少两个可靠来源，并需要地图或空间数据验证地形、水域、网络、地块和建筑组织。
-6. 在统一测量口径建立前，不填写1–5评分，也不产生精确参数。
+1. The boundaries and scales of the 60 study areas are not yet unified; comparable sample areas or equivalent extents must be fixed before prototype selection.
+2. A city may span several families; only the dominant family is recorded now, and secondary families and mixing ratios are not defined.
+3. "Candidate spatial features" and "potential generation rules" are research hypotheses, not source facts.
+4. Research priority only serves the order of source collection; Venice, Manhattan, and Fez el-Bali are still not preset as the final selection.
+5. Each city still needs at least two reliable sources, and maps or spatial data to verify terrain, water, network, plots, and building organisation.
+6. Until a unified measurement basis exists, no 1–5 scores are filled in and no exact parameters are produced.
 
-## 7. 下一步关卡
+## 7. Next gate
 
-从每个家族的高优先级城市开始收集双来源证据，并通过“结构差异、可实现性、资料质量”筛选三座原型城市。完成筛选前不进入地形代码。
-
+Start collecting two-source evidence from the high-priority city of each family, and select three prototype cities by "structural difference, feasibility, and source quality". Do not start terrain code before the selection is complete.

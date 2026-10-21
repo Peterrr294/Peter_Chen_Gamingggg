@@ -1,50 +1,55 @@
 # Procedural Mini World — Final Experiment Log
 
-> 这份文件是本学期最终程序化世界项目的唯一实验总记录。每完成一个阶段，都在这里记录目标、操作、证据、结论、失败和下一步。它不替代代码旁的技术说明，也不与旧的 Assignment 1 清单混合。
+> This file is the single master record of experiments for this semester's final procedural-world project. Each completed stage records its goal, operations, evidence, conclusion, failures, and next step here. It does not replace the technical notes beside the code, and it is not mixed with the old Assignment 1 checklist. (Sections originally written in Chinese were translated to English on 2026-10-20; the original wording is in Git history, commit `7b21c3e`.)
 
-## 1. 项目状态
+## 1. Project Status
 
-- **项目类型：** 可控的程序化世界，不是传统游戏
-- **开始重构日期：** 2026-10-17
+- **Project type:** a controllable procedural world, not a traditional game
+- **Restructure start date:** 2026-10-17
 - **Pipeline (from 2026-10-18, Terrain-first):** Seed terrain → geographic feature detection → City DNA matching → road network → parcels → building extrusion. Terrain is generated city-neutral first; City DNA is matched to detected features instead of being imposed on a fixed city-shaped tile.
-- **Current stage:** T1 — Seed terrain (see §5)
-- **Current state:** T1 implemented in `experiments/seed-terrain/` (entries 02.2–02.4; frozen 1024 m chunk, 4 landform algorithms, adjustable transition weight field); T2 terrain analysis (02.5), T3 terrain-to-City-DNA matching (02.6), T4 road / canal network (03.1), mountain roads + tunnels (03.2), T5 urban blocks (04.1), organic / canal-street loop closure (03.3), block refinement (04.1b), road-oriented parcels (04.2), grey-box buildings (05.1), closed solid terrain (05.1b-1), tunnel excavation (05.1b-2), City DNA 3 → 6 by configuration (06.1: + Chicago, Amsterdam, Lisbon), the 3 × 3 World Grid with per-chunk City ID and seam detection (06.2), and multi-chunk terrain / water seam harmonisation with unresolved-edge reporting (06.3a) implemented. All pending review. Stage 0 research outputs (00.2, 00.3, 01.1) and 02.1 Manhattan greybox remain pending review.
-- **Current single task:** Review T1 terrain fields (height, water, slope, buildability).
-- **Forbidden now:** city, road, parcel, or building generation; new assets; gameplay; world stitching; visual polish.
-- *Previous (superseded 2026-10-18):* 阶段 0——研究框架与城市候选集；唯一任务为选择 3 座原型和第 1 座实现城市。
+- **Current stage (2026-10-19):** Midterm review. T1–T6 implemented, T7 partial (see §5); all pending review.
+- **Current state:** T1 implemented in `experiments/seed-terrain/` (entries 02.2–02.4; frozen 1024 m chunk, 4 landform algorithms, adjustable transition weight field); T2 terrain analysis (02.5), T3 terrain-to-City-DNA matching (02.6), T4 road / canal network (03.1), mountain roads + tunnels (03.2), T5 urban blocks (04.1), organic / canal-street loop closure (03.3), block refinement (04.1b), road-oriented parcels (04.2), grey-box buildings (05.1), closed solid terrain (05.1b-1), tunnel excavation (05.1b-2), City DNA 3 → 6 by configuration (06.1: + Chicago, Amsterdam, Lisbon), the 3 × 3 World Grid with per-chunk City ID and seam detection (06.2), and multi-chunk terrain / water seam harmonisation with unresolved-edge reporting (06.3a) implemented. All pending review. Stage 0 research outputs (00.2, 00.3, 01.1) and 02.1 Manhattan greybox remain pending review. Deployed to Firebase Hosting (M01); GitHub knowledge base and `main` updated (M02, M02b); Midterm Review entry: [midterm-review/00-midterm-review.md](./midterm-review/00-midterm-review.md) (M03).
+- **Update (2026-10-20, task 06.3 by user instruction):** world development resumed. 06.3a re-verified (verifier passes, numbers reproduced); 06.3b cross-chunk road network seam implemented, pending review (entry 06.3b in §7).
+- **Update (2026-10-21, task 06.3a-R by user instruction):** world-coherent terrain (global macro base + shared boundary surface) implemented as the default World Grid terrain, pending review (entry 06.3a-R in §7). 06.3a (`?terrain=harmonized`) and 06.2 (`?terrain=raw`) stay runnable.
+- **Update (2026-10-21, task 06.3a-R2 by user instruction):** core-preserving world terrain (world datum + band-only seam correction) is now the default World Grid terrain, pending review (entry 06.3a-R2 in §7). 06.3a-R stays runnable as `?terrain=macroRamp`, 06.3a as `?terrain=harmonized`, 06.2 as `?terrain=raw`.
+- **Update (2026-10-21, task 06.3c by user instruction):** seam classification (geometry / landform / hydrology / transport per shared edge) added to the World Grid; R2 corner pin shortened to one band width. Pending review (entry 06.3c in §7).
+- **Current single task:** Review 06.3c (and 06.3a-R2, 06.3a-R, 06.3b), then the midterm review of T1–T7 through the Midterm Review notes; record accept / reject per task.
+- **Forbidden now:** new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes, bridges, ramps, canal joins, city influence, city expansion, complex UI, new assets, gameplay, visual polish — until the review sets the next task.
+- *Previous (superseded 2026-10-19):* Current stage T1 — Seed terrain; single task "Review T1 terrain fields (height, water, slope, buildability)"; forbidden: city, road, parcel, or building generation; new assets; gameplay; world stitching; visual polish.
+- *Previous (superseded 2026-10-18):* Stage 0 — research framework and city candidate set; the single task was to choose 3 prototype cities and the first city to implement.
 
-## 2. 核心立意
+## 2. Core Proposition
 
-城市身份并不只来自标志性建筑，而来自地形、水域、道路、地块与建筑之间的空间关系。本项目把这些关系转化为可调参数，通过不同 Seed、参数变化和城市混合实验，研究城市身份在什么范围内被保持，又在什么时候被削弱、转化或重新组合。
+A city's identity does not come only from its landmarks, but from the spatial relations between terrain, water, streets, plots, and buildings. This project turns those relations into adjustable parameters and, through different seeds, parameter changes, and city-mixing experiments, studies within what range a city's identity is kept, and when it is weakened, transformed, or recombined.
 
-### 核心问题
+### Core Question
 
-> 城市特征如何被编码成可控的程序化规则？当这些规则连续改变、相互混合或发生拼接时，城市身份如何被保持、削弱或重新形成？
+> How can a city's characteristics be encoded as controllable procedural rules? When those rules change continuously, mix with each other, or are stitched together, how is the city's identity kept, weakened, or re-formed?
 
-## 3. 学期末最低完整成果
+## 3. Minimum Complete Result by the End of the Semester
 
-1. 三种结构差异明确的城市 DNA。
-2. 一条完整生成链：地形 → 网络 → 地块 → 建筑体量。
-3. 参数改变能够产生稳定、可解释的空间变化。
-4. 至少三个城市模块能够拼接或混合成一个 Mini World。
-5. Seed 可以复现，关键结果具有调试图、数值统计和来源证据。
-6. 最终具有可运行程序、项目说明、参数说明、过程图和演示视频。
+1. Three City DNAs with clearly different structures.
+2. One complete generation chain: terrain → network → parcels → building volumes.
+3. Parameter changes produce stable, explainable spatial change.
+4. At least three city modules can be joined or mixed into one Mini World.
+5. Seeds are reproducible; key results have debug views, numeric statistics, and source evidence.
+6. A runnable program, project documentation, parameter documentation, process images, and a demo video.
 
-60 座城市属于研究数据库，不是本学期必须实现的城市数量。
+The 60 cities form a research database; they are not the number of cities to implement this semester.
 
-## 4. 不可违反的工作规则
+## 4. Non-Negotiable Work Rules
 
-- 每次只推进一个可以验证的问题。
-- 上游数据结构未冻结前，不进入下游系统。
-- Seed 只产生规则范围内的可复现变化，不代表城市身份。
-- 每个公开参数都必须对应明确的空间关系。
-- 每座城市至少使用两个可靠来源。
-- 必须区分资料事实、分析推断和艺术化处理。
-- 构建成功不等于空间结果正确；必须同时检查数据和画面。
-- 不因新想法有趣就增加功能。非当前阶段内容进入学期后候选。
-- 不提交、不推送、不部署，除非得到明确指令。
+- Advance only one verifiable question at a time.
+- Do not start a downstream system before the upstream data structure is frozen.
+- A seed only produces reproducible variation within the rules; it does not represent city identity.
+- Every public parameter must correspond to a clear spatial relation.
+- Use at least two reliable sources for every city.
+- Distinguish source facts, analytical inferences, and artistic choices.
+- A successful build does not mean a correct spatial result; check both the data and the image.
+- Do not add features just because a new idea is interesting. Work outside the current stage goes to the post-semester candidate list.
+- Do not commit, push, or deploy without an explicit instruction.
 
-## 5. 阶段路线
+## 5. Stage Roadmap
 
 ### Terrain-first pipeline (current, 2026-10-18)
 
@@ -57,29 +62,29 @@
 | T4 | Road / canal network | Connectivity, hierarchy, boundary interface | Implemented, pending review (03.1, 03.2, 03.3, 05.1b-2) |
 | T5 | Blocks and parcels | Parcel stats, conflict checks | Implemented, pending review (04.1, 04.1b, 04.2) |
 | T6 | Building extrusion | Density, height, coverage, collision checks | Implemented, pending review (05.1, 05.1b-1) |
-| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); no network joins yet |
+| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); road ports joined across harmonised edges into one world NetworkGraph, the others reported with a reason (06.3b); world-coordinated terrain: every shared edge and corner one continuous C¹ surface, edges whose zone exceeds 35° reported unresolved (06.3a-R); default since 06.3a-R2: world datum + band-only correction, chunk cores unchanged, unresolved edges reported as escarpment candidates; 06.3c: every edge classified smooth / valid escarpment / candidate / failed with separate geometry, landform, hydrology and transport status |
 
 ### Original roadmap (superseded 2026-10-18, kept for history)
 
-| 阶段 | 内容 | 完成证据 | 状态 |
+| Stage | Content | Evidence of completion | Status |
 | --- | --- | --- | --- |
-| 0 | 项目立意、研究模板、60 城市候选集、城市家族、3 个原型 | 文档、CSV、来源与选择理由 | 进行中 |
-| 1 | 第一座城市研究与城市 DNA | 分析图、参数配置、三条核心规则 | 未开始 |
-| 2 | 第一座城市的地形系统 | 3 个可复现 Seed、调试图、统计 | 未开始 |
-| 3 | 道路或运河网络 | 连通性、层级和边界接口检查 | 未开始 |
-| 4 | 街区与地块 | 地块状态、尺寸统计、冲突检查 | 未开始 |
-| 5 | 建筑体量 | 密度、高度、覆盖率与碰撞检查 | 未开始 |
-| 6 | 第二、第三种城市 DNA | 同一生成框架下的结构差异 | 未开始 |
-| 7 | 模块拼接或城市混合 | 道路、水体、高程和密度连续性 | 未开始 |
-| 8 | 最终表现与交付 | 可运行版本、文档、视频和备份 | 未开始 |
+| 0 | Project proposition, research template, 60-city candidate set, city families, 3 prototypes | Documents, CSV, sources, and selection rationale | In progress |
+| 1 | Research and City DNA of the first city | Analysis drawings, parameter configuration, three core rules | Not started |
+| 2 | Terrain system of the first city | 3 reproducible seeds, debug views, statistics | Not started |
+| 3 | Road or canal network | Connectivity, hierarchy, and boundary-interface checks | Not started |
+| 4 | Blocks and parcels | Parcel states, size statistics, conflict checks | Not started |
+| 5 | Building volumes | Density, height, coverage, and collision checks | Not started |
+| 6 | Second and third City DNA | Structural differences within the same generation framework | Not started |
+| 7 | Module joining or city mixing | Continuity of roads, water, elevation, and density | Not started |
+| 8 | Final presentation and delivery | Runnable version, documents, video, and backup | Not started |
 
-## 6. 实验记录格式
+## 6. Experiment Record Format
 
-EXP-00 to EXP-00.2 used the original Chinese format below. From 2026-10-18, new entries are written in English with the template that follows; agent rules live in [AGENTS.md](../../AGENTS.md).
+EXP-00 to EXP-00.2 used the original format below (written in Chinese, translated 2026-10-20). From 2026-10-18, new entries are written in English with the template that follows; agent rules live in [AGENTS.md](../../AGENTS.md).
 
 ```text
-实验编号与名称：/ 日期：/ 所属阶段：/ 本次唯一问题：/ 输入：/ 明确不做：
-操作：/ 验证证据（文件、数值、视觉检查、来源）：/ 结果：/ 限制或失败：/ 结论：/ 下一次唯一任务：
+Experiment ID and name: / Date: / Stage: / Single question: / Inputs: / Explicitly out of scope:
+Operations: / Verification evidence (files, values, visual check, sources): / Result: / Limits or failures: / Conclusion: / Next single task:
 ```
 
 ```text
@@ -97,89 +102,89 @@ EXP-00 to EXP-00.2 used the original Chinese format below. From 2026-10-18, new 
 - Next single task:
 ```
 
-## 7. 实验记录
+## 7. Experiment Records
 
-### EXP-00：项目重置与研究框架
+### EXP-00 — Project reset and research framework
 
-- **日期：** 2026-10-17 至 2026-10-18
-- **所属阶段：** 阶段 0
-- **本次唯一问题：** 如何把发散的城市世界想法收缩为两个月内可完成、可解释和可验证的程序化系统？
-- **输入：** 老师的核心要求、现有项目经验、城市 DNA 构想。
-- **明确不做：** 不编写生成代码，不增加资产，不实现世界拼接。
+- **Date:** 2026-10-17 to 2026-10-18
+- **Stage:** Stage 0
+- **Single question:** How can a divergent idea of a city world be narrowed into a procedural system that can be completed, explained, and verified within two months?
+- **Inputs:** the instructor's core requirements, existing project experience, the City DNA concept.
+- **Out of scope:** no generation code, no new assets, no world stitching.
 
-#### 操作
+#### Operations
 
-1. 将项目从“游戏”重新定义为“可控的程序化世界”。
-2. 冻结“城市身份在参数变化中被保持、转化和混合”的核心立意。
-3. 建立统一城市研究模板和 CSV 数据表。
-4. 将 60 座城市定义为研究数据库，而不是本学期实现数量。
+1. Redefined the project from a "game" to a "controllable procedural world".
+2. Froze the core proposition that "city identity is kept, transformed, and mixed under parameter change".
+3. Built a unified city research template and a CSV data table.
+4. Defined the 60 cities as a research database, not the number of cities to implement this semester.
 
-#### 验证证据
+#### Verification evidence
 
-- `research/city-research-template.md`：包含字段定义、评分标准、事实/推断/艺术化处理的区分、双来源要求和 Seed 原则。
-- `research/city-research-template.csv`：40 个字段、60 条数据行。
-- 前三条候选记录为威尼斯、曼哈顿和非斯古城，状态均为“待研究”。
-- Markdown 声明字段数与 CSV 实际字段数一致，均为 40。
-- 本实验没有修改生成程序、地形、建筑或资产。
-- **视觉检查：** 不适用，本实验只建立研究结构。
+- `research/city-research-template.md`: field definitions, scoring criteria, the distinction between fact / inference / artistic choice, the two-source requirement, and the seed principle.
+- `research/city-research-template.csv`: 40 fields, 60 data rows.
+- The first three candidate records are Venice, Manhattan, and Fez el-Bali, all with status "to be researched".
+- The field count declared in the Markdown matches the actual CSV field count: 40 in both.
+- This experiment did not change the generator, terrain, buildings, or assets.
+- **Visual check:** not applicable; this experiment only builds the research structure.
 
-#### 结果
+#### Result
 
-研究框架已经可以统一比较不同城市，并将研究结论压缩为可编程的城市规则。模板结构检查通过。
+The research framework can now compare different cities in one format and condense research findings into programmable city rules. The template structure check passed.
 
-#### 限制
+#### Limits
 
-目前还没有建立 60 座候选城市名单，也没有验证城市家族是否覆盖足够多的空间类型。三个原型城市仍然只是暂定候选。
+The 60-city candidate list did not exist yet, and it had not been checked whether the city families cover enough spatial types. The three prototype cities were still only provisional candidates.
 
-#### 结论
+#### Conclusion
 
-阶段 0 的研究工具已经建立，可以进入候选城市选择，但仍然不能开始程序化生成代码。
+The Stage 0 research tools are in place. Candidate city selection can begin, but procedural generation code still cannot start.
 
-#### 下一次唯一任务
+#### Next single task
 
-建立 60 座候选城市长名单，确保地理条件、路网结构、街区尺度和建筑类型具有足够差异，再将它们归入 8–12 个城市家族。
+Build a longlist of 60 candidate cities with sufficiently different geography, street-network structure, block scale, and building types, and group them into 8–12 city families.
 
-### EXP-00.2：60 座城市长名单与分类
+### EXP-00.2 — 60-city longlist and classification
 
-- **日期：** 2026-10-18
-- **所属阶段：** 阶段 0
-- **本次唯一问题：** 如何用可编码的主导空间逻辑建立全球城市候选集，而不提前把城市简化为未经验证的参数？
-- **输入：** 项目罗盘、城市研究统一模板、代表城市的权威来源锚点。
-- **明确不做：** 不填写完整城市 DNA，不选择最终原型，不修改程序、分支或资产。
+- **Date:** 2026-10-18
+- **Stage:** Stage 0
+- **Single question:** How can a global set of candidate cities be built from codable dominant spatial logics, without reducing cities too early to unverified parameters?
+- **Inputs:** the project compass, the unified city research template, authoritative source anchors for representative cities.
+- **Out of scope:** no complete City DNA, no final prototype choice, no change to code, branches, or assets.
 
-#### 操作
+#### Operations
 
-1. 建立 10 个城市家族，每个家族由一类主导空间生成逻辑定义。
-2. 每个家族选取 6 座城市，总计 60 座，并为每座城市限定研究区域。
-3. 为每座城市记录 3 个候选空间特征、潜在生成规则和研究优先级。
-4. 将所有尚未完成双来源核验的内容明确标记为待验证。
-5. 为每个家族记录共享规律、代表城市和与其他家族的区别。
+1. Defined 10 city families, each by one kind of dominant spatial generation logic.
+2. Chose 6 cities per family, 60 in total, and limited a study area for each city.
+3. Recorded 3 candidate spatial features, potential generation rules, and a research priority for each city.
+4. Marked everything without completed two-source verification explicitly as "to be verified".
+5. Recorded each family's shared patterns, representative cities, and differences from other families.
 
-#### 验证证据
+#### Verification evidence
 
-- `research/city-longlist-60.md`：60 座城市、10 个家族和分类统计。
-- 城市条目数量 60，唯一城市数量 60，重复条目 0。
-- 家族数量 10，每个家族 6 座城市。
-- 编号从 01 至 60 连续，缺失编号 0。
-- 威尼斯、曼哈顿（纽约）和非斯古城均已纳入，但没有预设最终入选。
-- 文档使用标准 Markdown 表格与链接，没有依赖 HTML。
-- **视觉检查：** 本任务为 Markdown 研究文档，未进行程序世界视觉检查。
+- `research/city-longlist-60.md`: 60 cities, 10 families, and classification statistics.
+- City entries: 60; unique cities: 60; duplicate entries: 0.
+- Families: 10, with 6 cities each.
+- IDs run continuously from 01 to 60; missing IDs: 0.
+- Venice, Manhattan (New York), and Fez el-Bali are all included, without presetting the final selection.
+- The document uses standard Markdown tables and links and does not rely on HTML.
+- **Visual check:** this task is a Markdown research document; no visual check of the procedural world was done.
 
-#### 结果
+#### Result
 
-阶段 0 的候选城市覆盖框架已经建立。分类可以转译为水网、网格、放射、有机生长、边界、坡地、水文、超级街区、线性走廊和多中心网络等不同生成问题。
+The Stage 0 candidate-city coverage framework is in place. The classification can be translated into different generation problems: water networks, grids, radial plans, organic growth, boundaries, hillsides, hydrology, superblocks, linear corridors, and polycentric networks.
 
-#### 限制
+#### Limits
 
-长名单不是完整研究结论。多数城市尚未获得双来源支持，研究区域尺度尚未统一，城市之间的次要家族和混合比例也未定义。
+The longlist is not a complete research conclusion. Most cities do not yet have two-source support, study-area scales are not yet unified, and secondary families and mixing ratios between cities are not defined.
 
-#### 结论
+#### Conclusion
 
-任务 00.2 通过结构检查，可以进入原型比较；在来源核验完成前不能把候选特征直接写成最终参数或生成代码。
+Task 00.2 passes its structural check and can move on to prototype comparison. Until source verification is complete, candidate features must not be written directly as final parameters or generation code.
 
-#### 下一次唯一任务
+#### Next single task
 
-从 10 个高优先级候选开始完成双来源核验，比较结构差异、资料质量和实现可行性，选择 3 座原型城市与第 1 座实现城市。
+Starting from the 10 high-priority candidates, complete two-source verification, compare structural differences, source quality, and implementation feasibility, and choose 3 prototype cities and the first city to implement.
 
 ### OPS-01 — Codex + Obsidian collaboration rules
 
@@ -436,7 +441,7 @@ EXP-00 to EXP-00.2 used the original Chinese format below. From 2026-10-18, new 
 ### 06.1 — City DNA 3 → 6 (Chicago, Amsterdam, Lisbon by configuration)
 
 - **Date / Stage / Single question:** 2026-10-18 / T3–T6 / Can three more cities (Chicago, Amsterdam, Lisbon) be added purely as City DNA configuration on the existing Grid / Organic / Canal-Street strategies, selectable manually and in auto-match, while the original three DNAs and all upstream terrain stay bit-identical?
-- **Pre-checks:** schema = `CITY_DNA` (conditions, conflicts, hints) + `DNA_STRATEGY` + `PARCEL_RULES.byDNA` + `BUILDING_RULES.byDNA`; the network read `STRATEGIES[strategy]` only, so a per-DNA parameter variant was impossible without one hook. Research available: longlist rows 02 Amsterdam (F1), 10 Chicago (F2), 35 Lisbon (F6) — candidate features only, all "待验证", no study, no source anchor, no research-template row. Baseline of the original DNAs recorded first (`city-dna-baseline.json`, 36 runs).
+- **Pre-checks:** schema = `CITY_DNA` (conditions, conflicts, hints) + `DNA_STRATEGY` + `PARCEL_RULES.byDNA` + `BUILDING_RULES.byDNA`; the network read `STRATEGIES[strategy]` only, so a per-DNA parameter variant was impossible without one hook. Research available: longlist rows 02 Amsterdam (F1), 10 Chicago (F2), 35 Lisbon (F6) — candidate features only, all "to be verified", no study, no source anchor, no research-template row. Baseline of the original DNAs recorded first (`city-dna-baseline.json`, 36 runs).
 - **Changes:** `networkStrategies.js` — 3 `DNA_STRATEGY` entries, `DNA_NETWORK_OVERRIDES`, `strategyParams(dna)` (strategy defaults + one-level merge); `NetworkGenerator.js` — params from `strategyParams`, optional `fixedAxisDeg` in the grid strategy (2 lines); `BlockGenerator.js` — expected grid block for any grid-strategy DNA (informational stat); `cityMatchRules.js` — 3 DNA entries with conditions / conflicts / hints and a new `unsupported` list, order extended to 6; `CityMatcher.js` — two report strings; `parcelRules.js`, `buildingRules.js` — 3 `byDNA` entries; `scripts/verify-city-match.mjs` — 6 DNAs, Amsterdam no-water check; new `scripts/verify-city-dna.mjs`. No new generator, no terrain / tunnel / chunk / transition change. The selector lists DNAs from `CITY_DNA`, so no UI code changed.
 - **New DNA configs (all numbers A; "src TBD" = commonly cited figure without a registered source):**
   - `chicagoGrid` (Grid): 200 × 100 m spacing, widths 30 / 20 m, fixed cardinal axis 0°, bridges on every street (span ≤ 120 m); lots 7.6 × 38 m (25 × 125 ft, src TBD); 2–45 floors, centre weight 0.9, radius 220 m (tight tower core). Match: continuous land (w3), flat land (w2), water crossing the grid (w2: splitsLand 1 / boundaryOnly 0.6 / none 0.3), 2 TBD.
@@ -537,7 +542,212 @@ EXP-00 to EXP-00.2 used the original Chinese format below. From 2026-10-18, new 
 - **Pre-checks for `main`:** `npm ci --dry-run` accepts the lockfile; a build from a clean `git archive` of the commit gives the same 256 output files as the local build, with byte-identical world-grid, seed-terrain, and three.js chunks (other chunks differ only by CRLF inside preserved comments and bundled Markdown).
 - **Terrain Seam finding:** checked with Playwright. With the local models, the page loads 11 model requests and exposes `__terrainSeamLab`. With the models blocked (fresh clone), `tiny_tokyo.glb` returns 404 and the uncaught top-level `await` stops `main.js`. On the public site since M01 the same URL falls through the SPA rewrite to `index.html` ("Unexpected token '<'"), so the deployed Terrain Seam page does not initialise. The previous release (2026-09-28) had no Terrain Seam page. Not fixed (document-only decision); the M01 smoke test did not cover this page.
 - **Verification:** `node scripts/verify-live-release.mjs` against the public site: 10/10 checks, 51 / 51 requests 200, 0 browser errors (before the `main` push). `verify-markdown-links`: clean.
+- **`main` push and CI deploy:** `main` fast-forwarded `a38c73d..b59b26c` (no force); the merge workflow published a new `live` release at 2026-10-19 22:51:43 −0400 (hub entry `/assets/main-CF2seIHF.js`). `verify-live-release.mjs` after the CI deploy: 10/10, 51 / 51 requests 200, 0 browser errors. (Recorded after the push, so this line is not in `b59b26c`.)
 - **Screenshots:** none (text-only).
 - **Open issues:** the live Terrain Seam page (see above); §1 "Current stage: T1" / "Current single task" / "Forbidden now" still describe T1 and were not changed.
 - **Review status:** Pending review.
 - **Next single task:** Decide how the Terrain Seam page should behave without its models (catch the reference-model load, drop it from the build, or ship the models).
+
+### M03 — Obsidian Midterm Review entry
+
+- **Date / Stage / Single question:** 2026-10-19 / midterm review (documentation only) / Can an architecture-design teacher read the research statement, generation logic, actual results, and limitations in a fixed order inside the existing vault, without a copy of this log?
+- **Changed files:** new folder `docs/procedural-mini-world/midterm-review/` with [00-midterm-review.md](./midterm-review/00-midterm-review.md) (home, reading order, status words, missing-evidence list) and chapters 01 Project Statement, 02 System Workflow, 03 Key Parameters, 04 Experiments, 05 Midterm Results, 06 Limitations, 07 Next Steps (each with previous / home / next links); this log §1 (current stage, state, single task, forbidden scope; old values kept as "superseded 2026-10-19"); `README.md` and `EXPERIMENT-INDEX.md` (link to the review). No generator, page, or deployment change.
+- **Sources reused:** this log (§1–§7), `research/` (prototype selection, Manhattan study, 60-city longlist), `experiments/seed-terrain/config.js` and `experiments/world-grid/worldConfig.js` for parameter ranges, `experiments/seed-terrain/evidence/city-dna-comparison.json` (best-fit terrain per DNA), existing screenshots. Every number in the review is taken from a logged verifier run or the M01 / M02b live check.
+- **Screenshots:** none new. The review embeds 19 existing captures (18 from task verifiers, 1 from the live check), each captioned with seed / world seed, landform, City DNA, and transition width as recorded in its task entry.
+- **Checks:** `verify-markdown-links` (all relative links and image paths); Obsidian wikilinks: none used in the vault; duplicate files: `docs/assets/screenshots/firebase-hosting-home.png` and `game-lab-home.png` are byte-identical (the Assignment 1 checklist presents them as separate local and hosted captures; not changed), `.obsidian/app.json` = `appearance.json` (both `{}`); many folders contain `README.md` (unambiguous with relative links).
+- **Missing evidence (TBD), listed in the review home:** T7 video; Manhattan DEM / street-centreline / PLUTO measurements; log entries for 00.3 and 01.1; research rows for Chicago, Amsterdam, Lisbon; screenshot of the failing tunnel case (mountain 7922, Chicago); cross-tile streets, city influence, and DNA mixing (not implemented); human review of every task; original 02.2 capture (overwritten by 02.2b).
+- **Review status:** Pending review.
+- **Next single task:** Instructor / author review of T1–T7 using the Midterm Review; record accept or reject per task in this log.
+
+### DOC-01 — Obsidian knowledge base reorganisation
+
+- **Date / Stage / Single question:** 2026-10-19 / 20 / documentation only (no stage change) / Can the existing vault present research logic, implementation, results, and next stage in six categories, without moving files, duplicating records, or claiming unverified results?
+- **Inventory:** active vault = repository root; the other registered vault (`URBAN DATA`) holds one empty note; the Venice worktree's untracked experiments are a file-identical subset of the main tree. Before the change: 54 notes + 65 asset files (manifest kept in session scratch); `HEAD` `b59b26c`.
+- **Changes:** no file moved, renamed, or deleted. 21 new notes: [HOME](./HOME.md) (six categories + attachments, by index); `01-foundation/project-foundation.md` (original proposal kept verbatim, design evolution early → current → future, three independent concepts, roadmap mirroring §5); `research/city-dna-library.md` (values read from the config modules, all tagged A); `03-generative-system/` (architecture + 7 subsystem notes + City Influence marked planned); `04-experiments/` (Terrain, Network, Urban Form, World, Archived: one card per task with date, question, method, reuse, seed / parameters, test numbers, screenshots, conclusion, open issues, commit); `06-release/` (release and resources, deployment history); `99-attachments/screenshot-index.md`; `docs/_meta/doc-01-migration-report.md`. `midterm-review/00-midterm-review.md` rewritten in place as the Midterm Overview (8 sections); chapter 5 targets aligned with §3; superseded banner on `docs/_meta/current-project-state.md`; one HOME link each in `README.md`, `docs/README.md`, `docs/_meta/project-map.md`, `EXPERIMENT-INDEX.md`.
+- **Checks:** links and images resolve (`verify-markdown-links`); 0 wikilinks; 0 orphan notes; 34 / 34 PMW screenshots indexed and referenced; 119 / 119 pre-change files present; external project URLs 200 (GitHub 404 anonymously: private); research-source URLs on four sites 403 to automated requests (Unverified).
+- **Not changed:** Three.js code, generators, Git branches, Firebase deployment. Nothing committed.
+- **Open items:** see the [migration report](../_meta/doc-01-migration-report.md) §6 (duplicate Assignment 1 screenshot, orphan note naming, 3D model licences TBD, 00.3 / 01.1 log entries, Terrain Seam page, 403 sources).
+- **Review status:** Pending review.
+- **Next single task:** Human review of the knowledge base (HOME and Midterm Overview); then decide the open items.
+
+### DOC-02 — Standalone experiment archive (one page)
+
+- **Date / Stage / Single question:** 2026-10-20 / documentation only / Can the later phase (02.1 → 06.3a + release) be read top to bottom in one note, with every stage's real screenshots in place?
+- **Changes:** new folder `docs/procedural-mini-world/04-experiments/EXP-Procedural-Mini-World/` with one note, [Procedural-Mini-World.md](./04-experiments/EXP-Procedural-Mini-World/Procedural-Mini-World.md) (13 sections in build order, incl. superseded algorithms and fixed failures), and `Screenshots/` holding 35 images. Of these, 34 are byte-identical copies of the committed captures under stage names (`NN-stage-x-subject-kind.png`) and 1 is the 2026-10-19 22:52 live-site capture from `verify-live-release.mjs`, previously only in `%TEMP%`. Originals not modified. One entry link each in the Midterm Overview and HOME; the storage notes in HOME and the screenshot index updated to mention the copies.
+- **Checks:** 35 / 35 `![[…]]` embeds resolve to exactly one vault file; each image embedded once, in its stage; 1 H1, 13 H2 in order, no level skip; 14 / 14 heading links resolve; `verify-markdown-links` clean.
+- **Coverage:** stages 02–09, 11–13 have screenshots; 01 is text only; **10 Tunnel-Building Constraints has no capture** (Partial; rules exist in 04.1 / 05.1b-2, no dedicated test).
+- **Missing screenshots:** 02.2 original; 03.2 defects (before images); tunnel near buildings; failing tunnel 7922 + Chicago; cross-tile streets (not implemented); T7 video.
+- **Not changed:** code, models, branches, deployment. Nothing committed.
+- **Review status:** Pending review.
+- **Next single task:** Human review of the archive page.
+
+### M04 — Public midterm experiment archive + complete Flavor Clash assets
+
+- **Date / Stage / Single question:** 2026-10-20 / midterm review release (no stage change) / Can every prior experiment be reached from the public site, with all five Flavor Clash labs actually runnable online?
+- **Reused files or functions:** existing Firebase project `gameeeee-zc626`, Vite multi-page inputs, M01 `verify-live-release.mjs`, Flavor Clash runtime-ready hooks, and the local active Terrain Seam model set.
+- **Changed files + working-tree state:** `site.js` and `site.css` add grouped experiment switchers; new `scripts/verify-hosted-experiments.mjs`; this entry; screenshot below. Existing dirty and untracked documentation work was preserved. No generator, City DNA, asset transform, branch, commit, push, Firestore, Authentication, or Storage change.
+- **Seed / City DNA / key parameters:** no generator parameter change. Flavor Clash screenshot uses its default `FLAVOR-CLASH-01` world seed. Terrain Seam ships only the 11 model files referenced by the current page (`tiny_tokyo`, Japan `04`–`11`, Venice `v_01`–`v_02`), 129,376,672 bytes in the release; inactive local models remain excluded.
+- **Entry point + verification method:** <https://gameeeee-zc626.web.app/#flavor>; `node scripts/verify-hosted-experiments.mjs https://gameeeee-zc626.web.app`; `node scripts/verify-live-release.mjs https://gameeeee-zc626.web.app`.
+- **Result + checked data:** Vite production build passed (297 published files after active models were added to `dist`; size warnings only). The fully verified release was Hosting version `5b309451df21cb8d`, release `1792472195310000`, at 2026-10-20 00:56:35 −0400; a final log-sync release published the same experiment payload plus this M04 entry as version `ff8f42787443ff0f`, release `1792472347592000`, at 00:59:07 −0400. All 12 experiment routes returned their own HTML entry and JavaScript asset with HTTP 200. The five Flavor Clash pages (map prototype, Iceland, road projection, road mesh, Terrain Seam) and Manhattan greybox reached their runtime-ready hooks with 0 console, page, or HTTP errors. The hub exposes five Flavor Clash tabs and three Mini World tabs. The existing Mini World live verifier passed 10 / 10 checks and 51 / 51 browser requests (3 × 3 world ready, City ID switch, alternate world seed, single chunk), with 0 errors.
+- **Screenshots:** ![Public Flavor Clash archive with all five experiment tabs](../assets/screenshots/procedural-mini-world/m04-all-experiments-live-after.png) — public Firebase site, `FLAVOR-CLASH-01`, 1440 × 900.
+- **Confirmed:** the previous live Terrain Seam failure was missing deployment assets, not a generator defect; shipping the active GLBs makes the public page initialise normally. All public experiment entries remain available; the switcher changes only discovery/navigation.
+- **Open issues:** active GLBs remain ignored local files, so a future clean-clone or GitHub Actions deployment will omit them and can break Terrain Seam again unless an explicit durable asset-hosting decision is made. The current live release is verified, but this release state is not committed or pushed.
+- **Review status:** Pending review.
+- **Next single task:** Instructor review of the public experiment archive; separately decide durable versioned hosting for the 11 active Terrain Seam models before the next CI deployment.
+
+### DOC-03 — English-only Markdown
+
+- **Date / Stage / Single question:** 2026-10-20 / documentation only / Can every Markdown file in the vault be fully English, with no Chinese characters, without changing any recorded fact?
+- **Rule (user, 2026-10-20):** all Markdown files are written in English only; no Chinese may appear in any note.
+- **Changes:** full faithful translations of the four research notes (`city-research-template.md`, `city-longlist-60.md`, `prototype-city-selection.md`, `manhattan-spatial-study.md`), each with a translation note pointing to the original wording in Git (`7b21c3e`); this log's compass §1–§6 and entries EXP-00 / EXP-00.2 translated line by line (96 lines, structure unchanged); Chinese fragments replaced in `docs/logs/2026-10-18.md`, `2026-10-19.md`, `project-foundation.md` (proposal quote now in English), `EXPERIMENT-INDEX.md`, `city-dna-library.md`, `archived-experiments.md`, `doc-01-migration-report.md`. The repository folder name, which ends in a full-width exclamation mark, is written with an ASCII "!" and the difference stated in words.
+- **Not changed:** `research/city-research-template.csv` (not Markdown); its header row keeps the original field names, mapped one-to-one by position to the English field list.
+- **Checks:** CJK / full-width scan over all 76 Markdown files: 0 lines; `verify-markdown-links`: clean.
+- **Review status:** Pending review.
+
+### DOC-04 — Visual knowledge-base entry for the midterm review
+
+- **Date / Stage / Single question:** 2026-10-20 / documentation only / Can a first-time reader see the question, the pipeline, the T1–T7 status, the evidence, and the decisions the next step waits for, on one page?
+- **Audit findings:** no `docs/procedural-mini-world/README.md`; `HOME.md` was a file map without diagrams; 0 Mermaid diagrams in the PMW notes; no `.canvas` files; status words Completed / Partial / Planned did not separate Verified from Accepted. The site's Files & Notes page lists no `docs/procedural-mini-world/` notes (no matching category in `site.js`, no fallback group), and its image lookup only covers the top level of `docs/assets/screenshots/`. Both need a `site.js` change and were **not changed** (out of scope).
+- **Changes:** new [README.md](./README.md) with the 10 requested sections; 3 Mermaid diagrams (Terrain-first pipeline, stage dashboard with status classes, study loop); review-status table; 7-step reading route; stage dashboard with code / screenshot / data / verifier per stage; 8-image evidence gallery with standard Markdown embeds; decisions table. `HOME.md` kept as a one-line pointer; 12 entry links repointed to README. Status vocabulary in 17 existing notes changed to Implemented / Verified / Pending review / Implemented (partial) / Proposed / Historical, with status words only, no content change. No task is recorded as Accepted or Rejected.
+- **Checks:** all 5 Mermaid diagrams in the PMW notes and dated logs parse and render with Mermaid 11 in headless Chrome; `verify-markdown-links` clean; English-only scan clean.
+- **Not changed:** code, page features, Firebase, generated results, `.obsidian/`, screenshots, the in-progress changes of other work in the tree (`site.js`, `site.css`, `experiments/terrain-seam/main.js`, `.gitignore`, new `.glb` files and `m04-…` screenshot). Nothing committed.
+- **Review status:** Pending review.
+- **Next single task:** Human review of the README and of the decisions table (accept / reject per task).
+
+### DOC-05 — Knowledge base on the website's Files & Notes page
+
+- **Date / Stage / Single question:** 2026-10-20 / documentation delivery (no stage change) / Can the website's Files & Notes page list the Procedural Mini World notes and show their nested screenshots and Mermaid diagrams, without disturbing other work in `site.js`?
+- **Pre-check:** `site.js` already held another task's uncommitted change (sections / experiment switcher / `navigate()`, 38 added lines). No other agent session was running; my edits touch different regions. The file was backed up first, and afterwards all 38 lines of the other change were confirmed present.
+- **Changes (`site.js` only, 3 hunks):**
+  - (1) document-image lookup widened from `./docs/assets/screenshots/*` to `./docs/**/*.{png,jpg,jpeg,webp,gif,svg}`, excluding the Experiment Archive's `Screenshots/` copies (byte-identical, Obsidian-only `![[…]]` references, 11.8 MB);
+  - (2) new category "PROCEDURAL MINI WORLD / MIDTERM KNOWLEDGE BASE" for `docs/procedural-mini-world/`, with its README pinned first;
+  - (3) fallback group "OTHER NOTES" for any note no rule matches.
+  - The Markdown renderer (`markdown-viewer.js`, which already normalises relative image paths and loads Mermaid 11 once from the CDN) is unchanged; no library added.
+- **Build:** `npm run build` ok; the README and every knowledge-base note are bundled; all 8 README gallery images are emitted; 0 archive copies emitted. Images in `dist`: 16.9 MB (previously 1.8 MB). `dist` is 145 MB in total, of which ≈ 124 MB are 11 Terrain Seam `.glb` models added by the other task's uncommitted `experiments/terrain-seam/main.js` change, not by DOC-05.
+- **Verification (headless Chrome on `vite preview` of `dist`):**
+  - Files & Notes lists 77 / 77 notes (previously 40; 36 PMW notes and `AGENTS.md` were not listed). The new group has 36 notes with the README first; "OTHER NOTES" holds `AGENTS.md`.
+  - README: 8 / 8 images decoded, 3 / 3 Mermaid diagrams rendered as SVG. A note link from the README opens the Midterm Overview (2 / 2 images). `02-system-workflow.md` 8 / 8 images; `world-grid-and-seam.md` 1 / 1.
+  - Regression: the 10 old categories have identical counts under the old and new rules. Images load in `docs/README.md` (1 / 1, top level), `terrain-seam-building-scatter.md` (12 / 12, nested folder, previously not resolvable), `first-shader-experiments.md` (16 / 16), and `experiments/voxel-terrain/README.md` (5 / 5). Home shows 10 cards; World Grid reaches READY. 0 page errors, 0 HTTP errors.
+- **Screenshots:** ![Files & Notes list with the Procedural Mini World group](../assets/screenshots/procedural-mini-world/doc05-files-notes-list-after.png) ![README rendered on the site with Mermaid diagrams](../assets/screenshots/procedural-mini-world/doc05-files-notes-readme-after.png) Local preview of `dist` (not the public site), 1600 × 1000.
+- **Open issues:** the Experiment Archive note shows its 35 `![[…]]` embeds as plain text on the site (Obsidian-only syntax; the renderer was not extended). In the README stage table the narrow first and last columns wrap. Not deployed and not pushed: the public site still runs the M02b build.
+- **Review status:** Pending review.
+
+### M05 — Durable Terrain Seam model bundling
+
+- **Date / Stage / Single question:** 2026-10-20 / release repair (no stage change) / Can a clean GitHub Actions build include every active Terrain Seam model and initialise the production page without changing terrain or scene geometry?
+- **Changed files:** `.gitignore` explicitly unignores the 11 active runtime GLBs; `experiments/terrain-seam/main.js` imports those files with Vite `?url` handling and passes the emitted URLs to the existing loaders. No terrain algorithm, geometry, City DNA, placement transform, or Venice / Tokyo scene logic changed.
+- **Active assets:** `tiny_tokyo.glb`, Japan `04.glb`–`11.glb`, Venice `v_01.glb`–`v_02.glb`; 11 files, 129,376,672 bytes total. All exist and are no longer ignored, but remain untracked until explicitly staged and committed.
+- **Clean-build verification:** bundled Node `npm ci` passed, followed by `npm run build` (Vite 7.3.6). The working-tree build transformed 1056 modules; an isolated `git archive` of `HEAD` overlaid with only this runtime fix and the 11 models transformed 956 modules and also passed. `dist/assets/` contains exactly 11 hashed GLBs whose combined byte count matches the sources. Production preview served every model with HTTP 200 and `model/gltf-binary`; 0 console or page errors.
+- **Runtime verification:** `window.__terrainSeamLab.ready = true`; Seam Check max and mean height error = 0, compared vertices = 121, left / right spacing = 0.45 / 0.45, shared boundary x = 0; Venice / Japan buildings = 1021 / 51; Japan GLB meshes = 151. Canvas rendered at 1008 × 650 in the headless production-preview check.
+- **Screenshots:** none; request/response and runtime metrics provide the verification evidence.
+- **Deployment status:** locally verified only. Nothing committed, pushed, or deployed. The currently working public Firebase release is the earlier manual M04 release; the durable CI fix remains Pending deployment.
+- **Review status:** Pending review.
+- **Next single task:** After approval, stage only the two source-control changes, these 11 GLBs, and this log hunk; commit on the experiment branch, integrate into `main`, and let the existing Firebase Hosting merge workflow build and publish it.
+
+### 06.3b — Road network seam across chunks (3 × 3 world)
+
+- **Date / Stage / Single question:** 2026-10-20 / T7 / On the shared edges that 06.3a joined, can road EdgePorts of neighbouring chunks become one connected network topology (one joint node, routable across chunks), changing roads only inside both transition bands, with every port that is not joined carrying a measured reason?
+- **Step 1 — 06.3a re-check (gate):** `node scripts/verify-world-seam.mjs` re-run before any change: passes, numbers identical to the 06.3a entry (6201 W 128: 4 / 12 edges joined C¹, Δh 0 on joined edges, 8 / 12 unresolved with reasons, corners 1 / 4 closed, one-sided water edges 6 → 4; seeds 6202 / 6203: 6 / 4 joined; W 64 / 256: 5 / 5). Committed evidence restored after the run. Judgement: 06.3a passes its own definition (join where possible, report where not). Unresolved edges are an upstream limit, handled in 06.3b as "no road join, reason = terrain edge unresolved" — not repaired, not bypassed.
+- **Changed files:** new `experiments/world-grid/RoadSeam.js` (stitching, world graph, Dijkstra), `scripts/verify-road-seam.mjs`, `experiments/world-grid/evidence/world-road-seam.json`; changed `WorldGrid.js` (city layer split: network → world road seam → blocks / parcels / buildings on the stitched network), `worldConfig.js` (`roadMode` 'joined' | 'independent'), `main.js` (two-pass rebuild, Roads control, panel, lab `roadSeam / roadAudit / reach / roadOrderTest`), `SeamView.js` (port join status, joints, connectors), `index.html` (legend); `scripts/verify-world-seam.mjs` runs with `roads=independent`; `scripts/verify-world-grid.mjs` compares signatures without the new `rawNetwork` field and asserts it equals `network` in raw mode. Unchanged: everything in `experiments/seed-terrain/` (single-chunk entry, terrain, City DNA, network generator, tunnels 05.1b-2), chunk size, City IDs, TerrainHarmonizer. Nothing committed.
+- **Algorithm (`RoadSeam.js`):** input = each chunk's unchanged NetworkGraph + harmonised fields + the 06.3a edge report. Per shared edge in canonical order: (1) gate — empty neighbour → pending; canal ports → pending (canal joins not in this task); terrain edge unresolved / raw → rejected. (2) Pairs — road ports grouped by boundary node, candidates within 2·W·tan 25° (119 m at W 128), nearest first: class gap ≤ 1, approach ≤ 60° from the edge normal, joint J = midpoint (or the frozen side's position: bridges, tunnels, and graded mountain roads are never moved), joint heights equal within 0.5 m, each road re-routed from its redirect anchor (inner band line) or its first inner node straight to J — lean ≤ 25°, bend ≤ 40°, on land, cell slope ≤ the DNA's road limit (`maxSlopeDeg`, same land test as the network), no crossing or node contact without a junction. (3) Stubs — a remaining road port may continue straight into the neighbour's band to the nearest neighbour road (T-junction; split, or snap ≤ 2 m), same checks. Changed chunks get a rebuilt NetworkGraph via the existing `GraphBuilder.finalize` (ports, stats, signature recomputed); unchanged chunks keep the original object. World graph = all chunk graphs + one zero-length seam link per connection. 6 public rules, all spatial.
+- **Data:** connection = { edge, kind pair | stub, joint {x, z, yA, yB}, port positions, offset, shifts, classes, Δy, grade, bend, lean, connector polylines + width, node id in each stitched graph }; port record = { chunk, edge, side, position, class, status connected | rejected | pending, reason, failed pair attempt }.
+- **Shared-edge statistics (W 128):** 6201 — 12 edges, 4 terrain-joined, 2 with road joins; 68 ports: 14 connected, 44 rejected, 10 pending; 8 joins = 6 pairs on chunk_-1_0 | chunk_0_0 (Chicago | Manhattan, offset 9.48 m, re-route lean 4.4° per side, connectors ≤ 71 m deep) + 2 stubs on chunk_0_0 | chunk_0_1 (17 m and 67 m, bends 8° and 20°). 6202 — 6 terrain-joined, 6 with road joins, 26 joins (0 pairs, 26 stubs); ports 26 / 34 / 11. 6203 — 4 terrain-joined, 2 with road joins, 9 joins (5 pairs, 4 stubs); ports 14 / 45 / 12. Rejection reasons (6201): terrain edge unresolved 22; no neighbour road inside its band 13 (Amsterdam chunk_-1_1 has 0 km of road; the Chicago and Manhattan ports facing it have nothing to join); stub turn > 40° 6; connector over terrain steeper than the 10° Manhattan limit 3. Pending: empty slot 10.
+- **Tests (`node scripts/verify-road-seam.mjs`, all pass, 0 browser errors):** every joint = one `port` node in each stitched graph, position error 0, Δy 0 (all seeds); visual-only contacts (ports of both chunks at one point without a link) 0; new crossings 0 per chunk; connectors: 0 wet samples, inside the band, cell slope within the DNA limit (along-road grade max 8.7° / 16.1° / 10.9° per seed); no join on an unresolved or raw edge; every unjoined port has a reason; every joint traversable in the world graph; chunks sharing a world component routed by Dijkstra (6201: chunk_-1_0 → chunk_0_1 1932 m over 2 seam links; 6202: chunk_-1_0 → chunk_1_1 5210 m over 3 seam links; components {-1_0, 0_0, 0_1} in 6201 / 6203, {-1_0, -1_1, 0_0, 0_1, 1_1} + {1_-1, 1_0} in 6202); terrain signatures identical to independent roads; unchanged chunks bit-identical to independent roads (network, blocks, parcels, buildings); changed chunks: city layer rebuilt on the stitched graph (`blocks.source.networkSignature` = stitched signature), 0 buildings on a connector corridor; input-order independence (reversed / rotated) identical; reload identical; each seed loaded twice identical; all 9 solids closed. City ID change chunk_0_1 → Amsterdam: 0 terrain rebuilds, 1 network rebuilt, city layers rebuilt for chunk_0_1 + chunk_0_0 (its stub set changed), others unchanged; back to auto → seam signature and all layers identical to the start. Regression: `verify-world-seam.mjs` (06.3a) and `verify-world-grid.mjs` (06.2, raw) pass; their evidence files and screenshots restored to the committed versions.
+- **Downstream change (6201, independent → joined):** chunk_-1_0 Chicago buildings 2066 → 2056 (mean height 40.5 → 39.8 m); chunk_0_0 Manhattan blocks 73 → 74, parcels 1739 → 1732, buildings 1599 → 1597; chunk_0_1 blocks 12 → 13, parcels 464 → 462, buildings 416 → 405. No stale buildings kept.
+- **Performance:** road seam 7–12 ms per world; full world load 21–23 s (independent 22.5 s; unchanged within noise); one City ID change next to joined edges 7.4–8.2 s (2 city layers instead of 1).
+- **Screenshots (seed 6201, W 128, `?seams=1`; spheres = port status green connected / red rejected / orange pending, green cubes = joints, white = re-routed connector, pink = stub):** ![Whole world with road joins](../assets/screenshots/procedural-mini-world/06-3b-road-seam-overall-after.png) ![Chicago | Manhattan pairs, before (independent) / after (joined), focus x −512 z −500](../assets/screenshots/procedural-mini-world/06-3b-road-pair-closeup-compare.png) ![Stubs on chunk_0_0 | chunk_0_1, before / after, focus x 119 z 512](../assets/screenshots/procedural-mini-world/06-3b-road-stub-closeup-compare.png) Evidence: `experiments/world-grid/evidence/world-road-seam.json`.
+- **Problems found during testing (fixed):** after a re-stitch, an unchanged chunk's city layer kept the previous (identical-signature) graph object → rebound to the current stitched graph; the reachability test anchored on each chunk's largest component and missed a smaller joined component → anchors per shared component.
+- **Observations:** on seed 6202 the Chicago | Manhattan ports are offset 61 m. A straight re-route would lean 28.7° (> 25°), so each street ends as a T on the neighbour's first parallel street (10 stubs, staggered junctions) instead of 5 through-streets — connected, but a different street pattern. A wider lean limit would turn them into pairs.
+- **Open issues:** (1) 8 / 12 edges (6201) cannot carry roads because 06.3a left them unresolved; no ramp / bridge / escarpment rule exists (upstream decision still open). (2) Canal ports are pending (canal joins not implemented). (3) Along-road grade is not limited separately — connectors use the network's cell-slope test, so a connector can climb 16° along its line where the DNA limit is 20° (organic). (4) The stub rule can create many parallel T-junctions on one edge; there is no spacing or hierarchy preference beyond the class gap. (5) Several rejections sit at the bend (40°) and slope (10°) thresholds (e.g. 40.3°, 10.2°); thresholds are A, not calibrated. (6) NetworkView's port markers still clutter the world view. (7) The outer world edge and the known tunnel defect (6202 / chunk_0_-1 / Chicago) are unchanged.
+- **Review status:** Pending review.
+- **Next single task:** Decide the rule for unresolved edges (ramp / escarpment road, bridge over a level step, or landform compatibility at slot assignment) — the main limit on world-wide road connectivity.
+
+### 06.3a-R — World-coherent terrain (global macro terrain + shared boundary surface)
+
+- **Date / Stage / Single question:** 2026-10-21 / T7 / Can the 3 × 3 world get one continuous large-scale relief in world coordinates — same height and slope on every shared edge, one value at every corner — while each chunk keeps its landform, the transition width stays user-set, and edges that cannot be joined within a reasonable slope are reported instead of being cliffed or flattened?
+- **Pre-checks / reuse:** 06.3b report: 8 / 12 edges (6201) carried no road because 06.3a left them unresolved; raw steps up to 296 m cannot be absorbed by an edge-local join inside 128 m without slopes > 35°. Reused: raw single-chunk generation + seeds (`generateRawLayer`, `terrainSeedOf`), `edgeWeight` (smoothstep band weight), `deriveFields` / `analyseTerrain`, `slopeField`, the 06.3a water rules (extracted unchanged into `floodWater`), `SeamCheck`, `SeamView`, the 06.3b `RoadSeam` and audit hooks.
+- **Algorithm (`experiments/world-grid/WorldTerrain.js`, terrain mode `coordinated`, now the default):**
+  - **Global macro base:** one C¹ field over the chunk lattice in world coordinates. Control values: chunk base b_c = mean raw height (coast: sea level, its datum) and relief R_c = landform relief × variation strength. Every shared edge (mid-point) and every corner (2 or 4 chunks) gets one relief-weighted value (weights 1 / R: base = weighted mean, relief = harmonic mean), so the flatter landform keeps its level and the rougher one carries the climb (foothills). Along an edge the value runs corner → mid → corner with smoothstep.
+  - **Local layer:** L = T_c + E_c·(raw − b_c). T_c ramps from b_c to the edge values over the landform ramp distance D (Coons sum over shared sides; φ = 1 − smoothstep(0, D, d), so zero slope at the edge); E_c fades the local relief toward the shared relief over the same distance (never amplifies). Cells farther than D from every shared edge are raw exactly.
+  - **Shared boundary surface S (inside the user band W):** relief-weighted mean of both raw edge profiles, low-passed along the edge (64 m) and pinned at the ends to the shared corner value, plus worldSeed fBm in world metres (share 0.35 of the shared relief, wavelength 400 m), faded out below sea level so a sea crossing the edge stays sea. At 4-chunk corners: corner value + the same fBm. Both chunks evaluate the same function.
+  - **Final height:** h = L(1 − w) + S·w with w = `edgeWeight` (w = 1, w′ = 0 at the edge); corner squares use the bilinear combination with the corner surface. So both chunks hold the same height and the same cross-edge slope on every shared edge (C¹ by construction) and all chunks share one corner value. No edge is flattened or clamped.
+  - **Check:** a cell is made steep if slope > 35° and > raw slope + 2° (06.3a rule); it is blamed on the nearest shared edge whose zone (D) contains it. Such an edge is unresolved: geometry stays continuous (no cliff), the reason gives the steep cells in band vs ramp, and a feasible adjustment is estimated (transition width needed, longer ramp, landform pair, escarpment rule). The band is never widened automatically.
+  - **Water:** sea keeps level 0; a river level takes the same transform as its ground; wet cells come only from connected flooding from raw water; river water stays in its raw channel cells (`riverSpread: false`), so no lake is created by lowered ground. Then `deriveFields` recomputes slope, water, buildability, boundary samples; `analyseTerrain` recomputes the analysis.
+- **Public parameters (6, spatial):** `rampDistance` plain 0 / coast 128 / river valley 384 / mountain 512 m (never < W, ≤ 512 m); `sharedReliefShare` 0.35; `sharedWavelength` 400 m; `boundarySmoothing` 64 m; `maxTransitionSlopeDeg` 35°; `createdSlopeMargin` 2° (water tolerances reused from 06.3a). Transition width stays the user slider (32–256 m).
+- **Changed files:** new `experiments/world-grid/WorldTerrain.js`, `scripts/verify-world-terrain.mjs`, `experiments/world-grid/evidence/world-terrain.json`; changed `TerrainHarmonizer.js` (water section extracted into exported `floodWater`, new option `riverSpread`; 06.3a output verified bit-identical: height, water, network, building signatures and edge water interfaces of seeds 6201 / 6202 before = after), `WorldGrid.js` (mode `coordinated`; harmony key includes the world seed), `worldConfig.js` (default `coordinated`; `harmonized` / `raw` kept), `main.js` (Terrain control, lab `waterAudit / crossability / landformStats / memory`, order test per mode), `SeamView.js` (difference overlay: |coordinated − raw| colour ramp, magenta = made-steep cells), `index.html` (legend, intro); `scripts/verify-world-seam.mjs` and `scripts/verify-road-seam.mjs` pinned to `terrain=harmonized` (their tasks were measured on 06.3a terrain). Unchanged: `experiments/seed-terrain/` (single-chunk page, terrain generator, City DNA, network, parcels, buildings, tunnels), chunk size, sampling (257², 4 m), road topology rules. Nothing committed.
+- **Results, world seed 6201, W 128 (raw 06.2 → harmonised 06.3a → coordinated 06.3a-R):** edges with a height step 12 → 8 → 0 (max 296.4 → 296.4 → 0 m); resolved 0 → 4 → 7 / 12; interior corners shared 0 → 1 → 4 / 4 (spread 250.7 m → 0); off-grid sampler difference across edges 295 m → 0; slope kink max over all edges 88.0° → 88.0° → 27.4° (resolved edges 8.6° → 6.2°); rendered normal difference max 93.5° → 26.4°; one-sided water samples 489 → 443 → 11, discontinuous water edges 6 → 4 → 1 (river reaches the mountain edge, neighbour has no channel — not extended); road-candidate transects (dry, ≤ 20°, no step, through both bands) 1.5% → 24.8% → 49.2% of edge positions, edges with a ≥ 40 m crossable run 1 → 4 → 12; 06.3b road joins 0 → 8 → 22. All 9 solids closed; rendered mesh = fields; raw fields unchanged; sea cells all at level 0; 0 river cells outside the raw channel.
+- **Unresolved edges (6201), all continuous, each with reason + suggestion:** mountain | mountain (raw 163.5 m; 5550 cells > 35°, max 73.1°, 4098 in the band → would need W ≈ 608 m, beyond the 256 m slider), mountain | plain ×2 and mountain | river valley (raw 235–296 m; 1040–2298 cells, max 62.7–63.2°, almost all in the 512 m mountain ramp → a 200 m base drop with mountain relief does not fit in half a chunk under 35°), coast | coast chunk_0_1 | chunk_1_1 (raw 47.1 m; 27 cells, max 40.0°, all in the band → W ≈ 160 m by explicit choice).
+- **Seeds (W 128, harmonised → coordinated):** 6201 resolved 4 → 7, crossable 24.8 → 49.2%, road joins 8 → 22; 6202 resolved 6 → 6 (one different set: coast | coast 0_1 | 1_1 resolved → unresolved, plain | river valley 0_0 | 1_0 unresolved → resolved), crossable 27.6 → 47.9%, road joins 26 → 37, water discontinuous 2 → 0; 6203 resolved 4 → 5 (river valley | coast 1_0 | 1_1 resolved → unresolved; coast | coast -1_1 | 0_1 and plain | river valley 0_0 | 1_0 unresolved → resolved — *corrected 2026-10-21 in 06.3a-R2: this line first said coast | coast -1_1 | 0_1 "resolved → unresolved", the reverse of the data*), crossable 18.3 → 42.9%, road joins 9 → 18. Every seed: 0 edges with a step, 4 / 4 corners shared, mountain edges always unresolved. Each coordinated seed loaded twice → identical signatures and edge report.
+- **Transition widths (6201):** W 64 → 5 / 12 resolved (resolved band slope 27.2°, crossable 61.4%), W 128 → 7 / 12 (35.6°, 49.2%), W 256 → 8 / 12 (53.0°, 46.7%); geometry valid at every width (Δh 0, corners 0, mesh = fields, solids closed, no non-finite height); each width change rebuilt every changed terrain layer and its city layer (no stale roads / parcels / buildings; city layers on the current stitched network). "Resolved" means no cell made steeper than 35° *and* its raw slope + 2°; the band maximum on resolved edges (up to 53° at W 256) is existing raw relief (river banks, coastal hills), not created by the join.
+- **Landform character (6201, raw → coordinated):** plains relief 5.1–5.7 → 5.2–10.3 m, mean slope 0.9 → 1.3–1.6°, buildable 100%; river valleys mean slope 11.1 → 8.9–11.6°, river wet share 3.4 → 3.1–3.6%; coasts wet share 31.6 / 16.7 / 33.2% → 29.2 / 11.3 / 21.6%; mountains mean slope 29–32 → 27–30°, relief range p5–p95 128–141 → 227–268 m (the massif now descends to its foothills at the plain / valley edges). Untouched (raw) share: plains 56–66%, coasts 66–77%, river valleys 16–39%, mountains 0.2–25% (512 m ramps on three sides).
+- **Architecture checks:** City ID change (chunk_0_1 → Amsterdam): coordination not re-run, 0 raw rebuilds, raw / height / water signatures of all 9 chunks unchanged; city layers of chunk_0_1 and chunk_0_0 rebuilt (06.3b stub change), all on the current stitched graph. Reversed / rotated input → identical coordination output. Reload identical. Auto-matched DNAs follow the new terrain analysis (6201: chunk_1_0 auto → Lisbon, chunk_0_1 auto → Fez, previously Fez / Manhattan); manual City IDs unaffected.
+- **Performance (heap after forced GC):** coordination 736–752 ms per world (harmonisation 06.3a 493–540 ms); full world load 21.2–24.4 s coordinated vs 20.8–23.0 s harmonised vs 20.4–23.5 s raw (within run-to-run noise); heap 327–333 MB coordinated vs 319–368 MB harmonised vs 309–351 MB raw. Transition-width change rebuilds the world in 18.4–22.1 s.
+- **Regression:** single-chunk `verify-seed-terrain.mjs` and `verify-solid-terrain.mjs` pass with identical evidence except timestamps (files restored to the committed versions); `verify-world-grid.mjs` (06.2), `verify-world-seam.mjs` (06.3a) and `verify-road-seam.mjs` (06.3b) pass with their logged numbers; their evidence files and screenshots restored.
+- **Screenshots (6201, W 128):** ![Before: 06.3a edge-harmonised world](../assets/screenshots/procedural-mini-world/06-3a-r-world-before.png) ![After: 06.3a-R world-coordinated terrain](../assets/screenshots/procedural-mini-world/06-3a-r-world-after.png) ![Seam debug at x 512, z −512 (mountain · river valley · plain · river valley): |Δh| overlay, magenta unresolved cells, edge status, panel report](../assets/screenshots/procedural-mini-world/06-3a-r-seam-debug.png) Evidence: `experiments/world-grid/evidence/world-terrain.json`.
+- **Problems found during testing (fixed):** (1) a boundary surface built from chunk-mean bases lifted the sea along coast | coast edges to land (all edges reported "no water") → surface from the weighted raw edge profiles + noise faded below sea level; (2) lowered band ground let river water spread into a lake strip along a plain | river edge (87 wet edge samples; river wet cells +45%) → river water kept in its raw channel cells; (3) coast bases from the chunk mean (13–19 m, a land / sea share effect) lifted sea floors → coast base = sea level; (4) heap readings without GC varied 454–1971 MB → measured after forced GC.
+- **Measured trade-off (not adopted):** coast ramp 256 m instead of 128 m gives gentler coastal transitions (band slope 17–24° vs 27–31°) and more road joins (47 vs 22) but loses much more sea (6201 chunk_1_1 wet cells 21 913 → 8 218 vs 14 240).
+- **Open issues:** (1) every edge touching a mountain stays unresolved in all seeds: the base difference (~200 m) plus mountain relief does not fit under 35° within a 512 m ramp, and a mountain | mountain join would need W ≈ 600 m; options: landform-compatibility rule at slot assignment, an escarpment rule, or a lower slope criterion for mountain zones (all decisions). (2) Coasts next to a higher landform lose sea (6203 chunk_0_1 wet 18.4 → 6.1%). (3) Not monotone per edge: some edges resolved by 06.3a are unresolved here (6202 coast | coast 0_1 | 1_1, 6203 river valley | coast 1_0 | 1_1; *corrected 2026-10-21*) and vice versa. (4) Discrete slope kink up to 6.3° on resolved edges and 27° on unresolved mountain edges, although the construction is C¹ (finite differences on steep relief, per-chunk normals). (5) Rivers still end at chunk edges where the neighbour has no channel; river levels follow the ramp but monotonic flow along the channel is not checked. (6) The mountain chunk next to plains is almost entirely re-based (0.2% untouched). (7) Auto-matched City DNAs change with the coordinated terrain.
+- **Review status:** Pending review.
+- **Next single task:** Decide the handling of mountain-adjacent edges (landform compatibility at slot assignment vs escarpment rule vs a mountain-specific slope criterion) before any bridge, ramp or further road work.
+
+### 06.3a-R2 — World terrain preservation & seam constraints
+
+- **Date / Stage / Single question:** 2026-10-21 / T7 / Can the world stay geometrically continuous at every shared edge and corner while each chunk's core (farther than W from all four edges), its water and its buildable land are kept exactly, with seam corrections confined to the user transition band and edges that need a steep step reported as escarpment candidates instead of being repaired by large-scale deformation?
+- **Problem in 06.3a-R (measured there):** macro ramps up to 512 m re-shaped whole chunks (mountain chunk_0_-1 0.2% untouched; 6203 chunk_0_1 sea 18.4 → 6.1%); some 06.3a joins were lost. Review of the 06.3a-R entry also found one reversed statement (6203 coast | coast), corrected in place and marked.
+- **Datum audit (task 1.4):** the single-chunk landform rules each add their own base elevation: plain `baseHeight` 20 m (+ tilt, 0–7 m relief), river valley 30 m (surface datum), coast sea level 0, mountain `baseHeight` 120 m + relief term 0–300 m (mean ≈ 100). The mountain floor therefore sits ≈ 100 m above every neighbour before any noise — an architectural step that no edge blend should be asked to hide. It is now removed at the datum level, not by the seam.
+- **Layers (`experiments/world-grid/TerrainCoordinator.js`, terrain mode `coordinated`, default):**
+  - `rawLocalTerrain` — the unchanged single-chunk generation (seed → local landform), kept for comparison.
+  - `worldMacroTerrain` — one world datum field D = 20 m + 6 m·fBm(worldSeed, world metres, wavelength 4096 m). Each land chunk gets one constant shift s = D(chunk centre) − its landform datum (coast: s = 0, sea level is the world zero). World base = raw + s; river levels + s. Shifts (6201): mountains −99.8 / −102.8 m, river valleys −13.0 / −9.6 m, plains +1.4 / 0 m, coasts 0. A constant shift keeps core shape, slope, water extent and buildability identical.
+  - `coordinatedTerrain` — correction inside the band only: h = base·(1 − w) + S·w (w = existing smoothstep `edgeWeight`: w′ = 0 at the edge and at d = W, so no crease where the band meets the core); corner squares h = base(1−w1)(1−w2) + S1·w1(1−w2) + S2·w2(1−w1) + Sk·w1·w2 (joint corner, no double lift). Outside every band h = base exactly.
+  - Shared surface S of an edge (one world function for both chunks): S = P(s) + G(s)·n — P = relief-weighted mean of both base edge profiles, G = relief-weighted mean of both cross-edge slopes (8 m stencil), both low-passed 64 m along the edge and pinned at the ends to the corner values; corner Sk = Pk + Gx·dx + Gz·dz. So the edge keeps a natural cross slope (C¹, no level shelf). Fallback: an edge whose pass-1 join makes cells too steep drops its cross slope (G = 0) and is checked again (06.3a C¹ → C⁰ idea).
+  - Sea: where only one side is sea at an edge sample, P is held ≥ 1 m (freeboard) below sea level; the lowering is spread along the edge (max filter + low-pass over W/2) so the profile has no along-edge cliff. The land side then drops inside its band; if that is too steep the edge is a `waterConflict` (sea-cliff candidate). Water is never removed to make a join pass.
+  - Check: a band cell is made steep if slope > 35° and > its base slope + 2°. Unresolved edge → `escarpmentCandidates` (runs along the edge with from / to, both base heights, max step, max slope, cause: base step vs the band's slope budget W·tan 35° / 0.75 = 119.5 m at W 128, existing relief, or waterConflict). No escarpment geometry is built; the band is never widened.
+  - Water: sea level 0; connected flooding from raw water only (`floodWater`, river water kept in its raw channel cells); core water untouched by construction.
+- **Parameters (7):** macroDatum 20 m, macroAmplitude 6 m, macroWavelength 4096 m, boundarySmoothing 64 m, maxTransitionSlopeDeg 35°, createdSlopeMargin 2°, smoothKinkTargetDeg 2° (test target only). Transition width = user slider 32–256 m.
+- **Changed files:** new `experiments/world-grid/TerrainCoordinator.js`, `scripts/verify-terrain-coordinator.mjs`, `experiments/world-grid/evidence/terrain-coordinator.json`; changed `WorldGrid.js`, `worldConfig.js` (modes `coordinated` R2 default · `macroRamp` R1 · `harmonized` · `raw`), `WorldTerrain.js` (mode label only), `main.js` (Terrain list, lab `coreAudit`, `section`, order test per mode), `SeamCheck.js` (passes escarpment candidates), `SeamView.js` (magenta posts on escarpment-candidate runs), `index.html` (legend); `scripts/verify-world-terrain.mjs` pinned to `terrain=macroRamp`. Unchanged: `experiments/seed-terrain/` (single chunk, City DNA, roads, parcels, buildings, tunnels), chunk size, sampling, 06.3a / 06.3b algorithms. Nothing committed.
+- **Results (W 128; 06.3a → 06.3a-R → 06.3a-R2):**
+  - Max height discontinuity on shared edges: 296 / 315 / 293 m → 0 → 0 m (6201 / 6202 / 6203); interior corners shared 1 → 4 → 4 / 4 per seed; off-grid sampler difference 0.
+  - Resolved edges: 6201 4 → 7 → 5; 6202 6 → 6 → 7; 6203 4 → 5 → 6. Degradations against 06.3a: 0 / 0 / 0. 06.3a coast | coast successes (6201 -1_1 | 0_1; 6202 -1_1 | 0_1 and 0_1 | 1_1; 6203 has none) are all resolved in R2. Against 06.3a-R, R2 resolves fewer edges on 6201 (plain | river 0_0 | 1_0 and river | coast 1_0 | 1_1 become escarpment candidates) — the price of not re-shaping cores.
+  - Chunk cores changed against the world base: 0 cells in every chunk, every seed, every width. Against raw, cores differ only by the constant datum shift.
+  - Measured slope kink (one-sided 4 m differences): resolved edges max 2.22° / 1.80° / 2.91° (06.3a 8.6 / 41.8 / 24.3°; R1 6.2 / 6.3 / 3.7°); resolved edges over the 2° target: 1 (6201 river | river 1_-1 | 1_0, 2.22°), 0, 2 (6203 plain | river 0_0 | 1_0 2.86°, river | coast 1_0 | 1_1 2.91°); escarpment-candidate edges max 7.7° / 8.6° / 9.6° (separate class). With 4 m spacing a first difference resolves ≈ 0.2° per 1.4 cm, so ≥ 2° is a real kink, mainly where the base step is 30–55 m within 128 m.
+  - Modified area (band) per chunk: 23–44% (the band itself: one / two / three / four shared sides); max |Δh| vs base: mountains 135–215 m, river valleys 31–82 m, plains 4.9–30 m, coasts 14–47 m; mean |Δh| of changed cells: mountains 24–51 m, river valleys 5.7–17.8 m, plains 1.3–4.9 m, coasts 1.9–9.0 m. Slope change in the band (p50 / p95): plains 0.1–1.2° / 1.8–13.4°, coasts −1.2–0.5° / 3.5–15.2°, river valleys −0.8–1.4° / 5.8–26.5°, mountains 2.8–7.7° / 23–39°.
+  - Coast water coverage (raw → R2): 6201 31.6 / 16.7 / 33.2% → 31.6 / 16.4 / 34.3%; 6202 18.6 / 17.2 / 18.7% → 18.6 / 16.6 / 18.7%; 6203 33.6 / 18.4 / 29.6% → 33.5 / 22.4 / 30.8% (06.3a-R had 24.4 / 6.1 / 25.0%). Core water lost: 0 everywhere. Band losses are listed per edge (e.g. 6202 coast | coast 0_1 | 1_1 399 cells, 6201 river | coast 1_0 | 1_1 307); gains are the sea entering band ground lowered below sea level next to it (6203 chunk_0_1 +2680 cells, plain chunk_0_0 +1585).
+  - Escarpment candidates (6201): every mountain edge (base steps 145–195 m > 119.5 m budget, max slopes 70.8–74.5°), river | coast 1_0 | 1_1 (91 m, 50.9°, waterConflict), coast | coast 0_1 | 1_1 (47 m, 41.9°, waterConflict), plain | river 0_0 | 1_0 (44 m, 40.1°, existing relief). 6203 coast | coast -1_1 | 0_1 (61 m, sea against a 61 m coast, 38.1°) is a waterConflict — it was also unresolved in 06.3a.
+  - Second width: W 256 resolves 7 / 8 / 8 edges (kink on resolved max 0.73 / 0.44 / 0.61°), but band shorelines move more (6202 chunk_0_1 17.2 → 12.7%, 6203 chunk_-1_1 33.6 → 25.5%; core water still 0 lost); W 64 (6201) resolves 3 / 12 with kink 4.57°. Every width: Δh 0, corners shared, cores unchanged, solids closed, dependent city layers rebuilt.
+  - Reproducibility and architecture: each seed loaded twice → identical; reversed / rotated input identical; City ID change → no terrain rebuild and all terrain signatures unchanged; city layers always on the current stitched network.
+  - Performance (heap after GC): coordination 0.35 s per world (06.3a-R 0.74 s, 06.3a 0.49–0.54 s); world load 21.5–24.1 s (06.3a 21.7–23.7 s); heap 324–336 MB (06.3a 313–342 MB).
+- **Regression (2026-10-21, final code):** `verify-world-grid` (06.2, raw), `verify-world-seam` (06.3a, pinned `harmonized`), `verify-road-seam` (06.3b, pinned `harmonized`), `verify-world-terrain` (06.3a-R, pinned `macroRamp`) all pass with their logged numbers; single-chunk `verify-seed-terrain` and `verify-solid-terrain` pass with evidence identical except timestamps. All their evidence files and screenshots restored to the committed / previous versions.
+- **Screenshots (6201, W 128):** ![Before (06.3a-R macro ramps) / after (06.3a-R2), same view](../assets/screenshots/procedural-mini-world/06-3a-r2-world-compare.png) ![Cross-sections from runtime fields: raw, world base, coordinated](../assets/screenshots/procedural-mini-world/06-3a-r2-sections.png) ![Seam debug at x −512, z 512: |coordinated − raw| overlay, band limits, edge status, escarpment posts, panel](../assets/screenshots/procedural-mini-world/06-3a-r2-seam-debug.png) The overlay compares with the raw chunk, so plain cores show the uniform +1.4 m datum shift as a light tint; the band correction is the stronger colour along the edges. Evidence: `experiments/world-grid/evidence/terrain-coordinator.json`.
+- **Problems found during testing (fixed):** (1) holding a sea joint at the sea-floor depth dropped neighbouring land below sea level and flooded land bands (6203 plain +3474 wet cells) → joint held only freeboard below sea level; (2) the per-sample sea clamp made an along-edge cliff in the shared profile (6201 plain | coast 72°) → lowering spread along the edge; (3) the C¹ cross slope made 6202 coast | coast 0_1 | 1_1 marginally steep (35.6°) → per-edge cross-slope fallback.
+- **Open issues:** (1) all mountain edges stay escarpment candidates: after the datum fix their base steps (115–215 m) still exceed the 119.5 m band budget at W 128 — an escarpment rule (task out of scope) or a mountain-relief taper at the edge are the next options. (2) Coasts next to higher land: waterConflict instead of water loss, so two coast | coast edges and one river | coast edge stay unresolved; the sea can gain band cells where land is lowered next to it. (3) 3 resolved edges exceed the 2° kink target (≤ 2.91°). (4) All unresolved edges used the cross-slope fallback (level cross-section at the edge). (5) Datum shifts change absolute core heights (mountains −100 m); shapes are unchanged, but auto-matched City DNAs and any absolute-height rule downstream see the new values. (6) Rivers still end at chunk edges without a channel (no river joins, as required).
+- **Review status:** Pending review.
+- **Next single task:** Decide the escarpment handling for mountain edges and the waterConflict rule for coasts (accept as reported candidates, or a dedicated escarpment / sea-cliff geometry task).
+
+### 06.3c — Seam classification and geometric continuity
+
+- **Date / Stage / Single question:** 2026-10-21 / T7 / Can every shared edge be classified by four separate questions — is the surface continuous, what landform seam is it (smooth, valid escarpment, candidate, unresolved), how do the waters meet, can a road cross — so that steep but natural seams are no longer counted as failures, while nothing unresolved is renamed into a success?
+- **Pre-checks:** 06.3a-R2 regression round finished before this task (all pass, see the R2 entry). History note honoured: 6203 has no 06.3a coast | coast success; the 06.3a coast | coast regression cases are 6201 -1_1 | 0_1 and 6202 -1_1 | 0_1, 0_1 | 1_1.
+- **Seam status interface (`experiments/world-grid/SeamClassifier.js`, pure data, run after every seam check; lab `seamClasses()`):** per edge `{ geometryStatus, geometry, landformStatus, landform, hydrologyStatus, hydrology, transportStatus, transport, overall, color, legacyStatus }`.
+  - `geometryStatus`: continuous (Δh 0 on all 257 samples, corner spread 0, finite heights) · discontinuous · invalid. Geometry details: max step, corner spread, band max slope, measured kink (max, p95, median).
+  - `landformStatus`: smooth (no cell made steeper than 35° and its base slope + 2°) · escarpment (made-steep cells, but continuous geometry AND a landform pair that carries a scarp — at least one side mountain, river valley or coast — AND max slope ≤ 75° (steepest face a 4 m heightfield represents; one cell rises ≥ 15 m) AND no pit / ridge: coordinated heights stay within both sides' base range ± 1 m along every steep run, in corner squares within the four chunks' corner-square range) · escarpmentCandidate (a check fails: reason names it and the geometry still needed, e.g. "needs a cliff mesh") · unresolved (discontinuous, or steep with no landform reason, e.g. plain | plain).
+  - `hydrologyStatus`: none · continuousWater · riverValleyContinues · shoreline (sea held at the edge, gentle land side) · coastalEscarpment (sea held, land side is a scarp) · riverEndsAtEdge (not extended, not a failure) · incompatibleLevels · coreWaterLost · discontinuous.
+  - `transportStatus`: passable (continuous and a ≥ 40 m stretch whose transects through both bands are dry and ≤ 20°) · impassable. Terrain only: the 06.3b road seam still joins smooth (legacy resolved) edges only; a passable stretch on a scarp edge is reported, not used.
+  - `overall`: smooth · smoothKink (smooth, measured kink > 2°) · escarpment · candidate · failed (geometry, unexplained scarp, incompatible water or lost core water). Guard: legacy resolved edges = smooth edges exactly (asserted), so no unresolved edge became a success by renaming.
+- **Change to 06.3a-R2 (TerrainCoordinator):** the shared corner value used to fade into the edge profile over half the edge (512 m); with two mountains and two plains at a corner, the plain-weighted corner value pulled the mountain | mountain profile ~100 m below both mountains (pit) up to 156 m from the corner (overshoot 61 / 40 / 100 m on seeds 6201 / 6202 / 6203). New parameter `cornerPinBands` = 1: the corner value fades in over one band width (the corner square). Tested 2·W (pits 24–47 m remain) and 1·W (none). R2 verifier re-run with 1·W: resolved 5 / 7 / 6 (unchanged), regressions vs 06.3a 0, 06.3a coast | coast cases resolved, measured kink on resolved edges max 1.23° / 0.57° / 1.40° (before 2.22 / 1.80 / 2.91°; now 0 edges over the 2° target), cores unchanged, coast water 31.6 / 16.7 / 33.2% → 31.6 / 16.8 / 35.2% (6201), 6203 18.4 → 23.0%. The R2 evidence file keeps the R2 run; the 1·W numbers are recorded here.
+- **Datum audit (task 8, lab `datumAudit()`):** each chunk analysed on raw terrain and on raw + its exact world datum shift (no seam correction): relative terrainAnalysis metrics differ in 0 values, water / buildable masks flip in 0 cells, auto City DNA identical for every chunk and seed; only absolute values move (elevation statistics, heights, water levels: 6 values per shifted chunk). All City Match conditions use relative metrics (buildable shares, slope classes, water fraction / role), and water metrics compare height with a water level shifted by the same amount. Auto DNA changes seen since 06.3a-R come from the band correction (e.g. 6201 chunk_0_1 Lisbon → Manhattan, chunk_0_-1 Fez → Manhattan), not from the shift. Manual City IDs unchanged in every run. *Correction:* an interim statement in this task that Float32 rounding moved chunk_1_-1 slope statistics by 0.011° was wrong — the audit had used the 2-decimal rounded shift for water levels (76 river cells flipped); with the exact shift (`macro.shiftExact`) every difference is 0.
+- **Classification, W 128 (overall · hydrology · transport):**
+  - 6201 (5 smooth, 7 escarpment, 0 candidate, 0 failed): mountain | mountain -1_-1 | 0_-1 escarpment 71.4° · none · impassable; mountain | plain -1_-1 | -1_0 escarpment 73.0° · impassable; mountain | river 0_-1 | 1_-1 escarpment 70.8° · passable (44 m stretch); mountain | plain 0_-1 | 0_0 escarpment 74.5° · impassable; river | river 1_-1 | 1_0 smooth (kink 0.57°) · passable; plain | plain -1_0 | 0_0 smooth (0.06°) · passable 1028 m; plain | coast -1_0 | -1_1 smooth (1.23°) · shoreline · passable; plain | river 0_0 | 1_0 escarpment 39.0° (valley wall) · continuousWater · passable; plain | coast 0_0 | 0_1 smooth (0.55°) · shoreline · passable; river | coast 1_0 | 1_1 escarpment 50.9° · coastalEscarpment · impassable; coast | coast -1_1 | 0_1 smooth (0.30°) · passable; coast | coast 0_1 | 1_1 escarpment 41.9° · coastalEscarpment · impassable.
+  - 6202 (7 smooth, 5 escarpment): four mountain escarpments (60.5–72.3°), plain | river 0_0 | 1_0 escarpment 39.0°; all other edges smooth (kink ≤ 0.57°), river | coast 1_0 | 1_1 riverEndsAtEdge; passable 9 / 12.
+  - 6203 (6 smooth, 6 escarpment): four mountain escarpments (58.7–67.0°), coast | coast -1_1 | 0_1 and 0_1 | 1_1 coastalEscarpment (38.1°, 42.3°); smooth edges kink ≤ 1.40°; passable 6 / 12 (plain | coast 0_0 | 0_1 smooth but impassable: no 40 m dry stretch).
+- **Other widths:** W 64 — 6201: 2 smooth, 1 smoothKink (2.95°), 6 escarpment, 3 candidate (mountain scarps 75.4–79.5° > 75°: need a cliff mesh); 6202: 4 / 1 / 5 / 2 / 0; 6203: 0 smooth, 2 smoothKink (up to 4.9°), 7 escarpment, 2 candidate (one pit 3.2 m on mountain | mountain, one 75.4° scarp), 1 failed (plain | plain -1_0 | 0_0: 28 cells at 36.8°, no landform reason for a scarp). W 256 — 6201: 7 smooth, 4 escarpment, 1 candidate (coast | coast 0_1 | 1_1, pit 2.98 m); 6202: 8 / 0 / 4 / 0 / 0; 6203: 8 / 0 / 4 / 0 / 0; smooth kink ≤ 0.74°. Narrow bands produce scarps the heightfield cannot represent; wide bands move more shoreline (6202 chunk_0_1 17.2 → 12.7%).
+- **Negative controls:** raw terrain (6201) → 12 / 12 failed (discontinuous); macro-ramp terrain (06.3a-R, no run data) → 4 smooth, 3 smoothKink, 5 candidate, 0 escarpment — the classifier never validates a scarp without evidence.
+- **Checks per run (all seeds × W 128 / 64 / 256, `node scripts/verify-seam-classes.mjs`, all pass, 0 browser errors):** every edge has four statuses and one overall class consistent with them; geometry continuous on all 12 edges; cores unchanged against the world base and 0 core water lost; legacy resolved = smooth; datum audit exact; classes reproducible on reload.
+- **Debug layer (reused):** the seam debug edge line takes the class colour (green smooth · yellow-green kink > 2° · blue valid escarpment · orange candidate · red failed), drawn twice for visibility; magenta posts mark escarpment runs; the |Δh| overlay and band limits are unchanged; the panel lists the four statuses per edge. No new UI controls.
+- **Changed files:** new `experiments/world-grid/SeamClassifier.js`, `scripts/verify-seam-classes.mjs`, `experiments/world-grid/evidence/seam-classes.json`; changed `TerrainCoordinator.js` (`cornerPinBands`, exact shift in the report), `main.js` (classification after the seam check, panel line, lab `seamClasses / datumAudit`, crossability through `transectFeasibility`), `SeamView.js` (class colours), `index.html` (legend). Unchanged: roads, tunnels, parcels, buildings, City DNA, `experiments/seed-terrain/`. Nothing committed.
+- **Regression (final code):** `verify-terrain-coordinator` (06.3a-R2, numbers above), `verify-world-terrain` (06.3a-R), `verify-world-seam` (06.3a), `verify-world-grid` (06.2), `verify-road-seam` (06.3b) pass with their logged numbers; single-chunk `verify-seed-terrain` and `verify-solid-terrain` pass with evidence identical except timestamps. Their evidence files and screenshots restored.
+- **Performance:** world load 21.4–28.6 s, terrain coordination 0.52–0.89 s (W 64–256), classification inside the seam check; heap after GC 327–352 MB.
+- **Screenshots (6201, W 128):** ![Seam classes, whole world, top view](../assets/screenshots/procedural-mini-world/06-3c-seam-classes-overall.png) ![Mountain | plain escarpment at x 0, z −512, with panel statuses](../assets/screenshots/procedural-mini-world/06-3c-escarpment-closeup.png) ![Coastal escarpment river valley | coast at x 1024, z 512 (sea held at the edge)](../assets/screenshots/procedural-mini-world/06-3c-coastal-escarpment-closeup.png) In the top view the class lines are thin at full-world scale; the close-ups show them clearly. Evidence: `experiments/world-grid/evidence/seam-classes.json`.
+- **Acceptance (self-check against the task):** statuses split (yes); smooth seams still measured by height and finite-difference slope with the 2° target, no threshold relaxed (yes); mountain steps become continuous scarps inside the band without touching cores (yes); scarps validated only with geometry + landform + representability + no pit / ridge (yes); waterConflict split into coastal escarpment / river ends / incompatible (yes; no incompatible case occurred); no extra river network or cliff mesh (yes, candidates name the missing geometry); datum audit (yes, exact); seeds × widths (yes); Seam Debug reused (yes).
+- **Open issues:** (1) at W 64, mountain scarps exceed 75° and stay candidates — they need cliff geometry (a near-vertical face or overhang the heightfield cannot hold). (2) Sea water enters plain bands lowered toward a sea-held corner (6203 plain | plain reports continuousWater; R2 measured +1585 wet cells in plain chunk_0_0). (3) The road seam joins smooth edges only; passable stretches on scarp edges (e.g. 6201 mountain | river 44 m) are not used. (4) The 75° limit, 1 m pit tolerance and 40 m / 20° transport test are A, not calibrated. (5) No `incompatibleLevels` case appeared in these seeds, so that branch is untested on real data.
+- **Review status:** Pending review.
+- **Next single task:** Decide whether valid escarpments and coastal escarpments need dedicated geometry (cliff mesh for > 75°) or whether the road seam should use passable stretches on scarp edges — one at a time.

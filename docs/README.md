@@ -8,7 +8,7 @@ New readers should follow the route below. It moves from the public-facing proje
 To see why each stage led to another—and which future ideas remain unverified—open [From Playable Experiments to Procedural Worlds](./EXPLORATION-MAP.md).
 For the evaluator-facing evidence audit and the remaining screenshot requirements, open [Assignment 1 — Repository Documentation and Evidence Checklist](./ASSIGNMENT-1-CHECKLIST.md).
 
-> **Current project:** Procedural Mini World. Start with the [experiment index](./procedural-mini-world/EXPERIMENT-INDEX.md) and the [compass and experiment log](./procedural-mini-world/FINAL-EXPERIMENT-LOG.md). The rest of this catalog covers the earlier Game Lab studies.
+> **Current project:** Procedural Mini World. Start with the [knowledge base home](./procedural-mini-world/README.md), the [experiment index](./procedural-mini-world/EXPERIMENT-INDEX.md) and the [compass and experiment log](./procedural-mini-world/FINAL-EXPERIMENT-LOG.md). The rest of this catalog covers the earlier Game Lab studies.
 
 ## Repository at a Glance
 

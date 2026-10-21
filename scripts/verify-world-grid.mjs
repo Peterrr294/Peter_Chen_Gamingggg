@@ -213,7 +213,8 @@ try {
   };
   const centre = initial.find(s => s.chunkId === 'chunk_0_0');
   const centreSingle = await single(centre, centre.resolvedDNA);
-  assert(same(centreSingle.signatures, (({ raw, ...rest }) => rest)(centre.signatures)), `centre chunk differs from the single-chunk page: ${JSON.stringify({ world: centre.signatures, single: centreSingle.signatures })}`);
+  assert(centre.signatures.rawNetwork === centre.signatures.network, 'raw terrain mode: centre network changed by the 06.3b road seam');
+  assert(same(centreSingle.signatures, (({ raw, rawNetwork, ...rest }) => rest)(centre.signatures)),`centre chunk differs from the single-chunk page: ${JSON.stringify({ world: centre.signatures, single: centreSingle.signatures })}`);
   const translation = [];
   for (const s of initial.filter(item => item.resolvedDNA && item.chunkId !== 'chunk_0_0')) {
     const ref = await single(s, s.resolvedDNA);

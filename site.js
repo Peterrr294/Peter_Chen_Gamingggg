@@ -5,8 +5,9 @@ import { renderMarkdown } from './markdown-viewer.js';
 // 每个栏目描述它的名称与页面位置；新增页面时先在这里登记。
 export const sections = {
   home: { title: 'HOME / PROJECT HUB' },
-  miniWorld: { title: 'PROCEDURAL MINI WORLD / 3 × 3 WORLD GRID', page: './experiments/world-grid/index.html', description: 'Nine 1024 m chunks: seed terrain, City DNA per slot, roads, parcels, buildings, and harmonised seams.' },
-  seedTerrain: { title: 'PROCEDURAL MINI WORLD / SINGLE CHUNK', page: './experiments/seed-terrain/index.html', description: 'One seed-terrain chunk through the full chain: terrain fields, City DNA match, network, blocks, parcels, buildings.' },
+  miniWorld: { title: 'PROCEDURAL MINI WORLD / 3 × 3 WORLD GRID', navLabel: '3 × 3 WORLD GRID', page: './experiments/world-grid/index.html', description: 'Nine 1024 m chunks: seed terrain, City DNA per slot, roads, parcels, buildings, and harmonised seams.' },
+  seedTerrain: { title: 'PROCEDURAL MINI WORLD / SINGLE CHUNK', navLabel: 'SINGLE CHUNK', page: './experiments/seed-terrain/index.html', description: 'One seed-terrain chunk through the full chain: terrain fields, City DNA match, network, blocks, parcels, buildings.', parent: 'miniWorld' },
+  manhattanTerrain: { title: 'MANHATTAN TERRAIN / GREYBOX', page: './experiments/manhattan-terrain-greybox/index.html', description: 'Earlier seeded Manhattan terrain, water, slope, and buildability study.', parent: 'miniWorld' },
   game: { title: 'STARLIGHT COLLECTION / FIRST GAME', page: './legacy-game.html', description: 'Guide a lantern, collect starlight, and avoid shadows in a 30-second game.' },
   noise: { title: 'Cellular Noise / TERRAIN EXPERIMENT', page: './experiments/cellular-noise/index.html', description: 'Explore layered noise, height fields, map simulation, and terrain resolution.' },
   voxel: { title: 'VOXEL TERRAIN / DENSITY FIELD', page: './experiments/voxel-terrain/index.html', description: 'Learn density fields, CSG, chunking, and surface meshing one stage at a time.' },
@@ -32,7 +33,11 @@ const files = import.meta.glob([
   './archive/**/*.{md,html,js,css}',
   '!./package-lock.json',
 ], { query: '?raw', import: 'default' });
-const documentImages = import.meta.glob('./docs/assets/screenshots/*.{png,jpg,jpeg,webp,gif,svg}', {
+// 文档图片可位于 docs/ 下任意层级；实验档案的 Obsidian 副本（![[...]] 引用）不打包。
+const documentImages = import.meta.glob([
+  './docs/**/*.{png,jpg,jpeg,webp,gif,svg}',
+  '!./docs/procedural-mini-world/04-experiments/EXP-Procedural-Mini-World/Screenshots/**',
+], {
   eager: true,
   query: '?url',
   import: 'default',
@@ -42,6 +47,37 @@ const title = document.querySelector('#sectionTitle');
 const openPage = document.querySelector('#openPage');
 let activeSection;
 let fileRequest = 0;
+
+function relatedProjects(key) {
+  const root = sections[key].parent || key;
+  const children = Object.keys(sections).filter(candidate => sections[candidate].parent === root);
+  return children.length ? [root, ...children] : [];
+}
+
+function showProject(key, section) {
+  const project = document.createElement('section');
+  project.className = 'project-view';
+  const related = relatedProjects(key);
+  if (related.length) {
+    const switcher = document.createElement('nav');
+    switcher.className = 'experiment-switcher';
+    switcher.setAttribute('aria-label', `${sections[section.parent || key].title} experiments`);
+    for (const relatedKey of related) {
+      const link = document.createElement('a');
+      link.href = `#${relatedKey}`;
+      link.textContent = sections[relatedKey].navLabel || sections[relatedKey].title.split(' / ')[0];
+      if (relatedKey === key) link.setAttribute('aria-current', 'page');
+      switcher.append(link);
+    }
+    project.append(switcher);
+  }
+  const frame = document.createElement('iframe');
+  frame.src = section.page;
+  frame.title = section.title;
+  frame.className = 'project-frame';
+  project.append(frame);
+  content.append(project);
+}
 
 const authButton = document.querySelector('#authButton');
 const authStatus = document.querySelector('#authStatus');
@@ -117,6 +153,7 @@ function showFiles(initialPath = './docs/README.md') {
   const select = library.querySelector('select');
   const markdownGroups = [
     ['START HERE', path => path === './README.md' || path === './docs/README.md' || path === './docs/ASSIGNMENT-1-CHECKLIST.md' || path.startsWith('./docs/_meta/')],
+    ['PROCEDURAL MINI WORLD / MIDTERM KNOWLEDGE BASE', path => path.startsWith('./docs/procedural-mini-world/')],
     ['EXPLORATION MAPS', path => path === './docs/EXPLORATION-MAP.md'],
     ['PLAYABLE PROJECTS', path => path === './docs/projects/README.md' || path.startsWith('./docs/projects/starlight-run/') || path.startsWith('./docs/projects/flavor-clash/')],
     ['OPEN-SOURCE REFERENCES', path => path === './docs/OPEN_SOURCE_SOURCES.md'],
@@ -127,9 +164,15 @@ function showFiles(initialPath = './docs/README.md') {
     ['DESIGN & DOCUMENTATION STANDARDS', path => path.startsWith('./docs/standards/')],
     ['DEVELOPMENT LOGS', path => path.startsWith('./docs/logs/')],
   ];
+  // 未匹配任何栏目的笔记放入兜底分组，避免新文档在列表中消失。
+  const knownGroups = markdownGroups.slice();
+  markdownGroups.push(['OTHER NOTES', path => !knownGroups.some(([, matches]) => matches(path))]);
+  // 每个分组的入口页排在最前。
+  const pinnedFirst = new Set(['./docs/procedural-mini-world/README.md']);
   const sortedPaths = Object.keys(files).sort();
   for (const [label, matches] of markdownGroups) {
-    const matchingPaths = sortedPaths.filter(path => path.endsWith('.md') && matches(path));
+    const matchingPaths = sortedPaths.filter(path => path.endsWith('.md') && matches(path))
+      .sort((a, b) => Number(pinnedFirst.has(b)) - Number(pinnedFirst.has(a)));
     if (!matchingPaths.length) continue;
     const group = document.createElement('optgroup');
     group.label = label;
@@ -244,18 +287,15 @@ function navigate() {
   content.replaceChildren();
   title.textContent = section.title;
   document.title = section.title + " — Peter's Game Lab";
-  document.querySelectorAll('nav a').forEach(link => {
-    if (link.hash === '#' + key) link.setAttribute('aria-current', 'page');
+  const navKey = section.parent || key;
+  document.querySelectorAll('.site-header nav a').forEach(link => {
+    if (link.hash === '#' + navKey) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
   openPage.hidden = !section.page;
   if (section.page) {
     openPage.href = section.page;
-    const frame = document.createElement('iframe');
-    frame.src = section.page;
-    frame.title = section.title;
-    frame.className = 'project-frame';
-    content.append(frame);
+    showProject(key, section);
   } else if (key === 'home') showHome();
   else cleanup = showFiles(query.get('file') || './docs/README.md');
 }

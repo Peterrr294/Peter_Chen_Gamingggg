@@ -1,153 +1,154 @@
-# 任务 00.3｜原型城市筛选决策
+# Task 00.3 — Prototype City Selection Decision
 
-> 决策状态：等待人工验收。本文件只依据项目罗盘、00.1 城市研究模板和 00.2 城市长名单进行筛选，没有重新调查 60 座城市，也没有填写完整城市 DNA。文中“已验证”只表示 00.2 已列出的来源锚点支持该方向，不代表参数、尺寸或算法已经验证。
+> Decision status: awaiting human acceptance. This file selects only on the basis of the project compass, the 00.1 city research template, and the 00.2 city longlist; it does not re-research the 60 cities and does not fill in a complete City DNA. "Verified" here only means that a source anchor already listed in 00.2 supports the direction; it does not mean that parameters, dimensions, or algorithms have been verified.
+>
+> *Translated to English on 2026-10-20; the original wording is in Git history (commit `7b21c3e`).*
 
-## 1. 决策摘要
+## 1. Decision summary
 
-- **三座原型城市：** 曼哈顿（纽约）、威尼斯、非斯古城。
-- **第一座实现城市：** 曼哈顿（纽约）。
-- **选择逻辑：** 三者分别以规则网格、水网岛屿、有机路径作为世界骨架，能够在同一条“地形—网络—地块—建筑”流程中产生三种结构差异。
-- **当前边界：** 这是原型方向决策，不是完整城市 DNA；进入代码前仍需完成第一座城市的双来源核验。
+- **Three prototype cities:** Manhattan (New York), Venice, Fez el-Bali.
+- **First city to implement:** Manhattan (New York).
+- **Selection logic:** the three use a regular grid, a water network with islands, and organic paths, respectively, as the skeleton of the world, so the same "terrain → network → plots → buildings" process can produce three structural differences.
+- **Current limit:** this is a decision on prototype direction, not a complete City DNA; two-source verification of the first city is still needed before any code.
 
-## 2. 现有城市家族检查
+## 2. Check of the existing city families
 
-00.2 的 10 个家族可以继续作为阶段 0 的候选分类，不进行大规模重写。它们描述的是主导生成逻辑，不是互斥的城市类型，因此允许一座城市存在次要家族。
+The 10 families of 00.2 can remain the candidate classification for Stage 0 without a large rewrite. They describe dominant generation logics, not mutually exclusive city types, so a city may have secondary families.
 
-| 重叠或不足 | 判断 | 本阶段处理 |
+| Overlap or gap | Judgement | Handling at this stage |
 | --- | --- | --- |
-| F1 水网—岛屿织构与 F7 河流—三角洲—洪泛适应 | 有明显水体主题重叠，但生成顺序不同：F1 把水路作为城市内部通行网络，F7 把水文风险与基础设施作为区域约束 | 保留两个家族；后续用“水路是否承担主要内部网络”区分 |
-| F2 强正交网格与 F8 现代主义规划—超级街区 | 都可能使用规则网格，但街区尺度和规划单元不同 | 保留；F2 以重复街区和地块细分为核心，F8 以道路分级、功能片区和超级街区为核心 |
-| F3 放射—轴线—环路与 F8 现代主义规划—超级街区 | 都可能出现纪念轴线和一次性规划 | 保留；F3 的生成原语是中心、轴线和环路，F8 的生成原语是扇区和超级街区 |
-| F4 有机历史核心与 F5 城墙—城门边界 | 多数历史核心同时具有城墙和有机街巷 | 保留；判断首要控制量是内部路径生长，还是外部边界与有限入口 |
-| F6 山地—坡地适应与 F9 海岸—狭长走廊 | 山海夹持城市可能同时属于两类 | 保留；F6 以坡度和高程连接为核心，F9 以线性可建设带和走廊连续性为核心 |
-| F8 新孟买与 F10 多中心—网络节点 | 规划新城也可能是多中心网络 | 标记待验证；根据“总体规划扇区”与“交通节点密度场”哪个更主导再决定次要家族 |
-| F7 上海、汉堡等港口城市 | 港口、水文、防洪和网格可能同时主导，当前家族依据偏宽 | 标记待验证；原型筛选阶段不使用这些边界案例 |
-| F9 与 F10 的内部差异 | 两个家族覆盖的城市尺度和历史差异较大 | 暂不拆分；若后续无法用一套家族规则解释，再在扩展阶段调整 |
+| F1 water network–island fabric and F7 river–delta–flood adaptation | clear overlap in the water theme, but a different generation order: F1 uses waterways as the city's internal movement network, F7 treats hydrological risk and infrastructure as regional constraints | keep both families; later distinguish by "do waterways carry the main internal network?" |
+| F2 strong orthogonal grid and F8 modernist planning–superblock | both may use a regular grid, but block scale and planning unit differ | keep; F2 centres on repeated blocks and plot subdivision, F8 on street hierarchy, functional zones, and superblocks |
+| F3 radial–axis–ring and F8 modernist planning–superblock | both may show monumental axes and one-time planning | keep; the generation primitives of F3 are centres, axes, and rings; those of F8 are sectors and superblocks |
+| F4 organic historic core and F5 city wall–gate boundary | most historic cores have both walls and organic lanes | keep; decide whether the primary control is internal path growth or an external boundary with limited entrances |
+| F6 mountain–slope adaptation and F9 coast–narrow corridor | cities squeezed between mountains and sea may belong to both | keep; F6 centres on slope and elevation connection, F9 on a linear buildable band and corridor continuity |
+| F8 Navi Mumbai and F10 polycentric–network nodes | a planned new town may also be a polycentric network | marked to be verified; decide the secondary family by whether "master-plan sectors" or "transport-node density field" dominates |
+| F7 port cities such as Shanghai and Hamburg | port, hydrology, flood defence, and grid may dominate at once; the current family basis is broad | marked to be verified; these boundary cases are not used for prototype selection |
+| Internal differences in F9 and F10 | both families cover cities of very different scale and history | not split for now; adjust in an expansion stage if one family rule set cannot explain them |
 
-### 家族检查结论
+### Conclusion of the family check
 
-10 个家族足以支持本次原型筛选。当前最需要解决的不是重新分类，而是为入选原型固定研究区域、双来源证据和可编程规则。
+The 10 families are sufficient for this prototype selection. The most pressing need is not reclassification but fixing study areas, two-source evidence, and programmable rules for the chosen prototypes.
 
-## 3. 三座原型的结构对比
+## 3. Structural comparison of the three prototypes
 
-| 维度 | 曼哈顿（纽约） | 威尼斯 | 非斯古城 |
+| Dimension | Manhattan (New York) | Venice | Fez el-Bali |
 | --- | --- | --- | --- |
-| 主要家族 | F2 强正交网格 | F1 水网—岛屿织构 | F4 有机历史核心 |
-| 研究区域 | 1811 网格覆盖区；精确边界待验证 | 历史城市与中央泻湖岛群；精确边界待验证 | Fez el-Bali；精确边界待验证 |
-| 地形 | 第一版可将研究范围抽象为受边界限制的低起伏基面；事实依据待验证 | 泻湖和岛屿是首要地理条件；来源锚点已支持 | 河谷、城界及局部地形关系待验证 |
-| 水体 | 岛屿外边界存在，但本原型不以水网为主要内部结构；待验证 | 水体同时决定土地、边界和主要网络；来源锚点已支持 | 00.2 来源锚点支持历史分区与水道背景，但水体对内部网络的具体影响待验证 |
-| 网络 | 规划编号正交网格已获来源锚点支持；道路等级和比例待验证 | 运河为主要网络、桥连接岛屿的方向已获来源锚点支持；步行层级待验证 | 高密度历史织构已获来源锚点支持；分支巷道层级待验证 |
-| 地块 | 候选假设为狭长街区的规则细分；待验证 | 候选假设为随岸线变化的不规则滨水地块；待验证 | 候选假设为小尺度不规则地块和院落单元；待验证 |
-| 建筑形态 | 候选假设为可由地块、覆盖率和高度场控制的体量；高度分布待验证 | 历史建筑整体与水城关系有来源锚点；连续低层街墙规则待验证 | 高密度建筑织构有来源锚点；院落和街墙规则待验证 |
-| 生成复杂度 | **低—中：** 规则网格、确定性细分和简单体量容易分阶段验证 | **中—高：** 需要水陆掩膜、岛屿、双网络、桥和岸线地块协同 | **高：** 需要有机网络生长、可达性、死路、非规则地块和院落协同 |
-| 旧实验复用潜力 | **待代码审计：** 通用地形、网格和建筑体量可能可复用，本任务未读取代码 | **可能较高但未核验：** 项目此前存在威尼斯方向；本任务禁止读取代码，不能确认接口与质量 | **可能较低且未核验：** 预计需要新的有机网络与院落规则，但本任务未读取代码 |
-| 对系统的作用 | 建立公共数据接口和最低复杂度基线 | 验证水体能否替代道路成为世界骨架 | 验证系统能否离开规则网格并产生层级有机织构 |
+| Main family | F2 strong orthogonal grid | F1 water network–island fabric | F4 organic historic core |
+| Study area | area covered by the 1811 grid; exact boundary to be verified | historic city and the central lagoon islands; exact boundary to be verified | Fez el-Bali; exact boundary to be verified |
+| Terrain | the first version may abstract the study area as a bounded low-relief base; factual basis to be verified | lagoon and islands are the primary geographic condition; supported by a source anchor | valley, city boundary, and local terrain relations to be verified |
+| Water | an outer island boundary exists, but this prototype does not use a water network as its main internal structure; to be verified | water decides land, boundary, and the main network at once; supported by a source anchor | the 00.2 source anchor supports historic districts and a waterway background, but the specific effect of water on the internal network is to be verified |
+| Network | the planned numbered orthogonal grid is supported by a source anchor; street hierarchy and proportions to be verified | canals as the main network and bridges connecting islands are supported by a source anchor; pedestrian hierarchy to be verified | the dense historic fabric is supported by a source anchor; the hierarchy of branching lanes to be verified |
+| Plots | candidate hypothesis: regular subdivision of long narrow blocks; to be verified | candidate hypothesis: irregular waterfront plots following the shoreline; to be verified | candidate hypothesis: small irregular plots and courtyard units; to be verified |
+| Building form | candidate hypothesis: volumes controlled by plot, coverage, and a height field; height distribution to be verified | the relation of historic buildings to the water city has a source anchor; rules for a continuous low-rise street wall to be verified | the dense building fabric has a source anchor; courtyard and street-wall rules to be verified |
+| Generation complexity | **low–medium:** a regular grid, deterministic subdivision, and simple volumes are easy to verify in stages | **medium–high:** needs a water / land mask, islands, a dual network, bridges, and shoreline plots working together | **high:** needs organic network growth, accessibility, dead ends, irregular plots, and courtyards working together |
+| Reuse potential of old experiments | **pending code audit:** generic terrain, grid, and building volumes may be reusable; this task did not read code | **possibly high but unverified:** the project had a Venice direction before; this task was not allowed to read code, so interfaces and quality cannot be confirmed | **probably low and unverified:** new organic-network and courtyard rules are expected, but this task did not read code |
+| Role in the system | establish the common data interface and the lowest-complexity baseline | test whether water can replace streets as the world's skeleton | test whether the system can leave the regular grid and produce a hierarchical organic fabric |
 
-## 4. 为什么保留这三座，而不更换原型
+## 4. Why keep these three and not change the prototypes
 
-### 结构差异
+### Structural difference
 
-三座城市的第一生成动作不同：
-
-```text
-曼哈顿：边界 → 正交道路 → 规则街区 → 地块 → 高度场
-威尼斯：泻湖水网 → 岛屿 → 岸线路径与桥 → 滨水地块 → 建筑
-非斯：边界与公共节点 → 分级路径生长 → 不规则街区 → 院落地块 → 建筑
-```
-
-这比选择三座都依赖网格、三座都依赖水体或三座都依赖复杂地形的城市更能证明“同一框架、不同规则”。
-
-### 暂不采用的替代方案
-
-- **重庆替代非斯：** 可以增加地形差异，但当前没有来源锚点，且高差连接会同时引入复杂地形、道路和建筑问题，不适合作为两个月交付中的第三套早期规则。
-- **巴西利亚替代曼哈顿：** 已有来源锚点且规则清楚，但超级街区和功能分区会跳过传统地块细分，不适合首先验证通用“网络—街区—地块—建筑”链。
-- **鹿特丹替代威尼斯：** 可以研究水文和防洪，但会将重点转向区域基础设施；威尼斯更直接地测试“水网能否成为城市内部网络”。
-
-以上替代判断来自 00.2 的候选分类，仍属于项目决策，不是完整城市事实研究。
-
-## 5. 三座城市的候选生成规则
-
-### A. 曼哈顿（纽约）
-
-1. **规则 M1｜边界内生成统一方向的正交道路骨架。**
-   - 验证状态：**概念依据已验证。** 00.2 的 NYC Municipal Archives 来源锚点支持 1811 规划编号街道网格。
-   - 待验证：研究区域边界、道路间距、街道与大道的层级差异。
-2. **规则 M2｜每个街区按主方向递归细分为规则地块。**
-   - 验证状态：**待验证。** 目前只有“狭长街区和地块细分”的候选假设。
-   - 待验证：地块方向、尺度分布、角地块处理和特殊街区例外。
-3. **规则 M3｜建筑覆盖率与高度由可解释的密度场控制，而不是随机逐栋决定。**
-   - 验证状态：**待验证。** 可作为程序化抽象，但尚无来源支持具体密度梯度。
-   - 待验证：高度与交通节点、道路等级、研究区域之间的关系。
-
-### B. 威尼斯
-
-1. **规则 V1｜先生成泻湖、水道和岛屿，再生成陆地上的城市内容。**
-   - 验证状态：**概念依据已验证。** 00.2 的 UNESCO 来源锚点支持岛屿、泻湖和运河共同形成城市系统。
-   - 待验证：水道层级、岛屿尺度和可建设岸线条件。
-2. **规则 V2｜桥梁是稀缺连接，连接数量和位置决定跨岛网络层级。**
-   - 验证状态：**部分待验证。** 来源锚点支持岛屿与水道系统，但桥梁层级和连接规律尚未核验。
-   - 待验证：桥梁密度、主要步行路径和公共节点关系。
-3. **规则 V3｜地块随岸线与路径变化，建筑形成连续但不完全规则的滨水织构。**
-   - 验证状态：**待验证。** 当前只有 00.2 的候选地块与建筑描述。
-   - 待验证：地块朝向、街墙连续度、高度与公共空间例外。
-
-### C. 非斯古城
-
-1. **规则 F1｜从城门、市场、宗教或公共节点建立主要路径骨架。**
-   - 验证状态：**部分依据已验证。** 00.2 的 UNESCO 来源锚点支持围合历史织构、分区和公共建筑密集特征；具体节点权重待验证。
-   - 待验证：节点类型、入口数量、主路径之间的连接关系。
-2. **规则 F2｜次级巷道从主要路径递归分支，逐级降低宽度并允许死路。**
-   - 验证状态：**待验证。** 当前属于有机历史核心的候选生成假设。
-   - 待验证：分支概率、路径层级、死路比例和可达性标准。
-3. **规则 F3｜不规则街区被划分为内向院落地块，建筑沿外边界形成连续界面。**
-   - 验证状态：**待验证。** 高密度历史织构有来源锚点，但院落地块的分割逻辑尚未核验。
-   - 待验证：院落比例、地块尺度、入口组织和公共空间例外。
-
-## 6. 第一座实现城市推荐
-
-### 推荐：曼哈顿（纽约）
-
-曼哈顿最适合作为第一条完整垂直切片，不是因为它代表所有城市，而是因为它能以最低的规则复杂度测试项目必须共用的完整数据链。
-
-#### 主要理由
-
-1. **完整链条清楚。** 边界、正交网络、街区、地块和建筑体量可以依次生成，每一层都有明确输入和输出。
-2. **容易做确定性验证。** 相同 Seed 和参数应得到相同网格、地块与高度场，错误更容易定位。
-3. **直接对应第一版参数。** 路网规律度、道路密度、街区尺度、地块规则度、建筑密度和建筑高度都能在一个原型中被观察。
-4. **适合冻结公共接口。** 先用简单规则验证 `Terrain/Surface → Network → Block → Parcel → Building`，再让威尼斯替换网络前提，让非斯替换路径与地块算法。
-5. **降低旧实验绑架新架构的风险。** 即使威尼斯旧实验具有较高复用潜力，也不应让城市特例决定公共接口；旧代码复用必须等到下一项代码审计后再决定。
-6. **能在视觉资产缺失时成立。** 即使只使用简单体量，只要网格、地块和高度场清楚，原型仍能表达结构，而不依赖正式模型。
-
-### 推荐实现顺序
+The first generation step of each city is different:
 
 ```text
-1. 曼哈顿：建立共用完整生成链和调试接口
-2. 威尼斯：验证水体主导、岛屿和桥梁是否能替换基础网络逻辑
-3. 非斯古城：验证有机路径、不规则地块和院落能否在同一框架内工作
+Manhattan: boundary → orthogonal streets → regular blocks → plots → height field
+Venice:    lagoon water network → islands → shoreline paths and bridges → waterfront plots → buildings
+Fez:       boundary and public nodes → hierarchical path growth → irregular blocks → courtyard plots → buildings
 ```
 
-## 7. 进入代码前的强制验证
+This demonstrates "one framework, different rules" better than choosing three cities that all depend on a grid, all on water, or all on complex terrain.
 
-本决策通过人工验收后，仍不能立刻编写完整生成器。第一座城市必须先完成：
+### Alternatives not adopted for now
 
-- 曼哈顿研究区域的明确边界。
-- 至少两个可靠来源，并标明各自支持的字段。
-- M1、M2、M3 三条规则的事实、推断和艺术化处理边界。
-- 不使用精确数值时的参数范围假设，以及之后如何校准。
-- 旧实验和现有代码的只读审计，确认哪些接口能够复用。
+- **Chongqing instead of Fez:** would add terrain difference, but there is no source anchor yet, and its height-difference connections would introduce complex terrain, street, and building problems at once; not suitable as the third early rule set in a two-month delivery.
+- **Brasília instead of Manhattan:** has a source anchor and clear rules, but superblocks and functional zoning skip traditional plot subdivision, so it is not suited to testing the generic "network → block → plot → building" chain first.
+- **Rotterdam instead of Venice:** would allow study of hydrology and flood defence, but shifts the focus to regional infrastructure; Venice tests more directly whether a water network can become the city's internal network.
 
-## 8. 待验证事项
+These judgements come from the 00.2 candidate classification; they are still project decisions, not complete factual city research.
 
-1. 三座城市研究区域尚未达到统一、可比较的尺度。
-2. 三座城市都只有一个来源锚点，尚未满足 00.1 的双来源要求。
-3. 地块结构、建筑覆盖率、高度分布和边界接口仍缺证据。
-4. 旧实验复用潜力尚未通过代码审计，不能作为已确认优势。
-5. 曼哈顿作为第一实现城市仍需人工验收；本文件不代表开始编程。
+## 5. Candidate generation rules for the three cities
 
-## 9. 人工验收项
+### A. Manhattan (New York)
 
-- [ ] 接受三座原型：曼哈顿、威尼斯、非斯古城。
-- [ ] 接受第一实现城市：曼哈顿。
-- [ ] 接受实现顺序：曼哈顿 → 威尼斯 → 非斯古城。
-- [ ] 同意下一任务只完成曼哈顿的双来源研究与规则校准，不写代码。
+1. **Rule M1 — Generate an orthogonal street skeleton with one orientation inside the boundary.**
+   - Verification status: **conceptual basis verified.** The 00.2 NYC Municipal Archives source anchor supports the 1811 planned numbered street grid.
+   - To be verified: study-area boundary, street spacing, and the hierarchy difference between streets and avenues.
+2. **Rule M2 — Recursively subdivide each block into regular plots along the main direction.**
+   - Verification status: **to be verified.** So far there is only the candidate hypothesis of "long narrow blocks and plot subdivision".
+   - To be verified: plot orientation, size distribution, corner-plot treatment, and exceptions for special blocks.
+3. **Rule M3 — Building coverage and height are controlled by an explainable density field, not decided randomly building by building.**
+   - Verification status: **to be verified.** Usable as a procedural abstraction, but no source supports a specific density gradient yet.
+   - To be verified: the relation of height to transport nodes, street hierarchy, and the study area.
 
+### B. Venice
+
+1. **Rule V1 — Generate the lagoon, waterways, and islands first, then the urban content on land.**
+   - Verification status: **conceptual basis verified.** The 00.2 UNESCO source anchor supports islands, lagoon, and canals forming one urban system together.
+   - To be verified: waterway hierarchy, island scale, and conditions for buildable shoreline.
+2. **Rule V2 — Bridges are scarce connections; their number and position decide the hierarchy of the cross-island network.**
+   - Verification status: **partly to be verified.** The source anchor supports the island and waterway system, but bridge hierarchy and connection patterns are not yet verified.
+   - To be verified: bridge density, main pedestrian routes, and their relation to public nodes.
+3. **Rule V3 — Plots follow shorelines and paths; buildings form a continuous but not fully regular waterfront fabric.**
+   - Verification status: **to be verified.** There are only the candidate plot and building descriptions from 00.2.
+   - To be verified: plot orientation, street-wall continuity, height, and public-space exceptions.
+
+### C. Fez el-Bali
+
+1. **Rule F1 — Build the main path skeleton from gates, markets, religious buildings, or other public nodes.**
+   - Verification status: **basis partly verified.** The 00.2 UNESCO source anchor supports the enclosed historic fabric, its districts, and the density of public buildings; the specific node weights are to be verified.
+   - To be verified: node types, number of entrances, and how main paths connect.
+2. **Rule F2 — Secondary lanes branch recursively from the main paths, getting narrower at each level and allowing dead ends.**
+   - Verification status: **to be verified.** Currently a candidate generation hypothesis for an organic historic core.
+   - To be verified: branching probability, path hierarchy, share of dead ends, and accessibility criteria.
+3. **Rule F3 — Irregular blocks are divided into inward-facing courtyard plots; buildings form a continuous face along the outer edge.**
+   - Verification status: **to be verified.** The dense historic fabric has a source anchor, but the subdivision logic of courtyard plots is not yet verified.
+   - To be verified: courtyard proportion, plot scale, entrance organisation, and public-space exceptions.
+
+## 6. Recommended first city to implement
+
+### Recommendation: Manhattan (New York)
+
+Manhattan is the best first complete vertical slice, not because it represents all cities, but because it can test the full data chain the project must share with the lowest rule complexity.
+
+#### Main reasons
+
+1. **The full chain is clear.** Boundary, orthogonal network, blocks, plots, and building volumes can be generated in sequence, each layer with clear inputs and outputs.
+2. **Deterministic verification is easy.** The same seed and parameters should give the same grid, plots, and height field, so errors are easier to locate.
+3. **It maps directly to the first parameters.** Network regularity, street density, block scale, plot regularity, building density, and building height can all be observed in one prototype.
+4. **It suits freezing the common interfaces.** First verify `Terrain/Surface → Network → Block → Parcel → Building` with simple rules; then let Venice replace the network premise and Fez replace the path and plot algorithms.
+5. **It reduces the risk of old experiments dictating the new architecture.** Even if the old Venice experiment has high reuse potential, a city special case should not decide the common interfaces; reuse of old code must wait for the next code audit.
+6. **It works without visual assets.** Even with simple volumes only, the prototype still expresses structure if the grid, plots, and height field are clear; it does not depend on finished models.
+
+### Recommended implementation order
+
+```text
+1. Manhattan: build the shared full generation chain and debug interfaces
+2. Venice: test whether water dominance, islands, and bridges can replace the base network logic
+3. Fez el-Bali: test whether organic paths, irregular plots, and courtyards work within the same framework
+```
+
+## 7. Mandatory verification before code
+
+Even after this decision is accepted, a complete generator must not be written immediately. The first city must first have:
+
+- an explicit boundary for the Manhattan study area;
+- at least two reliable sources, each marked with the fields it supports;
+- the boundary between fact, inference, and artistic choice for rules M1, M2, and M3;
+- assumed parameter ranges where exact values are not used, and how they will be calibrated later;
+- a read-only audit of old experiments and existing code, confirming which interfaces can be reused.
+
+## 8. Items to be verified
+
+1. The study areas of the three cities do not yet have a unified, comparable scale.
+2. Each of the three cities has only one source anchor, so the two-source requirement of 00.1 is not yet met.
+3. Plot structure, building coverage, height distribution, and boundary interfaces still lack evidence.
+4. The reuse potential of old experiments has not passed a code audit and cannot count as a confirmed advantage.
+5. Manhattan as the first city to implement still needs human acceptance; this file does not mean that programming starts.
+
+## 9. Human acceptance items
+
+- [ ] Accept the three prototypes: Manhattan, Venice, Fez el-Bali.
+- [ ] Accept the first city to implement: Manhattan.
+- [ ] Accept the implementation order: Manhattan → Venice → Fez el-Bali.
+- [ ] Agree that the next task only completes Manhattan's two-source research and rule calibration, without writing code.
