@@ -36,6 +36,7 @@ A passing build or verifier is never an *accepted* spatial result. **As of 2026-
 
 ## 3. Start Here
 
+0. **[Next session hand-off](./NEXT_SESSION.md).** Current stage, Git commit, public URL, saved World State, open problems, the next single task, and the local start commands.
 1. **[Project compass](./FINAL-EXPERIMENT-LOG.md), §1 and §5.** Read this first: it defines the question, the stages, and what is in or out of scope right now.
 2. **[Terrain & Water](./03-generative-system/terrain-and-water.md) and [Terrain Analysis](./03-generative-system/terrain-analysis.md).** Everything starts from a city-neutral site, so understand the tile, the four landforms, and how the site is read.
 3. **[City DNA Matching](./03-generative-system/city-dna-matching.md).** Next, see how a city is *chosen to fit* that site rather than imposed on it, and what is still an assumption.
