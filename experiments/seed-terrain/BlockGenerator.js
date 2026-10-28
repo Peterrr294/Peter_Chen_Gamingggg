@@ -1,4 +1,5 @@
 import { checksum } from '../cellular-noise/noise.js';
+import { assignStableIds, canonicalShape } from './StableIdentity.js';
 import { BLOCK_RULES } from './blockRules.js';
 import { DNA_STRATEGY, strategyParams } from './networkStrategies.js';
 import { refineBlocks } from './BlockRefinement.js';
@@ -244,7 +245,8 @@ export function ringsIntersect(rings) {
   return false;
 }
 
-export function generateBlocks(fields, analysis, graph, cityMatch, config) {
+// options.identity (07.1a, optional): block ids from canonical geometry instead of label order (StableIdentity.js).
+export function generateBlocks(fields, analysis, graph, cityMatch, config, options = {}) {
   const rules = BLOCK_RULES;
   const field = buildField(fields, graph, rules);
   const { labels, count } = label(field);
@@ -417,6 +419,7 @@ export function generateBlocks(fields, analysis, graph, cityMatch, config) {
     terrainBlockIndex[r * columns + c] = component ? (blockOfComponent.has(component) ? blockOfComponent.get(component) : -10 - (fragmentOfComponent.get(component) ?? 0)) : field.source[k] === WATER ? -3 : -2;
   }
 
+  const idCollisions = options.identity ? assignStableIds(blocks, block => canonicalShape(block.polygon, block.holes), 'B') : null;
   const chunkArea = fields.grid.size * fields.grid.size;
   const blocksArea = blocks.reduce((sum, block) => sum + block.area, 0);
   const result = {
@@ -427,6 +430,7 @@ export function generateBlocks(fields, analysis, graph, cityMatch, config) {
     blocks,
     fragments,
     terrainBlockIndex,
+    ...(options.identity ? { identity: { scheme: 'spatial', idCollisions } } : {}),
     stats: {
       blocks: blocks.length,
       byEnclosure: Object.fromEntries(['roads', 'roadsAndWater', 'waterOnly', 'clipped'].map(kind => [kind, blocks.filter(block => block.enclosure === kind).length])),

@@ -8,7 +8,7 @@
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="../../typography.css" />
     <link rel="stylesheet" href="../manhattan-terrain-greybox/style.css" />
-    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.seams{margin:6px 0 0;padding-left:16px;color:#c9d4d6;font-size:10px;line-height:1.5}.legend .edge{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .band{background:#3fd6c5}.legend .port{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .wet{background:linear-gradient(90deg,#4fa8ff 50%,#ff4fd8 50%)}.legend .sel{background:#ffd23f}.legend .cls{background:linear-gradient(90deg,#3fd17a 20%,#b8e05a 20% 40%,#4fb3ff 40% 60%,#ff9a3c 60% 80%,#ff3b3b 80%)}.legend .diff{background:linear-gradient(90deg,#3373ff 20%,#33d9e6 20% 40%,#ffd933 40% 60%,#ff4033 60% 80%,#ff33e6 80%)}.legend .road{background:linear-gradient(90deg,#3fd17a 33%,#ff3b3b 33% 66%,#ff9a3c 66%)}</style>
+    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.seams{margin:6px 0 0;padding-left:16px;color:#c9d4d6;font-size:10px;line-height:1.5}.legend .edge{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .band{background:#3fd6c5}.legend .port{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}.legend .wet{background:linear-gradient(90deg,#4fa8ff 50%,#ff4fd8 50%)}.legend .sel{background:#ffd23f}.legend .cls{background:linear-gradient(90deg,#3fd17a 20%,#b8e05a 20% 40%,#4fb3ff 40% 60%,#ff9a3c 60% 80%,#ff3b3b 80%)}.legend .diff{background:linear-gradient(90deg,#3373ff 20%,#33d9e6 20% 40%,#ffd933 40% 60%,#ff4033 60% 80%,#ff33e6 80%)}.legend .inf{background:linear-gradient(90deg,#4f8cff 25%,#ffe14d 25% 50%,#ff7a2f 50% 75%,#ff2f6d 75%)}.legend .fus{background:linear-gradient(90deg,#ff9a3c 25%,#ffffff 25% 50%,#ff2f6d 50% 75%,#ffe14d 75%)}.legend .stab{background:linear-gradient(90deg,#3fd17a 17%,#4fb3ff 17% 34%,#ff9a3c 34% 51%,#ffd23f 51% 68%,#c9e7ff 68% 85%,#ff2020 85%)}.legend .road{background:linear-gradient(90deg,#3fd17a 33%,#ff3b3b 33% 66%,#ff9a3c 66%)}</style>
   </head>
   <body>
     <header class="topbar">
@@ -19,7 +19,7 @@
     <main>
       <section class="intro">
         <div><p class="eyebrow">WORLD GRID / 3 × 3 CHUNKS</p><h1>Nine chunks,<br />one world frame.</h1></div>
-        <p>Each slot is a fixed 1024 m chunk at a fixed grid coordinate. Its terrain seed is derived from the world seed, the grid coordinate, and its landform; its City ID (empty, auto, or a City DNA) only drives the downstream city layers. Terrain is world-coordinated by default: a continuous macro base over the whole grid, each chunk re-based on it, and one shared boundary surface per edge inside the adjustable transition band; edges whose zone would exceed 35° are reported unresolved. Road ports on joined edges are connected into one network graph where class, angle, height, water and slope allow; the others are reported with a reason. No city influence is applied yet.</p>
+        <p>Each slot is a fixed 1024 m chunk at a fixed grid coordinate. Its terrain seed is derived from the world seed, the grid coordinate, and its landform; its City ID (empty, auto, or a City DNA) only drives the downstream city layers. Terrain is world-coordinated by default: a continuous macro base over the whole grid, each chunk re-based on it, and one shared boundary surface per edge inside the adjustable transition band; edges whose zone would exceed 35° are reported unresolved. Road ports on joined edges are connected into one network graph where class, angle, height, water and slope allow; the others are reported with a reason. City influence (07.1): one source city can invade one neighbouring chunk; inside the influence radius the target's streets switch to the invading rules edge by edge and its parcels and buildings blend both rule sets by weight. Terrain and water never change.</p>
       </section>
       <section class="workspace">
         <article class="viewport">
@@ -37,6 +37,7 @@
             <div><dt>Generated layers</dt><dd id="countInfo">—</dd></div>
             <div><dt>Generation time</dt><dd id="timeInfo">—</dd></div>
             <div><dt>Edges of this chunk</dt><ol id="seamInfo" class="seams"></ol></div>
+            <div><dt>City influence (07.1)</dt><dd id="influenceInfo">—</dd></div>
             <div><dt>Saved config</dt><dd id="saveState">—</dd></div>
           </dl>
           <div class="legend">
@@ -47,6 +48,9 @@
             <p><i class="band"></i> Inner limit of the transition band on both sides (harmonisation stops here)</p>
             <p><i class="wet"></i> Water: on both sides (continuous) · one side only or level step (discontinuity)</p>
             <p><i class="port"></i> Edge ports, independent roads: paired · paired but elevation differs &gt; 2 m · unpaired</p>
+            <p><i class="inf"></i> Influence field (07.1): ownership tint per chunk (Manhattan blue · Venice teal · Fez amber · Chicago violet · Amsterdam pink · Lisbon green · empty grey), blended to yellow → red by weight w</p>
+            <p><i class="fus"></i> Fusion zone (07.1): affected chunk outline (orange) · τ band limits w = 0.35 / 0.65 (white) · fused streets: base (white) · invading rules (red) · connector (yellow)</p>
+            <p><i class="stab"></i> w = 0 stability (07.1a, against the last unfused city): stable · block reshaped · frontage road changed · sibling lot in the fusion zone changed · added · unstable / unexplained (defects)</p>
             <p><i class="road"></i> Joined roads (06.3b): port connected · rejected (reason in panel / report) · pending; green cube = joint node; white = re-routed connector; pink = stub into the neighbour</p>
           </div>
         </aside>

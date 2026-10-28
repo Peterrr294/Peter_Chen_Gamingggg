@@ -1,0 +1,2148 @@
+{
+  "task": "07.1a",
+  "createdAt": "2026-10-21T16:58:03.434Z",
+  "transitionWidth": 128,
+  "terrain": "coordinated (default)",
+  "roads": "joined (default)",
+  "setup": {
+    "source": "chunk_0_1 veniceWaterNetwork (manual)",
+    "target": "chunk_0_0 manhattanGrid (manual)",
+    "radius": 384,
+    "strengths": [
+      0,
+      25,
+      50,
+      100
+    ],
+    "seeds": [
+      6201,
+      6202,
+      6203
+    ]
+  },
+  "runs": [
+    {
+      "seed": 6201,
+      "legacy": {
+        "loadMs": 33524,
+        "full": {
+          "active": true,
+          "fusion": {
+            "baseEdges": 148,
+            "invaderEdges": 32,
+            "baseKept": 123,
+            "baseClipped": 10,
+            "baseDropped": 15,
+            "invaderKept": 2,
+            "invaderClipped": 1,
+            "droppedInvaderTunnels": 0,
+            "connectors": 3,
+            "cutEnds": 11,
+            "junctions": 0,
+            "remainingCrossings": 0
+          },
+          "ms": 11447,
+          "rebuilt": [
+            "chunk_0_0",
+            "chunk_0_1"
+          ],
+          "stability": {
+            "counts": {
+              "stable": 1202,
+              "unstable": 46,
+              "blockChanged": 9,
+              "roadChanged": 3,
+              "siblingChanged": 57,
+              "unexplained": 0,
+              "added": 14,
+              "zoneBase": 525,
+              "zoneCurrent": 423,
+              "zoneSame": 19
+            },
+            "w0Parcels": 1317,
+            "stableShare": 0.9127,
+            "defects": 46
+          },
+          "otherChunksChanged": []
+        },
+        "zeroIdentical": true
+      },
+      "spatial": {
+        "strengths": [
+          {
+            "strength": 0,
+            "active": false,
+            "fusion": null,
+            "rebuiltCities": [],
+            "ms": 160,
+            "stability": null,
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.38,
+                "invaderRoadShare": 0,
+                "parcels": 1317,
+                "meanParcelArea": 360.7,
+                "meanFrontage": 16.36,
+                "buildings": 1216,
+                "buildingsPerParcel": 0.923,
+                "coverageOfParcels": 0.735,
+                "meanHeight": 60,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 17.71,
+                "invaderRoadShare": 0,
+                "parcels": 268,
+                "meanParcelArea": 359.2,
+                "meanFrontage": 16.62,
+                "buildings": 241,
+                "buildingsPerParcel": 0.899,
+                "coverageOfParcels": 0.716,
+                "meanHeight": 78.2,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 17.14,
+                "invaderRoadShare": 0,
+                "parcels": 94,
+                "meanParcelArea": 357.5,
+                "meanFrontage": 16.37,
+                "buildings": 86,
+                "buildingsPerParcel": 0.915,
+                "coverageOfParcels": 0.732,
+                "meanHeight": 72.8,
+                "heightMax": 97.2
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 19.7,
+                "invaderRoadShare": 0,
+                "parcels": 163,
+                "meanParcelArea": 354.5,
+                "meanFrontage": 16.93,
+                "buildings": 149,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.74,
+                "meanHeight": 61.9,
+                "heightMax": 86.4
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "9C20C3F5",
+                "height": "DE5D5A12",
+                "water": "6DF68F52",
+                "network": "CA81F328",
+                "rawNetwork": "BA0031AC",
+                "blocks": "A0554C9B",
+                "parcels": "BBF5859F",
+                "buildings": "44345D38"
+              },
+              "source": {
+                "raw": "CF8AAE89",
+                "height": "AB9C3493",
+                "water": "3021AE0D",
+                "network": "EF655299",
+                "rawNetwork": "B0C46F65",
+                "blocks": "8FA22E43",
+                "parcels": "17646128",
+                "buildings": "D4FF0F7B"
+              }
+            }
+          },
+          {
+            "strength": 25,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 32,
+              "baseKept": 148,
+              "baseClipped": 0,
+              "baseDropped": 0,
+              "invaderKept": 0,
+              "invaderClipped": 0,
+              "droppedInvaderTunnels": 0,
+              "connectors": 0,
+              "cutEnds": 0,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 9055,
+            "stability": {
+              "counts": {
+                "stable": 1309,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 8,
+                "unexplained": 0,
+                "added": 8,
+                "zoneBase": 525,
+                "zoneCurrent": 558,
+                "zoneSame": 57
+              },
+              "w0Parcels": 1317,
+              "stableShare": 0.9939,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.38,
+                "invaderRoadShare": 0,
+                "parcels": 1317,
+                "meanParcelArea": 360.7,
+                "meanFrontage": 16.36,
+                "buildings": 1216,
+                "buildingsPerParcel": 0.923,
+                "coverageOfParcels": 0.735,
+                "meanHeight": 59.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 17.71,
+                "invaderRoadShare": 0,
+                "parcels": 271,
+                "meanParcelArea": 345.9,
+                "meanFrontage": 16.05,
+                "buildings": 257,
+                "buildingsPerParcel": 0.948,
+                "coverageOfParcels": 0.753,
+                "meanHeight": 76.1,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 17.14,
+                "invaderRoadShare": 0,
+                "parcels": 107,
+                "meanParcelArea": 322.6,
+                "meanFrontage": 14.91,
+                "buildings": 92,
+                "buildingsPerParcel": 0.86,
+                "coverageOfParcels": 0.674,
+                "meanHeight": 63.7,
+                "heightMax": 89.2
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 19.7,
+                "invaderRoadShare": 0,
+                "parcels": 180,
+                "meanParcelArea": 297.1,
+                "meanFrontage": 14.68,
+                "buildings": 164,
+                "buildingsPerParcel": 0.911,
+                "coverageOfParcels": 0.706,
+                "meanHeight": 47.1,
+                "heightMax": 71
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "9C20C3F5",
+                "height": "DE5D5A12",
+                "water": "6DF68F52",
+                "network": "CA81F328",
+                "rawNetwork": "BA0031AC",
+                "blocks": "A0554C9B",
+                "parcels": "E4560373",
+                "buildings": "637AC160"
+              },
+              "source": {
+                "raw": "CF8AAE89",
+                "height": "AB9C3493",
+                "water": "3021AE0D",
+                "network": "EF655299",
+                "rawNetwork": "B0C46F65",
+                "blocks": "8FA22E43",
+                "parcels": "17646128",
+                "buildings": "D4FF0F7B"
+              }
+            }
+          },
+          {
+            "strength": 50,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 32,
+              "baseKept": 140,
+              "baseClipped": 3,
+              "baseDropped": 5,
+              "invaderKept": 0,
+              "invaderClipped": 0,
+              "droppedInvaderTunnels": 0,
+              "connectors": 0,
+              "cutEnds": 3,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0",
+              "chunk_0_1"
+            ],
+            "ms": 10798,
+            "stability": {
+              "counts": {
+                "stable": 1308,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 9,
+                "unexplained": 0,
+                "added": 9,
+                "zoneBase": 525,
+                "zoneCurrent": 538,
+                "zoneSame": 40
+              },
+              "w0Parcels": 1317,
+              "stableShare": 0.9932,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.29,
+                "invaderRoadShare": 0,
+                "parcels": 1317,
+                "meanParcelArea": 360.7,
+                "meanFrontage": 16.36,
+                "buildings": 1216,
+                "buildingsPerParcel": 0.923,
+                "coverageOfParcels": 0.735,
+                "meanHeight": 59.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 17.72,
+                "invaderRoadShare": 0,
+                "parcels": 278,
+                "meanParcelArea": 335.8,
+                "meanFrontage": 15.68,
+                "buildings": 253,
+                "buildingsPerParcel": 0.91,
+                "coverageOfParcels": 0.718,
+                "meanHeight": 72.3,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 17.17,
+                "invaderRoadShare": 0,
+                "parcels": 114,
+                "meanParcelArea": 292.5,
+                "meanFrontage": 14.06,
+                "buildings": 99,
+                "buildingsPerParcel": 0.868,
+                "coverageOfParcels": 0.651,
+                "meanHeight": 52.1,
+                "heightMax": 81.4
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 12.13,
+                "invaderRoadShare": 0,
+                "parcels": 146,
+                "meanParcelArea": 315.1,
+                "meanFrontage": 13.3,
+                "buildings": 128,
+                "buildingsPerParcel": 0.877,
+                "coverageOfParcels": 0.614,
+                "meanHeight": 34.4,
+                "heightMax": 52.5
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "9C20C3F5",
+                "height": "DE5D5A12",
+                "water": "6DF68F52",
+                "network": "48BC2354",
+                "rawNetwork": "BA0031AC",
+                "blocks": "E2386346",
+                "parcels": "E99C6986",
+                "buildings": "76EC2B37"
+              },
+              "source": {
+                "raw": "CF8AAE89",
+                "height": "AB9C3493",
+                "water": "3021AE0D",
+                "network": "1D32552F",
+                "rawNetwork": "B0C46F65",
+                "blocks": "5B395674",
+                "parcels": "490479D3",
+                "buildings": "ECBAB2FA"
+              }
+            }
+          },
+          {
+            "strength": 100,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 32,
+              "baseKept": 123,
+              "baseClipped": 10,
+              "baseDropped": 15,
+              "invaderKept": 2,
+              "invaderClipped": 1,
+              "droppedInvaderTunnels": 0,
+              "connectors": 3,
+              "cutEnds": 11,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0",
+              "chunk_0_1"
+            ],
+            "ms": 10004,
+            "stability": {
+              "counts": {
+                "stable": 1287,
+                "unstable": 0,
+                "blockChanged": 15,
+                "roadChanged": 3,
+                "siblingChanged": 12,
+                "unexplained": 0,
+                "added": 14,
+                "zoneBase": 525,
+                "zoneCurrent": 426,
+                "zoneSame": 32
+              },
+              "w0Parcels": 1317,
+              "stableShare": 0.9772,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.29,
+                "invaderRoadShare": 0,
+                "parcels": 1316,
+                "meanParcelArea": 360.9,
+                "meanFrontage": 16.36,
+                "buildings": 1216,
+                "buildingsPerParcel": 0.924,
+                "coverageOfParcels": 0.735,
+                "meanHeight": 59.8,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 17.69,
+                "invaderRoadShare": 0,
+                "parcels": 284,
+                "meanParcelArea": 322.9,
+                "meanFrontage": 15.4,
+                "buildings": 261,
+                "buildingsPerParcel": 0.919,
+                "coverageOfParcels": 0.719,
+                "meanHeight": 65.8,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 10.45,
+                "invaderRoadShare": 0.076,
+                "parcels": 68,
+                "meanParcelArea": 445.7,
+                "meanFrontage": 14.06,
+                "buildings": 57,
+                "buildingsPerParcel": 0.838,
+                "coverageOfParcels": 0.537,
+                "meanHeight": 37.2,
+                "heightMax": 55.5
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 4.61,
+                "invaderRoadShare": 0.925,
+                "parcels": 74,
+                "meanParcelArea": 224.4,
+                "meanFrontage": 9.62,
+                "buildings": 65,
+                "buildingsPerParcel": 0.878,
+                "coverageOfParcels": 0.561,
+                "meanHeight": 16.6,
+                "heightMax": 27.2
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "9C20C3F5",
+                "height": "DE5D5A12",
+                "water": "6DF68F52",
+                "network": "CF7E3A83",
+                "rawNetwork": "BA0031AC",
+                "blocks": "B358D726",
+                "parcels": "3F3B47D6",
+                "buildings": "9C4DBEC7"
+              },
+              "source": {
+                "raw": "CF8AAE89",
+                "height": "AB9C3493",
+                "water": "3021AE0D",
+                "network": "876E4447",
+                "rawNetwork": "B0C46F65",
+                "blocks": "803D63D7",
+                "parcels": "1FE0E875",
+                "buildings": "37702539"
+              }
+            }
+          }
+        ],
+        "identity": {
+          "mode": "spatial",
+          "blocks": {
+            "scheme": "spatial",
+            "idCollisions": 0
+          },
+          "parcels": {
+            "scheme": "spatial",
+            "worldSeed": 6201,
+            "idCollisions": 0
+          },
+          "buildings": {
+            "scheme": "spatial",
+            "worldSeed": 6201,
+            "areaReference": "largest parcel of the same block"
+          }
+        },
+        "vsLegacy": {
+          "chunk_-1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": true,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_0_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_0_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_0_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          }
+        },
+        "bandsBefore": [
+          {
+            "band": "w = 0",
+            "areaKm2": 0.754,
+            "roadKmPerKm2": 17.38,
+            "invaderRoadShare": 0,
+            "parcels": 1317,
+            "meanParcelArea": 360.7,
+            "meanFrontage": 16.36,
+            "buildings": 1216,
+            "buildingsPerParcel": 0.923,
+            "coverageOfParcels": 0.735,
+            "meanHeight": 60,
+            "heightMax": 115.2
+          },
+          {
+            "band": "0 < w < 0.35",
+            "areaKm2": 0.147,
+            "roadKmPerKm2": 17.71,
+            "invaderRoadShare": 0,
+            "parcels": 268,
+            "meanParcelArea": 359.2,
+            "meanFrontage": 16.62,
+            "buildings": 241,
+            "buildingsPerParcel": 0.899,
+            "coverageOfParcels": 0.716,
+            "meanHeight": 78.2,
+            "heightMax": 115.2
+          },
+          {
+            "band": "0.35 ≤ w < 0.65",
+            "areaKm2": 0.057,
+            "roadKmPerKm2": 17.14,
+            "invaderRoadShare": 0,
+            "parcels": 94,
+            "meanParcelArea": 357.5,
+            "meanFrontage": 16.37,
+            "buildings": 86,
+            "buildingsPerParcel": 0.915,
+            "coverageOfParcels": 0.732,
+            "meanHeight": 72.8,
+            "heightMax": 97.2
+          },
+          {
+            "band": "w ≥ 0.65",
+            "areaKm2": 0.09,
+            "roadKmPerKm2": 19.7,
+            "invaderRoadShare": 0,
+            "parcels": 163,
+            "meanParcelArea": 354.5,
+            "meanFrontage": 16.93,
+            "buildings": 149,
+            "buildingsPerParcel": 0.914,
+            "coverageOfParcels": 0.74,
+            "meanHeight": 61.9,
+            "heightMax": 86.4
+          }
+        ]
+      },
+      "reverse": {
+        "active": true,
+        "fusion": {
+          "baseEdges": 33,
+          "invaderEdges": 103,
+          "baseKept": 29,
+          "baseClipped": 3,
+          "baseDropped": 1,
+          "invaderKept": 15,
+          "invaderClipped": 5,
+          "droppedInvaderTunnels": 0,
+          "connectors": 3,
+          "cutEnds": 8,
+          "junctions": 0,
+          "remainingCrossings": 0
+        },
+        "ms": 15092,
+        "rebuilt": [
+          "chunk_0_0",
+          "chunk_0_1"
+        ],
+        "stability": {
+          "counts": {
+            "stable": 225,
+            "unstable": 0,
+            "blockChanged": 0,
+            "roadChanged": 175,
+            "siblingChanged": 0,
+            "unexplained": 0,
+            "added": 170,
+            "zoneBase": 93,
+            "zoneCurrent": 125,
+            "zoneSame": 0
+          },
+          "w0Parcels": 400,
+          "stableShare": 0.5625,
+          "defects": 0
+        },
+        "otherChunksChanged": []
+      },
+      "reloadMs": 37834,
+      "reproducible": true
+    },
+    {
+      "seed": 6202,
+      "legacy": {
+        "loadMs": 35330,
+        "full": {
+          "active": true,
+          "fusion": {
+            "baseEdges": 148,
+            "invaderEdges": 35,
+            "baseKept": 133,
+            "baseClipped": 8,
+            "baseDropped": 7,
+            "invaderKept": 0,
+            "invaderClipped": 2,
+            "droppedInvaderTunnels": 0,
+            "connectors": 3,
+            "cutEnds": 10,
+            "junctions": 1,
+            "remainingCrossings": 0
+          },
+          "ms": 8233,
+          "rebuilt": [
+            "chunk_0_0",
+            "chunk_0_1"
+          ],
+          "stability": {
+            "counts": {
+              "stable": 1179,
+              "unstable": 82,
+              "blockChanged": 0,
+              "roadChanged": 0,
+              "siblingChanged": 6,
+              "unexplained": 0,
+              "added": 0,
+              "zoneBase": 513,
+              "zoneCurrent": 407,
+              "zoneSame": 7
+            },
+            "w0Parcels": 1267,
+            "stableShare": 0.9305,
+            "defects": 82
+          },
+          "otherChunksChanged": []
+        },
+        "zeroIdentical": true
+      },
+      "spatial": {
+        "strengths": [
+          {
+            "strength": 0,
+            "active": false,
+            "fusion": null,
+            "rebuiltCities": [],
+            "ms": 124,
+            "stability": null,
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 18.38,
+                "invaderRoadShare": 0,
+                "parcels": 1267,
+                "meanParcelArea": 368.2,
+                "meanFrontage": 16.52,
+                "buildings": 1158,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.725,
+                "meanHeight": 53.3,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 14.91,
+                "invaderRoadShare": 0,
+                "parcels": 256,
+                "meanParcelArea": 380.4,
+                "meanFrontage": 15.64,
+                "buildings": 236,
+                "buildingsPerParcel": 0.922,
+                "coverageOfParcels": 0.719,
+                "meanHeight": 80.1,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 22.17,
+                "invaderRoadShare": 0,
+                "parcels": 110,
+                "meanParcelArea": 327.7,
+                "meanFrontage": 18.58,
+                "buildings": 100,
+                "buildingsPerParcel": 0.909,
+                "coverageOfParcels": 0.765,
+                "meanHeight": 82.3,
+                "heightMax": 115.2
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 12.89,
+                "invaderRoadShare": 0,
+                "parcels": 147,
+                "meanParcelArea": 439.1,
+                "meanFrontage": 14.44,
+                "buildings": 139,
+                "buildingsPerParcel": 0.946,
+                "coverageOfParcels": 0.713,
+                "meanHeight": 73.7,
+                "heightMax": 100.8
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "5186CA6F",
+                "height": "0598A56C",
+                "water": "D03A151F",
+                "network": "B259234A",
+                "rawNetwork": "0315B7C0",
+                "blocks": "1B2FDA0C",
+                "parcels": "8D5756E2",
+                "buildings": "6051460E"
+              },
+              "source": {
+                "raw": "473F4DB9",
+                "height": "D86B0A87",
+                "water": "CCA0A72F",
+                "network": "BC65FDBF",
+                "rawNetwork": "052710AD",
+                "blocks": "D2D9CF48",
+                "parcels": "D3DB3702",
+                "buildings": "703DA9AA"
+              }
+            }
+          },
+          {
+            "strength": 25,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 35,
+              "baseKept": 148,
+              "baseClipped": 0,
+              "baseDropped": 0,
+              "invaderKept": 0,
+              "invaderClipped": 0,
+              "droppedInvaderTunnels": 0,
+              "connectors": 0,
+              "cutEnds": 0,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 6076,
+            "stability": {
+              "counts": {
+                "stable": 1267,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 0,
+                "unexplained": 0,
+                "added": 0,
+                "zoneBase": 513,
+                "zoneCurrent": 558,
+                "zoneSame": 38
+              },
+              "w0Parcels": 1267,
+              "stableShare": 1,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 18.38,
+                "invaderRoadShare": 0,
+                "parcels": 1267,
+                "meanParcelArea": 368.2,
+                "meanFrontage": 16.52,
+                "buildings": 1158,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.725,
+                "meanHeight": 53.3,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 14.91,
+                "invaderRoadShare": 0,
+                "parcels": 260,
+                "meanParcelArea": 371.7,
+                "meanFrontage": 15.41,
+                "buildings": 236,
+                "buildingsPerParcel": 0.908,
+                "coverageOfParcels": 0.705,
+                "meanHeight": 77.5,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 22.17,
+                "invaderRoadShare": 0,
+                "parcels": 127,
+                "meanParcelArea": 265.4,
+                "meanFrontage": 15.62,
+                "buildings": 117,
+                "buildingsPerParcel": 0.921,
+                "coverageOfParcels": 0.762,
+                "meanHeight": 70,
+                "heightMax": 100
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 12.89,
+                "invaderRoadShare": 0,
+                "parcels": 171,
+                "meanParcelArea": 351.3,
+                "meanFrontage": 12.6,
+                "buildings": 160,
+                "buildingsPerParcel": 0.936,
+                "coverageOfParcels": 0.678,
+                "meanHeight": 55.4,
+                "heightMax": 81.6
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "5186CA6F",
+                "height": "0598A56C",
+                "water": "D03A151F",
+                "network": "B259234A",
+                "rawNetwork": "0315B7C0",
+                "blocks": "1B2FDA0C",
+                "parcels": "6721CDF6",
+                "buildings": "C2C7C526"
+              },
+              "source": {
+                "raw": "473F4DB9",
+                "height": "D86B0A87",
+                "water": "CCA0A72F",
+                "network": "BC65FDBF",
+                "rawNetwork": "052710AD",
+                "blocks": "D2D9CF48",
+                "parcels": "D3DB3702",
+                "buildings": "703DA9AA"
+              }
+            }
+          },
+          {
+            "strength": 50,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 35,
+              "baseKept": 144,
+              "baseClipped": 4,
+              "baseDropped": 0,
+              "invaderKept": 0,
+              "invaderClipped": 1,
+              "droppedInvaderTunnels": 0,
+              "connectors": 2,
+              "cutEnds": 5,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0",
+              "chunk_0_1"
+            ],
+            "ms": 7967,
+            "stability": {
+              "counts": {
+                "stable": 1267,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 0,
+                "unexplained": 0,
+                "added": 0,
+                "zoneBase": 513,
+                "zoneCurrent": 540,
+                "zoneSame": 23
+              },
+              "w0Parcels": 1267,
+              "stableShare": 1,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 18.31,
+                "invaderRoadShare": 0,
+                "parcels": 1267,
+                "meanParcelArea": 368.2,
+                "meanFrontage": 16.52,
+                "buildings": 1158,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.725,
+                "meanHeight": 53.3,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 14.91,
+                "invaderRoadShare": 0,
+                "parcels": 271,
+                "meanParcelArea": 363.4,
+                "meanFrontage": 15.2,
+                "buildings": 248,
+                "buildingsPerParcel": 0.915,
+                "coverageOfParcels": 0.714,
+                "meanHeight": 73.8,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 22.26,
+                "invaderRoadShare": 0,
+                "parcels": 128,
+                "meanParcelArea": 255.2,
+                "meanFrontage": 15.04,
+                "buildings": 113,
+                "buildingsPerParcel": 0.883,
+                "coverageOfParcels": 0.695,
+                "meanHeight": 56.4,
+                "heightMax": 95.7
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 11.72,
+                "invaderRoadShare": 0.108,
+                "parcels": 141,
+                "meanParcelArea": 329.2,
+                "meanFrontage": 12.27,
+                "buildings": 123,
+                "buildingsPerParcel": 0.872,
+                "coverageOfParcels": 0.604,
+                "meanHeight": 39.5,
+                "heightMax": 63
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "5186CA6F",
+                "height": "0598A56C",
+                "water": "D03A151F",
+                "network": "45997F89",
+                "rawNetwork": "0315B7C0",
+                "blocks": "026E6ABD",
+                "parcels": "237E662D",
+                "buildings": "DD59A59D"
+              },
+              "source": {
+                "raw": "473F4DB9",
+                "height": "D86B0A87",
+                "water": "CCA0A72F",
+                "network": "448EF1B4",
+                "rawNetwork": "052710AD",
+                "blocks": "FFB507EE",
+                "parcels": "BE507384",
+                "buildings": "003833C5"
+              }
+            }
+          },
+          {
+            "strength": 100,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 35,
+              "baseKept": 133,
+              "baseClipped": 8,
+              "baseDropped": 7,
+              "invaderKept": 0,
+              "invaderClipped": 2,
+              "droppedInvaderTunnels": 0,
+              "connectors": 3,
+              "cutEnds": 10,
+              "junctions": 1,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 6182,
+            "stability": {
+              "counts": {
+                "stable": 1265,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 2,
+                "unexplained": 0,
+                "added": 0,
+                "zoneBase": 513,
+                "zoneCurrent": 402,
+                "zoneSame": 12
+              },
+              "w0Parcels": 1267,
+              "stableShare": 0.9984,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 18.31,
+                "invaderRoadShare": 0,
+                "parcels": 1267,
+                "meanParcelArea": 368.2,
+                "meanFrontage": 16.52,
+                "buildings": 1158,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.725,
+                "meanHeight": 53.3,
+                "heightMax": 111.6
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 14.97,
+                "invaderRoadShare": 0,
+                "parcels": 273,
+                "meanParcelArea": 349.6,
+                "meanFrontage": 14.79,
+                "buildings": 254,
+                "buildingsPerParcel": 0.93,
+                "coverageOfParcels": 0.713,
+                "meanHeight": 67.2,
+                "heightMax": 108
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 14.64,
+                "invaderRoadShare": 0.11,
+                "parcels": 85,
+                "meanParcelArea": 349.4,
+                "meanFrontage": 13.94,
+                "buildings": 75,
+                "buildingsPerParcel": 0.882,
+                "coverageOfParcels": 0.611,
+                "meanHeight": 39.9,
+                "heightMax": 69.8
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 2.48,
+                "invaderRoadShare": 1,
+                "parcels": 44,
+                "meanParcelArea": 235.5,
+                "meanFrontage": 9.93,
+                "buildings": 35,
+                "buildingsPerParcel": 0.795,
+                "coverageOfParcels": 0.495,
+                "meanHeight": 19.7,
+                "heightMax": 34
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "5186CA6F",
+                "height": "0598A56C",
+                "water": "D03A151F",
+                "network": "BEA7C2A3",
+                "rawNetwork": "0315B7C0",
+                "blocks": "79EFBF82",
+                "parcels": "C0382BA2",
+                "buildings": "D5708A5F"
+              },
+              "source": {
+                "raw": "473F4DB9",
+                "height": "D86B0A87",
+                "water": "CCA0A72F",
+                "network": "448EF1B4",
+                "rawNetwork": "052710AD",
+                "blocks": "FFB507EE",
+                "parcels": "BE507384",
+                "buildings": "003833C5"
+              }
+            }
+          }
+        ],
+        "identity": {
+          "mode": "spatial",
+          "blocks": {
+            "scheme": "spatial",
+            "idCollisions": 0
+          },
+          "parcels": {
+            "scheme": "spatial",
+            "worldSeed": 6202,
+            "idCollisions": 0
+          },
+          "buildings": {
+            "scheme": "spatial",
+            "worldSeed": 6202,
+            "areaReference": "largest parcel of the same block"
+          }
+        },
+        "vsLegacy": {
+          "chunk_-1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": true,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_0_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_0_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_0_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          }
+        },
+        "bandsBefore": [
+          {
+            "band": "w = 0",
+            "areaKm2": 0.754,
+            "roadKmPerKm2": 18.38,
+            "invaderRoadShare": 0,
+            "parcels": 1267,
+            "meanParcelArea": 368.2,
+            "meanFrontage": 16.52,
+            "buildings": 1158,
+            "buildingsPerParcel": 0.914,
+            "coverageOfParcels": 0.725,
+            "meanHeight": 53.3,
+            "heightMax": 111.6
+          },
+          {
+            "band": "0 < w < 0.35",
+            "areaKm2": 0.147,
+            "roadKmPerKm2": 14.91,
+            "invaderRoadShare": 0,
+            "parcels": 256,
+            "meanParcelArea": 380.4,
+            "meanFrontage": 15.64,
+            "buildings": 236,
+            "buildingsPerParcel": 0.922,
+            "coverageOfParcels": 0.719,
+            "meanHeight": 80.1,
+            "heightMax": 115.2
+          },
+          {
+            "band": "0.35 ≤ w < 0.65",
+            "areaKm2": 0.057,
+            "roadKmPerKm2": 22.17,
+            "invaderRoadShare": 0,
+            "parcels": 110,
+            "meanParcelArea": 327.7,
+            "meanFrontage": 18.58,
+            "buildings": 100,
+            "buildingsPerParcel": 0.909,
+            "coverageOfParcels": 0.765,
+            "meanHeight": 82.3,
+            "heightMax": 115.2
+          },
+          {
+            "band": "w ≥ 0.65",
+            "areaKm2": 0.09,
+            "roadKmPerKm2": 12.89,
+            "invaderRoadShare": 0,
+            "parcels": 147,
+            "meanParcelArea": 439.1,
+            "meanFrontage": 14.44,
+            "buildings": 139,
+            "buildingsPerParcel": 0.946,
+            "coverageOfParcels": 0.713,
+            "meanHeight": 73.7,
+            "heightMax": 100.8
+          }
+        ]
+      },
+      "reverse": {
+        "active": true,
+        "fusion": {
+          "baseEdges": 42,
+          "invaderEdges": 88,
+          "baseKept": 37,
+          "baseClipped": 1,
+          "baseDropped": 4,
+          "invaderKept": 13,
+          "invaderClipped": 3,
+          "droppedInvaderTunnels": 0,
+          "connectors": 2,
+          "cutEnds": 5,
+          "junctions": 0,
+          "remainingCrossings": 0
+        },
+        "ms": 5484,
+        "rebuilt": [
+          "chunk_0_0",
+          "chunk_0_1"
+        ],
+        "stability": {
+          "counts": {
+            "stable": 271,
+            "unstable": 0,
+            "blockChanged": 0,
+            "roadChanged": 87,
+            "siblingChanged": 0,
+            "unexplained": 0,
+            "added": 85,
+            "zoneBase": 111,
+            "zoneCurrent": 134,
+            "zoneSame": 10
+          },
+          "w0Parcels": 358,
+          "stableShare": 0.757,
+          "defects": 0
+        },
+        "otherChunksChanged": []
+      },
+      "reloadMs": 19451,
+      "reproducible": true
+    },
+    {
+      "seed": 6203,
+      "legacy": {
+        "loadMs": 15804,
+        "full": {
+          "active": true,
+          "fusion": {
+            "baseEdges": 148,
+            "invaderEdges": 42,
+            "baseKept": 125,
+            "baseClipped": 7,
+            "baseDropped": 16,
+            "invaderKept": 1,
+            "invaderClipped": 4,
+            "droppedInvaderTunnels": 0,
+            "connectors": 1,
+            "cutEnds": 10,
+            "junctions": 0,
+            "remainingCrossings": 0
+          },
+          "ms": 3555,
+          "rebuilt": [
+            "chunk_0_0"
+          ],
+          "stability": {
+            "counts": {
+              "stable": 628,
+              "unstable": 465,
+              "blockChanged": 7,
+              "roadChanged": 1,
+              "siblingChanged": 164,
+              "unexplained": 0,
+              "added": 5,
+              "zoneBase": 386,
+              "zoneCurrent": 341,
+              "zoneSame": 15
+            },
+            "w0Parcels": 1265,
+            "stableShare": 0.4964,
+            "defects": 465
+          },
+          "otherChunksChanged": []
+        },
+        "zeroIdentical": true
+      },
+      "spatial": {
+        "strengths": [
+          {
+            "strength": 0,
+            "active": false,
+            "fusion": null,
+            "rebuiltCities": [],
+            "ms": 76,
+            "stability": null,
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.31,
+                "invaderRoadShare": 0,
+                "parcels": 1265,
+                "meanParcelArea": 365.6,
+                "meanFrontage": 16.49,
+                "buildings": 1181,
+                "buildingsPerParcel": 0.934,
+                "coverageOfParcels": 0.745,
+                "meanHeight": 58,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 16.66,
+                "invaderRoadShare": 0,
+                "parcels": 244,
+                "meanParcelArea": 360.1,
+                "meanFrontage": 17.12,
+                "buildings": 223,
+                "buildingsPerParcel": 0.914,
+                "coverageOfParcels": 0.729,
+                "meanHeight": 83.7,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 12.83,
+                "invaderRoadShare": 0,
+                "parcels": 97,
+                "meanParcelArea": 358.3,
+                "meanFrontage": 17.37,
+                "buildings": 91,
+                "buildingsPerParcel": 0.938,
+                "coverageOfParcels": 0.754,
+                "meanHeight": 83.1,
+                "heightMax": 108
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 9.58,
+                "invaderRoadShare": 0,
+                "parcels": 45,
+                "meanParcelArea": 320.8,
+                "meanFrontage": 18.56,
+                "buildings": 36,
+                "buildingsPerParcel": 0.8,
+                "coverageOfParcels": 0.688,
+                "meanHeight": 73.6,
+                "heightMax": 93.6
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "F7C36475",
+                "height": "39924376",
+                "water": "34DF28AC",
+                "network": "E7DE656E",
+                "rawNetwork": "2E2013FD",
+                "blocks": "FB4906CD",
+                "parcels": "95999590",
+                "buildings": "0FC86906"
+              },
+              "source": {
+                "raw": "3700608E",
+                "height": "6F868DC4",
+                "water": "2D272352",
+                "network": "EC3F0888",
+                "rawNetwork": "EC3F0888",
+                "blocks": "3AB42E09",
+                "parcels": "741638A5",
+                "buildings": "741638A5"
+              }
+            }
+          },
+          {
+            "strength": 25,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 42,
+              "baseKept": 148,
+              "baseClipped": 0,
+              "baseDropped": 0,
+              "invaderKept": 0,
+              "invaderClipped": 0,
+              "droppedInvaderTunnels": 0,
+              "connectors": 0,
+              "cutEnds": 0,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 2977,
+            "stability": {
+              "counts": {
+                "stable": 1262,
+                "unstable": 0,
+                "blockChanged": 0,
+                "roadChanged": 0,
+                "siblingChanged": 3,
+                "unexplained": 0,
+                "added": 2,
+                "zoneBase": 386,
+                "zoneCurrent": 417,
+                "zoneSame": 73
+              },
+              "w0Parcels": 1265,
+              "stableShare": 0.9976,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.31,
+                "invaderRoadShare": 0,
+                "parcels": 1265,
+                "meanParcelArea": 365.4,
+                "meanFrontage": 16.47,
+                "buildings": 1181,
+                "buildingsPerParcel": 0.934,
+                "coverageOfParcels": 0.745,
+                "meanHeight": 57.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 16.66,
+                "invaderRoadShare": 0,
+                "parcels": 258,
+                "meanParcelArea": 335.3,
+                "meanFrontage": 16.12,
+                "buildings": 246,
+                "buildingsPerParcel": 0.953,
+                "coverageOfParcels": 0.759,
+                "meanHeight": 80.1,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 12.83,
+                "invaderRoadShare": 0,
+                "parcels": 106,
+                "meanParcelArea": 321.3,
+                "meanFrontage": 15.82,
+                "buildings": 88,
+                "buildingsPerParcel": 0.83,
+                "coverageOfParcels": 0.648,
+                "meanHeight": 71,
+                "heightMax": 92.9
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 9.58,
+                "invaderRoadShare": 0,
+                "parcels": 53,
+                "meanParcelArea": 258,
+                "meanFrontage": 15.64,
+                "buildings": 48,
+                "buildingsPerParcel": 0.906,
+                "coverageOfParcels": 0.727,
+                "meanHeight": 58.4,
+                "heightMax": 70.9
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "F7C36475",
+                "height": "39924376",
+                "water": "34DF28AC",
+                "network": "E7DE656E",
+                "rawNetwork": "2E2013FD",
+                "blocks": "FB4906CD",
+                "parcels": "E44AB8A9",
+                "buildings": "46E2DE96"
+              },
+              "source": {
+                "raw": "3700608E",
+                "height": "6F868DC4",
+                "water": "2D272352",
+                "network": "EC3F0888",
+                "rawNetwork": "EC3F0888",
+                "blocks": "3AB42E09",
+                "parcels": "741638A5",
+                "buildings": "741638A5"
+              }
+            }
+          },
+          {
+            "strength": 50,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 42,
+              "baseKept": 145,
+              "baseClipped": 3,
+              "baseDropped": 0,
+              "invaderKept": 1,
+              "invaderClipped": 2,
+              "droppedInvaderTunnels": 0,
+              "connectors": 0,
+              "cutEnds": 3,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 3007,
+            "stability": {
+              "counts": {
+                "stable": 1259,
+                "unstable": 0,
+                "blockChanged": 4,
+                "roadChanged": 1,
+                "siblingChanged": 1,
+                "unexplained": 0,
+                "added": 2,
+                "zoneBase": 386,
+                "zoneCurrent": 422,
+                "zoneSame": 71
+              },
+              "w0Parcels": 1265,
+              "stableShare": 0.9953,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.27,
+                "invaderRoadShare": 0,
+                "parcels": 1265,
+                "meanParcelArea": 365.4,
+                "meanFrontage": 16.47,
+                "buildings": 1181,
+                "buildingsPerParcel": 0.934,
+                "coverageOfParcels": 0.745,
+                "meanHeight": 57.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 16.66,
+                "invaderRoadShare": 0,
+                "parcels": 269,
+                "meanParcelArea": 329.4,
+                "meanFrontage": 15.87,
+                "buildings": 250,
+                "buildingsPerParcel": 0.929,
+                "coverageOfParcels": 0.735,
+                "meanHeight": 77.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 12.83,
+                "invaderRoadShare": 0,
+                "parcels": 105,
+                "meanParcelArea": 286.8,
+                "meanFrontage": 14.55,
+                "buildings": 92,
+                "buildingsPerParcel": 0.876,
+                "coverageOfParcels": 0.665,
+                "meanHeight": 58.3,
+                "heightMax": 77.9
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 8.98,
+                "invaderRoadShare": 0,
+                "parcels": 48,
+                "meanParcelArea": 295.5,
+                "meanFrontage": 15.73,
+                "buildings": 42,
+                "buildingsPerParcel": 0.875,
+                "coverageOfParcels": 0.701,
+                "meanHeight": 46.2,
+                "heightMax": 62.7
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "F7C36475",
+                "height": "39924376",
+                "water": "34DF28AC",
+                "network": "6FD93766",
+                "rawNetwork": "2E2013FD",
+                "blocks": "3DC524C1",
+                "parcels": "CB11EF26",
+                "buildings": "87BFBD5A"
+              },
+              "source": {
+                "raw": "3700608E",
+                "height": "6F868DC4",
+                "water": "2D272352",
+                "network": "EC3F0888",
+                "rawNetwork": "EC3F0888",
+                "blocks": "3AB42E09",
+                "parcels": "741638A5",
+                "buildings": "741638A5"
+              }
+            }
+          },
+          {
+            "strength": 100,
+            "active": true,
+            "fusion": {
+              "baseEdges": 148,
+              "invaderEdges": 42,
+              "baseKept": 125,
+              "baseClipped": 7,
+              "baseDropped": 16,
+              "invaderKept": 1,
+              "invaderClipped": 4,
+              "droppedInvaderTunnels": 0,
+              "connectors": 1,
+              "cutEnds": 10,
+              "junctions": 0,
+              "remainingCrossings": 0
+            },
+            "rebuiltCities": [
+              "chunk_0_0"
+            ],
+            "ms": 3066,
+            "stability": {
+              "counts": {
+                "stable": 1247,
+                "unstable": 0,
+                "blockChanged": 13,
+                "roadChanged": 1,
+                "siblingChanged": 4,
+                "unexplained": 0,
+                "added": 5,
+                "zoneBase": 386,
+                "zoneCurrent": 343,
+                "zoneSame": 31
+              },
+              "w0Parcels": 1265,
+              "stableShare": 0.9858,
+              "defects": 0
+            },
+            "otherChunksChanged": [],
+            "bands": [
+              {
+                "band": "w = 0",
+                "areaKm2": 0.754,
+                "roadKmPerKm2": 17.27,
+                "invaderRoadShare": 0,
+                "parcels": 1265,
+                "meanParcelArea": 365.4,
+                "meanFrontage": 16.47,
+                "buildings": 1181,
+                "buildingsPerParcel": 0.934,
+                "coverageOfParcels": 0.745,
+                "meanHeight": 57.9,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0 < w < 0.35",
+                "areaKm2": 0.147,
+                "roadKmPerKm2": 16.5,
+                "invaderRoadShare": 0,
+                "parcels": 278,
+                "meanParcelArea": 306.4,
+                "meanFrontage": 15.01,
+                "buildings": 250,
+                "buildingsPerParcel": 0.899,
+                "coverageOfParcels": 0.707,
+                "meanHeight": 69.3,
+                "heightMax": 115.2
+              },
+              {
+                "band": "0.35 ≤ w < 0.65",
+                "areaKm2": 0.057,
+                "roadKmPerKm2": 7.46,
+                "invaderRoadShare": 0.115,
+                "parcels": 61,
+                "meanParcelArea": 493.8,
+                "meanFrontage": 12.2,
+                "buildings": 53,
+                "buildingsPerParcel": 0.869,
+                "coverageOfParcels": 0.499,
+                "meanHeight": 37.2,
+                "heightMax": 55.8
+              },
+              {
+                "band": "w ≥ 0.65",
+                "areaKm2": 0.09,
+                "roadKmPerKm2": 7.28,
+                "invaderRoadShare": 1,
+                "parcels": 4,
+                "meanParcelArea": 729.1,
+                "meanFrontage": 8.75,
+                "buildings": 4,
+                "buildingsPerParcel": 1,
+                "coverageOfParcels": 0.508,
+                "meanHeight": 22,
+                "heightMax": 30.5
+              }
+            ],
+            "signatures": {
+              "target": {
+                "raw": "F7C36475",
+                "height": "39924376",
+                "water": "34DF28AC",
+                "network": "DD574ADE",
+                "rawNetwork": "2E2013FD",
+                "blocks": "9E7BBCBE",
+                "parcels": "C7082248",
+                "buildings": "2822003A"
+              },
+              "source": {
+                "raw": "3700608E",
+                "height": "6F868DC4",
+                "water": "2D272352",
+                "network": "EC3F0888",
+                "rawNetwork": "EC3F0888",
+                "blocks": "3AB42E09",
+                "parcels": "741638A5",
+                "buildings": "741638A5"
+              }
+            }
+          }
+        ],
+        "identity": {
+          "mode": "spatial",
+          "blocks": {
+            "scheme": "spatial",
+            "idCollisions": 0
+          },
+          "parcels": {
+            "scheme": "spatial",
+            "worldSeed": 6203,
+            "idCollisions": 0
+          },
+          "buildings": {
+            "scheme": "spatial",
+            "worldSeed": 6203,
+            "areaReference": "largest parcel of the same block"
+          }
+        },
+        "vsLegacy": {
+          "chunk_-1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": true,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_0_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_-1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_0_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_1_0": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          },
+          "chunk_-1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_0_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": true,
+            "buildings": true
+          },
+          "chunk_1_1": {
+            "raw": true,
+            "height": true,
+            "water": true,
+            "network": true,
+            "blocks": false,
+            "parcels": false,
+            "buildings": false
+          }
+        },
+        "bandsBefore": [
+          {
+            "band": "w = 0",
+            "areaKm2": 0.754,
+            "roadKmPerKm2": 17.31,
+            "invaderRoadShare": 0,
+            "parcels": 1265,
+            "meanParcelArea": 365.6,
+            "meanFrontage": 16.49,
+            "buildings": 1181,
+            "buildingsPerParcel": 0.934,
+            "coverageOfParcels": 0.745,
+            "meanHeight": 58,
+            "heightMax": 115.2
+          },
+          {
+            "band": "0 < w < 0.35",
+            "areaKm2": 0.147,
+            "roadKmPerKm2": 16.66,
+            "invaderRoadShare": 0,
+            "parcels": 244,
+            "meanParcelArea": 360.1,
+            "meanFrontage": 17.12,
+            "buildings": 223,
+            "buildingsPerParcel": 0.914,
+            "coverageOfParcels": 0.729,
+            "meanHeight": 83.7,
+            "heightMax": 115.2
+          },
+          {
+            "band": "0.35 ≤ w < 0.65",
+            "areaKm2": 0.057,
+            "roadKmPerKm2": 12.83,
+            "invaderRoadShare": 0,
+            "parcels": 97,
+            "meanParcelArea": 358.3,
+            "meanFrontage": 17.37,
+            "buildings": 91,
+            "buildingsPerParcel": 0.938,
+            "coverageOfParcels": 0.754,
+            "meanHeight": 83.1,
+            "heightMax": 108
+          },
+          {
+            "band": "w ≥ 0.65",
+            "areaKm2": 0.09,
+            "roadKmPerKm2": 9.58,
+            "invaderRoadShare": 0,
+            "parcels": 45,
+            "meanParcelArea": 320.8,
+            "meanFrontage": 18.56,
+            "buildings": 36,
+            "buildingsPerParcel": 0.8,
+            "coverageOfParcels": 0.688,
+            "meanHeight": 73.6,
+            "heightMax": 93.6
+          }
+        ]
+      },
+      "reverse": {
+        "active": true,
+        "fusion": {
+          "baseEdges": 7,
+          "invaderEdges": 39,
+          "baseKept": 4,
+          "baseClipped": 2,
+          "baseDropped": 1,
+          "invaderKept": 0,
+          "invaderClipped": 1,
+          "droppedInvaderTunnels": 0,
+          "connectors": 0,
+          "cutEnds": 1,
+          "junctions": 0,
+          "remainingCrossings": 0
+        },
+        "ms": 983,
+        "rebuilt": [
+          "chunk_0_1"
+        ],
+        "stability": {
+          "counts": {
+            "stable": 0,
+            "unstable": 0,
+            "blockChanged": 0,
+            "roadChanged": 0,
+            "siblingChanged": 0,
+            "unexplained": 0,
+            "added": 0,
+            "zoneBase": 0,
+            "zoneCurrent": 0,
+            "zoneSame": 0
+          },
+          "w0Parcels": 0,
+          "stableShare": null,
+          "defects": 0
+        },
+        "otherChunksChanged": []
+      },
+      "reloadMs": 15884,
+      "reproducible": true
+    }
+  ],
+  "debugStability": {
+    "counts": {
+      "stable": 1287,
+      "unstable": 0,
+      "blockChanged": 15,
+      "roadChanged": 3,
+      "siblingChanged": 12,
+      "unexplained": 0,
+      "added": 14,
+      "zoneBase": 525,
+      "zoneCurrent": 426,
+      "zoneSame": 32
+    },
+    "w0Parcels": 1317,
+    "stableShare": 0.9772,
+    "defects": 0
+  },
+  "screenshots": [
+    "07-1a-original-vs-fused-compare.png",
+    "07-1a-w0-stability-debug.png"
+  ],
+  "browserErrors": []
+}

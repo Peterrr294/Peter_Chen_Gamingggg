@@ -16,13 +16,18 @@ import { checkSeams } from './SeamCheck.js';
 import { SeamView } from './SeamView.js';
 import { chunkAnchor, stitchRoads, worldPath } from './RoadSeam.js';
 import { slopeField } from './TerrainHarmonizer.js';
+import { BANDS, INFLUENCE, RULES, stabilityReport, zoneStats } from './CityInfluence.js';
+import { InfluenceView } from './InfluenceView.js';
 
 // 06.2 World Grid: 3 × 3 fixed chunks in one world frame, each running the unchanged single-chunk chain.
 // 06.3a: shared edges harmonised (TerrainHarmonizer); ?terrain=raw shows the independent 06.2 chunks.
 // 06.3a-R: macro-ramp terrain (WorldTerrain, ?terrain=macroRamp); ?terrain=harmonized shows the 06.3a edge-local joins.
 // 06.3a-R2: world datum + band-only seam correction with preserved cores (TerrainCoordinator, default).
 // 06.3b: road ports joined across harmonised edges (RoadSeam); ?roads=independent shows each chunk's own network.
+// 07.1: one source city invades one neighbouring chunk (CityInfluence); terrain and other chunks unchanged.
 // URL: ?worldSeed=…&transitionWidth=…&terrain=raw&roads=independent&seams=1&camera=top&focus=x,z,d&select=chunk_0_0&checkpoint=default
+//      07.1: &city=chunk_0_1:veniceWaterNetwork,… (City IDs) &invade=chunk_0_1>chunk_0_0&strength=0–100&radius=m&field=1&zone=1
+//      07.1a: &ids=spatial (geometry ids + local random streams; default legacy) &stability=1 (w = 0 stability tiles)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/world-grid/v1';
 
@@ -46,6 +51,7 @@ const focus = (query.get('focus') ?? '').split(',').map(Number);
 function setCamera(mode) {
   if (mode === 'focus') {
     const [x, z, d] = focus;
+    if (query.get('camera') === 'top') { controls.target.set(x, 0, z); camera.position.set(x, d, z + 1); controls.update(); return; } // 07.1 top-down crop
     controls.target.set(x, 40, z);
     camera.position.set(x + d * 0.55, 40 + d * 0.6, z + d * 0.75);
     controls.update();
@@ -57,10 +63,15 @@ function setCamera(mode) {
   controls.update();
 }
 
-const grid = new WorldGrid(createWorldConfig({ worldSeed: Number(query.get('worldSeed')) || undefined, transitionWidth: query.get('transitionWidth') ?? undefined, terrainMode: query.get('terrain') ?? undefined, roadMode: query.get('roads') === 'independent' ? 'independent' : 'joined' }));
+const citySlots = (query.get('city') ?? '').split(',').filter(Boolean).map(item => { const [id, cityId] = item.split(':'); const [, gx, gy] = id.split('_').map(Number); return { gridX: gx, gridY: gy, cityId: cityId === 'empty' ? null : cityId }; });
+const grid = new WorldGrid(createWorldConfig({ worldSeed: Number(query.get('worldSeed')) || undefined, transitionWidth: query.get('transitionWidth') ?? undefined, terrainMode: query.get('terrain') ?? undefined, roadMode: query.get('roads') === 'independent' ? 'independent' : 'joined', ...(citySlots.length ? { slots: citySlots } : {}) }));
+const [invadeSource, invadeTarget] = (query.get('invade') ?? 'chunk_0_1>chunk_0_0').split('>');
+grid.setInfluence({ source: invadeSource, target: invadeTarget, strength: Math.min(100, Math.max(0, Number(query.get('strength') ?? 0))) / 100, radius: Math.min(INFLUENCE.radius.max, Math.max(INFLUENCE.radius.min, Number(query.get('radius') ?? INFLUENCE.defaults.radius))) });
+grid.setIdMode(query.get('ids'));
+const influenceView = new InfluenceView(scene);
 const seamView = new SeamView(scene);
 const views = new Map(); // chunkId → { chunk, network, buildings, label, solid }
-const state = { selected: query.get('select') && grid.chunks.has(query.get('select')) ? query.get('select') : 'chunk_0_0', seams: query.get('seams') === '1', busy: false, lastBuild: null, seamReport: null, seamClasses: null, roadSeam: null };
+const state = { selected: query.get('select') && grid.chunks.has(query.get('select')) ? query.get('select') : 'chunk_0_0', seams: query.get('seams') === '1', busy: false, lastBuild: null, seamReport: null, seamClasses: null, roadSeam: null, field: query.get('field') === '1', zone: query.get('zone') === '1', stability: query.get('stability') === '1', fusionRun: null, stabilityReport: null };
 
 const textSprite = text => {
   const c = document.createElement('canvas'); c.width = 512; c.height = 96;
@@ -146,6 +157,10 @@ function rebuild() {
       Object.assign(recordOf(chunkId).ran, grid.buildNetwork(chunkId));
       recordOf(chunkId).dataMs += Math.round(performance.now() - t0);
     }
+    // 07.1 fusion layer of the target chunk (invader network + fused network), before the road seam.
+    document.querySelector('#statusText').textContent = 'GENERATING FUSION';
+    await nextFrame();
+    state.fusionRun = grid.fuse();
     const seam = grid.stitch();
     for (const chunkId of seam.stale) {
       document.querySelector('#statusText').textContent = `GENERATING ${chunkId} CITY`;
@@ -171,7 +186,8 @@ function rebuild() {
     seamView.update(state.seamReport, new Map(seamInput.map(c => [c.slot.chunkId, c])), grid.world.roadMode === 'joined' ? state.roadSeam : null, state.seamClasses);
     seamView.updateTerrain([...grid.chunks.values()].filter(c => c.terrain).map(c => ({ fields: c.terrain.fields, rawHeight: c.raw.chunk.height, steep: c.terrain.harmony?.steep ?? null })));
     seamView.setVisible(state.seams);
-    state.lastBuild = { prepare: { raw: prepare.raw, harmony: prepare.harmony, harmonyMs: Math.round(prepare.harmonyMs), ms: prepare.ms, roadSeam: seam.ran, roadSeamMs: Math.round(seam.ms), cityStale: seam.stale }, chunks: perChunk, totalMs: Math.round(performance.now() - prepareStarted) };
+    renderInfluence();
+    state.lastBuild = { prepare: { raw: prepare.raw, harmony: prepare.harmony, harmonyMs: Math.round(prepare.harmonyMs), ms: prepare.ms, roadSeam: seam.ran, roadSeamMs: Math.round(seam.ms), cityStale: seam.stale, fusion: { ...state.fusionRun, ms: Math.round(state.fusionRun.ms) } }, chunks: perChunk, totalMs: Math.round(performance.now() - prepareStarted) };
     state.busy = false;
     renderSelection();
     renderPanel();
@@ -203,6 +219,36 @@ const cityController = gui.add(ui, 'city', cityOptions).name('City ID').onChange
 gui.add(ui, 'seams').name('Seam debug').onChange(value => { state.seams = value; seamView.setVisible(value); });
 gui.add({ top: () => setCamera('top') }, 'top').name('Top view');
 gui.add({ axo: () => setCamera('axo') }, 'axo').name('Oblique view');
+// 07.1 City Influence: source chunk (its resolved City DNA invades), target = one of its 8 neighbours.
+const influenceUi = { source: grid.influence.source, target: grid.influence.target, strength: Math.round(grid.influence.strength * 100), radius: grid.influence.radius, field: state.field, zone: state.zone, stability: state.stability, ids: grid.idMode };
+const slotLabel = slot => `${slot.chunkId} · ${slot.cityId === null ? 'empty' : slot.cityId === 'auto' ? 'auto' : CITY_DNA[slot.cityId].label.split(' — ')[0]}`;
+const neighbours = id => { const a = grid.chunks.get(id).slot; return grid.world.slots.filter(b => b.chunkId !== id && Math.max(Math.abs(a.gridX - b.gridX), Math.abs(a.gridY - b.gridY)) === 1); };
+const influenceFolder = gui.addFolder('City Influence (07.1)');
+let sourceController; let targetController;
+function influenceOptions() {
+  sourceController?.destroy(); targetController?.destroy();
+  sourceController = influenceFolder.add(influenceUi, 'source', Object.fromEntries(grid.world.slots.map(slot => [slotLabel(slot), slot.chunkId]))).name('Source city').onChange(value => {
+    if (!neighbours(value).some(slot => slot.chunkId === influenceUi.target)) influenceUi.target = neighbours(value)[0].chunkId;
+    influenceOptions(); setInfluence();
+  });
+  targetController = influenceFolder.add(influenceUi, 'target', Object.fromEntries(neighbours(influenceUi.source).map(slot => [slotLabel(slot), slot.chunkId]))).name('Invasion target').onChange(() => setInfluence());
+}
+influenceOptions();
+influenceFolder.add(influenceUi, 'strength', 0, 100, 5).name('Strength (%)').onFinishChange(() => setInfluence());
+influenceFolder.add(influenceUi, 'radius', INFLUENCE.radius.min, INFLUENCE.radius.max, 32).name('Radius (m)').onFinishChange(() => setInfluence());
+influenceFolder.add(influenceUi, 'field').name('Show influence field').onChange(value => { state.field = value; influenceView.setVisible(state); });
+influenceFolder.add(influenceUi, 'zone').name('Show fusion zone').onChange(value => { state.zone = value; influenceView.setVisible(state); });
+// 07.1a: generation ids (legacy = order-based, the checkpoint world; spatial = geometry ids + local random streams).
+influenceFolder.add(influenceUi, 'ids', { 'Legacy (order-based)': 'legacy', 'Spatial (stable, 07.1a)': 'spatial' }).name('Generation ids').onChange(value => setIdMode(value));
+influenceFolder.add(influenceUi, 'stability').name('Show w = 0 stability').onChange(value => { state.stability = value; influenceView.setVisible(state); });
+function setIdMode(mode) { grid.setIdMode(mode); influenceUi.ids = grid.idMode; gui.controllersRecursive().forEach(c => c.updateDisplay()); return rebuild(); }
+function setInfluence(options = {}) {
+  Object.assign(influenceUi, options);
+  if (options.strength !== undefined) influenceUi.strength = options.strength;
+  grid.setInfluence({ source: influenceUi.source, target: influenceUi.target, strength: influenceUi.strength / 100, radius: influenceUi.radius });
+  gui.controllersRecursive().forEach(c => c.updateDisplay());
+  return rebuild();
+}
 gui.add({ save: () => saveConfig() }, 'save').name('Save city config');
 gui.add({ restore: () => restoreConfig() }, 'restore').name('Restore city config');
 gui.add({ exportCheckpoint: () => exportCheckpoint() }, 'exportCheckpoint').name('Export world checkpoint');
@@ -222,7 +268,39 @@ function select(chunkId) {
 function setCity(chunkId, cityId) {
   grid.setCityId(chunkId, cityId);
   if (chunkId === state.selected) { ui.city = cityId === null ? 'empty' : cityId; cityController.updateDisplay(); }
+  influenceOptions(); // option labels show the City IDs
   return rebuild();
+}
+
+// 07.1 debug layers + rule-change summary.
+function renderInfluence() {
+  const st = grid.influenceState();
+  const target = st.active ? grid.chunks.get(st.target) : null;
+  influenceView.update([...grid.chunks.values()].filter(c => c.terrain).map(c => ({ slot: c.slot, fields: c.terrain.fields, dna: c.net && !c.net.empty ? c.net.cityMatch.selectedDNA.id : null })), st, target?.fusion ?? null);
+  // 07.1a stability against the target's last unfused city (same id mode, same own network).
+  const baseline = target?.baseCity && target.city && !target.city.empty && target.baseCity.identity === target.city.identity && target.baseCity.key.startsWith(`${target.net.key}|`) ? target.baseCity : null;
+  state.stabilityReport = baseline ? stabilityReport(baseline, target.city, st.weightAt) : null;
+  influenceView.updateStability(state.stabilityReport?.items ?? [], (target?.terrain.fields.stats.maxHeight ?? 0) + 4);
+  influenceView.setVisible(state);
+  const el = document.querySelector('#influenceInfo');
+  if (!st.active) { el.innerHTML = `inactive: ${st.reason} · ids ${grid.idMode}`; return; }
+  const f = target.fusion; const k = f.stats;
+  const name = id => CITY_DNA[id].label.split(' — ')[0];
+  const rules = RULES.map(r => `<li>${r.id} (${r.mixing}): ${r.value ? `${r.value(st.baseDNA)} → ${r.value(st.sourceDNA)}` : 'measured per band below'} · ${r.note}</li>`).join('');
+  const zone = influenceStats();
+  const bands = zone.map(b => `<li>${b.band}: ${b.areaKm2} km² · roads ${b.roadKmPerKm2 ?? '—'} km/km² (${Math.round(b.invaderRoadShare * 100)} % invader) · ${b.parcels} parcels, mean ${b.meanParcelArea ?? '—'} m², frontage ${b.meanFrontage ?? '—'} m · ${b.buildings} buildings, coverage ${b.coverageOfParcels ?? '—'}, mean height ${b.meanHeight ?? '—'} m</li>`).join('');
+  el.innerHTML = `${name(st.sourceDNA)} (${st.source}) → ${name(st.baseDNA)} (${st.target}) · strength ${Math.round(st.strength * 100)} % · radius ${st.radius} m · `
+    + `${f.unchanged ? 'network unchanged (w below every edge threshold)' : `network: base ${k.baseKept} kept / ${k.baseClipped} clipped / ${k.baseDropped} dropped, invader ${k.invaderKept + k.invaderClipped} edges in, ${k.junctions} new junctions, ${k.connectors} connectors, ${k.remainingCrossings} bridge/road overlaps left`} · fusion ${Math.round(f.ms)} ms`
+    + ` · ids ${grid.idMode} · w = 0 stability: ${state.stabilityReport ? Object.entries(state.stabilityReport.counts).map(([k, v]) => `${k} ${v}`).join(', ') : 'no baseline (build at strength 0 first)'}`
+    + `<ol class="seams">${rules}</ol><ol class="seams">${bands}</ol>`;
+}
+// Zone statistics of a chunk's current city layers, banded by the current (or the given) influence field.
+function influenceStats(chunkId = grid.influence.target, influence = grid.influence) {
+  const c = grid.chunks.get(chunkId);
+  if (!c?.city || c.city.empty) return [];
+  const weightAt = grid.influenceWeight(influence);
+  const network = c.fusion && !c.fusion.unchanged ? c.fusion.network : c.city.network;
+  return zoneStats(c.terrain.fields, network, c.city.parcels, c.city.buildings, weightAt);
 }
 
 function saveConfig() {
@@ -320,6 +398,26 @@ function renderPanel() {
 
 window.__worldGridLab = {
   ready: false,
+  // 07.1 City Influence
+  setInfluence: options => setInfluence(options).then(() => window.__worldGridLab.influence()),
+  influence: () => {
+    const st = grid.influenceState(); const c = st.active ? grid.chunks.get(st.target) : null;
+    return { input: { ...grid.influence }, active: st.active, reason: st.reason, sourceDNA: st.sourceDNA ?? null, baseDNA: st.baseDNA ?? null, fusion: c?.fusion ? { key: c.fusion.key, unchanged: c.fusion.unchanged, stats: c.fusion.stats, ms: Math.round(c.fusion.ms), invaderSignature: c.fusion.invader.signature, fusedSignature: c.fusion.network.signature, networkSignature: c.city?.network?.signature ?? null } : null, rules: RULES.map(r => ({ id: r.id, mixing: r.mixing, layer: r.layer, base: st.active && r.value ? r.value(st.baseDNA) : null, invader: st.active && r.value ? r.value(st.sourceDNA) : null, note: r.note })), lastFusionRun: state.fusionRun };
+  },
+  // 07.1a
+  setIdMode: mode => setIdMode(mode).then(() => grid.idMode),
+  stability: () => (state.stabilityReport ? { counts: state.stabilityReport.counts, w0Parcels: state.stabilityReport.w0Parcels, stableShare: state.stabilityReport.stableShare, defects: state.stabilityReport.defects } : null),
+  identityStats: chunkId => { const c = grid.chunks.get(chunkId).city; return c && !c.empty ? { mode: c.identity, blocks: c.blocks.identity ?? null, parcels: c.parcels.identity ?? null, buildings: c.buildings.identity ?? null } : null; },
+  // Band statistics of a chunk with the bands of a given influence (default: current), on its current city layers.
+  zoneStats: (chunkId, influence) => influenceStats(chunkId, influence ? { ...grid.influence, ...influence } : grid.influence),
+  // Fingerprints of a chunk's buildings / parcels with the influence band of each centroid (unaffected-area check).
+  cityFingerprint: (chunkId, influence) => {
+    const c = grid.chunks.get(chunkId); const inf = { ...grid.influence, ...(influence ?? {}) };
+    const w = grid.influenceWeight(inf);
+    const band = ring => { const x = ring.reduce((a, p) => a + p.x, 0) / ring.length; const z = ring.reduce((a, p) => a + p.z, 0) / ring.length; return BANDS.findIndex(b => b.test(w(x, z))); };
+    if (!c.city || c.city.empty) return null;
+    return { buildings: c.city.buildings.buildings.map(b => ({ band: band(b.footprint.polygon), key: JSON.stringify([b.footprint.polygon, b.height]) })), parcels: c.city.parcels.parcels.map(p => ({ band: band(p.polygon), key: JSON.stringify(p.polygon) })) };
+  },
   world: () => JSON.parse(JSON.stringify(grid.world)),
   serialise: () => serialiseWorld(grid.world),
   save: () => saveConfig(),

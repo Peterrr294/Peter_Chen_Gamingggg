@@ -95,10 +95,13 @@ function footprintOf(parcel, rule, rules, useCourtyard) {
   return { uncontained: true };
 }
 
-export function generateBuildings(parcelsResult, fields, cityMatch, config) {
+export function generateBuildings(parcelsResult, fields, cityMatch, config, options = {}) {
   const rules = BUILDING_RULES;
   const dna = cityMatch.selectedDNA.id;
-  const rule = rules.byDNA[dna];
+  const dnaRule = rules.byDNA[dna];
+  // 07.1 City Influence (optional): local rule at the parcel centroid in a fusion zone; without it every parcel
+  // uses the DNA rule (unchanged 05.1 path).
+  const ruleAt = options.ruleAt ?? (() => dnaRule);
   const { columns, segments, spacing, size, originX, originZ } = fields.grid;
   const half = size / 2;
   const heightAt = (x, z) => {
@@ -110,13 +113,21 @@ export function generateBuildings(parcelsResult, fields, cityMatch, config) {
   // Seeded height centre (independent stream; never touches terrain or network seeds).
   const centreRandom = new SeededRandom(config.seed, 'buildings-centre', dna);
   const centre = { x: originX + (centreRandom.next() - 0.5) * size * 0.5, z: originZ + (centreRandom.next() - 0.5) * size * 0.5 };
-  const maxArea = Math.max(1, ...parcelsResult.parcels.map(parcel => parcel.area));
+  const centroidOf = parcel => [parcel.polygon.reduce((sum, p) => sum + p.x, 0) / parcel.polygon.length, parcel.polygon.reduce((sum, p) => sum + p.z, 0) / parcel.polygon.length];
+  // Height area reference: largest parcel under the DNA rule (07.1: fusion-zone parcels do not rescale the rest).
+  // 07.1a spatial identity: largest parcel of the parcel's own block (local; a changed block elsewhere cannot rescale it).
+  const identity = options.identity ?? null;
+  const maxArea = Math.max(1, ...parcelsResult.parcels.filter(parcel => !options.ruleAt || ruleAt(...centroidOf(parcel)) === dnaRule).map(parcel => parcel.area));
+  const blockMax = new Map();
+  if (identity) for (const parcel of parcelsResult.parcels) blockMax.set(parcel.blockId, Math.max(blockMax.get(parcel.blockId) ?? 1, parcel.area));
 
   const buildings = [];
   const vacant = [];
   for (const parcel of parcelsResult.parcels) {
     // Per-parcel random stream keyed by the parcel id: adding or removing other parcels does not shift it.
-    const random = new SeededRandom(config.seed, 'building', dna, parcel.id);
+    // 07.1a: keyed by worldSeed + the parcel's geometric key, so only a changed parcel gets a new stream.
+    const random = identity ? new SeededRandom(identity.worldSeed, 'building', dna, parcel.stableKey) : new SeededRandom(config.seed, 'building', dna, parcel.id);
+    const rule = ruleAt(...centroidOf(parcel));
     const occupied = random.next() < rule.occupancy;
     const jitter = random.next();
     if (!occupied) { vacant.push({ parcelId: parcel.id, blockId: parcel.blockId, reason: `density rule (occupancy ${rule.occupancy})` }); continue; }
@@ -148,7 +159,7 @@ export function generateBuildings(parcelsResult, fields, cityMatch, config) {
     let cx = 0; let cz = 0; footprint.outer.forEach(p => { cx += p.x; cz += p.z; }); cx /= footprint.outer.length; cz /= footprint.outer.length;
     const centreFactor = Math.exp(-((cx - centre.x) ** 2 + (cz - centre.z) ** 2) / (rule.centreRadius ** 2));
     const roadFactor = Math.max(...parcel.frontages.map(item => rules.roadClassWeight[item.roadClass] ?? 0));
-    const areaFactor = Math.min(1, parcel.area / maxArea);
+    const areaFactor = Math.min(1, parcel.area / (identity ? blockMax.get(parcel.blockId) : maxArea));
     const w = rule.weights;
     const mix = Math.min(1, Math.max(0, (w.centre * centreFactor + w.road * roadFactor + w.area * areaFactor) * (1 - rule.jitter / 2 + rule.jitter * jitter)));
     const floors = Math.max(rule.floors[0], Math.round(rule.floors[0] + (rule.floors[1] - rule.floors[0]) * mix));
@@ -190,7 +201,8 @@ export function generateBuildings(parcelsResult, fields, cityMatch, config) {
     version: '05.1',
     source: { dna, seed: config.seed, landform: config.landform, parcelsSignature: parcelsResult.signature, centre },
     units: { length: 'm', area: 'm²', height: 'm', floors: 'count' },
-    rules: { ...rules, rule },
+    rules: { ...rules, rule: dnaRule },
+    ...(identity ? { identity: { scheme: 'spatial', worldSeed: identity.worldSeed, areaReference: 'largest parcel of the same block' } } : {}),
     buildings,
     vacant,
     stats: {

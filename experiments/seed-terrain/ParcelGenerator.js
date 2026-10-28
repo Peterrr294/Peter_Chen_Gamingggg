@@ -4,6 +4,7 @@ import { BLOCK_RULES } from './blockRules.js';
 import { PARCEL_RULES } from './parcelRules.js';
 import { WATER, contours, dedupeRing, label, ringArea, ringsIntersect, simplifyRing } from './BlockGenerator.js';
 import { transitionArea } from './BlockRefinement.js';
+import { assignStableIds, canonicalShape, pointKey } from './StableIdentity.js';
 
 // 04.2 road-oriented parcel subdivision (pure data). Reads the block result (incl. its
 // hidden 1 m fields), the NetworkGraph, and cityMatch; never changes them.
@@ -41,10 +42,18 @@ const segmentNearest = (x, z, a, b) => {
   return { d: Math.hypot(x - px, z - pz), px, pz };
 };
 
-export function generateParcels(blocksResult, fields, graph, cityMatch, config) {
+export function generateParcels(blocksResult, fields, graph, cityMatch, config, options = {}) {
   const rules = PARCEL_RULES;
   const dna = cityMatch.selectedDNA.id;
   const target = rules.byDNA[dna];
+  // 07.1 City Influence (optional): local target per world position in a fusion zone; without it every run and lot
+  // uses the DNA target (unchanged 04.2 path). maxDepthBound = the largest maxDepth targetAt can return.
+  const targetAt = options.targetAt ?? (() => target);
+  const runTarget = run => { const p = run.points[Math.floor(run.points.length / 2)]; return targetAt(p.x, p.z); };
+  // 07.1a spatial identity (optional): runs in a canonical order (parent block + run end points + side, not graph
+  // edge order), one jitter stream per run keyed by worldSeed + that identity, parcel ids from canonical geometry.
+  const identity = options.identity ?? null;
+  const runKey = run => `${blocks[run.blockIndex].id}|${pointKey(run.points[0])}|${pointKey(run.points.at(-1))}|${run.side}`;
   const { field, labels, blockOfComponent, bfield } = blocksResult._internal;
   const { m, n, h, x0, z0 } = field;
   const random = new SeededRandom(config.seed, 'parcels', dna);
@@ -88,20 +97,26 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
       close();
     }
   }
-  const usableRuns = runs.map(run => ({ ...run, length: polylineLength(run.points) })).filter(run => run.length >= target.minFrontage);
+  const usableRuns = runs.map(run => ({ ...run, length: polylineLength(run.points) })).filter(run => run.length >= runTarget(run).minFrontage);
+  if (identity) {
+    usableRuns.forEach(run => { run.key = runKey(run); });
+    usableRuns.sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
+  }
 
   // 2. Pieces along each run at the DNA target frontage; remainders below minFrontage are merged.
   const pieces = [];
   for (const run of usableRuns) {
     const cuts = [0];
     let position = 0;
-    if (!target.jitter) {
-      const count = Math.max(1, Math.round(run.length / target.targetFrontage));
+    const t = runTarget(run);
+    const runRandom = identity ? new SeededRandom(identity.worldSeed, 'parcel-run', dna, run.key) : random;
+    if (!t.jitter) {
+      const count = Math.max(1, Math.round(run.length / t.targetFrontage));
       for (let k = 1; k < count; k += 1) cuts.push(run.length * k / count);
     } else {
       for (;;) {
-        const width = target.targetFrontage * (1 + target.jitter * (2 * random.next() - 1));
-        if (run.length - (position + width) < target.minFrontage) break;
+        const width = t.targetFrontage * (1 + t.jitter * (2 * runRandom.next() - 1));
+        if (run.length - (position + width) < t.minFrontage) break;
         position += width;
         cuts.push(position);
       }
@@ -137,7 +152,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     lots.get(root).pieces.push(piece);
   });
   const lotList = [...lots.values()];
-  lotList.forEach(lot => { lot.segments = lot.pieces.flatMap(piece => piece.points.slice(1).map((b, i) => [piece.points[i], b])); });
+  lotList.forEach(lot => { lot.segments = lot.pieces.flatMap(piece => piece.points.slice(1).map((b, i) => [piece.points[i], b])); lot.target = runTarget(lot.pieces[0].run); });
   const lotNearest = (lot, x, z) => {
     let best = { d: Infinity, px: x, pz: z };
     for (const [a, b] of lot.segments) { const near = segmentNearest(x, z, a, b); if (near.d < best.d) best = near; }
@@ -147,7 +162,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
   // 4. Nearest / second-nearest lot per buildable sample (same block only; bucketed).
   const bucketSize = 16;
   const buckets = new Map();
-  const reach = target.maxDepth + 2;
+  const reach = Math.max(target.maxDepth, options.maxDepthBound ?? 0) + 2;
   lotList.forEach(lot => lot.segments.forEach(([a, b]) => {
     for (let gx = Math.floor((Math.min(a.x, b.x) - reach) / bucketSize); gx <= Math.floor((Math.max(a.x, b.x) + reach) / bucketSize); gx += 1) {
       for (let gz = Math.floor((Math.min(a.z, b.z) - reach) / bucketSize); gz <= Math.floor((Math.max(a.z, b.z) + reach) / bucketSize); gz += 1) {
@@ -172,7 +187,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     const own = list.find(item => item.lot === P);
     if (!own) return -cap;
     const ex = own.d > 1e-9 ? (x - own.px) / own.d : 0; const ez = own.d > 1e-9 ? (z - own.pz) / own.d : 0;
-    let value = Math.min(cap, target.maxDepth - own.d);
+    let value = Math.min(cap, P.target.maxDepth - own.d);
     for (const other of list) {
       if (other.lot === P) continue;
       const ox = other.d > 1e-9 ? (x - other.px) / other.d : 0; const oz = other.d > 1e-9 ? (z - other.pz) / other.d : 0;
@@ -263,7 +278,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
         const own = lotNearest(lot, x, z);
         const ex = own.d > 1e-9 ? (x - own.px) / own.d : 0; const ez = own.d > 1e-9 ? (z - own.pz) / own.d : 0;
         const ox = d1[k] > 1e-9 ? (x - n1x[k]) / d1[k] : 0; const oz = d1[k] > 1e-9 ? (z - n1z[k]) / d1[k] : 0;
-        cell = Math.min(target.maxDepth - own.d, (d1[k] - own.d) / Math.max(1e-3, Math.hypot(ex - ox, ez - oz)));
+        cell = Math.min(lot.target.maxDepth - own.d, (d1[k] - own.d) / Math.max(1e-3, Math.hypot(ex - ox, ez - oz)));
       }
       value[(a + 1) * sm + (b + 1)] = Math.min(bfield.value[k], cell) - inset;
     }
@@ -290,7 +305,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     if (!parts.length) { reject('degenerate polygon'); continue; }
     const [main, ...rest] = parts;
     rest.forEach(part => residuals.push({ blockId: block.id, lot: lot.index, area: part.area, reason: 'disconnected part of a lot (separated by unbuildable land)' }));
-    if (main.area < target.minArea) { reject(`area ${main.area.toFixed(0)} m² < ${target.minArea} m²`); continue; }
+    if (main.area < lot.target.minArea) { reject(`area ${main.area.toFixed(0)} m² < ${lot.target.minArea} m²`); continue; }
     if (ringsIntersect([main.outer, ...main.holes])) { reject('invalid polygon'); continue; }
     // Topological frontage: walk each piece in 1 m steps and probe inward (up to edge margin + inset + 1.5 m)
     // for samples of the kept polygon part (sub-field label). Only measured contact counts as frontage.
@@ -315,7 +330,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     }
     const frontageLength = lot.pieces.reduce((sum, piece) => sum + piece.contact, 0);
     if (!frontageLength) { reject(`buildable land starts ${s.minFrontDistance.toFixed(1)} m behind the road edge (no real frontage)`); continue; }
-    if (frontageLength < target.minFrontage) { reject(`frontage contact ${frontageLength.toFixed(1)} m < ${target.minFrontage} m`); continue; }
+    if (frontageLength < lot.target.minFrontage) { reject(`frontage contact ${frontageLength.toFixed(1)} m < ${lot.target.minFrontage} m`); continue; }
 
     const frontages = new Map();
     lot.pieces.filter(piece => piece.contact >= 1).forEach(piece => frontages.set(piece.edgeId, { edgeId: piece.edgeId, roadClass: piece.roadClass, length: (frontages.get(piece.edgeId)?.length ?? 0) + piece.contact, roadNodes: piece.run.roadNodes }));
@@ -351,6 +366,8 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     });
   }
 
+  const idCollisions = identity ? assignStableIds(parcels, parcel => canonicalShape(parcel.polygon, parcel.holes), parcel => `${parcel.blockId}-P`) : null;
+
   // 7. Reserve: buildable land in blocks that no valid parcel covers.
   const reserveByBlock = new Map();
   const terrainParcelIndex = new Int32Array(fields.grid.columns * fields.grid.columns).fill(-1);
@@ -374,6 +391,7 @@ export function generateParcels(blocksResult, fields, graph, cityMatch, config) 
     source: { dna, strategy: graph.strategy, seed: config.seed, landform: config.landform, blocksSignature: blocksResult.signature },
     units: { length: 'm', area: 'm²', angle: 'deg from +x toward +z' },
     rules: { ...rules, target },
+    ...(identity ? { identity: { scheme: 'spatial', worldSeed: identity.worldSeed, idCollisions } } : {}),
     parcels,
     residuals,
     reserve: [...reserveByBlock].sort((a, b) => a[0] - b[0]).map(([index, area]) => ({ blockId: blocks[index].id, area, reason: blocksWithoutFrontage.includes(blocks[index].id) ? 'no road frontage (water or chunk edge only)' : 'beyond lot depth / unresolved lots' })),

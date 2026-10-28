@@ -1,0 +1,751 @@
+{
+  "task": "07.1",
+  "createdAt": "2026-10-21T16:21:05.044Z",
+  "worldSeed": 6201,
+  "transitionWidth": 128,
+  "terrain": "coordinated (default)",
+  "roads": "joined (default)",
+  "setup": {
+    "source": {
+      "chunkId": "chunk_0_1",
+      "cityId": "veniceWaterNetwork (manual)"
+    },
+    "target": {
+      "chunkId": "chunk_0_0",
+      "cityId": "manhattanGrid (manual, default layout)"
+    },
+    "radius": 384
+  },
+  "timing": {
+    "loadMs": 31628,
+    "reloadMs": 37243,
+    "halfMs": 10610,
+    "fullMs": 9238,
+    "fusionMs": 5,
+    "reverseMs": 13240
+  },
+  "influenceZero": {
+    "active": false,
+    "reason": "strength 0 (no influence)",
+    "identicalToOriginal": true
+  },
+  "half": {
+    "fusion": {
+      "unchanged": false,
+      "stats": {
+        "baseEdges": 148,
+        "invaderEdges": 32,
+        "baseKept": 140,
+        "baseClipped": 3,
+        "baseDropped": 5,
+        "invaderKept": 0,
+        "invaderClipped": 0,
+        "droppedInvaderTunnels": 0,
+        "connectors": 0,
+        "cutEnds": 3,
+        "junctions": 0,
+        "remainingCrossings": 0
+      }
+    },
+    "bands": [
+      {
+        "band": "w = 0",
+        "areaKm2": 0.754,
+        "roadKmPerKm2": 17.29,
+        "invaderRoadShare": 0,
+        "parcels": 1317,
+        "meanParcelArea": 360.7,
+        "meanFrontage": 16.36,
+        "buildings": 1223,
+        "buildingsPerParcel": 0.929,
+        "coverageOfParcels": 0.737,
+        "meanHeight": 54.5,
+        "heightMax": 115.2
+      },
+      {
+        "band": "0 < w < 0.35",
+        "areaKm2": 0.147,
+        "roadKmPerKm2": 17.72,
+        "invaderRoadShare": 0,
+        "parcels": 276,
+        "meanParcelArea": 337,
+        "meanFrontage": 15.72,
+        "buildings": 247,
+        "buildingsPerParcel": 0.895,
+        "coverageOfParcels": 0.702,
+        "meanHeight": 67.4,
+        "heightMax": 104.3
+      },
+      {
+        "band": "0.35 ≤ w < 0.65",
+        "areaKm2": 0.057,
+        "roadKmPerKm2": 17.17,
+        "invaderRoadShare": 0,
+        "parcels": 113,
+        "meanParcelArea": 296.3,
+        "meanFrontage": 14.16,
+        "buildings": 101,
+        "buildingsPerParcel": 0.894,
+        "coverageOfParcels": 0.684,
+        "meanHeight": 48.2,
+        "heightMax": 70.9
+      },
+      {
+        "band": "w ≥ 0.65",
+        "areaKm2": 0.09,
+        "roadKmPerKm2": 12.13,
+        "invaderRoadShare": 0,
+        "parcels": 147,
+        "meanParcelArea": 311.5,
+        "meanFrontage": 13.27,
+        "buildings": 136,
+        "buildingsPerParcel": 0.925,
+        "coverageOfParcels": 0.659,
+        "meanHeight": 33.4,
+        "heightMax": 52.5
+      }
+    ],
+    "changedChunks": [
+      "chunk_0_0",
+      "chunk_0_1"
+    ]
+  },
+  "full": {
+    "fusion": {
+      "key": "chunk_0_1|veniceWaterNetwork|coordinated|128|0|0|DE5D5A12|8ABB01A5|manhattanGrid|1|384|128",
+      "unchanged": false,
+      "stats": {
+        "baseEdges": 148,
+        "invaderEdges": 32,
+        "baseKept": 123,
+        "baseClipped": 10,
+        "baseDropped": 15,
+        "invaderKept": 2,
+        "invaderClipped": 1,
+        "droppedInvaderTunnels": 0,
+        "connectors": 3,
+        "cutEnds": 11,
+        "junctions": 0,
+        "remainingCrossings": 0
+      },
+      "ms": 5,
+      "invaderSignature": "36B3ECE3",
+      "fusedSignature": "D1D12952",
+      "networkSignature": "CF7E3A83"
+    },
+    "rules": [
+      {
+        "id": "networkRegularity",
+        "mixing": "discrete",
+        "layer": "network",
+        "base": 1,
+        "invader": 0.4,
+        "note": "street topology switch per edge (τ band)"
+      },
+      {
+        "id": "streetDensity",
+        "mixing": "discrete",
+        "layer": "network",
+        "base": null,
+        "invader": null,
+        "note": "measured on the generated networks"
+      },
+      {
+        "id": "parcelRegularity",
+        "mixing": "continuous",
+        "layer": "parcel",
+        "base": 1,
+        "invader": 0.286,
+        "note": "1 − frontage jitter / 0.35"
+      },
+      {
+        "id": "parcelScale",
+        "mixing": "continuous",
+        "layer": "parcel",
+        "base": "15 × 32",
+        "invader": "9 × 20",
+        "note": "target frontage, max depth"
+      },
+      {
+        "id": "buildingDensity",
+        "mixing": "continuous",
+        "layer": "building",
+        "base": 0.92,
+        "invader": 0.85,
+        "note": "share of parcels built"
+      },
+      {
+        "id": "buildingHeight",
+        "mixing": "continuous",
+        "layer": "building",
+        "base": 63,
+        "invader": 13.2,
+        "note": "floor range and floor height interpolated"
+      },
+      {
+        "id": "waterfrontPreference",
+        "mixing": "discrete",
+        "layer": "network",
+        "base": 0.2,
+        "invader": 1,
+        "note": "quays / canals come with the invader edges"
+      },
+      {
+        "id": "organicity",
+        "mixing": "discrete",
+        "layer": "network",
+        "base": 0,
+        "invader": 0.6,
+        "note": "follows the street switch; parcel jitter is continuous"
+      }
+    ],
+    "rebuilt": {
+      "raw": [],
+      "harmony": false,
+      "harmonyMs": 0,
+      "ms": 6,
+      "roadSeam": true,
+      "roadSeamMs": 5,
+      "cityStale": [
+        "chunk_0_0",
+        "chunk_0_1"
+      ],
+      "fusion": {
+        "fused": true,
+        "invader": false,
+        "ms": 5,
+        "target": "chunk_0_0"
+      }
+    },
+    "counts": {
+      "before": {
+        "dna": "manhattanGrid",
+        "counts": {
+          "roadKm": 18.47,
+          "ports": 47,
+          "tunnels": 0,
+          "blocks": 82,
+          "parcels": 1842,
+          "buildings": 1705,
+          "meanHeight": 58
+        }
+      },
+      "after": {
+        "dna": "manhattanGrid",
+        "counts": {
+          "roadKm": 16.72,
+          "ports": 38,
+          "tunnels": 0,
+          "blocks": 66,
+          "parcels": 1739,
+          "buildings": 1602,
+          "meanHeight": 53.7
+        }
+      },
+      "sourceBefore": {
+        "dna": "veniceWaterNetwork",
+        "counts": {
+          "roadKm": 5.57,
+          "ports": 18,
+          "tunnels": 0,
+          "blocks": 21,
+          "parcels": 504,
+          "buildings": 410,
+          "meanHeight": 10
+        }
+      },
+      "sourceAfter": {
+        "dna": "veniceWaterNetwork",
+        "counts": {
+          "roadKm": 5.54,
+          "ports": 10,
+          "tunnels": 0,
+          "blocks": 22,
+          "parcels": 523,
+          "buildings": 428,
+          "meanHeight": 9.9
+        }
+      }
+    }
+  },
+  "targetBands": {
+    "before": [
+      {
+        "band": "w = 0",
+        "areaKm2": 0.754,
+        "roadKmPerKm2": 17.38,
+        "invaderRoadShare": 0,
+        "parcels": 1317,
+        "meanParcelArea": 360.7,
+        "meanFrontage": 16.36,
+        "buildings": 1224,
+        "buildingsPerParcel": 0.929,
+        "coverageOfParcels": 0.738,
+        "meanHeight": 54.5,
+        "heightMax": 115.2
+      },
+      {
+        "band": "0 < w < 0.35",
+        "areaKm2": 0.147,
+        "roadKmPerKm2": 17.71,
+        "invaderRoadShare": 0,
+        "parcels": 268,
+        "meanParcelArea": 359.2,
+        "meanFrontage": 16.62,
+        "buildings": 243,
+        "buildingsPerParcel": 0.907,
+        "coverageOfParcels": 0.722,
+        "meanHeight": 72.6,
+        "heightMax": 108
+      },
+      {
+        "band": "0.35 ≤ w < 0.65",
+        "areaKm2": 0.057,
+        "roadKmPerKm2": 17.14,
+        "invaderRoadShare": 0,
+        "parcels": 94,
+        "meanParcelArea": 357.5,
+        "meanFrontage": 16.37,
+        "buildings": 85,
+        "buildingsPerParcel": 0.904,
+        "coverageOfParcels": 0.716,
+        "meanHeight": 67.6,
+        "heightMax": 97.2
+      },
+      {
+        "band": "w ≥ 0.65",
+        "areaKm2": 0.09,
+        "roadKmPerKm2": 19.7,
+        "invaderRoadShare": 0,
+        "parcels": 163,
+        "meanParcelArea": 354.5,
+        "meanFrontage": 16.93,
+        "buildings": 153,
+        "buildingsPerParcel": 0.939,
+        "coverageOfParcels": 0.757,
+        "meanHeight": 57.6,
+        "heightMax": 79.2
+      }
+    ],
+    "after": [
+      {
+        "band": "w = 0",
+        "areaKm2": 0.754,
+        "roadKmPerKm2": 17.29,
+        "invaderRoadShare": 0,
+        "parcels": 1316,
+        "meanParcelArea": 360.9,
+        "meanFrontage": 16.36,
+        "buildings": 1222,
+        "buildingsPerParcel": 0.929,
+        "coverageOfParcels": 0.737,
+        "meanHeight": 54.4,
+        "heightMax": 115.2
+      },
+      {
+        "band": "0 < w < 0.35",
+        "areaKm2": 0.147,
+        "roadKmPerKm2": 17.69,
+        "invaderRoadShare": 0,
+        "parcels": 283,
+        "meanParcelArea": 322.8,
+        "meanFrontage": 15.42,
+        "buildings": 256,
+        "buildingsPerParcel": 0.905,
+        "coverageOfParcels": 0.704,
+        "meanHeight": 63.5,
+        "heightMax": 104.4
+      },
+      {
+        "band": "0.35 ≤ w < 0.65",
+        "areaKm2": 0.057,
+        "roadKmPerKm2": 10.45,
+        "invaderRoadShare": 0.076,
+        "parcels": 67,
+        "meanParcelArea": 439.8,
+        "meanFrontage": 14.33,
+        "buildings": 60,
+        "buildingsPerParcel": 0.896,
+        "coverageOfParcels": 0.55,
+        "meanHeight": 36.8,
+        "heightMax": 55.5
+      },
+      {
+        "band": "w ≥ 0.65",
+        "areaKm2": 0.09,
+        "roadKmPerKm2": 4.61,
+        "invaderRoadShare": 0.925,
+        "parcels": 73,
+        "meanParcelArea": 239.7,
+        "meanFrontage": 9.84,
+        "buildings": 64,
+        "buildingsPerParcel": 0.877,
+        "coverageOfParcels": 0.534,
+        "meanHeight": 17.1,
+        "heightMax": 30.5
+      }
+    ]
+  },
+  "sourceBands": {
+    "note": "source chunk banded by its distance to the target (road seam connectors only)",
+    "before": [
+      {
+        "band": "w = 0",
+        "areaKm2": 0.754,
+        "roadKmPerKm2": 5.92,
+        "invaderRoadShare": 0,
+        "parcels": 411,
+        "meanParcelArea": 152.2,
+        "meanFrontage": 8.28,
+        "buildings": 332,
+        "buildingsPerParcel": 0.808,
+        "coverageOfParcels": 0.519,
+        "meanHeight": 9.5,
+        "heightMax": 13.2
+      },
+      {
+        "band": "0 < w < 0.35",
+        "areaKm2": 0.147,
+        "roadKmPerKm2": 2.61,
+        "invaderRoadShare": 0,
+        "parcels": 24,
+        "meanParcelArea": 168.7,
+        "meanFrontage": 8.67,
+        "buildings": 21,
+        "buildingsPerParcel": 0.875,
+        "coverageOfParcels": 0.553,
+        "meanHeight": 10.4,
+        "heightMax": 13.2
+      },
+      {
+        "band": "0.35 ≤ w < 0.65",
+        "areaKm2": 0.057,
+        "roadKmPerKm2": 1.29,
+        "invaderRoadShare": 0,
+        "parcels": 11,
+        "meanParcelArea": 153.8,
+        "meanFrontage": 7.91,
+        "buildings": 7,
+        "buildingsPerParcel": 0.636,
+        "coverageOfParcels": 0.441,
+        "meanHeight": 11.3,
+        "heightMax": 13.2
+      },
+      {
+        "band": "w ≥ 0.65",
+        "areaKm2": 0.09,
+        "roadKmPerKm2": 7.2,
+        "invaderRoadShare": 0,
+        "parcels": 58,
+        "meanParcelArea": 177.2,
+        "meanFrontage": 9.55,
+        "buildings": 50,
+        "buildingsPerParcel": 0.862,
+        "coverageOfParcels": 0.545,
+        "meanHeight": 12.7,
+        "heightMax": 13.2
+      }
+    ],
+    "after": [
+      {
+        "band": "w = 0",
+        "areaKm2": 0.754,
+        "roadKmPerKm2": 5.92,
+        "invaderRoadShare": 0,
+        "parcels": 418,
+        "meanParcelArea": 152.6,
+        "meanFrontage": 8.26,
+        "buildings": 339,
+        "buildingsPerParcel": 0.811,
+        "coverageOfParcels": 0.523,
+        "meanHeight": 9.4,
+        "heightMax": 13.2
+      },
+      {
+        "band": "0 < w < 0.35",
+        "areaKm2": 0.147,
+        "roadKmPerKm2": 2.57,
+        "invaderRoadShare": 0,
+        "parcels": 26,
+        "meanParcelArea": 156.2,
+        "meanFrontage": 8.35,
+        "buildings": 23,
+        "buildingsPerParcel": 0.885,
+        "coverageOfParcels": 0.532,
+        "meanHeight": 10.5,
+        "heightMax": 13.2
+      },
+      {
+        "band": "0.35 ≤ w < 0.65",
+        "areaKm2": 0.057,
+        "roadKmPerKm2": 1.37,
+        "invaderRoadShare": 0,
+        "parcels": 10,
+        "meanParcelArea": 160.6,
+        "meanFrontage": 8.5,
+        "buildings": 10,
+        "buildingsPerParcel": 1,
+        "coverageOfParcels": 0.66,
+        "meanHeight": 10.6,
+        "heightMax": 13.2
+      },
+      {
+        "band": "w ≥ 0.65",
+        "areaKm2": 0.09,
+        "roadKmPerKm2": 6.86,
+        "invaderRoadShare": 0,
+        "parcels": 69,
+        "meanParcelArea": 146.6,
+        "meanFrontage": 8.01,
+        "buildings": 56,
+        "buildingsPerParcel": 0.812,
+        "coverageOfParcels": 0.492,
+        "meanHeight": 12.8,
+        "heightMax": 13.2
+      }
+    ]
+  },
+  "unaffected": {
+    "otherChunksIdentical": {
+      "chunk_-1_-1": true,
+      "chunk_0_-1": true,
+      "chunk_1_-1": true,
+      "chunk_-1_0": true,
+      "chunk_1_0": true,
+      "chunk_-1_1": true,
+      "chunk_1_1": true
+    },
+    "targetRetentionByBand": {
+      "w = 0": {
+        "buildings": {
+          "total": 1224,
+          "kept": 1116,
+          "share": 0.9118
+        },
+        "parcels": {
+          "total": 1317,
+          "kept": 1302,
+          "share": 0.9886
+        }
+      },
+      "0 < w < 0.35": {
+        "buildings": {
+          "total": 243,
+          "kept": 16,
+          "share": 0.0658
+        },
+        "parcels": {
+          "total": 268,
+          "kept": 53,
+          "share": 0.1978
+        }
+      },
+      "0.35 ≤ w < 0.65": {
+        "buildings": {
+          "total": 85,
+          "kept": 0,
+          "share": 0
+        },
+        "parcels": {
+          "total": 94,
+          "kept": 0,
+          "share": 0
+        }
+      },
+      "w ≥ 0.65": {
+        "buildings": {
+          "total": 153,
+          "kept": 0,
+          "share": 0
+        },
+        "parcels": {
+          "total": 163,
+          "kept": 0,
+          "share": 0
+        }
+      }
+    },
+    "sourceSignatures": {
+      "before": {
+        "raw": "CF8AAE89",
+        "height": "AB9C3493",
+        "water": "3021AE0D",
+        "network": "EF655299",
+        "rawNetwork": "B0C46F65",
+        "blocks": "660AC7D9",
+        "parcels": "6FEB411F",
+        "buildings": "45947BEE"
+      },
+      "after": {
+        "raw": "CF8AAE89",
+        "height": "AB9C3493",
+        "water": "3021AE0D",
+        "network": "876E4447",
+        "rawNetwork": "B0C46F65",
+        "blocks": "8C1F2013",
+        "parcels": "86579D83",
+        "buildings": "1832C0B0"
+      }
+    }
+  },
+  "reproducible": {
+    "cachePath": true,
+    "reload": true,
+    "fusedSignature": "D1D12952"
+  },
+  "reverse": {
+    "source": "chunk_0_0",
+    "target": "chunk_0_1",
+    "fusion": {
+      "unchanged": false,
+      "stats": {
+        "baseEdges": 33,
+        "invaderEdges": 103,
+        "baseKept": 29,
+        "baseClipped": 3,
+        "baseDropped": 1,
+        "invaderKept": 15,
+        "invaderClipped": 5,
+        "droppedInvaderTunnels": 0,
+        "connectors": 3,
+        "cutEnds": 8,
+        "junctions": 0,
+        "remainingCrossings": 0
+      }
+    },
+    "bands": {
+      "before": [
+        {
+          "band": "w = 0",
+          "areaKm2": 0.754,
+          "roadKmPerKm2": 5.92,
+          "invaderRoadShare": 0,
+          "parcels": 411,
+          "meanParcelArea": 152.2,
+          "meanFrontage": 8.28,
+          "buildings": 332,
+          "buildingsPerParcel": 0.808,
+          "coverageOfParcels": 0.519,
+          "meanHeight": 9.5,
+          "heightMax": 13.2
+        },
+        {
+          "band": "0 < w < 0.35",
+          "areaKm2": 0.147,
+          "roadKmPerKm2": 2.61,
+          "invaderRoadShare": 0,
+          "parcels": 24,
+          "meanParcelArea": 168.7,
+          "meanFrontage": 8.67,
+          "buildings": 21,
+          "buildingsPerParcel": 0.875,
+          "coverageOfParcels": 0.553,
+          "meanHeight": 10.4,
+          "heightMax": 13.2
+        },
+        {
+          "band": "0.35 ≤ w < 0.65",
+          "areaKm2": 0.057,
+          "roadKmPerKm2": 1.29,
+          "invaderRoadShare": 0,
+          "parcels": 11,
+          "meanParcelArea": 153.8,
+          "meanFrontage": 7.91,
+          "buildings": 7,
+          "buildingsPerParcel": 0.636,
+          "coverageOfParcels": 0.441,
+          "meanHeight": 11.3,
+          "heightMax": 13.2
+        },
+        {
+          "band": "w ≥ 0.65",
+          "areaKm2": 0.09,
+          "roadKmPerKm2": 7.2,
+          "invaderRoadShare": 0,
+          "parcels": 58,
+          "meanParcelArea": 177.2,
+          "meanFrontage": 9.55,
+          "buildings": 50,
+          "buildingsPerParcel": 0.862,
+          "coverageOfParcels": 0.545,
+          "meanHeight": 12.7,
+          "heightMax": 13.2
+        }
+      ],
+      "after": [
+        {
+          "band": "w = 0",
+          "areaKm2": 0.754,
+          "roadKmPerKm2": 5.74,
+          "invaderRoadShare": 0,
+          "parcels": 415,
+          "meanParcelArea": 150,
+          "meanFrontage": 8.26,
+          "buildings": 336,
+          "buildingsPerParcel": 0.81,
+          "coverageOfParcels": 0.527,
+          "meanHeight": 9.3,
+          "heightMax": 13.2
+        },
+        {
+          "band": "0 < w < 0.35",
+          "areaKm2": 0.147,
+          "roadKmPerKm2": 2.54,
+          "invaderRoadShare": 0,
+          "parcels": 21,
+          "meanParcelArea": 181.2,
+          "meanFrontage": 9,
+          "buildings": 20,
+          "buildingsPerParcel": 0.952,
+          "coverageOfParcels": 0.617,
+          "meanHeight": 12.5,
+          "heightMax": 20.4
+        },
+        {
+          "band": "0.35 ≤ w < 0.65",
+          "areaKm2": 0.057,
+          "roadKmPerKm2": 2.08,
+          "invaderRoadShare": 0.558,
+          "parcels": 17,
+          "meanParcelArea": 471.1,
+          "meanFrontage": 15,
+          "buildings": 13,
+          "buildingsPerParcel": 0.765,
+          "coverageOfParcels": 0.581,
+          "meanHeight": 49.1,
+          "heightMax": 69.6
+        },
+        {
+          "band": "w ≥ 0.65",
+          "areaKm2": 0.09,
+          "roadKmPerKm2": 11.78,
+          "invaderRoadShare": 1,
+          "parcels": 85,
+          "meanParcelArea": 321.2,
+          "meanFrontage": 16.69,
+          "buildings": 79,
+          "buildingsPerParcel": 0.929,
+          "coverageOfParcels": 0.719,
+          "meanHeight": 66.7,
+          "heightMax": 93.5
+        }
+      ]
+    },
+    "otherChunksIdentical": {
+      "chunk_-1_-1": true,
+      "chunk_0_-1": true,
+      "chunk_1_-1": true,
+      "chunk_-1_0": true,
+      "chunk_1_0": true,
+      "chunk_-1_1": true,
+      "chunk_1_1": true
+    }
+  },
+  "screenshots": [
+    "07-1-fusion-overall-after.png",
+    "07-1-boundary-closeup-before.png",
+    "07-1-boundary-closeup-after.png",
+    "07-1-influence-debug.png"
+  ],
+  "browserErrors": []
+}

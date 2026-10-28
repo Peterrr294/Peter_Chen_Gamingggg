@@ -14,8 +14,10 @@
 - **Update (2026-10-21, task 06.3a-R2 by user instruction):** core-preserving world terrain (world datum + band-only seam correction) is now the default World Grid terrain, pending review (entry 06.3a-R2 in §7). 06.3a-R stays runnable as `?terrain=macroRamp`, 06.3a as `?terrain=harmonized`, 06.2 as `?terrain=raw`.
 - **Update (2026-10-21, task 06.3c by user instruction):** seam classification (geometry / landform / hydrology / transport per shared edge) added to the World Grid; R2 corner pin shortened to one band width. Pending review (entry 06.3c in §7).
 - **Update (2026-10-21, release M06):** checkpoint commit `1f63e6f` on `experiment/terrain-seam` and `main`, deployed by CI to <https://gameeeee-zc626.web.app>; World State saved in `experiments/world-grid/checkpoints/world-6201-checkpoint-v1.json`. Hand-off: [NEXT_SESSION.md](./NEXT_SESSION.md).
+- **Update (2026-10-21, task 07.1 by user instruction):** City Influence & Fusion — one source city invades one neighbouring chunk (network switch per edge, parcel and building rules blended by weight; terrain, water, tunnels and other chunks unchanged). Pending review (entry 07.1 in §7).
+- **Update (2026-10-21, task 07.1a by user instruction):** City Influence is now a formal experiment line of T7 (blend), no longer a forbidden item. 07.1a adds an opt-in spatial identity mode (geometry ids, random streams keyed by worldSeed + stable identity) so that unaffected areas stay identical under invasion; legacy ids stay the default and keep every verified signature. Pending review (entry 07.1a in §7).
 - **Current single task:** Review 06.3c (and 06.3a-R2, 06.3a-R, 06.3b), then the midterm review of T1–T7 through the Midterm Review notes; record accept / reject per task.
-- **Forbidden now:** new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes, bridges, ramps, canal joins, city influence, city expansion, complex UI, new assets, gameplay, visual polish — until the review sets the next task.
+- **Forbidden now:** new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes outside the City Influence experiment line, multi-source city competition, bridges, ramps, canal joins, city expansion beyond one source and one neighbouring target, complex UI, new assets, gameplay, visual polish — until the review sets the next task. (City Influence was removed from this list on 2026-10-21 with 07.1a: it is a formal T7 experiment.)
 - *Previous (superseded 2026-10-19):* Current stage T1 — Seed terrain; single task "Review T1 terrain fields (height, water, slope, buildability)"; forbidden: city, road, parcel, or building generation; new assets; gameplay; world stitching; visual polish.
 - *Previous (superseded 2026-10-18):* Stage 0 — research framework and city candidate set; the single task was to choose 3 prototype cities and the first city to implement.
 
@@ -63,7 +65,7 @@ The 60 cities form a research database; they are not the number of cities to imp
 | T4 | Road / canal network | Connectivity, hierarchy, boundary interface | Implemented, pending review (03.1, 03.2, 03.3, 05.1b-2) |
 | T5 | Blocks and parcels | Parcel stats, conflict checks | Implemented, pending review (04.1, 04.1b, 04.2) |
 | T6 | Building extrusion | Density, height, coverage, collision checks | Implemented, pending review (05.1, 05.1b-1) |
-| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); road ports joined across harmonised edges into one world NetworkGraph, the others reported with a reason (06.3b); world-coordinated terrain: every shared edge and corner one continuous C¹ surface, edges whose zone exceeds 35° reported unresolved (06.3a-R); default since 06.3a-R2: world datum + band-only correction, chunk cores unchanged, unresolved edges reported as escarpment candidates; 06.3c: every edge classified smooth / valid escarpment / candidate / failed with separate geometry, landform, hydrology and transport status |
+| T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); road ports joined across harmonised edges into one world NetworkGraph, the others reported with a reason (06.3b); world-coordinated terrain: every shared edge and corner one continuous C¹ surface, edges whose zone exceeds 35° reported unresolved (06.3a-R); default since 06.3a-R2: world datum + band-only correction, chunk cores unchanged, unresolved edges reported as escarpment candidates; 06.3c: every edge classified smooth / valid escarpment / candidate / failed with separate geometry, landform, hydrology and transport status; City Influence (formal experiment line): one source city invades one neighbouring chunk with rule fusion (07.1), stable generation of unaffected areas with spatial ids (07.1a) |
 
 ### Original roadmap (superseded 2026-10-18, kept for history)
 
@@ -768,3 +770,107 @@ Starting from the 10 high-priority candidates, complete two-source verification,
 - **Open issues:** `dev.cmd` start unverified (use `npm run dev`); root-screenshot deletion undecided; Amsterdam chunk without roads on seed 6201; the CI build warns about large chunks (three.js 705 kB, firebase 533 kB) as before; all 06.3x tasks still pending review.
 - **Review status:** Pending review.
 - **Next single task:** see NEXT_SESSION.md §7.
+
+### 07.1 — City Invasion & Fusion (single source city)
+
+- **Date / Stage / Single question:** 2026-10-21 / T7 (blend), by user instruction / Can one city's spatial rules invade a neighbouring chunk so that the boundary shows a mixed morphology (streets, parcels, buildings) that changes with an influence weight, while chunk grid, terrain, water and unaffected chunks stay unchanged?
+- **Reused files or functions:** World Grid pipeline (`WorldGrid.js`: network → road seam → city layers, keyed caches), `generateNetwork` / `matchCity` (the invader network is the unchanged generator with the source DNA forced on the target terrain), `GraphBuilder` (`splitEdgeAt`, `pruneShortComponents`, `finalize` → ports and stats), `findCrossings`, `PARCEL_RULES` / `BUILDING_RULES` per DNA, `RoadSeam.stitchRoads` (unchanged), verifier pattern of `verify-road-seam.mjs`.
+- **Model:**
+  - *Influence field:* d = distance to the source chunk square; w = strength · (1 − smoothstep(d / radius)). Applied only inside the target chunk. Seam guard: w × smoothstep((e − W) / W), e = distance to the nearest target side not shared with the source, W = transition width (128 m) — added after the first run showed the fusion zone reaching the target | Chicago seam and changing Chicago through the road seam.
+  - *Base / invading DNA:* base = target's resolved DNA (manual > auto; empty slots are not invaded), invading = source's resolved DNA.
+  - *Continuous rules (interpolated by w, 65-level table):* parcel target frontage, depth, jitter, min frontage, min area (per frontage run / per lot); building occupancy, setbacks, depth, floor range, floor height, height weights, centre radius (per parcel centroid).
+  - *Discrete rules (switch + smooth transition):* street topology (grid / organic / canal-street incl. quays and canals) — every edge of the base network and of the invader network is clipped at its own threshold τ ∈ [0.35, 0.65] (hashed from its end points); base kept where w < τ, invader where w ≥ τ, so the switch is a band, not a line. Road crossings between the two systems become junctions; cut ends are joined to the other system by a straight lane when ≤ 40 m, dry and ≤ 15°. Courtyard rule from w ≥ 0.5. Base tunnels kept, invader tunnels dropped (tunnel algorithm untouched). No numeric averaging of topologies.
+  - *Rule summary (`RULES`, 8 named rules):* networkRegularity, waterfrontPreference, organicity (strategy-level, A, discrete); streetDensity (measured per band); parcelRegularity, parcelScale, buildingDensity, buildingHeight (continuous, from the DNA configs).
+  - *Local regeneration:* only the target's network (fused, before the road seam) and its blocks / parcels / buildings; the road seam then rebuilds the city layer of any chunk whose stitched roads changed (here the source, through its shared edge). Influence 0 → no fusion layer, every cache key as before.
+- **Changed files (working tree, nothing committed):** new `experiments/world-grid/CityInfluence.js` (field, mixed rules, `fuseNetwork`, band statistics), `experiments/world-grid/InfluenceView.js` (debug layer), `scripts/verify-city-influence.mjs`, `experiments/world-grid/evidence/city-influence.json`; changed `experiments/world-grid/WorldGrid.js` (`setInfluence`, `influenceWeight`, `influenceState`, `fuse`, fused network into the road seam and city key), `main.js` (GUI folder, rebuild step, panel summary, lab API, URL parameters), `index.html` (panel row, legend, intro); `experiments/seed-terrain/ParcelGenerator.js` and `BuildingGenerator.js` take an optional last `options` argument (`targetAt`, `maxDepthBound` / `ruleAt`) — without it the code path and output are unchanged (checkpoint signatures below).
+- **Seed / City DNA / key parameters:** world seed 6201, W 128, terrain coordinated, roads joined (defaults). Source chunk_0_1 (coast) set manually to Venice (`veniceWaterNetwork`); target chunk_0_0 (plain) Manhattan (`manhattanGrid`, default layout). Radius 384 m; strength 0 / 50 / 100 %. Reverse run: source chunk_0_0 Manhattan → target chunk_0_1 Venice, 100 %, 384 m.
+- **Entry point + verification method:** `/experiments/world-grid/?city=chunk_0_1:veniceWaterNetwork&invade=chunk_0_1>chunk_0_0&strength=100&radius=384&field=1&zone=1` (GUI folder "City Influence (07.1)": Source city, Invasion target, Strength (%), Radius (m), Show influence field, Show fusion zone; panel "City influence (07.1)" lists the rule changes and band statistics). `node scripts/verify-city-influence.mjs` (own Vite server) — passes, 0 browser errors.
+- **Result + checked data (target bands use the 100 % field, before → after):**
+  1. *Influence 0 = original world:* all 9 chunk signatures (raw, height, water, network, blocks, parcels, buildings) identical to the world without influence; also after returning from 100 % to 0.
+  2. *Fusion core w ≥ 0.65 (0.09 km²), Venice → Manhattan 100 %:* invader street share 0 → 92.5 %, road density 19.7 → 4.6 km/km² (Venice rules on dry plain land give a sparse lane network), mean parcel 354.5 → 239.7 m², mean frontage 16.9 → 9.8 m, parcel coverage 0.76 → 0.53, mean building height 57.6 → 17.1 m (max 79.2 → 30.5 m). Network: 148 base edges → 123 kept, 10 clipped, 15 dropped; 3 invader edges in; 11 cut ends, 3 connectors, 0 junctions, 0 remaining crossings. Target totals 18.47 → 16.72 km road, 82 → 66 blocks, 1705 → 1602 buildings.
+  3. *Gradient:* band 0.35–0.65: road 17.1 → 10.5 km/km², parcel 357 → 440 m², height 67.6 → 36.8 m; band 0–0.35: parcel 359 → 323 m², frontage 16.6 → 15.4 m, height 72.6 → 63.5 m. At 50 %: only 5 base edges dropped / 3 clipped and no invader edge (w ≤ 0.5 rarely passes τ), core band parcels 311.5 m², height 33.4 m — the continuous rules move before the street switch.
+  4. *Unaffected areas:* the 7 chunks other than source and target are bit-identical at 50 % and 100 % (both directions). Source and target terrain / water signatures unchanged. In the target's w = 0 band 98.9 % of parcels and 91.2 % of buildings are identical (see open issue 2). The source chunk changes only through the road seam on the shared edge (its ports 18 → 10, buildings 410 → 428).
+  5. *Reproducible:* same parameters → identical signatures and fused-network signature after 0 → 100 % (cache path) and after a page reload with the URL parameters.
+  6. *Reverse, Manhattan → Venice 100 %:* core band invader share 100 %, road 7.2 → 11.8 km/km², parcel 177 → 321 m², frontage 9.6 → 16.7 m, coverage 0.55 → 0.72, mean height 12.7 → 66.7 m (max 93.5 m); 15 + 5 invader edges in, 3 connectors; other 7 chunks identical.
+- **Performance:** world load 31.6 s; changing strength rebuilds 2 chunk city layers in 9–14 s; fusion step 5 ms (invader network cached per target terrain + DNA).
+- **Regression:** `verify-world-checkpoint` 7 / 7 against a local server (M06 checkpoint reproduced: all signatures match, including parcels and buildings through the changed generators).
+- **Screenshots (seed 6201, W 128, Venice chunk_0_1 → Manhattan chunk_0_0, radius 384 m):**
+  - Overall, 100 %, fusion zone on: ![Whole world with the fusion zone](../assets/screenshots/procedural-mini-world/07-1-fusion-overall-after.png)
+  - Boundary close-up before (0 %) and after (100 %), same camera (`focus=-120,400,620`): ![Boundary before, strength 0](../assets/screenshots/procedural-mini-world/07-1-boundary-closeup-before.png) ![Boundary after, strength 100 %](../assets/screenshots/procedural-mini-world/07-1-boundary-closeup-after.png) Manhattan towers on frontage lots give way to low, small Venice-rule lots along new lanes; Venice quay buildings across the seam unchanged.
+  - Influence debug, 100 %, top-down (`camera=top&focus=0,256,1500`): ![Ownership tint, heat in the target, invader streets red, tau limits white](../assets/screenshots/procedural-mini-world/07-1-influence-debug.png) Ownership: Chicago violet, Manhattan blue, Venice teal, Amsterdam pink, Lisbon green, Fez amber; heat fades at the guarded seams.
+- **Confirmed:** influence 0 identical; morphology change measured in all three layers and in both directions; unaffected chunks bit-identical; reproducible; terrain, water, tunnels, seams untouched.
+- **Open issues:** (1) Dropping base streets is not always matched by invader streets: Venice rules on dry land are sparse, so the core road density falls (19.7 → 4.6 km/km²) and at 50 % base streets disappear with no replacement; 0 junctions formed between the two systems in the forward run. (2) Block and parcel ids are order-based: where fusion removes blocks, later ids shift and their per-parcel random stream (occupancy, height jitter) changes — 8.8 % of buildings in the w = 0 band differ in height or occupancy though their parcels are identical. (3) waterfrontPreference only acts through the invader network; with little water in the zone it has no visible effect. (4) The seam guard keeps a W-wide strip of the target at the base rules even next to the source corner. (5) Thresholds (τ 0.35–0.65, connector 40 m / 15°, courtyard 0.5) and the strategy-level rule values are A, uncalibrated. (6) Only edge-adjacent invasion was run; corner (diagonal) targets are allowed by the code but untested. (7) The source chunk is rebuilt through the road seam (expected, but its city layer changes slightly).
+- **Review status:** Pending review.
+- **Next single task:** Review 07.1; then decide whether the street switch should keep base streets until an invader street covers the same area (no gaps), before any multi-source or larger-radius work.
+
+### 07.1a — City Invasion stable generation (spatial ids, local random streams)
+
+- **Date / Stage / Single question:** 2026-10-21 / T7, City Influence line (formal since this task) / After an invasion, do areas with w = 0 and unchanged upstream geometry keep exactly the same blocks, parcels and buildings (occupancy, height, type, footprint), instead of the 07.1 result where 8.8 % of w = 0 buildings changed?
+- **Order dependencies found (legacy code):**
+  - **Blocks:** `B${index}` / `F${index}` in flood-fill label order; removing one block shifts every later id.
+  - **Network:** edge ids are array indices; the fused graph (07.1) and the road-seam rebuild renumber them. Blocks and parcels key their frontage on them and use them as a sort tie-break.
+  - **Parcels:**
+    - one jitter random stream through all frontage runs, consumed in graph edge order;
+    - lots, the corner-lot union-find and nearest-lot ties follow piece order, which follows edge order;
+    - ids are `${block.id}-P${k}`.
+  - **Buildings:** the random stream (occupancy, height jitter) is keyed by the order-based parcel id; the height area factor divides by the chunk-wide largest parcel, which is not local.
+- **Scheme (`options.identity = { worldSeed }`, opt-in; new `experiments/seed-terrain/StableIdentity.js`):**
+  - **Block id:** `B` + a 64-bit hash of the canonical plan geometry: the 3-decimal world coordinates already stored, with the ring rotated to its smallest (x, z) vertex and holes sorted.
+  - **Parcel id:** `${blockId}-P` + a hash of the parcel's own canonical geometry. Its `stableKey` (geometry only) keys the building stream, so an identical parcel keeps its building even if its parent block id changes.
+  - **Collisions:** two distinct shapes with the same hash get a suffix ordered by their canonical strings, never by array order. 0 collisions in all runs.
+  - **Frontage runs:** sorted canonically (block id + run end points + side). Jitter comes from one stream per run: `(worldSeed, 'parcel-run', DNA, run key)`.
+  - **Buildings:** stream `(worldSeed, 'building', DNA, parcel stableKey)`; the area reference is the largest parcel of the same block (local).
+  - **What counts as the same object:** the same coordinates under a different parent block are not assumed to be the same object; matching uses the full canonical shape.
+  - **What still changes:** any geometric change gives a new key, so the object is regenerated (no stale building is kept). Network, terrain and tunnels are untouched.
+- **Mode:** World Grid `idMode` `legacy` (default; the M06 checkpoint world) or `spatial` (`?ids=spatial`, GUI "Generation ids"); the city cache key carries the mode. The 07.1 fusion hooks are unchanged and combine with the identity option.
+- **Stability check (`stabilityReport` in `CityInfluence.js`, page panel + `?stability=1` tiles):** each w = 0 parcel of the last unfused city (same id mode) is matched to the current city by geometry, never by array index. Classes:
+  - `stable`: same building outcome.
+  - `unstable` (defect): same parcel, same block, same roads, different outcome.
+  - `unexplained` (defect): parcel replaced with block, roads and every w > 0 lot of the block unchanged.
+  - Legal changes, reported separately:
+    - `blockChanged`: same parcel, but its block changed shape;
+    - `roadChanged`: block or frontage road geometry / class changed;
+    - `siblingChanged`: the block straddles the fusion zone and one of its w > 0 lots was regenerated; lots of one block share boundaries and the block area reference;
+    - `added`.
+- **Changed files (working tree, nothing committed):**
+  - New: `experiments/seed-terrain/StableIdentity.js`, `scripts/verify-city-influence-stable.mjs`, `experiments/world-grid/evidence/city-influence-stable.json`.
+  - Changed: `BlockGenerator.js` (optional last `options` argument), `ParcelGenerator.js` and `BuildingGenerator.js` (identity branch in the existing `options`), `WorldGrid.js` (`idMode`, `cityKeyOf`, baseline city per chunk), `CityInfluence.js` (`stabilityReport`), `InfluenceView.js` (stability tiles), `main.js` (URL / GUI / panel / lab), `index.html` (legend).
+- **Setup:** seeds 6201 / 6202 / 6203, W 128, terrain coordinated, roads joined. Venice set manually on chunk_0_1 invades Manhattan on chunk_0_0, radius 384 m, strength 0 / 25 / 50 / 100 %. Reverse run: Manhattan invades Venice at 100 %.
+- **Legacy regression (no option = old output):**
+  - `verify-blocks`, `verify-parcels` and `verify-buildings` (single chunk, generators without options) pass. Their evidence is identical except `testedAt`; evidence and screenshots restored.
+  - `verify-world-checkpoint` 7 / 7: the M06 checkpoint is reproduced with all signatures.
+  - World Grid legacy influence 0 = original on all 3 seeds.
+  - Spatial mode leaves raw, height, water and network signatures of every chunk identical to legacy. Only blocks, parcels and buildings get new ids, streams and the block area reference.
+- **Results, w = 0 zone of the target (base parcels):**
+
+| Seed | Legacy 100 %: stable / unstable / sibling / block + road / added | Spatial 25 % | Spatial 50 % | Spatial 100 % |
+| --- | --- | --- | --- | --- |
+| 6201 | 1202 / **46** / 57 / 12 / 14 | 1309 stable, 8 sibling, 8 added | 1308, 9 sibling, 9 added | 1287, 15 block, 3 road, 12 sibling, 14 added |
+| 6202 | 1179 / **82** / 6 / 0 / 0 | 1267 stable | 1267 stable | 1265, 2 sibling |
+| 6203 | 628 / **465** / 164 / 8 / 5 | 1262, 3 sibling, 2 added | 1259, 4 block, 1 road, 1 sibling, 2 added | 1247, 13 block, 1 road, 4 sibling, 5 added |
+
+  - Spatial ids: **0 unstable and 0 unexplained** in every seed and strength. At 100 % (6201) 97.7 % of the w = 0 parcels are stable; the rest are legal upstream changes on the zone edge.
+  - Influence 0 (spatial) = the spatial original; back from 100 % to 0 restores it. The other 7 chunks are bit-identical at 25 / 50 / 100 %. A reload with the same URL reproduces the result.
+  - Reverse, Manhattan invades Venice (Venice lots use jitter, so this tests the per-run streams):
+    - 6201: 225 stable, 175 road-changed, 170 added, 0 defects.
+    - 6202: 271 stable, 87 road-changed, 85 added, 0 defects.
+    - 6203: uninformative; the Venice chunk has no parcels in its baseline (7 network edges).
+- **Affected zone (w ≥ 0.65 band, spatial, 100 %):**
+  - 6201: invader streets 0 → 92.5 %, mean parcel 354.5 → 224.4 m², mean height 61.9 → 16.6 m.
+  - 6202: invader streets → 100 %, mean parcel 439.1 → 235.5 m², mean height 73.7 → 19.7 m.
+  - 6203: invader streets → 100 %, 45 → 4 parcels, mean height 73.6 → 22.0 m.
+  - Of the 525 / 513 / 386 baseline parcels with w > 0, 32 / 12 / 31 keep their outcome at 100 %.
+- **Screenshots (seed 6201, spatial ids, Venice → Manhattan, radius 384 m):**
+  - ![Original (influence 0) and fused (100 %) from the same camera](../assets/screenshots/procedural-mini-world/07-1a-original-vs-fused-compare.png)
+  - ![w = 0 stability tiles, top-down: green stable, blue block reshaped, orange road changed, yellow sibling lot changed, pale added, red would be a defect (none)](../assets/screenshots/procedural-mini-world/07-1a-w0-stability-debug.png)
+- **Performance:** world load 15.8–37.8 s; one strength change rebuilds 2 city layers in 3.0–10.8 s.
+- **Confirmed:** the order-dependent sources are removed in spatial mode; w = 0 buildings on unchanged parcels, blocks and roads are identical on 3 seeds × 3 strengths and in the reverse direction; the legacy output and checkpoint are unchanged.
+- **Open issues:**
+  1. Spatial ids are opt-in. The default World Grid and the M06 checkpoint stay legacy, so the 07.1 instability persists there. Making spatial the default needs a new checkpoint version, and the checkpoint does not yet record the id mode.
+  2. The block-level area reference changes heights against legacy: in the spatial original, Manhattan core mean height is 61.9 m against 57.6 m in legacy.
+  3. Frontage runs are keyed by their end points. An edge that is clipped in the zone (or split by the road seam) gives new runs along its whole remaining length, so road-changed counts are large in the reverse run (6201: 175), even far from the zone.
+  4. The sibling class allows w = 0 lots in blocks that straddle the zone to change. This is legal by construction, but it is not tested separately.
+  5. Fragment ids (`F${index}`) stay order-based; nothing downstream uses them.
+  6. The 6203 reverse run had no parcels to test.
+- **Review status:** Pending review.
+- **Next single task:** Review 07.1a; then decide whether spatial ids become the World Grid default (checkpoint v2 with the id mode recorded).
