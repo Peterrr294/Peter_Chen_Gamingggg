@@ -375,7 +375,7 @@ Actual state on 2026-10-28, branch `experiment/procedural-growing-world`:
 | Stage | Goal | Reuse | New components | Depends on | Verification | Visual output | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **G00** Preserve & Recover | Keep every earlier experiment; Git baseline; independent chunk generator | `seed-terrain/`, `world-grid/`, all verifiers | none | — | Checkpoint commit; old pages unchanged; `verify-city-dna` regression 36 / 36 | — | **Done:** commit `79687a0`; World Grid code unchanged since |
-| **G01** Multi-Origin Initialization | Six cores with stable ids, seeds, coordinates; spacing rule; suitability recorded | 06.2 layers, 02.6 match, 07.1a ids | City Agent record (proposed) | G00 | Six cores, distinct cells, min distance, issues logged, reproducible on 3 seeds | Six-cores top view | **Implemented, verified, pending review**, uncommitted |
+| **G01** Multi-Origin Initialization | Six cores with stable ids, seeds, coordinates; spacing rule; suitability recorded | 06.2 layers, 02.6 match, 07.1a ids | World Context, City Origin registry, origin suitability (done in G01-MO) | G00 | Six cores, distinct cells, min distance, explainable scores, input / generation order independence, save / load, 3 seeds | Six-origins overview, ID debug, suitability view | **Implemented, verified, pending review:** [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) (entry G01-MO); prototype with growth in entry G01 |
 | **G02** Rule-Based Growth | Frontier, environmental scoring with Growth DNA, single step, save / load | G01 controller | Missing Growth DNA fields (§6.3); random and uniform modes for Experiments B and C | G01 accepted | One chunk per step; adjacency; reproducible; save / load continuation; B0 vs B1 metrics | 10 / 30 / 60 growth maps | **Baseline implemented and verified** (frontier, score, step, save / load); Growth DNA fields and experiment modes proposed |
 | **G03** City Territory & Encounter | Territory, boundary types, ecological reserve, encounter zones, corridors | Edge reports, contest records, empty-slot path (`cityId = null`) | Cell-state map, reserve rules, encounter records, corridor records, boundary classifier | G02 | Reserved cells counted and never urbanised; boundary types stable by seed; unexplored ≠ reserved | Territory / encounter / reserve map (no gradients) | **Partial:** contests and boundary edges recorded; the rest proposed |
 | **G04** Morphological Growth | Roads, blocks and buildings express DNA and growth stage (core vs frontier), not only chunk count | Existing generators via their options hooks (07.1 `options`) | Stage-dependent rule inputs (for example density by distance to the core) | G03 | H1 metrics per growth age; generators unchanged at default | Core-to-frontier transects | **Not started** |
@@ -416,7 +416,9 @@ Actual state on 2026-10-28, branch `experiment/procedural-growing-world`:
 
 ## 14. Next Experiment
 
-**Proposed next single task: G01-R — Multi-Origin Initialization on the World / City / Chunk schema.**
+**Update 2026-10-28:** carried out as G01-MO (Multi-Origin Initialization) in `experiments/city-of-cities/`, see the [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md). The next task is G02 after the review. The proposal below is kept as written.
+
+**Proposed next single task (superseded): G01-R — Multi-Origin Initialization on the World / City / Chunk schema.**
 
 The G01 code exists, so the minimal next step is not new growth. It is to make the implemented initialization match this compass:
 

@@ -3,8 +3,9 @@
 > **Update 2026-10-28 (read first):**
 > - **Research direction:** [A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).
 > - **Branch:** `experiment/procedural-growing-world` (checkpoint `79687a0`).
-> - **G01 growing world:** `/experiments/growing-world/`, verifier `scripts/verify-growing-world.mjs`; uncommitted, pending review.
-> - **Next single task:** review G01 and G00-R, then G01-R (compass §14).
+> - **G01 growth prototype:** `/experiments/growing-world/`, verifier `scripts/verify-growing-world.mjs`; committed `c3e2e5f`, pending review.
+> - **G01-MO city origins (roadmap G01):** `/experiments/city-of-cities/`, verifier `scripts/verify-city-of-cities.mjs`, note [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md); pending review.
+> - **Next single task:** review G01-MO (and the G01 prototype, G00-R), then G02 Rule-Based Growth.
 >
 > Everything below is the M06 hand-off of 2026-10-21 and describes the static World Grid.
 

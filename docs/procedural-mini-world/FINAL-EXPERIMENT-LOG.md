@@ -20,7 +20,9 @@
 - **Research mainline (from 2026-10-27, by teacher feedback): Multi-Origin Procedural Urban Growth.** The world is no longer a static assembly of pre-placed chunks (06.2–07.1a) but the result of a process: six City DNAs each start from one core chunk and grow outward chunk by chunk; map size, city territories and boundaries emerge from the growth rules (terrain-first scores, fair scheduling, first-occupant ownership). Reason: in a fixed 3 × 3 grid the world size, the neighbourhoods and the city boundaries were decided before any rule ran, so they could not be studied as outcomes. The static World Grid and the City Influence line stay runnable as earlier experiments.
 - **Update (2026-10-27, task G01 by user instruction):** `WorldGrowthController` + Growth Debug UI in `experiments/growing-world/` — six city cores, one chunk per step from a growth frontier, save / load and continuation; verified on 3 world seeds. Pending review (entry G01 in §7).
 - **Update (2026-10-28, task G00-R by user instruction):** research framing re-established as **A City of Cities — The Emergence of a Plural Urban World through Procedural Growth** in [A-City-of-Cities-Research-Compass.md](./A-City-of-Cities-Research-Compass.md). That page is the authority for question, theory, World / City / Chunk levels, hypotheses H1–H3, experiments A–C and the G00–G05 roadmap; this section and §5 stay the authority for stage status. Roadmap mapping: the entry logged as G01 (2026-10-27) covers roadmap G01 and a baseline of G02.
-- **Current single task:** Review G01 and the Research Compass (G00-R); if accepted, G01-R (City Agent record and cell-state field, outputs unchanged; compass §14).
+- **Update (2026-10-28, task G01-MO by user instruction):** roadmap G01 Multi-Origin Initialization implemented as `experiments/city-of-cities/` (World Context, City Origins, independent core chunks, origin suitability, World State v1, no growth). Verified on 3 seeds; pending review (entry G01-MO). It replaces the proposed G01-R. The 2026-10-27 growth prototype stays runnable as an earlier exploratory experiment.
+- **Current single task:** Review G01-MO (and G01 prototype, G00-R); G02 Rule-Based Growth only after the review.
+- *Previous (superseded 2026-10-28, G01-MO):* "Review G01 and the Research Compass (G00-R); if accepted, G01-R (City Agent record and cell-state field, outputs unchanged; compass §14)."
 - *Previous (superseded 2026-10-28):* "Review G01 (growth rules, territories, reported seams); then choose G02 (see the G01 entry)."
 - **Forbidden now:** City Invasion & Fusion in the growing world, cross-city road fusion, new tunnel system, new building assets, rewriting the Terrain Seam system, new cities beyond the six DNAs, gameplay, visual polish — until the G01 review sets the next task.
 - *Previous (superseded 2026-10-27):* Current single task "Review 06.3c (and 06.3a-R2, 06.3a-R, 06.3b), then the midterm review of T1–T7"; forbidden: new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes outside the City Influence experiment line, multi-source city competition, bridges, ramps, canal joins, city expansion beyond one source and one neighbouring target, complex UI, new assets, gameplay, visual polish.
@@ -82,7 +84,7 @@ Goals, reuse, new components, dependencies, verification and visual output per s
 | Stage | Content | Status (2026-10-28) |
 | --- | --- | --- |
 | G00 | Preserve & Recover: earlier experiments, Git baseline, independent chunk generator | Done: checkpoint `79687a0` (entry G00) |
-| G01 | Multi-Origin Initialization: six cores, spacing, suitability recorded | Implemented, verified, pending review; uncommitted (entry G01) |
+| G01 | Multi-Origin Initialization: six cores, spacing, suitability recorded | Implemented, verified, pending review: `experiments/city-of-cities/` (entry G01-MO); earlier prototype with growth in `experiments/growing-world/` (entry G01, commit `c3e2e5f`) |
 | G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Baseline implemented and verified within entry G01; Growth DNA fields and experiment modes proposed |
 | G03 | City Territory & Encounter: reserves, encounter zones, corridors, boundary types | Partial (contests and boundary edges recorded); rest proposed |
 | G04 | Morphological Growth: DNA and growth stage in roads, blocks, buildings | Not started |
@@ -1006,3 +1008,63 @@ Starting from the 10 high-priority candidates, complete two-source verification,
 - **Verification:** `node scripts/verify-markdown-links.mjs` passes. All 3 Mermaid diagrams render without error with Mermaid 10.9.1 in headless Chrome (scratch check, no dependency installed). Display inside the Obsidian app was not opened in this task (**Pending verification** in Obsidian).
 - **Review status:** Pending review.
 - **Next single task:** G01-R (Research Compass §14), after the G01 review.
+
+### G01-MO — Multi-Origin Initialization (A City of Cities, roadmap G01)
+
+- **Date / Stage / Single question:** 2026-10-28 / G01, by user instruction / Can six reproducible, independent city core chunks be created in one shared, unbounded world frame, each placed by the world seed and an explainable origin suitability evaluation, and each generated by the unchanged single-chunk chain with its own City DNA, with no growth?
+- **Preflight:**
+  - G00 is done (checkpoint `79687a0`).
+  - The earlier uncommitted work (growth prototype, entry G01; research compass, entry G00-R) was committed as checkpoint `c3e2e5f` before this task's docs were edited.
+  - Branch: `experiment/procedural-growing-world`.
+  - The single-chunk entry `/experiments/seed-terrain/` is unchanged.
+- **Note:** [A-City-of-Cities/G01-Multi-Origin-Initialization.md](./A-City-of-Cities/G01-Multi-Origin-Initialization.md): architecture, seed rules, placement logic, core table, tests, screenshots, limitations, G02 suggestions.
+- **Implementation:** new isolated experiment `experiments/city-of-cities/`:
+  - `WorldContext.js`: world seed, cell ↔ world coordinates, on-demand terrain probes, city / chunk / occupancy registries, read-only `frontierOf`, `dependenciesOf`, versioned World State with `growth.generation = 0`.
+  - `OriginPlacement.js`: per-city keyed sites, terrain probes, hard rejections, five-term suitability, weighted reproducible choice, data-derived claim order, minimum distance, explicit failures.
+  - `originConfig.js`: 4 public parameters; origin profiles (A); seed hierarchy worldSeed → citySeed → chunk urbanSeed; Morphology DNA read from the 07.1 `RULES`; basic Growth DNA.
+  - `OriginView.js`, `main.js`, `index.html`: UI.
+  - Verifier: `scripts/verify-city-of-cities.mjs`.
+  - Changed: `vite.config.js` (build inputs).
+  - No generator changed: the urban seed reaches parcels and buildings through the existing optional 07.1a `identity` argument.
+- **Parameters:** worldSeed; minOriginDistance 3 chunks; searchRadius 6 chunks; selectionSharpness 4. Profiles and weights are design hypotheses (A).
+- **Results (seeds 6201 / 1234 / 4242):**
+  - 6 origins each, 0 placement failures, minimum distance 3.
+  - 41 / 38 / 36 terrain probes, placement 3.4–3.8 s.
+  - Rejected sites: 33 / 13 / 11 (mountain incompatible at screen; 02.6 `noWater`); distance-blocked sites: 3 / 5 / 5.
+  - Seed 6201 cores (cell, suitability):
+
+    | City | Cell | Landform | Suitability |
+    | --- | --- | --- | --- |
+    | Amsterdam | (0, 3) | coast | 0.68 |
+    | Fez | (−1, −3) | plain | 0.74 |
+    | Lisbon | (5, 0) | coast | 0.80 |
+    | Chicago | (4, −4) | plain | 0.97 |
+    | Venice | (0, 6) | coast | 0.79 |
+    | Manhattan | (−2, 0) | plain | 0.99, 4th weighted site; 3 blocked by Fez and Chicago |
+
+  - Every core resolves to its own DNA. Seed 6201 roads 5.1–18.4 km, buildings 325–2021 per core.
+- **Verification:** `node scripts/verify-city-of-cities.mjs` passes, 0 browser errors.
+  - Identity: six cores, correct and distinct ids, seeds and cells.
+  - Determinism: repeat, reversed input order, reversed generation order, Regenerate in the page.
+  - Visibility toggles rebuild nothing.
+  - Explainable scores (stored score = weighted mean of stored terms, re-evaluation equal).
+  - Non-zero origin regression: same terrain, network (0 m deviation), blocks, parcels, buildings at origin 0 and at (−2048, 0).
+  - Save / load: Node JSON round trip; browser Save → reload → Load, 0 mismatches.
+  - `verify-city-dna` 36 / 36 identical (06.1 artifacts restored from Git afterwards).
+- **First-run finding fixed:** claim-order ties were broken by cityId, so Venice always claimed last. They are now broken by hash(worldSeed, cityId), and the order differs per seed.
+- **Performance (headless Chrome, seed 6201):** placement 3.36 s; first city rendered 6.62 s; all six cores 25.2 s (per core 1.9–5.7 s data, 0.10–0.18 s render); heap 209 MB; restore 21.5 s.
+- **Screenshots (seed 6201, default parameters):**
+  - ![Six origins](../assets/screenshots/procedural-mini-world/g01-origins-overview-after.png)
+  - ![ID and coordinate debug](../assets/screenshots/procedural-mini-world/g01-origins-ids-debug.png)
+  - ![Manhattan core close-up](../assets/screenshots/procedural-mini-world/g01-origins-city-closeup-after.png)
+  - ![Origin suitability, Manhattan](../assets/screenshots/procedural-mini-world/g01-origins-suitability-debug.png)
+  - ![Regenerate comparison](../assets/screenshots/procedural-mini-world/g01-origins-regenerate-compare.png)
+- **Open issues:**
+  1. Seed 1234 Amsterdam core: suitability 0.71, but 0 km road and 0 buildings. The score does not predict generator output.
+  2. Plain sites saturate (Manhattan's qualified sites all score 0.987), so the weighted choice among them is uniform.
+  3. The screen rejects a cell by its coarse landform only.
+  4. The sequential claim leaves later cities fewer sites.
+  5. Network signatures differ between Node and Chrome in 3 / 6 chunks (`axisDeg` at ≤ 7e-16 relative; geometry identical), so cross-runtime restore reports them.
+  6. Growth DNA still lacks three fields.
+- **Review status:** Pending review.
+- **Next single task:** after review, G02 Rule-Based Growth on `WorldContext` (suggestions in the note §10). Stop here.

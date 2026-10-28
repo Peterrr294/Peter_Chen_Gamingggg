@@ -22,6 +22,8 @@ export default defineConfig({
         manhattanTerrainGreybox: 'experiments/manhattan-terrain-greybox/index.html',
         seedTerrain: 'experiments/seed-terrain/index.html',
         worldGrid: 'experiments/world-grid/index.html',
+        growingWorld: 'experiments/growing-world/index.html',
+        cityOfCities: 'experiments/city-of-cities/index.html',
       },
     },
   },
