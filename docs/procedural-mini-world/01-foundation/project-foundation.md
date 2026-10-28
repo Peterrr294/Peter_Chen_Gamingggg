@@ -2,6 +2,8 @@
 
 Part of [01 Project Foundation](../README.md). The authority for direction and stage status is the **Project Compass**: [FINAL-EXPERIMENT-LOG.md §1–5](../FINAL-EXPERIMENT-LOG.md). This note summarises it and links to it; it does not replace it.
 
+> **Current framing (from 2026-10-28):** [A City of Cities — Research Compass](../A-City-of-Cities-Research-Compass.md). The proposal below is the original framing, kept as history; its identity question continues as hypothesis H1.
+
 ## Project Proposal (original 2026-10-17 / 18; meaning unchanged, translated to English)
 
 From compass §2 and task EXP-00. The proposal was first written in Chinese; this is a faithful English translation (the original wording is preserved in Git history, commit `7b21c3e`):

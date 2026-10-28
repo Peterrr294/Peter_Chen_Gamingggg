@@ -1,0 +1,690 @@
+{
+  "task": "G01",
+  "experiment": "experiments/growing-world/",
+  "testedAt": "2026-10-28T04:10:56.363Z",
+  "seeds": [
+    6201,
+    1234,
+    4242
+  ],
+  "steps": 24,
+  "node": {
+    "1234": {
+      "cores": [
+        {
+          "chunkId": "g_-2_-3",
+          "cityId": "veniceWaterNetwork",
+          "cell": {
+            "gx": -2,
+            "gy": -3
+          },
+          "landform": "coast",
+          "terrainSeed": 2401,
+          "fitScore": 0.4163
+        },
+        {
+          "chunkId": "g_-4_1",
+          "cityId": "manhattanGrid",
+          "cell": {
+            "gx": -4,
+            "gy": 1
+          },
+          "landform": "plain",
+          "terrainSeed": 1955,
+          "fitScore": 0.9333
+        },
+        {
+          "chunkId": "g_-2_4",
+          "cityId": "fezOrganicCore",
+          "cell": {
+            "gx": -2,
+            "gy": 4
+          },
+          "landform": "coast",
+          "terrainSeed": 2885,
+          "fitScore": 1
+        },
+        {
+          "chunkId": "g_3_-3",
+          "cityId": "amsterdamCanalRing",
+          "cell": {
+            "gx": 3,
+            "gy": -3
+          },
+          "landform": "coast",
+          "terrainSeed": 1555,
+          "fitScore": 0.5333
+        },
+        {
+          "chunkId": "g_1_2",
+          "cityId": "lisbonHillCore",
+          "cell": {
+            "gx": 1,
+            "gy": 2
+          },
+          "landform": "coast",
+          "terrainSeed": 3447,
+          "fitScore": 0.7341
+        },
+        {
+          "chunkId": "g_5_0",
+          "cityId": "chicagoGrid",
+          "cell": {
+            "gx": 5,
+            "gy": 0
+          },
+          "landform": "plain",
+          "terrainSeed": 6743,
+          "fitScore": 0.8
+        }
+      ],
+      "minCoreDistance": 3,
+      "summary": {
+        "worldSeed": 1234,
+        "step": 24,
+        "chunks": 30,
+        "bounds": {
+          "minX": -4,
+          "maxX": 6,
+          "minY": -5,
+          "maxY": 4
+        },
+        "perCity": {
+          "veniceWaterNetwork": 5,
+          "manhattanGrid": 6,
+          "fezOrganicCore": 4,
+          "amsterdamCanalRing": 5,
+          "lisbonHillCore": 4,
+          "chicagoGrid": 6
+        },
+        "landforms": {
+          "coast": 16,
+          "plain": 8,
+          "riverValley": 6
+        },
+        "edges": {
+          "total": 27,
+          "identity": {
+            "sameCity": 26,
+            "cityBoundary": 1
+          },
+          "geometry": {
+            "step": 13,
+            "cliff": 14
+          },
+          "hydrology": {
+            "continuous": 15,
+            "discontinuous": 12
+          },
+          "unpairedPorts": 101
+        },
+        "issues": 4
+      },
+      "shape": {
+        "width": 11,
+        "height": 10
+      },
+      "stalls": 0,
+      "unchangedAfterGrowth": true,
+      "regenerated": [
+        {
+          "chunkId": "g_-2_-3",
+          "same": true
+        },
+        {
+          "chunkId": "g_-1_-2",
+          "same": true
+        },
+        {
+          "chunkId": "g_-2_2",
+          "same": true
+        }
+      ],
+      "reproducible": true,
+      "saveLoadContinues": true,
+      "contests": 2,
+      "issues": [
+        "g_-4_2 manhattanGrid on riverValley: fit 0.05",
+        "g_-1_-3 veniceWaterNetwork on riverValley: fit 0.25",
+        "g_-4_4 manhattanGrid on riverValley: fit 0.0616",
+        "g_-2_2 manhattanGrid on coast: fit 0.1667"
+      ],
+      "history": [
+        "0:g_-2_-3:veniceWaterNetwork<core",
+        "0:g_-4_1:manhattanGrid<core",
+        "0:g_-2_4:fezOrganicCore<core",
+        "0:g_3_-3:amsterdamCanalRing<core",
+        "0:g_1_2:lisbonHillCore<core",
+        "0:g_5_0:chicagoGrid<core",
+        "1:g_6_0:chicagoGrid<g_5_0",
+        "2:g_-4_2:manhattanGrid<g_-4_1",
+        "3:g_3_-4:amsterdamCanalRing<g_3_-3",
+        "4:g_-2_-2:veniceWaterNetwork<g_-2_-3",
+        "5:g_1_1:lisbonHillCore<g_1_2",
+        "6:g_-1_4:fezOrganicCore<g_-2_4",
+        "7:g_5_-1:chicagoGrid<g_5_0",
+        "8:g_-4_3:manhattanGrid<g_-4_2",
+        "9:g_4_-4:amsterdamCanalRing<g_3_-4",
+        "10:g_-1_-2:veniceWaterNetwork<g_-2_-2",
+        "11:g_1_0:lisbonHillCore<g_1_1",
+        "12:g_6_1:chicagoGrid<g_6_0",
+        "13:g_-1_3:fezOrganicCore<g_-1_4",
+        "14:g_-3_2:manhattanGrid<g_-4_2",
+        "15:g_5_-4:amsterdamCanalRing<g_4_-4",
+        "16:g_4_-1:chicagoGrid<g_5_-1",
+        "17:g_-1_-3:veniceWaterNetwork<g_-1_-2",
+        "18:g_2_0:lisbonHillCore<g_1_0",
+        "19:g_-4_4:manhattanGrid<g_-4_3",
+        "20:g_5_1:chicagoGrid<g_5_0",
+        "21:g_-3_4:fezOrganicCore<g_-2_4",
+        "22:g_3_-5:amsterdamCanalRing<g_3_-4",
+        "23:g_-3_-2:veniceWaterNetwork<g_-2_-2",
+        "24:g_-2_2:manhattanGrid<g_-3_2"
+      ],
+      "ms": 72658
+    },
+    "4242": {
+      "cores": [
+        {
+          "chunkId": "g_0_1",
+          "cityId": "veniceWaterNetwork",
+          "cell": {
+            "gx": 0,
+            "gy": 1
+          },
+          "landform": "coast",
+          "terrainSeed": 8560,
+          "fitScore": 0.5108
+        },
+        {
+          "chunkId": "g_-3_0",
+          "cityId": "manhattanGrid",
+          "cell": {
+            "gx": -3,
+            "gy": 0
+          },
+          "landform": "plain",
+          "terrainSeed": 5303,
+          "fitScore": 0.9333
+        },
+        {
+          "chunkId": "g_3_2",
+          "cityId": "fezOrganicCore",
+          "cell": {
+            "gx": 3,
+            "gy": 2
+          },
+          "landform": "coast",
+          "terrainSeed": 7797,
+          "fitScore": 1
+        },
+        {
+          "chunkId": "g_-2_4",
+          "cityId": "amsterdamCanalRing",
+          "cell": {
+            "gx": -2,
+            "gy": 4
+          },
+          "landform": "coast",
+          "terrainSeed": 2488,
+          "fitScore": 0.5333
+        },
+        {
+          "chunkId": "g_-1_-3",
+          "cityId": "lisbonHillCore",
+          "cell": {
+            "gx": -1,
+            "gy": -3
+          },
+          "landform": "coast",
+          "terrainSeed": 5529,
+          "fitScore": 0.626
+        },
+        {
+          "chunkId": "g_2_-5",
+          "cityId": "chicagoGrid",
+          "cell": {
+            "gx": 2,
+            "gy": -5
+          },
+          "landform": "coast",
+          "terrainSeed": 2642,
+          "fitScore": 0.6206
+        }
+      ],
+      "minCoreDistance": 3,
+      "summary": {
+        "worldSeed": 4242,
+        "step": 24,
+        "chunks": 30,
+        "bounds": {
+          "minX": -4,
+          "maxX": 4,
+          "minY": -7,
+          "maxY": 6
+        },
+        "perCity": {
+          "veniceWaterNetwork": 5,
+          "manhattanGrid": 6,
+          "fezOrganicCore": 4,
+          "amsterdamCanalRing": 5,
+          "lisbonHillCore": 4,
+          "chicagoGrid": 6
+        },
+        "landforms": {
+          "coast": 14,
+          "plain": 12,
+          "riverValley": 4
+        },
+        "edges": {
+          "total": 30,
+          "identity": {
+            "sameCity": 26,
+            "cityBoundary": 4
+          },
+          "geometry": {
+            "step": 19,
+            "cliff": 11
+          },
+          "hydrology": {
+            "discontinuous": 10,
+            "continuous": 20
+          },
+          "unpairedPorts": 91
+        },
+        "issues": 2
+      },
+      "shape": {
+        "width": 9,
+        "height": 14
+      },
+      "stalls": 0,
+      "unchangedAfterGrowth": true,
+      "regenerated": [
+        {
+          "chunkId": "g_0_1",
+          "same": true
+        },
+        {
+          "chunkId": "g_-1_1",
+          "same": true
+        },
+        {
+          "chunkId": "g_-4_-1",
+          "same": true
+        }
+      ],
+      "reproducible": true,
+      "saveLoadContinues": true,
+      "contests": 22,
+      "issues": [
+        "g_-1_1 veniceWaterNetwork on riverValley: fit 0.25",
+        "g_-3_-3 lisbonHillCore on riverValley: fit 0.2931"
+      ],
+      "history": [
+        "0:g_0_1:veniceWaterNetwork<core",
+        "0:g_-3_0:manhattanGrid<core",
+        "0:g_3_2:fezOrganicCore<core",
+        "0:g_-2_4:amsterdamCanalRing<core",
+        "0:g_-1_-3:lisbonHillCore<core",
+        "0:g_2_-5:chicagoGrid<core",
+        "1:g_3_-5:chicagoGrid<g_2_-5",
+        "2:g_-3_-1:manhattanGrid<g_-3_0",
+        "3:g_-2_5:amsterdamCanalRing<g_-2_4",
+        "4:g_1_1:veniceWaterNetwork<g_0_1",
+        "5:g_-1_-2:lisbonHillCore<g_-1_-3",
+        "6:g_2_2:fezOrganicCore<g_3_2",
+        "7:g_2_-6:chicagoGrid<g_2_-5",
+        "8:g_-3_-2:manhattanGrid<g_-3_-1",
+        "9:g_-3_5:amsterdamCanalRing<g_-2_5",
+        "10:g_-1_1:veniceWaterNetwork<g_0_1",
+        "11:g_-2_-3:lisbonHillCore<g_-1_-3",
+        "12:g_3_-6:chicagoGrid<g_3_-5",
+        "13:g_4_2:fezOrganicCore<g_3_2",
+        "14:g_-2_-2:manhattanGrid<g_-3_-2",
+        "15:g_-3_6:amsterdamCanalRing<g_-3_5",
+        "16:g_3_-7:chicagoGrid<g_3_-6",
+        "17:g_-1_0:veniceWaterNetwork<g_-1_1",
+        "18:g_-3_-3:lisbonHillCore<g_-2_-3",
+        "19:g_-3_1:manhattanGrid<g_-3_0",
+        "20:g_2_-7:chicagoGrid<g_2_-6",
+        "21:g_2_3:fezOrganicCore<g_2_2",
+        "22:g_-4_6:amsterdamCanalRing<g_-3_6",
+        "23:g_-1_-1:veniceWaterNetwork<g_-1_0",
+        "24:g_-4_-1:manhattanGrid<g_-3_-1"
+      ],
+      "ms": 68160
+    },
+    "6201": {
+      "cores": [
+        {
+          "chunkId": "g_-3_-4",
+          "cityId": "veniceWaterNetwork",
+          "cell": {
+            "gx": -3,
+            "gy": -4
+          },
+          "landform": "coast",
+          "terrainSeed": 6967,
+          "fitScore": 0.6167
+        },
+        {
+          "chunkId": "g_1_-3",
+          "cityId": "manhattanGrid",
+          "cell": {
+            "gx": 1,
+            "gy": -3
+          },
+          "landform": "plain",
+          "terrainSeed": 1424,
+          "fitScore": 0.9333
+        },
+        {
+          "chunkId": "g_-1_3",
+          "cityId": "fezOrganicCore",
+          "cell": {
+            "gx": -1,
+            "gy": 3
+          },
+          "landform": "coast",
+          "terrainSeed": 6297,
+          "fitScore": 1
+        },
+        {
+          "chunkId": "g_4_2",
+          "cityId": "amsterdamCanalRing",
+          "cell": {
+            "gx": 4,
+            "gy": 2
+          },
+          "landform": "coast",
+          "terrainSeed": 2710,
+          "fitScore": 0.5268
+        },
+        {
+          "chunkId": "g_4_-1",
+          "cityId": "lisbonHillCore",
+          "cell": {
+            "gx": 4,
+            "gy": -1
+          },
+          "landform": "mountain",
+          "terrainSeed": 1819,
+          "fitScore": 0.3223
+        },
+        {
+          "chunkId": "g_-2_0",
+          "cityId": "chicagoGrid",
+          "cell": {
+            "gx": -2,
+            "gy": 0
+          },
+          "landform": "plain",
+          "terrainSeed": 9301,
+          "fitScore": 0.8
+        }
+      ],
+      "minCoreDistance": 3,
+      "summary": {
+        "worldSeed": 6201,
+        "step": 24,
+        "chunks": 30,
+        "bounds": {
+          "minX": -4,
+          "maxX": 5,
+          "minY": -5,
+          "maxY": 3
+        },
+        "perCity": {
+          "veniceWaterNetwork": 5,
+          "manhattanGrid": 6,
+          "fezOrganicCore": 4,
+          "amsterdamCanalRing": 5,
+          "lisbonHillCore": 4,
+          "chicagoGrid": 6
+        },
+        "landforms": {
+          "coast": 11,
+          "plain": 14,
+          "mountain": 2,
+          "riverValley": 3
+        },
+        "edges": {
+          "total": 29,
+          "identity": {
+            "sameCity": 26,
+            "cityBoundary": 3
+          },
+          "geometry": {
+            "step": 17,
+            "cliff": 12
+          },
+          "hydrology": {
+            "continuous": 18,
+            "discontinuous": 11
+          },
+          "unpairedPorts": 76
+        },
+        "issues": 6
+      },
+      "shape": {
+        "width": 10,
+        "height": 9
+      },
+      "stalls": 0,
+      "unchangedAfterGrowth": true,
+      "regenerated": [
+        {
+          "chunkId": "g_-3_-4",
+          "same": true
+        },
+        {
+          "chunkId": "g_-3_-3",
+          "same": true
+        },
+        {
+          "chunkId": "g_-1_-3",
+          "same": true
+        }
+      ],
+      "reproducible": true,
+      "saveLoadContinues": true,
+      "contests": 21,
+      "issues": [
+        "g_4_-1 lisbonHillCore on mountain: fit 0.3223 (core)",
+        "g_3_-1 lisbonHillCore on mountain: fit 0.1585",
+        "g_-3_-3 veniceWaterNetwork on riverValley: fit 0.25",
+        "g_3_-2 lisbonHillCore on riverValley: fit 0.3027",
+        "g_4_3 amsterdamCanalRing on riverValley: fit 0.1766",
+        "g_-4_-4 veniceWaterNetwork on coast: fit 0.2963"
+      ],
+      "history": [
+        "0:g_-3_-4:veniceWaterNetwork<core",
+        "0:g_1_-3:manhattanGrid<core",
+        "0:g_-1_3:fezOrganicCore<core",
+        "0:g_4_2:amsterdamCanalRing<core",
+        "0:g_4_-1:lisbonHillCore<core",
+        "0:g_-2_0:chicagoGrid<core",
+        "1:g_-2_1:chicagoGrid<g_-2_0",
+        "2:g_1_-2:manhattanGrid<g_1_-3",
+        "3:g_5_2:amsterdamCanalRing<g_4_2",
+        "4:g_-3_-5:veniceWaterNetwork<g_-3_-4",
+        "5:g_3_-1:lisbonHillCore<g_4_-1",
+        "6:g_-2_3:fezOrganicCore<g_-1_3",
+        "7:g_-1_0:chicagoGrid<g_-2_0",
+        "8:g_1_-4:manhattanGrid<g_1_-3",
+        "9:g_5_3:amsterdamCanalRing<g_5_2",
+        "10:g_-3_-3:veniceWaterNetwork<g_-3_-4",
+        "11:g_3_-2:lisbonHillCore<g_3_-1",
+        "12:g_-1_-1:chicagoGrid<g_-1_0",
+        "13:g_-1_2:fezOrganicCore<g_-1_3",
+        "14:g_1_-1:manhattanGrid<g_1_-2",
+        "15:g_4_3:amsterdamCanalRing<g_4_2",
+        "16:g_0_-1:chicagoGrid<g_-1_-1",
+        "17:g_-4_-3:veniceWaterNetwork<g_-3_-3",
+        "18:g_3_-3:lisbonHillCore<g_3_-2",
+        "19:g_0_-3:manhattanGrid<g_1_-3",
+        "20:g_0_-2:chicagoGrid<g_0_-1",
+        "21:g_0_3:fezOrganicCore<g_-1_3",
+        "22:g_3_3:amsterdamCanalRing<g_4_3",
+        "23:g_-4_-4:veniceWaterNetwork<g_-3_-4",
+        "24:g_-1_-3:manhattanGrid<g_0_-3"
+      ],
+      "ms": 61987
+    }
+  },
+  "browser": {
+    "seed": 6201,
+    "screenshots": {
+      "cores": "docs/assets/screenshots/procedural-mini-world/g01-six-cores-after.png",
+      "early": "docs/assets/screenshots/procedural-mini-world/g01-early-growth-after.png",
+      "large": "docs/assets/screenshots/procedural-mini-world/g01-large-world-after.png",
+      "largeOblique": "docs/assets/screenshots/procedural-mini-world/g01-large-world-seams-debug.png"
+    },
+    "coresMs": 23176,
+    "coreContent": [
+      {
+        "chunkId": "g_-3_-4",
+        "cityId": "veniceWaterNetwork",
+        "resolvedDNA": "veniceWaterNetwork",
+        "roadKm": 5.09,
+        "blocks": 18,
+        "parcels": 482,
+        "buildings": 376
+      },
+      {
+        "chunkId": "g_1_-3",
+        "cityId": "manhattanGrid",
+        "resolvedDNA": "manhattanGrid",
+        "roadKm": 18.43,
+        "blocks": 83,
+        "parcels": 1785,
+        "buildings": 1658
+      },
+      {
+        "chunkId": "g_-1_3",
+        "cityId": "fezOrganicCore",
+        "resolvedDNA": "fezOrganicCore",
+        "roadKm": 6.69,
+        "blocks": 17,
+        "parcels": 783,
+        "buildings": 654
+      },
+      {
+        "chunkId": "g_4_2",
+        "cityId": "amsterdamCanalRing",
+        "resolvedDNA": "amsterdamCanalRing",
+        "roadKm": 0,
+        "blocks": 1,
+        "parcels": 0,
+        "buildings": 0
+      },
+      {
+        "chunkId": "g_4_-1",
+        "cityId": "lisbonHillCore",
+        "resolvedDNA": "lisbonHillCore",
+        "roadKm": 4.53,
+        "blocks": 16,
+        "parcels": 714,
+        "buildings": 615
+      },
+      {
+        "chunkId": "g_-2_0",
+        "cityId": "chicagoGrid",
+        "resolvedDNA": "chicagoGrid",
+        "roadKm": 15.36,
+        "blocks": 66,
+        "parcels": 2270,
+        "buildings": 2031
+      }
+    ],
+    "earlyMs": 32070,
+    "largeMs": 108442,
+    "memoryMB": 853,
+    "perChunkMs": {
+      "median": 2748,
+      "max": 6348,
+      "mean": 3149
+    },
+    "large": {
+      "summary": {
+        "worldSeed": 6201,
+        "step": 42,
+        "chunks": 48,
+        "bounds": {
+          "minX": -6,
+          "maxX": 6,
+          "minY": -5,
+          "maxY": 3
+        },
+        "perCity": {
+          "veniceWaterNetwork": 7,
+          "manhattanGrid": 9,
+          "fezOrganicCore": 6,
+          "amsterdamCanalRing": 8,
+          "lisbonHillCore": 7,
+          "chicagoGrid": 11
+        },
+        "landforms": {
+          "coast": 16,
+          "plain": 23,
+          "mountain": 4,
+          "riverValley": 5
+        },
+        "edges": {
+          "total": 60,
+          "identity": {
+            "sameCity": 47,
+            "cityBoundary": 13
+          },
+          "geometry": {
+            "step": 34,
+            "cliff": 26
+          },
+          "hydrology": {
+            "continuous": 42,
+            "discontinuous": 18
+          },
+          "unpairedPorts": 212
+        },
+        "issues": 9
+      },
+      "buildings": 46813,
+      "roadKm": 444.4,
+      "cityBoundaryEdges": [
+        "g_1_-1|g_0_-1 manhattanGrid/chicagoGrid step Δh 4.33",
+        "g_1_-2|g_0_-2 manhattanGrid/chicagoGrid step Δh 5.67",
+        "g_0_-3|g_0_-2 manhattanGrid/chicagoGrid step Δh 5.99",
+        "g_1_-2|g_2_-2 manhattanGrid/lisbonHillCore cliff Δh 58.36",
+        "g_-1_-3|g_-1_-2 manhattanGrid/chicagoGrid step Δh 3.47",
+        "g_-3_-3|g_-2_-3 veniceWaterNetwork/manhattanGrid cliff Δh 53.59",
+        "g_-2_-2|g_-2_-3 chicagoGrid/manhattanGrid step Δh 9.36",
+        "g_1_-1|g_2_-1 manhattanGrid/lisbonHillCore cliff Δh 270.01",
+        "g_-3_-3|g_-3_-2 veniceWaterNetwork/chicagoGrid cliff Δh 50.91",
+        "g_-1_2|g_-1_1 fezOrganicCore/chicagoGrid step Δh 8.89",
+        "g_0_3|g_1_3 fezOrganicCore/amsterdamCanalRing step Δh 17.96",
+        "g_2_-1|g_2_0 lisbonHillCore/manhattanGrid cliff Δh 296.79",
+        "g_-4_-3|g_-4_-2 veniceWaterNetwork/chicagoGrid cliff Δh 59.8"
+      ],
+      "noRoadChunks": [
+        "g_4_2 amsterdamCanalRing (0 buildings)",
+        "g_5_2 amsterdamCanalRing (0 buildings)",
+        "g_5_3 amsterdamCanalRing (0 buildings)",
+        "g_2_3 amsterdamCanalRing (0 buildings)",
+        "g_6_2 amsterdamCanalRing (0 buildings)"
+      ]
+    },
+    "issues": 9,
+    "restoreMs": 48495,
+    "restore": {
+      "chunks": 16,
+      "mismatches": 0,
+      "continued": {
+        "chunks": 17,
+        "step": 11
+      }
+    },
+    "errors": []
+  },
+  "nodeMs": 202807
+}

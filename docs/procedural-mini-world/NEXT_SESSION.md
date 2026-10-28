@@ -1,5 +1,13 @@
 # Next Session — Procedural Mini World Hand-off
 
+> **Update 2026-10-28 (read first):**
+> - **Research direction:** [A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).
+> - **Branch:** `experiment/procedural-growing-world` (checkpoint `79687a0`).
+> - **G01 growing world:** `/experiments/growing-world/`, verifier `scripts/verify-growing-world.mjs`; uncommitted, pending review.
+> - **Next single task:** review G01 and G00-R, then G01-R (compass §14).
+>
+> Everything below is the M06 hand-off of 2026-10-21 and describes the static World Grid.
+
 > Written 2026-10-21 (release M06). Open this first when you return to VS Code / Codex / Claude Code. Stage authority stays the [project compass](./FINAL-EXPERIMENT-LOG.md) §1 and §5; this page is the practical entry point.
 
 ## 1. Where the project stands

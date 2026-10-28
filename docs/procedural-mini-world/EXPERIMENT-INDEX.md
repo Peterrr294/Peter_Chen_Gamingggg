@@ -13,7 +13,7 @@ Midterm reading route: [Midterm Review](./midterm-review/00-midterm-review.md). 
 
 **Per-task cards** (date, question, method, reused code, seed / parameters, test numbers, screenshots, conclusion, open issues, commit): [Terrain](./04-experiments/terrain-experiments.md) · [Network](./04-experiments/network-experiments.md) · [Urban Form](./04-experiments/urban-form-experiments.md) · [World](./04-experiments/world-experiments.md) · [Archived](./04-experiments/archived-experiments.md). System descriptions: [System Architecture](./03-generative-system/system-architecture.md).
 
-Entry points (Vite dev server, `npm run dev`): single chunk `/experiments/seed-terrain/`, world `/experiments/world-grid/`. Online: <https://gameeeee-zc626.web.app/#miniWorld>.
+Entry points (Vite dev server, `npm run dev`): single chunk `/experiments/seed-terrain/`, world `/experiments/world-grid/`, growing world `/experiments/growing-world/` (G01). Online: <https://gameeeee-zc626.web.app/#miniWorld>.
 
 ## Pipeline at a glance
 
@@ -79,6 +79,14 @@ Seed terrain (T1) → terrain analysis (T2) → City DNA match (T3) → road / c
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 06.2 (seams) | Detect seams without hiding them | `SeamCheck.js`, `SeamView.js` | 12/12 edges stepped (5.2–296 m), 6 one-sided water edges | [debug](../assets/screenshots/procedural-mini-world/06-2-world-grid-seams-debug.png) | as 06.2 | Active (detection) | — |
 | 06.3a | Join terrain + water at shared edges where a natural slope is possible | `TerrainHarmonizer.js` · `verify-world-seam.mjs` | World 6201: 4/12 edges joined (Δh 0), 8 unresolved and reported; 1/4 corners closed | [overall](../assets/screenshots/procedural-mini-world/06-3a-world-harmonized-overall.png), [corner](../assets/screenshots/procedural-mini-world/06-3a-seam-closeup-compare.png), [debug](../assets/screenshots/procedural-mini-world/06-3a-seam-debug.png) | logged pass · re-run 2026-10-19 (M01) pass | Active | Policy for unresolvable edges |
+
+## 7b. Procedural Growth — A City of Cities (research mainline from 2026-10-27; framing in the [Research Compass](./A-City-of-Cities-Research-Compass.md))
+
+| ID | Purpose | Method · main files | Result (logged) | Evidence | Test | Lifecycle | Next (from log) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| G00 | Protect the static-world experiments before the world model changes | Checkpoint commit `79687a0`; branch `experiment/procedural-growing-world` | 07.1 / 07.1a committed; old pages unchanged | text only | — | Done | G01 |
+| G01 | Six city cores grow a map chunk by chunk from a terrain-first growth frontier | `experiments/growing-world/` (`WorldGrowthController.js`, `growthConfig.js`, `GrowthView.js`) · [Procedural Growth](./03-generative-system/procedural-growth.md) · `verify-growing-world.mjs` | 10 / 10 checks on seeds 6201 / 1234 / 4242; 48-chunk world, 13 city-boundary edges, 0 continuous seams (reported) | [cores](../assets/screenshots/procedural-mini-world/g01-six-cores-after.png), [early](../assets/screenshots/procedural-mini-world/g01-early-growth-after.png), [large](../assets/screenshots/procedural-mini-world/g01-large-world-after.png), [seams](../assets/screenshots/procedural-mini-world/g01-large-world-seams-debug.png) | logged pass | Active | G02 seam-aware growth (proposal) |
+| G00-R | Re-establish the research framing as A City of Cities | [Research Compass](./A-City-of-Cities-Research-Compass.md) (document only) | Question, theory, World / City / Chunk, Growth DNA hypotheses, H1–H3, Experiments A–C, G00–G05 roadmap; nothing tested | text only | link check | Active (framing) | G01-R after the G01 review |
 
 ## 8. Release, deployment, and process
 

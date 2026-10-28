@@ -4,6 +4,14 @@ The study notebook of the Procedural Mini World project. Each piece of work is r
 
 ## 1. Project Question
 
+**Current (from 2026-10-28): A City of Cities — The Emergence of a Plural Urban World through Procedural Growth.**
+
+> How can distinct urban identities emerge, expand, and collectively form a world through procedural growth?
+
+Six cities (Venice, Manhattan, Fez, Amsterdam, Lisbon, Chicago) grow as independent agents from their own core chunks; the world map is the outcome. → **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md)** (framing, theory, hypotheses, experiments, G00–G05 roadmap). Stage status stays in the [project compass](./FINAL-EXPERIMENT-LOG.md) §1 and §5.
+
+*Original question (2026-10-17, kept as history and as the sub-question of hypothesis H1):*
+
 > How can a city's characteristics be encoded as controllable procedural rules? When those rules change continuously, mix with each other, or are stitched together, how is the city's identity kept, weakened, or re-formed?
 
 A city's identity is studied as **spatial relations** between terrain, water, streets, plots, and buildings, not as landmarks or a visual copy. The result is a controllable, reproducible, joinable set of rules, not a game. The seed gives reproducible variation inside the rules; the City DNA carries identity. → [Project Foundation](./01-foundation/project-foundation.md)
@@ -32,10 +40,15 @@ A passing build or verifier is never an *accepted* spatial result. **As of 2026-
 | T7 multi-chunk world (06.2, 06.3a) | Implemented (partial: 4 / 12 edges joined) · Verified · Pending review | `verify-world-grid`, `verify-world-seam`, `world-seam.json` | decide the policy for unjoinable edges |
 | Earlier versions (02.1, 02.2, 02.2b, 02.3) | Historical | [Terrain Experiments](./04-experiments/terrain-experiments.md) | none |
 | City influence, expansion, DNA mixing | Proposed | [City Influence](./03-generative-system/city-influence.md) | waits for the T7 edge decision |
+| G00 Preserve & Recover | Done (checkpoint `79687a0`) | [log G00](./FINAL-EXPERIMENT-LOG.md) | none |
+| G01 multi-origin growth (cores, frontier, single step, save / load) | Implemented · Verified · Pending review; uncommitted | `verify-growing-world.mjs`, [Procedural Growth](./03-generative-system/procedural-growth.md) | accept or reject; commit decision |
+| G00-R A City of Cities research compass | Implemented as document · Pending review | [Research Compass](./A-City-of-Cities-Research-Compass.md) | accept the framing; rule-conflict revisions (compass §15) |
+| G02–G05 (Growth DNA fields, territory and encounter, morphological growth, evaluation and replay) | Proposed (G02 baseline exists in G01) | [Research Compass §11](./A-City-of-Cities-Research-Compass.md) | set after the G01 review |
 | Release (M01, M02b) | Implemented · Verified online | `verify-live-release.mjs` 10 / 10; [Deployment History](./06-release/deployment-history.md) | none |
 
 ## 3. Start Here
 
+0. **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).** The current research framing; read it before the older notes below, which describe the single-chunk chain and the static world.
 0. **[Next session hand-off](./NEXT_SESSION.md).** Current stage, Git commit, public URL, saved World State, open problems, the next single task, and the local start commands.
 1. **[Project compass](./FINAL-EXPERIMENT-LOG.md), §1 and §5.** Read this first: it defines the question, the stages, and what is in or out of scope right now.
 2. **[Terrain & Water](./03-generative-system/terrain-and-water.md) and [Terrain Analysis](./03-generative-system/terrain-analysis.md).** Everything starts from a city-neutral site, so understand the tile, the four landforms, and how the site is read.
@@ -51,9 +64,9 @@ For the whole build history with every screenshot on one page, see the [Experime
 
 | Category | Notes |
 | --- | --- |
-| 01 Project Foundation | [Compass and log](./FINAL-EXPERIMENT-LOG.md) · [Proposal, principles, design evolution, roadmap](./01-foundation/project-foundation.md) · [AGENTS.md](../../AGENTS.md) |
+| 01 Project Foundation | [A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md) · [Compass and log](./FINAL-EXPERIMENT-LOG.md) · [Proposal, principles, design evolution, roadmap](./01-foundation/project-foundation.md) · [AGENTS.md](../../AGENTS.md) |
 | 02 City Research | [Research template](./research/city-research-template.md) + [CSV](./research/city-research-template.csv) · [60-city database and families](./research/city-longlist-60.md) · [Prototype selection](./research/prototype-city-selection.md) · [Manhattan study](./research/manhattan-spatial-study.md) · [City DNA Library](./research/city-dna-library.md) |
-| 03 Generative System | [System Architecture](./03-generative-system/system-architecture.md) · [Terrain & Water](./03-generative-system/terrain-and-water.md) · [Terrain Analysis](./03-generative-system/terrain-analysis.md) · [City DNA Matching](./03-generative-system/city-dna-matching.md) · [Road & Tunnel](./03-generative-system/road-and-tunnel.md) · [Block & Parcel](./03-generative-system/block-and-parcel.md) · [Building Extrusion](./03-generative-system/building-extrusion.md) · [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) · [City Influence (proposed)](./03-generative-system/city-influence.md) |
+| 03 Generative System | [System Architecture](./03-generative-system/system-architecture.md) · [Terrain & Water](./03-generative-system/terrain-and-water.md) · [Terrain Analysis](./03-generative-system/terrain-analysis.md) · [City DNA Matching](./03-generative-system/city-dna-matching.md) · [Road & Tunnel](./03-generative-system/road-and-tunnel.md) · [Block & Parcel](./03-generative-system/block-and-parcel.md) · [Building Extrusion](./03-generative-system/building-extrusion.md) · [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) · [City Influence (proposed)](./03-generative-system/city-influence.md) · [Procedural Growth (G01)](./03-generative-system/procedural-growth.md) |
 | 04 Experiments | [Experiment Index](./EXPERIMENT-INDEX.md) · [Terrain](./04-experiments/terrain-experiments.md) · [Network](./04-experiments/network-experiments.md) · [Urban Form](./04-experiments/urban-form-experiments.md) · [World](./04-experiments/world-experiments.md) · [Archived](./04-experiments/archived-experiments.md) · [Experiment Archive (single page)](./04-experiments/EXP-Procedural-Mini-World/Procedural-Mini-World.md) |
 | 05 Midterm Review | [Overview](./midterm-review/00-midterm-review.md) and chapters [1](./midterm-review/01-project-statement.md) · [2](./midterm-review/02-system-workflow.md) · [3](./midterm-review/03-key-parameters.md) · [4](./midterm-review/04-experiments.md) · [5](./midterm-review/05-midterm-results.md) · [6](./midterm-review/06-limitations.md) · [7](./midterm-review/07-next-steps.md) |
 | 06 Release & Resources | [GitHub, Firebase, references, attribution](./06-release/release-and-resources.md) · [Deployment History](./06-release/deployment-history.md) |

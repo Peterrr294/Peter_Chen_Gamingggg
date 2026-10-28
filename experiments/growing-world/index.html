@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="G01 Multi-Origin Procedural World Growth: six city cores grow chunk by chunk from a seeded, terrain-first growth frontier." />
+    <title>Procedural Mini World — Growing World</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="../manhattan-terrain-greybox/style.css" />
+    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.issues{margin:6px 0 0;padding-left:16px;color:#c9d4d6;font-size:10px;line-height:1.5}.legend .own{background:linear-gradient(90deg,#2fc4b2 16%,#4f8cff 16% 33%,#f2a541 33% 50%,#ff6fb5 50% 66%,#5fd35f 66% 83%,#a77bff 83%)}.legend .fr{background:repeating-linear-gradient(90deg,#ffffff 0 6px,transparent 6px 10px)}.legend .seam{background:linear-gradient(90deg,#3fd17a 33%,#ffd23f 33% 66%,#ff3b3b 66%)}</style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="../../index.html#home">← GAME LAB</a>
+      <p>PROCEDURAL MINI WORLD / G01 GROWING WORLD</p>
+      <span id="statusText">GENERATING</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div><p class="eyebrow">MULTI-ORIGIN PROCEDURAL URBAN GROWTH</p><h1>Six cores,<br />one growing world.</h1></div>
+        <p>Six City DNAs (Venice, Manhattan, Fez, Amsterdam, Lisbon, Chicago) each start from one core chunk placed by the world seed with a minimum spacing, on the best-fitting terrain among sampled sites. Each step a fair scheduler picks one city, scores its frontier cells on real terrain (DNA fit, buildable low-slope land, road ports toward the cell, water, DNA growth tendency, seeded jitter) and grows one 1024 m chunk next to a parent of the same city. Terrain depends only on the world seed and the cell; chunks are never overwritten. Seams between independently generated chunks are measured and shown, not hidden. All weights are design hypotheses.</p>
+      </section>
+      <section class="workspace">
+        <article class="viewport">
+          <div class="panel-head"><span>DYNAMIC GRID · 1024 M CHUNKS · CLICK A CHUNK TO INSPECT</span><strong>DRAG / ORBIT · WHEEL / ZOOM</strong></div>
+          <canvas id="worldCanvas" aria-label="Procedurally growing multi-city world"></canvas>
+        </article>
+        <aside>
+          <div class="panel-head"><span>GROWTH</span><strong>ONE CHUNK PER STEP</strong></div>
+          <div id="gui"></div>
+          <dl class="stats">
+            <div><dt>World</dt><dd id="worldInfo">—</dd></div>
+            <div><dt>Chunks per city</dt><dd id="cityInfo">—</dd></div>
+            <div><dt>Shared edges</dt><dd id="edgeInfo">—</dd></div>
+            <div><dt>Selected / last chunk</dt><dd id="chunkInfo">—</dd></div>
+            <div><dt>Growth reason</dt><dd id="reasonInfo">—</dd></div>
+            <div><dt>Generated content</dt><dd id="contentInfo">—</dd></div>
+            <div><dt>Performance</dt><dd id="timeInfo">—</dd></div>
+            <div><dt>Suitability issues (latest)</dt><ol id="issueInfo" class="issues"></ol></div>
+            <div><dt>Saved state</dt><dd id="saveState">—</dd></div>
+          </dl>
+          <div class="legend">
+            <p><i class="own"></i> City ownership walls: Venice · Manhattan · Fez · Amsterdam · Lisbon · Chicago; pillar = city core</p>
+            <p><i class="fr"></i> Growth frontier: dashed cell in the colour of the city that can grow there; white = contested by two or more cities</p>
+            <p><i class="seam"></i> Shared edge (seam conflicts): continuous |Δh| ≤ 2 m · step ≤ 30 m · cliff &gt; 30 m; riser height = max |Δh|; dashed = city boundary</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

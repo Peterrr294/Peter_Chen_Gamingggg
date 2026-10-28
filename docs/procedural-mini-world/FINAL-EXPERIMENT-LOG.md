@@ -16,12 +16,20 @@
 - **Update (2026-10-21, release M06):** checkpoint commit `1f63e6f` on `experiment/terrain-seam` and `main`, deployed by CI to <https://gameeeee-zc626.web.app>; World State saved in `experiments/world-grid/checkpoints/world-6201-checkpoint-v1.json`. Hand-off: [NEXT_SESSION.md](./NEXT_SESSION.md).
 - **Update (2026-10-21, task 07.1 by user instruction):** City Influence & Fusion — one source city invades one neighbouring chunk (network switch per edge, parcel and building rules blended by weight; terrain, water, tunnels and other chunks unchanged). Pending review (entry 07.1 in §7).
 - **Update (2026-10-21, task 07.1a by user instruction):** City Influence is now a formal experiment line of T7 (blend), no longer a forbidden item. 07.1a adds an opt-in spatial identity mode (geometry ids, random streams keyed by worldSeed + stable identity) so that unaffected areas stay identical under invasion; legacy ids stay the default and keep every verified signature. Pending review (entry 07.1a in §7).
-- **Current single task:** Review 06.3c (and 06.3a-R2, 06.3a-R, 06.3b), then the midterm review of T1–T7 through the Midterm Review notes; record accept / reject per task.
-- **Forbidden now:** new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes outside the City Influence experiment line, multi-source city competition, bridges, ramps, canal joins, city expansion beyond one source and one neighbouring target, complex UI, new assets, gameplay, visual polish — until the review sets the next task. (City Influence was removed from this list on 2026-10-21 with 07.1a: it is a formal T7 experiment.)
+- **Update (2026-10-27, G00 by user instruction):** checkpoint commit `79687a0` on `experiment/terrain-seam` preserves the 3 × 3 World Grid, Terrain Seam and City Invasion & Fusion work (07.1, 07.1a) with evidence and screenshots; new work continues on branch `experiment/procedural-growing-world`.
+- **Research mainline (from 2026-10-27, by teacher feedback): Multi-Origin Procedural Urban Growth.** The world is no longer a static assembly of pre-placed chunks (06.2–07.1a) but the result of a process: six City DNAs each start from one core chunk and grow outward chunk by chunk; map size, city territories and boundaries emerge from the growth rules (terrain-first scores, fair scheduling, first-occupant ownership). Reason: in a fixed 3 × 3 grid the world size, the neighbourhoods and the city boundaries were decided before any rule ran, so they could not be studied as outcomes. The static World Grid and the City Influence line stay runnable as earlier experiments.
+- **Update (2026-10-27, task G01 by user instruction):** `WorldGrowthController` + Growth Debug UI in `experiments/growing-world/` — six city cores, one chunk per step from a growth frontier, save / load and continuation; verified on 3 world seeds. Pending review (entry G01 in §7).
+- **Update (2026-10-28, task G00-R by user instruction):** research framing re-established as **A City of Cities — The Emergence of a Plural Urban World through Procedural Growth** in [A-City-of-Cities-Research-Compass.md](./A-City-of-Cities-Research-Compass.md). That page is the authority for question, theory, World / City / Chunk levels, hypotheses H1–H3, experiments A–C and the G00–G05 roadmap; this section and §5 stay the authority for stage status. Roadmap mapping: the entry logged as G01 (2026-10-27) covers roadmap G01 and a baseline of G02.
+- **Current single task:** Review G01 and the Research Compass (G00-R); if accepted, G01-R (City Agent record and cell-state field, outputs unchanged; compass §14).
+- *Previous (superseded 2026-10-28):* "Review G01 (growth rules, territories, reported seams); then choose G02 (see the G01 entry)."
+- **Forbidden now:** City Invasion & Fusion in the growing world, cross-city road fusion, new tunnel system, new building assets, rewriting the Terrain Seam system, new cities beyond the six DNAs, gameplay, visual polish — until the G01 review sets the next task.
+- *Previous (superseded 2026-10-27):* Current single task "Review 06.3c (and 06.3a-R2, 06.3a-R, 06.3b), then the midterm review of T1–T7"; forbidden: new cities, City DNA / road topology / parcel / building / tunnel-algorithm changes outside the City Influence experiment line, multi-source city competition, bridges, ramps, canal joins, city expansion beyond one source and one neighbouring target, complex UI, new assets, gameplay, visual polish.
 - *Previous (superseded 2026-10-19):* Current stage T1 — Seed terrain; single task "Review T1 terrain fields (height, water, slope, buildability)"; forbidden: city, road, parcel, or building generation; new assets; gameplay; world stitching; visual polish.
 - *Previous (superseded 2026-10-18):* Stage 0 — research framework and city candidate set; the single task was to choose 3 prototype cities and the first city to implement.
 
 ## 2. Core Proposition
+
+> **Current research question (from 2026-10-28):** *How can distinct urban identities emerge, expand, and collectively form a world through procedural growth?* See [A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md) §1–§4. The proposition and question below are the original framing (2026-10-17); they are kept as history and as the sub-question of hypothesis H1 (identity preservation).
 
 A city's identity does not come only from its landmarks, but from the spatial relations between terrain, water, streets, plots, and buildings. This project turns those relations into adjustable parameters and, through different seeds, parameter changes, and city-mixing experiments, studies within what range a city's identity is kept, and when it is weakened, transformed, or recombined.
 
@@ -66,6 +74,27 @@ The 60 cities form a research database; they are not the number of cities to imp
 | T5 | Blocks and parcels | Parcel stats, conflict checks | Implemented, pending review (04.1, 04.1b, 04.2) |
 | T6 | Building extrusion | Density, height, coverage, collision checks | Implemented, pending review (05.1, 05.1b-1) |
 | T7 | ≥3 tiles joined or blended; final delivery | Continuity of roads, water, height, density; video | Partial, pending review: 3 × 3 World Grid (06.2); terrain + water seams joined where a natural slope is possible, others reported unresolved (06.3a); road ports joined across harmonised edges into one world NetworkGraph, the others reported with a reason (06.3b); world-coordinated terrain: every shared edge and corner one continuous C¹ surface, edges whose zone exceeds 35° reported unresolved (06.3a-R); default since 06.3a-R2: world datum + band-only correction, chunk cores unchanged, unresolved edges reported as escarpment candidates; 06.3c: every edge classified smooth / valid escarpment / candidate / failed with separate geometry, landform, hydrology and transport status; City Influence (formal experiment line): one source city invades one neighbouring chunk with rule fusion (07.1), stable generation of unaffected areas with spatial ids (07.1a) |
+
+### A City of Cities roadmap (current, from 2026-10-28)
+
+Goals, reuse, new components, dependencies, verification and visual output per stage: [Research Compass §11](./A-City-of-Cities-Research-Compass.md). The T1–T6 single-chunk chain runs unchanged inside every chunk.
+
+| Stage | Content | Status (2026-10-28) |
+| --- | --- | --- |
+| G00 | Preserve & Recover: earlier experiments, Git baseline, independent chunk generator | Done: checkpoint `79687a0` (entry G00) |
+| G01 | Multi-Origin Initialization: six cores, spacing, suitability recorded | Implemented, verified, pending review; uncommitted (entry G01) |
+| G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Baseline implemented and verified within entry G01; Growth DNA fields and experiment modes proposed |
+| G03 | City Territory & Encounter: reserves, encounter zones, corridors, boundary types | Partial (contests and boundary edges recorded); rest proposed |
+| G04 | Morphological Growth: DNA and growth stage in roads, blocks, buildings | Not started |
+| G05 | Evaluation & Replay: replay, metrics, experiments A–C | Partial (history, save / load); rest proposed |
+
+### Procedural growth pipeline (2026-10-27, superseded 2026-10-28 by the roadmap above)
+
+| Stage | Content | Status then |
+| --- | --- | --- |
+| G00 | Protect the static-world experiments; reliable Git checkpoint | Done: `79687a0` |
+| G01 | Multi-origin growth: cores, frontier, scheduler, territories, save / load, Growth Debug UI | Implemented, pending review |
+| G02 | Proposed in the G01 entry | Not started |
 
 ### Original roadmap (superseded 2026-10-18, kept for history)
 
@@ -874,3 +903,106 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   6. The 6203 reverse run had no parcels to test.
 - **Review status:** Pending review.
 - **Next single task:** Review 07.1a; then decide whether spatial ids become the World Grid default (checkpoint v2 with the id mode recorded).
+
+### G00 — Checkpoint before Procedural Growth
+
+- **Date / Stage / Single question:** 2026-10-27 / G00, by user instruction / Are the static-world experiments safe before the world model changes?
+- **Operations:** The uncommitted 07.1 / 07.1a work (City Influence code, verifiers, evidence, 6 screenshots, log entries) is committed as checkpoint `79687a0` on `experiment/terrain-seam`. New branch: `experiment/procedural-growing-world`. The working-tree deletion of `terrain-seam-overview.png` / `terrain-seam-topology.png` (origin unknown, see M06) is left unstaged. No reset, no rewrite. The single-chunk page `/experiments/seed-terrain/` and the World Grid `/experiments/world-grid/` are unchanged.
+- **Review status:** Done (checkpoint only).
+
+### G01 — Multi-Origin Procedural World Growth
+
+- **Date / Stage / Single question:** 2026-10-27 / G01, by user instruction (teacher feedback) / Can six City DNAs each start from one independent core chunk and grow a map chunk by chunk from a terrain-first, seeded and reproducible growth frontier? The map size, the territories and the boundaries should come out of the process, not out of a fixed grid.
+- **Why the change (Static Chunk Assembly → Procedural Growth):** In the 3 × 3 World Grid the world size, every chunk position, the neighbourhoods and every city boundary were fixed by the layout before any rule ran. They could only be stitched, never studied as results. Growth makes them outcomes of rules that can be tuned and reproduced: where a city can go, who reaches a cell first, and how large the map becomes.
+- **Reused files or functions:**
+  - **Single-chunk chain, unchanged:** 06.2 layer functions `generateRawLayer`, `generateTerrainLayer`, `generateNetworkLayer`, `generateUrbanLayer` (`WorldGrid.js`).
+  - **Ids and seeds:** 07.1a spatial ids (`identity = { worldSeed }`); 06.2 `terrainSeedOf`; `hashParts`.
+  - **City Match:** 02.6 `matchCity` / `computeMatchMetrics` give the terrain fit of all six DNAs per cell.
+  - **Rendering:** `ChunkView`, `NetworkView`, `BuildingView`.
+  - **Verifier pattern:** `verify-world-grid.mjs`.
+- **Model:** see [Procedural Growth](./03-generative-system/procedural-growth.md). In short:
+  - **Cells:** the map is a sparse integer grid with no fixed size.
+  - **Landform:** from a world value-noise field (worldSeed + cell only).
+  - **Cores:** each city in fixed order takes the best of 10 sampled sites at Chebyshev distance ≥ `coreMinDistance`.
+  - **Scheduling:** a fair scheduler picks the city with the fewest chunks / rate.
+  - **Scoring:** frontier cells are scored on real terrain probes. Score = weighted terrain fit, slope, roads toward the cell, water and DNA tendency, plus seeded jitter keyed by (worldSeed, city, cell, step). Cells with < 3 % buildable land are excluded.
+  - **Contests:** a contested cell is reserved for a rival scoring > 0.05 higher.
+  - **Parent:** the adjacent same-city chunk with the most ports toward the cell.
+  - **Records:** immutable once created; the first occupant keeps a cell; no DNA fusion.
+  - **Seams:** every shared edge is measured once (identity / geometry / hydrology / transport) and not corrected.
+- **Record per chunk:** chunkId, cityId, originCityId, coreChunkId, parentChunkId, worldGridCoordinate, worldOrigin, generationIndex, growthStep, terrainSeed, landform, variation (0.35–0.65 by cell), growthReason (score, terms, jitter, options, contests, text), generationStatus (network → city → ready), suitability (fitScore, autoTopId, conflicts), ports per side, edge profiles (8 m), signatures.
+- **Changed files:**
+  - **New:** `experiments/growing-world/` (`growthConfig.js`, `WorldGrowthController.js`, `GrowthView.js`, `main.js`, `index.html`, `evidence/growing-world.json`), `scripts/verify-growing-world.mjs`, `docs/procedural-mini-world/03-generative-system/procedural-growth.md`.
+  - **Changed:** `vite.config.js` (one build input `growingWorld`).
+  - No existing generator was modified.
+- **Parameters (9 public):** worldSeed; coreMinDistance 3; coreSpread 5; jitter 0.12; weights terrain 3 / slope 2 / roads 2 / water 1 / DNA 2. Run controls: steps, target chunk count. All weights and the six growth profiles are design hypotheses, uncalibrated. The first run used coreMinDistance 4 / coreSpread 7: cities did not meet within 48 chunks, so the defaults were tightened to 3 / 5 (first contact at 20–27 chunks on seeds 6201 / 4242 / 1234).
+- **Entry point:** `/experiments/growing-world/` (`npm run dev`). Panel controls:
+  - World seed; Generate six city cores; Grow one step; Grow multiple steps; Target chunk count + Grow to target; Stop.
+  - Reset world; Save / Load growth state (browser storage); Export / Import state (JSON).
+  - Show growth frontier; Show city ownership; Show seam conflicts; growth rules folder; click a chunk to inspect it.
+  - URL: `?worldSeed=…&steps=N&target=N&frontier=1&seams=1&camera=top`.
+- **Verification:** `node scripts/verify-growing-world.mjs` (Part A in Node, Part B in the browser with its own Vite server). Passes, 0 browser errors. Seeds 6201 / 1234 / 4242, 24 steps each in Part A.
+  1. *Six cores:* exactly 6 chunks after initialisation, one per City ID, distinct cells, min Chebyshev distance 3 = parameter, on all seeds. Seed 6201 cores:
+     - Venice (−3, −4) coast, fit 0.62
+     - Manhattan (1, −3) plain, fit 0.93
+     - Fez (−1, 3) coast, fit 1.0
+     - Amsterdam (4, 2) coast, fit 0.53
+     - Lisbon (4, −1) mountain, fit 0.32 (recorded as a suitability issue, City ID kept)
+     - Chicago (−2, 0) plain, fit 0.80
+  2. *One step = one chunk:* checked after every step; 0 stalls.
+  3. *Traceable:* every chunk is edge-adjacent to a same-city parent with a lower generation index, and its parent chain ends at its own core (originCityId = core city).
+  4. *No overlap:* unique chunk ids and cells; `place` throws on an occupied cell.
+  5. *Free shape:* bounds after 30 chunks 10 × 9, 11 × 10, 9 × 14 cells (not 3 × 3); in the browser at 48 chunks x −6…6, y −5…3.
+  6. *Reproducible:* a second controller with the same seed / parameters / steps serialises identically (timings excluded).
+  7. *Seed variation:* the three seeds give different core layouts and growth histories.
+  8. *Unchanged:* cores and the 14 chunks of step 8 are identical after 16 more steps (records), and the rendered content signatures (network, blocks, parcels, buildings) of cores and early chunks are unchanged at 48 chunks. A chunk regenerated alone from its cell + City ID matches its record, so content is order-independent.
+  9. *Save / load:* 12 steps → JSON → restore → 12 steps equals 24 uninterrupted steps (Node). In the browser, the 16-chunk save loaded into a fresh page regenerates all 16 chunks with identical signatures (0 mismatches), and Grow one step continues at step 11 / 17 chunks.
+  10. *Original generators:* every core and every grown chunk resolves to its own City DNA (`resolvedDNA = cityId`). `verify-city-dna.mjs` passes (72 / 72 runs, regression 36 / 36 identical; its re-rendered 06.1 screenshots and evidence were restored from Git).
+- **Territories (seed 6201, 48 chunks, step 42):**
+  - Chunks per city: Venice 7, Manhattan 9, Fez 6, Amsterdam 8, Lisbon 7, Chicago 11 (the scheduler follows the rates 0.8 / 1 / 0.7 / 0.9 / 0.8 / 1.2; no city monopolises).
+  - 60 shared edges: 47 inside one city, 13 city boundaries (Manhattan | Chicago ×5, Venice | Chicago ×2, Manhattan | Lisbon ×3, Venice | Manhattan, Fez | Chicago, Fez | Amsterdam).
+  - Contests in Part A: 21 / 2 / 22 (6201 / 1234 / 4242), each resolved by the margin rule; no chunk was overwritten.
+- **Scale and performance (browser, seed 6201, headless Chrome):**
+  - Times: six cores 23.2 s; +10 steps 32.1 s; 16 → 48 chunks 108.4 s; per chunk median 2.75 s, mean 3.15 s, max 6.35 s (placement + urban layer + render; the page yields a frame between chunks, and Stop ends a run after the current chunk); restoring 16 chunks 48.5 s.
+  - JS heap 853 MB at 48 chunks (≈ 15–18 MB per rendered chunk, mostly geometry).
+  - Content: 444.4 km roads, 46,813 buildings.
+  - Node, data only (terrain + network, no urban layer): ≈ 0.8 s per placed chunk including terrain probes; the state JSON is ≈ 7 kB per chunk.
+- **Screenshots (seed 6201, default parameters, real runtime, top view unless noted):**
+  - Six cores (step 0): ![Six city cores](../assets/screenshots/procedural-mini-world/g01-six-cores-after.png)
+  - Early growth, 16 chunks, frontier on (white dashed = contested): ![Early growth with frontier](../assets/screenshots/procedural-mini-world/g01-early-growth-after.png)
+  - Large world, 48 chunks, frontier + seams: ![48-chunk world](../assets/screenshots/procedural-mini-world/g01-large-world-after.png)
+  - Oblique debug, 48 chunks: ownership walls, seam lines (yellow = step, red = cliff, dashed = city boundary), height risers: ![Seam debug](../assets/screenshots/procedural-mini-world/g01-large-world-seams-debug.png)
+- **Confirmed:** six independent cores with stable ids and seeds; one chunk per step from a frontier; full traceability; no overlap; no fixed map size; reproducible by seed; seed changes the layout; chunks never change after creation; save / load continues growth; the original single-chunk generators and the six DNAs are unchanged. City identity (ownership, DNA per chunk) and map geometry (seams) are verified separately.
+- **Open issues (reported, not hidden):**
+  1. **Geometry:**
+     - Seed 6201, 48 chunks: 0 of 60 shared edges are continuous (≤ 2 m); 34 are steps (≤ 30 m) and 26 are cliffs.
+     - Plain | mountain boundaries reach Δh 270–297 m (Manhattan | Lisbon).
+     - The Terrain Seam system (06.3a-R2) is not applied to grown chunks; independent chunks share only the world frame and the height datum.
+  2. **Hydrology:** 18 of 60 edges have wet / dry mismatches (sea and lakes end at chunk edges).
+  3. **Transport:** 212 unpaired road / canal ports; no cross-chunk road joining in G01.
+  4. **Empty Amsterdam chunks:** 5 of 8 Amsterdam chunks (seed 6201) generate 0 km of road and 0 buildings on coast cells (fit 0.53). The 02.6 fit score does not predict generator output; growth still extends into such cells.
+  5. **Suitability issues kept as specified:** 6 on seed 6201. Examples: the Lisbon core on a mountain (fit 0.32); inherited Venice on a river valley (0.25); Amsterdam on a river valley (0.18).
+  6. **Performance:** generation is synchronous per chunk (2–6 s UI pause per chunk); memory grows linearly (853 MB at 48 chunks), and no level of detail or unloading exists.
+  7. **Rendering:**
+     - Tunnel excavation is not cut in grown chunks (tunnels stay in the network data).
+     - Port / portal markers are hidden because they are screen-sized.
+  8. **Calibration:** the landform field and all growth weights and profiles are design hypotheses, not calibrated against real urban growth.
+- **Review status:** Pending review.
+- **Next single task (proposal G02):** seam-aware growth. When a chunk is placed, correct only the new chunk's transition band toward its already generated neighbours, so that existing chunks stay unchanged. This reuses the 06.3a-R2 band-only correction one-sidedly, and edges that cannot be joined are still reported. Measure how many edges become continuous on the same three seeds. Alternatives for the review: a generator-output check in the score (avoid cells where the DNA produces no network), or chunk unloading / level of detail for worlds above 50 chunks.
+
+### G00-R — A City of Cities: research compass and generative framework
+
+- **Date / Stage / Single question:** 2026-10-28 / framing task between G01 and G01-R, by user instruction / Can the project's direction be restated as one research framework (question, theory, system levels, hypotheses, experiments, roadmap) that matches the code as it actually is?
+- **Checked state before writing:**
+  - Branch `experiment/procedural-growing-world`; last commit `79687a0` (G00 checkpoint).
+  - G01 (`experiments/growing-world/`, verifier, 4 screenshots, docs) is implemented and verified, but **uncommitted and pending review**. No task in the project is accepted yet.
+  - The World Grid, Terrain Seam and City Influence code is unchanged since `79687a0`.
+- **Outputs:**
+  - New [A-City-of-Cities-Research-Compass.md](./A-City-of-Cities-Research-Compass.md): title, question, theory (Urban Autonomy, Emergent Urban Form, Urban Coexistence), design argument, old vs new logic, World / City / Chunk diagram, Morphology DNA mapped to existing rule tables, Growth DNA hypotheses for six cities, growth architecture and step flow, territory / encounter state model, H1–H3 with metric availability, Experiments A–C, minimum demonstration (+10 / 30 / 60 chunks), G00–G05 roadmap with real status, reuse and missing lists, limitations, next task, rule conflicts.
+  - Updated: compass §1 (framing update, current single task), §2 (pointer to the new question; original kept as history), §5 (G00–G05 roadmap; the 2026-10-27 table kept as superseded); [README](./README.md); [Procedural Growth](./03-generative-system/procedural-growth.md); [Project Foundation](./01-foundation/project-foundation.md); [NEXT_SESSION](./NEXT_SESSION.md); [Experiment Index](./EXPERIMENT-INDEX.md).
+- **References:** only the bibliographic details were checked (publisher and library listings) for Ungers, Koolhaas et al., *The City in the City* (2013 critical edition, Lars Müller) and Batty, *Cities and Complexity* (MIT Press, 2005). Both are used as conceptual references only, with no quotations. The difference to the Berlin manifesto (shrinking city, selective retention vs generation and expansion) is stated in the compass.
+- **Rule conflicts (proposed, not applied):** AGENTS.md source-of-truth line; "join or blend" in AGENTS.md and compass §3 item 4; ≤ 10 public parameters vs per-city Growth DNA tables; two sources per city vs unsourced Growth DNA. See compass §15.
+- **Not done (by scope):** no code change, no generator change, no UI, no deployment, no new screenshots (text-only task).
+- **Verification:** `node scripts/verify-markdown-links.mjs` passes. All 3 Mermaid diagrams render without error with Mermaid 10.9.1 in headless Chrome (scratch check, no dependency installed). Display inside the Obsidian app was not opened in this task (**Pending verification** in Obsidian).
+- **Review status:** Pending review.
+- **Next single task:** G01-R (Research Compass §14), after the G01 review.
