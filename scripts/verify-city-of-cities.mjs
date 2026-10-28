@@ -19,7 +19,7 @@ const { evaluateSite } = await mod('experiments/city-of-cities/OriginPlacement.j
 const { terrainOf, networkOf } = await mod('experiments/growing-world/WorldGrowthController.js');
 const { generateUrbanLayer } = await mod('experiments/world-grid/WorldGrid.js');
 
-const SEEDS = [6201, 1234, 4242];
+const SEEDS = [6201, 6202, 6203]; // G01 fix (placement v2): the G02 seeds; 1234 / 4242 were the original G01 seeds
 const nodeOnly = process.argv.includes('--node-only');
 const browserOnly = process.argv.includes('--browser-only');
 const shots = path.join(root, 'docs/assets/screenshots/procedural-mini-world');
@@ -87,7 +87,7 @@ for (const seed of browserOnly ? [] : SEEDS) {
   const restored = WorldContext.restore(saved);
   assert(placementOnly(restored.serialise()) === placementOnly(saved), `seed ${seed}: restore changed the configuration`);
   for (const id of [...restored.chunks.keys()]) { const { chunk } = restored.generateChunk(id); assert(json(chunk.outputs.signatures) === json(chunk.expectedSignatures), `seed ${seed}: restored ${id} differs`); }
-  assert(saved.schemaVersion === 1 && saved.growth.generation === 0 && Array.isArray(saved.growth.history), `seed ${seed}: state schema`);
+  assert(saved.schemaVersion >= 1 && saved.growth.generation === 0 && Array.isArray(saved.growth.history), `seed ${seed}: state schema`);
   if (seed === SEEDS[0]) { await mkdir(evidenceDir, { recursive: true }); await writeFile(path.join(evidenceDir, `world-${seed}-g01-state.json`), `${JSON.stringify(saved, null, 2)}\n`); }
   result.node[seed] = {
     origins: origins.map(o => ({ cityId: o.cityId, chunkId: o.originChunkId, cell: o.worldCoordinate, worldPosition: o.worldPosition, citySeed: o.citySeed, terrainSeed: w.chunks.get(o.originChunkId).terrainSeed, urbanSeed: w.chunks.get(o.originChunkId).generationParameters.urbanSeed, landform: w.chunks.get(o.originChunkId).terrainType, score: o.placementReason.score, terms: o.placementReason.terms, rank: o.placementReason.rankInWeightedOrder, qualified: o.placementReason.qualified, constrainedBy: o.placementReason.constrainedBy, counts: w.chunks.get(o.originChunkId).outputs.counts })),
@@ -117,6 +117,24 @@ assert(new Set(layouts).size === SEEDS.length, 'different seeds gave identical o
   };
   assert(result.regression.heightSignatureEqual && at0.net.network.edges.length === atW.net.network.edges.length && maxDev < 1e-3, `non-zero origin regression failed ${json(result.regression)}`);
   console.log(`non-zero origin regression: ${json(result.regression)}`);
+}
+// Placement v2: failure is classified and atomic (no partially initialised world). Forced by an impossible spacing.
+{
+  const w = new WorldContext({ worldSeed: SEEDS[0], minOriginDistance: 8, searchRadius: 3 });
+  const report = w.initialise();
+  assert(report.failures.length > 0 && report.failures.every(f => ['noSuitableLandform', 'insufficientWater', 'buildConditions', 'spacingConflict'].includes(f.kind)), 'forced failure not classified');
+  assert(w.cities.size === 0 && w.chunks.size === 0 && w.occupancy.size === 0, 'failed placement left a partial world');
+  result.failureTest = { params: { minOriginDistance: 8, searchRadius: 3 }, failures: report.failures.map(f => ({ cityId: f.cityId, kind: f.kind, reason: f.reason })), registered: 0 };
+  console.log(`forced failure: ${report.failures.map(f => `${f.cityId} [${f.kind}]`).join(', ')}; registered 0`);
+}
+// Compatibility: a World State saved before the fix (schema v1, placement v1, commit 69b3a1f) loads unchanged.
+{
+  const legacy = JSON.parse(await (await import('node:fs/promises')).readFile(path.join(evidenceDir, 'legacy/world-6201-g01-state.placement-v1.json'), 'utf8'));
+  const w = WorldContext.restore(legacy);
+  for (const id of [...w.chunks.keys()]) { const { chunk } = w.generateChunk(id); assert(json(chunk.outputs.signatures) === json(chunk.expectedSignatures), `legacy state: ${id} differs`); }
+  assert(json(legacy.cities.map(c => [c.cityId, c.worldCoordinate])) === json([...w.cities.values()].sort((a, b) => a.cityId.localeCompare(b.cityId)).map(c => [c.cityId, c.worldCoordinate])), 'legacy state: origins moved');
+  result.legacyState = { schemaVersion: legacy.schemaVersion, placementVersion: w.placement.placementVersion, chunks: w.chunks.size, signaturesMatch: true, originsUnchanged: true };
+  console.log('legacy v1 state: loads unchanged, all signatures match');
 }
 result.nodeMs = Date.now() - started;
 console.log(`Part A passed (${result.nodeMs} ms)`);

@@ -5,7 +5,8 @@
 > - **Branch:** `experiment/procedural-growing-world` (checkpoint `79687a0`).
 > - **G01 growth prototype:** `/experiments/growing-world/`, verifier `scripts/verify-growing-world.mjs`; committed `c3e2e5f`, pending review.
 > - **G01-MO city origins (roadmap G01):** `/experiments/city-of-cities/`, verifier `scripts/verify-city-of-cities.mjs`, note [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md); pending review.
-> - **Next single task:** review G01-MO (and the G01 prototype, G00-R), then G02 Rule-Based Growth.
+> - **G02 growth (2026-10-28):** same page, folder "Growth (G02)"; verifier `scripts/verify-city-growth.mjs`; note [G02 Procedural Urban Growth](./A-City-of-Cities/G02-Procedural-Urban-Growth.md); G01 placement v2 (G01-FIX). Uncommitted, pending review.
+> - **Next single task:** spatial review of G02 and G01-FIX; no G03 before the review.
 >
 > Everything below is the M06 hand-off of 2026-10-21 and describes the static World Grid.
 

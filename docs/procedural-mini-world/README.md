@@ -42,14 +42,15 @@ A passing build or verifier is never an *accepted* spatial result. **As of 2026-
 | City influence, expansion, DNA mixing | Proposed | [City Influence](./03-generative-system/city-influence.md) | waits for the T7 edge decision |
 | G00 Preserve & Recover | Done (checkpoint `79687a0`) | [log G00](./FINAL-EXPERIMENT-LOG.md) | none |
 | G01 multi-origin growth (cores, frontier, single step, save / load) | Implemented · Verified · Pending review; uncommitted | `verify-growing-world.mjs`, [Procedural Growth](./03-generative-system/procedural-growth.md) | accept or reject; commit decision |
-| G01-MO Multi-Origin Initialization (six city origins, no growth) | Implemented · Verified · Pending review | `verify-city-of-cities.mjs`, [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) | accept or reject; then G02 |
+| G02 Procedural Urban Growth (frontier, suitability, scheduler, one chunk per step) | Implemented · Verified (6201 / 6202 / 6203, 30 steps) · Pending review | `verify-city-growth.mjs`, [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) | spatial review; scheduler quota decision |
+| G01-MO Multi-Origin Initialization (six city origins, no growth; placement v2 since G01-FIX) | Implemented · Verified · Pending review | `verify-city-of-cities.mjs`, [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) | accept or reject; then G02 |
 | G00-R A City of Cities research compass | Implemented as document · Pending review | [Research Compass](./A-City-of-Cities-Research-Compass.md) | accept the framing; rule-conflict revisions (compass §15) |
 | G02–G05 (Growth DNA fields, territory and encounter, morphological growth, evaluation and replay) | Proposed (G02 baseline exists in G01) | [Research Compass §11](./A-City-of-Cities-Research-Compass.md) | set after the G01 review |
 | Release (M01, M02b) | Implemented · Verified online | `verify-live-release.mjs` 10 / 10; [Deployment History](./06-release/deployment-history.md) | none |
 
 ## 3. Start Here
 
-0. **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).** The current research framing; read it before the older notes below, which describe the single-chunk chain and the static world. Current stage: [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md).
+0. **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).** The current research framing; read it before the older notes below, which describe the single-chunk chain and the static world. Current stage: [G02 Procedural Urban Growth](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (after [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md)).
 0. **[Next session hand-off](./NEXT_SESSION.md).** Current stage, Git commit, public URL, saved World State, open problems, the next single task, and the local start commands.
 1. **[Project compass](./FINAL-EXPERIMENT-LOG.md), §1 and §5.** Read this first: it defines the question, the stages, and what is in or out of scope right now.
 2. **[Terrain & Water](./03-generative-system/terrain-and-water.md) and [Terrain Analysis](./03-generative-system/terrain-analysis.md).** Everything starts from a city-neutral site, so understand the tile, the four landforms, and how the site is read.

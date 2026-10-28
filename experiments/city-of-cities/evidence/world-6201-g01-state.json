@@ -1,6 +1,6 @@
 {
   "kind": "a-city-of-cities/world-state",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "worldSeed": 6201,
   "params": {
     "worldSeed": 6201,
@@ -27,7 +27,7 @@
       "citySeed": 380119,
       "growthGeneration": 0,
       "placementReason": {
-        "order": 1,
+        "order": 5,
         "score": 0.6773,
         "terms": {
           "slope": 0.289,
@@ -45,17 +45,21 @@
         },
         "water": {
           "fraction": 0.21,
-          "wetNeighbours": 0.5
+          "wetNeighbours": 0.5,
+          "waterfrontBuildable": 0.0257
         },
         "landform": "coast",
         "rankInWeightedOrder": 1,
-        "qualified": 5,
+        "qualified": 8,
         "probed": 8,
         "screened": 32,
-        "rejected": 13,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
+        "rejected": 10,
         "constrainedBy": [],
         "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
-        "text": "coast site (0, 3): suitability 0.6773 (slope 0.289, buildable 0.865, water 0.85, terrainType 0.9, dnaFit 0.533); weighted choice 1 of 5 qualified; claim order 1"
+        "text": "coast site (0, 3): suitability 0.6773 (slope 0.289, buildable 0.865, water 0.85, terrainType 0.9, dnaFit 0.533); weighted choice 1 of 8 qualified; claim order 5"
       }
     },
     {
@@ -72,7 +76,7 @@
       "citySeed": 93776,
       "growthGeneration": 0,
       "placementReason": {
-        "order": 4,
+        "order": 3,
         "score": 0.97,
         "terms": {
           "slope": 1,
@@ -90,17 +94,21 @@
         },
         "water": {
           "fraction": 0,
-          "wetNeighbours": 0.75
+          "wetNeighbours": 0.75,
+          "waterfrontBuildable": 0
         },
         "landform": "plain",
         "rankInWeightedOrder": 1,
         "qualified": 8,
         "probed": 8,
         "screened": 37,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
         "rejected": 8,
         "constrainedBy": [],
         "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
-        "text": "plain site (4, -4): suitability 0.97 (slope 1, buildable 1, water 1, terrainType 1, dnaFit 0.8); weighted choice 1 of 8 qualified; claim order 4"
+        "text": "plain site (4, -4): suitability 0.97 (slope 1, buildable 1, water 1, terrainType 1, dnaFit 0.8); weighted choice 1 of 8 qualified; claim order 3"
       }
     },
     {
@@ -117,7 +125,7 @@
       "citySeed": 875016,
       "growthGeneration": 0,
       "placementReason": {
-        "order": 2,
+        "order": 1,
         "score": 0.7417,
         "terms": {
           "slope": 0.4,
@@ -135,17 +143,21 @@
         },
         "water": {
           "fraction": 0,
-          "wetNeighbours": 0.25
+          "wetNeighbours": 0.25,
+          "waterfrontBuildable": 0
         },
         "landform": "plain",
         "rankInWeightedOrder": 1,
         "qualified": 8,
         "probed": 8,
         "screened": 34,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
         "rejected": 0,
         "constrainedBy": [],
         "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
-        "text": "plain site (-1, -3): suitability 0.7417 (slope 0.4, buildable 1, water 1, terrainType 0.6, dnaFit 0.667); weighted choice 1 of 8 qualified; claim order 2"
+        "text": "plain site (-1, -3): suitability 0.7417 (slope 0.4, buildable 1, water 1, terrainType 0.6, dnaFit 0.667); weighted choice 1 of 8 qualified; claim order 1"
       }
     },
     {
@@ -162,7 +174,7 @@
       "citySeed": 606094,
       "growthGeneration": 0,
       "placementReason": {
-        "order": 3,
+        "order": 2,
         "score": 0.8031,
         "terms": {
           "slope": 0.726,
@@ -180,17 +192,21 @@
         },
         "water": {
           "fraction": 0.329,
-          "wetNeighbours": 0.25
+          "wetNeighbours": 0.25,
+          "waterfrontBuildable": 0.0122
         },
         "landform": "coast",
         "rankInWeightedOrder": 1,
         "qualified": 8,
         "probed": 8,
         "screened": 31,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
         "rejected": 0,
         "constrainedBy": [],
         "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
-        "text": "coast site (5, 0): suitability 0.8031 (slope 0.726, buildable 0.732, water 0.775, terrainType 1, dnaFit 0.752); weighted choice 1 of 8 qualified; claim order 3"
+        "text": "coast site (5, 0): suitability 0.8031 (slope 0.726, buildable 0.732, water 0.775, terrainType 1, dnaFit 0.752); weighted choice 1 of 8 qualified; claim order 2"
       }
     },
     {
@@ -225,13 +241,17 @@
         },
         "water": {
           "fraction": 0,
-          "wetNeighbours": 0.25
+          "wetNeighbours": 0.25,
+          "waterfrontBuildable": 0
         },
         "landform": "plain",
         "rankInWeightedOrder": 4,
         "qualified": 8,
         "probed": 8,
         "screened": 32,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
         "rejected": 0,
         "constrainedBy": [
           "fezOrganicCore",
@@ -255,7 +275,7 @@
       "citySeed": 71229,
       "growthGeneration": 0,
       "placementReason": {
-        "order": 5,
+        "order": 4,
         "score": 0.7867,
         "terms": {
           "slope": 0.259,
@@ -273,27 +293,40 @@
         },
         "water": {
           "fraction": 0.324,
-          "wetNeighbours": 1
+          "wetNeighbours": 1,
+          "waterfrontBuildable": 0.0144
         },
         "landform": "coast",
         "rankInWeightedOrder": 1,
         "qualified": 8,
         "probed": 8,
         "screened": 34,
+        "searchRadius": 6,
+        "searchRounds": 1,
+        "placementVersion": 2,
         "rejected": 12,
         "constrainedBy": [],
         "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
-        "text": "coast site (0, 6): suitability 0.7867 (slope 0.259, buildable 0.675, water 1, terrainType 1, dnaFit 0.573); weighted choice 1 of 8 qualified; claim order 5"
+        "text": "coast site (0, 6): suitability 0.7867 (slope 0.259, buildable 0.675, water 1, terrainType 1, dnaFit 0.573); weighted choice 1 of 8 qualified; claim order 4"
       }
     }
   ],
+  "growthParams": {
+    "wTerrain": 3,
+    "wWater": 1.5,
+    "wInfra": 2,
+    "wUrban": 2,
+    "jitter": 0.08
+  },
   "chunks": [
     {
       "chunkId": "c_-1_-3",
       "cityId": "fezOrganicCore",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_-1_-3",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": -1,
         "gy": -3
@@ -322,7 +355,9 @@
       "cityId": "manhattanGrid",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_-2_0",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": -2,
         "gy": 0
@@ -351,7 +386,9 @@
       "cityId": "amsterdamCanalRing",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_0_3",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": 0,
         "gy": 3
@@ -380,7 +417,9 @@
       "cityId": "veniceWaterNetwork",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_0_6",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": 0,
         "gy": 6
@@ -409,7 +448,9 @@
       "cityId": "chicagoGrid",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_4_-4",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": 4,
         "gy": -4
@@ -438,7 +479,9 @@
       "cityId": "lisbonHillCore",
       "role": "core",
       "parentChunkId": null,
+      "coreChunkId": "c_5_0",
       "generation": 0,
+      "growthStep": 0,
       "worldCoordinate": {
         "gx": 5,
         "gy": 0
@@ -464,19 +507,22 @@
     }
   ],
   "placement": {
+    "placementVersion": 2,
     "order": [
-      "amsterdamCanalRing",
       "fezOrganicCore",
       "lisbonHillCore",
       "chicagoGrid",
       "veniceWaterNetwork",
+      "amsterdamCanalRing",
       "manhattanGrid"
     ],
     "failures": []
   },
   "growth": {
     "generation": 0,
+    "step": 0,
+    "stalled": null,
     "history": [],
-    "historySchema": "G02: { step, chunkId, cityId, parentChunkId, reason }"
+    "historySchema": "{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }"
   }
 }

@@ -7,7 +7,7 @@ import { RULES as MORPHOLOGY_RULES } from '../world-grid/CityInfluence.js';
 import { DNA_STRATEGY } from '../seed-terrain/networkStrategies.js';
 import { CITY_GROWTH } from '../growing-world/growthConfig.js';
 
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2; // v1 (G01: cores only) is still readable; v2 adds growth chunks, history, growth parameters
 export const STATE_KIND = 'a-city-of-cities/world-state';
 export const CHUNK_SIZE = CHUNK.size; // frozen 1024 m computation unit
 
@@ -36,7 +36,14 @@ export const PLACEMENT = Object.freeze({
   minBuildable: 0.05, // reject: less buildable land than this share of the chunk
   minScore: 0.25, // reject: weighted suitability below this
   waterRequiredMin: 0.02, // reject (water-required cities): water share below this
+  // G01 fix (2026-10-28, placement v2):
+  // Reject (water-required cities): share of the cell that is buildable land within 32 m of water. Calibrated on the
+  // measured distribution of 46 wet cells (seeds 6201–6203): coast 0.010–0.027, river valley ≈ 0.04 (A, not real-city data).
+  waterfrontMin: 0.005,
+  expansionStep: 2, // chunks added to the search radius per expansion round (only for a city without a legal site)
+  maxExpansions: 2, // at most this many expansion rounds (radius ≤ searchRadius + 4); then an explicit failure
 });
+export const PLACEMENT_VERSION = 2; // 1 = G01 as committed (69b3a1f); 2 = water-aware screen, waterfront check, bounded expansion, atomic failure
 
 // Origin suitability profiles (A). Terms are 0–1; weights are relative.
 //   slope       — 'flat': share of low-slope land; 'moderate': mix of low and medium slope (hill cities)

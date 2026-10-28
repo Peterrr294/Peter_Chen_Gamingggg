@@ -1,0 +1,174 @@
+{
+  "1234": {
+    "before": {
+      "amsterdamCanalRing": "1,-1 coast 0.7104",
+      "manhattanGrid": "-4,3 plain 0.9872",
+      "fezOrganicCore": "4,3 riverValley 0.7719",
+      "lisbonHillCore": "0,-5 coast 0.8356",
+      "chicagoGrid": "-4,-1 plain 0.97",
+      "veniceWaterNetwork": "4,-4 coast 0.7347"
+    },
+    "after": {
+      "manhattanGrid": "-4,3 plain 0.9872",
+      "fezOrganicCore": "4,3 riverValley 0.7719",
+      "lisbonHillCore": "3,-3 coast 0.8036",
+      "amsterdamCanalRing": "-1,-3 riverValley 0.5008",
+      "chicagoGrid": "-4,-1 plain 0.97",
+      "veniceWaterNetwork": "1,-6 coast 0.8039"
+    },
+    "beforeFailures": [],
+    "afterFailures": [],
+    "changed": [
+      "amsterdamCanalRing",
+      "lisbonHillCore",
+      "veniceWaterNetwork"
+    ],
+    "afterRegistered": 6,
+    "ms": 4541,
+    "rounds": {
+      "manhattanGrid": "1 round(s), radius 6",
+      "fezOrganicCore": "1 round(s), radius 6",
+      "lisbonHillCore": "1 round(s), radius 6",
+      "amsterdamCanalRing": "1 round(s), radius 6",
+      "chicagoGrid": "1 round(s), radius 6",
+      "veniceWaterNetwork": "1 round(s), radius 6"
+    }
+  },
+  "4242": {
+    "before": {
+      "amsterdamCanalRing": "-3,-4 coast 0.7368",
+      "lisbonHillCore": "1,-2 coast 0.8622",
+      "chicagoGrid": "-2,1 plain 0.97",
+      "veniceWaterNetwork": "2,4 coast 0.7653",
+      "fezOrganicCore": "6,0 riverValley 0.7676",
+      "manhattanGrid": "-5,2 plain 0.9872"
+    },
+    "after": {
+      "lisbonHillCore": "1,-2 coast 0.8622",
+      "chicagoGrid": "-2,1 plain 0.97",
+      "amsterdamCanalRing": "-3,-4 coast 0.7368",
+      "veniceWaterNetwork": "2,4 coast 0.7653",
+      "fezOrganicCore": "6,0 riverValley 0.7676",
+      "manhattanGrid": "-5,2 plain 0.9872"
+    },
+    "beforeFailures": [],
+    "afterFailures": [],
+    "changed": [],
+    "afterRegistered": 6,
+    "ms": 4312,
+    "rounds": {
+      "lisbonHillCore": "1 round(s), radius 6",
+      "chicagoGrid": "1 round(s), radius 6",
+      "amsterdamCanalRing": "1 round(s), radius 6",
+      "veniceWaterNetwork": "1 round(s), radius 6",
+      "fezOrganicCore": "1 round(s), radius 6",
+      "manhattanGrid": "1 round(s), radius 6"
+    }
+  },
+  "6201": {
+    "before": {
+      "amsterdamCanalRing": "0,3 coast 0.6773",
+      "fezOrganicCore": "-1,-3 plain 0.7417",
+      "lisbonHillCore": "5,0 coast 0.8031",
+      "chicagoGrid": "4,-4 plain 0.97",
+      "veniceWaterNetwork": "0,6 coast 0.7867",
+      "manhattanGrid": "-2,0 plain 0.9872"
+    },
+    "after": {
+      "fezOrganicCore": "-1,-3 plain 0.7417",
+      "lisbonHillCore": "5,0 coast 0.8031",
+      "chicagoGrid": "4,-4 plain 0.97",
+      "veniceWaterNetwork": "0,6 coast 0.7867",
+      "amsterdamCanalRing": "0,3 coast 0.6773",
+      "manhattanGrid": "-2,0 plain 0.9872"
+    },
+    "beforeFailures": [],
+    "afterFailures": [],
+    "changed": [],
+    "afterRegistered": 6,
+    "ms": 5233,
+    "rounds": {
+      "fezOrganicCore": "1 round(s), radius 6",
+      "lisbonHillCore": "1 round(s), radius 6",
+      "chicagoGrid": "1 round(s), radius 6",
+      "veniceWaterNetwork": "1 round(s), radius 6",
+      "amsterdamCanalRing": "1 round(s), radius 6",
+      "manhattanGrid": "1 round(s), radius 6"
+    }
+  },
+  "6202": {
+    "before": {
+      "veniceWaterNetwork": "-4,-4 coast 0.7673",
+      "lisbonHillCore": "5,-3 mountain 0.4117",
+      "manhattanGrid": "-4,0 plain 0.9872",
+      "chicagoGrid": "1,2 plain 0.97",
+      "fezOrganicCore": "-1,-3 plain 0.7417"
+    },
+    "after": {
+      "amsterdamCanalRing": "-5,-3 riverValley 0.4818",
+      "veniceWaterNetwork": "1,-1 riverValley 0.4314",
+      "lisbonHillCore": "5,-3 mountain 0.4117",
+      "manhattanGrid": "-4,0 plain 0.9872",
+      "chicagoGrid": "1,2 plain 0.97",
+      "fezOrganicCore": "5,1 plain 0.7417"
+    },
+    "beforeFailures": [
+      {
+        "cityId": "amsterdamCanalRing",
+        "reason": "no qualified site among 8 probed / 35 screened",
+        "suggestion": "increase searchRadius to 8 or lower minOriginDistance to 2; constraints were not relaxed"
+      }
+    ],
+    "afterFailures": [],
+    "changed": [
+      "veniceWaterNetwork",
+      "fezOrganicCore",
+      "amsterdamCanalRing"
+    ],
+    "afterRegistered": 6,
+    "ms": 5167,
+    "rounds": {
+      "amsterdamCanalRing": "1 round(s), radius 6",
+      "veniceWaterNetwork": "1 round(s), radius 6",
+      "lisbonHillCore": "1 round(s), radius 6",
+      "manhattanGrid": "1 round(s), radius 6",
+      "chicagoGrid": "1 round(s), radius 6",
+      "fezOrganicCore": "2 round(s), radius 8"
+    }
+  },
+  "6203": {
+    "before": {
+      "amsterdamCanalRing": "-2,4 coast 0.6858",
+      "manhattanGrid": "4,4 plain 0.9872",
+      "veniceWaterNetwork": "-5,-1 coast 0.7357",
+      "chicagoGrid": "1,-4 plain 0.97",
+      "lisbonHillCore": "-6,2 coast 0.8573",
+      "fezOrganicCore": "2,1 riverValley 0.845"
+    },
+    "after": {
+      "manhattanGrid": "4,4 plain 0.9872",
+      "veniceWaterNetwork": "-5,-1 coast 0.7357",
+      "chicagoGrid": "1,-4 plain 0.97",
+      "lisbonHillCore": "-3,2 coast 0.8687",
+      "amsterdamCanalRing": "0,0 coast 0.7075",
+      "fezOrganicCore": "1,6 riverValley 0.7581"
+    },
+    "beforeFailures": [],
+    "afterFailures": [],
+    "changed": [
+      "amsterdamCanalRing",
+      "lisbonHillCore",
+      "fezOrganicCore"
+    ],
+    "afterRegistered": 6,
+    "ms": 5687,
+    "rounds": {
+      "manhattanGrid": "1 round(s), radius 6",
+      "veniceWaterNetwork": "1 round(s), radius 6",
+      "chicagoGrid": "1 round(s), radius 6",
+      "lisbonHillCore": "1 round(s), radius 6",
+      "amsterdamCanalRing": "1 round(s), radius 6",
+      "fezOrganicCore": "2 round(s), radius 8"
+    }
+  }
+}

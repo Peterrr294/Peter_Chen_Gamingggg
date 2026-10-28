@@ -1,0 +1,2811 @@
+{
+  "task": "G02 (A City of Cities) — Procedural Urban Growth",
+  "experiment": "experiments/city-of-cities/",
+  "testedAt": "2026-10-28T07:31:02.538Z",
+  "seeds": [
+    6201,
+    6202,
+    6203
+  ],
+  "node": {
+    "6201": {
+      "stageAms": 25187,
+      "steps": [
+        {
+          "step": 1,
+          "chunkId": "c_-2_1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_0",
+          "generation": 1,
+          "score": 0.9019,
+          "roadKm": 19.46,
+          "buildings": 1706,
+          "ms": 6360,
+          "evaluateMs": 2036,
+          "generateMs": 4325,
+          "heapMB": 49
+        },
+        {
+          "step": 2,
+          "chunkId": "c_4_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_4_-4",
+          "generation": 1,
+          "score": 0.6014,
+          "roadKm": 3.72,
+          "buildings": 315,
+          "ms": 1903,
+          "evaluateMs": 223,
+          "generateMs": 1680,
+          "heapMB": 72
+        },
+        {
+          "step": 3,
+          "chunkId": "c_6_0",
+          "cityId": "lisbonHillCore",
+          "parent": "c_5_0",
+          "generation": 1,
+          "score": 0.7121,
+          "roadKm": 7.11,
+          "buildings": 795,
+          "ms": 2223,
+          "evaluateMs": 415,
+          "generateMs": 1808,
+          "heapMB": 39
+        },
+        {
+          "step": 4,
+          "chunkId": "c_-1_-4",
+          "cityId": "fezOrganicCore",
+          "parent": "c_-1_-3",
+          "generation": 1,
+          "score": 0.8045,
+          "roadKm": 4.26,
+          "buildings": 376,
+          "ms": 3102,
+          "evaluateMs": 325,
+          "generateMs": 2777,
+          "heapMB": 61
+        },
+        {
+          "step": 5,
+          "chunkId": "c_0_7",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_6",
+          "generation": 1,
+          "score": 0.8102,
+          "roadKm": 4.7,
+          "buildings": 382,
+          "ms": 2190,
+          "evaluateMs": 306,
+          "generateMs": 1884,
+          "heapMB": 83
+        },
+        {
+          "step": 6,
+          "chunkId": "c_-1_1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_1",
+          "generation": 2,
+          "score": 0.9459,
+          "roadKm": 18.43,
+          "buildings": 1705,
+          "ms": 4668,
+          "evaluateMs": 430,
+          "generateMs": 4238,
+          "heapMB": 70
+        },
+        {
+          "step": 7,
+          "chunkId": "c_-1_3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_0_3",
+          "generation": 1,
+          "score": 0.6119,
+          "roadKm": 0,
+          "buildings": 0,
+          "ms": 1251,
+          "evaluateMs": 286,
+          "generateMs": 964,
+          "heapMB": 52
+        },
+        {
+          "step": 8,
+          "chunkId": "c_3_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_4_-5",
+          "generation": 2,
+          "score": 0.6831,
+          "roadKm": 4.83,
+          "buildings": 451,
+          "ms": 1766,
+          "evaluateMs": 1,
+          "generateMs": 1765,
+          "heapMB": 30
+        },
+        {
+          "step": 9,
+          "chunkId": "c_-1_0",
+          "cityId": "manhattanGrid",
+          "parent": "c_-1_1",
+          "generation": 3,
+          "score": 1.0136,
+          "roadKm": 18.43,
+          "buildings": 1588,
+          "ms": 4727,
+          "evaluateMs": 295,
+          "generateMs": 4432,
+          "heapMB": 38
+        },
+        {
+          "step": 10,
+          "chunkId": "c_-2_-4",
+          "cityId": "fezOrganicCore",
+          "parent": "c_-1_-4",
+          "generation": 2,
+          "score": 0.7979,
+          "roadKm": 3.43,
+          "buildings": 327,
+          "ms": 2716,
+          "evaluateMs": 132,
+          "generateMs": 2583,
+          "heapMB": 53
+        },
+        {
+          "step": 11,
+          "chunkId": "c_5_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_4_-5",
+          "generation": 2,
+          "score": 0.7443,
+          "roadKm": 16.38,
+          "buildings": 2071,
+          "ms": 5635,
+          "evaluateMs": 227,
+          "generateMs": 5408,
+          "heapMB": 77
+        },
+        {
+          "step": 12,
+          "chunkId": "c_2_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_3_-5",
+          "generation": 3,
+          "score": 0.8137,
+          "roadKm": 15.36,
+          "buildings": 2045,
+          "ms": 5420,
+          "evaluateMs": 237,
+          "generateMs": 5183,
+          "heapMB": 56
+        },
+        {
+          "step": 13,
+          "chunkId": "c_6_-1",
+          "cityId": "lisbonHillCore",
+          "parent": "c_6_0",
+          "generation": 2,
+          "score": 0.5905,
+          "roadKm": 7.19,
+          "buildings": 882,
+          "ms": 2777,
+          "evaluateMs": 406,
+          "generateMs": 2370,
+          "heapMB": 76
+        },
+        {
+          "step": 14,
+          "chunkId": "c_1_3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_0_3",
+          "generation": 1,
+          "score": 0.6036,
+          "roadKm": 2.38,
+          "buildings": 137,
+          "ms": 1848,
+          "evaluateMs": 247,
+          "generateMs": 1601,
+          "heapMB": 38
+        },
+        {
+          "step": 15,
+          "chunkId": "c_0_5",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_6",
+          "generation": 1,
+          "score": 0.7167,
+          "roadKm": 4.87,
+          "buildings": 363,
+          "ms": 1784,
+          "evaluateMs": 210,
+          "generateMs": 1575,
+          "heapMB": 56
+        },
+        {
+          "step": 16,
+          "chunkId": "c_1_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_2_-5",
+          "generation": 4,
+          "score": 0.7233,
+          "roadKm": 5.36,
+          "buildings": 386,
+          "ms": 1889,
+          "evaluateMs": 228,
+          "generateMs": 1660,
+          "heapMB": 34
+        },
+        {
+          "step": 17,
+          "chunkId": "c_-2_-1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_0",
+          "generation": 1,
+          "score": 0.5509,
+          "roadKm": 6.36,
+          "buildings": 425,
+          "ms": 2248,
+          "evaluateMs": 346,
+          "generateMs": 1902,
+          "heapMB": 49
+        },
+        {
+          "step": 18,
+          "chunkId": "c_6_1",
+          "cityId": "lisbonHillCore",
+          "parent": "c_6_0",
+          "generation": 2,
+          "score": 0.8145,
+          "roadKm": 7.97,
+          "buildings": 882,
+          "ms": 2479,
+          "evaluateMs": 100,
+          "generateMs": 2379,
+          "heapMB": 69
+        },
+        {
+          "step": 19,
+          "chunkId": "c_-1_6",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_6",
+          "generation": 1,
+          "score": 0.6358,
+          "roadKm": 5.01,
+          "buildings": 376,
+          "ms": 1753,
+          "evaluateMs": 218,
+          "generateMs": 1535,
+          "heapMB": 65
+        },
+        {
+          "step": 20,
+          "chunkId": "c_5_-6",
+          "cityId": "chicagoGrid",
+          "parent": "c_5_-5",
+          "generation": 3,
+          "score": 0.643,
+          "roadKm": 4.6,
+          "buildings": 487,
+          "ms": 2530,
+          "evaluateMs": 152,
+          "generateMs": 2378,
+          "heapMB": 73
+        },
+        {
+          "step": 21,
+          "chunkId": "c_2_3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_1_3",
+          "generation": 2,
+          "score": 0.6851,
+          "roadKm": 0,
+          "buildings": 0,
+          "ms": 1410,
+          "evaluateMs": 223,
+          "generateMs": 1187,
+          "heapMB": 84
+        },
+        {
+          "step": 22,
+          "chunkId": "c_-1_2",
+          "cityId": "manhattanGrid",
+          "parent": "c_-1_1",
+          "generation": 3,
+          "score": 0.8789,
+          "roadKm": 18.43,
+          "buildings": 1651,
+          "ms": 4783,
+          "evaluateMs": 251,
+          "generateMs": 4533,
+          "heapMB": 101
+        },
+        {
+          "step": 23,
+          "chunkId": "c_0_-4",
+          "cityId": "fezOrganicCore",
+          "parent": "c_-1_-4",
+          "generation": 2,
+          "score": 0.8284,
+          "roadKm": 3.81,
+          "buildings": 348,
+          "ms": 2323,
+          "evaluateMs": 1,
+          "generateMs": 2321,
+          "heapMB": 54
+        },
+        {
+          "step": 24,
+          "chunkId": "c_-2_-2",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_-1",
+          "generation": 2,
+          "score": 0.7504,
+          "roadKm": 18.43,
+          "buildings": 1731,
+          "ms": 4544,
+          "evaluateMs": 2,
+          "generateMs": 4542,
+          "heapMB": 59
+        },
+        {
+          "step": 25,
+          "chunkId": "c_7_-1",
+          "cityId": "lisbonHillCore",
+          "parent": "c_6_-1",
+          "generation": 3,
+          "score": 0.7753,
+          "roadKm": 7.69,
+          "buildings": 644,
+          "ms": 2070,
+          "evaluateMs": 1,
+          "generateMs": 2069,
+          "heapMB": 88
+        },
+        {
+          "step": 26,
+          "chunkId": "c_1_-6",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_-5",
+          "generation": 5,
+          "score": 0.5891,
+          "roadKm": 5.38,
+          "buildings": 411,
+          "ms": 2147,
+          "evaluateMs": 257,
+          "generateMs": 1890,
+          "heapMB": 38
+        },
+        {
+          "step": 27,
+          "chunkId": "c_1_7",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_7",
+          "generation": 2,
+          "score": 0.7486,
+          "roadKm": 5.74,
+          "buildings": 327,
+          "ms": 1567,
+          "evaluateMs": 107,
+          "generateMs": 1460,
+          "heapMB": 31
+        },
+        {
+          "step": 28,
+          "chunkId": "c_5_-1",
+          "cityId": "lisbonHillCore",
+          "parent": "c_5_0",
+          "generation": 1,
+          "score": 0.3767,
+          "roadKm": 1.55,
+          "buildings": 101,
+          "ms": 1032,
+          "evaluateMs": 251,
+          "generateMs": 780,
+          "heapMB": 30
+        },
+        {
+          "step": 29,
+          "chunkId": "c_-3_-2",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_-2",
+          "generation": 3,
+          "score": 0.8793,
+          "roadKm": 17.41,
+          "buildings": 1577,
+          "ms": 4432,
+          "evaluateMs": 201,
+          "generateMs": 4231,
+          "heapMB": 85
+        },
+        {
+          "step": 30,
+          "chunkId": "c_3_3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_2_3",
+          "generation": 3,
+          "score": 0.5651,
+          "roadKm": 4.89,
+          "buildings": 355,
+          "ms": 2644,
+          "evaluateMs": 2,
+          "generateMs": 2642,
+          "heapMB": 45
+        }
+      ],
+      "stalled": null,
+      "stageC": {
+        "history": [
+          "1:c_-2_1:manhattanGrid<c_-2_0",
+          "2:c_4_-5:chicagoGrid<c_4_-4",
+          "3:c_6_0:lisbonHillCore<c_5_0",
+          "4:c_-1_-4:fezOrganicCore<c_-1_-3",
+          "5:c_0_7:veniceWaterNetwork<c_0_6",
+          "6:c_-1_1:manhattanGrid<c_-2_1",
+          "7:c_-1_3:amsterdamCanalRing<c_0_3",
+          "8:c_3_-5:chicagoGrid<c_4_-5",
+          "9:c_-1_0:manhattanGrid<c_-1_1",
+          "10:c_-2_-4:fezOrganicCore<c_-1_-4"
+        ],
+        "stats": {
+          "amsterdamCanalRing": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 2,
+            "rejected": 4,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 2,
+              "terrain type mountain incompatible": 2
+            },
+            "stepsSinceLastGrowth": 3,
+            "best": 0.5578
+          },
+          "chicagoGrid": {
+            "chunks": 3,
+            "grown": 2,
+            "eligible": 3,
+            "rejected": 4,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 3,
+              "terrain type mountain incompatible": 1
+            },
+            "stepsSinceLastGrowth": 2,
+            "best": 0.7702
+          },
+          "fezOrganicCore": {
+            "chunks": 3,
+            "grown": 2,
+            "eligible": 5,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 0,
+            "best": 0.8484
+          },
+          "lisbonHillCore": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 6,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 7,
+            "best": 0.6951
+          },
+          "manhattanGrid": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 3,
+            "rejected": 5,
+            "rejectionReasons": {
+              "DNA conflict: noContinuousLand": 4,
+              "slope barrier: mean land slope #° > #°": 1
+            },
+            "stepsSinceLastGrowth": 1,
+            "best": 0.9243
+          },
+          "veniceWaterNetwork": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 5,
+            "rejected": 1,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 1
+            },
+            "stepsSinceLastGrowth": 5,
+            "best": 0.6493
+          }
+        }
+      },
+      "final": {
+        "step": 30,
+        "chunks": 36,
+        "maxGeneration": 5,
+        "perCity": {
+          "amsterdamCanalRing": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 3,
+            "rejected": 6,
+            "rejectionReasons": {
+              "occupied by manhattanGrid": 1,
+              "terrain type mountain incompatible": 3,
+              "DNA conflict: noWater": 2
+            },
+            "stepsSinceLastGrowth": 0,
+            "best": 0.5752
+          },
+          "chicagoGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 10,
+            "rejected": 4,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 3,
+              "terrain type mountain incompatible": 1
+            },
+            "stepsSinceLastGrowth": 4,
+            "best": 0.9494
+          },
+          "fezOrganicCore": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 8,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 7,
+            "best": 0.7567
+          },
+          "lisbonHillCore": {
+            "chunks": 6,
+            "grown": 5,
+            "eligible": 10,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 2,
+            "best": 0.7393
+          },
+          "manhattanGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 5,
+            "rejected": 8,
+            "rejectionReasons": {
+              "DNA conflict: noContinuousLand": 6,
+              "slope barrier: mean land slope #° > #°": 1,
+              "occupied by amsterdamCanalRing": 1
+            },
+            "stepsSinceLastGrowth": 1,
+            "best": 0.971
+          },
+          "veniceWaterNetwork": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 4,
+            "rejected": 5,
+            "rejectionReasons": {
+              "terrain type mountain incompatible": 3,
+              "slope barrier: mean land slope #° > #°": 2
+            },
+            "stepsSinceLastGrowth": 3,
+            "best": 0.6489
+          }
+        }
+      },
+      "conflicts": {
+        "sharedEdges": 33,
+        "sameCity": 32,
+        "cityBoundary": 1,
+        "geometry": {
+          "step": 13,
+          "cliff": 20
+        },
+        "hydrology": {
+          "continuous": 16,
+          "discontinuous": 17
+        },
+        "unpairedRoadPorts": 127
+      },
+      "contestedSteps": [],
+      "emptyChunks": [
+        "c_-1_3 amsterdamCanalRing growth",
+        "c_2_3 amsterdamCanalRing growth"
+      ],
+      "reproducible": true,
+      "saveLoadContinue": true,
+      "unchanged": true,
+      "totalMs": 256369,
+      "heapStartMB": 10,
+      "heapEndMB": 46
+    },
+    "6202": {
+      "stageAms": 23549,
+      "steps": [
+        {
+          "step": 1,
+          "chunkId": "c_0_2",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_2",
+          "generation": 1,
+          "score": 0.9774,
+          "roadKm": 15.36,
+          "buildings": 1990,
+          "ms": 7646,
+          "evaluateMs": 2400,
+          "generateMs": 5247,
+          "heapMB": 51
+        },
+        {
+          "step": 2,
+          "chunkId": "c_-3_0",
+          "cityId": "manhattanGrid",
+          "parent": "c_-4_0",
+          "generation": 1,
+          "score": 0.9634,
+          "roadKm": 18.43,
+          "buildings": 1708,
+          "ms": 4470,
+          "evaluateMs": 207,
+          "generateMs": 4264,
+          "heapMB": 93
+        },
+        {
+          "step": 3,
+          "chunkId": "c_-1_2",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_2",
+          "generation": 2,
+          "score": 0.972,
+          "roadKm": 16.38,
+          "buildings": 1975,
+          "ms": 5761,
+          "evaluateMs": 383,
+          "generateMs": 5378,
+          "heapMB": 47
+        },
+        {
+          "step": 4,
+          "chunkId": "c_-5_-2",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-5_-3",
+          "generation": 1,
+          "score": 0.6471,
+          "roadKm": 6.11,
+          "buildings": 570,
+          "ms": 3813,
+          "evaluateMs": 226,
+          "generateMs": 3587,
+          "heapMB": 50
+        },
+        {
+          "step": 5,
+          "chunkId": "c_4_1",
+          "cityId": "fezOrganicCore",
+          "parent": "c_5_1",
+          "generation": 1,
+          "score": 0.6473,
+          "roadKm": 6.37,
+          "buildings": 874,
+          "ms": 3049,
+          "evaluateMs": 244,
+          "generateMs": 2805,
+          "heapMB": 46
+        },
+        {
+          "step": 6,
+          "chunkId": "c_1_-2",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_1_-1",
+          "generation": 1,
+          "score": 0.5212,
+          "roadKm": 5.85,
+          "buildings": 400,
+          "ms": 1599,
+          "evaluateMs": 100,
+          "generateMs": 1499,
+          "heapMB": 52
+        },
+        {
+          "step": 7,
+          "chunkId": "c_-3_1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-3_0",
+          "generation": 2,
+          "score": 0.9053,
+          "roadKm": 18.43,
+          "buildings": 1624,
+          "ms": 5026,
+          "evaluateMs": 322,
+          "generateMs": 4705,
+          "heapMB": 80
+        },
+        {
+          "step": 8,
+          "chunkId": "c_4_-3",
+          "cityId": "lisbonHillCore",
+          "parent": "c_5_-3",
+          "generation": 1,
+          "score": 0.4345,
+          "roadKm": 6.08,
+          "buildings": 1129,
+          "ms": 2486,
+          "evaluateMs": 106,
+          "generateMs": 2381,
+          "heapMB": 73
+        },
+        {
+          "step": 9,
+          "chunkId": "c_1_3",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_2",
+          "generation": 1,
+          "score": 0.8901,
+          "roadKm": 16.38,
+          "buildings": 1977,
+          "ms": 5458,
+          "evaluateMs": 211,
+          "generateMs": 5246,
+          "heapMB": 105
+        },
+        {
+          "step": 10,
+          "chunkId": "c_-2_1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-3_1",
+          "generation": 3,
+          "score": 0.9205,
+          "roadKm": 18.43,
+          "buildings": 1691,
+          "ms": 4730,
+          "evaluateMs": 218,
+          "generateMs": 4512,
+          "heapMB": 98
+        },
+        {
+          "step": 11,
+          "chunkId": "c_2_2",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_2",
+          "generation": 1,
+          "score": 0.9317,
+          "roadKm": 15.36,
+          "buildings": 2059,
+          "ms": 5014,
+          "evaluateMs": 1,
+          "generateMs": 5013,
+          "heapMB": 60
+        },
+        {
+          "step": 12,
+          "chunkId": "c_-4_-3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-5_-3",
+          "generation": 1,
+          "score": 0.6567,
+          "roadKm": 6.04,
+          "buildings": 484,
+          "ms": 3147,
+          "evaluateMs": 182,
+          "generateMs": 2965,
+          "heapMB": 64
+        },
+        {
+          "step": 13,
+          "chunkId": "c_-4_1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-4_0",
+          "generation": 1,
+          "score": 1.0193,
+          "roadKm": 18.43,
+          "buildings": 1645,
+          "ms": 4457,
+          "evaluateMs": 107,
+          "generateMs": 4350,
+          "heapMB": 43
+        },
+        {
+          "step": 14,
+          "chunkId": "c_0_-1",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_1_-1",
+          "generation": 1,
+          "score": 0.6518,
+          "roadKm": 5.96,
+          "buildings": 404,
+          "ms": 1436,
+          "evaluateMs": 90,
+          "generateMs": 1345,
+          "heapMB": 84
+        },
+        {
+          "step": 15,
+          "chunkId": "c_2_1",
+          "cityId": "chicagoGrid",
+          "parent": "c_2_2",
+          "generation": 2,
+          "score": 0.8187,
+          "roadKm": 15.36,
+          "buildings": 2096,
+          "ms": 5377,
+          "evaluateMs": 1,
+          "generateMs": 5376,
+          "heapMB": 44
+        },
+        {
+          "step": 16,
+          "chunkId": "c_3_1",
+          "cityId": "fezOrganicCore",
+          "parent": "c_4_1",
+          "generation": 2,
+          "score": 0.6541,
+          "roadKm": 5.91,
+          "buildings": 868,
+          "ms": 2583,
+          "evaluateMs": 1,
+          "generateMs": 2583,
+          "heapMB": 49
+        },
+        {
+          "step": 17,
+          "chunkId": "c_4_-4",
+          "cityId": "lisbonHillCore",
+          "parent": "c_4_-3",
+          "generation": 2,
+          "score": 0.5346,
+          "roadKm": 7.24,
+          "buildings": 1311,
+          "ms": 2330,
+          "evaluateMs": 105,
+          "generateMs": 2225,
+          "heapMB": 44
+        },
+        {
+          "step": 18,
+          "chunkId": "c_-4_-4",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-4_-3",
+          "generation": 2,
+          "score": 0.6643,
+          "roadKm": 1.71,
+          "buildings": 113,
+          "ms": 1437,
+          "evaluateMs": 216,
+          "generateMs": 1220,
+          "heapMB": 47
+        },
+        {
+          "step": 19,
+          "chunkId": "c_-4_-1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-4_0",
+          "generation": 1,
+          "score": 0.9295,
+          "roadKm": 17.41,
+          "buildings": 1618,
+          "ms": 4336,
+          "evaluateMs": 112,
+          "generateMs": 4224,
+          "heapMB": 69
+        },
+        {
+          "step": 20,
+          "chunkId": "c_-5_-1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-4_-1",
+          "generation": 2,
+          "score": 1.0179,
+          "roadKm": 18.43,
+          "buildings": 1706,
+          "ms": 4182,
+          "evaluateMs": 1,
+          "generateMs": 4181,
+          "heapMB": 56
+        },
+        {
+          "step": 21,
+          "chunkId": "c_0_3",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_2",
+          "generation": 2,
+          "score": 0.9824,
+          "roadKm": 15.36,
+          "buildings": 1833,
+          "ms": 5153,
+          "evaluateMs": 125,
+          "generateMs": 5027,
+          "heapMB": 35
+        },
+        {
+          "step": 22,
+          "chunkId": "c_0_0",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_-1",
+          "generation": 2,
+          "score": 0.4764,
+          "roadKm": 6.05,
+          "buildings": 265,
+          "ms": 1505,
+          "evaluateMs": 103,
+          "generateMs": 1402,
+          "heapMB": 40
+        },
+        {
+          "step": 23,
+          "chunkId": "c_3_0",
+          "cityId": "fezOrganicCore",
+          "parent": "c_3_1",
+          "generation": 3,
+          "score": 0.7576,
+          "roadKm": 6.9,
+          "buildings": 973,
+          "ms": 2650,
+          "evaluateMs": 121,
+          "generateMs": 2528,
+          "heapMB": 27
+        },
+        {
+          "step": 24,
+          "chunkId": "c_-6_-1",
+          "cityId": "manhattanGrid",
+          "parent": "c_-5_-1",
+          "generation": 3,
+          "score": 0.9991,
+          "roadKm": 17.41,
+          "buildings": 1606,
+          "ms": 4344,
+          "evaluateMs": 116,
+          "generateMs": 4228,
+          "heapMB": 55
+        },
+        {
+          "step": 25,
+          "chunkId": "c_4_-5",
+          "cityId": "lisbonHillCore",
+          "parent": "c_4_-4",
+          "generation": 3,
+          "score": 0.5483,
+          "roadKm": 6.5,
+          "buildings": 1205,
+          "ms": 2602,
+          "evaluateMs": 247,
+          "generateMs": 2354,
+          "heapMB": 80
+        },
+        {
+          "step": 26,
+          "chunkId": "c_-6_-3",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-5_-3",
+          "generation": 1,
+          "score": 0.6121,
+          "roadKm": 6.62,
+          "buildings": 703,
+          "ms": 3707,
+          "evaluateMs": 336,
+          "generateMs": 3371,
+          "heapMB": 86
+        },
+        {
+          "step": 27,
+          "chunkId": "c_2_0",
+          "cityId": "fezOrganicCore",
+          "parent": "c_3_0",
+          "generation": 4,
+          "score": 0.8394,
+          "roadKm": 4.39,
+          "buildings": 358,
+          "ms": 2033,
+          "evaluateMs": 204,
+          "generateMs": 1829,
+          "heapMB": 69
+        },
+        {
+          "step": 28,
+          "chunkId": "c_-1_-1",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_0_-1",
+          "generation": 2,
+          "score": 0.5965,
+          "roadKm": 5.75,
+          "buildings": 409,
+          "ms": 1452,
+          "evaluateMs": 1,
+          "generateMs": 1450,
+          "heapMB": 51
+        },
+        {
+          "step": 29,
+          "chunkId": "c_-5_-4",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-5_-3",
+          "generation": 1,
+          "score": 0.7636,
+          "roadKm": 6.54,
+          "buildings": 728,
+          "ms": 3208,
+          "evaluateMs": 1,
+          "generateMs": 3208,
+          "heapMB": 51
+        },
+        {
+          "step": 30,
+          "chunkId": "c_0_1",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_2",
+          "generation": 2,
+          "score": 0.7047,
+          "roadKm": 5.63,
+          "buildings": 592,
+          "ms": 2452,
+          "evaluateMs": 143,
+          "generateMs": 2308,
+          "heapMB": 49
+        }
+      ],
+      "stalled": null,
+      "stageC": {
+        "history": [
+          "1:c_0_2:chicagoGrid<c_1_2",
+          "2:c_-3_0:manhattanGrid<c_-4_0",
+          "3:c_-1_2:chicagoGrid<c_0_2",
+          "4:c_-5_-2:amsterdamCanalRing<c_-5_-3",
+          "5:c_4_1:fezOrganicCore<c_5_1",
+          "6:c_1_-2:veniceWaterNetwork<c_1_-1",
+          "7:c_-3_1:manhattanGrid<c_-3_0",
+          "8:c_4_-3:lisbonHillCore<c_5_-3",
+          "9:c_1_3:chicagoGrid<c_1_2",
+          "10:c_-2_1:manhattanGrid<c_-3_1"
+        ],
+        "stats": {
+          "amsterdamCanalRing": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 3,
+            "rejected": 3,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 1,
+              "DNA conflict: noWater": 2
+            },
+            "stepsSinceLastGrowth": 6,
+            "best": 0.6247
+          },
+          "chicagoGrid": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 4,
+            "rejected": 5,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 1,
+              "terrain type mountain incompatible": 4
+            },
+            "stepsSinceLastGrowth": 1,
+            "best": 0.9244
+          },
+          "fezOrganicCore": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 6,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 5,
+            "best": 0.7533
+          },
+          "lisbonHillCore": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 6,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 2,
+            "best": 0.5353
+          },
+          "manhattanGrid": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 4,
+            "rejected": 2,
+            "rejectionReasons": {
+              "DNA conflict: noContinuousLand": 1,
+              "slope barrier: mean land slope #° > #°": 1
+            },
+            "stepsSinceLastGrowth": 0,
+            "best": 0.9082
+          },
+          "veniceWaterNetwork": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 1,
+            "rejected": 5,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 4,
+              "terrain type mountain incompatible": 1
+            },
+            "stepsSinceLastGrowth": 4,
+            "best": 0.5547
+          }
+        }
+      },
+      "final": {
+        "step": 30,
+        "chunks": 36,
+        "maxGeneration": 4,
+        "perCity": {
+          "amsterdamCanalRing": {
+            "chunks": 6,
+            "grown": 5,
+            "eligible": 5,
+            "rejected": 4,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 2,
+              "slope barrier: mean land slope #° > #°": 1,
+              "occupied by manhattanGrid": 1
+            },
+            "stepsSinceLastGrowth": 1,
+            "best": 0.7394
+          },
+          "chicagoGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 1,
+            "rejected": 9,
+            "rejectionReasons": {
+              "occupied by fezOrganicCore": 2,
+              "slope barrier: mean land slope #° > #°": 1,
+              "terrain type mountain incompatible": 6
+            },
+            "stepsSinceLastGrowth": 0,
+            "best": 0.5255
+          },
+          "fezOrganicCore": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 9,
+            "rejected": 1,
+            "rejectionReasons": {
+              "occupied by chicagoGrid": 1
+            },
+            "stepsSinceLastGrowth": 3,
+            "best": 0.7601
+          },
+          "lisbonHillCore": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 9,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 5,
+            "best": 0.5518
+          },
+          "manhattanGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 8,
+            "rejected": 5,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 2,
+              "occupied by amsterdamCanalRing": 1,
+              "DNA conflict: noContinuousLand": 2
+            },
+            "stepsSinceLastGrowth": 6,
+            "best": 0.9364
+          },
+          "veniceWaterNetwork": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 2,
+            "rejected": 6,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 5,
+              "terrain type mountain incompatible": 1
+            },
+            "stepsSinceLastGrowth": 2,
+            "best": 0.5975
+          }
+        }
+      },
+      "conflicts": {
+        "sharedEdges": 37,
+        "sameCity": 33,
+        "cityBoundary": 4,
+        "geometry": {
+          "step": 21,
+          "cliff": 16
+        },
+        "hydrology": {
+          "continuous": 28,
+          "discontinuous": 9
+        },
+        "unpairedRoadPorts": 105
+      },
+      "contestedSteps": [
+        "16: fezOrganicCore took (3, 1) over chicagoGrid",
+        "27: fezOrganicCore took (2, 0) over chicagoGrid",
+        "30: chicagoGrid took (0, 1) over veniceWaterNetwork"
+      ],
+      "emptyChunks": [],
+      "reproducible": true,
+      "saveLoadContinue": true,
+      "unchanged": true,
+      "totalMs": 307867,
+      "heapStartMB": 46,
+      "heapEndMB": 49
+    },
+    "6203": {
+      "stageAms": 22598,
+      "steps": [
+        {
+          "step": 1,
+          "chunkId": "c_2_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_-4",
+          "generation": 1,
+          "score": 0.9519,
+          "roadKm": 15.36,
+          "buildings": 2060,
+          "ms": 6694,
+          "evaluateMs": 1708,
+          "generateMs": 4986,
+          "heapMB": 93
+        },
+        {
+          "step": 2,
+          "chunkId": "c_5_4",
+          "cityId": "manhattanGrid",
+          "parent": "c_4_4",
+          "generation": 1,
+          "score": 0.573,
+          "roadKm": 2.58,
+          "buildings": 204,
+          "ms": 1210,
+          "evaluateMs": 87,
+          "generateMs": 1123,
+          "heapMB": 44
+        },
+        {
+          "step": 3,
+          "chunkId": "c_-2_2",
+          "cityId": "lisbonHillCore",
+          "parent": "c_-3_2",
+          "generation": 1,
+          "score": 0.5889,
+          "roadKm": 6.32,
+          "buildings": 605,
+          "ms": 2232,
+          "evaluateMs": 366,
+          "generateMs": 1865,
+          "heapMB": 42
+        },
+        {
+          "step": 4,
+          "chunkId": "c_1_5",
+          "cityId": "fezOrganicCore",
+          "parent": "c_1_6",
+          "generation": 1,
+          "score": 0.5436,
+          "roadKm": 7.1,
+          "buildings": 490,
+          "ms": 2374,
+          "evaluateMs": 235,
+          "generateMs": 2139,
+          "heapMB": 43
+        },
+        {
+          "step": 5,
+          "chunkId": "c_0_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_-4",
+          "generation": 1,
+          "score": 0.9637,
+          "roadKm": 15.36,
+          "buildings": 2121,
+          "ms": 5374,
+          "evaluateMs": 368,
+          "generateMs": 5006,
+          "heapMB": 94
+        },
+        {
+          "step": 6,
+          "chunkId": "c_-1_0",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_0_0",
+          "generation": 1,
+          "score": 0.5205,
+          "roadKm": 0,
+          "buildings": 0,
+          "ms": 758,
+          "evaluateMs": 87,
+          "generateMs": 671,
+          "heapMB": 39
+        },
+        {
+          "step": 7,
+          "chunkId": "c_5_3",
+          "cityId": "manhattanGrid",
+          "parent": "c_5_4",
+          "generation": 2,
+          "score": 0.9496,
+          "roadKm": 18.43,
+          "buildings": 1690,
+          "ms": 4725,
+          "evaluateMs": 201,
+          "generateMs": 4524,
+          "heapMB": 84
+        },
+        {
+          "step": 8,
+          "chunkId": "c_-5_-2",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_-5_-1",
+          "generation": 1,
+          "score": 0.4945,
+          "roadKm": 5.83,
+          "buildings": 380,
+          "ms": 1794,
+          "evaluateMs": 225,
+          "generateMs": 1569,
+          "heapMB": 24
+        },
+        {
+          "step": 9,
+          "chunkId": "c_-3_3",
+          "cityId": "lisbonHillCore",
+          "parent": "c_-3_2",
+          "generation": 1,
+          "score": 0.639,
+          "roadKm": 7.34,
+          "buildings": 756,
+          "ms": 1960,
+          "evaluateMs": 306,
+          "generateMs": 1653,
+          "heapMB": 41
+        },
+        {
+          "step": 10,
+          "chunkId": "c_0_-5",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_-4",
+          "generation": 2,
+          "score": 0.8741,
+          "roadKm": 15.36,
+          "buildings": 2103,
+          "ms": 5109,
+          "evaluateMs": 112,
+          "generateMs": 4997,
+          "heapMB": 39
+        },
+        {
+          "step": 11,
+          "chunkId": "c_6_3",
+          "cityId": "manhattanGrid",
+          "parent": "c_5_3",
+          "generation": 3,
+          "score": 0.9265,
+          "roadKm": 18.34,
+          "buildings": 1689,
+          "ms": 5814,
+          "evaluateMs": 234,
+          "generateMs": 5580,
+          "heapMB": 71
+        },
+        {
+          "step": 12,
+          "chunkId": "c_-1_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_-4",
+          "generation": 2,
+          "score": 1,
+          "roadKm": 15.36,
+          "buildings": 1948,
+          "ms": 5344,
+          "evaluateMs": 253,
+          "generateMs": 5091,
+          "heapMB": 93
+        },
+        {
+          "step": 13,
+          "chunkId": "c_0_-1",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_0_0",
+          "generation": 1,
+          "score": 0.5816,
+          "roadKm": 5.55,
+          "buildings": 646,
+          "ms": 3297,
+          "evaluateMs": 209,
+          "generateMs": 3088,
+          "heapMB": 72
+        },
+        {
+          "step": 14,
+          "chunkId": "c_0_6",
+          "cityId": "fezOrganicCore",
+          "parent": "c_1_6",
+          "generation": 1,
+          "score": 0.7357,
+          "roadKm": 3.4,
+          "buildings": 332,
+          "ms": 2421,
+          "evaluateMs": 1,
+          "generateMs": 2421,
+          "heapMB": 68
+        },
+        {
+          "step": 15,
+          "chunkId": "c_3_4",
+          "cityId": "manhattanGrid",
+          "parent": "c_4_4",
+          "generation": 1,
+          "score": 0.7383,
+          "roadKm": 6.23,
+          "buildings": 428,
+          "ms": 2275,
+          "evaluateMs": 246,
+          "generateMs": 2029,
+          "heapMB": 29
+        },
+        {
+          "step": 16,
+          "chunkId": "c_-4_2",
+          "cityId": "lisbonHillCore",
+          "parent": "c_-3_2",
+          "generation": 1,
+          "score": 0.6717,
+          "roadKm": 7.14,
+          "buildings": 651,
+          "ms": 1773,
+          "evaluateMs": 121,
+          "generateMs": 1651,
+          "heapMB": 35
+        },
+        {
+          "step": 17,
+          "chunkId": "c_7_3",
+          "cityId": "manhattanGrid",
+          "parent": "c_6_3",
+          "generation": 4,
+          "score": 0.9211,
+          "roadKm": 17.41,
+          "buildings": 1617,
+          "ms": 4487,
+          "evaluateMs": 183,
+          "generateMs": 4305,
+          "heapMB": 47
+        },
+        {
+          "step": 18,
+          "chunkId": "c_0_-3",
+          "cityId": "chicagoGrid",
+          "parent": "c_0_-4",
+          "generation": 2,
+          "score": 0.8291,
+          "roadKm": 16.38,
+          "buildings": 2146,
+          "ms": 5686,
+          "evaluateMs": 357,
+          "generateMs": 5329,
+          "heapMB": 72
+        },
+        {
+          "step": 19,
+          "chunkId": "c_-1_1",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_-1_0",
+          "generation": 2,
+          "score": 0.4775,
+          "roadKm": 5.27,
+          "buildings": 498,
+          "ms": 3268,
+          "evaluateMs": 1,
+          "generateMs": 3267,
+          "heapMB": 30
+        },
+        {
+          "step": 20,
+          "chunkId": "c_1_4",
+          "cityId": "fezOrganicCore",
+          "parent": "c_1_5",
+          "generation": 2,
+          "score": 0.8422,
+          "roadKm": 4.36,
+          "buildings": 302,
+          "ms": 1982,
+          "evaluateMs": 1,
+          "generateMs": 1981,
+          "heapMB": 65
+        },
+        {
+          "step": 21,
+          "chunkId": "c_-6_-1",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_-5_-1",
+          "generation": 1,
+          "score": 0.542,
+          "roadKm": 5.89,
+          "buildings": 441,
+          "ms": 1645,
+          "evaluateMs": 91,
+          "generateMs": 1553,
+          "heapMB": 40
+        },
+        {
+          "step": 22,
+          "chunkId": "c_-2_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_-1_-4",
+          "generation": 3,
+          "score": 0.9862,
+          "roadKm": 16.38,
+          "buildings": 2133,
+          "ms": 5665,
+          "evaluateMs": 125,
+          "generateMs": 5540,
+          "heapMB": 82
+        },
+        {
+          "step": 23,
+          "chunkId": "c_-5_2",
+          "cityId": "lisbonHillCore",
+          "parent": "c_-4_2",
+          "generation": 2,
+          "score": 0.7977,
+          "roadKm": 7.08,
+          "buildings": 743,
+          "ms": 2114,
+          "evaluateMs": 369,
+          "generateMs": 1744,
+          "heapMB": 30
+        },
+        {
+          "step": 24,
+          "chunkId": "c_8_3",
+          "cityId": "manhattanGrid",
+          "parent": "c_7_3",
+          "generation": 5,
+          "score": 0.9512,
+          "roadKm": 18.43,
+          "buildings": 1689,
+          "ms": 4561,
+          "evaluateMs": 113,
+          "generateMs": 4449,
+          "heapMB": 63
+        },
+        {
+          "step": 25,
+          "chunkId": "c_-7_-1",
+          "cityId": "veniceWaterNetwork",
+          "parent": "c_-6_-1",
+          "generation": 2,
+          "score": 0.6155,
+          "roadKm": 5.87,
+          "buildings": 368,
+          "ms": 1832,
+          "evaluateMs": 363,
+          "generateMs": 1469,
+          "heapMB": 40
+        },
+        {
+          "step": 26,
+          "chunkId": "c_-1_6",
+          "cityId": "fezOrganicCore",
+          "parent": "c_0_6",
+          "generation": 2,
+          "score": 0.8292,
+          "roadKm": 4.4,
+          "buildings": 385,
+          "ms": 2723,
+          "evaluateMs": 333,
+          "generateMs": 2390,
+          "heapMB": 24
+        },
+        {
+          "step": 27,
+          "chunkId": "c_1_0",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_0_0",
+          "generation": 1,
+          "score": 0.4514,
+          "roadKm": 6.37,
+          "buildings": 658,
+          "ms": 3153,
+          "evaluateMs": 240,
+          "generateMs": 2912,
+          "heapMB": 59
+        },
+        {
+          "step": 28,
+          "chunkId": "c_3_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_2_-4",
+          "generation": 2,
+          "score": 0.6806,
+          "roadKm": 5.91,
+          "buildings": 395,
+          "ms": 2130,
+          "evaluateMs": 244,
+          "generateMs": 1886,
+          "heapMB": 37
+        },
+        {
+          "step": 29,
+          "chunkId": "c_1_1",
+          "cityId": "amsterdamCanalRing",
+          "parent": "c_1_0",
+          "generation": 2,
+          "score": 0.8331,
+          "roadKm": 0,
+          "buildings": 0,
+          "ms": 1476,
+          "evaluateMs": 316,
+          "generateMs": 1159,
+          "heapMB": 23
+        },
+        {
+          "step": 30,
+          "chunkId": "c_5_2",
+          "cityId": "manhattanGrid",
+          "parent": "c_5_3",
+          "generation": 3,
+          "score": 0.9397,
+          "roadKm": 18.43,
+          "buildings": 1656,
+          "ms": 3888,
+          "evaluateMs": 4,
+          "generateMs": 3884,
+          "heapMB": 32
+        }
+      ],
+      "stalled": null,
+      "stageC": {
+        "history": [
+          "1:c_2_-4:chicagoGrid<c_1_-4",
+          "2:c_5_4:manhattanGrid<c_4_4",
+          "3:c_-2_2:lisbonHillCore<c_-3_2",
+          "4:c_1_5:fezOrganicCore<c_1_6",
+          "5:c_0_-4:chicagoGrid<c_1_-4",
+          "6:c_-1_0:amsterdamCanalRing<c_0_0",
+          "7:c_5_3:manhattanGrid<c_5_4",
+          "8:c_-5_-2:veniceWaterNetwork<c_-5_-1",
+          "9:c_-3_3:lisbonHillCore<c_-3_2",
+          "10:c_0_-5:chicagoGrid<c_0_-4"
+        ],
+        "stats": {
+          "amsterdamCanalRing": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 5,
+            "rejected": 1,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 1
+            },
+            "stepsSinceLastGrowth": 4,
+            "best": 0.5344
+          },
+          "chicagoGrid": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 6,
+            "rejected": 1,
+            "rejectionReasons": {
+              "terrain type mountain incompatible": 1
+            },
+            "stepsSinceLastGrowth": 0,
+            "best": 0.8834
+          },
+          "fezOrganicCore": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 6,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 6,
+            "best": 0.8225
+          },
+          "lisbonHillCore": {
+            "chunks": 3,
+            "grown": 2,
+            "eligible": 7,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 1,
+            "best": 0.712
+          },
+          "manhattanGrid": {
+            "chunks": 3,
+            "grown": 2,
+            "eligible": 6,
+            "rejected": 1,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 1
+            },
+            "stepsSinceLastGrowth": 3,
+            "best": 0.9973
+          },
+          "veniceWaterNetwork": {
+            "chunks": 2,
+            "grown": 1,
+            "eligible": 1,
+            "rejected": 5,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 2,
+              "terrain type mountain incompatible": 3
+            },
+            "stepsSinceLastGrowth": 2,
+            "best": 0.5676
+          }
+        }
+      },
+      "final": {
+        "step": 30,
+        "chunks": 36,
+        "maxGeneration": 5,
+        "perCity": {
+          "amsterdamCanalRing": {
+            "chunks": 6,
+            "grown": 5,
+            "eligible": 6,
+            "rejected": 4,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 2,
+              "slope barrier: mean land slope #° > #°": 2
+            },
+            "stepsSinceLastGrowth": 1,
+            "best": 0.7373
+          },
+          "chicagoGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 9,
+            "rejected": 5,
+            "rejectionReasons": {
+              "terrain type mountain incompatible": 5
+            },
+            "stepsSinceLastGrowth": 2,
+            "best": 0.9165
+          },
+          "fezOrganicCore": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 11,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 4,
+            "best": 0.7922
+          },
+          "lisbonHillCore": {
+            "chunks": 5,
+            "grown": 4,
+            "eligible": 10,
+            "rejected": 0,
+            "rejectionReasons": {},
+            "stepsSinceLastGrowth": 7,
+            "best": 0.7841
+          },
+          "manhattanGrid": {
+            "chunks": 8,
+            "grown": 7,
+            "eligible": 11,
+            "rejected": 2,
+            "rejectionReasons": {
+              "slope barrier: mean land slope #° > #°": 2
+            },
+            "stepsSinceLastGrowth": 0,
+            "best": 0.9126
+          },
+          "veniceWaterNetwork": {
+            "chunks": 4,
+            "grown": 3,
+            "eligible": 0,
+            "rejected": 9,
+            "rejectionReasons": {
+              "DNA conflict: noWater": 4,
+              "terrain type mountain incompatible": 5
+            },
+            "stepsSinceLastGrowth": 5,
+            "best": 0
+          }
+        }
+      },
+      "conflicts": {
+        "sharedEdges": 30,
+        "sameCity": 30,
+        "cityBoundary": 0,
+        "geometry": {
+          "step": 13,
+          "cliff": 17
+        },
+        "hydrology": {
+          "continuous": 16,
+          "discontinuous": 14
+        },
+        "unpairedRoadPorts": 94
+      },
+      "contestedSteps": [],
+      "emptyChunks": [
+        "c_0_0 amsterdamCanalRing core",
+        "c_-1_0 amsterdamCanalRing growth",
+        "c_1_1 amsterdamCanalRing growth"
+      ],
+      "reproducible": true,
+      "saveLoadContinue": true,
+      "unchanged": true,
+      "totalMs": 260149,
+      "heapStartMB": 49,
+      "heapEndMB": 32
+    }
+  },
+  "staticScan": {
+    "files": 11,
+    "forbidden": [
+      "new WorldGrid",
+      "fuseNetwork",
+      "stitchRoads",
+      "coordinateTerrain",
+      "harmonizeWorld",
+      "coordinateWorld",
+      "influenceField",
+      "setInfluence",
+      "mixedRules"
+    ],
+    "hits": 0,
+    "note": "only the pure layer functions generateRawLayer / generateTerrainLayer / generateNetworkLayer / generateUrbanLayer and the RULES table are imported from world-grid/"
+  },
+  "browser": {
+    "screenshots": {
+      "origins": "docs/assets/screenshots/procedural-mini-world/g02-growth-origins-after.png",
+      "frontier": "docs/assets/screenshots/procedural-mini-world/g02-growth-frontier-debug.png",
+      "step1": "docs/assets/screenshots/procedural-mini-world/g02-growth-step1-after.png",
+      "step10": "docs/assets/screenshots/procedural-mini-world/g02-growth-step10-after.png",
+      "step30": "docs/assets/screenshots/procedural-mini-world/g02-growth-step30-after.png",
+      "closeup": "docs/assets/screenshots/procedural-mini-world/g02-growth-chunk-closeup-after.png",
+      "compare": "docs/assets/screenshots/procedural-mini-world/g02-growth-seed-compare.png"
+    },
+    "seeds": {
+      "6201": {
+        "originsMs": 26314,
+        "originsHeapMB": 250,
+        "step1Ms": 4462,
+        "steps11to30Ms": 52914,
+        "timing": [
+          {
+            "step": 1,
+            "chunkId": "c_-2_1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 1,
+            "generateMs": 4236,
+            "renderMs": 121,
+            "totalMs": 4359,
+            "heapMB": 192
+          },
+          {
+            "step": 2,
+            "chunkId": "c_4_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 239,
+            "generateMs": 1749,
+            "renderMs": 70,
+            "totalMs": 2058,
+            "heapMB": 202
+          },
+          {
+            "step": 3,
+            "chunkId": "c_6_0",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 406,
+            "generateMs": 1963,
+            "renderMs": 108,
+            "totalMs": 2478,
+            "heapMB": 234
+          },
+          {
+            "step": 4,
+            "chunkId": "c_-1_-4",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 308,
+            "generateMs": 2778,
+            "renderMs": 88,
+            "totalMs": 3175,
+            "heapMB": 335
+          },
+          {
+            "step": 5,
+            "chunkId": "c_0_7",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 270,
+            "generateMs": 1893,
+            "renderMs": 75,
+            "totalMs": 2238,
+            "heapMB": 277
+          },
+          {
+            "step": 6,
+            "chunkId": "c_-1_1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 386,
+            "generateMs": 4328,
+            "renderMs": 125,
+            "totalMs": 4838,
+            "heapMB": 304
+          },
+          {
+            "step": 7,
+            "chunkId": "c_-1_3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 255,
+            "generateMs": 948,
+            "renderMs": 65,
+            "totalMs": 1267,
+            "heapMB": 357
+          },
+          {
+            "step": 8,
+            "chunkId": "c_3_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 1,
+            "generateMs": 1908,
+            "renderMs": 63,
+            "totalMs": 1972,
+            "heapMB": 300
+          },
+          {
+            "step": 9,
+            "chunkId": "c_-1_0",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 244,
+            "generateMs": 4092,
+            "renderMs": 148,
+            "totalMs": 4485,
+            "heapMB": 270
+          },
+          {
+            "step": 10,
+            "chunkId": "c_-2_-4",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 97,
+            "generateMs": 2672,
+            "renderMs": 77,
+            "totalMs": 2845,
+            "heapMB": 330
+          },
+          {
+            "step": 11,
+            "chunkId": "c_5_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 244,
+            "generateMs": 5133,
+            "renderMs": 155,
+            "totalMs": 5531,
+            "heapMB": 288
+          },
+          {
+            "step": 12,
+            "chunkId": "c_2_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 276,
+            "generateMs": 5097,
+            "renderMs": 147,
+            "totalMs": 5520,
+            "heapMB": 404
+          },
+          {
+            "step": 13,
+            "chunkId": "c_6_-1",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 360,
+            "generateMs": 2111,
+            "renderMs": 80,
+            "totalMs": 2552,
+            "heapMB": 371
+          },
+          {
+            "step": 14,
+            "chunkId": "c_1_3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 196,
+            "generateMs": 1430,
+            "renderMs": 62,
+            "totalMs": 1688,
+            "heapMB": 493
+          },
+          {
+            "step": 15,
+            "chunkId": "c_0_5",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 185,
+            "generateMs": 1440,
+            "renderMs": 73,
+            "totalMs": 1698,
+            "heapMB": 493
+          },
+          {
+            "step": 16,
+            "chunkId": "c_1_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 177,
+            "generateMs": 1550,
+            "renderMs": 67,
+            "totalMs": 1794,
+            "heapMB": 412
+          },
+          {
+            "step": 17,
+            "chunkId": "c_-2_-1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 299,
+            "generateMs": 1617,
+            "renderMs": 100,
+            "totalMs": 2016,
+            "heapMB": 557
+          },
+          {
+            "step": 18,
+            "chunkId": "c_6_1",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 103,
+            "generateMs": 2139,
+            "renderMs": 112,
+            "totalMs": 2355,
+            "heapMB": 435
+          },
+          {
+            "step": 19,
+            "chunkId": "c_-1_6",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 195,
+            "generateMs": 1477,
+            "renderMs": 69,
+            "totalMs": 1741,
+            "heapMB": 503
+          },
+          {
+            "step": 20,
+            "chunkId": "c_5_-6",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 130,
+            "generateMs": 2028,
+            "renderMs": 98,
+            "totalMs": 2257,
+            "heapMB": 458
+          },
+          {
+            "step": 21,
+            "chunkId": "c_2_3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 238,
+            "generateMs": 956,
+            "renderMs": 80,
+            "totalMs": 1274,
+            "heapMB": 513
+          },
+          {
+            "step": 22,
+            "chunkId": "c_-1_2",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 256,
+            "generateMs": 3727,
+            "renderMs": 109,
+            "totalMs": 4092,
+            "heapMB": 627
+          },
+          {
+            "step": 23,
+            "chunkId": "c_0_-4",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 2,
+            "generateMs": 2032,
+            "renderMs": 82,
+            "totalMs": 2116,
+            "heapMB": 495
+          },
+          {
+            "step": 24,
+            "chunkId": "c_-2_-2",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 1,
+            "generateMs": 4053,
+            "renderMs": 119,
+            "totalMs": 4173,
+            "heapMB": 518
+          },
+          {
+            "step": 25,
+            "chunkId": "c_7_-1",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 1,
+            "generateMs": 1863,
+            "renderMs": 89,
+            "totalMs": 1952,
+            "heapMB": 630
+          },
+          {
+            "step": 26,
+            "chunkId": "c_1_-6",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 221,
+            "generateMs": 1823,
+            "renderMs": 64,
+            "totalMs": 2108,
+            "heapMB": 516
+          },
+          {
+            "step": 27,
+            "chunkId": "c_1_7",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 88,
+            "generateMs": 1471,
+            "renderMs": 93,
+            "totalMs": 1653,
+            "heapMB": 616
+          },
+          {
+            "step": 28,
+            "chunkId": "c_5_-1",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 214,
+            "generateMs": 699,
+            "renderMs": 84,
+            "totalMs": 997,
+            "heapMB": 709
+          },
+          {
+            "step": 29,
+            "chunkId": "c_-3_-2",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 211,
+            "generateMs": 3708,
+            "renderMs": 102,
+            "totalMs": 4022,
+            "heapMB": 589
+          },
+          {
+            "step": 30,
+            "chunkId": "c_3_3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 1,
+            "generateMs": 2510,
+            "renderMs": 79,
+            "totalMs": 2590,
+            "heapMB": 695
+          }
+        ],
+        "heapMB": 673,
+        "chunks": 36
+      },
+      "6202": {
+        "originsMs": 25089,
+        "originsHeapMB": 197,
+        "step1Ms": 4579,
+        "steps11to30Ms": 64339,
+        "timing": [
+          {
+            "step": 1,
+            "chunkId": "c_0_2",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 1,
+            "generateMs": 4365,
+            "renderMs": 121,
+            "totalMs": 4487,
+            "heapMB": 211
+          },
+          {
+            "step": 2,
+            "chunkId": "c_-3_0",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 214,
+            "generateMs": 3698,
+            "renderMs": 111,
+            "totalMs": 4023,
+            "heapMB": 250
+          },
+          {
+            "step": 3,
+            "chunkId": "c_-1_2",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 352,
+            "generateMs": 4761,
+            "renderMs": 103,
+            "totalMs": 5216,
+            "heapMB": 279
+          },
+          {
+            "step": 4,
+            "chunkId": "c_-5_-2",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 209,
+            "generateMs": 3345,
+            "renderMs": 103,
+            "totalMs": 3657,
+            "heapMB": 383
+          },
+          {
+            "step": 5,
+            "chunkId": "c_4_1",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 222,
+            "generateMs": 2375,
+            "renderMs": 90,
+            "totalMs": 2687,
+            "heapMB": 296
+          },
+          {
+            "step": 6,
+            "chunkId": "c_1_-2",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 91,
+            "generateMs": 1411,
+            "renderMs": 83,
+            "totalMs": 1585,
+            "heapMB": 328
+          },
+          {
+            "step": 7,
+            "chunkId": "c_-3_1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 275,
+            "generateMs": 3995,
+            "renderMs": 134,
+            "totalMs": 4404,
+            "heapMB": 357
+          },
+          {
+            "step": 8,
+            "chunkId": "c_4_-3",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 112,
+            "generateMs": 2329,
+            "renderMs": 112,
+            "totalMs": 2553,
+            "heapMB": 350
+          },
+          {
+            "step": 9,
+            "chunkId": "c_1_3",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 191,
+            "generateMs": 4523,
+            "renderMs": 119,
+            "totalMs": 4834,
+            "heapMB": 408
+          },
+          {
+            "step": 10,
+            "chunkId": "c_-2_1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 184,
+            "generateMs": 3861,
+            "renderMs": 121,
+            "totalMs": 4166,
+            "heapMB": 376
+          },
+          {
+            "step": 11,
+            "chunkId": "c_2_2",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 1,
+            "generateMs": 4644,
+            "renderMs": 106,
+            "totalMs": 4751,
+            "heapMB": 407
+          },
+          {
+            "step": 12,
+            "chunkId": "c_-4_-3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 209,
+            "generateMs": 2796,
+            "renderMs": 75,
+            "totalMs": 3080,
+            "heapMB": 424
+          },
+          {
+            "step": 13,
+            "chunkId": "c_-4_1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 109,
+            "generateMs": 4491,
+            "renderMs": 89,
+            "totalMs": 4689,
+            "heapMB": 518
+          },
+          {
+            "step": 14,
+            "chunkId": "c_0_-1",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 128,
+            "generateMs": 1409,
+            "renderMs": 77,
+            "totalMs": 1614,
+            "heapMB": 435
+          },
+          {
+            "step": 15,
+            "chunkId": "c_2_1",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 1,
+            "generateMs": 4798,
+            "renderMs": 88,
+            "totalMs": 4886,
+            "heapMB": 536
+          },
+          {
+            "step": 16,
+            "chunkId": "c_3_1",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 1,
+            "generateMs": 2407,
+            "renderMs": 87,
+            "totalMs": 2494,
+            "heapMB": 462
+          },
+          {
+            "step": 17,
+            "chunkId": "c_4_-4",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 104,
+            "generateMs": 1870,
+            "renderMs": 82,
+            "totalMs": 2056,
+            "heapMB": 561
+          },
+          {
+            "step": 18,
+            "chunkId": "c_-4_-4",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 176,
+            "generateMs": 1311,
+            "renderMs": 80,
+            "totalMs": 1567,
+            "heapMB": 449
+          },
+          {
+            "step": 19,
+            "chunkId": "c_-4_-1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 100,
+            "generateMs": 3854,
+            "renderMs": 98,
+            "totalMs": 4052,
+            "heapMB": 563
+          },
+          {
+            "step": 20,
+            "chunkId": "c_-5_-1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 2,
+            "generateMs": 3761,
+            "renderMs": 114,
+            "totalMs": 3877,
+            "heapMB": 605
+          },
+          {
+            "step": 21,
+            "chunkId": "c_0_3",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 127,
+            "generateMs": 4946,
+            "renderMs": 112,
+            "totalMs": 5186,
+            "heapMB": 534
+          },
+          {
+            "step": 22,
+            "chunkId": "c_0_0",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 105,
+            "generateMs": 1482,
+            "renderMs": 67,
+            "totalMs": 1653,
+            "heapMB": 612
+          },
+          {
+            "step": 23,
+            "chunkId": "c_3_0",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 119,
+            "generateMs": 2602,
+            "renderMs": 81,
+            "totalMs": 2802,
+            "heapMB": 569
+          },
+          {
+            "step": 24,
+            "chunkId": "c_-6_-1",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 121,
+            "generateMs": 4159,
+            "renderMs": 116,
+            "totalMs": 4396,
+            "heapMB": 678
+          },
+          {
+            "step": 25,
+            "chunkId": "c_4_-5",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 221,
+            "generateMs": 2220,
+            "renderMs": 112,
+            "totalMs": 2553,
+            "heapMB": 581
+          },
+          {
+            "step": 26,
+            "chunkId": "c_-6_-3",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 329,
+            "generateMs": 3363,
+            "renderMs": 75,
+            "totalMs": 3767,
+            "heapMB": 702
+          },
+          {
+            "step": 27,
+            "chunkId": "c_2_0",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 228,
+            "generateMs": 1885,
+            "renderMs": 82,
+            "totalMs": 2195,
+            "heapMB": 800
+          },
+          {
+            "step": 28,
+            "chunkId": "c_-1_-1",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 1,
+            "generateMs": 1551,
+            "renderMs": 80,
+            "totalMs": 1632,
+            "heapMB": 616
+          },
+          {
+            "step": 29,
+            "chunkId": "c_-5_-4",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 1,
+            "generateMs": 3390,
+            "renderMs": 105,
+            "totalMs": 3495,
+            "heapMB": 706
+          },
+          {
+            "step": 30,
+            "chunkId": "c_0_1",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 126,
+            "generateMs": 2557,
+            "renderMs": 96,
+            "totalMs": 2779,
+            "heapMB": 556
+          }
+        ],
+        "heapMB": 556,
+        "chunks": 36
+      },
+      "6203": {
+        "originsMs": 23117,
+        "originsHeapMB": 141,
+        "step1Ms": 4575,
+        "steps11to30Ms": 63708,
+        "timing": [
+          {
+            "step": 1,
+            "chunkId": "c_2_-4",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 1,
+            "generateMs": 4398,
+            "renderMs": 97,
+            "totalMs": 4496,
+            "heapMB": 194
+          },
+          {
+            "step": 2,
+            "chunkId": "c_5_4",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 132,
+            "generateMs": 1287,
+            "renderMs": 70,
+            "totalMs": 1488,
+            "heapMB": 279
+          },
+          {
+            "step": 3,
+            "chunkId": "c_-2_2",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 310,
+            "generateMs": 1690,
+            "renderMs": 88,
+            "totalMs": 2088,
+            "heapMB": 258
+          },
+          {
+            "step": 4,
+            "chunkId": "c_1_5",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 224,
+            "generateMs": 2094,
+            "renderMs": 72,
+            "totalMs": 2389,
+            "heapMB": 274
+          },
+          {
+            "step": 5,
+            "chunkId": "c_0_-4",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 319,
+            "generateMs": 5072,
+            "renderMs": 96,
+            "totalMs": 5486,
+            "heapMB": 289
+          },
+          {
+            "step": 6,
+            "chunkId": "c_-1_0",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 131,
+            "generateMs": 649,
+            "renderMs": 81,
+            "totalMs": 860,
+            "heapMB": 343
+          },
+          {
+            "step": 7,
+            "chunkId": "c_5_3",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 171,
+            "generateMs": 3940,
+            "renderMs": 145,
+            "totalMs": 4255,
+            "heapMB": 350
+          },
+          {
+            "step": 8,
+            "chunkId": "c_-5_-2",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 225,
+            "generateMs": 1407,
+            "renderMs": 83,
+            "totalMs": 1715,
+            "heapMB": 328
+          },
+          {
+            "step": 9,
+            "chunkId": "c_-3_3",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 281,
+            "generateMs": 1589,
+            "renderMs": 102,
+            "totalMs": 1971,
+            "heapMB": 261
+          },
+          {
+            "step": 10,
+            "chunkId": "c_0_-5",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 86,
+            "generateMs": 4733,
+            "renderMs": 112,
+            "totalMs": 4931,
+            "heapMB": 381
+          },
+          {
+            "step": 11,
+            "chunkId": "c_6_3",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 176,
+            "generateMs": 4973,
+            "renderMs": 166,
+            "totalMs": 5314,
+            "heapMB": 355
+          },
+          {
+            "step": 12,
+            "chunkId": "c_-1_-4",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 238,
+            "generateMs": 4874,
+            "renderMs": 116,
+            "totalMs": 5227,
+            "heapMB": 400
+          },
+          {
+            "step": 13,
+            "chunkId": "c_0_-1",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 196,
+            "generateMs": 3188,
+            "renderMs": 78,
+            "totalMs": 3462,
+            "heapMB": 489
+          },
+          {
+            "step": 14,
+            "chunkId": "c_0_6",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 1,
+            "generateMs": 2171,
+            "renderMs": 79,
+            "totalMs": 2251,
+            "heapMB": 384
+          },
+          {
+            "step": 15,
+            "chunkId": "c_3_4",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 195,
+            "generateMs": 1991,
+            "renderMs": 102,
+            "totalMs": 2288,
+            "heapMB": 498
+          },
+          {
+            "step": 16,
+            "chunkId": "c_-4_2",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 107,
+            "generateMs": 1547,
+            "renderMs": 92,
+            "totalMs": 1746,
+            "heapMB": 414
+          },
+          {
+            "step": 17,
+            "chunkId": "c_7_3",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 177,
+            "generateMs": 3753,
+            "renderMs": 118,
+            "totalMs": 4048,
+            "heapMB": 534
+          },
+          {
+            "step": 18,
+            "chunkId": "c_0_-3",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 361,
+            "generateMs": 4720,
+            "renderMs": 107,
+            "totalMs": 5188,
+            "heapMB": 485
+          },
+          {
+            "step": 19,
+            "chunkId": "c_-1_1",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 1,
+            "generateMs": 2890,
+            "renderMs": 87,
+            "totalMs": 2978,
+            "heapMB": 549
+          },
+          {
+            "step": 20,
+            "chunkId": "c_1_4",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 1,
+            "generateMs": 1808,
+            "renderMs": 64,
+            "totalMs": 1873,
+            "heapMB": 472
+          },
+          {
+            "step": 21,
+            "chunkId": "c_-6_-1",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 112,
+            "generateMs": 1556,
+            "renderMs": 78,
+            "totalMs": 1746,
+            "heapMB": 541
+          },
+          {
+            "step": 22,
+            "chunkId": "c_-2_-4",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 114,
+            "generateMs": 5463,
+            "renderMs": 162,
+            "totalMs": 5739,
+            "heapMB": 450
+          },
+          {
+            "step": 23,
+            "chunkId": "c_-5_2",
+            "cityId": "lisbonHillCore",
+            "evaluateMs": 304,
+            "generateMs": 1609,
+            "renderMs": 97,
+            "totalMs": 2011,
+            "heapMB": 548
+          },
+          {
+            "step": 24,
+            "chunkId": "c_8_3",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 111,
+            "generateMs": 4444,
+            "renderMs": 127,
+            "totalMs": 4682,
+            "heapMB": 660
+          },
+          {
+            "step": 25,
+            "chunkId": "c_-7_-1",
+            "cityId": "veniceWaterNetwork",
+            "evaluateMs": 289,
+            "generateMs": 1324,
+            "renderMs": 72,
+            "totalMs": 1685,
+            "heapMB": 550
+          },
+          {
+            "step": 26,
+            "chunkId": "c_-1_6",
+            "cityId": "fezOrganicCore",
+            "evaluateMs": 294,
+            "generateMs": 2248,
+            "renderMs": 77,
+            "totalMs": 2619,
+            "heapMB": 635
+          },
+          {
+            "step": 27,
+            "chunkId": "c_1_0",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 212,
+            "generateMs": 2566,
+            "renderMs": 108,
+            "totalMs": 2886,
+            "heapMB": 664
+          },
+          {
+            "step": 28,
+            "chunkId": "c_3_-4",
+            "cityId": "chicagoGrid",
+            "evaluateMs": 244,
+            "generateMs": 1780,
+            "renderMs": 84,
+            "totalMs": 2108,
+            "heapMB": 592
+          },
+          {
+            "step": 29,
+            "chunkId": "c_1_1",
+            "cityId": "amsterdamCanalRing",
+            "evaluateMs": 292,
+            "generateMs": 974,
+            "renderMs": 60,
+            "totalMs": 1325,
+            "heapMB": 717
+          },
+          {
+            "step": 30,
+            "chunkId": "c_5_2",
+            "cityId": "manhattanGrid",
+            "evaluateMs": 2,
+            "generateMs": 3657,
+            "renderMs": 122,
+            "totalMs": 3781,
+            "heapMB": 712
+          }
+        ],
+        "heapMB": 559,
+        "chunks": 36
+      }
+    },
+    "closeupChunk": {
+      "chunkId": "c_5_-5",
+      "cityId": "chicagoGrid",
+      "step": 11,
+      "roadKm": 16.38,
+      "networkEdges": 126,
+      "blocks": 66,
+      "parcels": 2270,
+      "buildings": 2071
+    },
+    "restoreMs": 96381,
+    "restore": {
+      "chunks": 36,
+      "mismatches": 0,
+      "continuedStep": 31,
+      "sameAsUninterrupted": true
+    },
+    "errors": []
+  },
+  "nodeMs": 824392
+}

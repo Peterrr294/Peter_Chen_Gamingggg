@@ -21,7 +21,11 @@
 - **Update (2026-10-27, task G01 by user instruction):** `WorldGrowthController` + Growth Debug UI in `experiments/growing-world/` — six city cores, one chunk per step from a growth frontier, save / load and continuation; verified on 3 world seeds. Pending review (entry G01 in §7).
 - **Update (2026-10-28, task G00-R by user instruction):** research framing re-established as **A City of Cities — The Emergence of a Plural Urban World through Procedural Growth** in [A-City-of-Cities-Research-Compass.md](./A-City-of-Cities-Research-Compass.md). That page is the authority for question, theory, World / City / Chunk levels, hypotheses H1–H3, experiments A–C and the G00–G05 roadmap; this section and §5 stay the authority for stage status. Roadmap mapping: the entry logged as G01 (2026-10-27) covers roadmap G01 and a baseline of G02.
 - **Update (2026-10-28, task G01-MO by user instruction):** roadmap G01 Multi-Origin Initialization implemented as `experiments/city-of-cities/` (World Context, City Origins, independent core chunks, origin suitability, World State v1, no growth). Verified on 3 seeds; pending review (entry G01-MO). It replaces the proposed G01-R. The 2026-10-27 growth prototype stays runnable as an earlier exploratory experiment.
-- **Current single task:** Review G01-MO (and G01 prototype, G00-R); G02 Rule-Based Growth only after the review.
+- **Update (2026-10-28, task G02 by user instruction):** growth frontier, suitability, scheduler and single-step growth implemented in `experiments/city-of-cities/`; Node verification passed on seeds 6201 and 6203 (30 steps). **Stopped:** seed 6202 cannot initialise six cities because of a G01 origin-screen defect (entry G02). Browser stage, screenshots and the G02 note pending.
+- **Update (2026-10-28, tasks G01-FIX and G02-V by user instruction):** G01 origin placement v2 (water-aware screen, waterfront check, bounded expansion, atomic failure) fixes seed 6202; G01 re-verified on 6201 / 6202 / 6203; G02 verified on all three seeds in Node and the browser up to 30 steps. Both pending review (entries G01-FIX, G02-V).
+- **Current single task:** Review G01-FIX and G02 (spatial review of the seed comparison); no G03 work before the review.
+- *Previous (superseded 2026-10-28, G02-V):* "Decide the G01 origin-screen fix (or a replacement seed for 6202); then finish G02 verification."
+- *Previous (superseded 2026-10-28, G02):* "Review G01-MO (and G01 prototype, G00-R); G02 Rule-Based Growth only after the review."
 - *Previous (superseded 2026-10-28, G01-MO):* "Review G01 and the Research Compass (G00-R); if accepted, G01-R (City Agent record and cell-state field, outputs unchanged; compass §14)."
 - *Previous (superseded 2026-10-28):* "Review G01 (growth rules, territories, reported seams); then choose G02 (see the G01 entry)."
 - **Forbidden now:** City Invasion & Fusion in the growing world, cross-city road fusion, new tunnel system, new building assets, rewriting the Terrain Seam system, new cities beyond the six DNAs, gameplay, visual polish — until the G01 review sets the next task.
@@ -85,7 +89,7 @@ Goals, reuse, new components, dependencies, verification and visual output per s
 | --- | --- | --- |
 | G00 | Preserve & Recover: earlier experiments, Git baseline, independent chunk generator | Done: checkpoint `79687a0` (entry G00) |
 | G01 | Multi-Origin Initialization: six cores, spacing, suitability recorded | Implemented, verified, pending review: `experiments/city-of-cities/` (entry G01-MO); earlier prototype with growth in `experiments/growing-world/` (entry G01, commit `c3e2e5f`) |
-| G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Baseline implemented and verified within entry G01; Growth DNA fields and experiment modes proposed |
+| G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Implemented, verified, pending review: [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (entries G02, G01-FIX, G02-V); random / uniform modes proposed |
 | G03 | City Territory & Encounter: reserves, encounter zones, corridors, boundary types | Partial (contests and boundary edges recorded); rest proposed |
 | G04 | Morphological Growth: DNA and growth stage in roads, blocks, buildings | Not started |
 | G05 | Evaluation & Replay: replay, metrics, experiments A–C | Partial (history, save / load); rest proposed |
@@ -1068,3 +1072,102 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   6. Growth DNA still lacks three fields.
 - **Review status:** Pending review.
 - **Next single task:** after review, G02 Rule-Based Growth on `WorldContext` (suggestions in the note §10). Stop here.
+
+### G02 — Procedural Urban Growth (in progress: blocked by a G01 placement defect on seed 6202)
+
+- **Date / Stage / Single question:** 2026-10-28 / G02, by user instruction / Can the six cities grow chunk by chunk from their own growth frontiers, with explainable suitability, a fair seeded scheduler and real chunk generation, reproducibly and with save / load continuation?
+- **Status:** **Implemented, partially verified, stopped.**
+  - Required seeds: 6201 / 6202 / 6203.
+  - Seed **6202 cannot initialise six cities** with the G01 rules. Per the task rule, G02 stopped at this point and waits for a decision on G01.
+  - Browser verification, screenshots and the G02 Obsidian note are **Pending**.
+- **G01 defect found (not patched):**
+  - On seed 6202 Amsterdam gets a placement failure: all 8 probed sites are dry plains rejected by `noWater`.
+  - The G01 screen ranks sites only by landform compatibility. For Amsterdam, plain and coast both rate 0.9, so wet coast / river-valley cells are never probed.
+  - The failure message's suggestion is also wrong: searchRadius 8 still fails (checked).
+  - A fix (make the screen water-aware for water-required cities) would change G01 origins on other seeds, so it needs a review decision.
+- **Implementation (uncommitted), in `experiments/city-of-cities/`:**
+  - `growthDNA.js`: 5 public growth weights; six Growth DNA profiles (A); rule constants.
+  - `GrowthEvaluation.js`: terrain, water, infrastructure and urban groups from real probes; flood risk marked unavailable; distance to water beyond the cell falls back to wet neighbour landforms (flagged).
+  - `WorldGrowthController.js`: N / S / E / W frontier, merged candidates and parent rule, city bid = rate × best score / (1 + grown) × seeded ±10 %, weighted seeded choice, deterministic occupation ruling, stalled state, conflict records, history events.
+  - `GrowthOverlay.js`: frontier and history overlays.
+  - `WorldContext.js` extended: probe slope / water / edge inputs, ports and edge profiles per generated chunk, `addGrowthChunk`, World State schema v2 (v1 still loads).
+  - `main.js` / `index.html`: Grow one / multiple (cap 30), Stop, Reset to origins, frontier / territory / history layers, chunk inspection.
+  - Verifier: `scripts/verify-city-growth.mjs`.
+  - No generator changed.
+- **Part A results (Node, seeds 6201 and 6203; stages A–D all passed):**
+  - Exactly one chunk per step; no overlap; every chunk traces to its core; each city territory 4-connected; generation = parent + 1.
+  - Every growth chunk generated by the full chain with its own DNA.
+  - 10-step twin run identical; save at step 5 → load → regenerate → continue to 10 identical to uninterrupted growth; cores and first five growth chunks unchanged at step 30; the two seeds give different histories.
+  - The static scan finds no call path into the World Grid class, seams or City Invasion.
+  - 30 steps, 36 chunks on both seeds, no stall, 0 contested cells.
+  - Chunks per city (Amsterdam / Chicago / Fez / Lisbon / Manhattan / Venice): 6201: 5 / 8 / 4 / 6 / 8 / 5; 6203: 5 / 8 / 5 / 6 / 8 / 4.
+  - Shared edges: 33 (6201) and 32 (6203), each with 1 city boundary; geometry 13 / 16 steps and 20 / 16 cliffs, 0 continuous; water discontinuous on 17 / 14; unpaired road ports 127 / 101.
+  - Per-step time median 2.3 s (6201) and 3.0 s (6203), max 6.4 / 7.6 s; 30 steps + checks 4.2–4.6 min per seed.
+- **Open issues (seen so far):**
+  1. The G01 placement defect above blocks seed 6202.
+  2. City chunk counts are almost identical across seeds: the bid's 1 / (1 + grown) term dominates, so the growth rate sets near-fixed quotas.
+  3. Empty chunks: Amsterdam growth chunks (and the 6203 Amsterdam core) generate 0 buildings.
+  4. 6203 Venice ends with 0 eligible candidates (mountain and `noWater` all around).
+  5. Seams are recorded, not repaired.
+  6. Jitter can push a score slightly above 1.
+- **Review status:** Pending; G02 is not complete.
+- **Next single task:** decide the G01 fix (water-aware origin screen) or a replacement seed for 6202; then run the browser stage and screenshots and write the G02 note.
+
+### G01-FIX — Origin placement v2 (water-aware screen, waterfront check, bounded expansion, atomic failure)
+
+- **Date / Stage / Single question:** 2026-10-28 / G01 fix, by user instruction (option 1 after entry G02) / Can seed 6202 initialise six cities by fixing only the origin screen for water-required cities, verifying real water, waterfront access and buildable land, without changing terrain, City DNA or growth rules?
+- **Changed files:**
+  - `experiments/city-of-cities/OriginPlacement.js`: water-aware screen, waterfront rejection, failure categories, bounded expansion rounds, `placementVersion`.
+  - `originConfig.js`: `waterfrontMin` 0.005, `expansionStep` 2, `maxExpansions` 2, `PLACEMENT_VERSION` 2.
+  - `WorldContext.js`: `waterfrontBuildable` probe field; atomic initialise; placement version in the saved state.
+  - `scripts/verify-city-of-cities.mjs`: seeds 6201 / 6202 / 6203, forced-failure test, legacy-state test.
+  - Legacy copy `experiments/city-of-cities/evidence/legacy/world-6201-g01-state.placement-v1.json`.
+- **Calibration:** a 12 m waterfront band was tried first and rejected all Venice sites on 6201 / 4242. Measuring 46 wet cells gave 32 m and 0.5 %.
+- **Before → after:**
+  - 6202: Amsterdam failure → 6 origins.
+  - 6201 and 4242: unchanged.
+  - 6203: 3 origins moved.
+  - 1234: 3 origins moved.
+  - Details: [G01 note §11](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) and `evidence/placement-v1-v2-compare.json`.
+- **Verification:** G01 verifier passes on 6201 / 6202 / 6203 (Node + browser):
+  - forced failure classified, 0 cities registered;
+  - pre-fix saved state loads unchanged;
+  - `verify-city-dna` 36 / 36 identical (06.1 artifacts restored from Git afterwards).
+- **Review status:** Pending review.
+
+### G02-V — Procedural Urban Growth, verification completed (seeds 6201 / 6202 / 6203)
+
+- **Date / Stage / Single question:** 2026-10-28 / G02 / Does the G02 growth (entry G02) pass stages A–D on the three required seeds after G01-FIX, in Node and in the browser, with reproducible history, persistence and real chunk generation?
+- **Code:** unchanged since entry G02. No growth rule was changed; G02 results change only through the new origins on 6202 / 6203.
+- **Note:** [A-City-of-Cities/G02-Procedural-Urban-Growth.md](./A-City-of-Cities/G02-Procedural-Urban-Growth.md): algorithm, Growth DNA, suitability parameters, scheduler, seeds, history, results, screenshots, limitations.
+- **Results:** `node scripts/verify-city-growth.mjs` passed: Part A in Node (824 s), Part B in the browser, 0 errors.
+  - All stages A (6 origins) / B (1 step) / C (10 steps) / D (30 steps) pass on all three seeds, with invariants after every step: no overlap, traceable to the core, 4-connected territory, generation = parent + 1.
+  - Determinism and persistence: 10-step twin identical; save at 5 → load → continue = uninterrupted; earlier chunks unchanged; the three histories differ.
+  - The browser history equals Node on every seed. Save at 30 → reload → load (0 mismatches) → step 31 equal to the uninterrupted step.
+  - Static scan: no World Grid class, seam or City Invasion calls.
+- **Chunks per city at step 30 (Venice / Manhattan / Fez / Amsterdam / Lisbon / Chicago):**
+  - 6201: 5 / 8 / 4 / 5 / 6 / 8
+  - 6202: 5 / 8 / 5 / 6 / 4 / 8
+  - 6203: 4 / 8 / 5 / 6 / 5 / 8
+  - No stall. 3 contested cells, all on 6202.
+- **Performance:**
+  - Node: step median 2.3–3.7 s, max 7.6 s.
+  - Browser: steps 11–30 53–64 s; heap 556–673 MB at 36 chunks; restore of 36 chunks 96 s.
+- **Screenshots:**
+  - ![Origins](../assets/screenshots/procedural-mini-world/g02-growth-origins-after.png)
+  - ![Frontier debug](../assets/screenshots/procedural-mini-world/g02-growth-frontier-debug.png)
+  - ![Step 1](../assets/screenshots/procedural-mini-world/g02-growth-step1-after.png)
+  - ![Step 10](../assets/screenshots/procedural-mini-world/g02-growth-step10-after.png)
+  - ![Step 30](../assets/screenshots/procedural-mini-world/g02-growth-step30-after.png)
+  - ![Growth chunk close-up](../assets/screenshots/procedural-mini-world/g02-growth-chunk-closeup-after.png)
+  - ![Seed comparison](../assets/screenshots/procedural-mini-world/g02-growth-seed-compare.png)
+- **Open issues:**
+  1. Near-fixed quotas from the bid's 1 / (1 + grown) term.
+  2. Empty Amsterdam chunks (6201: 2; 6203: core + 2).
+  3. Venice trapped on 6203 (0 eligible).
+  4. Seams: 0 continuous edges, 94–127 unpaired road ports.
+  5. Few city boundaries (0–4).
+  6. Jitter can push a score above 1.
+  7. Synchronous generation, memory without unloading.
+- **Review status:** Pending review.
+- **Next single task:** spatial review of G02 (seed sheet), then a decision on the scheduler quota effect and a generator viability check before G03.

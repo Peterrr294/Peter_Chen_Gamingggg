@@ -224,3 +224,51 @@ Full per-seed records: [city-origins.json](../../../experiments/city-of-cities/e
 4. **Scheduler.** Port the prototype's fair queue (fewest chunks per rate), with a hashed tie-break as in the claim order.
 5. **Experiment modes from the start.** Random selection (B0) and uniform Growth DNA (C0) as switches, so Experiments B and C need no new code paths later.
 6. **Determinism tests carried over:** input order, generation order, save → load → continue, and cross-runtime (excluding network metadata, or rounding `axisDeg` in a signature adapter outside the generator).
+
+## 11. Fix 2026-10-28 — placement v2 (log entry G01-FIX)
+
+**Why:** with placement v1, seed 6202 could not initialise six cities. The origin screen ranked sites only by landform compatibility. For Amsterdam, plain and coast both rate 0.9, so all 8 probe slots went to dry plains (each rejected by `noWater`) and no wet cell was ever probed. The v1 failure message suggested a larger radius, which did not help (radius 8 also failed).
+
+**Changes (minimal; terrain, City DNA and growth rules untouched):**
+
+1. **Water-aware screen.** Only for cities whose origin profile *requires* water (Venice, Amsterdam), coast and river-valley sites are probed first. The landform alone never qualifies a site.
+2. **Real waterfront check after probing.** A water-required site must have:
+   - water share ≥ 2 %;
+   - no triggered 02.6 `noWater` conflict;
+   - buildable land within 32 m of water ≥ 0.5 % of the cell (`waterfrontBuildable`, measured from the water and buildable masks);
+   - enough buildable area, as before.
+
+   A 12 m band was tried first and rejected every Venice site, because the non-buildable shore belt (below the 1 m freeboard or steeper than 10°) is wider than 12 m. The 32 m / 0.5 % values come from measuring 46 wet cells on seeds 6201–6203 (coast 1.0–2.7 %, river valley ≈ 4 %). They are a design assumption (A), not real-city data.
+3. **Failure categories.** `noSuitableLandform`, `insufficientWater`, `buildConditions`, `spacingConflict`, each with a matching suggestion. Constraints are never relaxed.
+4. **Bounded expansion.** A city without a legal site searches again with radius + 2 chunks and new keyed draws, at most twice (radius ≤ searchRadius + 4). Round 0 uses the v1 draws.
+5. **Atomic failure.** If any city fails, no city is registered, so there is no partially initialised world.
+6. **Versioning.** `placementVersion` 2 is recorded in each placement reason and in the saved state. States saved before the fix keep their stored origins: restore re-registers saved cells and never re-places.
+
+**Before (v1) → after (v2)** ([placement-v1-v2-compare.json](../../../experiments/city-of-cities/evidence/placement-v1-v2-compare.json)):
+
+| Seed | v1 | v2 | Origins changed |
+| --- | --- | --- | --- |
+| 6201 | 6 origins | 6 origins | none |
+| 6202 | **Amsterdam failed** | 6 origins | Amsterdam → (−5, −3) river valley 0.48; Venice (−4, −4) coast 0.77 → (1, −1) river valley 0.43 (its old site is next to the new Amsterdam); Fez (−1, −3) → (5, 1), needed one expansion round |
+| 6203 | 6 origins | 6 origins | Amsterdam (−2, 4) → (0, 0) coast 0.71; Lisbon (−6, 2) → (−3, 2) coast 0.87; Fez (2, 1) → (1, 6) river valley 0.76, one expansion round |
+| 1234 (old G01 seed) | 6 origins | 6 origins | Amsterdam (1, −1) coast → (−1, −3) river valley 0.50; Venice (4, −4) → (1, −6) coast 0.80; Lisbon (0, −5) → (3, −3) |
+| 4242 (old G01 seed) | 6 origins | 6 origins | none |
+
+**Re-verification** (`verify-city-of-cities.mjs`, seeds now 6201 / 6202 / 6203; all passed, 0 browser errors):
+
+- **All three seeds:** 6 origins, minimum distance 3, every core resolves to its own DNA.
+- **Determinism:** repeat, reversed input order and reversed generation order all identical.
+- **Non-zero origin regression:** passes.
+- **Forced failure** (minOriginDistance 8, searchRadius 3): 4 cities classified `spacingConflict` after 3 rounds (radius 7), and 0 cities registered.
+- **Compatibility:** the state saved before the fix (schema v1, placement v1, [legacy copy](../../../experiments/city-of-cities/evidence/legacy/world-6201-g01-state.placement-v1.json)) loads with unchanged origins and all signatures equal.
+- **Browser:** reproduces Node; Save → reload → Load gives 0 mismatches.
+- **Single-chunk regression:** `verify-city-dna` 36 / 36 identical.
+
+**Seed 6201 browser timing:** placement 3.9 s, first city 6.6 s, all six 22.4 s, heap 219 MB.
+
+**The screenshots in §8 are the v2 run.** Seed 6201 origins did not change, so the images match the table in §5.
+
+**Remaining:**
+
+- Water-required cities now often take river-valley sites with lower suitability (0.43–0.50) where v1 took coast sites; a coast site may be blocked by spacing, or may fail the waterfront check.
+- The 6203 Amsterdam core (coast, 0.71) still generates 0 buildings. Placement does not check generator output.
