@@ -31,7 +31,9 @@
 - **Update (2026-11-01, task WEB-01b-R1 by user instruction):** six playback speeds, Watch / Inspect modes and a semi-transparent Algorithm Inspector added to the film; debug layers and object picking read the same scene. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01b-R1).
 - **Update (2026-11-01, task WEB-01c by user instruction):** the film now has two chapters. Part I is the live single chunk; Part II replays the recorded world of seed 6201 (six origins, 30 growth steps) and the Chicago × Fez controlled case study, on one timeline. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01c).
 - **Update (2026-11-02, task WEB-01d by user instruction):** the site is organised as an exhibition: a Guided Tour of six chapters on the existing timeline, four main navigation entries with Archive apart, scale-based camera presets, a Research page with methods and a collapsed archive, an audit that ties the Inspector to the source code, and a light view for slow devices. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01d).
-- **Current single task:** Human review of the site in a browser (WEB-01b to WEB-01d) and of the Inspector checklist; then a deployment decision; then G02c / G03c (road-first growth and encounters in the multi-city scheduler).
+- **Update (2026-11-02, task WEB-01e by user instruction):** first public preview. Branch pushed; site commit `84488ab` deployed to Firebase Preview Channel `web01e-rc1` (https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app), expiring after 14 days. Production Hosting and `main` are unchanged. Part II has three viewing levels. Pending review (entry WEB-01e).
+- **Current single task:** Human review of the preview and of [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md), a test on a real phone and an ordinary laptop; then a production decision.
+- *Previous (superseded 2026-11-02, WEB-01e):* "Human review of the site in a browser (WEB-01b to WEB-01d) and of the Inspector checklist; then a deployment decision; then G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
 - *Previous (superseded 2026-11-02, WEB-01d):* "Review WEB-01c in the browser (with WEB-01b, WEB-01b-R1), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
 - *Previous (superseded 2026-11-01, WEB-01c):* "Review WEB-01b and WEB-01b-R1 in the browser (then WEB-01c), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
 - *Previous (superseded 2026-11-01, WEB-01b-R1):* "Review WEB-01b in the browser (then WEB-01c), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
@@ -1519,3 +1521,44 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   6. Firefox, Safari, real phones and real low-end devices are not tested; Firefox and WebKit are not installed here.
 - **Review status:** Pending review.
 - **Next single task:** human review, then the deployment decision.
+
+### WEB-01e — Release candidate, performance fallback and content audit
+
+- **Date / Stage / Single question:** 2026-11-02 / release, by user instruction / Can a first outside viewer reach an accurate, watchable preview, with a way back at each step?
+- **Git:** checkpoint before any change: `ea9905a` (G02b, G03a, G03b), `fced166` (WEB-01 to WEB-01d), `45b7200` (records), then `84488ab` (WEB-01e). Branch `experiment/procedural-growing-world` is pushed. Scan before committing: no secrets, env files or personal paths; the Firebase Web key in `src/firebase.js` was already public config. The 77 MB film stays git-ignored. The working-tree deletion of two root PNGs (origin unknown) stays uncommitted.
+- **Bottleneck, measured:** of 1,572,723 triangles at step 30, about 323 k were water surface, mostly hidden under dry land; walls 586 k; roofs 236 k; terrain 313 k. Removing the hidden water changed no visible result (Live 3D 1,249,695).
+- **Three levels of Part II, one timeline:**
+  - **Live 3D:** full geometry.
+  - **Lightweight Replay:** same stored data: roofs at real positions and heights instead of full volumes, 32 m terrain, centreline roads, no parcel lines, per-vertex light. 389,333 triangles.
+  - **Recorded Film:** `part2-film.mp4`, 8.9 MB, 1280 × 720, 70 s, recorded frame by frame from the Live 3D render, so video time = t − 52 s. FFmpeg is not installed; encoded in Chrome (WebCodecs). The check compares the decoded video with live renders at 4 times: mean difference about 1 of 255. The file is written only if the check passes.
+  - **Choice:** by measured frames per second, not device names: Part I under 24 starts Part II lightweight; Live under 20 and Lightweight under 12 step down over a 2.5 s window. These are starting values. The viewer can choose by hand, and a manual choice is not overridden.
+  - **Honest limits:** Recorded Film has no selection, layers or free camera, and says so. If the film file is missing, the page says so and stays in 3D.
+- **Performance, automated and headless:**
+
+  | Part II at step 30 | RTX 4060 | Low-end proxy: software WebGL, CPU ÷ 4, 1366 × 768 |
+  | --- | --- | --- |
+  | Live 3D, before | 144 fps | 3 fps |
+  | Live 3D, after | 144 fps | 3.3 fps |
+  | Lightweight, before | not triggered | 7 fps |
+  | Lightweight, after | 141 fps | 10.7 fps |
+  | Recorded Film | 143 fps | 76 fps page rate; video decoding not measured separately |
+
+  Part I on the proxy: about 19 fps. No real low-end device was tested. On the proxy, Auto ends on Recorded Film.
+- **Algorithm review:** [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md) holds 25 statements (the brief counted 24; one was added for the origin order): 19 Accurate, 3 Simplified, 3 Corrected, by an AI reading of the code. **0 signed by a human; all stay Needs Human Review.** The audit fails if a statement is no longer shown or its symbol is gone.
+- **UI:** navigation **World**, Process, Cities, Research, with Archive apart; film button **Explore Scene**; Files & Notes in the light system with its function unchanged; **Controlled Experiment** used for Chicago × Fez everywhere; natural encounters listed as **Planned**; archived experiments untouched.
+- **Verification:**
+  - Local: `verify-procedural-film.mjs` 140 / 140 in real Chrome, desktop and phone; `verify-inspector-docs.mjs` passes; `verify-markdown-links.mjs` passes.
+  - Public, at the preview address: `verify-preview.mjs` 22 / 22; `verify-live-release` 10 / 10. Real film file plays; signatures equal the evidence; six speeds measured; replay load 1.9 s and film first frame 0.45 s from this connection.
+  - Save / Load: the entry exists on the world experiment page, and the film's source is the saved World State. The round trip was last verified by G02-V, not re-run.
+  - Production: `live` channel last released 2026-10-21, still the old title; `main` still `1f63e6f`.
+- **Preview:** https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app · commit `84488ab` · deployed 2026-11-02 · anyone with the link can open it, so it is not private. It uses the production Firebase backend: signing in and saving in archived pages would reach real data; not exercised, and the preview domain may not be authorised for sign-in.
+- **Screenshots (real runtime, public preview):**
+  - ![Home](../assets/screenshots/procedural-mini-world/web01e-preview-home-after.png)
+  - Recorded Film: ![Recorded Film with the Inspector](../assets/screenshots/procedural-mini-world/web01e-preview-film-after.png)
+  - Controlled Experiment: ![Case study](../assets/screenshots/procedural-mini-world/web01e-preview-case-after.png)
+  - Phone: ![Phone](../assets/screenshots/procedural-mini-world/web01e-preview-mobile-after.png)
+  - Levels: ![Live 3D](../assets/screenshots/procedural-mini-world/web01e-level-live-after.png) ![Lightweight Replay](../assets/screenshots/procedural-mini-world/web01e-level-light-after.png)
+- **Not tested or not solved:** Firefox, Safari, real phones and real low-end devices; thresholds not tuned on real hardware; Lightweight Replay is not smooth on the proxy; the Part I live chunk has no lighter level (about 19 fps on the proxy); pacing not judged by a person; no accepted task yet.
+- **Go / No-Go:** **Go** for sharing this preview for review. **No-Go** for production until a person signs the review, watches the film, and tests a real phone and laptop.
+- **Review status:** Pending review.
+- **Next single task:** human review of the preview, stop here.

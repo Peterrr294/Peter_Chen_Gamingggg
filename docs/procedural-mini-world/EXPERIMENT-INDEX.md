@@ -121,6 +121,7 @@ Seed terrain (T1) → terrain analysis (T2) → City DNA match (T3) → road / c
 | WEB-01b-R1 | Six playback speeds, Watch / Inspect modes, Algorithm Inspector, debug layers, object picking | `experiments/procedural-film/inspectorContent.js`, `main.js`, `FilmScene.js` · `verify-procedural-film.mjs` | 87 / 87 in real Chrome; 0.25 × and 4 × end on the same frame; panel never re-runs a generator; not deployed | [watch](../assets/screenshots/procedural-mini-world/web01r1-watch-after.png), [inspect](../assets/screenshots/procedural-mini-world/web01r1-inspect-after.png), [debug](../assets/screenshots/procedural-mini-world/web01r1-debug-after.png) | logged pass | Active (local only) | WEB-01c after review |
 | WEB-01c | Part II of the film: recorded six origins, 30 growth steps, controlled Chicago × Fez case study | `sceneManifest.js`, `WorldScene.js`, `worldWorker.js`, `scripts/bake-film-world.mjs` · `verify-procedural-film.mjs` | 114 / 114 in real Chrome; all 36 baked chunks equal the saved signatures; not deployed | [overview](../assets/screenshots/procedural-mini-world/web01c-world-overview-after.png), [replay](../assets/screenshots/procedural-mini-world/web01c-growth-replay-after.png), [inspector](../assets/screenshots/procedural-mini-world/web01c-growth-inspector-after.png), [case](../assets/screenshots/procedural-mini-world/web01c-case-study-after.png) | logged pass | Active (local only) | Review |
 | WEB-01d | Exhibition structure: Guided Tour, four-entry navigation, camera presets, Inspector audit, performance and accessibility checks | `stageManifest.js`, `algorithmSources.js`, `web-pages.js` · `verify-procedural-film.mjs`, `verify-inspector-docs.mjs`, `measure-film-performance.mjs` | 129 / 129 in real Chrome; audit passes; Part II slow on the low-end proxy; not deployed | [tour](../assets/screenshots/procedural-mini-world/web01d-tour-landscape-after.png), [phone](../assets/screenshots/procedural-mini-world/web01d-tour-mobile-after.png) | logged pass | Active (local only) | Human review |
+| WEB-01e | Release candidate: three viewing levels, recorded film, Inspector review, public preview | `sceneManifest.js`, `scripts/record-film-part2.mjs`, `scripts/verify-preview.mjs` · [review](./A-City-of-Cities/Algorithm-Review.md) | 140 / 140 local; 22 / 22 and 10 / 10 on the preview; 0 statements signed by a human | [film](../assets/screenshots/procedural-mini-world/web01e-preview-film-after.png), [lightweight](../assets/screenshots/procedural-mini-world/web01e-level-light-after.png) | logged pass | Active (preview) | Human review |
 
 ## Archived experiments (before Procedural Mini World)
 
@@ -144,7 +145,7 @@ Dated session summaries: [2026-10-18](../logs/2026-10-18.md), [2026-10-19](../lo
 
 ## Commit map
 
-Tasks enter Git in checkpoint commits, not one commit per task. Checked with `git log` and `git branch -r --contains` on 2026-10-28 (DOC-06). Links work only for commits pushed to GitHub; the others are local commits on `experiment/procedural-growing-world` and get a public page once that branch is pushed.
+Tasks enter Git in checkpoint commits, not one commit per task. Checked with `git log` and `git branch -r --contains` on 2026-10-28 (DOC-06). Branch `experiment/procedural-growing-world` was pushed on 2026-11-02 (WEB-01e).
 
 | Commit | Title | Tasks it first contains | On GitHub |
 | --- | --- | --- | --- |
@@ -153,10 +154,13 @@ Tasks enter Git in checkpoint commits, not one commit per task. Checked with `gi
 | [`b59b26c`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/b59b26c) | Align compass, document Terrain Seam models, add live verifier (M02b) | M02b | Yes |
 | [`1f63e6f`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/1f63e6f) | M06 checkpoint: World Grid seams, terrain coordination, World State checkpoint | 06.3b, 06.3a-R, 06.3a-R2, 06.3c, M03, DOC-01–DOC-05, M04, M05, M06; current `main` and public site | Yes |
 | [`4d2c3b6`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/4d2c3b6) | M06 hand-off: NEXT_SESSION, release log entry, live screenshots | M06 log entry and live screenshots | Yes (branch `experiment/terrain-seam`) |
-| `79687a0` | G00 checkpoint: City Influence & Fusion (07.1, 07.1a) before Procedural Growth | 07.1, 07.1a, G00 | No, local only |
-| `c3e2e5f` | G01 growth prototype and G00-R A City of Cities research compass | G01 (prototype), G00-R | No, local only |
-| `69b3a1f` | G01 Multi-Origin Initialization: six city origins in one world frame | G01-MO | No, local only |
-| `91efb1e` | G02 Procedural Urban Growth and G01 placement v2 (checkpoint before presentation) | G02, G01-FIX, G02-V | No, local only |
-| Working tree — uncommitted | — | G02b, G03a, G03b, PRESENTATION-01, DOC-06, WEB-01, WEB-01b-R1, WEB-01c, WEB-01d | No |
+| [`79687a0`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/79687a0) | G00 checkpoint: City Influence & Fusion (07.1, 07.1a) before Procedural Growth | 07.1, 07.1a, G00 | Yes |
+| [`c3e2e5f`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/c3e2e5f) | G01 growth prototype and G00-R A City of Cities research compass | G01 (prototype), G00-R | Yes |
+| [`69b3a1f`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/69b3a1f) | G01 Multi-Origin Initialization: six city origins in one world frame | G01-MO | Yes |
+| [`91efb1e`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/91efb1e) | G02 Procedural Urban Growth and G01 placement v2 (checkpoint before presentation) | G02, G01-FIX, G02-V | Yes |
+| [`ea9905a`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/ea9905a) | G02b, G03a, G03b: morphological growth, urban territory, urban encounter experiments | G02b, G03a, G03b | Yes |
+| [`fced166`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/fced166) | WEB-01 to WEB-01d: interactive procedural film, exhibition site, replay data | WEB-01 to WEB-01d, PRESENTATION-01 | Yes |
+| [`45b7200`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/45b7200) | Research records for G02b to WEB-01d: log, index, notes, AI feedback, hand-off | DOC-06 and records | Yes |
+| [`84488ab`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/84488ab) | WEB-01e: three viewing levels, recorded film, review of the Inspector, naming and light theme | WEB-01e; deployed to the preview channel | Yes |
 
 Needs verification: M03 and DOC-01 to DOC-05 are dated 2026-10-19 / 20 but their files first appear in `1f63e6f` (2026-10-21); whether an earlier deployment contained them was not checked.

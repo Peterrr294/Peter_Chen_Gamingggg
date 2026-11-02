@@ -1,6 +1,15 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-01: WEB-01 (read first)
+## Update 2026-11-02: WEB-01e (read first)
+
+- **Preview:** https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app (commit `84488ab`, channel `web01e-rc1`, expires after 14 days). Production and `main` are unchanged.
+- **Branch:** `experiment/procedural-growing-world`, pushed.
+- **To do by a person:** watch the film; sign [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md) (0 of 25 signed); test a real phone and an ordinary laptop, plus Firefox and Safari.
+- **Do not:** merge to `main` (it deploys automatically) or open a pull request (it creates another preview) before that review.
+- **If generators change:** run `node scripts/bake-film-world.mjs`, `node scripts/record-film-part2.mjs`, `node scripts/verify-inspector-docs.mjs`. Check a deployed copy with `node scripts/verify-preview.mjs <url>`.
+- **Open from before:** two root PNGs are deleted in the working tree, origin unknown, not committed.
+
+## Update 2026-11-01: WEB-01
 
 The site now opens on the Interactive Procedural Film. Run `npm run dev` and open `http://localhost:5173/`. Check it with `node scripts/verify-procedural-film.mjs`. Not deployed, not committed. Next: review the film in a browser, then WEB-01c. Full record and known issues: log entries WEB-01 and WEB-01b-R1 (speed, Watch / Inspect, Algorithm Inspector; press I in the film), and WEB-01c (Part II: recorded world and case study). Log entry WEB-01d adds the Guided Tour and the Inspector audit: run `node scripts/verify-inspector-docs.mjs` after changing a generator. If the generators change, re-run `node scripts/bake-film-world.mjs`; it stops if the output no longer equals the saved verified state.
 

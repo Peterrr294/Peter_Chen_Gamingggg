@@ -1,0 +1,125 @@
+{
+ "base": "https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app",
+ "at": "2026-11-02T02:21:35.259Z",
+ "checks": [
+  {
+   "name": "home: Guided Tour with real geometry",
+   "pass": true,
+   "detail": "2971 ms to the model"
+  },
+  {
+   "name": "navigation names",
+   "pass": true,
+   "detail": "World · Process · Cities · Research"
+  },
+  {
+   "name": "Part I: generated on the public site, equal to the verified signatures",
+   "pass": true,
+   "detail": "1652F055 AD666BED"
+  },
+  {
+   "name": "six speeds work",
+   "pass": true,
+   "detail": "{\"1\":0.999,\"2\":1.999,\"4\":4.01,\"0.25\":0.249,\"0.5\":0.501,\"1.5\":1.501}"
+  },
+  {
+   "name": "Part II: replay loads, event equals the saved history",
+   "pass": true,
+   "detail": "step 30, 1882 ms to load"
+  },
+  {
+   "name": "Inspector: data source and values load",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Lightweight Replay available",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Recorded Film: the deployed file plays",
+   "pass": true,
+   "detail": "452 ms to the first frame"
+  },
+  {
+   "name": "Encounter marked Controlled Experiment",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "#process loads",
+   "pass": true,
+   "detail": "9 images"
+  },
+  {
+   "name": "#cities loads",
+   "pass": true,
+   "detail": "6 images"
+  },
+  {
+   "name": "#research loads",
+   "pass": true,
+   "detail": "10 images"
+  },
+  {
+   "name": "#archive loads",
+   "pass": true,
+   "detail": "0 images"
+  },
+  {
+   "name": "old route #noise",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "old route #voxel",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "old route #flavor",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "old route #miniWorld",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "old route #world",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "review page and Files & Notes load",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone layout: no overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "local-only files are not served",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no browser errors or failed requests",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "errors": [],
+ "timings": {
+  "tourTextMs": 867,
+  "firstModelMs": 2971,
+  "worldReplayLoadMs": 1882,
+  "filmFirstFrameMs": 452
+ },
+ "passed": 22,
+ "failed": 0
+}
