@@ -23,7 +23,22 @@
 - **Update (2026-10-28, task G01-MO by user instruction):** roadmap G01 Multi-Origin Initialization implemented as `experiments/city-of-cities/` (World Context, City Origins, independent core chunks, origin suitability, World State v1, no growth). Verified on 3 seeds; pending review (entry G01-MO). It replaces the proposed G01-R. The 2026-10-27 growth prototype stays runnable as an earlier exploratory experiment.
 - **Update (2026-10-28, task G02 by user instruction):** growth frontier, suitability, scheduler and single-step growth implemented in `experiments/city-of-cities/`; Node verification passed on seeds 6201 and 6203 (30 steps). **Stopped:** seed 6202 cannot initialise six cities because of a G01 origin-screen defect (entry G02). Browser stage, screenshots and the G02 note pending.
 - **Update (2026-10-28, tasks G01-FIX and G02-V by user instruction):** G01 origin placement v2 (water-aware screen, waterfront check, bounded expansion, atomic failure) fixes seed 6202; G01 re-verified on 6201 / 6202 / 6203; G02 verified on all three seeds in Node and the browser up to 30 steps. Both pending review (entries G01-FIX, G02-V).
-- **Current single task:** Review G01-FIX and G02 (spatial review of the seed comparison); no G03 work before the review.
+- **Update (2026-10-28, task PRESENTATION-01 by user instruction):** 75 s class film *A City of Cities* rendered from the real seed-6201 world (G01 origins + 30 verified G02 steps) in `presentation/city-of-cities/`; no generator, experiment or deployment changed (entry PRESENTATION-01). Day hand-off in [NEXT_SESSION.md](./NEXT_SESSION.md).
+- **Update (2026-10-28, task G03a by user instruction):** urban territory and spatial-relationship analysis layer (`TerritoryModel`) on top of G02: world spatial states, territories, boundary classes, inter-city adjacencies, relationship graph, metrics; verified on 6201 / 6202 / 6203 (entry G03a). Growth, placement and generation unchanged.
+- **Update (2026-10-28, task G02b by user instruction):** principle added to the compass: **Growth is the extension of urban structure, not the replication of isolated city chunks.** Road-first morphological growth implemented as a minimum viable experiment (Manhattan grid, Fez organic, Chicago failure path) on seed 6201 and verified; default G01 / G02 generation unchanged (entry G02b).
+- **Update (2026-10-28, task G03b by user instruction):** Urban Encounter & Morphological Negotiation implemented as a Chicago × Fez minimum experiment on a hand-placed **test fixture** (seed 6201, three scenarios: connection, pending plan, separation) and verified in Node and the browser; default G01 / G02 / G02b generation unchanged (entry G03b).
+- **Update (2026-11-01, task WEB-01a / WEB-01b by user instruction):** the website is restructured around an Interactive Procedural Film (`experiments/procedural-film/`, new read-only playback layer): one real chunk from terrain to buildings, six verified city configurations, main navigation Explore the World / The Process / Urban Identities / Research / Archive. No generator changed; all old routes keep working. Implemented and verified in a local browser, pending review, **not deployed** (entry WEB-01). WEB-01c (multi-city film) and WEB-01d not started.
+- **Update (2026-11-01, task WEB-01b-R1 by user instruction):** six playback speeds, Watch / Inspect modes and a semi-transparent Algorithm Inspector added to the film; debug layers and object picking read the same scene. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01b-R1).
+- **Update (2026-11-01, task WEB-01c by user instruction):** the film now has two chapters. Part I is the live single chunk; Part II replays the recorded world of seed 6201 (six origins, 30 growth steps) and the Chicago × Fez controlled case study, on one timeline. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01c).
+- **Update (2026-11-02, task WEB-01d by user instruction):** the site is organised as an exhibition: a Guided Tour of six chapters on the existing timeline, four main navigation entries with Archive apart, scale-based camera presets, a Research page with methods and a collapsed archive, an audit that ties the Inspector to the source code, and a light view for slow devices. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01d).
+- **Current single task:** Human review of the site in a browser (WEB-01b to WEB-01d) and of the Inspector checklist; then a deployment decision; then G02c / G03c (road-first growth and encounters in the multi-city scheduler).
+- *Previous (superseded 2026-11-02, WEB-01d):* "Review WEB-01c in the browser (with WEB-01b, WEB-01b-R1), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
+- *Previous (superseded 2026-11-01, WEB-01c):* "Review WEB-01b and WEB-01b-R1 in the browser (then WEB-01c), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
+- *Previous (superseded 2026-11-01, WEB-01b-R1):* "Review WEB-01b in the browser (then WEB-01c), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
+- *Previous (superseded 2026-11-01, WEB-01):* "Review G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
+- *Previous (superseded 2026-10-28, G03b):* "Review G02b and G03a (with G01-FIX, G02); then choose G02c (road-first growth in the multi-city scheduler) or G03b (encounter zones)."
+- *Previous (superseded 2026-10-28, G02b):* "Review G03a (with G01-FIX, G02); then choose G03b (encounter zones proposed)."
+- *Previous (superseded 2026-10-28, G03a):* "Review G01-FIX and G02 (spatial review of the seed comparison); no G03 work before the review."
 - *Previous (superseded 2026-10-28, G02-V):* "Decide the G01 origin-screen fix (or a replacement seed for 6202); then finish G02 verification."
 - *Previous (superseded 2026-10-28, G02):* "Review G01-MO (and G01 prototype, G00-R); G02 Rule-Based Growth only after the review."
 - *Previous (superseded 2026-10-28, G01-MO):* "Review G01 and the Research Compass (G00-R); if accepted, G01-R (City Agent record and cell-state field, outputs unchanged; compass §14)."
@@ -89,8 +104,8 @@ Goals, reuse, new components, dependencies, verification and visual output per s
 | --- | --- | --- |
 | G00 | Preserve & Recover: earlier experiments, Git baseline, independent chunk generator | Done: checkpoint `79687a0` (entry G00) |
 | G01 | Multi-Origin Initialization: six cores, spacing, suitability recorded | Implemented, verified, pending review: `experiments/city-of-cities/` (entry G01-MO); earlier prototype with growth in `experiments/growing-world/` (entry G01, commit `c3e2e5f`) |
-| G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Implemented, verified, pending review: [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (entries G02, G01-FIX, G02-V); random / uniform modes proposed |
-| G03 | City Territory & Encounter: reserves, encounter zones, corridors, boundary types | Partial (contests and boundary edges recorded); rest proposed |
+| G02 | Rule-Based Growth: frontier, Growth DNA scoring, single step, save / load; random and uniform modes | Implemented, verified, pending review: [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (entries G02, G01-FIX, G02-V); G02b road-first morphological growth (minimum viable experiment, one city): [G02b note](./A-City-of-Cities/G02b-Morphological-Growth.md); random / uniform modes proposed |
+| G03 | City Territory & Encounter: reserves, encounter zones, corridors, boundary types | G03a implemented, verified, pending review: [G03a note](./A-City-of-Cities/G03a-Urban-Territory.md) (spatial states, territories, boundary classes, relationships, constraints as analysis); G03b encounter & negotiation (Chicago × Fez test fixture) implemented, verified, pending review: [G03b note](./A-City-of-Cities/G03b-Urban-Encounter.md); encounters in the scheduler, acting reserves and corridors proposed |
 | G04 | Morphological Growth: DNA and growth stage in roads, blocks, buildings | Not started |
 | G05 | Evaluation & Replay: replay, metrics, experiments A–C | Partial (history, save / load); rest proposed |
 
@@ -1171,3 +1186,336 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   7. Synchronous generation, memory without unloading.
 - **Review status:** Pending review.
 - **Next single task:** spatial review of G02 (seed sheet), then a decision on the scheduler quota effect and a generator viability check before G03.
+
+### PRESENTATION-01 — Class film "A City of Cities"
+
+- **Date / Stage / Single question:** 2026-10-28 / presentation, by user instruction; G-stage development paused / Can a 60–80 s research film be produced from the real program output, showing terrain → city chain → six origins → procedural growth, without new generation features?
+- **Preflight:** checkpoint commit `91efb1e` (G02 + G01-FIX) before starting. All film work is in the new folder `presentation/city-of-cities/`; `experiments/`, `scripts/` and `docs/` were not modified by it.
+- **Method:**
+  - `index.html` + `film.js` build the real world in Chrome: seed 6201, G01 origins, 30 steps of the verified `WorldGrowthController`, the unchanged chunk chain.
+  - Frames are rendered deterministically from a timeline (orthographic axonometric camera, 2D typography).
+  - Encoding is H.264 in the page (WebCodecs `avc1.640028`, 8 Mbit/s) with mp4-muxer 5.1.3 from a pinned CDN URL. **FFmpeg is not installed**, and nothing was installed.
+  - `capture.mjs` (Playwright) checks that the film's growth history equals the G02 verifier record (30 / 30 steps), saves the stills, poster and MP4, and verifies the MP4 by decoding and playing it in Chrome.
+- **Result:** `presentation/city-of-cities/A-City-of-Cities.mp4`: 75.0 s, 1920 × 1080, 16:9, 30 fps, 2,250 frames, H.264 High, 73.9 MB, no sound (git-ignored).
+  - Poster: `poster.png`.
+  - Storyboard: `storyboard.md` + 16 rendered stills + 10 frames decoded from the MP4.
+  - Settings: `capture-config.json`.
+  - Render on an RTX 4060 (ANGLE / D3D11): world build ≈ 105 s, encode ≈ 15 s.
+- **Scenes:**
+  - Title (0–4 s)
+  - S01 terrain of c_5_0 (4–12 s)
+  - S02 six pipeline stages on the same chunk (12–28 s)
+  - S03 six origins + six-panel comparison (28–42 s)
+  - S04 growth steps 0–30 on a fixed camera (42–62 s)
+  - S05 close-up → whole world + final title, marked "Procedural Growth Prototype" (62–75 s)
+- **Honesty notes:** no invented steps or geometry. A new chunk's rise animation is an animation of the real chunk. The parcels stage shows interior land without lots in a presentation-only grey instead of the debug magenta, and says so on screen. Seams, empty Amsterdam chunks and the yellow "partial" block are shown as generated.
+- **Review status:** Done (film delivered); presentation folder uncommitted.
+
+### G03a — Urban Territory & Spatial Relationships
+
+- **Date / Stage / Single question:** 2026-10-28 / G03 (first part), by user instruction / Can the multi-city growth of G02 be read as organised space, using a data layer that does not change growth? The layer records territories, non-urban space (evaluated, ecologically constrained, unexplored), boundaries and measurable city relationships.
+- **Preflight:**
+  - G01-FIX and G02 are verified on record (`city-origins.json`, `city-growth.json`; commit `91efb1e`).
+  - Venice / Amsterdam placement fixed; six cores stable; one chunk per step; reproducible; save / load / continue exact.
+  - No blocking issue.
+- **Note:** [A-City-of-Cities/G03a-Urban-Territory.md](./A-City-of-Cities/G03a-Urban-Territory.md).
+- **Changed files:**
+  - **New:** `experiments/city-of-cities/TerritoryModel.js` (spatial states, territories, boundaries, adjacencies, relationship graph, metrics, snapshot / restore), `TerritoryView.js` (five overlays), `scripts/verify-city-territory.mjs`, evidence `city-territory.json` and `world-6201-g03a-step30-territory.json`.
+  - **Changed:** `WorldContext.generateChunk` (additive: `outputs.areas` = building footprint and parcel m²); `main.js` / `index.html` (Territory folder, three panel rows; the analysis follows every growth step and is saved with the World State).
+  - No terrain, growth, placement or city-generation rule changed.
+- **Constraint rules (A, from 243 probed cells):** steepTerrain (mean land slope ≥ 18°), unbuildable (< 5 %), waterBody (≥ 50 % water). Only steepTerrain fires on the test seeds. No protection policy exists (0 protected cells).
+- **Verification:** `node scripts/verify-city-territory.mjs` passed (Node 1,337 s on 6201 / 6202 / 6203; browser on 6201; 0 errors).
+  - **After every step 0–30:** City IDs unchanged; territories = occupancy; areas = generated outputs; every boundary segment and frontier flag re-derived independently; ecological cells only where a rule holds, never unexplored; adjacencies = brute-force edge scan; adjacency never claimed as a connection.
+  - **Run level:** incremental = replay; same seed twice identical; save at 10 → load (analysis reproduced) → continue to 30 = uninterrupted; G02 history unchanged; no World Grid / City Invasion call path.
+  - **Browser:** reproduces the Node analysis; Save → reload → Load exact.
+- **Results at step 30 (6201 / 6202 / 6203):**
+  - 36 chunks each; chunk coverage 37.75 km²; built footprint 5.40 / 7.13 / 5.85 km² (14–19 % of coverage).
+  - Ecological cells 21 / 19 / 12.
+  - Inter-city shared edges 1 / 4 / 0 (pairs 1 / 3 / 0); corner contacts 2 / 2 / 1. All contact edges are steps or cliffs; aligned ports on 2 edges, roads not joined.
+  - 6203: Venice stopped (no eligible frontier: noWater ×4, mountain ×5).
+  - Urban chunks on constrained terrain: 1 / 1 / 0.
+  - Analysis cost: 154–223 ms per step (mean).
+- **Screenshots (seed 6201):**
+  - ![Origins](../assets/screenshots/procedural-mini-world/g03a-territory-origins.png)
+  - ![Step 10](../assets/screenshots/procedural-mini-world/g03a-territory-step10.png)
+  - ![Step 30](../assets/screenshots/procedural-mini-world/g03a-territory-step30.png)
+  - ![Frontier and constraints](../assets/screenshots/procedural-mini-world/g03a-frontier-constraints-debug.png)
+  - ![Boundary close-up](../assets/screenshots/procedural-mini-world/g03a-boundary-closeup.png)
+  - ![Relationships](../assets/screenshots/procedural-mini-world/g03a-city-relationships.png)
+- **Open issues:**
+  1. Constraint rules coincide with mountains.
+  2. Barrier evidence is a straight line, not route proof; `unknown` is common.
+  3. The evaluated set depends on which cells the algorithms probed (it is saved).
+  4. Few adjacencies, all on stepped or cliff edges.
+  5. Growth may urbanise constrained terrain (reported, not prevented).
+  6. Chunk-level analysis only.
+- **Review status:** Pending review.
+- **Next single task (proposal):** G03b encounter zones (shared frontier cells and contests over time), data only; see the note §10.
+
+### DOC-06 — Teacher-facing entry: exercises, commits, research path, AI feedback
+
+- **Date / Stage / Single question:** 2026-10-28 / documentation only (no stage change), by user instruction / Can a teacher find every main exercise with its link, record, and real commit, see where work is happening now, follow why each exercise led to the next, and read AI feedback on every part of the project, without the GitHub entry becoming long?
+- **Checked before writing:** branch `experiment/procedural-growing-world`; `main` and `origin/main` at `1f63e6f`; `79687a0`, `c3e2e5f`, `69b3a1f`, `91efb1e` exist only locally (`git branch -r --contains` empty; GitHub commit pages 404), `4d2c3b6` and earlier return 200. Public URLs: `/experiments/seed-terrain/` and `/experiments/world-grid/` serve their pages; `/experiments/growing-world/` and `/experiments/city-of-cities/` fall back to the hub (not deployed). All 79 screenshots in `docs/assets/screenshots/procedural-mini-world/` were already referenced; none moved. Files & Notes globs `docs/**/*.md`, so no `site.js` change was needed.
+- **Changed files (working tree, uncommitted):**
+  - Root `README.md`: rewritten as a short entry: question, Current Work (stage, branch, code, uncommitted items, review queue), one representative image with conditions, Exercises table (7 rows, open link or local path, study record, commit), learning route, record links, short run section. Midterm-era detail stays in the knowledge base.
+  - [README.md](./README.md): new §4 Research Path (two Mermaid diagrams with reason labels, transition table separating chronology, dependency and motivation); status table completed (06.3b–06.3c, 07.1 / 07.1a, M06, PRESENTATION-01) and reordered; stage dashboard City Influence node updated; §11 marked as the historical midterm state.
+  - [EXPERIMENT-INDEX.md](./EXPERIMENT-INDEX.md): rows for 06.3b, 06.3a-R, 06.3a-R2, 06.3c, 07.1, 07.1a, PRESENTATION-01, M03–M06, DOC-06; growth rows in chronological order; new Commit map.
+  - New [PROJECT-FEEDBACK.md](./PROJECT-FEEDBACK.md): AI feedback per area with Confirmed / Inference / Next check / Pending tags.
+  - Navigation tables and short study-notebook summaries with one captioned screenshot each: [System Architecture](./03-generative-system/system-architecture.md), [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) (+ later seam work section), [City Influence & Fusion](./03-generative-system/city-influence.md) (status corrected from "Proposed"; original plan kept as historical), [Procedural Growth](./03-generative-system/procedural-growth.md), [G01](./A-City-of-Cities/G01-Multi-Origin-Initialization.md), [G02](./A-City-of-Cities/G02-Procedural-Urban-Growth.md), [G03a](./A-City-of-Cities/G03a-Urban-Territory.md).
+  - [docs/README.md](../README.md): one pointer line.
+- **Not changed:** code, generators, `site.js`, `.obsidian/`, `sources/`, earlier log entries, screenshots. No commit, push, or deploy.
+- **Screenshots:** none new (text-only task); existing images reused with captions.
+- **Verification:** `node scripts/verify-markdown-links.mjs` passes (86 files, no broken local link or image). New in-page anchors (`#exercises`, `#commit-map`, `#7-evidence-gallery`, `#later-seam-work-063b063c`) checked against their headings by hand; the link script does not check anchors. All 5 Mermaid blocks of [README.md](./README.md) render with Mermaid 10.9.1 in headless Chrome (scratch check, nothing installed). No CJK or full-width characters in the changed files. Commit links: pushed commits return 200, local ones are not linked. Display in the Obsidian app and on the site's Files & Notes page was not opened (**Pending verification**); no build was run because no code or site index changed.
+- **Review status:** Pending review.
+- **Next single task:** unchanged (compass §1): review G03a, G02, G01-FIX.
+
+### G02b — Morphological Continuity & Urban Growth (minimum viable experiment)
+
+- **Date / Stage / Single question:** 2026-10-28 / G02 (second part), by user instruction / Does a grown chunk continue its city's structure (roads, blocks, density gradient) or only carry the City ID? Can road-first growth make it continue?
+- **Preflight:**
+  - G02 is verified (entries G02, G02-V).
+  - The risk was confirmed in the code: the grid strategy draws new phases per chunk, and buildings draw a new height centre per chunk.
+  - The working tree held uncommitted documentation from DOC-06 and G03a; it was left untouched.
+- **Note:** [A-City-of-Cities/G02b-Morphological-Growth.md](./A-City-of-Cities/G02b-Morphological-Growth.md).
+- **Changed files:**
+  - **New:** `experiments/city-of-cities/MorphologicalGrowth.js`, `MorphView.js`, `scripts/verify-morph-growth.mjs`, evidence `morph-growth.json`.
+  - **Optional inputs (default path unchanged, verified):** `NetworkGenerator` `options.growth` (grid anchor, entry gates) + grid anchor metadata; `BuildingGenerator` `options.centre`.
+  - **Data layer:** `WorldContext` growth-context path (stored in the chunk parameters), port ids, road graph, boundary blocks, morphology metrics.
+  - **Page:** `main.js` / `index.html` G02b folder.
+- **Rules:** road-first fronts from real ports; entry check 3 m (A); joins by identity at ≤ 0.5 m; city height centre inherited.
+- **Results (seed 6201):**
+  - **Backward compatibility:** six G01 cores identical; G02 steps 1–5 identical.
+  - **Chicago:** road-first growth refused with measured reasons (river valley 33–46 m above the road ends, mountain, two slope barriers); no chunk created.
+  - **Manhattan (grid):**
+    - B east 4 / 4 joins, C south 13 / 13 joins, all at 0 m position error; height steps ≤ 2.41 m;
+    - grid phase error 0 m; road graph 1 component, 55.3 km, 100 % reachable;
+    - core unchanged;
+    - independent regeneration of the same cells aligns 0 of 5 and 0 of 13 parent roads.
+  - **Morphology:** grid quantities identical across the boundaries (flat plain); mean height 63.6 → 39.1 / 38.5 m (inherited centre gradient instead of one downtown per chunk).
+  - **Fez (organic):** 2 growth steps, 1 / 1 joins each, road graph 1 component (19.1 km). Independent regeneration happens to align as well on these flat edges (stated).
+  - **Stability:** twin identical; save → load → joins recomputed identically → continue = uninterrupted; the browser reproduces Node; 0 errors.
+- **Verification:** `node scripts/verify-morph-growth.mjs` passed. The first full run crashed with a native segmentation fault (exit 139) while holding several worlds in memory; the verifier now releases them, and both parts passed on rerun.
+- **Screenshots:**
+  - ![No borders](../assets/screenshots/procedural-mini-world/g02b-manhattan-no-borders.png)
+  - ![First growth](../assets/screenshots/procedural-mini-world/g02b-manhattan-first-growth.png)
+  - ![Metrics](../assets/screenshots/procedural-mini-world/g02b-metrics-comparison.png)
+  - More in the note §6.
+- **Open issues:**
+  1. Chicago cannot grow on seed 6201.
+  2. One unjoined Manhattan road end (> 3 m).
+  3. Height steps at the joins (seams not repaired).
+  4. Parcel frontage traceability is weak in B.
+  5. The Fez evidence does not prove the necessity of inheritance.
+  6. Water cities not implemented (interface recorded).
+  7. Road-first growth not yet used by the multi-city scheduler.
+- **Review status:** Pending review.
+- **Next single task (proposal):** G02c, road-first growth as an option of the multi-city scheduler, then G03a re-analysis.
+
+### G03b — Urban Encounter & Morphological Negotiation (Chicago × Fez minimum experiment)
+
+- **Date / Stage / Single question:** 2026-10-28 / G03 (second part), by user instruction / When two growing cities meet, can the encounter be detected, both boundaries read, and the shared edge resolved by connection, separation or a pending plan, changing only the new chunk?
+- **Preflight:**
+  - Verified upstream: G02b record (Manhattan joins 4 + 13, graph 1 component; Fez 1 + 1; save / load / continue) and G03a record (3 seeds, browser). No blocker.
+  - G03a's relationship graph needs six cities, so the fixture uses its own detector and reuses `constraintOf`.
+  - Chicago's G01 core on 6201 cannot grow (G02b), so the cores are placed by hand: a **test fixture, not a placement rule**.
+- **Note:** [A-City-of-Cities/G03b-Urban-Encounter.md](./A-City-of-Cities/G03b-Urban-Encounter.md).
+- **Changed files:**
+  - **New:** `experiments/city-of-cities/UrbanEncounter.js`, `encounterFixture.js`, `EncounterView.js`, `scripts/verify-urban-encounter.mjs`, evidence `urban-encounter.json`.
+  - **Optional inputs (default path unchanged, verified by the G02b verifier):**
+    - `NetworkGenerator` organic entries may carry their own side;
+    - `MorphologicalGrowth.grow` options `target` / `crossCityEntries` / `encounterId`;
+    - `verifyConnections` re-checks cross-city joins;
+    - `WorldContext` passes cross-city entries, saves `encounterDecisions`, and adds `directionDeg` to the ports.
+  - **Page:** `main.js` / `index.html`: `?fixture=` mode, G03b folder, panel row.
+- **Rules (hypotheses):**
+  - approaching ≤ 3 cells;
+  - interface entry step ≤ 3 m, grade ≤ 0.1 over 32 m, crossing ≤ 30°;
+  - ≤ 2 interfaces, ≥ 200 m apart;
+  - shared-edge barrier: ≥ 50 % water or median step > 3 m.
+- **Results (seed 6201, Node = browser):**
+  - **S1 compatible (row -7,-10):**
+    - Fez arrives second; 2 of 5 Chicago avenues accepted as Fez entry gates (1 rejected: step -4.09 m; 2 passed but not selected);
+    - 2 cross-city joins at 0.3 m; core ↔ core path 2288 m; Chicago unchanged.
+  - **S2 incompatible (same row):** Chicago's grid arrives second and cannot adapt. A connector plan of 39.7 m is recorded, **Pending verification (not generated)**; 0 coincident joins.
+  - **S3 barrier (row 1,-7):**
+    - both cities refused at the river valley (entry steps 25.5–58.8 m), giving separation twice;
+    - the cell is not urbanised; it meets no G03a constraint rule (the barrier is the valley depth).
+  - **Morphology:**
+    - Chicago core, Chicago edge chunk and Fez core identical across S1 and S2;
+    - Fez edge chunk with vs. without negotiation: road density 5.71 → 6.53 km/km², block median 30751 → 12442 m², dead ends 13 → 10, frontage 9 → 9 m;
+    - 0 abnormal parcels.
+  - **Identity:**
+    - Chicago concentration 1.0 (grid recognisable);
+    - the Fez hypothesis "concentration ≤ 0.6" **failed for every Fez chunk, including untouched cores** (0.647–0.755), so the metric is not valid for organic identity.
+  - **Stability:**
+    - twin identical; save after step 1 → load → continue = uninterrupted;
+    - save at the end → load: joins and encounters reproduced, re-run adds nothing;
+    - 0 page errors.
+- **Verification:** `node --max-old-space-size=8192 scripts/verify-urban-encounter.mjs` passed (Node and browser). Regression: `verify-morph-growth.mjs --node-only` reproduced the G02b Node record (timing excluded); the saved record was kept.
+- **Screenshots** (seed 6201, chicagoGrid × fezOrganicCore, task G03b, test fixture):
+  - ![Connection](../assets/screenshots/procedural-mini-world/g03b-connection-closeup.png)
+  - ![Plan](../assets/screenshots/procedural-mini-world/g03b-incompatible-plan-closeup.png)
+  - ![Barrier](../assets/screenshots/procedural-mini-world/g03b-barrier-separation.png)
+  - ![Before / after](../assets/screenshots/procedural-mini-world/g03b-before-after-compare.png)
+  - More in the note §7.
+- **Open issues:**
+  1. The test fixture is placed by hand.
+  2. Grid connector not generated (plan pending).
+  3. One encounter record per city pair.
+  4. Invalid crossings not measured.
+  5. The identity metric failed for organic.
+  6. All thresholds are hypotheses.
+- **Review status:** Pending review.
+- **Next single task (proposal):** G02c / G03c, encounters inside the multi-city scheduler with road-first growth (no hand placement); see the note §10.
+
+### WEB-01 — Interactive research website and procedural film (WEB-01a navigation, WEB-01b terrain-to-building film)
+
+- **Date / Stage / Single question:** 2026-11-01 / presentation layer, by user instruction (the visual work overrides the compass "visual polish" limit for this task only) / Can a first-time visitor watch one real city generate from terrain to buildings, with a timeline that never alters the model, and find the research structure without the old exercise list?
+- **Reused, unchanged:** the single-chunk chain (`generateChunk` … `generateBuildings`, same order as `seed-terrain/main.js`), `ChunkView` (terrain, water, solid), `RoadMeshBuilder`, `NetworkView.samples`, `createSampler`, `SeededRandom`, the `film.js` axonometric idea, Growth DNA hypotheses (read for the city page).
+- **New:** `experiments/procedural-film/`: `stageManifest.js`, `snapshotWorker.js` + `SnapshotSource.js` (generation in a Worker, one job at a time, cache of 3), `revealModel.js`, `TimelineController.js`, `CameraRig.js`, `FilmScene.js`, `main.js`, `index.html`, `film.css`. Root `web-pages.js`, `web.css`. `scripts/verify-procedural-film.mjs`. Evidence `experiments/procedural-film/evidence/film-acceptance.json`.
+- **Changed:** `site.js` (main sections, Firebase loaded only on archive pages, old home removed), `index.html` (navigation), `vite.config.js` (one build input), `scripts/verify-live-release.mjs` (two expectations of the old navigation).
+- **Method:** each element carries its reveal time as a vertex attribute; `setTime(t)` only writes uniforms, so play, pause, scrub and replay never rebuild or change geometry. Roads grow along graph edges by weighted distance from the best-connected main-network node (main roads first, seeded ± 12 % speed); a block appears after its adjacent roads end; parcels follow their block; buildings rise from real footprints, taller ones longer.
+- **Honest limit of the animation:** the generators log no events. The order is **derived from the data's own topology**, not a replay of the algorithm's run. The page says so under Advanced.
+- **Configurations (no free seed input):** the terrain each DNA scored best on in 06.1: Lisbon coast 2202 (default), Venice / Fez / Amsterdam coast 1101, Manhattan / Chicago plain 1101.
+- **Verification:** `node scripts/verify-procedural-film.mjs` 54 / 54 in real Chrome at 1440 × 860 and 390 × 844, 0 browser errors. `verify-live-release` 10 / 10 and the film (same signatures) against a production build served locally, 2026-11-01. `verify-markdown-links` passes.
+  - **Real output:** network, block, parcel and building signatures of all six cities equal `city-dna-comparison.json`; City ID correct; numbers on the city page equal the same file.
+  - **Timeline:** play, pause, previous, next, stage labels, slider, restart, camera presets, orbit without a jump, refresh restores position paused.
+  - **Determinism:** same t after scrubbing and after a reload gives the same frame (worst 4 of 1,238,400 pixels differ, by 1 / 255: GPU rasteriser noise, tolerance stated in the script); reveal signature 80264A8D (Lisbon) stable.
+  - **Camera:** largest 50 ms step along the film 3.2 m, 0.96°, 1.2 % zoom.
+  - **Fallbacks:** reduced motion (no autoplay, finished model, stages step); no WebGL (real stills on the same controls).
+  - **Site:** 5 navigation entries; `#noise`, `#voxel`, `#flavor`, `#miniWorld`, `#seedTerrain`, `#world` and Files & Notes still open; no horizontal overflow on a phone.
+- **Bugs found by testing, fixed:** an empty still image covered the canvas (CSS overrode `hidden`); the slider snapped back because `pause()` re-synced it before it was read; the frustum offset drifted with zoom and clipped the model; a one-vertex road mark showed before the road stage; Vite reloaded open pages when the verifier wrote images (screenshots are now written at the end).
+- **Performance (headless Chrome, RTX 4060; not an ordinary laptop, Pending verification there):** fresh visit to playing 1.9 s (Lisbon); city load 2.0–4.7 s (generation in the Worker, so the page stays responsive); scene build on the main thread 101–245 ms; ≈ 190–211 k triangles; 142 fps during playback, worst frame at least 100 ms (timer capped). Production output is 192 MB in total, mostly earlier experiment assets; the film page loads only its own scripts and one poster.
+- **Screenshots (real runtime, default parameters, seeds as above):**
+  - Home, stage 1 (Lisbon coast 2202): ![Home with the film](../assets/screenshots/procedural-mini-world/web01-home-after.png)
+  - Road stage: ![Roads growing along their edges](../assets/screenshots/procedural-mini-world/web01-film-roads-ui-after.png)
+  - Building stage, close view: ![Buildings rising](../assets/screenshots/procedural-mini-world/web01-film-buildings-ui-after.png)
+  - Six cities at one scale: ![Urban Identities page](../assets/screenshots/procedural-mini-world/web01-cities-after.png)
+  - Nine stages: ![The Process page](../assets/screenshots/procedural-mini-world/web01-process-after.png)
+  - Phone: ![Film on a phone](../assets/screenshots/procedural-mini-world/web01-film-mobile-after.png)
+- **Known issues:**
+  1. Stages 7–9 (origins, growth, relationships) are not in the film: they link to the existing experiment and show its dark debug captures. WEB-01c.
+  2. Explore World opens the existing `/experiments/city-of-cities/` debug page (Prototype), with its dense panel. Its name is close to the navigation entry "Explore the World", which opens the film.
+  3. Road ribbons show small notches at junctions in close view (existing `RoadMeshBuilder` joins). Tunnels are not drawn; the six configurations have none.
+  4. Files & Notes and the archived pages keep their dark look; the written visual standard (`docs/standards/visual-language/interface-system.md`, black and Klein Blue) now differs from the new pages and needs a decision.
+  5. The 77 MB MP4 stays git-ignored, so the no-WebGL fallback uses stills, not video. The stills show the default city only.
+  6. Terrain Analysis looks almost uniform on the plain configurations (Manhattan, Chicago: 100 % buildable). This is real data.
+  7. Not tested: real phones, Safari, Firefox, a low-end laptop.
+- **Not done (by scope):** no deployment, no commit. A push to `main` deploys automatically, so this reaches the public site only when `main` moves.
+- **Review status:** Pending review.
+- **Next single task:** human review of WEB-01b in the browser; then WEB-01c (six origins and growth history in the timeline).
+
+### WEB-01b-R1 — Variable playback speed and Algorithm Inspector
+
+- **Date / Stage / Single question:** 2026-11-01 / presentation layer, by user instruction / Can a visitor control the pace of the film and read, in a panel over the same scene, what each stage really computed, without changing the model?
+- **Changed:** `experiments/procedural-film/`: new `inspectorContent.js`; `main.js` (one state for player, Inspector and layers), `FilmScene.js` (layers, picking, live counts), `CameraRig.js` (framing makes room for the panel), `SnapshotSource.js` (counts generator runs), `index.html`, `film.css`. `scripts/verify-procedural-film.mjs` extended. No generator changed.
+- **Speed:** 0.25, 0.5, 1, 1.5, 2, 4 ×, default 1 ×. The rate scales real elapsed time on the one timeline; t is clamped at the end. Measured rates: 0.250, 0.500, 0.998, 1.500, 2.005, 3.999. The 0.25 × and 4 × runs end on the same frame (0 pixels differ) with full counts; no generator re-ran.
+- **Modes:** Watch keeps Play / Pause, timeline, speed, stage, city, camera and the Inspect entry. Inspect opens a panel over the same scene and adds Prev, Next, Restart and stage metrics. Switching keeps t, City, camera direction and target; the framing eases to make room. Keys: I toggles, Esc closes.
+- **Inspector, what it shows:** identity summary; stage input, process, output; parameters per stage; generated so far; debug layers; world and city identity; How it works with source links; saved world data.
+- **Inspector, what it refuses to show:**
+  - The film chunk stands alone, so world seed, chunk ID, growth step and parent chunk read **Not Available**.
+  - Counts rise only as the timeline reaches them.
+  - Origins, growth and encounter (Phase D) read the saved verifier files `world-6201-g02-step30-state.json` and `urban-encounter.json`, labelled as not the chunk on screen. Encounter is Prototype on a hand-placed fixture, shown for Chicago and Fez only.
+- **Debug layers:** surface colours come from the existing `ChunkView` views (classes, transition, slope, suitability, blocks, parcels); node and port markers from the existing `NetworkView`. Footprint lines are new, drawn from real footprints. Layers of later stages stay locked until the timeline reaches them. Not Available here: contours, City ID territory, growth frontiers, parent-child links, encounter candidates.
+- **Picking:** a click in Inspect selects a road, building, parcel, block or chunk by stable ID, only if the timeline has revealed it. It reads the snapshot and runs no generator. A click on empty space returns to the stage overview. A click no longer takes the camera out of the film; only a drag or wheel does.
+- **Verification:** `node scripts/verify-procedural-film.mjs` 87 / 87 in real Chrome, desktop and phone, 0 browser errors. Against a production build served locally: `verify-live-release` 10 / 10, and the Inspector with saved world data opens without errors.
+- **Performance (headless Chrome, RTX 4060; an ordinary laptop is Pending verification):** 143 fps with the panel open, 142 fps without; scene build 98–148 ms for the coast cities; fresh visit to playing 1.9 s. Inspector counters update at most 4 times per second.
+- **Screenshots (real runtime, Lisbon coast 2202, default parameters):**
+  - Watch mode, t 30 s: ![Watch mode](../assets/screenshots/procedural-mini-world/web01r1-watch-after.png)
+  - Inspect mode, t 38 s: ![Inspector with City ID, algorithm and parameters](../assets/screenshots/procedural-mini-world/web01r1-inspect-after.png)
+  - Debug layers, close-up, buildings off, road nodes and footprints on: ![Road nodes and footprints](../assets/screenshots/procedural-mini-world/web01r1-debug-after.png)
+  - Picked road edge 26: ![Selected road edge](../assets/screenshots/procedural-mini-world/web01r1-pick-after.png)
+  - Phone: ![Bottom sheet](../assets/screenshots/procedural-mini-world/web01r1-inspect-mobile-after.png)
+- **Known issues:**
+  1. Stages 7–9 are still not on the timeline, so growth appears only as saved data in the panel (WEB-01c).
+  2. The Inspector's "How it works" steps are hand-written summaries checked against generator code and comments; no test compares them to the code.
+  3. Close-up camera views can pass under the panel; the panel can be collapsed.
+  4. On a phone the sheet takes 32 % of the height; the model stays visible above it, smaller.
+  5. Not tested: real phones, Safari, Firefox, a low-end laptop.
+- **Review status:** Pending review.
+- **Next single task:** human review in the browser; then WEB-01c.
+
+### WEB-01c — From one city to a world: Part II of the film
+
+- **Date / Stage / Single question:** 2026-11-01 / presentation layer, by user instruction / Can the verified multi-city results play on the same player as the single chunk, without inventing data or presenting separate runs as one simulation?
+- **Regression first:** the full acceptance was re-run after the last WEB-01b-R1 text change: 87 / 87.
+- **New:** `experiments/procedural-film/sceneManifest.js` (source of truth per scene: source type, seeds, files, validation, limitations), `WorldScene.js`, `worldWorker.js`; `scripts/bake-film-world.mjs`; replay data `experiments/procedural-film/world/world-6201-step30.json` (8.8 MB, 2.6 MB gzip) and `encounter-case.json` (4.5 MB).
+- **Changed:** `stageManifest.js`, `TimelineController.js`, `CameraRig.js`, `FilmScene.js`, `inspectorContent.js`, `main.js`, `index.html`, `film.css`; `web-pages.js`, `web.css` (The Process and Research; historical work moved into a collapsed Research Archive); `scripts/verify-procedural-film.mjs`.
+- **Why a bake:** generating 36 chunks takes minutes, too long for a page. The bake runs the real generators once in Node and **stops if any chunk differs from the signatures in the saved verifier state**. All 36 world chunks and all three encounter scenarios matched. Baked from the working tree after commit `91efb1e`.
+- **Scenes:**
+  - Part I, stages 1–6: Live Generated Scene, unchanged.
+  - Stage 7 Six Urban Origins: Recorded Replay. The six saved origin chunks at their saved positions, shown in claim order.
+  - Stage 8 Procedural Urban Growth: Recorded Replay. The 30 saved events in order (parent, new chunk, score, bids, seams).
+  - Stage 9 Urban Encounter: Controlled Case Study, three scenarios equal to the G03b evidence, labelled hand-placed on a card, a permanent tag and the Inspector.
+- **Honest limits, stated on the page:**
+  - Part II is a separate run. A card says it does not continue the city of Part I.
+  - The record holds one event per chunk. Roads, lots and buildings appearing inside a chunk present its final geometry; they are not recorded events.
+  - G02 generates chunks independently: Inherited Road reads Not Available, Verified Connections reads 0, height steps at chunk edges stay visible.
+  - Terrain in Part II is resampled to 16 m; roads and buildings keep their geometry.
+- **Verification:** `node scripts/verify-procedural-film.mjs` 114 / 114 in real Chrome, desktop and phone, 0 browser errors. Production build served locally: replay loads, `verify-live-release` 10 / 10.
+  - **Chapters and separation:** Part I shows no world seed and Chunk ID Not Available; Part II shows seed 6201 and its source file.
+  - **Replay:** Stage 7 shows exactly the 6 saved origins; steps 1, 2, 7, 15, 22, 30 equal the saved history; after step 30 exactly the 36 saved chunks.
+  - **Speed:** measured in the world replay 0.25, 1.00, 4.00; same t gives the same frame after 4 × playback; 0.25 × and 4 × reach the same final frame.
+  - **Missing data:** with the replay file blocked, the page shows a clear message and a retry, the film waits and draws nothing.
+  - **Selection and layers:** clicking a chunk or city generates nothing; world layers change the view.
+- **Bugs found by testing, fixed:** a failed replay load retried forever and never showed its error; a panel opened before the data arrived kept a wrong Version row; on a phone the panel covered the stage title when the control bar grew.
+- **Performance (headless Chrome, RTX 4060; an ordinary laptop is Pending verification):** Part I playback 142 fps; world ready about 3 s here; up to about 780 k triangles at step 11 and more at step 30. Part II is the heaviest part of the site, and its behaviour on weak hardware is unknown.
+- **Screenshots (real runtime, world seed 6201 unless noted):**
+  - Six origins: ![Six-city overview](../assets/screenshots/procedural-mini-world/web01c-world-overview-after.png)
+  - Growth replay, step 23: ![Growth replay](../assets/screenshots/procedural-mini-world/web01c-growth-replay-after.png)
+  - Growth Inspector, step 15: ![Growth Inspector](../assets/screenshots/procedural-mini-world/web01c-growth-inspector-after.png)
+  - Case study, compatible road interface: ![Chicago × Fez case study](../assets/screenshots/procedural-mini-world/web01c-case-study-after.png)
+  - Inspect on the same frame as the replay above: ![Inspect mode](../assets/screenshots/procedural-mini-world/web01c-compare-inspect-after.png)
+  - Phone: ![World replay on a phone](../assets/screenshots/procedural-mini-world/web01c-world-mobile-after.png)
+- **Not connected, and why:**
+  1. G02b road-first growth: its data covers Manhattan and Fez only and is not part of this run, so it stays on the Research page.
+  2. G03a territory analysis: not baked. The City ID colours are chunk ownership only.
+  3. Active growth frontiers per step: not saved in the history.
+  4. Object-level selection in Part II: only chunks can be selected.
+  5. Natural encounters: the multi-city scheduler does not produce them yet (proposed G02c / G03c).
+- **Known issues:** the world is small on screen at full extent (click a city to enter); labels crowd on a phone; the City selector keeps its last value in Part II; "Terrain Analysis" shortens on the timeline; replay data adds 13 MB to the repository; real phones, Safari, Firefox and low-end devices not tested.
+- **Review status:** Pending review.
+- **Next single task:** human review in the browser; then WEB-01d or G02c / G03c.
+
+### WEB-01d — Curated research exhibition and production readiness
+
+- **Date / Stage / Single question:** 2026-11-02 / presentation layer, by user instruction / Can an outside viewer follow the research without help, and can the Inspector's explanations be traced to the code?
+- **Status check first:** WEB-01c is real: Part II runs on baked data with 114 / 114 at its last acceptance, so nothing had to be limited.
+- **New:** `experiments/procedural-film/algorithmSources.js`, `algorithm-review.json`; `scripts/verify-inspector-docs.mjs`, `scripts/measure-film-performance.mjs`; evidence `film-performance.json`.
+- **Changed:** `stageManifest.js` (TOUR), `main.js`, `index.html`, `film.css`, `CameraRig.js`, `inspectorContent.js`; root `index.html`, `site.js`, `web.css`, `web-pages.js`; `scripts/verify-procedural-film.mjs`.
+- **Guided Tour:** six chapters over the one timeline, so the tour and Explore share one loaded scene and switching regenerates nothing. It plays straight through; Next Chapter jumps ahead. The last chapter is marked as a controlled case study with natural encounters Planned.
+- **Navigation:** Explore, Process, Cities, Research; Archive is a small link apart. All old hash routes still open.
+- **Camera presets:** Terrain, Network, Morphology and Close-up in Part I; World, Network and Close-up in Part II; Encounter in the case study.
+- **Algorithm audit:** `node scripts/verify-inspector-docs.mjs` checks 49 bound symbols and 759 parameter rows on real data of all six cities and the whole recorded run, and fails when a bound source file changes until the summary is re-read. It proves references, not meaning: 24 statements are in a checklist with their basis, compared with the code by an AI. **Human review of the checklist is pending.**
+- **Errors the audit and its review found, fixed:** the case-study barrier scenario showed "undefined" in the Inspector (the last acceptance had missed it); `placeOrigins` was not a real function name; the building summary left out the occupancy rule; the grid summary left out short bridges.
+- **Verification:** `node scripts/verify-procedural-film.mjs` 129 / 129 in real Chrome, desktop and phone, 0 browser errors. Production build served locally: `verify-live-release` 10 / 10 (its navigation check updated for the Archive link); Part II loads.
+  - Keyboard: N, Space, I, Esc, Tab to the tour buttons. Text contrast of 12 sampled elements: lowest 4.92 : 1. Reduced motion and no-WebGL fallbacks pass. No dead internal links on the main pages.
+- **Performance (`film-performance.json`, headless, automated):**
+
+  | Measure | RTX 4060 | Low-end proxy: software WebGL, CPU ÷ 4, 1366 × 768 |
+  | --- | --- | --- |
+  | Controls visible | 0.3 s | 0.5 s |
+  | First model | 2.4 s | 3.6 s |
+  | Part I, buildings stage | 144 fps | 18 fps |
+  | Part I with Inspector | 143 fps | 17 fps |
+  | City switch, new / cached | 6.4 s / 0.25 s | 7.2 s / 1.1 s |
+  | Part II, full, step 30 | 144 fps | 3 fps |
+  | Part II, light view, with Inspector | not triggered | 7 fps |
+  | JS heap, Part I / with world | 221 / 340 MB | 225 / 314 MB |
+  | Geometries after six city switches | 10 → 10 | 10 → 10 |
+
+  The proxy is not a real device. The heaviest view has 1.57 million triangles.
+- **Light view:** when Part II stays under 12 fps for 2.5 s, building volumes and lots are hidden, a tag says so, and the viewer can turn them back on. Events and chunks do not change. It helps but does not make Part II smooth on the proxy. The timeline now follows real elapsed time, so a slow device shows fewer frames, not a slower film.
+- **Screenshots (real runtime; Lisbon coast 2202):**
+  - Guided Tour: ![Guided Tour, first chapter](../assets/screenshots/procedural-mini-world/web01d-tour-landscape-after.png)
+  - Phone: ![Guided Tour on a phone](../assets/screenshots/procedural-mini-world/web01d-tour-mobile-after.png)
+  - Site home: ![Site with the four-entry navigation](../assets/screenshots/procedural-mini-world/web01-home-after.png)
+- **Not complete:**
+  1. A City of Cities chapter is a hand-placed case study; cities do not meet in the grown world.
+  2. No Save / Load in the film: viewing state survives a refresh, and saving worlds stays in `/experiments/city-of-cities/`, not re-tested here.
+  3. Animation and tour pacing have not been judged by a person.
+  4. Part II on weak hardware stays poor. A recorded video fallback was not added: the 77 MB film is git-ignored.
+  5. Files & Notes and archived pages keep their dark look.
+  6. Firefox, Safari, real phones and real low-end devices are not tested; Firefox and WebKit are not installed here.
+- **Review status:** Pending review.
+- **Next single task:** human review, then the deployment decision.

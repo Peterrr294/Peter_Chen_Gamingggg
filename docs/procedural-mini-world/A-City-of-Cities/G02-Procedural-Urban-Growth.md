@@ -4,6 +4,27 @@ Part of [A City of Cities — Research Compass](../A-City-of-Cities-Research-Com
 
 **Status:** implemented and verified on world seeds 6201, 6202 and 6203, Node and browser, up to 30 growth steps. **Pending review.** Passing tests is not an accepted spatial design.
 
+| Navigation | |
+| --- | --- |
+| Parent study area | [Knowledge base home](../README.md), research path §4.2 · [Research Compass](../A-City-of-Cities-Research-Compass.md) |
+| Prerequisite | [G01 Multi-Origin Initialization](./G01-Multi-Origin-Initialization.md) (including the placement v2 fix) |
+| This experiment | G02 growth (log entries G02, G02-V) |
+| Next investigation | [G03a Urban Territory](./G03a-Urban-Territory.md); side branch: [class film](../../../presentation/city-of-cities/README.md) |
+| Code | [experiments/city-of-cities/](../../../experiments/city-of-cities/) (`WorldGrowthController.js`, `GrowthEvaluation.js`, `growthDNA.js`) |
+| Runtime entry | Local only: `/experiments/city-of-cities/`, folder "Growth (G02)" |
+| Related commit | `91efb1e` G02 Procedural Urban Growth and G01 placement v2 (checkpoint before presentation) (local, not pushed) |
+
+**Study notebook, in short.** *Question:* can six cities grow one chunk per step, explainably and reproducibly? *Method:* frontier per city, suitability from real terrain probes, seeded scheduler, full chunk chain per new chunk. *Failure on the way:* the first run stopped on seed 6202 because of a G01 placement defect; G02 waited for a fix instead of patching around it. *Result:* stages A–D pass on all three seeds; Node and browser histories are equal. *What changed in understanding (from the log):* suitability decides *where* a city grows much more than *how much*; the scheduler's 1 / (1 + grown) term sets near-fixed quotas (limitation 1). *Next question:* can the grown world be read as territories and relationships? → G03a.
+
+![Seeds 6201, 6202 and 6203 after 30 growth steps, 36 chunks each, side by side](../../assets/screenshots/procedural-mini-world/g02-growth-seed-compare.png)
+
+**What this shows:** the same rules give three different world shapes; on 6202 most cities form one large cluster, on 6201 and 6203 they stay mostly apart.
+**Conditions:** default G02 parameters, 30 steps per seed, real browser runtime (G02-V).
+**Why it matters:** the world map is an outcome of seed and rules, not a preset layout.
+**Limit:** chunk counts per city are almost identical on all three seeds (Manhattan and Chicago 8 each); shape varies, city size barely does.
+
+> Observation to complete after testing: do the six territories read as different growth behaviours when the seed sheet is compared?
+
 **Entry point:** `/experiments/city-of-cities/` (`npm run dev`). The growth panel (folder "Growth (G02)") has:
 
 - Grow one step, Grow multiple steps (max 30), Stop, Reset to origins;

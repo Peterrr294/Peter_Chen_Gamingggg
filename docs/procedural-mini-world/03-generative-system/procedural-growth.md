@@ -4,6 +4,18 @@ Research framing: [A City of Cities — Research Compass](../A-City-of-Cities-Re
 
 Code: [experiments/growing-world/](../../../experiments/growing-world/) · Verifier: [verify-growing-world.mjs](../../../scripts/verify-growing-world.mjs) · Log entry: G01 in [FINAL-EXPERIMENT-LOG.md](../FINAL-EXPERIMENT-LOG.md).
 
+| Navigation | |
+| --- | --- |
+| Parent study area | [Knowledge base home](../README.md), research path §4.2 |
+| Prerequisite | [World Grid & Seam](./world-grid-and-seam.md) and [City Influence](./city-influence.md) (reused: 06.2 layer functions, 07.1a spatial ids) |
+| This experiment | G01 growth prototype (2026-10-27); superseded by the A City of Cities stages, still runnable |
+| Next investigation | [Research Compass](../A-City-of-Cities-Research-Compass.md), then [G01 Multi-Origin Initialization](../A-City-of-Cities/G01-Multi-Origin-Initialization.md) |
+| Code | [experiments/growing-world/](../../../experiments/growing-world/) |
+| Runtime entry | Local only: `/experiments/growing-world/?worldSeed=6201&steps=10&frontier=1` |
+| Related commit | `c3e2e5f` G01 growth prototype and G00-R A City of Cities research compass (local, not pushed) |
+
+**Study notebook, in short.** *Starting assumption:* growth from six cores makes map size and boundaries outcomes. *First run (logged):* with coreMinDistance 4 / coreSpread 7 the cities did not meet within 48 chunks, so the defaults were tightened to 3 / 5. *Result:* 48-chunk worlds, 13 city-boundary edges on seed 6201, but 0 of 60 shared edges continuous and 5 of 8 Amsterdam chunks empty. *What changed in understanding (from the log):* the 02.6 fit score does not predict whether a DNA produces any city on a cell. *Next question:* restate the work as a research framework before rebuilding it stage by stage.
+
 ## Why growth instead of a fixed grid
 
 The 3 × 3 World Grid (06.2–07.1a) assembled nine pre-placed chunks. Teacher feedback (2026-10-27): a world built that way is a static assembly. Its size, its city boundaries and its neighbourhoods are fixed before any rule runs. In G01 the map is instead the result of a process:

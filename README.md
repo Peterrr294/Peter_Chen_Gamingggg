@@ -1,95 +1,80 @@
-# Procedural Mini World
+# Procedural Mini World — A City of Cities
 
-A controllable procedural world driven by real urban spatial relations. Seeded terrain is generated city-neutral first. A **City DNA** (Manhattan, Venice, Fez, Chicago, Amsterdam, Lisbon) is then matched to the detected landforms and drives roads and canals, blocks, parcels, and grey-box buildings. Nine such chunks form a 3 × 3 world whose shared edges are joined where the terrain allows it. Edges that can't be joined are measured and reported, not hidden.
+A controllable procedural world driven by real urban spatial relations. Terrain is generated city-neutral first; a **City DNA** (Venice, Manhattan, Fez, Amsterdam, Lisbon, Chicago) is matched to it and drives roads, blocks, parcels, and grey-box buildings. Since 2026-10-28 the six cities start from their own core chunks and **grow** into a shared world. It is a research prototype, not a game and not a visual copy of any city.
 
-It is not a traditional game and not a visual copy of a city. The seed only produces reproducible variation inside the rules; the City DNA carries the identity.
+> **Research question:** How can distinct urban identities emerge, expand, and collectively form a world through procedural growth?
+> *(Original question, 2026-10-17: how can city characteristics be encoded as controllable rules, and how is identity kept, weakened, or re-formed when rules change, mix, or are stitched together?)*
 
-> **Research question:** How can city characteristics be encoded as controllable procedural rules, and when those rules change continuously, mix, or are stitched together, how is city identity kept, weakened, or re-formed?
+## Current Work
 
-**Live:** <https://gameeeee-zc626.web.app/#miniWorld> · **Source:** <https://github.com/Peterrr294/Peter_Chen_Gamingggg> (branch `main`)
-
-![Live site, Mini World tab: 3 × 3 world, world seed 6201, one chunk switched to Amsterdam](./docs/assets/screenshots/procedural-mini-world/m01-live-world-grid-after.png)
-
-*Public site, 2026-10-19: world seed 6201, transition 128 m, harmonised terrain. `chunk_1_0` (yellow outline) was switched to Amsterdam, and only that chunk rebuilt (2.3 s).*
-
-## Current status (midterm, 2026-10-19)
-
-The authority is the project compass: [FINAL-EXPERIMENT-LOG.md §1 and §5](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md). Every task below is implemented, verified by its own script, and **pending human review**. None has been accepted yet.
-
-| Pipeline step | What exists | Task IDs |
-| --- | --- | --- |
-| Terrain | 1024 m chunk, four landform algorithms (plain, river valley, coast, mountain), height / water / slope / buildability fields, closed solid | 02.4, 05.1b-1 |
-| Analysis + City DNA | Explainable feature detection; ranking of 6 DNAs by terrain fit; manual override | 02.5, 02.6, 06.1 |
-| Network | One graph for Grid / Organic / Canal-Street, loop closure, mountain roads, checked tunnels with real excavation | 03.1–03.3, 05.1b-2 |
-| Blocks → parcels → buildings | Closed blocks, buildable polygons, road-fronted parcels, DNA-driven grey-box heights | 04.1, 04.1b, 04.2, 05.1 |
-| World | 3 × 3 World Grid, City ID per slot, layered rebuilds, seam detection and terrain / water harmonisation | 06.2, 06.3a |
-| Release | Deployed to Firebase Hosting; checked online | M01 |
-
-Semester targets (compass §3): three distinct City DNAs ✔ (six by configuration); one full terrain → network → parcel → building chain ✔; at least 3 tiles joined or blended: partial (4 of 12 edges join in world 6201, and no road network crosses chunks yet); tunable parameters and debug layers ✔; comparison evidence ✔ (screenshots and JSON per task).
-
-## Knowledge base
-
-| Start here | For |
+| | |
 | --- | --- |
-| [Knowledge base home](./docs/procedural-mini-world/README.md) | The six-part structure: foundation, city research, generative system, experiments, midterm review, release |
-| [Midterm Review](./docs/procedural-mini-world/midterm-review/00-midterm-review.md) | Seven short chapters in reading order: statement, workflow, parameters, experiments, results, limitations, next steps |
-| [Experiment index](./docs/procedural-mini-world/EXPERIMENT-INDEX.md) | Every task by category with purpose, files, screenshots, test status, lifecycle (active / superseded / archived), and next step |
-| [Final experiment log](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md) | Compass (§1–5) and the full record of each task (§7) |
-| [Research](./docs/procedural-mini-world/research/city-longlist-60.md) | 60-city research database, prototype selection, Manhattan study |
-| [AGENTS.md](./AGENTS.md) | Execution rules for coding agents and evidence conventions |
-| [Session logs](./docs/logs/README.md) | Dated summaries (e.g. [2026-10-18](./docs/logs/2026-10-18.md), [2026-10-19](./docs/logs/2026-10-19.md)) |
-| [Documentation catalog](./docs/README.md) | Earlier Game Lab projects, learning notes, Firebase and website infrastructure |
+| **Stage** | G03a Urban Territory & Spatial Relationships: implemented, verified on seeds 6201 / 6202 / 6203, **pending review** (status authority: [compass §1 and §5](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md)) |
+| **Question now** | Can the multi-city growth be read as organised space (territories, non-urban land, boundaries, city relationships) without changing growth? |
+| **Branch** | `experiment/procedural-growing-world` (local; not pushed yet). `main` and the public site are at `1f63e6f` (M06). |
+| **Code** | [experiments/city-of-cities/](./experiments/city-of-cities/) · verifiers in [scripts/](./scripts/) (`verify-city-of-cities`, `verify-city-growth`, `verify-city-territory`) |
+| **Uncommitted** | WEB-01 website and film; G03b (urban encounter), G02b (morphological growth) and G03a code, notes and screenshots; `presentation/` (class film tooling) |
+| **Waiting for review** | G03b, G02b, G03a, G02 (+ G01-FIX), G01-MO, the Research Compass. **No task has been accepted yet**; passing verifiers check data, not spatial quality. |
 
-The repository root is also an Obsidian vault (`.obsidian/`). All links are relative and work on GitHub, in Obsidian, and in VS Code.
+![Seed 6201 after 30 growth steps: six coloured city territories, 36 chunks, arrows showing which chunk each one grew from](./docs/assets/screenshots/procedural-mini-world/g02-growth-step30-after.png)
 
-## Run locally
+**What this shows:** six cities grown from their own cores for 30 steps (one chunk per step, 36 chunks); each territory stays connected and every arrow points from parent to child chunk.
+**Conditions:** world seed 6201, default G02 parameters, real browser runtime, G02-V verification run (commit `91efb1e`, local).
+**Why it matters:** the map size and city boundaries are outcomes of growth rules, not a preset 3 × 3 layout.
+**Limit:** it does not show that the territories read as different cities; chunk counts per city are nearly the same on every seed (see [Project Feedback](./docs/procedural-mini-world/PROJECT-FEEDBACK.md)).
 
-Requirements: Node.js 20+ (or the portable copy that `dev.cmd` / `build.cmd` expect in `.tools/`). The verifiers also need Google Chrome installed, because they drive it through `playwright-core`.
+## Exercises
+
+Main exercises in research order. The full list of ~40 recorded tasks is in the [Experiment Index](./docs/procedural-mini-world/EXPERIMENT-INDEX.md).
+
+| Exercise | Research question / result | Open exercise | Study record | Commit |
+| --- | --- | --- | --- | --- |
+| Terrain-first single chunk (T1–T6) | Can a city-neutral terrain be read and given a fitting City DNA that drives roads → blocks → parcels → buildings? Full chain for 6 DNAs, verified. | [Live](https://gameeeee-zc626.web.app/experiments/seed-terrain/) | [System Architecture](./docs/procedural-mini-world/03-generative-system/system-architecture.md) | [`7b21c3e`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/7b21c3e) M01 release snapshot: Procedural Mini World midterm (Firebase Hosting gameeeee-zc626) |
+| 3 × 3 World Grid and seams (06.2–06.3c) | Can nine chunks share one world and join at their edges? 4 / 12 edges joined at first; later every edge classified, unjoinable ones reported. | [Live](https://gameeeee-zc626.web.app/experiments/world-grid/) | [World Grid & Seam](./docs/procedural-mini-world/03-generative-system/world-grid-and-seam.md) | [`7b21c3e`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/7b21c3e) (06.2, 06.3a); [`1f63e6f`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/1f63e6f) M06 checkpoint: World Grid seams, terrain coordination, World State checkpoint |
+| City Influence & Fusion (07.1, 07.1a) | Can one city's rules invade a neighbour and show a mixed boundary? Works for one source and one target; unaffected areas stay identical with spatial ids. | Local only: `npm run dev` → `/experiments/world-grid/` (City Influence folder) | [City Influence](./docs/procedural-mini-world/03-generative-system/city-influence.md) | `79687a0` G00 checkpoint: City Influence & Fusion (07.1, 07.1a) before Procedural Growth (local, not pushed) |
+| Growth prototype (G01, 2026-10-27) | Can six cores grow a map chunk by chunk? Yes, 48 chunks; became the model for the new mainline. Superseded. | Local only: `/experiments/growing-world/` | [Procedural Growth](./docs/procedural-mini-world/03-generative-system/procedural-growth.md) | `c3e2e5f` G01 growth prototype and G00-R A City of Cities research compass (local, not pushed) |
+| G01 Multi-Origin Initialization | Can six independent city cores be placed reproducibly by terrain suitability? Yes on 3 seeds; placement v2 fixes seed 6202. | Local only: `/experiments/city-of-cities/` | [G01 note](./docs/procedural-mini-world/A-City-of-Cities/G01-Multi-Origin-Initialization.md) | `69b3a1f` G01 Multi-Origin Initialization: six city origins in one world frame (local, not pushed) |
+| G02 Procedural Urban Growth | Can the six cities grow one chunk per step, explainably and reproducibly? Yes, 30 steps on 3 seeds, Node = browser. | Local only: `/experiments/city-of-cities/` | [G02 note](./docs/procedural-mini-world/A-City-of-Cities/G02-Procedural-Urban-Growth.md) | `91efb1e` G02 Procedural Urban Growth and G01 placement v2 (checkpoint before presentation) (local, not pushed) |
+| G02b Morphological Growth | Does a grown chunk continue its city? Road-first growth: Manhattan's grid continues through 3 chunks (17 roads joined at 0 m), Fez 2 joins, Chicago refused by terrain. | Local only: `/experiments/city-of-cities/` (Morphological growth folder) | [G02b note](./docs/procedural-mini-world/A-City-of-Cities/G02b-Morphological-Growth.md) | Working tree — uncommitted |
+| G03b Urban Encounter | When Chicago's grid and Fez's lanes meet (test fixture), what happens at the edge? Fez adapts and connects (2 joins, 2.3 km core-to-core route); Chicago's grid cannot adapt (plan pending); a river valley keeps them apart. | Local only: `/experiments/city-of-cities/?fixture=compatible` | [G03b note](./docs/procedural-mini-world/A-City-of-Cities/G03b-Urban-Encounter.md) | Working tree — uncommitted |
+| G03a Urban Territory | Can growth be read as territories, boundaries and city relationships? Analysis layer verified; cities touch rarely (0–4 shared edges). | Local only: `/experiments/city-of-cities/` (Territory folder) | [G03a note](./docs/procedural-mini-world/A-City-of-Cities/G03a-Urban-Territory.md) | Working tree — uncommitted |
+| Interactive Procedural Film (WEB-01) | Can a visitor watch one real city generate from terrain to buildings? Yes for six verified configurations, with a timeline that never alters the model. | Local only: `npm run dev` → `/` | [Log entry WEB-01](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md) | Working tree — uncommitted |
+
+Local only = not deployed. Start with `npm install` then `npm run dev` and open `http://localhost:5173` plus the path. Earlier Game Lab studies (Starlight Run, Cellular Noise, Voxel Terrain, Shader Basics, Flavor Clash) are listed in the [documentation catalog](./docs/README.md).
+
+## Learning Journey
+
+1. [Knowledge base home](./docs/procedural-mini-world/README.md): question, status words, and the research path diagrams that explain why each exercise led to the next.
+2. [System Architecture](./docs/procedural-mini-world/03-generative-system/system-architecture.md): the single-chunk chain everything else reuses.
+3. [World Grid & Seam](./docs/procedural-mini-world/03-generative-system/world-grid-and-seam.md): the static world and why its preset layout became a limit.
+4. [A City of Cities — Research Compass](./docs/procedural-mini-world/A-City-of-Cities-Research-Compass.md): the current framing, hypotheses H1–H3, and the G00–G05 roadmap.
+5. [G01](./docs/procedural-mini-world/A-City-of-Cities/G01-Multi-Origin-Initialization.md) → [G02](./docs/procedural-mini-world/A-City-of-Cities/G02-Procedural-Urban-Growth.md) → [G03a](./docs/procedural-mini-world/A-City-of-Cities/G03a-Urban-Territory.md): origins, growth, territory.
+6. [Project Feedback](./docs/procedural-mini-world/PROJECT-FEEDBACK.md): AI review of every part, with the smallest next check for each.
+
+## Knowledge Base and Records
+
+| Entry | For |
+| --- | --- |
+| [Knowledge base home](./docs/procedural-mini-world/README.md) | Study areas, research path, review status |
+| [Experiment Index](./docs/procedural-mini-world/EXPERIMENT-INDEX.md) | Every task with files, evidence, lifecycle, and the commit map |
+| [Compass and experiment log](./docs/procedural-mini-world/FINAL-EXPERIMENT-LOG.md) | Stage status (§1, §5) and the full record of each task (§7) |
+| [Project Feedback](./docs/procedural-mini-world/PROJECT-FEEDBACK.md) | AI feedback per research area (not a teacher's or formal review) |
+| [Next session hand-off](./docs/procedural-mini-world/NEXT_SESSION.md) | Day hand-off: Git state, open problems, start commands |
+| [Midterm Review](./docs/procedural-mini-world/midterm-review/00-midterm-review.md) | The 2026-10-19 midterm summary (historical) |
+| [Documentation catalog](./docs/README.md) | Earlier Game Lab projects, learning notes, Firebase and website |
+| [AGENTS.md](./AGENTS.md) | Rules for coding agents and evidence conventions |
+
+The repository root is also an Obsidian vault (`.obsidian/`). All links are relative and work on GitHub, in Obsidian, and in VS Code. The site's Files & Notes page reads every `docs/**/*.md`.
+
+## Run Locally
+
+Node.js 20+ (or the portable copy that `dev.cmd` / `build.cmd` expect in `.tools/`). Verifiers drive an installed Google Chrome through `playwright-core`.
 
 ```powershell
 npm install
-npm run dev          # http://localhost:5173/
+npm run dev                              # http://localhost:5173/
+node scripts/verify-city-territory.mjs   # each task has scripts/verify-<name>.mjs
+node scripts/verify-markdown-links.mjs   # documentation link check
 ```
 
-| Page | URL (dev server) |
-| --- | --- |
-| 3 × 3 World Grid | `/experiments/world-grid/` (`?worldSeed=6202`, `?terrain=raw`, `?seams=1`) |
-| Single chunk | `/experiments/seed-terrain/?landform=plain&seed=2085&dna=manhattanGrid` |
-| Site hub | `/#miniWorld` |
-
-```powershell
-npm run build                           # production build into dist/
-node scripts/verify-world-grid.mjs      # each task has scripts/verify-<name>.mjs
-node scripts/verify-markdown-links.mjs  # documentation link check
-npm run verify:live                     # check the deployed site (optional URL: node scripts/verify-live-release.mjs <url>)
-```
-
-Deployment uses the existing Firebase project `gameeeee-zc626` (`firebase deploy --only hosting`). A push to `main` also deploys through `.github/workflows/firebase-hosting-merge.yml`.
-
-## Tech stack
-
-JavaScript (ES modules) · Three.js 0.180 · Vite 7 · lil-gui · Firebase Hosting (plus Authentication / Firestore for the older terrain-save feature) · `playwright-core` for automated verification and screenshots. No game engine, no UE5.
-
-## Repository layout
-
-```text
-experiments/seed-terrain/   active: single-chunk pipeline (terrain → … → buildings, tunnels)
-experiments/world-grid/     active: 3 × 3 World Grid, seams, harmonisation
-experiments/…               earlier studies; some modules are still imported (see the index)
-scripts/verify-*.mjs        one browser verifier per task
-docs/procedural-mini-world/ compass + log, experiment index, research
-docs/assets/screenshots/    evidence images (procedural-mini-world/<task>-<subject>-<kind>.png)
-site.js, index.html         Game Lab hub that hosts every experiment
-```
-
-## Known limitations
-
-- **Seams:** 8 of 12 edges in world 6201 cannot be joined without slopes over 35° (mountain edges, steep river banks). Only 1 of 4 interior corners closes. Water stays discontinuous on unresolved edges. Roads and edge ports are not joined across chunks.
-- **Performance:** the first world build takes about 17 s on the main thread (no worker).
-- **Tunnels:** a known tunnel-geometry defect (mountain seed 7922 with Chicago) is isolated, not fixed.
-- **Research calibration:** most DNA thresholds are assumptions without registered sources. Chicago and Amsterdam never win auto-match on the test terrains.
-- **Terrain Seam models:** the archived Terrain Seam experiment needs ≈ 390 MB of third-party `.glb` / `.fbx` models that are git-ignored. Without `tiny_tokyo.glb` the page stops at load, both in a fresh clone and on the public site. See [Local model files](./docs/projects/flavor-clash/terrain-seam-building-scatter.md).
-
-## Earlier work in this repository
-
-Before Procedural Mini World, this repository was "Peter's Game Lab", a notebook of smaller studies that share the same site: Starlight Run (first playable loop), React Three Fiber basics, Cellular Noise, Voxel Terrain (SDF, CSG, three meshers), Shader Basics, PCG Terrain Lab, and the Flavor Clash regional map with its Iceland, road, and terrain-seam labs. They stay runnable and are listed as archived in the [experiment index](./docs/procedural-mini-world/EXPERIMENT-INDEX.md). Their records are in the [documentation catalog](./docs/README.md), the [exploration map](./docs/EXPLORATION-MAP.md), and the [Assignment 1 checklist](./docs/ASSIGNMENT-1-CHECKLIST.md).
+Stack: JavaScript (ES modules), Three.js 0.180, Vite 7, lil-gui, Firebase Hosting; no game engine. Public site: <https://gameeeee-zc626.web.app/#miniWorld> (deployed from `main` by `.github/workflows/firebase-hosting-merge.yml`). The archived Terrain Seam page needs git-ignored local models; see [Local model files](./docs/projects/flavor-clash/terrain-seam-building-scatter.md).

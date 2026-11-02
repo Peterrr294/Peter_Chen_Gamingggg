@@ -26,7 +26,7 @@ A city's identity is studied as **spatial relations** between terrain, water, st
 - **Proposed:** planned, not implemented.
 - **Historical:** superseded or archived, kept for the record.
 
-A passing build or verifier is never an *accepted* spatial result. **As of 2026-10-20, no task has been Accepted or Rejected.**
+A passing build or verifier is never an *accepted* spatial result. **As of 2026-10-28 (checked against log §7 in DOC-06), no task has been Accepted or Rejected.** Rows below are grouped by line of work; the commit for each task is in the [Experiment Index commit map](./EXPERIMENT-INDEX.md#commit-map).
 
 | Item | Current status | Evidence | Review action |
 | --- | --- | --- | --- |
@@ -38,20 +38,29 @@ A passing build or verifier is never an *accepted* spatial result. **As of 2026-
 | T5 blocks and parcels (04.1, 04.1b, 04.2) | Implemented · Verified · Pending review | `verify-blocks`, `verify-block-refinement`, `verify-parcels` | decide on interior reserve access |
 | T6 buildings and solid terrain (05.1, 05.1b-1) | Implemented · Verified · Pending review; heights are assumptions | `verify-buildings`, `verify-solid-terrain` | check heights against research |
 | T7 multi-chunk world (06.2, 06.3a) | Implemented (partial: 4 / 12 edges joined) · Verified · Pending review | `verify-world-grid`, `verify-world-seam`, `world-seam.json` | decide the policy for unjoinable edges |
+| T7 seam follow-ups (06.3b roads, 06.3a-R / R2 world terrain, 06.3c seam classes) | Implemented · Verified · Pending review; R2 is the World Grid default | [World Grid & Seam](./03-generative-system/world-grid-and-seam.md), log entries | decide escarpment handling for mountain edges |
 | Earlier versions (02.1, 02.2, 02.2b, 02.3) | Historical | [Terrain Experiments](./04-experiments/terrain-experiments.md) | none |
-| City influence, expansion, DNA mixing | Proposed | [City Influence](./03-generative-system/city-influence.md) | waits for the T7 edge decision |
+| City Influence & Fusion (07.1, 07.1a: one source city, one target) | Implemented · Verified · Pending review; expansion and multi-city mixing Proposed | `verify-city-influence.mjs`, [City Influence](./03-generative-system/city-influence.md) | decide whether spatial ids become the default |
+| Release (M01, M02b, M06) | Implemented · Verified online | `verify-live-release.mjs` 10 / 10; [Deployment History](./06-release/deployment-history.md) | none |
 | G00 Preserve & Recover | Done (checkpoint `79687a0`) | [log G00](./FINAL-EXPERIMENT-LOG.md) | none |
-| G01 multi-origin growth (cores, frontier, single step, save / load) | Implemented · Verified · Pending review; uncommitted | `verify-growing-world.mjs`, [Procedural Growth](./03-generative-system/procedural-growth.md) | accept or reject; commit decision |
-| G02 Procedural Urban Growth (frontier, suitability, scheduler, one chunk per step) | Implemented · Verified (6201 / 6202 / 6203, 30 steps) · Pending review | `verify-city-growth.mjs`, [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) | spatial review; scheduler quota decision |
-| G01-MO Multi-Origin Initialization (six city origins, no growth; placement v2 since G01-FIX) | Implemented · Verified · Pending review | `verify-city-of-cities.mjs`, [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) | accept or reject; then G02 |
+| G01 growth prototype (cores, frontier, single step, save / load; 2026-10-27) | Implemented · Verified · Pending review; superseded by G01-MO / G02 | `verify-growing-world.mjs`, [Procedural Growth](./03-generative-system/procedural-growth.md) | accept or reject |
 | G00-R A City of Cities research compass | Implemented as document · Pending review | [Research Compass](./A-City-of-Cities-Research-Compass.md) | accept the framing; rule-conflict revisions (compass §15) |
-| G02–G05 (Growth DNA fields, territory and encounter, morphological growth, evaluation and replay) | Proposed (G02 baseline exists in G01) | [Research Compass §11](./A-City-of-Cities-Research-Compass.md) | set after the G01 review |
-| Release (M01, M02b) | Implemented · Verified online | `verify-live-release.mjs` 10 / 10; [Deployment History](./06-release/deployment-history.md) | none |
+| G01-MO Multi-Origin Initialization (six city origins, no growth; placement v2 since G01-FIX) | Implemented · Verified · Pending review | `verify-city-of-cities.mjs`, [G01 note](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) | accept or reject |
+| G02 Procedural Urban Growth (frontier, suitability, scheduler, one chunk per step) | Implemented · Verified (6201 / 6202 / 6203, 30 steps) · Pending review | `verify-city-growth.mjs`, [G02 note](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) | spatial review; scheduler quota decision |
+| PRESENTATION-01 class film | Done (film delivered) · uncommitted | [presentation README](../../presentation/city-of-cities/README.md) | none |
+| G02b Morphological Growth (road-first, one city: Manhattan grid, Fez organic, Chicago failure path) | Implemented · Verified (seed 6201) · Pending review · uncommitted | `verify-morph-growth.mjs`, [G02b note](./A-City-of-Cities/G02b-Morphological-Growth.md) | review continuity and the 3 m entry rule |
+| G03a Urban Territory & Spatial Relationships (analysis layer: spatial states, territories, boundaries, relationships) | Implemented · Verified (6201 / 6202 / 6203, 0 / 10 / 30 steps) · Pending review · uncommitted | `verify-city-territory.mjs`, [G03a note](./A-City-of-Cities/G03a-Urban-Territory.md) | review the constraint rules and relationship definitions |
+| G03b Urban Encounter & Morphological Negotiation (Chicago × Fez, test fixture: connection, pending plan, separation) | Implemented · Verified (seed 6201, Node + browser) · Pending review · uncommitted | `verify-urban-encounter.mjs`, [G03b note](./A-City-of-Cities/G03b-Urban-Encounter.md) | review the negotiation rules and the asymmetric outcome |
+| WEB-01 website and Interactive Procedural Film (terrain to buildings; WEB-01c, WEB-01d not started) | Implemented · Verified in a local browser (54 / 54) · Pending review · not deployed · uncommitted | `verify-procedural-film.mjs`, `experiments/procedural-film/evidence/film-acceptance.json`, [log WEB-01](./FINAL-EXPERIMENT-LOG.md) | watch the film; decide on WEB-01c and deployment |
+| WEB-01b-R1 playback speed and Algorithm Inspector | Implemented · Verified in a local browser (87 / 87) · Pending review · not deployed · uncommitted | `verify-procedural-film.mjs`, [log WEB-01b-R1](./FINAL-EXPERIMENT-LOG.md) | try the speeds and Inspect mode; decide on WEB-01c |
+| WEB-01c Part II of the film (recorded world, controlled case study) | Implemented · Verified in a local browser (114 / 114) · Pending review · not deployed · uncommitted | `verify-procedural-film.mjs`, `scripts/bake-film-world.mjs`, [log WEB-01c](./FINAL-EXPERIMENT-LOG.md) | watch Part II; decide on WEB-01d or G02c / G03c |
+| WEB-01d exhibition structure and Inspector audit | Implemented · Verified in a local browser (129 / 129) · Pending review · not deployed · uncommitted | `verify-procedural-film.mjs`, `verify-inspector-docs.mjs`, [log WEB-01d](./FINAL-EXPERIMENT-LOG.md) | review the site and the checklist; decide on deployment |
+| G03c–G05 (encounters in the scheduler, evaluation and replay) | Proposed | [Research Compass §11](./A-City-of-Cities-Research-Compass.md) | set after the G03a review |
 
 ## 3. Start Here
 
-0. **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).** The current research framing; read it before the older notes below, which describe the single-chunk chain and the static world. Current stage: [G02 Procedural Urban Growth](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (after [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md)).
-0. **[Next session hand-off](./NEXT_SESSION.md).** Current stage, Git commit, public URL, saved World State, open problems, the next single task, and the local start commands.
+0. **[A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md).** The current research framing; read it before the older notes below, which describe the single-chunk chain and the static world. Current stage: [G03a Urban Territory](./A-City-of-Cities/G03a-Urban-Territory.md), after [G02 Procedural Urban Growth](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) (after [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md)).
+0. **[Next session hand-off](./NEXT_SESSION.md).** Current stage, Git commit, public URL, saved World State, open problems, the next single task, and the local start commands. AI feedback on every part of the project: [Project Feedback](./PROJECT-FEEDBACK.md).
 1. **[Project compass](./FINAL-EXPERIMENT-LOG.md), §1 and §5.** Read this first: it defines the question, the stages, and what is in or out of scope right now.
 2. **[Terrain & Water](./03-generative-system/terrain-and-water.md) and [Terrain Analysis](./03-generative-system/terrain-analysis.md).** Everything starts from a city-neutral site, so understand the tile, the four landforms, and how the site is read.
 3. **[City DNA Matching](./03-generative-system/city-dna-matching.md).** Next, see how a city is *chosen to fit* that site rather than imposed on it, and what is still an assumption.
@@ -68,14 +77,92 @@ For the whole build history with every screenshot on one page, see the [Experime
 | --- | --- |
 | 01 Project Foundation | [A City of Cities — Research Compass](./A-City-of-Cities-Research-Compass.md) · [Compass and log](./FINAL-EXPERIMENT-LOG.md) · [Proposal, principles, design evolution, roadmap](./01-foundation/project-foundation.md) · [AGENTS.md](../../AGENTS.md) |
 | 02 City Research | [Research template](./research/city-research-template.md) + [CSV](./research/city-research-template.csv) · [60-city database and families](./research/city-longlist-60.md) · [Prototype selection](./research/prototype-city-selection.md) · [Manhattan study](./research/manhattan-spatial-study.md) · [City DNA Library](./research/city-dna-library.md) |
-| 03 Generative System | [System Architecture](./03-generative-system/system-architecture.md) · [Terrain & Water](./03-generative-system/terrain-and-water.md) · [Terrain Analysis](./03-generative-system/terrain-analysis.md) · [City DNA Matching](./03-generative-system/city-dna-matching.md) · [Road & Tunnel](./03-generative-system/road-and-tunnel.md) · [Block & Parcel](./03-generative-system/block-and-parcel.md) · [Building Extrusion](./03-generative-system/building-extrusion.md) · [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) · [City Influence (proposed)](./03-generative-system/city-influence.md) · [Procedural Growth (G01)](./03-generative-system/procedural-growth.md) |
+| 03 Generative System | [System Architecture](./03-generative-system/system-architecture.md) · [Terrain & Water](./03-generative-system/terrain-and-water.md) · [Terrain Analysis](./03-generative-system/terrain-analysis.md) · [City DNA Matching](./03-generative-system/city-dna-matching.md) · [Road & Tunnel](./03-generative-system/road-and-tunnel.md) · [Block & Parcel](./03-generative-system/block-and-parcel.md) · [Building Extrusion](./03-generative-system/building-extrusion.md) · [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) · [City Influence & Fusion](./03-generative-system/city-influence.md) · [Procedural Growth (G01)](./03-generative-system/procedural-growth.md) |
 | 04 Experiments | [Experiment Index](./EXPERIMENT-INDEX.md) · [Terrain](./04-experiments/terrain-experiments.md) · [Network](./04-experiments/network-experiments.md) · [Urban Form](./04-experiments/urban-form-experiments.md) · [World](./04-experiments/world-experiments.md) · [Archived](./04-experiments/archived-experiments.md) · [Experiment Archive (single page)](./04-experiments/EXP-Procedural-Mini-World/Procedural-Mini-World.md) |
 | 05 Midterm Review | [Overview](./midterm-review/00-midterm-review.md) and chapters [1](./midterm-review/01-project-statement.md) · [2](./midterm-review/02-system-workflow.md) · [3](./midterm-review/03-key-parameters.md) · [4](./midterm-review/04-experiments.md) · [5](./midterm-review/05-midterm-results.md) · [6](./midterm-review/06-limitations.md) · [7](./midterm-review/07-next-steps.md) |
 | 06 Release & Resources | [GitHub, Firebase, references, attribution](./06-release/release-and-resources.md) · [Deployment History](./06-release/deployment-history.md) |
 | 99 Attachments | [Screenshot Index](./99-attachments/screenshot-index.md) |
+| A City of Cities (current) | [G01 Multi-Origin Initialization](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) · [G02 Procedural Urban Growth](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) · [G02b Morphological Growth](./A-City-of-Cities/G02b-Morphological-Growth.md) · [G03a Urban Territory](./A-City-of-Cities/G03a-Urban-Territory.md) · [G03b Urban Encounter](./A-City-of-Cities/G03b-Urban-Encounter.md) · [Next session hand-off](./NEXT_SESSION.md) |
+| Review | [Project Feedback (AI)](./PROJECT-FEEDBACK.md) |
 | Dated session logs | [2026-10-18](../logs/2026-10-18.md) · [2026-10-19](../logs/2026-10-19.md) |
 
-## 4. Terrain-first Pipeline
+## 4. Research Path — Why Each Exercise Led to the Next
+
+The two diagrams below follow the main exercises. An arrow label states what the earlier result showed that motivated the next one; every label comes from the open issues, "Why the change" or "Single question" lines of the [log](./FINAL-EXPERIMENT-LOG.md) §7. Three kinds of link are kept apart:
+
+- **Chronology:** the order in which tasks were logged (dates in the log).
+- **Dependency:** the later task reuses code or data from the earlier one (listed under "Reused files" in the log).
+- **Motivation:** the earlier result raised the question that the later task asks. Used only where the log says so; otherwise the link is marked *related exploration*.
+
+### 4.1 From one chunk to a stitched world (2026-10-17 → 10-21)
+
+```mermaid
+flowchart TD
+  R["R Research base<br/>60 cities, 3 prototypes"]
+  M["02.1 Manhattan greybox<br/>Historical"]
+  T["T1–T3 Seed terrain,<br/>analysis, DNA match"]
+  C["T4–T6 Roads, parcels,<br/>buildings"]
+  W["06.2 3 × 3 World Grid"]
+  S["06.3a Seam harmonisation"]
+  RB["06.3b Road seam"]
+  WT["06.3a-R / R2<br/>World terrain"]
+  SC["06.3c Seam classes"]
+  CI["07.1 / 07.1a<br/>City Influence"]
+
+  R -->|"rules need a site"| M
+  M -->|"DNA shaped its own terrain:<br/>reversed to terrain-first"| T
+  T -->|"site read, DNA chosen"| C
+  C -->|"one chunk works"| W
+  W -->|"12 / 12 edges stepped"| S
+  S -->|"roads stop at joined edges"| RB
+  S -->|"8 / 12 edges unresolved"| WT
+  WT -->|"steep natural seams<br/>counted as failures"| SC
+  W -->|"mixing of identities untested"| CI
+```
+
+Single-chunk work first fixed a city-neutral terrain contract (the 2026-10-18 reversal after 02.1). The 3 × 3 world then exposed seams at every edge, and three rounds of seam work narrowed them from "joined or not" to four separately reported questions. City Influence tested the "mix" half of the original question on one boundary. Links: [Research base](./research/city-longlist-60.md) · [Terrain Experiments (02.1–02.4)](./04-experiments/terrain-experiments.md) · [System Architecture](./03-generative-system/system-architecture.md) · [World Grid & Seam](./03-generative-system/world-grid-and-seam.md) · [City Influence](./03-generative-system/city-influence.md).
+
+### 4.2 From a preset world to a grown world (2026-10-27 → 10-28)
+
+```mermaid
+flowchart TD
+  W["3 × 3 World Grid +<br/>City Influence"]
+  P["G01 growth prototype"]
+  C["G00-R Research Compass"]
+  MO["G01-MO Six origins"]
+  G2["G02 Growth"]
+  FX["G01-FIX Placement v2"]
+  GV["G02-V Verified, 3 seeds"]
+  F["PRESENTATION-01 Film"]
+  G3["G03a Territory"]
+  G3b["G03b Encounter zones<br/>Proposed"]
+
+  W -->|"layout fixed before any rule ran<br/>(teacher feedback)"| P
+  P -->|"restate as one research framework"| C
+  C -->|"roadmap stage G01"| MO
+  MO -->|"roadmap stage G02"| G2
+  G2 -->|"seed 6202: Amsterdam<br/>cannot be placed"| FX
+  FX -->|"re-run all seeds"| GV
+  GV -->|"film from real output"| F
+  GV -->|"can growth be read<br/>as territory?"| G3
+  G3 -.->|"cities rarely meet"| G3b
+```
+
+Teacher feedback on 2026-10-27 turned the fixed layout into the problem: in a preset grid the world size and city boundaries are decided before any rule runs, so they cannot be studied as results. The prototype showed growth was feasible; the compass framed it; G01–G03a rebuilt it stage by stage. The G02 → G01-FIX link is a real failure: G02 stopped and waited for a decision rather than patching the earlier stage. The film is a side branch (no generator change). The dashed link to G03b is a proposal from the G03a note §10, not a result. Links: [Procedural Growth](./03-generative-system/procedural-growth.md) · [Research Compass](./A-City-of-Cities-Research-Compass.md) · [G01](./A-City-of-Cities/G01-Multi-Origin-Initialization.md) · [G02](./A-City-of-Cities/G02-Procedural-Urban-Growth.md) · [G03a](./A-City-of-Cities/G03a-Urban-Territory.md) · [Film](../../presentation/city-of-cities/README.md).
+
+| Transition | Chronology | Dependency | Motivation (from the log) |
+| --- | --- | --- | --- |
+| 02.1 → 02.2–02.4 | 10-17 → 10-18 | none (rewritten) | DNA-shaped terrain reversed to terrain-first |
+| T6 → 06.2 | 10-18 | 06.2 runs the unchanged chain per chunk | semester target: ≥ 3 tiles joined (compass §3) |
+| 06.2 → 06.3a | 10-18 → 10-19 | `SeamCheck` → `TerrainHarmonizer` | 12 / 12 edges stepped |
+| 06.3a → 06.3a-R → R2 → 06.3c | 10-19 → 10-21 | each refines the previous terrain mode, all stay runnable | unresolved edges; then cores moved by macro ramps; then natural scarps counted as failures |
+| 06.2 → 07.1 | 10-18 → 10-21 | `CityInfluence.js` on the World Grid | the "mix" half of the original question |
+| 07.1a → G01 prototype | 10-21 → 10-27 | reuses 07.1a spatial ids and the 06.2 layer functions | teacher feedback: the preset layout is a static assembly |
+| G01 prototype → G01-MO | 10-27 → 10-28 | new isolated folder; prototype stays runnable | compass roadmap G01 |
+| G02 → G01-FIX → G02-V | 10-28 | G02 uses `WorldContext` from G01 | seed 6202 placement failure |
+| G02-V → G03a | 10-28 | `TerritoryModel` reads the G02 history | roadmap G03; few city boundaries noted in G02 |
+
+## 5. Terrain-first Pipeline
 
 ```mermaid
 flowchart LR
@@ -92,7 +179,7 @@ flowchart LR
 
 Each step reads only the steps before it and never changes them. That is why one tile's city can be swapped without regenerating its terrain (06.2). The design changed on 2026-10-18: earlier, a City DNA shaped its own terrain (02.1, now Historical); since then, terrain is generated city-neutral first and the DNA is matched to it. Frozen tile specification: 1024 m × 1024 m, 257 × 257 samples, 4 m spacing; transition width adjustable from 32 to 256 m. → [System Architecture](./03-generative-system/system-architecture.md)
 
-## 5. Stage Dashboard
+## 6. Stage Dashboard
 
 ```mermaid
 flowchart LR
@@ -104,7 +191,7 @@ flowchart LR
   T5["T5 Blocks and parcels<br/>Verified"]
   T6["T6 Buildings<br/>Verified"]
   T7["T7 Multi-chunk world<br/>Partial"]
-  CI["City influence<br/>Proposed"]
+  CI["City influence 07.1<br/>Implemented"]
 
   R --> T1 --> T2 --> T3 --> T4 --> T5 --> T6 --> T7 --> CI
 
@@ -114,7 +201,7 @@ flowchart LR
   classDef review fill:#e3ecfa,stroke:#3f6fb5,color:#1c3354
   class T1,T2,T3,T4,T5,T6 verified
   class T7 partial
-  class CI proposed
+  class CI verified
   class R review
 ```
 
@@ -132,7 +219,7 @@ flowchart LR
 
 Code paths are under `experiments/`; data files are in each experiment's `evidence/` folder. All 22 verifiers passed on 2026-10-19. Code is in Git since `7b21c3e` (no per-task commits).
 
-## 6. Evidence Gallery
+## 7. Evidence Gallery
 
 Real runtime captures from the task verifiers, parameters as logged. The full list is in the [Screenshot Index](./99-attachments/screenshot-index.md).
 
@@ -160,7 +247,7 @@ Real runtime captures from the task verifiers, parameters as logged. The full li
 ![Harmonised 3 × 3 world](../assets/screenshots/procedural-mini-world/06-3a-world-harmonized-overall.png)
 *T7 (06.3a): 3 × 3 world, world seed 6201, transition 128 m; 4 of 12 edges joined.*
 
-## 7. City DNA Research
+## 8. City DNA Research
 
 ```mermaid
 flowchart LR
@@ -189,7 +276,7 @@ The loop above is how every task is recorded. For the city research it currently
 | Review decision | **Pending:** accept the three prototypes and the rule table | compass §1 |
 | Next question | Do Manhattan's measured DEM, street-centreline, and PLUTO values confirm or change rules M1–M3? | [Manhattan study §6](./research/manhattan-spatial-study.md) |
 
-## 8. Experiment Archive
+## 9. Experiment Archive
 
 The same tasks are kept in three views. Choose by what you need:
 
@@ -200,11 +287,13 @@ The same tasks are kept in three views. Choose by what you need:
 | Experiment Archive | read the whole build history top to bottom, with every screenshot in place (Obsidian embeds) | [Procedural-Mini-World.md](./04-experiments/EXP-Procedural-Mini-World/Procedural-Mini-World.md) |
 | Full record | the original entry for a task ID | [FINAL-EXPERIMENT-LOG.md §7](./FINAL-EXPERIMENT-LOG.md) |
 
-## 9. Midterm Review
+## 10. Midterm Review
 
-[Midterm Overview](./midterm-review/00-midterm-review.md): project statement, research question, generative method, main experiments, verified results, the interactive world prototype, known limitations, and next stage, in 5–8 minutes. Live prototype: [gameeeee-zc626.web.app/#miniWorld](https://gameeeee-zc626.web.app/#miniWorld). The [GitHub repository](https://github.com/Peterrr294/Peter_Chen_Gamingggg) is private and needs an invitation.
+[Midterm Overview](./midterm-review/00-midterm-review.md): project statement, research question, generative method, main experiments, verified results, the interactive world prototype, known limitations, and next stage, in 5–8 minutes. Live prototype: [gameeeee-zc626.web.app/#miniWorld](https://gameeeee-zc626.web.app/#miniWorld). The [GitHub repository](https://github.com/Peterrr294/Peter_Chen_Gamingggg) was private at the midterm; on 2026-10-28 its commit pages opened without sign-in (DOC-06 check).
 
-## 10. Current Limits and Next Decision
+## 11. Midterm Limits and Decisions (2026-10-19, historical)
+
+This section keeps the midterm state as it was. For the current open problems see the [Next session hand-off](./NEXT_SESSION.md) and the [Project Feedback](./PROJECT-FEEDBACK.md) page.
 
 **Current limits (measured, not resolved):**
 - **Seams:** height steps at 8 of 12 tile edges in world 6201; 1 of 4 corners closed.

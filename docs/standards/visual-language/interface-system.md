@@ -298,3 +298,7 @@ Priority definitions:
 
 - Established English as the default language for all Obsidian project records
 - Kept conversational collaboration available in Chinese and English
+
+## A City of Cities exhibition pages (from WEB-01, 2026-11)
+
+The rules above stay valid for Files & Notes and the archived experiments. The main pages (Explore, Process, Cities, Research, Archive) and the film use another system, defined in `web.css` and `experiments/procedural-film/film.css`: paper `#f1eee8`, charcoal `#24252a`, warm grey lines, low-saturation City colours, the model as the largest element, and text contrast of at least 4.5 : 1. Whether to bring the two systems together is an open decision.

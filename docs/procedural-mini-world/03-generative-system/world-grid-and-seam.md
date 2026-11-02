@@ -1,6 +1,16 @@
 # World Grid & Seam
 
-Part of [03 Generative System](./system-architecture.md) · Status: **World Grid Verified**; **seam joins Implemented (partial)** (4 / 12 edges in world 6201)
+Part of [03 Generative System](./system-architecture.md) · Status: **World Grid Verified**; **seam joins Implemented (partial)** (4 / 12 edges in world 6201); follow-ups 06.3b–06.3c Implemented, verified, pending review (see [Later seam work](#later-seam-work-063b063c))
+
+| Navigation | |
+| --- | --- |
+| Parent study area | [Knowledge base home](../README.md), research path §4.1 |
+| Prerequisite | [System Architecture](./system-architecture.md) (single-chunk chain) |
+| This experiment | 06.2 World Grid, 06.3a seam harmonisation, then 06.3b, 06.3a-R, 06.3a-R2, 06.3c |
+| Next investigation | [City Influence](./city-influence.md) (mixing at one boundary); later [Procedural Growth](./procedural-growth.md) replaced the preset grid |
+| Code | [experiments/world-grid/](../../../experiments/world-grid/) |
+| Runtime entry | [Live](https://gameeeee-zc626.web.app/experiments/world-grid/) (M06 state) · local `/experiments/world-grid/?seams=1` |
+| Related commit | [`7b21c3e`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/7b21c3e) (06.2, 06.3a) · [`1f63e6f`](https://github.com/Peterrr294/Peter_Chen_Gamingggg/commit/1f63e6f) M06 checkpoint: World Grid seams, terrain coordination, World State checkpoint (06.3b–06.3c) |
 
 ## Purpose
 
@@ -48,3 +58,25 @@ Place nine tiles in one world frame, let the designer choose a city per tile, an
 
 - **Verified:** the centre tile equals the single-tile page bit for bit. One City ID change rebuilds one tile (2.3–3.2 s) with its terrain unchanged. In world 6201, 4 / 12 edges are joined with zero height step (identical Float32 values); 0 cells were changed outside the band; all 9 solids are closed. Harmonisation takes 0.54–0.64 s.
 - **Limits:** 8 / 12 edges in world 6201 stay unresolved (every mountain edge, steep river banks); 1 / 4 inner corners close. Slope kink up to 8.6° near closed corners and 41.8° on C⁰ joins (world 6202). Water stays discontinuous on unresolved edges and where levels are incompatible (river ≈ 30 m vs sea 0 m). Edge ports are not paired. The outer world edge is not harmonised. Tiles are a mosaic: noise is not continued across tiles.
+
+## Later seam work (06.3b–06.3c)
+
+The limits above are the 06.3a state. Three follow-up tasks (2026-10-20 / 21) worked on them; full numbers are in the [log](../FINAL-EXPERIMENT-LOG.md) §7 and the [Experiment Index](../EXPERIMENT-INDEX.md).
+
+| Task | Question | Result |
+| --- | --- | --- |
+| 06.3b | Can road ports on joined edges become one network? | One world NetworkGraph across harmonised edges; every unjoined port carries a measured reason |
+| 06.3a-R | Can the world get one continuous relief? | World 6201: stepped edges 8 → 0, resolved 7 / 12, corners 4 / 4, but chunk cores were moved by macro ramps |
+| 06.3a-R2 | Can cores, water and buildable land stay exact while seams are fixed only inside the band? | Yes; edges that need a steep step are reported as escarpment candidates. Now the World Grid default |
+| 06.3c | Can each edge be judged by four separate questions (geometry, landform, hydrology, transport)? | Every edge classified smooth / valid escarpment / candidate / failed; natural scarps no longer counted as failures, nothing unresolved renamed as success |
+
+![World 6201 from above: nine chunks with each shared edge drawn by its seam class, mountains in the top row, coast and river chunks below](../../assets/screenshots/procedural-mini-world/06-3c-seam-classes-overall.png)
+
+**What this shows:** the nine chunks with each shared edge drawn by class; the two mountain chunks of the top row meet the plain and river chunks at escarpment edges; coastal edges hold the sea at the edge instead of cutting it.
+**Conditions:** world seed 6201, transition 128 m, terrain mode R2 (default), task 06.3c capture.
+**Why it matters:** it separates "the surface is continuous" from "a road can cross", which the 06.3a joined / unresolved split could not express.
+**Limit:** it does not show road continuity across scarps; roads still stop at unresolved edges.
+
+**Study notebook, in short.** *Question:* can preset chunks join into one world without hiding seams? *Observation (logged):* most edges between different landforms cannot be joined with natural slopes; each fix exposed a narrower question. *What changed in understanding (from the log):* a seam is several problems (geometry, landform, water, roads), not one. *Next question:* the layout itself was fixed before any rule ran, which led to [Procedural Growth](./procedural-growth.md).
+
+> Observation to complete after testing: are the R2 escarpments acceptable as landscape, or do they read as errors?

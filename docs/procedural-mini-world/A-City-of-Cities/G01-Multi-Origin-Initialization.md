@@ -4,6 +4,27 @@ Part of [A City of Cities — Research Compass](../A-City-of-Cities-Research-Com
 
 **Status:** implemented, verified on 3 world seeds, **pending review**. Nothing here is accepted yet.
 
+| Navigation | |
+| --- | --- |
+| Parent study area | [Knowledge base home](../README.md), research path §4.2 · [Research Compass](../A-City-of-Cities-Research-Compass.md) |
+| Prerequisite | [Procedural Growth prototype](../03-generative-system/procedural-growth.md) (2026-10-27) |
+| This experiment | G01-MO six origins, no growth; G01-FIX placement v2 (§11) |
+| Next investigation | [G02 Procedural Urban Growth](./G02-Procedural-Urban-Growth.md) |
+| Code | [experiments/city-of-cities/](../../../experiments/city-of-cities/) (`WorldContext.js`, `OriginPlacement.js`, `originConfig.js`) |
+| Runtime entry | Local only: `npm run dev` → `/experiments/city-of-cities/` |
+| Related commit | `69b3a1f` G01 Multi-Origin Initialization: six city origins in one world frame; placement v2 in `91efb1e` (both local, not pushed) |
+
+**Study notebook, in short.** *Question:* can six independent cores be placed reproducibly by an explainable suitability score? *Starting assumption:* landform compatibility is enough to screen sites (placement v1). *Problem found:* on seed 6202 Amsterdam could not be placed, because the screen never probed wet cells (G02 entry); v2 makes it water-aware (§11). *Observation (logged, visible below):* all qualified Manhattan plain sites score the same 0.9872, so the "weighted choice" among them is uniform. *What changed in understanding (from the log):* a suitability score that saturates or ignores generator output cannot tell good sites from viable ones. *Next question:* how do the cores grow? → G02.
+
+![Origin suitability debug for Manhattan on seed 6201: the chosen site (-2, 0) and seven candidate sites, each labelled 0.9872 with "too close" or "not picked"](../../assets/screenshots/procedural-mini-world/g01-origins-suitability-debug.png)
+
+**What this shows:** every candidate site lists its five terms and the same total, 0.9872; three are blocked by the distance rule, four lost the weighted draw, and (−2, 0) was chosen.
+**Conditions:** world seed 6201, default parameters (minOriginDistance 3, searchRadius 6, selectionSharpness 4), placement v2 re-capture in `91efb1e`.
+**Why it matters:** placement is explainable and inspectable per site, which is the G01 claim.
+**Limit:** it also shows the score saturation (limitation 2): on plains the score does not discriminate between sites.
+
+> Observation to complete after testing: are the six origins plausible places for these cities when seen on the map, beyond their scores?
+
 ## 1. Goal
 
 Create six reproducible, mutually independent city **core chunks** in one shared world coordinate system:
