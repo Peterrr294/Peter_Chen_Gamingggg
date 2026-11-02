@@ -13,7 +13,7 @@ a { color: inherit; }
 #still { object-fit: contain; object-position: center top; padding-bottom: 150px; background: var(--paper); }
 .film-loading #still { opacity: .5; }
 
-.hero { position: fixed; top: 28px; left: 32px; max-width: 420px; pointer-events: none; }
+.hero { position: fixed; top: 28px; left: 32px; z-index: 2; max-width: 420px; pointer-events: none; }
 .hero h1 { margin: 0; font-size: clamp(26px, 3.4vw, 48px); font-weight: 300; line-height: 1.05; letter-spacing: -.015em; }
 .subtitle { margin: 10px 0 14px; color: var(--ink-2); font-size: 15px; transition: opacity .6s; }
 .film-underway .subtitle { display: none; }
@@ -95,6 +95,11 @@ body[data-mode="watch"] .stage-info { min-height: 44px; }
 .chapters span[data-on="true"] { color: var(--ink); font-weight: 600; }
 .scene-tag { position: fixed; top: 72px; left: 16px; z-index: 2; max-width: min(520px, calc(100vw - 32px)); margin: 0; padding: 4px 10px; color: var(--ink); background: var(--panel); border-left: 3px solid var(--verified); font-size: 12px; }
 .scene-tag[data-kind="case"] { border-left-color: #c2410c; font-weight: 600; }
+.part-film { position: fixed; top: 0; right: var(--film-right, 0); bottom: var(--film-bottom, 190px); left: 0; z-index: 0; width: calc(100% - var(--film-right, 0px)); height: calc(100% - var(--film-bottom, 190px)); object-fit: contain; background: var(--paper); }
+.level-box { position: fixed; top: 104px; left: 16px; z-index: 2; max-width: 300px; padding: 6px 10px; background: var(--panel); font-size: 12px; }
+.level-box label { display: flex; flex-wrap: wrap; gap: 4px 8px; color: var(--ink); }
+.level-box select { min-height: 28px; font-size: 12px; }
+.level-box p { margin: 4px 0 0; color: var(--ink-2); font-size: 11px; line-height: 1.35; }
 .chapter-card { position: fixed; inset: 0 0 var(--player-height, 190px) 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; background: var(--paper); text-align: center; pointer-events: none; }
 .chapter-card p { margin: 0; }
 #chapterTitle { font-size: clamp(24px, 3.2vw, 42px); font-weight: 300; }
@@ -132,7 +137,7 @@ select { min-height: 34px; padding: 0 6px; background: var(--paper); border: 1px
 .advanced-panel dd { margin: 0; font-variant-numeric: tabular-nums; }
 .note { margin: 6px 0 0; color: var(--ink-2); font-size: 11px; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.capture .labels, .capture .scene-tag, .capture .hero, .capture .topbar, .capture .inspector, .capture .player, .capture .loading { display: none; }
+.capture .level-box, .capture .labels, .capture .scene-tag, .capture .hero, .capture .topbar, .capture .inspector, .capture .player, .capture .loading { display: none; }
 
 @media (max-width: 720px) {
   .hero { top: 12px; left: 16px; right: 16px; }
@@ -169,6 +174,8 @@ select { min-height: 34px; padding: 0 6px; background: var(--paper); border: 1px
   .then { display: none; }
   .timeline { margin: 2px 0 6px; }
   .chapters { font-size: 10px; }
+  .level-box { top: 104px; right: 16px; left: 16px; max-width: none; padding: 4px 8px; }
+  .level-box p { display: none; }
   .scene-tag { top: 70px; right: 16px; left: 16px; max-width: none; font-size: 11px; }
 }
 @media (max-height: 560px) {

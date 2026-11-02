@@ -23,7 +23,7 @@
       <p id="readout" class="readout" aria-live="off"></p>
       <div class="mode-switch" role="group" aria-label="Viewing path">
         <button id="viewTour" type="button" aria-pressed="true">Guided Tour</button>
-        <button id="viewExplore" type="button" aria-pressed="false">Explore</button>
+        <button id="viewExplore" type="button" aria-pressed="false">Explore Scene</button>
       </div>
       <div id="modeGroup" class="mode-switch" role="group" aria-label="Viewing mode">
         <button id="modeWatch" type="button" aria-pressed="true">Watch</button>
@@ -50,7 +50,19 @@
       </div>
     </aside>
 
+    <video id="partFilm" class="part-film" muted playsinline preload="none" aria-label="Recorded film of the world replay" hidden></video>
     <p id="sceneTag" class="scene-tag" hidden></p>
+    <div id="levelBox" class="level-box" hidden>
+      <label>View of Part II
+        <select id="viewLevel">
+          <option value="auto">Auto, by measured speed</option>
+          <option value="live">Live 3D</option>
+          <option value="light">Lightweight Replay</option>
+          <option value="film">Recorded Film</option>
+        </select>
+      </label>
+      <p id="levelNote"></p>
+    </div>
     <div id="chapterCard" class="chapter-card" hidden><p id="chapterTitle"></p><p id="chapterNote"></p></div>
     <div id="labels" class="labels"></div>
 

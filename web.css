@@ -1,7 +1,29 @@
 /* WEB-01 visual system for the site around the film: paper, charcoal, warm grey. Files & Notes keeps its dark reader for now. */
 :root { color-scheme: light; color: #24252a; background: #f1eee8; --paper: #f1eee8; --ink: #24252a; --ink-2: #5e5e60; --line: #cdc8bd; --verified: #3f6a53; --prototype: #8a5b34; --historical: #6b6a66; }
 body { background: var(--paper); color: var(--ink); }
-body[data-section="files"] { color-scheme: dark; color: #f2f2f4; background: #050505; }
+/* Files & Notes follows the main pages; its function is unchanged. */
+body[data-section="files"] .library { max-width: 1280px; margin: auto; padding: 32px; }
+.library aside, .library label { color: var(--ink-2); }
+.library select { color: var(--ink); background: #f7f5f0; border-color: var(--line); }
+.library article { background: #f7f5f0; border-color: var(--line); }
+.file-heading { color: var(--ink-2); border-color: var(--line); }
+.file-heading a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.view-controls { border-color: var(--line); }
+.view-controls button { color: var(--ink-2); background: transparent; border-color: var(--line); }
+.view-controls button[aria-pressed="true"] { color: var(--paper); background: var(--ink); }
+#fileText { color: var(--ink); }
+.markdown-body { color: var(--ink); }
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 { color: var(--ink); font-weight: 500; }
+.markdown-body h1, .markdown-body h2 { border-color: var(--line); }
+.markdown-body a { color: #2f5d7c; }
+.markdown-body .markdown-image { background: #e9e5dc; border-color: var(--line); }
+.markdown-body blockquote { color: var(--ink-2); background: #ece8df; border-color: var(--ink-2); }
+.markdown-body code { background: #ece8df; border-color: var(--line); }
+.markdown-body pre { color: var(--ink); background: #ece8df; border-color: var(--line); }
+.markdown-body th, .markdown-body td { border-color: var(--line); }
+.markdown-body th { color: var(--ink); background: #e6e2d9; }
+.markdown-body tr:nth-child(even) td { background: #efece4; }
+.task-item input { accent-color: var(--ink); }
 .site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 24px; min-height: 56px; padding: 0 32px; background: var(--paper); border-bottom: 1px solid var(--line); }
 .header-top { flex: 0 0 auto; }
 .brand { font-size: 15px; font-weight: 500; letter-spacing: .01em; }
@@ -16,7 +38,11 @@ body[data-section="files"] { color-scheme: dark; color: #f2f2f4; background: #05
 .archive-link:hover { color: var(--ink); }
 .archive-link[aria-current] { color: var(--ink); border-color: var(--ink); }
 .next-link { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 15px; }
-.auth-panel { position: absolute; top: 62px; right: 32px; z-index: 2; color: #d8d8de; }
+.auth-panel { position: absolute; top: 62px; right: 32px; z-index: 2; color: var(--ink-2); }
+.auth-panel button { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.auth-panel button:hover { background: #3a3b40; }
+.auth-panel button:disabled { color: var(--ink-2); background: #e6e2d9; border-color: var(--line); }
+.library .hint, .library aside p { color: var(--ink-2); }
 .page-bar { background: #e6e2d9; color: var(--ink-2); font: 12px/1.4 inherit; }
 .page-bar a { color: var(--ink); }
 body[data-auth="on"] .page-bar { padding-right: 300px; }
@@ -42,6 +68,8 @@ body[data-main="on"] .project-frame { height: calc(100dvh - 57px); }
 .tag-prototype { color: var(--prototype); }
 .tag-historical { color: var(--historical); }
 .tag-accepted, .tag-planned { color: var(--ink-2); }
+.tag-controlled-experiment { color: #a33a0d; }
+.planned-item { grid-template-columns: minmax(0, 1fr); }
 .note { margin: 6px 0; color: var(--ink-2); font-size: 12px; line-height: 1.45; }
 .page-note { margin-top: 36px; max-width: 760px; }
 

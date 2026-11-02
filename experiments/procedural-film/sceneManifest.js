@@ -4,7 +4,7 @@ export const SOURCE_TYPE = Object.freeze({
   live: 'Live Generated Scene',
   replay: 'Recorded Simulation / Snapshot Replay',
   experiment: 'Verified Experiment',
-  caseStudy: 'Controlled Case Study',
+  caseStudy: 'Controlled Experiment',
   planned: 'Planned Feature',
 });
 const CHAIN = 'experiments/seed-terrain/ (run in a Worker on this page)';
@@ -45,3 +45,22 @@ export const REVEAL_SECONDS = 2.4;
 export const GROWTH_STEP_SECONDS = 1.3;
 export const CASE_SECONDS = 6;
 export const CASE_ORDER = ['compatible', 'incompatible', 'barrier'];
+
+// When each world chunk starts to appear: origins in their real claim order, growth in its recorded steps.
+export function chunkStarts(info, originStart, originEnd, growthStart) {
+  const order = new Map(info.cities.map(city => [city.origin, city.reason.order ?? 0]));
+  const span = Math.max(1, originEnd - originStart - REVEAL_SECONDS);
+  const rank = [...order.values()].sort((a, b) => a - b);
+  return new Map(info.chunks.map(chunk => [chunk.id, chunk.role === 'core'
+    ? originStart + (rank.indexOf(order.get(chunk.id)) / Math.max(1, rank.length - 1)) * span
+    : growthStart + (chunk.step - 1) * GROWTH_STEP_SECONDS]));
+}
+
+// Viewing levels of Part II. All three show the same recorded data; they differ in what the viewer can do.
+export const LEVELS = Object.freeze({
+  live: { label: 'Live 3D', note: 'Full geometry. Select chunks, debug layers, free camera.' },
+  light: { label: 'Lightweight Replay', note: 'Same data: roofs instead of full volumes, 32 m terrain, centreline roads, no parcel lines. Select chunks, some layers, free camera.' },
+  film: { label: 'Recorded Film', note: 'A video of the Live 3D render. Timeline and speeds work. No selection, layers or free camera.' },
+});
+// Measured frames per second that move Auto down one level. They are starting values, chosen so that motion stays readable.
+export const AUTO_THRESHOLDS = Object.freeze({ partOneToLight: 24, liveToLight: 20, lightToFilm: 12, windowSeconds: 2.5 });

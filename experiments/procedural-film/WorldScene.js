@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { CITY_COLOR } from '../city-of-cities/originConfig.js';
-import { CASE_ORDER, CASE_SECONDS, GROWTH_STEP_SECONDS, REVEAL_SECONDS } from './sceneManifest.js';
+import { CASE_ORDER, CASE_SECONDS, GROWTH_STEP_SECONDS, REVEAL_SECONDS, chunkStarts } from './sceneManifest.js';
 
 // WEB-01c World scene (render only): Part II of the film, in its own group, sharing the renderer and camera with Part I. Every chunk is real baked output.
 // setTime(t) only writes uniforms and visibility, so scrubbing and any playback speed show the same result at the same t.
@@ -16,6 +16,7 @@ export class WorldScene {
     this.groups = new Map(); // group name → chunk records
     this.linkUniform = { value: 1 };
     this.layers = { territory: true, roads: true, lots: true, buildings: true, links: true };
+    this.level = 'live'; // live | light: the same data, drawn more cheaply
     this.times = { originStart: 0, originEnd: 0, growthStart: 0, caseStart: 0 };
     this.info = {};
     this.history = [];
@@ -25,7 +26,7 @@ export class WorldScene {
   // Materials share one program per kind; each chunk owns only its progress uniform.
   material(kind, base, record) {
     const material = base;
-    material.customProgramCacheKey = () => `film-world-${kind}`;
+    material.customProgramCacheKey = () => `film-world-${kind}-${material.type}`;
     material.onBeforeCompile = shader => {
       shader.uniforms.uP = record.progress;
       shader.uniforms.uBase = record.base;
@@ -78,17 +79,17 @@ export class WorldScene {
       const geometry = new THREE.BufferGeometry();
       for (const [name, array, size] of attributes) geometry.setAttribute(name, new THREE.BufferAttribute(array, size));
       const mesh = new THREE.Mesh(geometry, this.material(kind, material, record));
-      mesh.frustumCulled = false;
-      node.add(mesh);
+      node.add(mesh); // shaders only lower or shrink geometry, so the stored bounds stay safe for culling
       return mesh;
     };
     record.terrain = tri([['position', g.terrain.position, 3], ['normal', g.terrain.normal, 3], ['color', g.terrain.color, 3]], 'terrain', new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.96, metalness: 0 }));
+    record.terrainLite = tri([['position', g.terrainLite.position, 3], ['normal', g.terrainLite.normal, 3], ['color', g.terrainLite.color, 3]], 'terrain', new THREE.MeshLambertMaterial({ vertexColors: true }));
+    record.terrainLite.visible = false;
     if (g.water.length) {
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.BufferAttribute(g.water, 3));
       geometry.computeVertexNormals();
       const mesh = new THREE.Mesh(geometry, this.material('water', new THREE.MeshStandardMaterial({ color: 0x8fb0bd, roughness: 0.35, metalness: 0, transparent: true, opacity: 0.82, side: THREE.DoubleSide }), record));
-      mesh.frustumCulled = false;
       node.add(mesh);
     }
     if (g.roads.position.length) {
@@ -98,17 +99,20 @@ export class WorldScene {
       geometry.setAttribute('aT', new THREE.BufferAttribute(g.roads.time, 1));
       geometry.computeVertexNormals();
       record.roads = new THREE.Mesh(geometry, this.material('roads', new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.9, metalness: 0, side: THREE.DoubleSide }), record));
-      record.roads.frustumCulled = false;
       node.add(record.roads);
       // Roads under one pixel wide at world scale stay readable through their real centrelines.
       record.centre = this.lines(g.centre.position, g.centre.time, '#2f3033', 0.75, [0.18, 0.35], record);
-      if (record.centre) { record.centre.frustumCulled = false; node.add(record.centre); }
+      if (record.centre) node.add(record.centre);
     }
     record.blockLines = this.lines(g.blocks.positions, g.blocks.times, '#6a675f', 0.45, [0.5, 0.15], record);
     record.parcelLines = this.lines(g.parcels.positions, g.parcels.times, '#77736a', 0.3, [0.58, 0.15], record);
-    for (const line of [record.blockLines, record.parcelLines]) if (line) { line.frustumCulled = false; node.add(line); }
+    for (const line of [record.blockLines, record.parcelLines]) if (line) node.add(line);
     if (g.buildings.position.length) {
       record.buildings = tri([['position', g.buildings.position, 3], ['normal', g.buildings.normal, 3], ['color', g.buildings.color, 3], ['aS', g.buildings.build, 4]], 'buildings', new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.88, metalness: 0 }));
+      record.buildingsFull = record.buildings.material;
+      record.buildingsLite = this.material('buildings', new THREE.MeshLambertMaterial({ vertexColors: true }), record);
+      record.roofStart = g.buildings.roofStart;
+      record.vertexCount = g.buildings.position.length / 3;
     }
     // City border: the real chunk square, coloured by City ID.
     const half = 510; const y = g.maxY + 6;
@@ -127,13 +131,8 @@ export class WorldScene {
     this.history = info.history;
     this.times = { ...this.times, originStart, originEnd, growthStart };
     const records = this.groups.get('world');
-    const order = new Map(info.cities.map(city => [city.origin, city.reason.order ?? 0]));
-    const span = Math.max(1, originEnd - originStart - REVEAL_SECONDS);
-    const rank = [...order.values()].sort((a, b) => a - b);
-    for (const record of records) {
-      if (record.meta.role === 'core') record.start = originStart + (rank.indexOf(order.get(record.meta.id)) / Math.max(1, rank.length - 1)) * span;
-      else record.start = growthStart + (record.meta.step - 1) * GROWTH_STEP_SECONDS;
-    }
+    const starts = chunkStarts(info, originStart, originEnd, growthStart);
+    for (const record of records) record.start = starts.get(record.meta.id);
     this.buildLinks(records);
   }
 
@@ -189,17 +188,26 @@ export class WorldScene {
     this.applyLayers();
   }
 
+  setLevel(level) { this.level = level; this.applyLayers(); }
+
   applyLayers() {
     const L = this.layers;
+    const light = this.level === 'light';
     for (const records of this.groups.values()) {
       for (const record of records) {
         record.tint.value = L.territory ? 0.16 : 0;
         record.rim.visible = L.territory;
-        if (record.roads) record.roads.visible = L.roads;
+        record.terrain.visible = !light;
+        record.terrainLite.visible = light;
+        if (record.roads) record.roads.visible = L.roads && !light;
         if (record.centre) record.centre.visible = L.roads;
         if (record.blockLines) record.blockLines.visible = L.lots;
-        if (record.parcelLines) record.parcelLines.visible = L.lots;
-        if (record.buildings) record.buildings.visible = L.buildings;
+        if (record.parcelLines) record.parcelLines.visible = L.lots && !light;
+        if (record.buildings) {
+          record.buildings.visible = L.buildings;
+          record.buildings.material = light ? record.buildingsLite : record.buildingsFull;
+          record.buildings.geometry.setDrawRange(light ? record.roofStart : 0, light ? record.vertexCount - record.roofStart : record.vertexCount);
+        }
         if (record.link && !L.links) record.link.visible = false;
       }
     }
@@ -224,7 +232,7 @@ export class WorldScene {
     ray.setFromCamera(new THREE.Vector2(ndc.x, ndc.y), camera);
     let best = null;
     for (const record of this.visibleRecords()) {
-      const hit = ray.intersectObject(record.terrain)[0];
+      const hit = ray.intersectObject(this.level === 'light' ? record.terrainLite : record.terrain)[0];
       if (hit && (!best || hit.distance < best.distance)) best = { distance: hit.distance, record };
     }
     return best ? best.record : null;
@@ -239,17 +247,5 @@ export class WorldScene {
     this.root.add(this.highlight);
   }
 
-  counts(t) {
-    const records = this.groups.get('world') ?? [];
-    const placed = records.filter(record => t >= record.start + REVEAL_SECONDS);
-    return {
-      chunks: placed.length,
-      steps: this.history.filter(event => t >= this.times.growthStart + (event.step - 1) * GROWTH_STEP_SECONDS).length,
-      roadKm: placed.reduce((sum, record) => sum + (record.meta.counts?.roadKm ?? 0), 0),
-      blocks: placed.reduce((sum, record) => sum + (record.meta.counts?.blocks ?? 0), 0),
-      parcels: placed.reduce((sum, record) => sum + (record.meta.counts?.parcels ?? 0), 0),
-      buildings: placed.reduce((sum, record) => sum + (record.meta.counts?.buildings ?? 0), 0),
-    };
-  }
 }
 

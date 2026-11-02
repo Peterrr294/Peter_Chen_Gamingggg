@@ -11,6 +11,7 @@ const STATUS_NOTE = {
   Verified: 'Its automated verifier passes. This checks the data, not the spatial design.',
   Prototype: 'Runs as a minimum experiment, on limited cases. Not in the main generation.',
   Historical: 'An earlier direction. Kept runnable and on record, no longer the research mainline.',
+  'Controlled Experiment': 'A research case under conditions set by hand. It says nothing about what the grown world does by itself.',
   Planned: 'Not implemented.',
 };
 
@@ -23,7 +24,7 @@ export const PROCESS = [
   { title: 'Buildings', line: 'Volumes extrude from real footprints.', image: 'web01-film-buildings-after', status: 'Verified', link: '#home?stage=6', action: 'Watch in the film' },
   { title: 'Six Urban Origins', line: 'Six cities placed by terrain suitability in one recorded world.', image: 'web01-film-origins-after', status: 'Verified', link: '#home?stage=7', action: 'Watch in the film' },
   { title: 'Procedural Urban Growth', line: 'Thirty recorded growth steps, world seed 6201.', image: 'web01-film-growth-after', status: 'Prototype', link: '#home?stage=8', action: 'Watch in the film' },
-  { title: 'Urban Encounter', line: 'A controlled case study: Chicago and Fez, placed by hand.', image: 'web01-film-encounter-after', status: 'Prototype', link: '#home?stage=9', action: 'Watch in the film' },
+  { title: 'Urban Encounter', line: 'A controlled experiment: Chicago and Fez, placed by hand. Natural encounters are planned.', image: 'web01-film-encounter-after', status: 'Controlled Experiment', link: '#home?stage=9', action: 'Watch in the film' },
 ];
 
 // Values: experiments/seed-terrain/evidence/city-dna-comparison.json (`suitable` terrain of each DNA, 06.1 run). scripts/verify-procedural-film.mjs checks them.
@@ -46,12 +47,12 @@ export const RESEARCH = [
   { method: 'Suitability-based placement, then a seeded bid among cities and a weighted choice of cell.', title: 'Multi-Origin Growth', tasks: 'G01, G02', status: 'Verified', question: 'Can six cities grow into a world whose size and borders are outcomes?', output: 'Six origins and one chunk per step, reproducible with save and load.', image: 'g02-growth-seed-compare', parameters: '4 placement and 5 growth parameters, all design hypotheses.', measured: 'Seeds 6201, 6202, 6203: 30 steps, 36 chunks, equal in Node and the browser.', limits: 'City size is nearly fixed by the scheduler. Some Amsterdam chunks are empty. No continuous seams.', links: [['G01', record('A-City-of-Cities/G01-Multi-Origin-Initialization.md')], ['G02', record('A-City-of-Cities/G02-Procedural-Urban-Growth.md')], ['Open', '#world']] },
   { method: 'A read-only analysis of the growth record, recomputed after each step.', title: 'Urban Territory', tasks: 'G03a', status: 'Verified', question: 'Can growth be read as organised space without changing it?', output: 'Territories, non-urban land, boundary classes and a relationship graph.', image: 'g03a-territory-step30', parameters: 'Constraint rules (slope, buildable share, water share).', measured: 'At step 30: 1, 4 and 0 shared edges on the three seeds. Built footprint 14–19 % of coverage.', limits: 'Cities rarely meet. Only the steep-terrain rule fires. Barrier evidence is a straight line, not a route.', links: [['Record', record('A-City-of-Cities/G03a-Urban-Territory.md')]] },
   { method: 'New chunks inherit the grid anchor and height centre of their parent; roads join at ports.', title: 'Morphological Continuity', tasks: 'G02b', status: 'Prototype', question: 'Does a grown chunk continue its city\'s structure, or only carry its City ID?', output: 'Road-first growth for Manhattan and Fez on seed 6201.', image: 'g02b-manhattan-three-chunks', parameters: 'Inherited grid axis and phases, inherited height centre.', measured: 'Manhattan: 17 of 17 parent roads joined at 0 m position error, height steps up to 2.41 m. Regenerating the same cells independently aligned 0 of 18. Chicago refused, with measured reasons.', limits: 'Not used by the multi-city scheduler. Water cities not implemented. One Manhattan road end stays unjoined.', links: [['Record', record('A-City-of-Cities/G02b-Morphological-Growth.md')]] },
-  { method: 'Both boundaries are read; the edge resolves by connection, a plan, or separation.', title: 'Urban Encounter', tasks: 'G03b', status: 'Prototype', question: 'When two cities meet, can the edge resolve by connection, separation or a plan?', output: 'A Chicago × Fez experiment on a hand-placed test fixture, in three scenarios.', image: 'g03b-before-after-compare', parameters: 'Fixture positions on seed 6201, join tolerance.', measured: '2 cross-city joins at 0.3 m. The connector plan of 39.7 m is pending, not generated.', limits: 'The fixture is placed by hand, not by growth. All thresholds are hypotheses.', links: [['Record', record('A-City-of-Cities/G03b-Urban-Encounter.md')]] },
+  { method: 'Both boundaries are read; the edge resolves by connection, a plan, or separation.', title: 'Urban Encounter', tasks: 'G03b', status: 'Controlled Experiment', question: 'When two cities meet, can the edge resolve by connection, separation or a plan?', output: 'A Chicago × Fez experiment on a hand-placed test fixture, in three scenarios.', image: 'g03b-before-after-compare', parameters: 'Fixture positions on seed 6201, join tolerance.', measured: '2 cross-city joins at 0.3 m. The connector plan of 39.7 m is pending, not generated.', limits: 'The fixture is placed by hand, not by growth. All thresholds are hypotheses.', links: [['Record', record('A-City-of-Cities/G03b-Urban-Encounter.md')]] },
 ];
 
 const element = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
 const link = (href, text, className) => { const a = element('a', className, text); a.href = href; if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; } return a; };
-const statusTag = status => { const tag = element('span', `tag tag-${status.toLowerCase()}`, status); tag.title = STATUS_NOTE[status] ?? ''; return tag; };
+const statusTag = status => { const tag = element('span', `tag tag-${status.toLowerCase().replace(/ /g, '-')}`, status); tag.title = STATUS_NOTE[status] ?? ''; return tag; };
 const heading = (title, lead) => { const head = element('header', 'page-head'); head.append(element('h1', '', title), element('p', 'lead', lead)); return head; };
 
 const nextLink = (href, text) => { const p = element('p', 'next-link'); p.append(link(href, text, 'more')); return p; };
@@ -141,7 +142,13 @@ export function showResearch(content, images) {
     row.append(text, image);
     (item.status === 'Historical' ? archive : page).append(row);
   }
-  page.append(archive);
+  const planned = element('article', 'research-item planned-item');
+  const plannedText = element('div');
+  const plannedTitle = element('h2', '', 'Next research ');
+  plannedTitle.append(statusTag('Planned'));
+  plannedText.append(plannedTitle, element('p', 'question', 'Natural encounters in the grown world, and road-first growth inside the multi-city scheduler (proposed G02c, G03c). Not implemented.'));
+  planned.append(plannedText);
+  page.append(planned, archive);
   const more = element('p', 'links page-note');
   more.append(link(record('README.md'), 'Knowledge base', 'more'), link(record('FINAL-EXPERIMENT-LOG.md'), 'Compass and full log', 'more'), link(record('PROJECT-FEEDBACK.md'), 'AI feedback', 'more'), link(GITHUB, 'GitHub', 'more'));
   page.append(more);

@@ -1,8 +1,8 @@
 {
-  "note": "Semantic checklist of the How it works summaries. 'basis' says what each statement was compared with. An AI review is not a human review.",
+  "note": "Semantic review of the How it works summaries. assessment = AI comparison with the code. humanReview stays Needs Human Review until the author signs it.",
   "reviewedAt": "2026-11-02",
   "reviewedBy": "Claude (AI), checklist compared with the code on 2026-11-02; no human review",
-  "humanReview": "pending",
+  "humanReview": "Needs Human Review (0 signed)",
   "stages": {
     "terrain": {
       "files": {
@@ -11,12 +11,24 @@
       },
       "checklist": [
         {
-          "statement": "Each sample's height and water come from the landform rules",
-          "basis": "generateChunk loop over LANDFORM_RULES[config.landform]"
+          "displayed": "for each sample (x, z): height, water = rules(x, z)",
+          "file": "experiments/seed-terrain/TerrainGenerator.js",
+          "symbol": "LANDFORM_RULES",
+          "parameters": "landform, seed, variation",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "generateChunk loops over all samples with LANDFORM_RULES[config.landform]",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Buildable means slope within the limit, not water, not low shore",
-          "basis": "TerrainFields.js buildableMask line"
+          "displayed": "buildable = slope ≤ limit and above water + freeboard",
+          "file": "experiments/seed-terrain/TerrainFields.js",
+          "symbol": "buildableMask",
+          "parameters": "maxBuildableSlope, shoreFreeboard",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "buildableMask = not water, not low shore, slope within the limit",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -27,16 +39,34 @@
       },
       "checklist": [
         {
-          "statement": "Slope bands 5, 10 and 20 degrees",
-          "basis": "analysis.thresholds.suitability read from a real run"
+          "displayed": "class = slope band (≤ 5°, ≤ 10°, ≤ 20°, steeper or water)",
+          "file": "experiments/seed-terrain/TerrainAnalysis.js",
+          "symbol": "suitabilityMask",
+          "parameters": "highMaxSlope 5, mediumMaxSlope 10, lowMaxSlope 20",
+          "assessment": "Simplified",
+          "correction": "Class 0 also holds low shore; left out for brevity",
+          "basis": "thresholds and class text from a real run",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "A direction is reported only if a candidate passes its test",
-          "basis": "dominantDirection.candidates with pass flags, real run"
+          "displayed": "report a direction only if a candidate passes its evidence test",
+          "file": "experiments/seed-terrain/TerrainAnalysis.js",
+          "symbol": "dominantDirection",
+          "parameters": "linearWaterElongation, shorelineElongation, reliefAnisotropy, slopeCoherence",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "candidates with pass flags in a real run",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "DNA score is fit times evidence coverage",
-          "basis": "cityMatchRules.js header comment"
+          "displayed": "score each DNA: fit × evidence coverage",
+          "file": "experiments/seed-terrain/CityMatcher.js",
+          "symbol": "fitScore",
+          "parameters": "match weights in cityMatchRules.js (design assumptions)",
+          "assessment": "Simplified",
+          "correction": "A triggered conflict also caps the fit; left out for brevity",
+          "basis": "CityMatcher.js: score = fitScore × coverage, conflict cap",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -47,20 +77,44 @@
       },
       "checklist": [
         {
-          "statement": "Grid: two street families at set spacing, truncated on steep ground, main streets may bridge short water",
-          "basis": "gridStrategy and STRATEGIES.grid (maxSlopeDeg, minStubLength, maxBridgeSpan)"
+          "displayed": "lay two street families at avenue and cross-street spacing",
+          "file": "experiments/seed-terrain/NetworkGenerator.js",
+          "symbol": "gridStrategy",
+          "parameters": "primarySpacing 200, secondarySpacing 80 (assumptions)",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "gridStrategy offsets, STRATEGIES.grid",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Organic: gates and centres joined by least-cost paths, lanes, loops",
-          "basis": "organicStrategy, params slopePenalty, climbPenalty, reuseDiscount; closeLoops"
+          "displayed": "join them by least-cost paths (slope and climb cost more, reusing a road costs less)",
+          "file": "experiments/seed-terrain/NetworkGenerator.js",
+          "symbol": "organicStrategy",
+          "parameters": "slopePenalty, climbPenalty, reuseDiscount",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "organicStrategy: connectTargets, growLanes, closeLoops",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Canal: canals on water, quays inland",
-          "basis": "canalStreetStrategy comments 1 and 2"
+          "displayed": "trace canals on existing water, kept central by distance to land",
+          "file": "experiments/seed-terrain/NetworkGenerator.js",
+          "symbol": "canalStreetStrategy",
+          "parameters": "canalRegionMinArea, quayOffsetCells",
+          "assessment": "Corrected",
+          "correction": "Earlier text did not describe the quays. Corrected in WEB-01b-R1",
+          "basis": "canalStreetStrategy comments 1 and 2",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Crossings resolved, short pieces pruned, components linked",
-          "basis": "generateNetwork body"
+          "displayed": "resolve crossings, prune short pieces, link separated components",
+          "file": "experiments/seed-terrain/NetworkGenerator.js",
+          "symbol": "planConnectivity",
+          "parameters": "minComponentLength",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "generateNetwork body",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -71,12 +125,24 @@
       },
       "checklist": [
         {
-          "statement": "Availability field, regions above zero, contour boundaries",
-          "basis": "BlockGenerator.js header comment steps 1 to 3"
+          "displayed": "a(p) = min(distance to road − ½ width, height − water surface)",
+          "file": "experiments/seed-terrain/BlockGenerator.js",
+          "symbol": "generateBlocks",
+          "parameters": "resolution 1 m",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "BlockGenerator.js header, step 1",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Small remnants are kept as fragments",
-          "basis": "BlockGenerator.js line creating fragments: kept and classified, never deleted"
+          "displayed": "become fragments, nothing is deleted",
+          "file": "experiments/seed-terrain/BlockGenerator.js",
+          "symbol": "minBlockArea",
+          "parameters": "minBlockArea",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "fragments: kept and classified, never deleted",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -87,12 +153,24 @@
       },
       "checklist": [
         {
-          "statement": "Frontage runs cut at target frontage, remainders merged, corner lots",
-          "basis": "ParcelGenerator.js comments 2 and 3"
+          "displayed": "merge remainders, form corner lots",
+          "file": "experiments/seed-terrain/ParcelGenerator.js",
+          "symbol": "generateParcels",
+          "parameters": "targetFrontage, minFrontage, cornerJoin",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "ParcelGenerator.js comments 2 and 3",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Samples go to the nearest lot; polygons from a local field",
-          "basis": "ParcelGenerator.js comments 4 and 6"
+          "displayed": "give each buildable sample to its nearest lot, up to maximum depth",
+          "file": "experiments/seed-terrain/ParcelGenerator.js",
+          "symbol": "maxDepth",
+          "parameters": "maxDepth",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "comment 4; field value uses target.maxDepth − own distance",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -103,16 +181,34 @@
       },
       "checklist": [
         {
-          "statement": "A parcel may stay empty by the occupancy rule",
-          "basis": "BuildingGenerator.js: random.next() < rule.occupancy"
+          "displayed": "keep or leave each parcel empty by the occupancy rule",
+          "file": "experiments/seed-terrain/BuildingGenerator.js",
+          "symbol": "occupancy",
+          "parameters": "occupancy",
+          "assessment": "Corrected",
+          "correction": "The step was missing. Added in WEB-01d",
+          "basis": "random.next() < rule.occupancy",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Vacant when the ground drops more than the plinth limit",
-          "basis": "BuildingGenerator.js plinthHeight > rules.maxPlinth"
+          "displayed": "leave vacant if the ground drops over",
+          "file": "experiments/seed-terrain/BuildingGenerator.js",
+          "symbol": "maxPlinth",
+          "parameters": "maxPlinth 4 m",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "plinthHeight > rules.maxPlinth",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Height mix of centre, road class, parcel area, jitter",
-          "basis": "BuildingGenerator.js mix, floors and height lines"
+          "displayed": "mix = centre·e^(−d²/r²) + road class + parcel area, with bounded jitter",
+          "file": "experiments/seed-terrain/BuildingGenerator.js",
+          "symbol": "centreFactor",
+          "parameters": "weights, centreRadius, jitter (assumptions)",
+          "assessment": "Simplified",
+          "correction": "The weights of the three terms are left out; the Inspector lists them under Parameters",
+          "basis": "mix, floors and height lines",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -123,12 +219,34 @@
       },
       "checklist": [
         {
-          "statement": "Sites screened, probed, scored by five terms, drawn by weight at minimum distance",
-          "basis": "G01 note section 4, OriginPlacement.js exports, saved placement reasons"
+          "displayed": "score = weighted slope, buildable, water, terrain type, DNA fit",
+          "file": "experiments/city-of-cities/OriginPlacement.js",
+          "symbol": "evaluateSite",
+          "parameters": "site weights (design hypotheses)",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "saved placement reasons hold the five terms and weights",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "A failure registers no city",
-          "basis": "WorldContext.initialiseSteps comment: atomic"
+          "displayed": "cities with the fewest qualified sites claim first (a seeded value breaks ties)",
+          "file": "experiments/city-of-cities/OriginPlacement.js",
+          "symbol": "placeOriginsSteps",
+          "parameters": "minOriginDistance, searchRadius, selectionSharpness",
+          "assessment": "Corrected",
+          "correction": "Earlier text said cities go in a seeded order. Corrected in WEB-01e",
+          "basis": "placeOriginsSteps: sort by qualified count, then hash",
+          "humanReview": "Needs Human Review"
+        },
+        {
+          "displayed": "if a city fails, no city is registered",
+          "file": "experiments/city-of-cities/WorldContext.js",
+          "symbol": "registerOrigin",
+          "parameters": "none",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "initialiseSteps: registers only when there are no failures",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -140,16 +258,34 @@
       },
       "checklist": [
         {
-          "statement": "Bid formula",
-          "basis": "WorldGrowthController.step: rate * best / (1 + grown) * (1 + cityJitter * seeded)"
+          "displayed": "bid = rate × best score / (1 + chunks grown) × seeded ± share",
+          "file": "experiments/city-of-cities/WorldGrowthController.js",
+          "symbol": "cityJitter",
+          "parameters": "Growth DNA rate, cityJitter 0.1 (hypotheses)",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "WorldGrowthController.step bid line",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Highest bid wins, then a cell is drawn weighted by score to the power of sharpness",
-          "basis": "WorldGrowthController.step: bidding sort, keyed pick with selectionSharpness 4"
+          "displayed": "draw a cell, weighted by score^4",
+          "file": "experiments/city-of-cities/WorldGrowthController.js",
+          "symbol": "selectionSharpness",
+          "parameters": "selectionSharpness 4",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "keyed pick with selectionSharpness",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Chunks are independent here, seams recorded only",
-          "basis": "G02 note limitation 4; generationParameters.terrainMode raw"
+          "displayed": "Chunks are generated independently here. Seams are recorded, not repaired.",
+          "file": "experiments/city-of-cities/WorldGrowthController.js",
+          "symbol": "step",
+          "parameters": "terrainMode raw",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "generationParameters in the saved events; G02 note limitation 4",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
@@ -160,16 +296,34 @@
       },
       "checklist": [
         {
-          "statement": "Cores placed by hand",
-          "basis": "encounterFixture.js header: TEST ONLY"
+          "displayed": "place both cores by hand in one row",
+          "file": "experiments/city-of-cities/encounterFixture.js",
+          "symbol": "createFixtureWorld",
+          "parameters": "row position",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "encounterFixture.js: TEST ONLY",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Decision is connection, plan or separation",
-          "basis": "saved decisions in urban-encounter.json, three scenarios"
+          "displayed": "decide: connection, pending plan or separation",
+          "file": "experiments/city-of-cities/UrbanEncounter.js",
+          "symbol": "negotiate",
+          "parameters": "maxEntryStep, maxGrade, maxCrossingDeg, maxInterfaces (hypotheses)",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "saved decisions of three scenarios",
+          "humanReview": "Needs Human Review"
         },
         {
-          "statement": "Connection verified by a route over the road graph",
-          "basis": "UrbanEncounter.path; validationStatus path 2288 m"
+          "displayed": "verify any connection by a route over the road graph",
+          "file": "experiments/city-of-cities/UrbanEncounter.js",
+          "symbol": "path",
+          "parameters": "none",
+          "assessment": "Accurate",
+          "correction": "None",
+          "basis": "UrbanEncounter.path; validationStatus",
+          "humanReview": "Needs Human Review"
         }
       ]
     }

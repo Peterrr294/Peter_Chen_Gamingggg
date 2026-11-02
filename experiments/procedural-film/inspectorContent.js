@@ -217,10 +217,11 @@ export function objectRows(picked, snapshot) {
 }
 
 // ---------- Part II: everything below reads the baked replay of the saved verifier run ----------
-export function sourceRows(scene, info) {
+export function sourceRows(scene, info, level) {
   const commit = scene.worldSeed === null ? 'generated on this page from the current code' : info?.bakedAtCommit ? `baked from the working tree after commit ${info.bakedAtCommit}; signatures checked` : 'loading';
   return [
     ['Type', scene.sourceType],
+    ...(level ? [['Current view', `${level.label}. ${level.note}`]] : []),
     ['Validation', scene.validationStatus],
     ['World seed', scene.worldSeed !== null ? String(scene.worldSeed) : NA('Part I has no world, only a terrain seed')],
     ['Source', scene.sourceFile],
@@ -231,13 +232,13 @@ export function sourceRows(scene, info) {
 }
 
 export const WORLD_FLOW = {
-  origins: { input: 'world seed, 6 City DNAs, terrain probes', process: 'WorldContext.initialise() → placeOriginsSteps()', output: '6 core chunks, placement reasons', what: 'One core chunk per city, in one coordinate frame.', rules: 'Sites are screened, scored by five terms, and chosen by a seeded weighted draw at a minimum distance.', next: 'Each core becomes the first frontier of its city.' },
+  origins: { input: 'world seed, 6 City DNAs, terrain probes', process: 'WorldContext.initialise() → placeOriginsSteps()', output: '6 core chunks, placement reasons', what: 'One core chunk per city, in one coordinate frame.', rules: 'Sites are screened and scored by five terms. A seeded weighted draw orders them; cities with the fewest sites claim first, at a minimum distance.', next: 'Each core becomes the first frontier of its city.' },
   growth: { input: 'frontier cells of every city, Growth DNA', process: 'WorldGrowthController.step()', output: 'one chunk, one history event', what: 'One city wins each step and grows into one neighbouring cell.', rules: 'Bid = rate × best score / (1 + chunks grown) × seeded share. The cell is then drawn by score.', next: 'New chunks extend the frontier. Map size and borders result from this.' },
-  encounter: { input: 'test row of cells, two hand-placed cores', process: 'UrbanEncounter.growWithNegotiation()', output: 'encounter record, decisions', what: 'What happens at the edge when a grid city and an organic city meet.', rules: 'Road ends must align within tolerance on acceptable terrain, or the edge stays separate or a plan.', next: 'Not yet part of the grown world. A later task must reach this through growth.' },
+  encounter: { input: 'test row of cells, two hand-placed cores (a controlled experiment)', process: 'UrbanEncounter.growWithNegotiation()', output: 'encounter record, decisions', what: 'What happens at the edge when a grid city and an organic city meet.', rules: 'Road ends must align within tolerance on acceptable terrain, or the edge stays separate or a plan.', next: 'Not yet part of the grown world. A later task must reach this through growth.' },
 };
 
 export const WORLD_HOW = {
-  origins: { steps: ['for each city, in a seeded order: screen cells by landform and water', 'probe real terrain at qualified sites', 'score = weighted slope, buildable, water, terrain type, DNA fit', 'draw one site, weighted by score, at the minimum distance', 'fail clearly if none qualifies'], constraints: 'Weights are design hypotheses, not calibrated.', files: [['OriginPlacement.js', '../../index.html#files?file=./experiments/city-of-cities/OriginPlacement.js']], more: '../../index.html#files?file=./docs/procedural-mini-world/A-City-of-Cities/G01-Multi-Origin-Initialization.md' },
+  origins: { steps: ['for each city: screen cells by landform and water, probe real terrain at the sites kept', 'score = weighted slope, buildable, water, terrain type, DNA fit', 'order the qualified sites of each city by a seeded weighted draw', 'cities with the fewest qualified sites claim first (a seeded value breaks ties)', 'each takes its first site at the minimum distance from earlier cities', 'if a city fails, no city is registered'], constraints: 'Weights are design hypotheses, not calibrated.', files: [['OriginPlacement.js', '../../index.html#files?file=./experiments/city-of-cities/OriginPlacement.js']], more: '../../index.html#files?file=./docs/procedural-mini-world/A-City-of-Cities/G01-Multi-Origin-Initialization.md' },
   growth: { steps: ['for each city: evaluate its frontier cells', 'bid = rate × best score / (1 + chunks grown) × seeded ± share', 'the highest bid grows', 'draw a cell, weighted by score^4', 'generate the chunk with the unchanged chain, record the event'], constraints: 'Chunks are generated independently here. Seams are recorded, not repaired.', files: [['WorldGrowthController.js', '../../index.html#files?file=./experiments/city-of-cities/WorldGrowthController.js'], ['GrowthEvaluation.js', '../../index.html#files?file=./experiments/city-of-cities/GrowthEvaluation.js']], more: '../../index.html#files?file=./docs/procedural-mini-world/A-City-of-Cities/G02-Procedural-Urban-Growth.md' },
   encounter: { steps: ['place both cores by hand in one row', 'grow one city toward the other, road first', 'read both boundaries: ports, height steps, water', 'decide: connection, pending plan or separation', 'verify any connection by a route over the road graph'], constraints: 'A test fixture only. The thresholds are hypotheses.', files: [['UrbanEncounter.js', '../../index.html#files?file=./experiments/city-of-cities/UrbanEncounter.js'], ['encounterFixture.js', '../../index.html#files?file=./experiments/city-of-cities/encounterFixture.js']], more: '../../index.html#files?file=./docs/procedural-mini-world/A-City-of-Cities/G03b-Urban-Encounter.md' },
 };

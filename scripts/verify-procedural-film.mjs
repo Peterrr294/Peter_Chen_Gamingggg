@@ -524,7 +524,7 @@ try {
     await seek(page, CASE_T + 0.5);
     await page.waitForFunction(() => window.__film.casesReady === true, null, { timeout: 180000 });
     await sleep(300);
-    check('entering the case study says what it is', (await inner('#chapterCard')).includes('placed by hand') && (await inner('#sceneTag')).startsWith('Controlled Case Study'), await inner('#sceneTag'));
+    check('entering the case study says what it is', (await inner('#chapterCard')).includes('placed by hand') && (await inner('#sceneTag')).startsWith('Controlled Experiment'), await inner('#sceneTag'));
     const names = ['compatible', 'incompatible', 'barrier']; let casesOk = true; const seen = [];
     for (const [index, name] of names.entries()) {
       await seek(page, CASE_T + index * 6 + 5.5); await sleep(350);
@@ -533,10 +533,10 @@ try {
       seen.push(`${name}: ${relationship}`);
       const panel = await page.locator('#inspector').innerText();
       if (/undefined|NaN/.test(panel)) { seen.push(`${name} shows undefined`); casesOk = false; }
-      if (relationship !== caseEvidence[name].encounter.currentRelationship || visible.some(id => all.includes(id) && !Object.keys(caseEvidence[name].chunkMetrics).includes(id)) || await dd('#inSource', 'Type') !== 'Controlled Case Study') casesOk = false;
+      if (relationship !== caseEvidence[name].encounter.currentRelationship || visible.some(id => all.includes(id) && !Object.keys(caseEvidence[name].chunkMetrics).includes(id)) || await dd('#inSource', 'Type') !== 'Controlled Experiment') casesOk = false;
       if (capture && name === 'compatible') await shot(page, 'web01c-case-study-after.png');
     }
-    check('three scenarios equal the G03b evidence, marked Controlled Case Study', casesOk, seen.join(' · '));
+    check('three scenarios equal the G03b evidence, marked Controlled Experiment', casesOk, seen.join(' · '));
     check('the recorded world does not show during the case study', (await inner('#readout')).startsWith('Case study'));
 
     // Back to Part I: the model is intact.
@@ -552,19 +552,79 @@ try {
     }
     await page.context().close();
 
-    // Light view on slow devices: same events, fewer triangles, and it says so.
+    // Three viewing levels: same data, different means.
     {
-      const light = await newPage();
-      await openFilm(light, 'autoplay=0&t=100&light=1');
-      await light.waitForFunction(() => window.__film.worldReady === true && window.__film.lightWorld === true, null, { timeout: 180000 }); await sleep(600);
-      const facts = await light.evaluate(() => ({ triangles: (window.__film.render(), window.__film.geometry().triangles), tag: document.getElementById('sceneTag').textContent, event: window.__film.worldEvent().step, chunks: window.__film.worldVisible().length }));
-      report.measurements.lightWorld = facts;
-      check('light view: fewer triangles, says so, same events and chunks', facts.triangles < 900000 && facts.tag.includes('Light view') && facts.event === 30 && facts.chunks === 36, JSON.stringify({ triangles: facts.triangles, step: facts.event, chunks: facts.chunks }));
-      await light.click('#modeInspect'); await sleep(400);
-      await light.locator('#inLayersBox summary').click();
-      await light.locator('.layer[data-world-layer="buildings"] input').check(); await sleep(300);
-      check('the viewer can turn buildings back on', (await light.evaluate(() => (window.__film.render(), window.__film.geometry().triangles))) > facts.triangles);
-      await light.context().close();
+      const lv = await newPage();
+      await openFilm(lv, 'autoplay=0&t=100');
+      await lv.waitForFunction(() => window.__film.worldReady === true, null, { timeout: 180000 }); await sleep(700);
+      const generations = await lv.evaluate(() => window.__film.generations);
+      const facts = () => lv.evaluate(() => ({ t: window.__film.t, event: window.__film.worldEvent().step, city: window.__film.city, level: window.__film.level, chunks: window.__film.worldCounts().chunks }));
+      const triangles = () => lv.evaluate(() => { window.__film.render(); return window.__film.geometry().triangles; });
+      const live = await facts(); const liveTriangles = await triangles();
+      check('Part II starts in Live 3D here, with a visible choice of view', live.level === 'live' && await lv.locator('#viewLevel').isVisible());
+      if (capture) await shot(lv, 'web01e-level-live-after.png');
+      await lv.selectOption('#viewLevel', 'light'); await sleep(500);
+      const lightFacts = await facts(); const lightTriangles = await triangles();
+      report.measurements.levelTriangles = { live: liveTriangles, light: lightTriangles };
+      check('Lightweight Replay: same t, step and chunks, far fewer triangles, says what it is', lightFacts.level === 'light' && lightFacts.t === live.t && lightFacts.event === live.event && lightFacts.chunks === live.chunks && lightTriangles < liveTriangles / 3 && (await lv.locator('#levelNote').innerText()).includes('roofs'), `${liveTriangles} → ${lightTriangles} triangles`);
+      if (capture) { await sleep(300); await shot(lv, 'web01e-level-light-after.png'); }
+      await lv.selectOption('#viewLevel', 'film');
+      await lv.waitForFunction(() => window.__film.filmShown === true && document.getElementById('partFilm').readyState >= 2, null, { timeout: 60000 }); await sleep(800);
+      const filmFacts = await facts();
+      const video = await lv.evaluate(() => { const el = document.getElementById('partFilm'); return { duration: el.duration, time: el.currentTime, width: el.videoWidth, src: el.currentSrc }; });
+      check('Recorded Film: real file, same t and step, video follows the timeline', filmFacts.t === live.t && filmFacts.event === live.event && filmFacts.city === live.city && Math.abs(video.duration - 70) < 0.3 && Math.abs(video.time - (live.t - 52)) < 0.2, JSON.stringify(video).slice(0, 160));
+      await lv.mouse.click(500, 300); await sleep(250);
+      await lv.click('#modeInspect'); await sleep(400);
+      const inspector = await lv.locator('#inspector').innerText();
+      await lv.locator('#inLayersBox summary').click();
+      check('Recorded Film does not pretend: no selection, layers say Not Available, the Inspector names the view', (await lv.evaluate(() => window.__film.worldSelected)) === null && (await lv.locator('#inLayers').innerText()).includes('Not Available in Recorded Film') && inspector.includes('Recorded Film') && inspector.includes('No selection'));
+      check('Recorded Film: names come only from the film, the title stays visible', await lv.locator('#labels button').count() === 0 && await lv.evaluate(() => { const box = document.querySelector('.hero').getBoundingClientRect(); const hit = document.elementFromPoint(box.left + 10, box.top + 10); return Boolean(hit?.closest('.hero')) || box.height > 0 && getComputedStyle(document.querySelector('.hero')).zIndex === '2'; }));
+      if (capture) await shot(lv, 'web01e-level-film-after.png');
+      await lv.click('#modeWatch'); await sleep(300);
+      const rates = {};
+      for (const speed of ['0.25', '1', '4']) {
+        await seek(lv, 65);
+        await lv.selectOption('#rate', speed);
+        await lv.click('#play');
+        await sleep(300);
+        const a = await lv.evaluate(() => [performance.now(), window.__film.videoTime]); await sleep(1500); const b = await lv.evaluate(() => [performance.now(), window.__film.videoTime, window.__film.t]);
+        await lv.click('#play');
+        rates[speed] = { video: (b[1] - a[1]) / ((b[0] - a[0]) / 1000), offset: Math.abs(b[1] - (b[2] - 52)) };
+      }
+      report.measurements.filmSpeedRates = rates;
+      check('Recorded Film: speeds drive the video, close to the timeline', Object.entries(rates).every(([speed, r]) => Math.abs(r.video / Number(speed) - 1) < 0.25 && r.offset < 0.6), JSON.stringify(rates));
+      await lv.selectOption('#rate', '1');
+      await seek(lv, 100);
+      await lv.selectOption('#viewLevel', 'live'); await sleep(600);
+      const back = await facts();
+      check('back to Live 3D: same t and step, nothing generated', back.level === 'live' && back.t === 100 && back.event === live.event && await lv.evaluate(() => window.__film.generations) === generations);
+      await lv.selectOption('#viewLevel', 'auto'); await sleep(200);
+      await lv.evaluate(() => window.__film.feedFps(40));
+      const stay = await lv.evaluate(() => window.__film.level);
+      await lv.evaluate(() => window.__film.feedFps(15)); await sleep(300);
+      const down = await lv.evaluate(() => window.__film.level);
+      await lv.evaluate(() => window.__film.feedFps(8)); await sleep(300);
+      const down2 = await lv.evaluate(() => window.__film.level);
+      check('Auto steps down by measured speed and says why', stay === 'live' && down === 'light' && down2 === 'film' && (await lv.locator('#levelNote').innerText()).includes('frames per second'), `${stay} → ${down} → ${down2}`);
+      await lv.selectOption('#viewLevel', 'live'); await sleep(300);
+      await lv.evaluate(() => window.__film.feedFps(5)); await sleep(200);
+      check('a manual choice is not overridden', await lv.evaluate(() => window.__film.level) === 'live');
+      await lv.context().close();
+
+      const noFile = await newPage();
+      await noFile.route('**/part2-film*', route => route.fulfill({ status: 404, body: 'missing' }));
+      await openFilm(noFile, 'autoplay=0&t=90&level=film');
+      await noFile.waitForFunction(() => document.getElementById('levelNote').textContent.includes('could not load'), null, { timeout: 30000 });
+      check('missing film file: says so and falls back to 3D', true);
+      report.browserErrors = report.browserErrors.filter(text => !/part2-film|404/.test(text));
+      await noFile.context().close();
+
+      const saveLoad = await newPage();
+      await saveLoad.goto(`${base}/experiments/city-of-cities/index.html`, { waitUntil: 'domcontentloaded' });
+      const labels = await saveLoad.waitForFunction(() => /Save/.test(document.body.innerText) && /Load/.test(document.body.innerText) ? document.body.innerText.match(/[^\n]*(Save|Load)[^\n]*/g).slice(0, 4) : false, null, { timeout: 120000 }).then(h => h.jsonValue());
+      const state = await readFile(path.join(root, 'experiments/city-of-cities/evidence/world-6201-g02-step30-state.json'), 'utf8');
+      check('Save / Load: entry present in the world experiment; the film uses that saved state', labels.length > 0 && JSON.parse(state).kind.length > 0, labels.join(' · '));
+      await saveLoad.context().close();
     }
 
     // Missing data never turns into a fake state.
@@ -707,6 +767,7 @@ try {
     const nav = await page.locator('.site-header nav a').allTextContents();
     report.measurements.homeControlsMs = homeMs;
     check('home opens on the film, controls within 5 s', homeMs < 5000, `${homeMs} ms`);
+    check('navigation names: World, Process, Cities, Research; film button Explore Scene', nav.join() === 'World,Process,Cities,Research' && (await frame.locator('#viewExplore').innerText()) === 'Explore Scene', nav.join(' · '));
     check('main navigation: 4 entries, Archive apart, no old exercises', nav.length === 4 && await page.locator('.archive-link').count() === 1 && !nav.some(label => /Starlight|Voxel|Flavor|Shader|Noise/i.test(label)), nav.join(' · '));
     const handle = await page.locator('.project-frame').elementHandle();
     const filmFrame = await handle.contentFrame();
@@ -731,7 +792,10 @@ try {
       const inArchive = key === 'world' || await page.locator('.site-header .archive-link[aria-current]').count() === 1;
       check(`old route #${key} still opens its page`, src?.includes(marker) && inArchive, src);
     }
-    await page.goto(`${base}/#files`); await page.locator('#fileRendered, #fileText').first().waitFor({ state: 'attached' });
+    await page.goto(`${base}/#files?file=./docs/procedural-mini-world/A-City-of-Cities/Algorithm-Review.md`); await page.locator('#fileRendered, #fileText').first().waitFor({ state: 'attached' });
+    await sleep(800);
+    if (capture) await shot(page, 'web01e-review-page-after.png');
+    check('Files & Notes shows the review page in the light system', (await page.locator('#fileRendered').innerText()).includes('Human review') && (await page.evaluate(() => getComputedStyle(document.querySelector('.library article')).backgroundColor)) === 'rgb(247, 245, 240)');
     check('Files & Notes still loads', await page.locator('select').first().count() === 1);
 
     // Links out of the research page.

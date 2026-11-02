@@ -74,18 +74,24 @@ async function profile(name, args, viewport, cpu) {
   await page.evaluate(() => window.__film.seek(70));
   await page.waitForFunction(() => window.__film.worldReady === true, null, { timeout: 300000 });
   out.worldWaitAfterSeekMs = Date.now() - worldStart; // the replay starts loading at t = 30, so little is left to wait for here
-  await page.evaluate(() => window.__film.seek(100)); await sleep(1000);
-  out.worldTriangles = (await page.evaluate(() => window.__film.geometry())).triangles;
-  await page.click('#play');
-  out.worldFullOrUntilLightView = await fps(page, 3500);
-  out.lightViewTriggered = await page.evaluate(() => window.__film.lightWorld);
-  out.worldGrowthEnd = await fps(page, 3000);
-  out.worldTrianglesAfter = (await page.evaluate(() => window.__film.geometry())).triangles;
-  await page.click('#play');
-  await page.click('#modeInspect'); await sleep(600);
-  await page.evaluate(() => window.__film.seek(100)); await page.click('#play');
-  out.worldGrowthEndInspect = await fps(page, 3000);
-  await page.click('#play');
+  await page.selectOption('#rate', '0.25'); // stays inside the growth stage while measuring
+  out.worldBreakdown = await page.evaluate(() => window.__film.worldBreakdown());
+  for (const level of ['live', 'light', 'film']) {
+    await page.selectOption('#viewLevel', level);
+    await page.evaluate(() => window.__film.seek(100)); await sleep(1500);
+    if (level === 'film') await page.waitForFunction(() => document.getElementById('partFilm').readyState >= 2, null, { timeout: 120000 });
+    const triangles = level === 'film' ? 0 : (await page.evaluate(() => { window.__film.render(); return window.__film.geometry(); }));
+    await page.click('#play');
+    const watch = await fps(page, 3500);
+    await page.click('#play');
+    await page.click('#modeInspect'); await sleep(500);
+    await page.evaluate(() => window.__film.seek(100));
+    await page.click('#play');
+    const inspect = await fps(page, 3500);
+    await page.click('#play');
+    await page.click('#modeWatch'); await sleep(300);
+    out[`world_${level}`] = { watch, inspect, triangles: triangles.triangles ?? 0, calls: triangles.calls ?? 0 };
+  }
   out.heapWorldMB = await heap(page);
   await browser.close();
   console.log(JSON.stringify(out));

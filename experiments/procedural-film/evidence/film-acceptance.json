@@ -1,6 +1,6 @@
 {
  "task": "WEB-01",
- "at": "2026-11-02T01:31:18.596Z",
+ "at": "2026-11-02T02:15:36.417Z",
  "checks": [
   {
    "name": "real output: veniceWaterNetwork signatures = 06.1 evidence (coast 1101)",
@@ -40,17 +40,17 @@
   {
    "name": "Play advances the timeline",
    "pass": true,
-   "detail": "t = 53.37"
+   "detail": "t = 53.39"
   },
   {
    "name": "Pause holds the timeline",
    "pass": true,
-   "detail": "t = 53.39"
+   "detail": "t = 53.41"
   },
   {
    "name": "scrubbing never changes the model (same t = same frame)",
    "pass": true,
-   "detail": "worst 4 pixels, delta 1"
+   "detail": "worst 12 pixels, delta 1"
   },
   {
    "name": "Next goes to the next stage",
@@ -75,7 +75,7 @@
   {
    "name": "Restart replays from the start",
    "pass": true,
-   "detail": "t = 0.41"
+   "detail": "t = 0.42"
   },
   {
    "name": "no camera jump in the film (each 50 ms step: < 12 m, < 1°, < 3 % zoom)",
@@ -85,7 +85,7 @@
   {
    "name": "same seed, reload: same frame at 6 times",
    "pass": true,
-   "detail": "worst 5 pixels, delta 1"
+   "detail": "worst 1 pixels, delta 1"
   },
   {
    "name": "reveal order reproducible",
@@ -100,7 +100,7 @@
   {
    "name": "dragging orbits from the current view without a jump",
    "pass": true,
-   "detail": "az 0.663 → -0.017, camera select = free"
+   "detail": "az 0.663 → -0.015, camera select = free"
   },
   {
    "name": "timeline still works in free camera",
@@ -120,12 +120,12 @@
   {
    "name": "fresh visit: film starts by itself within 15 s",
    "pass": true,
-   "detail": "2263 ms"
+   "detail": "2006 ms"
   },
   {
    "name": "playback frame rate ≥ 24 fps (this machine)",
    "pass": true,
-   "detail": "139.6 fps, worst frame 242 ms (capped at 100)"
+   "detail": "140.1 fps, worst frame 201 ms (capped at 100)"
   },
   {
    "name": "reduced motion: no autoplay, finished model, static view on",
@@ -165,12 +165,12 @@
   {
    "name": "each speed drives the timeline at its rate (± 15 %)",
    "pass": true,
-   "detail": "{\"1\":0.9989448694236609,\"2\":2.0017177589930806,\"4\":3.988572947148245,\"0.25\":0.2499834830827398,\"0.5\":0.5009259871664865,\"1.5\":1.4983184965380751}"
+   "detail": "{\"1\":0.9982125124131042,\"2\":2.001453872603656,\"4\":3.994725042874721,\"0.25\":0.2502312673440635,\"0.5\":0.5000660196777961,\"1.5\":1.5024796667209412}"
   },
   {
    "name": "fast speed changes while playing never reset or jump the timeline",
    "pass": true,
-   "detail": "t = 6.41"
+   "detail": "t = 6.35"
   },
   {
    "name": "pause, resume and scrub keep the speed",
@@ -305,7 +305,7 @@
   {
    "name": "playback with the panel open ≥ 24 fps (this machine)",
    "pass": true,
-   "detail": "142.6 fps"
+   "detail": "143.1 fps"
   },
   {
    "name": "switching city updates City ID and DNA, keeps the position in Inspect",
@@ -390,7 +390,7 @@
   {
    "name": "speeds work in the world replay (± 15 %)",
    "pass": true,
-   "detail": "{\"1\":1.0006636140381004,\"4\":3.999999999984358,\"0.25\":0.24981692297558908}"
+   "detail": "{\"1\":0.9994697421502282,\"4\":3.9960424774248753,\"0.25\":0.24976808905094341}"
   },
   {
    "name": "speed never changes the growth result (same t = same frame)",
@@ -415,15 +415,15 @@
   {
    "name": "world camera keeps its direction and eases as the world grows",
    "pass": true,
-   "detail": "{\"target\":29.48020027310531,\"zoom\":0.0029571123685920644}"
+   "detail": "{\"target\":29.48020027310531,\"zoom\":0.0029571123685918433}"
   },
   {
    "name": "entering the case study says what it is",
    "pass": true,
-   "detail": "Controlled Case Study · hand-placed test row · Compatible road interface"
+   "detail": "Controlled Experiment · hand-placed test row, not the recorded world · Compatible road interface"
   },
   {
-   "name": "three scenarios equal the G03b evidence, marked Controlled Case Study",
+   "name": "three scenarios equal the G03b evidence, marked Controlled Experiment",
    "pass": true,
    "detail": "compatible: connected · incompatible: adjacent — connection plan pending · barrier: approaching — barrier between"
   },
@@ -438,14 +438,59 @@
    "detail": ""
   },
   {
-   "name": "light view: fewer triangles, says so, same events and chunks",
-   "pass": true,
-   "detail": "{\"triangles\":750444,\"step\":30,\"chunks\":36}"
-  },
-  {
-   "name": "the viewer can turn buildings back on",
+   "name": "Part II starts in Live 3D here, with a visible choice of view",
    "pass": true,
    "detail": ""
+  },
+  {
+   "name": "Lightweight Replay: same t, step and chunks, far fewer triangles, says what it is",
+   "pass": true,
+   "detail": "1249695 → 389333 triangles"
+  },
+  {
+   "name": "Recorded Film: real file, same t and step, video follows the timeline",
+   "pass": true,
+   "detail": "{\"duration\":70,\"time\":48,\"width\":1280,\"src\":\"http://localhost:5193/experiments/procedural-film/world/part2-film.mp4\"}"
+  },
+  {
+   "name": "Recorded Film does not pretend: no selection, layers say Not Available, the Inspector names the view",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Recorded Film: names come only from the film, the title stays visible",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Recorded Film: speeds drive the video, close to the timeline",
+   "pass": true,
+   "detail": "{\"1\":{\"video\":1.000000000003945,\"offset\":0.0033999999997895713},\"4\":{\"video\":3.999668457014681,\"offset\":0.002400000000250202},\"0.25\":{\"video\":0.24990091161119063,\"offset\":0.0005249999993850452}}"
+  },
+  {
+   "name": "back to Live 3D: same t and step, nothing generated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Auto steps down by measured speed and says why",
+   "pass": true,
+   "detail": "live → light → film"
+  },
+  {
+   "name": "a manual choice is not overridden",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "missing film file: says so and falls back to 3D",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Save / Load: entry present in the world experiment; the film uses that saved state",
+   "pass": true,
+   "detail": "Save world state · Load world state"
   },
   {
    "name": "missing replay data: clear message, film waits, nothing is drawn",
@@ -525,12 +570,17 @@
   {
    "name": "home opens on the film, controls within 5 s",
    "pass": true,
-   "detail": "448 ms"
+   "detail": "415 ms"
+  },
+  {
+   "name": "navigation names: World, Process, Cities, Research; film button Explore Scene",
+   "pass": true,
+   "detail": "World · Process · Cities · Research"
   },
   {
    "name": "main navigation: 4 entries, Archive apart, no old exercises",
    "pass": true,
-   "detail": "Explore · Process · Cities · Research"
+   "detail": "World · Process · Cities · Research"
   },
   {
    "name": "film in the home frame shows real geometry",
@@ -586,6 +636,11 @@
    "name": "old route #world still opens its page",
    "pass": true,
    "detail": "./experiments/city-of-cities/index.html"
+  },
+  {
+   "name": "Files & Notes shows the review page in the light system",
+   "pass": true,
+   "detail": ""
   },
   {
    "name": "Files & Notes still loads",
@@ -664,16 +719,16 @@
      "buildingCount": 438,
      "cityId": "veniceWaterNetwork",
      "timings": {
-      "terrain": 61,
-      "analysis": 54,
-      "roads": 492,
-      "blocks": 230,
-      "parcels": 552,
-      "buildings": 182
+      "terrain": 58,
+      "analysis": 49,
+      "roads": 462,
+      "blocks": 229,
+      "parcels": 498,
+      "buildings": 169
      }
     },
-    "loadMs": 2277,
-    "buildMs": 125,
+    "loadMs": 2151,
+    "buildMs": 112,
     "triangles": 197804
    },
    "manhattanGrid": {
@@ -688,16 +743,16 @@
      "buildingCount": 1679,
      "cityId": "manhattanGrid",
      "timings": {
-      "terrain": 81,
-      "analysis": 69,
-      "roads": 8,
-      "blocks": 292,
-      "parcels": 2987,
-      "buildings": 1266
+      "terrain": 54,
+      "analysis": 41,
+      "roads": 6,
+      "blocks": 245,
+      "parcels": 2717,
+      "buildings": 1150
      }
     },
-    "loadMs": 5300,
-    "buildMs": 280,
+    "loadMs": 4754,
+    "buildMs": 286,
     "triangles": 199992
    },
    "fezOrganicCore": {
@@ -712,16 +767,16 @@
      "buildingCount": 589,
      "cityId": "fezOrganicCore",
      "timings": {
-      "terrain": 96,
-      "analysis": 79,
-      "roads": 941,
-      "blocks": 311,
-      "parcels": 943,
-      "buildings": 421
+      "terrain": 95,
+      "analysis": 82,
+      "roads": 943,
+      "blocks": 331,
+      "parcels": 1060,
+      "buildings": 479
      }
     },
-    "loadMs": 3281,
-    "buildMs": 176,
+    "loadMs": 3460,
+    "buildMs": 162,
     "triangles": 210848
    },
    "amsterdamCanalRing": {
@@ -736,16 +791,16 @@
      "buildingCount": 513,
      "cityId": "amsterdamCanalRing",
      "timings": {
-      "terrain": 89,
-      "analysis": 73,
-      "roads": 421,
-      "blocks": 306,
-      "parcels": 1206,
-      "buildings": 1285
+      "terrain": 91,
+      "analysis": 75,
+      "roads": 452,
+      "blocks": 279,
+      "parcels": 1175,
+      "buildings": 1328
      }
     },
-    "loadMs": 3822,
-    "buildMs": 174,
+    "loadMs": 3803,
+    "buildMs": 142,
     "triangles": 200820
    },
    "lisbonHillCore": {
@@ -760,16 +815,16 @@
      "buildingCount": 723,
      "cityId": "lisbonHillCore",
      "timings": {
-      "terrain": 97,
-      "analysis": 84,
-      "roads": 591,
-      "blocks": 375,
-      "parcels": 886,
-      "buildings": 365
+      "terrain": 90,
+      "analysis": 78,
+      "roads": 563,
+      "blocks": 355,
+      "parcels": 927,
+      "buildings": 384
      }
     },
-    "loadMs": 2865,
-    "buildMs": 176,
+    "loadMs": 2820,
+    "buildMs": 170,
     "triangles": 189448
    },
    "chicagoGrid": {
@@ -784,16 +839,16 @@
      "buildingCount": 2013,
      "cityId": "chicagoGrid",
      "timings": {
-      "terrain": 84,
-      "analysis": 68,
-      "roads": 6,
-      "blocks": 275,
-      "parcels": 3766,
-      "buildings": 1294
+      "terrain": 81,
+      "analysis": 66,
+      "roads": 8,
+      "blocks": 213,
+      "parcels": 3303,
+      "buildings": 1192
      }
     },
-    "loadMs": 6091,
-    "buildMs": 284,
+    "loadMs": 5352,
+    "buildMs": 210,
     "triangles": 199992
    }
   },
@@ -803,12 +858,12 @@
    "zoom": 0.011552427538533154,
    "atT": 33.40000000000024
   },
-  "freshVisitReadyMs": 2263,
+  "freshVisitReadyMs": 2006,
   "playback": {
-   "frames": 1713,
-   "worst": 0.24170000000000028,
-   "sum": 12.27130000000002,
-   "fps": 139.59401204436347
+   "frames": 1711,
+   "worst": 0.20139999999999986,
+   "sum": 12.208600000000063,
+   "fps": 140.1471094146742
   },
   "mobile": {
    "scrollW": 390,
@@ -819,18 +874,18 @@
    "height": 844
   },
   "speedRates": {
-   "1": 0.9989448694236609,
-   "2": 2.0017177589930806,
-   "4": 3.988572947148245,
-   "0.25": 0.2499834830827398,
-   "0.5": 0.5009259871664865,
-   "1.5": 1.4983184965380751
+   "1": 0.9982125124131042,
+   "2": 2.001453872603656,
+   "4": 3.994725042874721,
+   "0.25": 0.2502312673440635,
+   "0.5": 0.5000660196777961,
+   "1.5": 1.5024796667209412
   },
   "playbackAfterInspect": {
-   "frames": 1111,
-   "worst": 0.025099999999998544,
-   "sum": 7.789499999999974,
-   "fps": 142.6278965273771
+   "frames": 1114,
+   "worst": 0.021900000000001456,
+   "sum": 7.782399999999965,
+   "fps": 143.14350328947432
   },
   "mobileInspect": {
    "sheet": 270.078125,
@@ -842,21 +897,33 @@
    "top": 345.921875
   },
   "worldSpeedRates": {
-   "1": 1.0006636140381004,
-   "4": 3.999999999984358,
-   "0.25": 0.24981692297558908
+   "1": 0.9994697421502282,
+   "4": 3.9960424774248753,
+   "0.25": 0.24976808905094341
   },
   "worldCameraMaxStepPer50ms": {
    "target": 29.48020027310531,
-   "zoom": 0.0029571123685920644
+   "zoom": 0.0029571123685918433
   },
-  "lightWorld": {
-   "triangles": 750444,
-   "tag": "Recorded replay · world seed 6201 · not the chunk of Part I · Light view: building volumes and lots hidden for this device (Debug layers)",
-   "event": 30,
-   "chunks": 36
+  "levelTriangles": {
+   "live": 1249695,
+   "light": 389333
   },
-  "tourFirstTextMs": 180,
+  "filmSpeedRates": {
+   "1": {
+    "video": 1.000000000003945,
+    "offset": 0.0033999999997895713
+   },
+   "4": {
+    "video": 3.999668457014681,
+    "offset": 0.002400000000250202
+   },
+   "0.25": {
+    "video": 0.24990091161119063,
+    "offset": 0.0005249999993850452
+   }
+  },
+  "tourFirstTextMs": 147,
   "contrast": [
    [
     ".stage-line",
@@ -907,9 +974,9 @@
     5.9
    ]
   ],
-  "homeControlsMs": 448,
+  "homeControlsMs": 415,
   "researchLinks": 19
  },
- "passed": 129,
+ "passed": 140,
  "failed": 0
 }

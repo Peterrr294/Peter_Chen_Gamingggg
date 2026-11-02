@@ -10,7 +10,7 @@ export const STAGES = Object.freeze([
   // Part II: a separate recorded run at world scale, see sceneManifest.js. Durations follow the recorded events: 30 growth steps × 1.3 s + the last reveal.
   { id: 'origins', title: 'Six Urban Origins', duration: 8, line: 'Six cities, placed by terrain suitability in one recorded world.', status: 'Verified', task: 'G01, G01-FIX', chapter: 2 },
   { id: 'growth', title: 'Procedural Urban Growth', duration: 44, line: 'One new chunk per recorded step, from its parent\'s frontier. World size and borders are outcomes.', status: 'Verified data · Prototype form', task: 'G02, G02-V', chapter: 2 },
-  { id: 'encounter', title: 'Urban Encounter', duration: 18, line: 'A controlled experiment: Chicago and Fez are placed by hand so that they meet.', status: 'Controlled Case Study', task: 'G03b', chapter: 2 },
+  { id: 'encounter', title: 'Urban Encounter', duration: 18, line: 'A controlled experiment: Chicago and Fez are placed by hand so that they meet.', status: 'Controlled Experiment', task: 'G03b', chapter: 2 },
 ]);
 export const CHAPTERS = Object.freeze([
   { id: 'part-1', title: 'Part I · How a city is generated' },
@@ -23,7 +23,7 @@ export const TOUR = Object.freeze([
   { title: 'The Generated City', line: 'Roads enclose blocks, blocks divide into parcels, parcels carry buildings.', from: 'blocks', to: 'buildings', status: 'Verified' },
   { title: 'Six Urban Identities', line: 'Six rule sets, placed by terrain in one recorded world.', from: 'origins', to: 'origins', status: 'Verified · recorded' },
   { title: 'Procedural Growth', line: 'Map size and city borders result from 30 recorded growth steps. Chunks do not yet continue each other\'s streets here.', from: 'growth', to: 'growth', status: 'Prototype · recorded' },
-  { title: 'A City of Cities', line: 'Cities do not yet meet on their own. This controlled experiment tests what happens when they do.', from: 'encounter', to: 'encounter', status: 'Controlled case study · natural encounters Planned' },
+  { title: 'A City of Cities', line: 'Cities do not yet meet on their own. This controlled experiment tests what happens when they do.', from: 'encounter', to: 'encounter', status: 'Controlled Experiment · natural encounters Planned' },
 ]);
 export const PART_ONE_LAST = 5; // index of the last stage of Part I
 export const PART_ONE_END = STAGES.slice(0, PART_ONE_LAST + 1).reduce((sum, stage) => sum + stage.duration, 0);

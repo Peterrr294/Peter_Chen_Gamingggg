@@ -56,12 +56,33 @@ function chunkGeometry(chunk, maxHeight, parentOf) {
     wall(ox + half, oz + u1, at(heights, i + 1, side - 1), ox + half, oz + u0, at(heights, i, side - 1));
   }
 
+  // Lightweight terrain: every second stored sample (32 m) with the same walls. Only for the lighter view.
+  const LP_ = []; const LN = []; const LC = [];
+  const litePoint = (r, col) => {
+    LP_.push(ox + col * cell - SIZE / 2, at(heights, r, col), oz + r * cell - SIZE / 2); LN.push(...normalAt(r, col));
+    const shade = LAND[kinds[r * side + col]]; LC.push(shade.r, shade.g, shade.b);
+  };
+  for (let r = 0; r < side - 2; r += 2) for (let col = 0; col < side - 2; col += 2) { litePoint(r, col); litePoint(r + 2, col); litePoint(r, col + 2); litePoint(r, col + 2); litePoint(r + 2, col); litePoint(r + 2, col + 2); }
+  const liteWalls = (x0, z0, y0, x1, z1, y1) => {
+    a.set(x1 - x0, 0, z1 - z0); b.set(0, 1, 0); const n = new THREE.Vector3().crossVectors(b, a).normalize();
+    for (const [x, y, z] of [[x0, y0, z0], [x0, baseY, z0], [x1, y1, z1], [x1, y1, z1], [x0, baseY, z0], [x1, baseY, z1]]) { LP_.push(x, y, z); LN.push(n.x, n.y, n.z); LC.push(wallTone.r, wallTone.g, wallTone.b); }
+  };
+  for (let i = 0; i < side - 2; i += 2) {
+    const u0 = i * cell - half; const u1 = u0 + 2 * cell;
+    liteWalls(ox + u1, oz - half, at(heights, 0, i + 2), ox + u0, oz - half, at(heights, 0, i));
+    liteWalls(ox + u0, oz + half, at(heights, side - 1, i), ox + u1, oz + half, at(heights, side - 1, i + 2));
+    liteWalls(ox - half, oz + u0, at(heights, i, 0), ox - half, oz + u1, at(heights, i + 2, 0));
+    liteWalls(ox + half, oz + u1, at(heights, i + 2, side - 1), ox + half, oz + u0, at(heights, i, side - 1));
+  }
+
   // Water surface where all four corners are wet.
   const W = [];
   const wet = (r, col) => waters[r * side + col] !== -32768;
   for (let r = 0; r < side - 1; r += 1) {
     for (let col = 0; col < side - 1; col += 1) {
       if (!(wet(r, col) && wet(r + 1, col) && wet(r, col + 1) && wet(r + 1, col + 1))) continue;
+      // The surface value exists under dry land too: draw it only where a corner is really water, or it costs triangles nobody can see.
+      if (kinds[r * side + col] && kinds[(r + 1) * side + col] && kinds[r * side + col + 1] && kinds[(r + 1) * side + col + 1]) continue;
       for (const [dr, dc] of [[0, 0], [1, 0], [0, 1], [0, 1], [1, 0], [1, 1]]) W.push(ox + (col + dc) * cell - half, at(waters, r + dr, col + dc), oz + (r + dr) * cell - half);
     }
   }
@@ -105,7 +126,9 @@ function chunkGeometry(chunk, maxHeight, parentOf) {
   const blocks = outline(chunk.blocks, 2.4); const parcels = outline(chunk.parcels, 2.8);
 
   // Buildings: real footprints and elevations, one prism each.
+  // Walls first, roofs after: the lighter view draws only the roofs of the same array, at their real positions and heights.
   const BP = []; const BN = []; const BC = []; const BS = [];
+  const RPf = []; const RNf = []; const RCf = []; const RSf = [];
   const tone = new THREE.Color();
   chunk.buildings.forEach((building, index) => {
     const ring = pts => { const out = []; for (let i = 0; i < pts.length; i += 2) out.push(new THREE.Vector2(ox + pts[i] / DECI, oz + pts[i + 1] / DECI)); return out; };
@@ -131,22 +154,23 @@ function chunkGeometry(chunk, maxHeight, parentOf) {
     const orient = signed(outer) > 0;
     for (const tri of THREE.ShapeUtils.triangulateShape(outer, holes)) {
       const order = orient ? [tri[0], tri[2], tri[1]] : tri;
-      for (const i of order) push(all[i].x, top, all[i].y, 0, 1, 0);
+      for (const i of order) { RPf.push(all[i].x, top, all[i].y); RNf.push(0, 1, 0); RCf.push(tone.r, tone.g, tone.b); RSf.push(start, duration, bottom, top - bottom); }
     }
   });
 
   return {
     id: chunk.id, cityId: chunk.cityId, minY, maxY, baseY,
     terrain: { position: Float32Array.from(P), normal: Float32Array.from(N), color: Float32Array.from(C) },
+    terrainLite: { position: Float32Array.from(LP_), normal: Float32Array.from(LN), color: Float32Array.from(LC) },
     water: Float32Array.from(W),
     roads: { position: Float32Array.from(RP), color: Float32Array.from(RC), time: Float32Array.from(RT) },
     centre: { position: Float32Array.from(LP), time: Float32Array.from(LT) },
     blocks, parcels,
-    buildings: { position: Float32Array.from(BP), normal: Float32Array.from(BN), color: Float32Array.from(BC), build: Float32Array.from(BS) },
+    buildings: { position: Float32Array.from([...BP, ...RPf]), normal: Float32Array.from([...BN, ...RNf]), color: Float32Array.from([...BC, ...RCf]), build: Float32Array.from([...BS, ...RSf]), roofStart: BP.length / 3 },
   };
 }
 
-const transfers = g => [g.terrain.position, g.terrain.normal, g.terrain.color, g.water, g.roads.position, g.roads.color, g.roads.time, g.centre.position, g.centre.time, g.blocks.positions, g.blocks.times, g.parcels.positions, g.parcels.times, g.buildings.position, g.buildings.normal, g.buildings.color, g.buildings.build].map(a => a.buffer);
+const transfers = g => [g.terrain.position, g.terrain.normal, g.terrain.color, g.terrainLite.position, g.terrainLite.normal, g.terrainLite.color, g.water, g.roads.position, g.roads.color, g.roads.time, g.centre.position, g.centre.time, g.blocks.positions, g.blocks.times, g.parcels.positions, g.parcels.times, g.buildings.position, g.buildings.normal, g.buildings.color, g.buildings.build].map(a => a.buffer);
 const meta = chunk => { const { height, water, kind, roads, blocks, parcels, buildings, ...rest } = chunk; return rest; };
 
 async function fetchJson(url) {

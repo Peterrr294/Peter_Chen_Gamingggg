@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CHAPTERS, DEFAULT_CITY, DURATION, FILM_CITIES, PART_ONE_END, PART_ONE_LAST, STAGES, STAGE_START, TOUR, stageEnd } from './stageManifest.js';
-import { CASE_ORDER, CASE_SECONDS, GROWTH_STEP_SECONDS, REVEAL_SECONDS, sceneOf } from './sceneManifest.js';
+import { AUTO_THRESHOLDS, CASE_ORDER, CASE_SECONDS, GROWTH_STEP_SECONDS, LEVELS, REVEAL_SECONDS, chunkStarts, sceneOf } from './sceneManifest.js';
 import { WorldScene } from './WorldScene.js';
 import { SnapshotSource } from './SnapshotSource.js';
 import { TimelineController } from './TimelineController.js';
@@ -37,7 +37,11 @@ const state = {
   selected: null,
   worldCity: null,
   worldLayers: { names: true },
-  lightWorld: false, // on slow devices Part II drops building volumes and lots, and says so
+  // Part II view: Auto steps down from Live 3D by measured frames per second; a manual choice stays until the viewer changes it.
+  quality: ['live', 'light', 'film'].includes(query.get('level')) ? query.get('level') : 'auto',
+  level: ['light', 'film'].includes(query.get('level')) ? query.get('level') : 'live',
+  levelReason: '',
+  filmFailed: false,
   surface: 'none',
   layers: { roads: true, buildings: true, blockLines: true, parcelLines: true, nodes: false, footprints: false },
 };
@@ -68,7 +72,10 @@ const film = renderer ? new FilmScene(scene) : null;
 const world = renderer ? new WorldScene(scene) : null;
 const ORIGIN_START = STAGE_START[6]; const GROWTH_START = STAGE_START[7]; const CASE_START = STAGE_START[8];
 const WORLD_URLS = { world: new URL('./world/world-6201-step30.json', import.meta.url).href, cases: new URL('./world/encounter-case.json', import.meta.url).href };
-const replay = { world: { status: 'idle', done: 0, total: 36, info: null }, cases: { status: 'idle', done: 0, total: 0, info: null } };
+const META_URL = new URL('./world/world-meta.json', import.meta.url).href;
+const FILM_URL = new URL('./world/part2-film.mp4', import.meta.url).href;
+// Geometry of the replay (replay.world, replay.cases) and its small metadata (replay.meta): the Inspector and Recorded Film need only the metadata.
+const replay = { meta: { status: 'idle', info: null }, world: { status: 'idle', done: 0, total: 36, info: null }, cases: { status: 'idle', done: 0, total: 0, info: null } };
 const inWorld = () => timeline.t >= PART_ONE_END;
 const inCase = () => timeline.t >= CASE_START;
 const source = new SnapshotSource();
@@ -112,9 +119,9 @@ STAGES.forEach((stage, index) => {
 const number = value => Math.round(value).toLocaleString('en-US');
 function stageMetric(stage) {
   if (stage.chapter === 2) {
-    if (!worldReady(stage.id === 'encounter' ? 'cases' : 'world')) return 'Loading the recorded run';
+    if (!metaReady()) return 'Loading the recorded run';
     if (stage.id === 'encounter') { const item = currentCase(); return item ? `${item.title} · ${item.encounter.currentRelationship}` : ''; }
-    const c = world.counts(timeline.t);
+    const c = metaCounts(timeline.t);
     return `${c.chunks} chunks · ${c.steps} of ${replay.world.info.history.length} growth steps · ${c.buildings.toLocaleString('en-US')} buildings`;
   }
   if (!snapshot) return '';
@@ -180,12 +187,12 @@ function renderTour() {
   if (key === shownTour) return;
   shownTour = key;
   const chapter = TOUR[k];
-  $('tourIndex').textContent = `Chapter ${k + 1} of ${TOUR.length} · ${k <= 2 ? 'Part I, live' : k === 5 ? 'Part II, controlled experiment' : 'Part II, recorded'}`;
+  $('tourIndex').textContent = `Chapter ${k + 1} of ${TOUR.length} · ${k <= 2 ? 'Part I, live' : k === 5 ? 'Part II, Controlled Experiment' : 'Part II, recorded'}`;
   $('tourTitle').textContent = chapter.title;
   $('tourLine').textContent = chapter.line;
   $('tourStage').textContent = `Stage: ${stage.title} · ${chapter.status} · not yet accepted`;
   $('tourPrev').disabled = k === 0;
-  $('tourNext').textContent = k === TOUR.length - 1 ? 'Explore freely' : 'Next Chapter';
+  $('tourNext').textContent = k === TOUR.length - 1 ? 'Explore Scene' : 'Next Chapter';
 }
 function goToChapter(index) {
   if (index >= TOUR.length) { setView('explore'); return; }
@@ -206,7 +213,7 @@ function setView(view) {
 
 function syncCityInfo() {
   const city = FILM_CITIES[state.city];
-  const label = inCase() ? 'Case study · not the recorded world' : inWorld() ? `World seed 6201${worldReady('world') ? ` · step ${world.counts(timeline.t).steps} of 30 · ${world.counts(timeline.t).chunks} chunks` : ''}` : `${city.name} · ${LANDFORM_LABEL[city.landform]} · terrain seed ${city.seed}`;
+  const label = inCase() ? 'Case study · not the recorded world' : inWorld() ? `World seed 6201${metaReady() ? ` · step ${metaCounts(timeline.t).steps} of 30 · ${metaCounts(timeline.t).chunks} chunks` : ''}` : `${city.name} · ${LANDFORM_LABEL[city.landform]} · terrain seed ${city.seed}`;
   if ($('readout').textContent !== label) $('readout').textContent = label;
   $('rawLink').href = `../../experiments/seed-terrain/index.html?landform=${city.landform}&seed=${city.seed}&dna=${state.city}&view=buildings`;
   if (!snapshot) return;
@@ -229,10 +236,33 @@ const inspecting = () => state.mode === 'inspect' && snapshot;
 
 // ---------- Part II: world replay, loaded when needed. The timeline waits for its data instead of playing an empty scene ----------
 const worldReady = kind => replay[kind].status === 'ready';
+const metaReady = () => replay.meta.status === 'ready';
+const isFilm = () => inWorld() && state.level === 'film' && !state.filmFailed;
+let metaLoading = null;
+function requestMeta() {
+  if (metaLoading) return metaLoading;
+  replay.meta.status = 'loading';
+  metaLoading = fetch(META_URL).then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); }).then(info => {
+    replay.meta.info = info; replay.meta.status = 'ready';
+    replay.world.info = info; replay.cases.info = { ...info, bakedAtCommit: info.bakedAtCommit };
+    renderInspector();
+    syncUI();
+    return info;
+  }).catch(error => { replay.meta.status = 'failed'; replay.meta.error = error.message; replay.world.status = 'failed'; replay.world.error = error.message; replay.cases.status = 'failed'; replay.cases.error = error.message; syncUI(); });
+  return metaLoading;
+}
+function metaCounts(t) {
+  const info = replay.meta.info;
+  const starts = chunkStarts(info, ORIGIN_START + 2, GROWTH_START, GROWTH_START + 1);
+  const placed = info.chunks.filter(chunk => t >= starts.get(chunk.id) + REVEAL_SECONDS);
+  const sum = key => placed.reduce((total, chunk) => total + (chunk.counts?.[key] ?? 0), 0);
+  return { chunks: placed.length, steps: info.history.filter(event => t >= GROWTH_START + 1 + (event.step - 1) * GROWTH_STEP_SECONDS).length, roadKm: sum('roadKm'), blocks: sum('blocks'), parcels: sum('parcels'), buildings: sum('buildings') };
+}
 const neededReplay = t => (t >= CASE_START ? 'cases' : t >= PART_ONE_END ? 'world' : null);
 
 function requestReplay(kind) {
   if (!world || replay[kind].status !== 'idle') return; // a failure stays visible until the viewer retries
+  requestMeta();
   replay[kind].status = 'loading';
   replay[kind].done = 0;
   const worker = new Worker(new URL('./worldWorker.js', import.meta.url), { type: 'module' });
@@ -245,17 +275,18 @@ function requestReplay(kind) {
       replay[kind].status = 'failed'; replay[kind].error = data.message; worker.terminate();
     } else {
       worker.terminate();
-      replay[kind].info = data.info;
-      if (kind === 'world') {
-        if (query.get('light') === '1') state.lightWorld = false;
-        world.scheduleWorld(data.info, ORIGIN_START + 2, GROWTH_START, GROWTH_START + 1);
-      } else world.scheduleCases(data.info, CASE_START);
-      replay[kind].status = 'ready';
-      if (world.groups.has('world') && worldReady('world')) configureWorldCamera();
-      if (query.get('light') === '1') setLightWorld();
-      shownWorldKey = '';
-      renderInspector(); // the panel may have opened before the data arrived
-      dirty = true;
+      requestMeta().then(() => {
+        if (!replay.meta.info) return;
+        if (kind === 'world') world.scheduleWorld(replay.meta.info, ORIGIN_START + 2, GROWTH_START, GROWTH_START + 1);
+        else world.scheduleCases(replay.meta.info, CASE_START);
+        replay[kind].status = 'ready';
+        world.setLevel(state.level === 'light' ? 'light' : 'live');
+        if (world.groups.has('world') && worldReady('world')) configureWorldCamera();
+        shownWorldKey = '';
+        renderInspector(); // the panel may have opened before the data arrived
+        dirty = true;
+        syncUI();
+      });
     }
     syncUI();
   };
@@ -286,10 +317,13 @@ function configureWorldCamera() {
 
 let wasWorld = false;
 function syncWorld() {
+  syncFilmVideo();
+  syncLevelBox();
   if (!film) return;
   const here = inWorld();
   if (here !== wasWorld) {
     wasWorld = here;
+    if (here && state.quality === 'auto' && state.level === 'live' && slowFrames.partOne < AUTO_THRESHOLDS.partOneToLight) setLevel('light', `Auto: ${slowFrames.partOne.toFixed(0)} frames per second in Part I`);
     film.setVisible(!here);
     world.root.visible = here;
     if (state.selected) select(null);
@@ -305,19 +339,23 @@ function syncWorld() {
   }
   syncCameraOptions();
   const need = neededReplay(timeline.t);
-  timeline.blocked = Boolean(need && !worldReady(need));
-  if (need && !worldReady(need)) requestReplay(need);
-  else if (timeline.t > 30 && worldReady('world') === false && replay.world.status === 'idle') requestReplay('world');
-  if (timeline.t > GROWTH_START + 20) requestReplay('cases');
-  if (here && (worldReady('world') || worldReady('cases'))) world.setTime(timeline.t);
+  if (need) requestMeta();
+  const film3D = state.level !== 'film' || state.filmFailed;
+  const sceneOk = need ? metaReady() && (film3D ? worldReady(need) : videoLoaded) : true;
+  timeline.blocked = Boolean(need && !sceneOk);
+  if (need && film3D && !worldReady(need)) requestReplay(need);
+  else if (film3D && state.quality !== 'film' && timeline.t > 30 && replay.world.status === 'idle' && slowFrames.partOne >= AUTO_THRESHOLDS.partOneToLight) requestReplay('world');
+  if (film3D && timeline.t > GROWTH_START + 20) requestReplay('cases');
+  if (here && film3D && (worldReady('world') || worldReady('cases'))) world.setTime(timeline.t);
   if (state.ready) {
     const waiting = timeline.blocked;
     if (waiting) {
-      const info = replay[need];
+      const info = replay.meta.status === 'failed' ? replay.meta : replay[need];
       $('loading').hidden = false;
-      $('loadingTitle').textContent = info.status === 'failed' ? `The recorded run could not load: ${info.error}` : `Loading the recorded run: ${info.done} of ${info.total || '…'} chunks`;
+      $('loadingTitle').textContent = info.status === 'failed' ? `The recorded run could not load: ${info.error}` : film3D ? `Loading the recorded run: ${info.done ?? 0} of ${info.total || '…'} chunks` : 'Loading the recorded film';
       $('loadingStages').hidden = true;
       $('retry').hidden = info.status !== 'failed';
+      if (info.status === 'failed') $('retry').dataset.part = 'two';
     } else if (document.body.dataset.waiting === 'true') { $('loading').hidden = true; $('loadingStages').hidden = false; }
     document.body.dataset.waiting = String(waiting);
   }
@@ -357,28 +395,76 @@ function chapterCard(t) {
 }
 
 function sceneTag() {
-  const light = state.lightWorld ? ' · Light view: building volumes and lots hidden for this device (Debug layers)' : '';
-  if (inCase()) return { kind: 'case', text: `Controlled Case Study · hand-placed test row${currentCase() ? ` · ${currentCase().title}` : ''}${light}` };
-  if (inWorld()) return { kind: 'replay', text: `Recorded replay · world seed 6201 · not the chunk of Part I${light}` };
+  if (inCase()) return { kind: 'case', text: `Controlled Experiment · hand-placed test row, not the recorded world${currentCase() ? ` · ${currentCase().title}` : ''}` };
+  if (inWorld()) return { kind: 'replay', text: 'Recorded replay · world seed 6201 · not the chunk of Part I' };
   return null;
 }
 
-// Display only: the recorded data and the timeline are untouched.
-function setLightWorld() {
-  if (state.lightWorld) return;
-  state.lightWorld = true;
-  world.layers.buildings = false;
-  world.layers.lots = false;
-  world.setTime(timeline.t);
+// Changes how Part II is shown. The recorded data, t, City ID and growth step are untouched.
+function setLevel(level, reason = '') {
+  if (state.level === level && !reason) return;
+  state.level = level;
+  state.levelReason = reason;
+  if (world && level !== 'film') { world.setLevel(level); if (worldReady('world') || worldReady('cases')) world.setTime(timeline.t); }
+  if (level === 'film' && state.selected) select(null);
+  if (level === 'film') { state.worldCity = null; state.camera = 'film'; $('camera').value = 'film'; rig && (rig.mode = 'film', rig.tween = null); }
   $('inLayers').replaceChildren();
   renderInspectorStage();
+  dirty = true;
   syncUI();
 }
-let slowSince = null;
-function watchWorldSpeed(dt, now) {
-  if (state.lightWorld || !inWorld() || !timeline.playing || timeline.blocked || !worldReady('world')) { slowSince = null; return; }
-  if (dt > 1 / 12) { slowSince ??= now; if (now - slowSince > 2500) setLightWorld(); } else slowSince = null;
+// Measured frames per second, not device names. See AUTO_THRESHOLDS.
+const slowFrames = { partOne: Infinity, sum: 0, frames: 0, partOneSum: 0, partOneFrames: 0 };
+function applyMeasuredFps(fps) {
+  if (state.quality !== 'auto') return;
+  if (state.level === 'live' && fps < AUTO_THRESHOLDS.liveToLight) setLevel('light', `Auto: ${fps.toFixed(0)} frames per second in Live 3D`);
+  else if (state.level === 'light' && fps < AUTO_THRESHOLDS.lightToFilm) setLevel('film', `Auto: ${fps.toFixed(0)} frames per second in Lightweight Replay`);
 }
+function watchSpeed(dt) {
+  if (!timeline.playing || timeline.blocked || timeline.stepped) { slowFrames.sum = 0; slowFrames.frames = 0; return; }
+  if (!inWorld()) {
+    slowFrames.partOneSum += dt; slowFrames.partOneFrames += 1;
+    if (slowFrames.partOneSum > 3) slowFrames.partOne = slowFrames.partOneFrames / slowFrames.partOneSum;
+    return;
+  }
+  if (isFilm()) return;
+  slowFrames.sum += dt; slowFrames.frames += 1;
+  if (slowFrames.sum >= AUTO_THRESHOLDS.windowSeconds) { const fps = slowFrames.frames / slowFrames.sum; slowFrames.sum = 0; slowFrames.frames = 0; applyMeasuredFps(fps); }
+}
+
+function syncLevelBox() {
+  const here = inWorld();
+  $('levelBox').hidden = !here;
+  if (!here) return;
+  const select = $('viewLevel');
+  if (select.value !== state.quality) select.value = state.quality;
+  const shown = state.filmFailed && state.level === 'film' ? 'light' : state.level;
+  const text = `Now: ${LEVELS[shown].label}. ${LEVELS[shown].note}${state.levelReason ? ` ${state.levelReason}.` : ''}${state.filmFailed ? ' The recorded film could not load.' : ''}`;
+  if ($('levelNote').textContent !== text) $('levelNote').textContent = text;
+}
+
+// Recorded Film follows the one timeline: video time = t − start of Part II. t stays the authority.
+let videoLoaded = false;
+function syncFilmVideo() {
+  const video = $('partFilm');
+  const show = isFilm();
+  video.hidden = !show;
+  if (show) $('labels').replaceChildren(); // the film holds its own names
+  if (!show) { if (!video.paused) video.pause(); return; }
+  if (!video.getAttribute('src')) { video.src = FILM_URL; video.load(); }
+  if (!videoLoaded) return;
+  const target = Math.min(video.duration || Infinity, Math.max(0, timeline.t - PART_ONE_END));
+  video.playbackRate = timeline.rate;
+  if (timeline.playing && !timeline.stepped) {
+    if (video.paused) video.play().catch(() => {});
+    if (Math.abs(video.currentTime - target) > 0.35) video.currentTime = target;
+  } else {
+    if (!video.paused) video.pause();
+    if (Math.abs(video.currentTime - target) > 0.04) video.currentTime = target;
+  }
+}
+$('partFilm').addEventListener('loadeddata', () => { videoLoaded = true; syncUI(); });
+$('partFilm').addEventListener('error', () => { state.filmFailed = true; syncUI(); }); // back to 3D, and the level box says so
 
 function currentEvent() {
   const info = replay.world.info;
@@ -390,7 +476,7 @@ function currentEvent() {
 
 function renderWorldLabels() {
   const box = $('labels');
-  const here = inWorld() && state.worldLayers.names && world;
+  const here = inWorld() && state.worldLayers.names && world && !isFilm();
   const records = here ? world.visibleRecords().filter(record => record.meta.role === 'core') : [];
   while (box.children.length > records.length) box.lastChild.remove();
   while (box.children.length < records.length) {
@@ -426,7 +512,7 @@ function focusWorldCity(cityId) {
 function renderSourceSection(stage) {
   const scene = sceneOf(stage.id);
   const info = stage.id === 'encounter' ? replay.cases.info : stage.chapter === 2 ? replay.world.info : null;
-  fillRows($('inSource'), sourceRows(scene, info));
+  fillRows($('inSource'), sourceRows(scene, info, stage.chapter === 2 ? LEVELS[state.filmFailed && state.level === 'film' ? 'light' : state.level] : null));
   $('inLimits').replaceChildren(...scene.knownLimitations.map(text => { const li = document.createElement('li'); li.textContent = text; return li; }));
 }
 
@@ -495,13 +581,13 @@ function renderInspectorLive(force = false) {
   lastLive = now;
   const stage = STAGES[timeline.stage];
   if (stage.chapter === 2) {
-    if (worldReady('world')) {
+    if (metaReady()) {
       if (stage.id === 'encounter') fillRows($('inLive'), [['Scope', 'This case study only; the counts of the recorded world do not apply here.']]);
-      else fillRows($('inLive'), worldLiveRows(world.counts(timeline.t), replay.world.total));
+      else fillRows($('inLive'), worldLiveRows(metaCounts(timeline.t), replay.world.total));
     }
     const key = `${stage.id}|${stage.id === 'encounter' ? currentCase()?.title : currentEvent()?.step}|${state.worldCity}`;
     if (key !== shownWorldKey) { shownWorldKey = key; renderWorldParams(stage); }
-    if (state.selected && state.selected.progress.value <= 0) select(null);
+    if (state.selected && state.selected.progress?.value <= 0) select(null);
     return;
   }
   fillRows($('inLive'), liveRows(film, snapshot));
@@ -545,6 +631,12 @@ const reached = stageId => timeline.t >= STAGE_START[STAGE_INDEX[stageId]];
 
 const WORLD_LAYER_LIST = [['territory', 'City ID territory'], ['roads', 'Road network'], ['lots', 'Blocks and parcels'], ['buildings', 'Building volumes'], ['links', 'Parent–child growth links'], ['names', 'City names']];
 function renderWorldLayers() {
+  if (isFilm()) {
+    const note = document.createElement('p'); note.className = 'note';
+    note.textContent = 'Not Available in Recorded Film: a video has no layers. Choose Live 3D or Lightweight Replay to use them.';
+    $('inLayers').replaceChildren(note);
+    return;
+  }
   const rows = WORLD_LAYER_LIST.map(([id, label]) => {
     const row = document.createElement('label'); row.className = 'layer'; row.dataset.worldLayer = id;
     const box = document.createElement('input'); box.type = 'checkbox';
@@ -656,6 +748,8 @@ function resize() {
   document.body.style.setProperty('--player-height', `${playerHeight}px`);
   const panel = state.mode === 'inspect' && !hidden ? $('inspector') : null;
   const sheet = width <= 720;
+  document.body.style.setProperty('--film-bottom', `${playerHeight + (panel && sheet ? panel.offsetHeight : 0)}px`);
+  document.body.style.setProperty('--film-right', panel && !sheet && !state.inspectorCollapsed ? `${panel.offsetWidth + 16}px` : '0px');
   view.width = width; view.height = height;
   // The view makes room for the open Inspector. Only the framing moves, smoothly, in frame().
   view.target = {
@@ -765,9 +859,15 @@ $('modeInspect').addEventListener('click', () => setMode('inspect'));
 $('inspectorClose').addEventListener('click', () => { setMode('watch'); $('modeInspect').focus(); });
 $('inspectorCollapse').addEventListener('click', () => setCollapsed(!state.inspectorCollapsed));
 
+$('viewLevel').addEventListener('change', event => {
+  state.quality = event.target.value;
+  setLevel(state.quality === 'auto' ? 'live' : state.quality, state.quality === 'auto' ? 'Auto' : '');
+  if (state.quality !== 'auto') state.levelReason = '';
+  syncUI();
+});
 $('retry').addEventListener('click', () => {
   const need = neededReplay(timeline.t);
-  if (need && replay[need].status === 'failed') { replay[need].status = 'idle'; syncUI(); return; }
+  if (need && (replay[need].status === 'failed' || replay.meta.status === 'failed')) { replay[need].status = 'idle'; if (replay.meta.status === 'failed') { replay.meta.status = 'idle'; metaLoading = null; } syncUI(); return; }
   loadCity(state.city);
 });
 $('staticView').checked = state.motionOff;
@@ -803,7 +903,8 @@ if (renderer) {
     if (press && !press.moved && event.target === canvas && inspecting() && state.ready) {
       const box = canvas.getBoundingClientRect();
       const ndc = { x: ((event.clientX - box.left) / box.width) * 2 - 1, y: -((event.clientY - box.top) / box.height) * 2 + 1 };
-      select(inWorld() ? (worldReady('world') ? world.pick(ndc, camera) : null) : film.pick(ndc, camera));
+      if (isFilm()) return; // a video holds no objects
+      select(inWorld() ? (worldReady('world') || worldReady('cases') ? world.pick(ndc, camera) : null) : film.pick(ndc, camera));
     }
     press = null;
   });
@@ -820,7 +921,7 @@ function frame(now) {
   previous = now;
   if (!renderer || !state.ready) return;
   timeline.tick(dt);
-  watchWorldSpeed(dt, now);
+  watchSpeed(dt);
   if (view.current && (Math.abs(view.current.bottom - view.target.bottom) > 0.0005 || Math.abs(view.current.right - view.target.right) > 0.0005)) {
     const k = Math.min(1, dt * 7);
     view.current.bottom += (view.target.bottom - view.current.bottom) * k;
@@ -828,6 +929,7 @@ function frame(now) {
     rig.setViewport(view.width / view.height, view.current.bottom, view.current.right);
     dirty = true;
   } else if (view.current) view.current = { ...view.target };
+  if (isFilm()) return; // the video is on screen: nothing to render
   const moving = rig.update(timeline.t, now);
   if (rig.mode === 'free' && !rig.tween) controls.update();
   if (dirty || (moving && timeline.playing) || rig.tween) {
@@ -885,12 +987,28 @@ window.__film = {
   get mode() { return state.mode; },
   get generations() { return source.generations; },
   get blocked() { return timeline.blocked; },
-  get lightWorld() { return state.lightWorld; },
+  get level() { return state.level; },
+  get quality() { return state.quality; },
+  get filmShown() { return !$('partFilm').hidden; },
+  get videoTime() { return $('partFilm').currentTime; },
+  get videoRate() { return $('partFilm').playbackRate; },
+  feedFps: fps => applyMeasuredFps(fps),
+  labelPositions: () => (inWorld() && world ? world.visibleRecords().filter(record => record.meta.role === 'core').map(record => { const p = new THREE.Vector3(record.meta.x, record.maxY + 40, record.meta.z).project(camera); return { name: FILM_CITIES[record.meta.cityId]?.name ?? record.meta.cityId, x: ((p.x + 1) / 2) * renderer.domElement.width / renderer.getPixelRatio(), y: ((1 - p.y) / 2) * renderer.domElement.height / renderer.getPixelRatio() }; }) : []),
   get part() { return inWorld() ? 2 : 1; },
   get worldReady() { return worldReady('world'); },
   get casesReady() { return worldReady('cases'); },
   get worldSelected() { return state.selected?.meta?.id ?? null; },
-  worldCounts: () => world.counts(timeline.t),
+  worldCounts: () => metaCounts(timeline.t),
+  worldBreakdown: () => {
+    const out = { terrain: 0, terrainLite: 0, roads: 0, buildingsWalls: 0, buildingsRoofs: 0, centreSegments: 0, blockSegments: 0, parcelSegments: 0 };
+    for (const records of world.groups.values()) for (const r of records) {
+      if (r.group !== 'world') continue;
+      const tri = mesh => (mesh ? mesh.geometry.attributes.position.count / 3 : 0); const seg = line => (line ? line.geometry.attributes.position.count / 2 : 0);
+      out.terrain += tri(r.terrain); out.terrainLite += tri(r.terrainLite); out.roads += tri(r.roads); out.buildingsWalls += (r.roofStart ?? 0) / 3; out.buildingsRoofs += ((r.vertexCount ?? 0) - (r.roofStart ?? 0)) / 3;
+      out.centreSegments += seg(r.centre); out.blockSegments += seg(r.blockLines); out.parcelSegments += seg(r.parcelLines);
+    }
+    return out;
+  },
   worldEvent: () => currentEvent(),
   worldVisible: () => world.visibleRecords().map(record => record.meta.id),
   labels: () => [...$('labels').children].map(button => button.dataset.city),

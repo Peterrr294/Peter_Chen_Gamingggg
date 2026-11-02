@@ -111,6 +111,19 @@ async function bakeCases() {
   console.log(`cases: ${(JSON.stringify(data).length / 1e6).toFixed(1)} MB`);
 }
 
-if (!process.argv.includes('--case-only')) await bakeWorld();
-if (!process.argv.includes('--world-only')) await bakeCases();
+// Metadata only (history, chunk records, encounter records): what Recorded Film and the Inspector read. It derives from the two baked files.
+async function bakeMeta() {
+  const world = JSON.parse(await readFile(path.join(outDir, 'world-6201-step30.json'), 'utf8'));
+  const cases = JSON.parse(await readFile(path.join(outDir, 'encounter-case.json'), 'utf8'));
+  const strip = ({ height, water, kind, roads, blocks, parcels, buildings, ...rest }) => rest;
+  const meta = { ...world, chunks: world.chunks.map(strip), cases: Object.fromEntries(Object.entries(cases.cases).map(([name, { chunks, ...rest }]) => [name, rest])) };
+  await writeFile(path.join(outDir, 'world-meta.json'), JSON.stringify(meta));
+  console.log(`meta: ${(JSON.stringify(meta).length / 1e3).toFixed(0)} kB`);
+}
+
+if (!process.argv.includes('--meta-only')) {
+  if (!process.argv.includes('--case-only')) await bakeWorld();
+  if (!process.argv.includes('--world-only')) await bakeCases();
+}
+await bakeMeta();
 console.log('done');

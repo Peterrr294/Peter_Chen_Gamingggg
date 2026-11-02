@@ -1,0 +1,27 @@
+{
+ "at": "2026-11-02T02:15:35.614Z",
+ "source": "Live 3D render, one frame per t, world seed 6201 and the controlled experiment",
+ "bytes": 8886378,
+ "bitrate": 1400000,
+ "duration": 70,
+ "width": 1280,
+ "height": 720,
+ "frames": [
+  {
+   "t": 59.9,
+   "meanColourDifference": 0.83
+  },
+  {
+   "t": 80,
+   "meanColourDifference": 0.9
+  },
+  {
+   "t": 103.9,
+   "meanColourDifference": 1
+  },
+  {
+   "t": 109.9,
+   "meanColourDifference": 0.73
+  }
+ ]
+}
