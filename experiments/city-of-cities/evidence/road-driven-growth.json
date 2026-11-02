@@ -1,0 +1,2602 @@
+{
+  "task": "G02c-01 Road-Driven Growth Integration",
+  "testedAt": "2026-11-02T04:30:14.069Z",
+  "node": {
+    "regression": {
+      "g02StepsCompared": 30,
+      "chunksIdentical": 36,
+      "orderIdentical": true
+    },
+    "testA": {
+      "chicagoGrid": {
+        "seed": 6202,
+        "core": "c_1_2",
+        "events": [
+          {
+            "step": 1,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_2:maxZ:1498.4",
+            "sourceRoadId": "c_1_2:e114",
+            "roadClass": "secondary",
+            "parent": "c_1_2",
+            "child": "c_1_3",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8961,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 6,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.92,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2260,
+              "buildings": 2019
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.996,
+              "heightMeanRatio": 0.505,
+              "heightMaxRatio": 0.222,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 2,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_3:minX:3076.6",
+            "sourceRoadId": "c_1_3:e22",
+            "roadClass": "primary",
+            "parent": "c_1_3",
+            "child": "c_0_3",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.928,
+            "joins": 2,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 3,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.2,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2240,
+              "buildings": 2000
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1.067,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.994,
+              "heightMeanRatio": 0.975,
+              "heightMaxRatio": 0.7,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          }
+        ],
+        "reach": {
+          "cityId": "chicagoGrid",
+          "coreChunkId": "c_1_2",
+          "nodesOnCoreNetwork": 247,
+          "chunks": 3,
+          "reachableChunks": 3,
+          "perChunk": {
+            "c_1_2": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 0,
+              "farthestNodeFromCoreM": 1869
+            },
+            "c_1_3": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 969,
+              "farthestNodeFromCoreM": 2893
+            },
+            "c_0_3": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 1172,
+              "farthestNodeFromCoreM": 3093
+            }
+          }
+        },
+        "independent": [
+          {
+            "child": "c_1_3",
+            "parentPorts": 10,
+            "alignedWithin05m": 0
+          },
+          {
+            "child": "c_0_3",
+            "parentPorts": 5,
+            "alignedWithin05m": 0
+          }
+        ],
+        "metrics": [
+          {
+            "chunkId": "c_1_2",
+            "role": "core",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 14.65,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13590,
+            "blockAspectMedian": 2.13,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.52,
+            "heightMeanM": 39.4,
+            "heightP90M": 95,
+            "heightMaxM": 171,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2280,
+              "buildings": 2047
+            },
+            "centreSource": "seeded"
+          },
+          {
+            "chunkId": "c_1_3",
+            "role": "growth",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 14.65,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13590,
+            "blockAspectMedian": 2.13,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.518,
+            "heightMeanM": 19.9,
+            "heightP90M": 22.8,
+            "heightMaxM": 38,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2260,
+              "buildings": 2019
+            },
+            "centreSource": "inherited"
+          },
+          {
+            "chunkId": "c_0_3",
+            "role": "growth",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 15.63,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13590,
+            "blockAspectMedian": 2.13,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.515,
+            "heightMeanM": 19.4,
+            "heightP90M": 22.8,
+            "heightMaxM": 26.6,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2240,
+              "buildings": 2000
+            },
+            "centreSource": "inherited"
+          }
+        ]
+      },
+      "manhattanGrid": {
+        "seed": 6201,
+        "core": "c_-2_0",
+        "events": [
+          {
+            "step": 1,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-2_0:maxZ:-1598.1",
+            "sourceRoadId": "c_-2_0:e147",
+            "roadClass": "secondary",
+            "parent": "c_-2_0",
+            "child": "c_-2_1",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8749,
+            "joins": 7,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 6,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.11,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 7,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1820,
+              "buildings": 1662
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.997,
+              "heightMeanRatio": 0.648,
+              "heightMaxRatio": 0.625,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 2,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-2_0:maxX:-374.5",
+            "sourceRoadId": "c_-2_0:e13",
+            "roadClass": "primary",
+            "parent": "c_-2_0",
+            "child": "c_-1_0",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.9785,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 1,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.41,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1687
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 0.615,
+              "heightMaxRatio": 0.5,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          }
+        ],
+        "reach": {
+          "cityId": "manhattanGrid",
+          "coreChunkId": "c_-2_0",
+          "nodesOnCoreNetwork": 303,
+          "chunks": 3,
+          "reachableChunks": 3,
+          "perChunk": {
+            "c_-2_0": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 0,
+              "farthestNodeFromCoreM": 1849
+            },
+            "c_-2_1": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 1369,
+              "farthestNodeFromCoreM": 2873
+            },
+            "c_-1_0": {
+              "reachable": true,
+              "roadLengthShareOnCoreNetwork": 1,
+              "nearestNodeFromCoreM": 1024,
+              "farthestNodeFromCoreM": 2889
+            }
+          }
+        },
+        "independent": [
+          {
+            "child": "c_-2_1",
+            "parentPorts": 13,
+            "alignedWithin05m": 0
+          },
+          {
+            "child": "c_-1_0",
+            "parentPorts": 5,
+            "alignedWithin05m": 0
+          }
+        ],
+        "metrics": [
+          {
+            "chunkId": "c_-2_0",
+            "role": "core",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 17.58,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 12234,
+            "blockAspectMedian": 2.65,
+            "parcelFrontageMedianM": 14,
+            "buildingCoverage": 0.723,
+            "heightMeanM": 63.6,
+            "heightP90M": 93.6,
+            "heightMaxM": 115.2,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1795,
+              "buildings": 1637
+            },
+            "centreSource": "seeded"
+          },
+          {
+            "chunkId": "c_-2_1",
+            "role": "growth",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 17.58,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 12234,
+            "blockAspectMedian": 2.65,
+            "parcelFrontageMedianM": 14,
+            "buildingCoverage": 0.721,
+            "heightMeanM": 41.2,
+            "heightP90M": 50.4,
+            "heightMaxM": 72,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1820,
+              "buildings": 1662
+            },
+            "centreSource": "inherited"
+          },
+          {
+            "chunkId": "c_-1_0",
+            "role": "growth",
+            "landform": "plain",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 17.58,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 12234,
+            "blockAspectMedian": 2.65,
+            "parcelFrontageMedianM": 14,
+            "buildingCoverage": 0.723,
+            "heightMeanM": 39.1,
+            "heightP90M": 43.2,
+            "heightMaxM": 57.6,
+            "deadEnds": 0,
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1687
+            },
+            "centreSource": "inherited"
+          }
+        ]
+      }
+    },
+    "testB": {
+      "6201": {
+        "steps": 12,
+        "stalled": null,
+        "events": [
+          {
+            "step": 1,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-2_0:maxZ:-1598.1",
+            "sourceRoadId": "c_-2_0:e147",
+            "roadClass": "secondary",
+            "parent": "c_-2_0",
+            "child": "c_-2_1",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8749,
+            "joins": 7,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 6,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.11,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 7,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1820,
+              "buildings": 1662
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.997,
+              "heightMeanRatio": 0.648,
+              "heightMaxRatio": 0.625,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 2,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-2_0:maxX:-374.5",
+            "sourceRoadId": "c_-2_0:e13",
+            "roadClass": "primary",
+            "parent": "c_-2_0",
+            "child": "c_-1_0",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.9785,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 1,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.41,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1687
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 0.615,
+              "heightMaxRatio": 0.5,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 3,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-3:maxZ:-1024",
+            "sourceRoadId": "c_-1_-3:e52",
+            "roadClass": "primary",
+            "parent": "c_-1_-3",
+            "child": "c_-1_-2",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.6916,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.03,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 5.34,
+              "networkEdges": 39,
+              "blocks": 5,
+              "parcels": 909,
+              "buildings": 764
+            },
+            "morphology": {
+              "orientationDiffDeg": 0.55,
+              "roadDensityRatio": 0.879,
+              "blockMedianRatio": 12.715,
+              "frontageRatio": 1,
+              "coverageRatio": 1.018,
+              "heightMeanRatio": 0.885,
+              "heightMaxRatio": 0.667,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 4,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-2_1:maxX:1025.5",
+            "sourceRoadId": "c_-2_1:e41",
+            "roadClass": "primary",
+            "parent": "c_-2_1",
+            "child": "c_-1_1",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.9768,
+            "joins": 5,
+            "neighbourJoins": 13,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.55,
+            "neighbourHeightStepMaxM": 2.23,
+            "classKept": {
+              "same": 18,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1872,
+              "buildings": 1737
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.017,
+              "heightMeanRatio": 0.934,
+              "heightMaxRatio": 0.7,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 5,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-1_1:maxZ:-1438.1",
+            "sourceRoadId": "c_-1_1:e81",
+            "roadClass": "secondary",
+            "parent": "c_-1_1",
+            "child": "c_-1_2",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.906,
+            "joins": 5,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 8,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.81,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 5,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1715
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.005,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 6,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-3:minX:-3072",
+            "sourceRoadId": "c_-1_-3:e15",
+            "roadClass": "primary",
+            "parent": "c_-1_-3",
+            "child": "c_-2_-3",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.6444,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.48,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6.68,
+              "networkEdges": 51,
+              "blocks": 12,
+              "parcels": 1159,
+              "buildings": 982
+            },
+            "morphology": {
+              "orientationDiffDeg": 2.17,
+              "roadDensityRatio": 1.1,
+              "blockMedianRatio": 1.723,
+              "frontageRatio": 1,
+              "coverageRatio": 1.034,
+              "heightMeanRatio": 0.846,
+              "heightMaxRatio": 0.667,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 7,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-2:maxZ:-1024",
+            "sourceRoadId": "c_-1_-2:e38",
+            "roadClass": "primary",
+            "parent": "c_-1_-2",
+            "child": "c_-1_-1",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.7256,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.16,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 5.66,
+              "networkEdges": 43,
+              "blocks": 7,
+              "parcels": 959,
+              "buildings": 796
+            },
+            "morphology": {
+              "orientationDiffDeg": 3.92,
+              "roadDensityRatio": 1.061,
+              "blockMedianRatio": 0.823,
+              "frontageRatio": 1,
+              "coverageRatio": 0.996,
+              "heightMeanRatio": 0.978,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 8,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-1:maxX:-1024",
+            "sourceRoadId": "c_-1_-1:e33",
+            "roadClass": "primary",
+            "parent": "c_-1_-1",
+            "child": "c_0_-1",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.7448,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.95,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 5.56,
+              "networkEdges": 46,
+              "blocks": 8,
+              "parcels": 906,
+              "buildings": 764
+            },
+            "morphology": {
+              "orientationDiffDeg": 2.23,
+              "roadDensityRatio": 0.981,
+              "blockMedianRatio": 1.127,
+              "frontageRatio": 1,
+              "coverageRatio": 1.018,
+              "heightMeanRatio": 1.044,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 9,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-3:maxX:-3072",
+            "sourceRoadId": "c_-1_-3:e31",
+            "roadClass": "primary",
+            "parent": "c_-1_-3",
+            "child": "c_0_-3",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.6894,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.64,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6.32,
+              "networkEdges": 60,
+              "blocks": 14,
+              "parcels": 1044,
+              "buildings": 867
+            },
+            "morphology": {
+              "orientationDiffDeg": 2.76,
+              "roadDensityRatio": 1.041,
+              "blockMedianRatio": 0.551,
+              "frontageRatio": 1,
+              "coverageRatio": 1.018,
+              "heightMeanRatio": 0.885,
+              "heightMaxRatio": 0.667,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 10,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_0_-1:maxX:-1024",
+            "sourceRoadId": "c_0_-1:e24",
+            "roadClass": "primary",
+            "parent": "c_0_-1",
+            "child": "c_1_-1",
+            "generation": 4,
+            "landform": "plain",
+            "score": 0.7264,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.28,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6.48,
+              "networkEdges": 54,
+              "blocks": 12,
+              "parcels": 1091,
+              "buildings": 931
+            },
+            "morphology": {
+              "orientationDiffDeg": 4.01,
+              "roadDensityRatio": 1.166,
+              "blockMedianRatio": 0.046,
+              "frontageRatio": 1,
+              "coverageRatio": 1.007,
+              "heightMeanRatio": 0.957,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 11,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_-1_-2:maxX:-2048",
+            "sourceRoadId": "c_-1_-2:e27",
+            "roadClass": "primary",
+            "parent": "c_-1_-2",
+            "child": "c_0_-2",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.7656,
+            "joins": 1,
+            "neighbourJoins": 1,
+            "neighbourUnjoined": 1,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.46,
+            "neighbourHeightStepMaxM": 2.9,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 5.61,
+              "networkEdges": 37,
+              "blocks": 5,
+              "parcels": 954,
+              "buildings": 799
+            },
+            "morphology": {
+              "orientationDiffDeg": 4.03,
+              "roadDensityRatio": 1.051,
+              "blockMedianRatio": 0.997,
+              "frontageRatio": 1,
+              "coverageRatio": 1.004,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 12,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_0_-2:maxX:-2048",
+            "sourceRoadId": "c_0_-2:e27",
+            "roadClass": "primary",
+            "parent": "c_0_-2",
+            "child": "c_1_-2",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.6615,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 1,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.93,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6.74,
+              "networkEdges": 63,
+              "blocks": 17,
+              "parcels": 1103,
+              "buildings": 925
+            },
+            "morphology": {
+              "orientationDiffDeg": 3.55,
+              "roadDensityRatio": 1.2,
+              "blockMedianRatio": 0.023,
+              "frontageRatio": 1,
+              "coverageRatio": 1.007,
+              "heightMeanRatio": 0.978,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          }
+        ],
+        "cityStates": {
+          "amsterdamCanalRing": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 2298
+          },
+          "chicagoGrid": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 1,
+              "slope barrier": 2,
+              "landform incompatible": 1
+            },
+            "failureClasses": {
+              "terrainConflict": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1859
+          },
+          "fezOrganicCore": {
+            "chunks": 9,
+            "grown": 8,
+            "eligibleNow": 1,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 10,
+              "occupied": 1
+            },
+            "failureClasses": {
+              "terrainConflict": 10,
+              "candidateRejected": 1
+            },
+            "reachableChunks": 9,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 5457
+          },
+          "lisbonHillCore": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 4
+            },
+            "failureClasses": {
+              "terrainConflict": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1732
+          },
+          "manhattanGrid": {
+            "chunks": 5,
+            "grown": 4,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 2,
+              "occupied": 1,
+              "DNA terrain conflict": 5,
+              "slope barrier": 1
+            },
+            "failureClasses": {
+              "terrainConflict": 3,
+              "candidateRejected": 6
+            },
+            "reachableChunks": 5,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 4937
+          },
+          "veniceWaterNetwork": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 2504
+          }
+        },
+        "attempts": [],
+        "totals": {
+          "chunks": 18,
+          "joins": 29,
+          "neighbourJoins": 14,
+          "neighbourUnjoined": 2,
+          "maxHeightStepM": 2.93,
+          "maxDirectionDiffDeg": 0,
+          "crossings": 0,
+          "interCityContacts": 1,
+          "generation2Plus": 7
+        }
+      },
+      "6202": {
+        "steps": 12,
+        "stalled": null,
+        "events": [
+          {
+            "step": 1,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_2:maxZ:1498.4",
+            "sourceRoadId": "c_1_2:e114",
+            "roadClass": "secondary",
+            "parent": "c_1_2",
+            "child": "c_1_3",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8961,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 6,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.92,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2260,
+              "buildings": 2019
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.996,
+              "heightMeanRatio": 0.505,
+              "heightMaxRatio": 0.222,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 2,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-4_0:maxX:-157.3",
+            "sourceRoadId": "c_-4_0:e27",
+            "roadClass": "primary",
+            "parent": "c_-4_0",
+            "child": "c_-3_0",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8826,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 4,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.51,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1820,
+              "buildings": 1669
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.985,
+              "heightMeanRatio": 0.617,
+              "heightMaxRatio": 0.531,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 3,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_2:maxX:1876.6",
+            "sourceRoadId": "c_1_2:e21",
+            "roadClass": "primary",
+            "parent": "c_1_2",
+            "child": "c_2_2",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.985,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 1,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.4,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2280,
+              "buildings": 2036
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.992,
+              "heightMeanRatio": 0.492,
+              "heightMaxRatio": 0.156,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 4,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_5_1:minZ:5120",
+            "sourceRoadId": "c_5_1:e0",
+            "roadClass": "primary",
+            "parent": "c_5_1",
+            "child": "c_5_0",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.6895,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.9,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6,
+              "networkEdges": 49,
+              "blocks": 9,
+              "parcels": 1009,
+              "buildings": 832
+            },
+            "morphology": {
+              "orientationDiffDeg": 0.39,
+              "roadDensityRatio": 0.915,
+              "blockMedianRatio": 1.94,
+              "frontageRatio": 1,
+              "coverageRatio": 0.974,
+              "heightMeanRatio": 0.738,
+              "heightMaxRatio": 0.667,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 5,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-3_0:maxZ:-2720.3",
+            "sourceRoadId": "c_-3_0:e135",
+            "roadClass": "secondary",
+            "parent": "c_-3_0",
+            "child": "c_-3_1",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.9326,
+            "joins": 5,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 8,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.4,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 5,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1795,
+              "buildings": 1648
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.001,
+              "heightMeanRatio": 0.977,
+              "heightMaxRatio": 0.824,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 6,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_2:minX:2076.6",
+            "sourceRoadId": "c_1_2:e22",
+            "roadClass": "primary",
+            "parent": "c_1_2",
+            "child": "c_0_2",
+            "generation": 1,
+            "landform": "plain",
+            "score": 1.0118,
+            "joins": 3,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 2,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.71,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 3,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2260,
+              "buildings": 2012
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1.067,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.988,
+              "heightMeanRatio": 0.5,
+              "heightMaxRatio": 0.178,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 7,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-3_1:maxX:1042.7",
+            "sourceRoadId": "c_-3_1:e41",
+            "roadClass": "primary",
+            "parent": "c_-3_1",
+            "child": "c_-2_1",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.9553,
+            "joins": 2,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 3,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 17.41,
+              "networkEdges": 137,
+              "blocks": 78,
+              "parcels": 1754,
+              "buildings": 1620
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 0.944,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.006,
+              "heightMeanRatio": 1.003,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 8,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_3:minX:3076.6",
+            "sourceRoadId": "c_1_3:e22",
+            "roadClass": "primary",
+            "parent": "c_1_3",
+            "child": "c_0_3",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.8902,
+            "joins": 2,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 11,
+            "unmatchedEntries": 0,
+            "refusedEntries": 3,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.2,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2240,
+              "buildings": 2000
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1.067,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.994,
+              "heightMeanRatio": 0.975,
+              "heightMaxRatio": 0.7,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 9,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-4_0:minZ:-3600.3",
+            "sourceRoadId": "c_-4_0:e142",
+            "roadClass": "secondary",
+            "parent": "c_-4_0",
+            "child": "c_-4_-1",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8509,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 12,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.98,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1700
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.989,
+              "heightMeanRatio": 0.613,
+              "heightMaxRatio": 0.5,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 10,
+            "cityId": "fezOrganicCore",
+            "front": "rgf:c_5_0:minZ:5120",
+            "sourceRoadId": "c_5_0:e0",
+            "roadClass": "primary",
+            "parent": "c_5_0",
+            "child": "c_5_-1",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.7538,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.45,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": null,
+            "counts": {
+              "roadKm": 6.08,
+              "networkEdges": 50,
+              "blocks": 12,
+              "parcels": 991,
+              "buildings": 821
+            },
+            "morphology": {
+              "orientationDiffDeg": 3.81,
+              "roadDensityRatio": 1.014,
+              "blockMedianRatio": 0.483,
+              "frontageRatio": 1,
+              "coverageRatio": 1.016,
+              "heightMeanRatio": 1.044,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 11,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_0_2:minX:1876.6",
+            "sourceRoadId": "c_0_2:e12",
+            "roadClass": "primary",
+            "parent": "c_0_2",
+            "child": "c_-1_2",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.9846,
+            "joins": 3,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 2,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.66,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 3,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2300,
+              "buildings": 2081
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 0.937,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.019,
+              "heightMeanRatio": 0.99,
+              "heightMaxRatio": 0.875,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 12,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_-3_1:minX:1242.7",
+            "sourceRoadId": "c_-3_1:e42",
+            "roadClass": "primary",
+            "parent": "c_-3_1",
+            "child": "c_-4_1",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.9923,
+            "joins": 5,
+            "neighbourJoins": 4,
+            "neighbourUnjoined": 9,
+            "unmatchedEntries": 0,
+            "refusedEntries": 0,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.75,
+            "neighbourHeightStepMaxM": 1.69,
+            "classKept": {
+              "same": 9,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1706
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.01,
+              "heightMeanRatio": 1.016,
+              "heightMaxRatio": 1.071,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          }
+        ],
+        "cityStates": {
+          "amsterdamCanalRing": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1627
+          },
+          "chicagoGrid": {
+            "chunks": 6,
+            "grown": 5,
+            "eligibleNow": 1,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 2,
+              "slope barrier": 1,
+              "landform incompatible": 6
+            },
+            "failureClasses": {
+              "terrainConflict": 9
+            },
+            "reachableChunks": 6,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 3093
+          },
+          "fezOrganicCore": {
+            "chunks": 3,
+            "grown": 2,
+            "eligibleNow": 1,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 7
+            },
+            "failureClasses": {
+              "terrainConflict": 7
+            },
+            "reachableChunks": 3,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 2506
+          },
+          "lisbonHillCore": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 2,
+              "no road front on that side": 2
+            },
+            "failureClasses": {
+              "terrainConflict": 2,
+              "candidateRejected": 2
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1753
+          },
+          "manhattanGrid": {
+            "chunks": 6,
+            "grown": 5,
+            "eligibleNow": 6,
+            "refusedNow": {
+              "DNA terrain conflict": 2,
+              "slope barrier": 1,
+              "road ends off the target terrain (> 3 m)": 1
+            },
+            "failureClasses": {
+              "candidateRejected": 2,
+              "terrainConflict": 2
+            },
+            "reachableChunks": 6,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 4939
+          },
+          "veniceWaterNetwork": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1414
+          }
+        },
+        "attempts": [],
+        "totals": {
+          "chunks": 18,
+          "joins": 32,
+          "neighbourJoins": 4,
+          "neighbourUnjoined": 20,
+          "maxHeightStepM": 2.92,
+          "maxDirectionDiffDeg": 0,
+          "crossings": 0,
+          "interCityContacts": 0,
+          "generation2Plus": 6
+        }
+      },
+      "6203": {
+        "steps": 12,
+        "stalled": null,
+        "events": [
+          {
+            "step": 1,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_1_-4:minX:-4409.6",
+            "sourceRoadId": "c_1_-4:e0",
+            "roadClass": "primary",
+            "parent": "c_1_-4",
+            "child": "c_0_-4",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.87,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 4,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.65,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2378,
+              "buildings": 2158
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 0.472,
+              "heightMaxRatio": 0.2,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 2,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_4_4:maxZ:4126.6",
+            "sourceRoadId": "c_4_4:e132",
+            "roadClass": "secondary",
+            "parent": "c_4_4",
+            "child": "c_4_5",
+            "generation": 1,
+            "landform": "plain",
+            "score": 0.8494,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 9,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 78,
+              "parcels": 1795,
+              "buildings": 1660
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 0.948,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.019,
+              "heightMeanRatio": 0.624,
+              "heightMaxRatio": 0.438,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 3,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_4_5:minX:5199",
+            "sourceRoadId": "c_4_5:e28",
+            "roadClass": "primary",
+            "parent": "c_4_5",
+            "child": "c_3_5",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.9827,
+            "joins": 3,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 2,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.76,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 3,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1699
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 0.997,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 4,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_0_-4:minZ:463.2",
+            "sourceRoadId": "c_0_-4:e109",
+            "roadClass": "secondary",
+            "parent": "c_0_-4",
+            "child": "c_0_-5",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.8047,
+            "joins": 1,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 9,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 0.37,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 1,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 136,
+              "blocks": 66,
+              "parcels": 2420,
+              "buildings": 2146
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1.067,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.983,
+              "heightMeanRatio": 0.995,
+              "heightMaxRatio": 0.778,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 5,
+            "cityId": "chicagoGrid",
+            "front": "rgf:c_0_-4:minX:-3809.6",
+            "sourceRoadId": "c_0_-4:e33",
+            "roadClass": "primary",
+            "parent": "c_0_-4",
+            "child": "c_-1_-4",
+            "generation": 2,
+            "landform": "plain",
+            "score": 0.9863,
+            "joins": 3,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 2,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.82,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 3,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2269,
+              "buildings": 2052
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.996,
+              "heightMeanRatio": 0.995,
+              "heightMaxRatio": 0.778,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 6,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_5:maxZ:2686.6",
+            "sourceRoadId": "c_3_5:e81",
+            "roadClass": "secondary",
+            "parent": "c_3_5",
+            "child": "c_3_6",
+            "generation": 3,
+            "landform": "plain",
+            "score": 0.8944,
+            "joins": 8,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 5,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.36,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 8,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1699
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.995,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": [
+              {
+                "candidateId": "road:manhattanGrid:3:4",
+                "failureClass": "networkConflict",
+                "reason": "no parent road joined a child road (1 usable entries unmatched)"
+              }
+            ]
+          },
+          {
+            "step": 7,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_6:maxZ:3406.6",
+            "sourceRoadId": "c_3_6:e135",
+            "roadClass": "secondary",
+            "parent": "c_3_6",
+            "child": "c_3_7",
+            "generation": 4,
+            "landform": "plain",
+            "score": 0.9091,
+            "joins": 9,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 4,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.09,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 9,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1872,
+              "buildings": 1738
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.012,
+              "heightMeanRatio": 0.997,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 8,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_7:maxZ:3166.6",
+            "sourceRoadId": "c_3_7:e117",
+            "roadClass": "secondary",
+            "parent": "c_3_7",
+            "child": "c_3_8",
+            "generation": 5,
+            "landform": "plain",
+            "score": 0.8855,
+            "joins": 2,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 11,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.98,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1707
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 0.995,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 9,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_8:maxZ:3566.6",
+            "sourceRoadId": "c_3_8:e147",
+            "roadClass": "secondary",
+            "parent": "c_3_8",
+            "child": "c_3_9",
+            "generation": 6,
+            "landform": "plain",
+            "score": 0.8792,
+            "joins": 5,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 8,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.88,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 5,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1872,
+              "buildings": 1732
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 10,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_6:minX:6199",
+            "sourceRoadId": "c_3_6:e28",
+            "roadClass": "primary",
+            "parent": "c_3_6",
+            "child": "c_2_6",
+            "generation": 4,
+            "landform": "plain",
+            "score": 0.8688,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 1,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 1.65,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1846,
+              "buildings": 1709
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1.016,
+              "heightMeanRatio": 0.997,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          },
+          {
+            "step": 11,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_3_9:minX:9399",
+            "sourceRoadId": "c_3_9:e42",
+            "roadClass": "primary",
+            "parent": "c_3_9",
+            "child": "c_2_9",
+            "generation": 7,
+            "landform": "plain",
+            "score": 0.9132,
+            "joins": 4,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 1,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.05,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 4,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1872,
+              "buildings": 1718
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 0.997,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": [
+              {
+                "candidateId": "road:manhattanGrid:3:4",
+                "failureClass": "networkConflict",
+                "reason": "no parent road joined a child road (1 usable entries unmatched)"
+              }
+            ]
+          },
+          {
+            "step": 12,
+            "cityId": "manhattanGrid",
+            "front": "rgf:c_2_9:minX:9599",
+            "sourceRoadId": "c_2_9:e56",
+            "roadClass": "primary",
+            "parent": "c_2_9",
+            "child": "c_1_9",
+            "generation": 8,
+            "landform": "plain",
+            "score": 0.8769,
+            "joins": 2,
+            "neighbourJoins": 0,
+            "neighbourUnjoined": 0,
+            "unmatchedEntries": 0,
+            "refusedEntries": 3,
+            "positionErrorMaxM": 0,
+            "heightStepMaxM": 2.65,
+            "neighbourHeightStepMaxM": null,
+            "classKept": {
+              "same": 2,
+              "different": 0
+            },
+            "directionDiffMaxDeg": 0,
+            "crossings": 0,
+            "grid": {
+              "axisDiffDeg": 0,
+              "phaseErrorM": 0,
+              "inherited": true
+            },
+            "counts": {
+              "roadKm": 18.43,
+              "networkEdges": 148,
+              "blocks": 84,
+              "parcels": 1872,
+              "buildings": 1732
+            },
+            "morphology": {
+              "orientationDiffDeg": 0,
+              "roadDensityRatio": 1,
+              "blockMedianRatio": 1,
+              "frontageRatio": 1,
+              "coverageRatio": 1,
+              "heightMeanRatio": 1,
+              "heightMaxRatio": 1,
+              "centreSource": "inherited"
+            },
+            "failedAttempts": []
+          }
+        ],
+        "cityStates": {
+          "amsterdamCanalRing": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 0,
+            "minRoadShareOnCoreNetwork": 0,
+            "farthestFromCoreM": 0
+          },
+          "chicagoGrid": {
+            "chunks": 4,
+            "grown": 3,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "landform incompatible": 3,
+              "road ends off the target terrain (> 3 m)": 5
+            },
+            "failureClasses": {
+              "terrainConflict": 8
+            },
+            "reachableChunks": 4,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 2947
+          },
+          "fezOrganicCore": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "no road front on that side": 1,
+              "road ends off the target terrain (> 3 m)": 2,
+              "occupied": 1
+            },
+            "failureClasses": {
+              "candidateRejected": 2,
+              "terrainConflict": 2
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1899
+          },
+          "lisbonHillCore": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 4
+            },
+            "failureClasses": {
+              "terrainConflict": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 2361
+          },
+          "manhattanGrid": {
+            "chunks": 10,
+            "grown": 9,
+            "eligibleNow": 3,
+            "refusedNow": {
+              "road ends off the target terrain (> 3 m)": 10,
+              "slope barrier": 1,
+              "occupied": 1,
+              "DNA terrain conflict": 2
+            },
+            "failureClasses": {
+              "terrainConflict": 11,
+              "candidateRejected": 3
+            },
+            "reachableChunks": 10,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 9952
+          },
+          "veniceWaterNetwork": {
+            "chunks": 1,
+            "grown": 0,
+            "eligibleNow": 0,
+            "refusedNow": {
+              "waterfront mode not implemented": 4
+            },
+            "failureClasses": {
+              "candidateRejected": 4
+            },
+            "reachableChunks": 1,
+            "minRoadShareOnCoreNetwork": 1,
+            "farthestFromCoreM": 1566
+          }
+        },
+        "attempts": [
+          {
+            "step": 6,
+            "cityId": "manhattanGrid",
+            "candidateId": "road:manhattanGrid:3:4",
+            "growthFrontId": "rgf:c_4_4:minX:3999",
+            "failureClass": "networkConflict",
+            "reason": "no parent road joined a child road (1 usable entries unmatched)"
+          },
+          {
+            "step": 11,
+            "cityId": "manhattanGrid",
+            "candidateId": "road:manhattanGrid:3:4",
+            "growthFrontId": "rgf:c_4_4:minX:3999",
+            "failureClass": "networkConflict",
+            "reason": "no parent road joined a child road (1 usable entries unmatched)"
+          }
+        ],
+        "totals": {
+          "chunks": 18,
+          "joins": 46,
+          "neighbourJoins": 0,
+          "neighbourUnjoined": 0,
+          "maxHeightStepM": 2.98,
+          "maxDirectionDiffDeg": 0,
+          "crossings": 0,
+          "interCityContacts": 1,
+          "generation2Plus": 10
+        }
+      }
+    },
+    "reproducible": {
+      "seed": 6202,
+      "steps": 12,
+      "registryOrderReversed": true,
+      "identical": true
+    },
+    "saveLoad": {
+      "seed": 6202,
+      "savedAtStep": 6,
+      "chunksRegeneratedWithSavedSignatures": 12,
+      "joinEventsReproduced": 6,
+      "continuedSteps": 6,
+      "identicalToUninterrupted": true
+    },
+    "failure": {
+      "generatorError": {
+        "failedCandidate": "road:chicagoGrid:1:3",
+        "failureClass": "generationFailure",
+        "grewInstead": "c_2_2",
+        "leftNoChunk": true
+      },
+      "allValidationFail": {
+        "failureClass": "growthStalled",
+        "attempts": 7,
+        "chunksUnchanged": true
+      },
+      "natural": {
+        "6201": [],
+        "6202": [],
+        "6203": [
+          {
+            "step": 6,
+            "candidateId": "road:manhattanGrid:3:4",
+            "failureClass": "networkConflict",
+            "reason": "no parent road joined a child road (1 usable entries unmatched)"
+          },
+          {
+            "step": 11,
+            "candidateId": "road:manhattanGrid:3:4",
+            "failureClass": "networkConflict",
+            "reason": "no parent road joined a child road (1 usable entries unmatched)"
+          }
+        ]
+      }
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "core": "docs/assets/screenshots/procedural-mini-world/g02c-01-chicago-core-before.png",
+      "fronts": "docs/assets/screenshots/procedural-mini-world/g02c-01-road-fronts-debug.png",
+      "first": "docs/assets/screenshots/procedural-mini-world/g02c-01-first-growth-after.png",
+      "boundary": "docs/assets/screenshots/procedural-mini-world/g02c-01-boundary-closeup-debug.png",
+      "noBorders": "docs/assets/screenshots/procedural-mini-world/g02c-01-chicago-no-borders-after.png",
+      "world": "docs/assets/screenshots/procedural-mini-world/g02c-01-six-city-scheduler-after.png"
+    },
+    "pageEqualsNode": true,
+    "saveReloadLoadContinue": true,
+    "errors": []
+  },
+  "nodeMs": 730259
+}

@@ -18,6 +18,7 @@ import { MorphologicalGrowth, verifyConnections } from './MorphologicalGrowth.js
 import { MorphView } from './MorphView.js';
 import { UrbanEncounter } from './UrbanEncounter.js';
 import { EncounterView } from './EncounterView.js';
+import { cityRoadReach } from './RoadGrowthFrontAdapter.js';
 import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encounterFixture.js';
 
 // A City of Cities — G01 Multi-Origin Initialization + G02 Procedural Urban Growth. Six city origins placed by the
@@ -29,6 +30,7 @@ import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encou
 // entries, inherited height centre, recorded cross-chunk connections); MorphView shows fronts / joins / metrics.
 // G03b: ?fixture=compatible|incompatible|barrier loads a TEST-ONLY Chicago × Fez world (cores placed by hand) and runs
 // its growth steps through UrbanEncounter (detection, boundary context, negotiation); EncounterView draws the result.
+// G02c-01: ?growthMode=road (or the folder "Road-driven growth") makes the scheduler take its candidates from real road fronts.
 // URL: ?worldSeed=… &candidates=1 &debug=1 &frontier=1 &focus=<cityId> &start=0 &steps=N (grow N after the origins)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/a-city-of-cities/world-state';
@@ -49,9 +51,9 @@ sun.position.set(-2000, 3200, 1600);
 scene.add(sun);
 
 const paramsFromQuery = Object.fromEntries([...Object.keys(PARAMS), ...Object.keys(GROWTH_PARAMS)].filter(k => query.has(k)).map(k => [k, Number(query.get(k))]));
-const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
+const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
 let world = new WorldContext(ui);
-let growth = new WorldGrowthController(world);
+let growth = new WorldGrowthController(world, { growthMode: ui.growthMode });
 const growthOverlay = new GrowthOverlay(scene);
 const territoryView = new TerritoryView(scene);
 let territory = null; // G03a TerritoryModel
@@ -133,7 +135,7 @@ function refreshOverlays() {
     const cities = [...new Set(events.map(e => e.cityId))];
     const connectivity = Object.fromEntries(cities.map(id => [id, { ...morph.connectivity(id), coreChunkId: world.cities.get(id).originChunkId }]));
     state.morphConnectivity = connectivity;
-    morphView.update({ fronts: ui.morphFronts ? morph.fronts(ui.morphCity) : [], events, connectivity }, id => world.chunks.get(id), id => chunkTop.get(id), id => chunkEdges.get(id));
+    morphView.update({ fronts: !ui.morphFronts ? [] : ui.morphCity === 'all' ? CITY_IDS.flatMap(id => morph.fronts(id)) : morph.fronts(ui.morphCity), events, connectivity }, id => world.chunks.get(id), id => chunkTop.get(id), id => chunkEdges.get(id));
   }
   if (world.fixture && world.chunks.size && [...world.chunks.values()].every(c => c.outputs)) {
     const encounters = encounter.detect();
@@ -216,11 +218,12 @@ function generate(label = 'PLACING CITY ORIGINS') {
   return run(label, async () => {
     clearScene(); state.builds.clear(); state.mismatches = [];
     world = new WorldContext(ui);
-    growth = new WorldGrowthController(world); state.growthTiming = []; state.selectedChunk = null;
+    growth = new WorldGrowthController(world, { growthMode: ui.growthMode }); state.growthTiming = []; state.selectedChunk = null;
     morph = new MorphologicalGrowth(world); state.morphFailure = null; state.morphRestore = null; encounter = new UrbanEncounter(world, morph);
     state.timing = { started: performance.now(), placementMs: 0, probes: 0, chunks: [], firstRenderMs: null, totalMs: 0, memoryMB: null };
     const it = world.initialiseSteps();
     for (let r = it.next(); !r.done; r = it.next()) { $('#statusText').textContent = `EVALUATING ORIGIN SITES · ${cityLabel(r.value.cityId).toUpperCase()} ${r.value.probed} / ${r.value.of}`; await nextFrame(); }
+    growth = new WorldGrowthController(world, { growthMode: ui.growthMode }); // placement clears the growth state, including its mode
     state.timing.placementMs = Math.round(performance.now() - state.timing.started); state.timing.probes = world.stats.probes;
     fitOverview();
     await buildChunks(false);
@@ -294,7 +297,8 @@ function load(saved) {
   return run('LOADING WORLD STATE', async () => {
     clearScene(); state.builds.clear(); state.mismatches = [];
     world = WorldContext.restore(saved);
-    growth = new WorldGrowthController(world); state.growthTiming = []; state.selectedChunk = null;
+    growth = new WorldGrowthController(world); state.growthTiming = []; state.selectedChunk = null; // a saved road-driven world continues in that mode
+    ui.growthMode = growth.growthMode;
     morph = new MorphologicalGrowth(world); state.morphFailure = null; encounter = new UrbanEncounter(world, morph);
     world.fixture = [...world.cities.values()][0]?.placementReason?.fixture?.split(':')[1] ?? null; // G03b test fixture
     Object.assign(ui, world.params, world.growthParams);
@@ -330,7 +334,7 @@ grow.add(ui, 'growthFrontier').name('Show growth frontier').onChange(applyVisibi
 grow.add(ui, 'ownership').name('Show city territory').onChange(applyVisibility);
 grow.add(ui, 'history').name('Show growth history').onChange(applyVisibility);
 const mg = gui.addFolder('Morphological growth (G02b)');
-mg.add(ui, 'morphCity', Object.fromEntries(CITY_IDS.map(id => [cityLabel(id), id]))).name('City').onChange(() => refreshOverlays());
+mg.add(ui, 'morphCity', { 'All cities': 'all', ...Object.fromEntries(CITY_IDS.map(id => [cityLabel(id), id])) }).name('City').onChange(() => refreshOverlays());
 mg.add({ f: () => growMorph() }, 'f').name('Grow selected city (road-first)');
 mg.add(ui, 'morphFronts').name('Show growth fronts').onChange(() => refreshOverlays());
 mg.add(ui, 'inheritedRoads').name('Show inherited roads').onChange(applyVisibility);
@@ -338,6 +342,13 @@ mg.add(ui, 'morphology').name('Show parent–child morphology').onChange(applyVi
 mg.add(ui, 'connectivity').name('Show road connectivity').onChange(applyVisibility);
 mg.add(ui, 'chunkBorders').name('Show chunk boundaries').onChange(applyVisibility);
 mg.add(ui, 'history').name('Show growth history').onChange(applyVisibility);
+const rd = gui.addFolder('Road-driven growth (G02c-01)');
+rd.add(ui, 'growthMode', { 'Chunk frontier (G02)': 'chunk', 'Real road fronts (G02c)': 'road' }).name('Scheduler candidates (apply on Generate)');
+rd.add({ f: () => growSteps(1) }, 'f').name('Grow one scheduled step');
+rd.add(ui, 'morphFronts').name('Show road growth fronts').onChange(() => refreshOverlays());
+rd.add(ui, 'growthFrontier').name('Show accepted / rejected candidates').onChange(applyVisibility);
+rd.add(ui, 'inheritedRoads').name('Show generated (continued) roads').onChange(applyVisibility);
+rd.add(ui, 'history').name('Show parent–child relationship').onChange(applyVisibility);
 const enc = gui.addFolder('Urban encounter (G03b, test fixture)');
 enc.add(ui, 'fixture', Object.fromEntries(Object.entries(ENCOUNTER_FIXTURES).map(([k, f]) => [f.title, k]))).name('Scenario');
 enc.add({ f: () => runFixture(ui.fixture) }, 'f').name('Run Chicago × Fez scenario');
@@ -404,6 +415,9 @@ function renderPanel() {
   const me = world.growth.history.filter(e => e.mode === 'g02b-road-first').at(-1);
   const mc = state.morphConnectivity?.[me?.cityId];
   $('#morphInfo').textContent = state.morphFailure ? `FAILED (${state.morphFailure.cityId}, step ${state.morphFailure.step}): ${state.morphFailure.reason} — ${state.morphFailure.fronts.map(f => `${f.growthFrontId.split(':').slice(1).join(' ')}: ${f.reason}`).join('; ')}` : me ? `${me.growthEventId}: ${me.sourceGrowthFrontId} → ${me.targetChunkId} · ${me.connections.length} roads joined (max position error ${Math.max(0, ...me.connections.map(c => c.positionErrorM))} m, max height step ${Math.max(0, ...me.connections.map(c => Math.abs(c.elevationStepM)))} m) · ${me.localAdaptations.unmatchedEntries.length} unmatched entries · ${me.generatedBlockIds.length} blocks, ${me.generatedParcelIds.length} / ${me.parcelsTotal} parcels on inherited roads · rejected: ${me.rejectedConstraints.map(r => r.growthFrontId.split(':').slice(1).join(' ')).join(', ') || 'none'}${mc ? ` · road graph: ${mc.components} component(s), ${Math.round(mc.mainComponentShare * 100)} % connected to the core` : ''}${state.morphRestore ? ` · load: ${state.morphRestore}` : ''}` : 'no G02b growth yet';
+  const re = world.growth.history.filter(e => e.scheduler === 'g02c-01').at(-1);
+  const attempts = world.growth.roadAttempts ?? [];
+  $('#roadInfo').textContent = growth.growthMode !== 'road' ? 'chunk frontier (G02); choose real road fronts and Generate' : re ? `${re.growthReason.text} · ${re.connections.length} parent + ${re.neighbourConnections.length} neighbour joins, ${re.localAdaptations.unmatchedEntries.length} unmatched · ${attempts.length} failed attempt(s) so far${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}` : `no road-driven step yet${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}`;
   const encs = world.fixture ? state.encounters ?? [] : [];
   $('#encounterInfo').textContent = world.fixture ? `TEST FIXTURE ${world.fixture} (cores placed by hand) · ` + (encs.map(e => `${e.encounterId}: ${e.currentRelationship} · states ${Object.entries(e.states).filter(([, v]) => v).map(([k]) => k).join(', ')} · ${e.validationStatus} · ${e.decisionReason}`).join(' | ') || 'no encounter (cities more than 3 cells apart)') + ` · decisions: ${(world.growth.encounterDecisions ?? []).map(d => `${d.newcomer}→${d.targetCell.gx},${d.targetCell.gy}: ${d.outcome} (${d.acceptedInterfaces.length} accepted / ${d.rejectedInterfaces.length} rejected)`).join('; ') || 'none'}` : 'no fixture loaded (Urban encounter folder)';
   const last = state.growthTiming.at(-1);
@@ -453,6 +467,9 @@ window.__originLab = {
   setAutoFit: on => { ui.autoFit = on; },
   // G02
   growSteps, resetToOrigins,
+  // G02c-01
+  roadCities: cities => { growth = new WorldGrowthController(world, { growthMode: 'road', cities }); },
+  roadReach: cityId => cityRoadReach(world, cityId),
   morphGrow: cityId => growMorph(cityId),
   morphFronts: cityId => morph.fronts(cityId),
   morphConnectivity: cityId => morph.connectivity(cityId),

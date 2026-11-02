@@ -41,7 +41,7 @@ export function evaluateCandidate(world, cand, step, dna = GROWTH_DNA[cand.cityI
   // Infrastructure (ports of the generated parent chunks on the side facing the cell; the cell's own joining edge).
   let ports = 0; let mainPorts = 0; let joining = 0;
   for (const parent of cand.parents) {
-    const list = parent.chunk.outputs?.ports?.[parent.sideParent];
+    const list = parent.ports ?? parent.chunk.outputs?.ports?.[parent.sideParent]; // G02c: only the ports that can really enter
     if (!list) { unavailable.push(`ports of ${parent.chunk.chunkId} (not generated)`); continue; }
     ports += list.length;
     mainPorts += list.filter(x => x.roadClass === 'primary').length;

@@ -37,13 +37,11 @@ export class MorphView {
         const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color: 0xffffff, depthTest: false })); line.renderOrder = 17;
         this.groups.inherited.add(line);
       }
-      for (const c of e.connections) {
-        const p = c.child; const parent = chunkOf(c.parent.chunkId);
-        const side = e.sourceGrowthFrontId.split(':')[2];
-        const pos = Number(c.connectionId.split(':')[3]);
-        const pt = portPoint(parent, side, pos);
+      for (const c of [...e.connections, ...(e.neighbourConnections ?? [])]) {
+        const parent = chunkOf(c.parent.chunkId);
+        const [, , side, pos] = c.connectionId.split(':'); // the connection id names the side it left from
+        const pt = portPoint(parent, side, Number(pos));
         this.groups.connectivity.add(post(pt.x, top, pt.z, 0x3fe0ff, 160, 12));
-        void p;
       }
       const parent = chunkOf(e.parentChunkId); const child = chunkOf(e.newChunkId);
       const a = parent.outputs.morph; const b = child.outputs.morph;

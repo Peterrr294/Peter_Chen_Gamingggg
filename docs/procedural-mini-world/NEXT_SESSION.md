@@ -1,6 +1,15 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-02: WEB-01 frozen, back to growth research (read first)
+## Update 2026-11-01: G02c-01 road-driven growth (read first)
+
+- **Done:** real road fronts as scheduler candidates, opt-in by `growthMode: 'road'`. Note: [G02c-Road-Driven-Growth](./A-City-of-Cities/G02c-Road-Driven-Growth.md). Check with `node --max-old-space-size=8192 scripts/verify-road-driven-growth.mjs`. View at `/experiments/city-of-cities/?growthMode=road`.
+- **State:** pending review, uncommitted, on `experiment/procedural-growing-world`. Not on `main`, not on the site.
+- **Next decision:** what to do with the road ends that meet in the image but are not joined (41 on seed 6202), before G03c.
+- **Careful:**
+  - `verify-morph-growth.mjs` and `verify-urban-encounter.mjs` with `--node-only` overwrite their evidence and clear its browser record. Restore the file after a regression run.
+  - `verify-inspector-docs.mjs` reports 3 needs-review items until the summaries are re-read against the changed files.
+
+## Update 2026-11-02: WEB-01 frozen, back to growth research
 
 - **Next work:** G02c / G03c: road-first growth and encounters in the multi-city scheduler, with morphological continuity. Start from the [G02b note](./A-City-of-Cities/G02b-Morphological-Growth.md) and the [G03b note](./A-City-of-Cities/G03b-Urban-Encounter.md), then the [Research Compass](./A-City-of-Cities-Research-Compass.md) and compass §1. Code: `experiments/city-of-cities/`. Choose the single task first; it is not chosen yet.
 - **Website:** https://gameeeee-zc626.web.app, commit `ad6acd6`, tag `release/city-of-cities-web-v1`. Maintenance only: see [WEB-01 summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md).

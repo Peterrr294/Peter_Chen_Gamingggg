@@ -43,7 +43,7 @@ export function portPoint(chunk, side, position) {
 }
 
 export class MorphologicalGrowth {
-  constructor(world) { this.world = world; this.terrainCache = new Map(); }
+  constructor(world) { this.world = world; this.terrainCache = new Map(); this.entryCache = new Map(); }
 
   targetTerrain(gx, gy) {
     const k = `${gx},${gy}`;
@@ -72,13 +72,15 @@ export class MorphologicalGrowth {
         };
         if (evaluation.rejectionReason) { front.status = 'rejected'; front.reason = `terrain: ${evaluation.rejectionReason}`; out.push(front); continue; }
         if (!ports.filter(p => p.type === 'road').length) { front.status = 'rejected'; front.reason = 'no road port on this side (no road growth front)'; out.push(front); continue; }
-        const t = this.targetTerrain(gx, gy);
-        for (const p of ports.filter(q => q.type === 'road')) {
+        // Entry checks read immutable ports and terrain, so they are kept per front (G02c: terrain fields need not stay in memory).
+        if (!this.entryCache.has(front.growthFrontId)) this.entryCache.set(front.growthFrontId, ports.filter(q => q.type === 'road').map(p => {
+          const t = this.targetTerrain(gx, gy);
           const pt = portPoint(chunk, side, p.position);
           const ground = t.height(pt.x, pt.z);
           const step = ground - p.elevation;
-          front.entries.push({ connectionId: `conn:${chunk.chunkId}:${side}:${p.position}`, parentChunkId: chunk.chunkId, parentNodeId: p.nodeId, parentEdgeId: p.edgeId, roadClass: p.roadClass, type: p.type, position: p.position, point: { x: r2(pt.x), z: r2(pt.z) }, parentElevation: p.elevation, targetGround: r2(ground), stepM: r2(step), usable: Math.abs(step) <= MORPH_RULES.maxEntryStep });
-        }
+          return { connectionId: `conn:${chunk.chunkId}:${side}:${p.position}`, parentChunkId: chunk.chunkId, parentNodeId: p.nodeId, parentEdgeId: p.edgeId, roadClass: p.roadClass, type: p.type, position: p.position, point: { x: r2(pt.x), z: r2(pt.z) }, parentElevation: p.elevation, targetGround: r2(ground), stepM: r2(step), usable: Math.abs(step) <= MORPH_RULES.maxEntryStep };
+        }));
+        front.entries = this.entryCache.get(front.growthFrontId);
         const usable = front.entries.filter(e => e.usable);
         front.usable = { all: usable.length, primary: usable.filter(e => e.roadClass === 'primary').length };
         if (!usable.length) { front.status = 'rejected'; front.reason = `no road entry within ${MORPH_RULES.maxEntryStep} m of the target terrain (steps ${front.entries.map(e => e.stepM).join(', ')} m)`; }
@@ -111,7 +113,17 @@ export class MorphologicalGrowth {
       w.growth.morphFailures = [...(w.growth.morphFailures ?? []), failure];
       return { failure };
     }
+    const built = this.buildFront(chosen, fronts, step, opts);
+    const { event } = built;
+    w.growth.history.push(event); w.growth.step = step; w.growth.generation = Math.max(w.growth.generation, built.chunk.generation);
+    return { ...built, fronts };
+  }
+
+  // Registers and generates the child of one front, and joins its roads. Nothing enters the history here: the caller commits.
+  buildFront(chosen, fronts, step, opts = {}) {
+    const w = this.world;
     const parent = w.chunks.get(chosen.sourceChunkId);
+    const { cityId } = parent;
     const core = w.chunks.get(w.cities.get(cityId).originChunkId);
     const strategy = DNA_STRATEGY[cityId];
     const entries = chosen.entries.filter(e => e.usable);
@@ -146,8 +158,22 @@ export class MorphologicalGrowth {
       selectionScore: chosen.terrain.score, growthReason: { text: `road-first ${chosen.direction} from ${parent.chunkId}`, front: chosen.growthFrontId, usable: chosen.usable },
       outputs: { resolvedDNA: generated.outputs.resolvedDNA, counts: generated.outputs.counts }, conflicts: [],
     };
-    w.growth.history.push(event); w.growth.step = step; w.growth.generation = Math.max(w.growth.generation, chunk.generation);
-    return { event, chunk: generated, layers, fronts };
+    return { event, chunk: generated, layers };
+  }
+
+  // G02c: a new chunk can also touch other chunks of its city. Their road ends join by identity under the parent rules
+  // (same point, same type, step within the entry limit); anything else stays unjoined and is reported.
+  connectNeighbours(child, parentChunkId) {
+    const w = this.world; const connections = []; const unjoined = [];
+    for (const [, [dx, dy, , otherSide]] of Object.entries(DIRECTIONS)) {
+      const other = w.chunkAt(child.worldCoordinate.gx + dx, child.worldCoordinate.gy + dy);
+      if (!other || other.cityId !== child.cityId || other.chunkId === parentChunkId || !other.outputs) continue;
+      const entries = other.outputs.ports[otherSide].filter(p => p.type === 'road').map(p => ({ connectionId: `conn:${other.chunkId}:${otherSide}:${p.position}`, point: portPoint(other, otherSide, p.position), roadClass: p.roadClass, type: p.type, elevation: p.elevation, parentNodeId: p.nodeId, parentEdgeId: p.edgeId }));
+      const r = this.connect(other, child, otherSide, entries);
+      for (const c of r.connections) { if (Math.abs(c.elevationStepM) <= MORPH_RULES.maxEntryStep) connections.push(c); else unjoined.push({ connectionId: c.connectionId, reason: `height step ${c.elevationStepM} m > ${MORPH_RULES.maxEntryStep} m` }); }
+      for (const u of r.unmatchedEntries) unjoined.push({ connectionId: u.connectionId, reason: 'no child road at this boundary point' });
+    }
+    return { connections, unjoined };
   }
 
   // Join entry ports to the child's ports on the shared side by position and type; identities, not appearance.
@@ -166,6 +192,15 @@ export class MorphologicalGrowth {
     return { connections, unmatchedEntries, unmatchedChild };
   }
 
+  // The same neighbour joins as they stood when the child was committed (only chunks older than its step).
+  connectNeighboursAt(child, parentChunkId, step) {
+    const w = this.world; const later = [...w.chunks.values()].filter(c => c.growthStep >= step && c.chunkId !== child.chunkId);
+    const hidden = later.map(c => { const k = `${c.worldCoordinate.gx},${c.worldCoordinate.gy}`; const v = w.occupancy.get(k); w.occupancy.delete(k); return [k, v]; });
+    const r = this.connectNeighbours(child, parentChunkId);
+    for (const [k, v] of hidden) w.occupancy.set(k, v);
+    return r;
+  }
+
   // City-level road graph: union of the chunk road graphs + recorded connections. Reachability from the core.
   connectivity(cityId) {
     const w = this.world;
@@ -173,7 +208,7 @@ export class MorphologicalGrowth {
     const adj = new Map(); const add = (a, b) => { if (!adj.has(a)) adj.set(a, []); if (!adj.has(b)) adj.set(b, []); adj.get(a).push(b); adj.get(b).push(a); };
     const lengthOf = new Map();
     for (const c of chunks) for (const [from, to, len] of c.outputs.roadGraph) { add(`${c.chunkId}:${from}`, `${c.chunkId}:${to}`); lengthOf.set(`${c.chunkId}:${from}-${to}`, len); }
-    const links = w.growth.history.filter(e => e.cityId === cityId && e.mode === 'g02b-road-first').flatMap(e => e.connections);
+    const links = w.growth.history.filter(e => e.cityId === cityId && e.mode === 'g02b-road-first').flatMap(e => [...e.connections, ...(e.neighbourConnections ?? [])]);
     for (const l of links) add(`${l.parent.chunkId}:${l.parent.nodeId}`, `${l.child.chunkId}:${l.child.nodeId}`);
     // Component of the core's longest road component: BFS from every core node, keep the largest reached set.
     const core = w.cities.get(cityId).originChunkId;
@@ -215,7 +250,8 @@ export function verifyConnections(world) {
     const side = Object.entries(OPPOSITE).find(([, b]) => b === child.generationParameters.growthContext.side)[0];
     const now = g.connect(parent, child, side, child.generationParameters.growthContext.entryPorts);
     const cross = crossConnect(world, g, child, child.generationParameters.growthContext.crossCityEntries ?? []);
-    out.push({ step: e.step, same: JSON.stringify(now.connections) === JSON.stringify(e.connections) && JSON.stringify(cross.connections) === JSON.stringify(e.crossCityConnections ?? []) });
+    const sameNeighbours = !e.neighbourConnections || JSON.stringify(g.connectNeighboursAt(child, e.parentChunkId, e.step).connections) === JSON.stringify(e.neighbourConnections);
+    out.push({ step: e.step, same: JSON.stringify(now.connections) === JSON.stringify(e.connections) && JSON.stringify(cross.connections) === JSON.stringify(e.crossCityConnections ?? []) && sameNeighbours });
   }
   return out;
 }

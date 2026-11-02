@@ -222,7 +222,11 @@ export class TerritoryModel {
     const m = TerritoryModel.build(world);
     m.refresh(controller);
     const now = m.snapshot();
-    if (JSON.stringify(now) !== JSON.stringify(saved)) throw new Error('Territory snapshot after load differs from the saved one');
+    if (JSON.stringify(now) !== JSON.stringify(saved)) {
+      const parts = Object.keys(now).filter(k => JSON.stringify(now[k]) !== JSON.stringify(saved[k]));
+      const detail = parts[0] ? `${parts.join(', ')}: ${JSON.stringify(saved[parts[0]]).slice(0, 300)} → ${JSON.stringify(now[parts[0]]).slice(0, 300)}` : '';
+      throw new Error(`Territory snapshot after load differs from the saved one (${detail})`);
+    }
     return m;
   }
 }

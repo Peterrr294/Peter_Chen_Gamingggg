@@ -9,18 +9,25 @@
 //   9. territory / frontier follow from the registries      10. one history event with reason, scores, conflicts
 // At most one chunk per step. When no city has an eligible candidate the world is 'stalled' (no retry).
 // Every random value is a keyed hash (worldSeed, purpose, stable candidate id / city id, step).
+// G02c-01: growthMode 'road' changes where candidates come from (RoadGrowthFrontAdapter: real road fronts) and how a choice
+// is carried out (Plan → Generate → Validate → Commit; a failed attempt leaves no chunk and the next choice is tried).
+// Bids, the weighted pick and the occupation ruling are the same code. The default mode 'chunk' is the unchanged G02 path.
 import { unit } from '../growing-world/growthConfig.js';
 import { CITY_IDS } from './originConfig.js';
 import { DIRECTIONS, GROWTH_DNA, GROWTH_RULES } from './growthDNA.js';
 import { evaluateCandidate } from './GrowthEvaluation.js';
+import { FAILURE, RoadGrowthFrontAdapter } from './RoadGrowthFrontAdapter.js';
 
 const now = () => (globalThis.performance ?? Date).now();
 
 export class WorldGrowthController {
-  constructor(world, { dna = GROWTH_DNA } = {}) {
+  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS } = {}) {
     this.world = world;
     this.dna = dna; // per-city Growth DNA (Experiment C can pass a uniform table)
     this.lastFrontier = null; // evaluated candidates of the last step (debug, not saved)
+    this.growthMode = growthMode;
+    this.cities = cities; // G02c: cities allowed to bid (single-city test); all six by default
+    if (growthMode === 'road') { world.growth.mode = 'road'; world.growth.roadAttempts ??= []; this.adapter = new RoadGrowthFrontAdapter(world); }
   }
 
   // Growth Frontier of one city: merged candidates (one per free cell), parents sorted by the parent rule.
@@ -54,7 +61,7 @@ export class WorldGrowthController {
   evaluate(step) {
     const result = {};
     for (const cityId of CITY_IDS) {
-      const list = this.frontier(cityId).map(cand => {
+      const list = this.growthMode === 'road' ? (this.cities.includes(cityId) ? this.adapter.candidates(cityId, step, this.dna[cityId]) : []) : this.frontier(cityId).map(cand => {
         if (cand.status === 'rejected') return cand;
         const e = evaluateCandidate(this.world, cand, step, this.dna[cityId]);
         const { parents, ...rest } = cand;
@@ -106,10 +113,10 @@ export class WorldGrowthController {
       w.growth.stalled = { step, reason: 'no city has an eligible frontier candidate', cities: this.cityStats(frontier) };
       return { stalled: w.growth.stalled };
     }
+    if (this.growthMode === 'road') return this.roadStep(step, frontier, bids, bidding, t0);
     const winner = bidding[0].cityId;
     const eligible = frontier[winner].filter(c => c.status === 'eligible');
-    const keyed = eligible.map(c => ({ c, key: -Math.log(Math.max(unit('g02-pick', w.worldSeed, c.candidateId, step), 1e-12)) / Math.max(c.score, 1e-6) ** GROWTH_RULES.selectionSharpness }))
-      .sort((a, b) => a.key - b.key || a.c.candidateId.localeCompare(b.c.candidateId));
+    const keyed = this.keyedPick(eligible, step);
     const chosen = keyed[0].c;
     chosen.status = 'selected';
     // Deterministic occupation ruling: other cities' eligible candidates on the same cell lose this step.
@@ -136,6 +143,64 @@ export class WorldGrowthController {
     w.growth.generation = Math.max(w.growth.generation, chunk.generation);
     w.growth.stalled = null;
     return { event, chunk: generated, layers, frontier };
+  }
+
+  // Reproducible weighted order of a city's eligible candidates (key −ln u / score^k).
+  keyedPick(eligible, step) {
+    return eligible.map(c => ({ c, key: -Math.log(Math.max(unit('g02-pick', this.world.worldSeed, c.candidateId, step), 1e-12)) / Math.max(c.score, 1e-6) ** GROWTH_RULES.selectionSharpness }))
+      .sort((a, b) => a.key - b.key || a.c.candidateId.localeCompare(b.c.candidateId));
+  }
+
+  // G02c-01: the same bid order; the highest bidder's candidates are tried in pick order until one validates.
+  roadStep(step, frontier, bids, bidding, t0) {
+    const w = this.world; const failed = [];
+    for (const { cityId } of bidding) {
+      const eligible = frontier[cityId].filter(c => c.status === 'eligible');
+      const keyed = this.keyedPick(eligible, step);
+      for (let i = 0; i < keyed.length; i += 1) {
+        const chosen = keyed[i].c;
+        const t1 = now();
+        const r = this.adapter.attempt(chosen, step);
+        if (r.failure) {
+          chosen.status = 'rejected'; chosen.failureClass = r.failure.failureClass; chosen.rejectionReason = r.failure.reason;
+          const record = { step, cityId, candidateId: chosen.candidateId, growthFrontId: chosen.growthFrontId, failureClass: r.failure.failureClass, reason: r.failure.reason };
+          failed.push(record); w.growth.roadAttempts.push(record);
+          continue;
+        }
+        chosen.status = 'selected';
+        return this.commitRoad(step, chosen, r.built, { frontier, bids, bidding, failed, rank: i + 1, eligibleCount: eligible.length, t0, t1 });
+      }
+    }
+    this.adapter.morph.terrainCache.clear();
+    w.growth.stalled = { step, failureClass: FAILURE.stalled, reason: 'every eligible road candidate failed validation', attempts: failed, cities: this.cityStats(frontier) };
+    return { stalled: w.growth.stalled };
+  }
+
+  // Commit: only here does the event enter the history and the step advance.
+  commitRoad(step, chosen, built, { frontier, bids, bidding, failed, rank, eligibleCount, t0, t1 }) {
+    const w = this.world; const winner = chosen.cityId;
+    const contested = [];
+    for (const cityId of CITY_IDS) if (cityId !== winner) for (const c of frontier[cityId]) if (c.gx === chosen.gx && c.gy === chosen.gy && c.status === 'eligible') { c.status = 'contested'; c.rejectionReason = `cell taken by ${winner} at step ${step}`; contested.push({ cityId, score: c.score }); }
+    const { event, chunk, layers } = built;
+    const neighbours = this.adapter.morph.connectNeighbours(chunk, event.parentChunkId);
+    const parentMorph = w.chunks.get(event.parentChunkId).outputs.morph;
+    const { roadFronts, refusedFronts, ...candidate } = chosen;
+    const committed = {
+      ...event, scheduler: 'g02c-01',
+      selectionScore: chosen.score, selectionWeight: chosen.selectionWeight, worldSeed: w.worldSeed, generationParameters: chunk.generationParameters,
+      growthReason: { ...event.growthReason, text: `${winner} extends road ${chosen.sourceRoadId} (${chosen.roadClass}) into (${chosen.gx}, ${chosen.gy}): score ${chosen.score}; weighted pick ${rank} of ${eligibleCount}; city bid ${bidding[0].bid}`, groups: chosen.groups, weights: chosen.weights, terms: chosen.terms, unavailable: chosen.unavailable, bids, contested },
+      roadCandidate: candidate, neighbourConnections: neighbours.connections, neighbourUnjoined: neighbours.unjoined,
+      morphology: { parent: parentMorph, child: chunk.outputs.morph, centreSource: chunk.outputs.centreSource },
+      failedAttempts: failed, conflicts: this.conflictsOf(chunk),
+      rejectedCandidates: Object.fromEntries(CITY_IDS.map(cityId => [cityId, frontier[cityId].filter(c => c.status === 'rejected').map(c => ({ candidateId: c.candidateId, failureClass: c.failureClass, reason: c.rejectionReason }))])),
+      ms: { evaluate: Math.round(t1 - t0), generate: Math.round(now() - t1) },
+    };
+    w.growth.history.push(committed);
+    w.growth.step = step;
+    w.growth.generation = Math.max(w.growth.generation, chunk.generation);
+    w.growth.stalled = null;
+    this.adapter.morph.terrainCache.clear();
+    return { event: committed, chunk, layers, frontier };
   }
 
   // Shared edges of a new chunk with existing 4-neighbours (any city): recorded, never repaired in G02.
@@ -169,7 +234,7 @@ export class WorldGrowthController {
   resetToOrigins() {
     const w = this.world;
     for (const c of [...w.chunks.values()]) if (c.role === 'growth') { w.chunks.delete(c.chunkId); w.occupancy.delete(`${c.worldCoordinate.gx},${c.worldCoordinate.gy}`); }
-    w.growth = { generation: 0, step: 0, history: [], stalled: null };
+    w.growth = { generation: 0, step: 0, history: [], stalled: null, ...(this.growthMode === 'road' ? { mode: 'road', roadAttempts: [] } : {}) };
     this.lastFrontier = null;
   }
 }

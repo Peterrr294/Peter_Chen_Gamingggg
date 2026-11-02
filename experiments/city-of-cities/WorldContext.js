@@ -177,6 +177,15 @@ export class WorldContext {
     return chunk;
   }
 
+  // G02c: undo a growth chunk that failed validation before commit. Only a chunk no other chunk depends on can go.
+  removeGrowthChunk(chunkId) {
+    const chunk = this.chunks.get(chunkId);
+    if (!chunk || chunk.role !== 'growth') throw new Error(`${chunkId} is not a growth chunk`);
+    if ([...this.chunks.values()].some(c => c.parentChunkId === chunkId) || this.growth.history.some(e => e.newChunkId === chunkId)) throw new Error(`${chunkId} is already committed`);
+    this.chunks.delete(chunkId);
+    this.occupancy.delete(cellKey(chunk.worldCoordinate.gx, chunk.worldCoordinate.gy));
+  }
+
   chunkAt(gx, gy) { const id = this.occupancy.get(cellKey(gx, gy)); return id ? this.chunks.get(id) : null; }
 
   // ---------- Growth interface (G01 read-only query; the G02 frontier lives in WorldGrowthController) ----------
@@ -220,7 +229,7 @@ export class WorldContext {
         expectedSignatures: c.outputs?.signatures ?? c.expectedSignatures ?? null,
       })),
       placement: this.placement ? { placementVersion: this.placement.placementVersion ?? 1, order: this.placement.order, failures: this.placement.failures } : null,
-      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
+      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
     };
   }
 
@@ -247,7 +256,7 @@ export class WorldContext {
     }
     // States saved before placement v2 keep their stored origins (cells are restored, never re-placed).
     world.placement = saved.placement ? { placementVersion: 1, ...saved.placement, placed: [], candidates: null } : null;
-    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])] };
+    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}) };
     return world;
   }
 }

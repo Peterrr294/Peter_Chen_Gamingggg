@@ -33,7 +33,9 @@
 - **Update (2026-11-02, task WEB-01d by user instruction):** the site is organised as an exhibition: a Guided Tour of six chapters on the existing timeline, four main navigation entries with Archive apart, scale-based camera presets, a Research page with methods and a collapsed archive, an audit that ties the Inspector to the source code, and a light view for slow devices. No generator changed. Verified in a local browser, pending review, **not deployed** (entry WEB-01d).
 - **Update (2026-11-02, task WEB-01e by user instruction):** first public preview. Branch pushed; site commit `84488ab` deployed to Firebase Preview Channel `web01e-rc1` (https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app), expiring after 14 days. Production Hosting and `main` are unchanged. Part II has three viewing levels. Pending review (entry WEB-01e).
 - **Update (2026-11-02, task WEB-01f by user instruction):** WEB-01 is complete as a stage and in Maintenance Mode ([summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md)). Release details: entry WEB-01f.
-- **Current single task:** Return to urban growth research: choose G02c / G03c (road-first growth and encounters in the multi-city scheduler). Website work: maintenance only.
+- **Update (2026-11-01, task G02c-01 by user instruction):** the multi-city scheduler can take its candidates from real road fronts (opt-in `growthMode: 'road'`), with Plan → Generate → Validate → Commit. Default G01 / G02 path unchanged. Verified on 6201 / 6202 / 6203, pending review (entry G02c-01).
+- **Current single task:** Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started.
+- *Previous (superseded 2026-11-01, G02c-01):* "Return to urban growth research: choose G02c / G03c (road-first growth and encounters in the multi-city scheduler). Website work: maintenance only."
 - *Previous (superseded 2026-11-02, WEB-01f):* "Human review of the preview and of [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md), a test on a real phone and an ordinary laptop; then a production decision."
 - *Previous (superseded 2026-11-02, WEB-01e):* "Human review of the site in a browser (WEB-01b to WEB-01d) and of the Inspector checklist; then a deployment decision; then G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
 - *Previous (superseded 2026-11-02, WEB-01d):* "Review WEB-01c in the browser (with WEB-01b, WEB-01b-R1), and G03b and G02b, G03a (with G01-FIX, G02); then choose G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
@@ -1591,3 +1593,37 @@ Starting from the 10 high-priority candidates, complete two-source verification,
 - **Noted, not changed:** `website-submission.zip` has been tracked since `effd5b9` (3 files, 1 MB, no sensitive file names). The two deleted root PNGs stay uncommitted. Nobody has accepted a task yet, and film pacing has not been judged by a person.
 - **Status:** WEB-01 complete as a stage, Maintenance Mode. Natural encounters, road-first growth in the scheduler and DNA calibration stay open as research.
 - **Next single task:** G02c / G03c, in the growth research.
+
+### G02c-01 — Road-driven growth integration
+
+- **Date / Stage / Single question:** 2026-11-01 / G02 / Can the six-city scheduler grow from real road fronts, without a second scheduler?
+- **Reused:** G02 bids, weighted pick and occupation ruling; G02b fronts, joins, generator inputs and connection checks.
+- **Changed (working tree, uncommitted):**
+  - new `RoadGrowthFrontAdapter.js`, `verify-road-driven-growth.mjs`, evidence `road-driven-growth.json`, `world-6202-g02c-step12-state.json`;
+  - changed `WorldGrowthController.js` (road mode), `MorphologicalGrowth.js` (`buildFront`, `connectNeighbours`, entry cache), `WorldContext.js` (rollback, mode in the state), `GrowthEvaluation.js` (optional port list), `TerritoryModel.js` (error detail), `main.js`, `index.html`, `MorphView.js`.
+- **Seed / City DNA / parameters:** world seeds 6201, 6202, 6203; 12 steps; Test A Chicago on 6202, Manhattan on 6201. No public parameter added. Entry limit 3 m, join tolerance 0.5 m (from G02b).
+- **Entry and verification:** `/experiments/city-of-cities/?growthMode=road`; `node --max-old-space-size=8192 scripts/verify-road-driven-growth.mjs`, Node and browser pass.
+- **Result:**
+  - Test A: Chicago c_1_2 → c_1_3 (4 joins) → c_0_3 (2 joins); Manhattan c_-2_1 (7), c_-1_0 (4). Graph reaches all 3 chunks. Independent regeneration aligned 0 of 10, 0 of 5, 0 of 13, 0 of 5.
+  - Test B growth counts: 6201 Manhattan 4, Fez 8. 6202 Chicago 5, Manhattan 5, Fez 2. 6203 Manhattan 9, Chicago 3. Venice, Amsterdam and Lisbon did not grow.
+  - All 36 events came from real ports. Max join height step 2.98 m, 0 crossings, unique occupancy, earlier chunks unchanged.
+  - A real `networkConflict` on seed 6203 (steps 6, 11) rolled back and the next candidate grew.
+  - Reproducibility, save / load / continue in Node and the browser, and failure injection pass. Default G02 path equals the saved 30-step state.
+- **Screenshots (seed 6202, chicagoGrid except the last, which shows all six; task G02c-01):**
+  - ![Core](../assets/screenshots/procedural-mini-world/g02c-01-chicago-core-before.png)
+  - ![Road fronts](../assets/screenshots/procedural-mini-world/g02c-01-road-fronts-debug.png)
+  - ![First growth](../assets/screenshots/procedural-mini-world/g02c-01-first-growth-after.png)
+  - ![Boundary](../assets/screenshots/procedural-mini-world/g02c-01-boundary-closeup-debug.png)
+  - ![No borders](../assets/screenshots/procedural-mini-world/g02c-01-chicago-no-borders-after.png)
+  - ![Six cities](../assets/screenshots/procedural-mini-world/g02c-01-six-city-scheduler-after.png)
+- **Confirmed:** road-driven candidates work in the existing scheduler on three seeds; the default path did not change.
+- **Open issues:**
+  - seed 6202 holds 32 joins and 41 boundary points where roads meet in the image but are not joined;
+  - only 3 of 6 cities grow;
+  - Fez median block ratio ranges from 0.023 to 12.7;
+  - heights fall sharply beside the core;
+  - height steps remain at joins;
+  - `verify-inspector-docs.mjs` reports 3 needs-review items (changed source files), review record unchanged;
+  - the site on `main` is unchanged.
+- **Review status:** Pending review.
+- **Next single task:** Review G02c-01, then decide the unjoined road ends before G03c.
