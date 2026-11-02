@@ -388,13 +388,21 @@ function gridStrategy(context) {
   const { originX, originZ, size } = sampler.grid;
   const half = size / 2;
   const fixed = params.fixedAxisDeg ?? null; // 06.1: DNA-fixed axis (e.g. cardinal survey grid) overrides terrain direction
-  const orientation = fixed ?? cityMatch.networkHints?.orientation?.axisDeg;
+  // G02b (optional): a growth chunk continues its parent's grid — same axis, and phases re-anchored so that the
+  // parent's lines continue across the shared edge. Without options.growth the 03.1 path is unchanged.
+  const inherited = context.options.growth?.grid ?? null;
+  const orientation = inherited ? inherited.axisDeg : fixed ?? cityMatch.networkHints?.orientation?.axisDeg;
   const theta = ((orientation ?? 0) * Math.PI) / 180;
-  context.meta.orientation = { axisDeg: orientation ?? 0, source: fixed !== null ? 'DNA config fixedAxisDeg' : orientation === null || orientation === undefined ? 'default 0° (no direction evidence)' : cityMatch.networkHints.orientation.source };
+  context.meta.orientation = { axisDeg: orientation ?? 0, source: inherited ? `inherited from ${inherited.fromChunkId ?? 'parent chunk'}` : fixed !== null ? 'DNA config fixedAxisDeg' : orientation === null || orientation === undefined ? 'default 0° (no direction evidence)' : cityMatch.networkHints.orientation.source };
   const u = { x: Math.cos(theta), z: Math.sin(theta) };
   const v = { x: -Math.sin(theta), z: Math.cos(theta) };
-  const phaseA = random.next() * params.primarySpacing;
-  const phaseB = random.next() * params.secondarySpacing;
+  const drawnA = random.next() * params.primarySpacing; // drawn in both paths: the random stream stays identical
+  const drawnB = random.next() * params.secondarySpacing;
+  const mod = (a, n) => ((a % n) + n) % n;
+  const phaseA = inherited ? mod(inherited.phaseA + (inherited.originX - originX) * v.x + (inherited.originZ - originZ) * v.z, params.primarySpacing) : drawnA;
+  const phaseB = inherited ? mod(inherited.phaseB + (inherited.originX - originX) * u.x + (inherited.originZ - originZ) * u.z, params.secondarySpacing) : drawnB;
+  // Grid anchor in world coordinates (metadata only; not part of the network signature).
+  context.meta.grid = { axisDeg: orientation ?? 0, phaseA, phaseB, originX, originZ, primarySpacing: params.primarySpacing, secondarySpacing: params.secondarySpacing, inherited: Boolean(inherited) };
   const reach = half * Math.SQRT2 + Math.max(params.primarySpacing, params.secondarySpacing);
   const offsets = (phase, spacing) => {
     const list = [];
@@ -604,10 +612,21 @@ function organicStrategy(context, network = new CellNetwork(context.sampler, 'ro
   const { sampler, analysis, params, random, warnings } = context;
   const passable = index => !sampler.fields.waterMask[index] && sampler.fields.slope[index] <= params.maxSlopeDeg;
   const centres = centreCells(sampler, analysis, params, passable);
-  const gates = gateCells(sampler, analysis, params, passable);
+  let gates = gateCells(sampler, analysis, params, passable);
+  // G02b (optional): on the side that faces the parent chunk, the parent's real road entries replace the proxy gate,
+  // so the new lanes start where the parent's roads end. G03b: entries may carry their own side (accepted
+  // interfaces of a neighbouring city); every side with entries uses them instead of its proxy gate.
+  // Without options.growth the 03.1 path is unchanged.
+  const growth = context.options.growth;
+  if (growth?.entryPorts?.length && (growth.side || growth.entryPorts.some(e => e.side))) {
+    const entries = growth.entryPorts.filter(e => e.type === 'road').map(e => ({ side: e.side ?? growth.side, cell: sampler.indexAt(e.point.x, e.point.z), inherited: e.connectionId })).filter(e => e.cell >= 0 && passable(e.cell));
+    const sides = new Set(growth.entryPorts.map(e => e.side ?? growth.side));
+    gates = [...gates.filter(g => !sides.has(g.side)), ...entries];
+    context.meta.inheritedEntries = { requested: growth.entryPorts.length, passable: entries.length, sides: [...sides] };
+  }
   context.meta.targets = {
     centres: centres.map(item => ({ ...sampler.toWorld(item.cell), regionId: item.regionId, kind: 'terrain centroid (proxy; markets / gates TBD)' })),
-    gates: gates.map(item => ({ ...sampler.toWorld(item.cell), side: item.side, kind: 'longest buildable boundary run (proxy for a gate)' })),
+    gates: gates.map(item => ({ ...sampler.toWorld(item.cell), side: item.side, kind: item.inherited ? `inherited road entry ${item.inherited}` : 'longest buildable boundary run (proxy for a gate)' })),
   };
   if (!centres.length && !network.adjacency.size) { warnings.push('organic: no buildable centre found'); return network; }
   if (!network.adjacency.size) network.addPath([centres[0].cell], 'primary');

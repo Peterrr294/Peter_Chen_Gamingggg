@@ -8,12 +8,12 @@
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="../../typography.css" />
     <link rel="stylesheet" href="../manhattan-terrain-greybox/style.css" />
-    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.legend .own{background:linear-gradient(90deg,#2fc4b2 16%,#4f8cff 16% 33%,#f2a541 33% 50%,#ff6fb5 50% 66%,#5fd35f 66% 83%,#a77bff 83%)}.legend .cand{background:repeating-linear-gradient(90deg,#ffffff 0 6px,transparent 6px 10px)}</style>
+    <style>#worldCanvas{display:block;width:100%;min-height:680px;aspect-ratio:16/10;touch-action:none}@media(max-width:900px){#worldCanvas{min-height:520px}}@media(max-width:560px){#worldCanvas{min-height:390px}}#gui .lil-gui.root{width:100%;--background-color:#0d171b;--widget-color:#1c2a2f}.stats dd{white-space:normal;line-height:1.5}.legend .own{background:linear-gradient(90deg,#2fc4b2 16%,#4f8cff 16% 33%,#f2a541 33% 50%,#ff6fb5 50% 66%,#5fd35f 66% 83%,#a77bff 83%)}.legend .terr{background:linear-gradient(90deg,#ffffff 25%,#59c27a 25% 50%,#e0b84f 50% 75%,#6b7378 75%)}.legend .cand{background:repeating-linear-gradient(90deg,#ffffff 0 6px,transparent 6px 10px)}</style>
   </head>
   <body>
     <header class="topbar">
       <a href="../../index.html#home">← GAME LAB</a>
-      <p>PROCEDURAL MINI WORLD / A CITY OF CITIES / G01–G02</p>
+      <p>PROCEDURAL MINI WORLD / A CITY OF CITIES / G01–G03a · G02b · G03b</p>
       <span id="statusText">GENERATING</span>
     </header>
     <main>
@@ -39,10 +39,18 @@
             <div><dt>Growth per city (G02)</dt><dd id="growthInfo">—</dd></div>
             <div><dt>Selected chunk (growth)</dt><dd id="growthChunkInfo">—</dd></div>
             <div><dt>Growth timing</dt><dd id="growthTimeInfo">—</dd></div>
+            <div><dt>Urban encounter (G03b)</dt><dd id="encounterInfo">—</dd></div>
+            <div><dt>Morphological growth (G02b)</dt><dd id="morphInfo">—</dd></div>
+            <div><dt>City territory (G03a)</dt><dd id="territoryInfo">—</dd></div>
+            <div><dt>World territory (G03a)</dt><dd id="worldTerritoryInfo">—</dd></div>
+            <div><dt>City relationships (G03a)</dt><dd id="relationInfo">—</dd></div>
             <div><dt>Performance</dt><dd id="timeInfo">—</dd></div>
             <div><dt>Saved state</dt><dd id="saveState">—</dd></div>
           </dl>
           <div class="legend">
+            <p><i class="cand"></i> Urban encounter (G03b, test fixture): strip / square = encounter zone (cyan connected, amber plan pending, red barrier); green / red posts = interfaces accepted / rejected by the negotiation; magenta posts + white lines = cross-city road joins and the roads that start there; amber line = pending connector plan (not generated); cyan route = verified core ↔ core path</p>
+            <p><i class="cand"></i> Morphological growth (G02b): green / red posts = road entries of a growth front within / beyond the 3 m entry step; cyan posts = recorded cross-chunk road joins; white lines = child roads that continue a parent road; labels = parent → child metrics</p>
+            <p><i class="terr"></i> Territory (G03a): City ID fill; boundaries: other city (white) · ecological constraint (green) · evaluated land (amber) · unexplored (grey); hatched green = ecological constraint (steep / unbuildable / water body), grey outline = evaluated non-urban, dashed white = growth frontier, nothing = unexplored; graph: shared edge (thick), corner contact (dashed white), separation (grey, distance + barrier)</p>
             <p><i class="own"></i> City frame: Venice · Manhattan · Fez · Amsterdam · Lisbon · Chicago; pillar = origin</p>
             <p><i class="cand"></i> Growth frontier (G02): solid = eligible candidate (score, selection weight), dashed = rejected (reason), white = the cell chosen in the step; arrows = growth history (step number)</p>
             <p><i class="cand"></i> Origin suitability: solid = qualified site (suitability score; "too close" = blocked by the distance rule, "not picked" = lost the weighted choice), dashed = rejected (reason), white = chosen origin; dashed cells around an origin = potential growth directions (not generated)</p>

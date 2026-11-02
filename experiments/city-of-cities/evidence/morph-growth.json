@@ -1,0 +1,513 @@
+{
+  "task": "G02b — Morphological Continuity & Urban Growth",
+  "testedAt": "2026-10-28T16:18:38.007Z",
+  "seed": 6201,
+  "node": {
+    "backwardCompatibility": {
+      "g01CoresIdentical": 6,
+      "g02FirstFiveStepsIdentical": true
+    },
+    "chicago": {
+      "failure": {
+        "step": 1,
+        "cityId": "chicagoGrid",
+        "kind": "g02b-road-first",
+        "reason": "no growth front with a usable road entry",
+        "fronts": [
+          {
+            "growthFrontId": "front:c_4_-4:minZ",
+            "reason": "no road entry within 3 m of the target terrain (steps 41.92, 39.95, 45.17, 38.62, 33.95, 40.85, 33.46, 35.67, 39.47, 45.58 m)"
+          },
+          {
+            "growthFrontId": "front:c_4_-4:maxZ",
+            "reason": "terrain: terrain type mountain incompatible"
+          },
+          {
+            "growthFrontId": "front:c_4_-4:maxX",
+            "reason": "terrain: slope barrier: mean land slope 12.23° > 12°"
+          },
+          {
+            "growthFrontId": "front:c_4_-4:minX",
+            "reason": "terrain: slope barrier: mean land slope 12.4° > 12°"
+          }
+        ]
+      }
+    },
+    "manhattan": {
+      "stages": {
+        "A": "c_-2_0",
+        "B": "c_-1_0",
+        "C": "c_-1_1"
+      },
+      "growth": [
+        {
+          "stage": "B",
+          "front": "front:c_-2_0:maxX",
+          "target": "c_-1_0",
+          "joined": 4,
+          "unmatchedEntries": [],
+          "newPortsOnSharedEdge": 1,
+          "positionErrorMaxM": 0,
+          "elevationStepsM": [
+            -0.15,
+            2.23,
+            -0.87,
+            2.41
+          ],
+          "grid": {
+            "axisSame": true,
+            "phaseErrorM": 0,
+            "inherited": true
+          },
+          "roadGraph": {
+            "components": 1,
+            "roadLengthM": 36864,
+            "mainComponentShare": 1,
+            "connections": 4,
+            "perChunk": {
+              "c_-2_0": {
+                "reachableFromCoreShare": 1,
+                "nodes": 101
+              },
+              "c_-1_0": {
+                "reachableFromCoreShare": 1,
+                "nodes": 101
+              }
+            }
+          },
+          "generatedRoadIds": 4,
+          "generatedBlockIds": 84,
+          "parcelsOnInheritedRoads": 0,
+          "parcelsTotal": 1846,
+          "rejected": [
+            {
+              "growthFrontId": "front:c_-2_0:minZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 38.99, 42.53, 29.75, 10.52, 8.84, 5.14, 6.34, 11.55, 36.93, 48.23, 56.86, 48.04, 51.74 m)"
+            },
+            {
+              "growthFrontId": "front:c_-2_0:minX",
+              "reason": "terrain: 02.6 DNA conflict: noContinuousLand"
+            }
+          ]
+        },
+        {
+          "stage": "C",
+          "front": "front:c_-1_0:maxZ",
+          "target": "c_-1_1",
+          "joined": 13,
+          "unmatchedEntries": [],
+          "newPortsOnSharedEdge": 0,
+          "positionErrorMaxM": 0,
+          "elevationStepsM": [
+            -1.34,
+            1.59,
+            1.73,
+            1.27,
+            1.9,
+            1.62,
+            1.83,
+            0.89,
+            0.91,
+            0.97,
+            1.34,
+            0.97,
+            2.23
+          ],
+          "grid": {
+            "axisSame": true,
+            "phaseErrorM": 0,
+            "inherited": true
+          },
+          "roadGraph": {
+            "components": 1,
+            "roadLengthM": 55296,
+            "mainComponentShare": 1,
+            "connections": 17,
+            "perChunk": {
+              "c_-2_0": {
+                "reachableFromCoreShare": 1,
+                "nodes": 101
+              },
+              "c_-1_0": {
+                "reachableFromCoreShare": 1,
+                "nodes": 101
+              },
+              "c_-1_1": {
+                "reachableFromCoreShare": 1,
+                "nodes": 101
+              }
+            }
+          },
+          "generatedRoadIds": 13,
+          "generatedBlockIds": 84,
+          "parcelsOnInheritedRoads": 158,
+          "parcelsTotal": 1872,
+          "rejected": [
+            {
+              "growthFrontId": "front:c_-1_0:maxX",
+              "reason": "terrain: slope barrier: mean land slope 22.82° > 12°"
+            },
+            {
+              "growthFrontId": "front:c_-2_0:minZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 38.99, 42.53, 29.75, 10.52, 8.84, 5.14, 6.34, 11.55, 36.93, 48.23, 56.86, 48.04, 51.74 m)"
+            },
+            {
+              "growthFrontId": "front:c_-2_0:minX",
+              "reason": "terrain: 02.6 DNA conflict: noContinuousLand"
+            }
+          ]
+        }
+      ],
+      "metrics": [
+        {
+          "chunkId": "c_-2_0",
+          "role": "core",
+          "landform": "plain",
+          "dominantOrientationDeg": 0,
+          "orientationConcentration": 1,
+          "roadDensityKmPerKm2": 17.58,
+          "primaryKm": 5.12,
+          "blockAreaMedianM2": 12234,
+          "blockAspectMedian": 2.65,
+          "parcelFrontageMedianM": 14,
+          "buildingCoverage": 0.723,
+          "heightMeanM": 63.6,
+          "heightP90M": 93.6,
+          "heightMaxM": 115.2,
+          "deadEnds": 0,
+          "counts": {
+            "roadKm": 18.43,
+            "networkEdges": 148,
+            "blocks": 78,
+            "parcels": 1795,
+            "buildings": 1637
+          },
+          "centreSource": "seeded"
+        },
+        {
+          "chunkId": "c_-1_0",
+          "role": "growth",
+          "landform": "plain",
+          "dominantOrientationDeg": 0,
+          "orientationConcentration": 1,
+          "roadDensityKmPerKm2": 17.58,
+          "primaryKm": 5.12,
+          "blockAreaMedianM2": 12234,
+          "blockAspectMedian": 2.65,
+          "parcelFrontageMedianM": 14,
+          "buildingCoverage": 0.723,
+          "heightMeanM": 39.1,
+          "heightP90M": 43.2,
+          "heightMaxM": 57.6,
+          "deadEnds": 0,
+          "counts": {
+            "roadKm": 18.43,
+            "networkEdges": 148,
+            "blocks": 84,
+            "parcels": 1846,
+            "buildings": 1687
+          },
+          "centreSource": "inherited"
+        },
+        {
+          "chunkId": "c_-1_1",
+          "role": "growth",
+          "landform": "plain",
+          "dominantOrientationDeg": 0,
+          "orientationConcentration": 1,
+          "roadDensityKmPerKm2": 17.58,
+          "primaryKm": 5.12,
+          "blockAreaMedianM2": 12234,
+          "blockAspectMedian": 2.65,
+          "parcelFrontageMedianM": 14,
+          "buildingCoverage": 0.733,
+          "heightMeanM": 38.5,
+          "heightP90M": 43.2,
+          "heightMaxM": 50.4,
+          "deadEnds": 0,
+          "counts": {
+            "roadKm": 18.43,
+            "networkEdges": 148,
+            "blocks": 84,
+            "parcels": 1872,
+            "buildings": 1737
+          },
+          "centreSource": "inherited"
+        }
+      ],
+      "boundary": [
+        {
+          "growth": "B",
+          "orientationDiffDeg": 0,
+          "roadDensityRatio": 1,
+          "blockMedianRatio": 1,
+          "blockAspectDiff": 0,
+          "frontageRatio": 1,
+          "coverageDiff": 0,
+          "meanHeightRatio": 0.615,
+          "baselinePortsAligned": "0 of 5",
+          "baselineOwnCentre": {
+            "x": -968.080854177475,
+            "z": -227.27634406089783
+          }
+        },
+        {
+          "growth": "C",
+          "orientationDiffDeg": 0,
+          "roadDensityRatio": 1,
+          "blockMedianRatio": 1,
+          "blockAspectDiff": 0,
+          "frontageRatio": 1,
+          "coverageDiff": 0.01,
+          "meanHeightRatio": 0.985,
+          "baselinePortsAligned": "0 of 13",
+          "baselineOwnCentre": {
+            "x": -1050.419018149376,
+            "z": 1247.7828860282898
+          }
+        }
+      ],
+      "baselines": [
+        {
+          "orientation": 0,
+          "grid": {
+            "axisDeg": 0,
+            "phaseA": 104.35253246687353,
+            "phaseB": 40.22573184221983,
+            "originX": -1024,
+            "originZ": 0,
+            "primarySpacing": 200,
+            "secondarySpacing": 80,
+            "inherited": false
+          },
+          "parentPorts": 5,
+          "childPortsOnSide": 6,
+          "alignedWithin05m": 0,
+          "heightCentre": {
+            "x": -968.080854177475,
+            "z": -227.27634406089783
+          }
+        },
+        {
+          "orientation": 0,
+          "grid": {
+            "axisDeg": 0,
+            "phaseA": 80.7367813307792,
+            "phaseB": 1.654789075255394,
+            "originX": -1024,
+            "originZ": 1024,
+            "primarySpacing": 200,
+            "secondarySpacing": 80,
+            "inherited": false
+          },
+          "parentPorts": 13,
+          "childPortsOnSide": 13,
+          "alignedWithin05m": 0,
+          "heightCentre": {
+            "x": -1050.419018149376,
+            "z": 1247.7828860282898
+          }
+        }
+      ],
+      "twinIdentical": true,
+      "saveLoadContinue": true
+    },
+    "fez": {
+      "growth": [
+        {
+          "stage": "B",
+          "front": "front:c_-1_-3:maxX",
+          "target": "c_0_-3",
+          "joined": 1,
+          "elevationStepsM": [
+            2.64
+          ],
+          "roadGraph": {
+            "components": 1,
+            "roadLengthM": 12393,
+            "mainComponentShare": 1,
+            "connections": 1,
+            "perChunk": {
+              "c_-1_-3": {
+                "reachableFromCoreShare": 1,
+                "nodes": 48
+              },
+              "c_0_-3": {
+                "reachableFromCoreShare": 1,
+                "nodes": 51
+              }
+            }
+          },
+          "rejected": [
+            {
+              "growthFrontId": "front:c_-1_-3:minZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 33.86 m)"
+            }
+          ],
+          "baseline": {
+            "orientation": null,
+            "grid": null,
+            "parentPorts": 1,
+            "childPortsOnSide": 1,
+            "alignedWithin05m": 1,
+            "heightCentre": {
+              "x": 8.292160034179688,
+              "z": -3131.6373525857925
+            }
+          }
+        },
+        {
+          "stage": "C",
+          "front": "front:c_-1_-3:minX",
+          "target": "c_-2_-3",
+          "joined": 1,
+          "elevationStepsM": [
+            -1.48
+          ],
+          "roadGraph": {
+            "components": 1,
+            "roadLengthM": 19070,
+            "mainComponentShare": 1,
+            "connections": 2,
+            "perChunk": {
+              "c_-1_-3": {
+                "reachableFromCoreShare": 1,
+                "nodes": 48
+              },
+              "c_0_-3": {
+                "reachableFromCoreShare": 1,
+                "nodes": 51
+              },
+              "c_-2_-3": {
+                "reachableFromCoreShare": 1,
+                "nodes": 44
+              }
+            }
+          },
+          "rejected": [
+            {
+              "growthFrontId": "front:c_-1_-3:minZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 33.86 m)"
+            },
+            {
+              "growthFrontId": "front:c_0_-3:minZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 5.91 m)"
+            },
+            {
+              "growthFrontId": "front:c_0_-3:maxZ",
+              "reason": "no road entry within 3 m of the target terrain (steps 3.18 m)"
+            },
+            {
+              "growthFrontId": "front:c_0_-3:maxX",
+              "reason": "no road entry within 3 m of the target terrain (steps 3.54 m)"
+            }
+          ],
+          "baseline": {
+            "orientation": null,
+            "grid": null,
+            "parentPorts": 1,
+            "childPortsOnSide": 1,
+            "alignedWithin05m": 1,
+            "heightCentre": {
+              "x": -2081.8442274332047,
+              "z": -3322.482169032097
+            }
+          }
+        }
+      ],
+      "metrics": [
+        {
+          "chunkId": "c_-1_-3",
+          "role": "core",
+          "landform": "plain",
+          "dominantOrientationDeg": 0.55,
+          "orientationConcentration": 0.845,
+          "roadDensityKmPerKm2": 5.79,
+          "primaryKm": 2.05,
+          "blockAreaMedianM2": 20018,
+          "blockAspectMedian": 1.06,
+          "parcelFrontageMedianM": 9,
+          "buildingCoverage": 0.561,
+          "heightMeanM": 5.2,
+          "heightP90M": 6.4,
+          "heightMaxM": 9.6,
+          "deadEnds": 15,
+          "counts": {
+            "roadKm": 6.07,
+            "networkEdges": 54,
+            "blocks": 11,
+            "parcels": 1035,
+            "buildings": 859
+          },
+          "centreSource": "seeded"
+        },
+        {
+          "chunkId": "c_0_-3",
+          "role": "growth",
+          "landform": "plain",
+          "dominantOrientationDeg": 87.79,
+          "orientationConcentration": 0.676,
+          "roadDensityKmPerKm2": 6.03,
+          "primaryKm": 2.05,
+          "blockAreaMedianM2": 11022,
+          "blockAspectMedian": 1.07,
+          "parcelFrontageMedianM": 9,
+          "buildingCoverage": 0.571,
+          "heightMeanM": 4.6,
+          "heightP90M": 6.4,
+          "heightMaxM": 6.4,
+          "deadEnds": 13,
+          "counts": {
+            "roadKm": 6.32,
+            "networkEdges": 60,
+            "blocks": 14,
+            "parcels": 1044,
+            "buildings": 867
+          },
+          "centreSource": "inherited"
+        },
+        {
+          "chunkId": "c_-2_-3",
+          "role": "growth",
+          "landform": "plain",
+          "dominantOrientationDeg": 88.38,
+          "orientationConcentration": 0.778,
+          "roadDensityKmPerKm2": 6.37,
+          "primaryKm": 2.05,
+          "blockAreaMedianM2": 34498,
+          "blockAspectMedian": 1.17,
+          "parcelFrontageMedianM": 9,
+          "buildingCoverage": 0.58,
+          "heightMeanM": 4.4,
+          "heightP90M": 6.4,
+          "heightMaxM": 6.4,
+          "deadEnds": 12,
+          "counts": {
+            "roadKm": 6.68,
+            "networkEdges": 51,
+            "blocks": 12,
+            "parcels": 1159,
+            "buildings": 982
+          },
+          "centreSource": "inherited"
+        }
+      ],
+      "orientationDiffsDeg": [
+        2.76,
+        2.17
+      ]
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "core": "docs/assets/screenshots/procedural-mini-world/g02b-manhattan-core.png",
+      "firstGrowth": "docs/assets/screenshots/procedural-mini-world/g02b-manhattan-first-growth.png",
+      "threeTop": "docs/assets/screenshots/procedural-mini-world/g02b-manhattan-three-chunks.png",
+      "threeNoBorders": "docs/assets/screenshots/procedural-mini-world/g02b-manhattan-no-borders.png",
+      "boundary": "docs/assets/screenshots/procedural-mini-world/g02b-manhattan-boundary-closeup.png",
+      "fez": "docs/assets/screenshots/procedural-mini-world/g02b-fez-three-chunks.png",
+      "metrics": "docs/assets/screenshots/procedural-mini-world/g02b-metrics-comparison.png"
+    },
+    "errors": []
+  }
+}

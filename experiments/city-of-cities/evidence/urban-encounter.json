@@ -1,0 +1,2314 @@
+{
+  "task": "G03b",
+  "testedAt": "2026-10-28T20:34:42.508Z",
+  "fixture": "TEST ONLY: Chicago and Fez cores placed by hand in one row (Chicago x, Fez x + 3); real terrain, DNA, generators and G02b growth",
+  "rules": {
+    "approachCells": 3,
+    "maxEntryStep": 3,
+    "maxGrade": 0.1,
+    "gradeRun": 32,
+    "maxCrossingDeg": 30,
+    "maxInterfaces": 2,
+    "minInterfaceSpacing": 200,
+    "barrierWaterShare": 0.5
+  },
+  "hypotheses": {
+    "gridConcentrationMin": 0.8,
+    "organicConcentrationMax": 0.6,
+    "abnormalParcelM2": 30
+  },
+  "node": {
+    "scenarios": {
+      "compatible": {
+        "title": "Compatible road interface",
+        "worldSeed": 6201,
+        "row": {
+          "gx": -7,
+          "gy": -10
+        },
+        "ms": 23025,
+        "steps": [
+          {
+            "cityId": "chicagoGrid",
+            "target": "-6,-10",
+            "grown": true,
+            "newChunkId": "c_-6_-10",
+            "sameCityJoins": 5,
+            "crossCityJoins": 0,
+            "failure": null,
+            "decisions": []
+          },
+          {
+            "cityId": "fezOrganicCore",
+            "target": "-5,-10",
+            "grown": true,
+            "newChunkId": "c_-5_-10",
+            "sameCityJoins": 1,
+            "crossCityJoins": 2,
+            "failure": null,
+            "decisions": [
+              {
+                "outcome": "connection",
+                "reason": "2 chicagoGrid road(s) accepted as entry gates of the new fezOrganicCore chunk (organic lanes adapt locally; chicagoGrid unchanged)"
+              }
+            ]
+          }
+        ],
+        "encounter": {
+          "encounterId": "enc:chicagoGrid|fezOrganicCore",
+          "cityA": "chicagoGrid",
+          "cityB": "fezOrganicCore",
+          "step": 2,
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": false,
+            "connectionCandidate": true,
+            "connected": true
+          },
+          "participatingChunkIds": [
+            "c_-5_-10",
+            "c_-6_-10"
+          ],
+          "distanceCells": 1,
+          "boundaryLocation": {
+            "kind": "sharedEdge",
+            "edges": [
+              {
+                "chunkA": "c_-6_-10",
+                "sideA": "maxX",
+                "chunkB": "c_-5_-10",
+                "sideB": "minX",
+                "point": {
+                  "x": -5632,
+                  "z": -10240
+                }
+              }
+            ]
+          },
+          "relevantGrowthFrontIds": [
+            "front:c_-5_-10:maxZ",
+            "front:c_-5_-10:minZ",
+            "front:c_-6_-10:maxZ",
+            "front:c_-6_-10:minZ"
+          ],
+          "terrainConditions": [
+            {
+              "edge": "c_-6_-10:maxX",
+              "medianHeightStepM": 1.51,
+              "maxHeightStepM": 4.12,
+              "waterShare": 0,
+              "barrier": false
+            }
+          ],
+          "roadInterfaceConditions": [
+            {
+              "edge": "c_-6_-10:maxX",
+              "portsA": 5,
+              "portsB": 2,
+              "primaryA": 5,
+              "primaryB": 2,
+              "alignedWithinTolerance": 2,
+              "nearestOffsetsM": [
+                600.3,
+                400.3,
+                200.3,
+                0.3,
+                0.3
+              ],
+              "elevationStepsM": [
+                -6.26,
+                -3.05,
+                0.17,
+                0.19,
+                -0.85
+              ]
+            }
+          ],
+          "crossCityConnections": [
+            "xconn:c_-6_-10:maxX:-10000.3",
+            "xconn:c_-6_-10:maxX:-9800.3"
+          ],
+          "currentRelationship": "connected",
+          "decisionReason": "2 chicagoGrid road(s) accepted as entry gates of the new fezOrganicCore chunk (organic lanes adapt locally; chicagoGrid unchanged)",
+          "validationStatus": "verified: path 2288 m core ↔ core over 2 cross-city join(s)",
+          "decisions": [
+            "enc:chicagoGrid|fezOrganicCore:step2:fezOrganicCore->-5,-10"
+          ]
+        },
+        "decisions": [
+          {
+            "decisionId": "enc:chicagoGrid|fezOrganicCore:step2:fezOrganicCore->-5,-10",
+            "encounterId": "enc:chicagoGrid|fezOrganicCore",
+            "step": 2,
+            "worldSeed": 6201,
+            "version": "g03b-1",
+            "newcomer": "fezOrganicCore",
+            "other": "chicagoGrid",
+            "targetCell": {
+              "gx": -5,
+              "gy": -10
+            },
+            "otherChunkId": "c_-6_-10",
+            "otherSide": "maxX",
+            "childSide": "minX",
+            "newcomerFront": "front:c_-4_-10:minX",
+            "constraintParams": {
+              "approachCells": 3,
+              "maxEntryStep": 3,
+              "maxGrade": 0.1,
+              "gradeRun": 32,
+              "maxCrossingDeg": 30,
+              "maxInterfaces": 2,
+              "minInterfaceSpacing": 200,
+              "barrierWaterShare": 0.5,
+              "portTolerance": 0.5
+            },
+            "boundaryContext": {
+              "newcomer": {
+                "chunkId": "c_-4_-10",
+                "cityId": "fezOrganicCore",
+                "side": "minX",
+                "strategy": "organic",
+                "road": {
+                  "orientationDeg": 88.84,
+                  "orientationConcentration": 0.755,
+                  "hierarchy": {
+                    "primary": 1,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -10240,
+                      "roadClass": "primary",
+                      "elevation": 25.8,
+                      "crossingDeg": 0,
+                      "nodeId": 28,
+                      "edgeId": 27
+                    }
+                  ],
+                  "spacingM": {
+                    "median": null,
+                    "min": null,
+                    "gridPrimary": "unavailable (no fixed grid: organic / canal network)"
+                  },
+                  "connectivity": "unavailable (city graph not computed)"
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 17954,
+                  "blockOrientationDeg": 88.84,
+                  "blockAspectMedian": 1.04,
+                  "boundaryBlocks": {
+                    "count": 2,
+                    "areaM2": 448093
+                  },
+                  "parcelFrontageMedianM": 9,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.578,
+                  "heightM": {
+                    "mean": 5.2,
+                    "p90": 6.4,
+                    "max": 9.6
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 23.65,
+                    "median": 24.66,
+                    "max": 26.51
+                  },
+                  "cellMeanSlopeDeg": 0.77,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              },
+              "other": {
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "strategy": "grid",
+                "road": {
+                  "orientationDeg": 0,
+                  "orientationConcentration": 1,
+                  "hierarchy": {
+                    "primary": 5,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -10600.3,
+                      "roadClass": "primary",
+                      "elevation": 27.22,
+                      "crossingDeg": 0,
+                      "nodeId": 12,
+                      "edgeId": 11
+                    },
+                    {
+                      "position": -10400.3,
+                      "roadClass": "primary",
+                      "elevation": 24.01,
+                      "crossingDeg": 0,
+                      "nodeId": 25,
+                      "edgeId": 23
+                    },
+                    {
+                      "position": -10200.3,
+                      "roadClass": "primary",
+                      "elevation": 20.79,
+                      "crossingDeg": 0,
+                      "nodeId": 38,
+                      "edgeId": 35
+                    },
+                    {
+                      "position": -10000.3,
+                      "roadClass": "primary",
+                      "elevation": 20.77,
+                      "crossingDeg": 0,
+                      "nodeId": 51,
+                      "edgeId": 47
+                    },
+                    {
+                      "position": -9800.3,
+                      "roadClass": "primary",
+                      "elevation": 21.82,
+                      "crossingDeg": 0,
+                      "nodeId": 64,
+                      "edgeId": 59
+                    }
+                  ],
+                  "spacingM": {
+                    "median": 200,
+                    "min": 200,
+                    "gridPrimary": 200
+                  },
+                  "connectivity": {
+                    "reachableFromCoreShare": 1
+                  }
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 13560,
+                  "blockOrientationDeg": 0,
+                  "blockAspectMedian": 2.12,
+                  "boundaryBlocks": {
+                    "count": 6,
+                    "areaM2": 9672
+                  },
+                  "parcelFrontageMedianM": 7,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.516,
+                  "heightM": {
+                    "mean": 19.5,
+                    "p90": 22.8,
+                    "max": 26.6
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 20.12,
+                    "median": 21.97,
+                    "max": 27.36
+                  },
+                  "cellMeanSlopeDeg": 1.01,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              }
+            },
+            "candidates": [
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10600.3",
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -10600.3,
+                "point": {
+                  "x": -5632,
+                  "z": -10600.3
+                },
+                "roadClass": "primary",
+                "elevation": 27.22,
+                "nodeId": 12,
+                "edgeId": 11,
+                "stepM": -4.09,
+                "grade": 0.13,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step -4.09 m > 3 m",
+                  "grade 0.13 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10400.3",
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -10400.3,
+                "point": {
+                  "x": -5632,
+                  "z": -10400.3
+                },
+                "roadClass": "primary",
+                "elevation": 24.01,
+                "nodeId": 25,
+                "edgeId": 23,
+                "stepM": -2.65,
+                "grade": 0.09,
+                "crossingDeg": 0,
+                "score": 0.74,
+                "accepted": false,
+                "reasons": [
+                  "not selected: 2 interfaces already accepted"
+                ]
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10200.3",
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -10200.3,
+                "point": {
+                  "x": -5632,
+                  "z": -10200.3
+                },
+                "roadClass": "primary",
+                "elevation": 20.79,
+                "nodeId": 38,
+                "edgeId": 35,
+                "stepM": 1.4,
+                "grade": 0.03,
+                "crossingDeg": 0,
+                "score": 0.86,
+                "accepted": false,
+                "reasons": [
+                  "not selected: 2 interfaces already accepted"
+                ]
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10000.3",
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -10000.3,
+                "point": {
+                  "x": -5632,
+                  "z": -10000.3
+                },
+                "roadClass": "primary",
+                "elevation": 20.77,
+                "nodeId": 51,
+                "edgeId": 47,
+                "stepM": 0.19,
+                "grade": 0.01,
+                "crossingDeg": 0,
+                "score": 0.98,
+                "accepted": true,
+                "reasons": []
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-9800.3",
+                "chunkId": "c_-6_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -9800.3,
+                "point": {
+                  "x": -5632,
+                  "z": -9800.3
+                },
+                "roadClass": "primary",
+                "elevation": 21.82,
+                "nodeId": 64,
+                "edgeId": 59,
+                "stepM": -0.86,
+                "grade": 0.04,
+                "crossingDeg": 0,
+                "score": 0.91,
+                "accepted": true,
+                "reasons": []
+              }
+            ],
+            "acceptedInterfaces": [
+              "iface:c_-6_-10:maxX:-10000.3",
+              "iface:c_-6_-10:maxX:-9800.3"
+            ],
+            "rejectedInterfaces": [
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10600.3",
+                "reasons": [
+                  "entry step -4.09 m > 3 m",
+                  "grade 0.13 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10400.3",
+                "reasons": [
+                  "not selected: 2 interfaces already accepted"
+                ]
+              },
+              {
+                "candidateId": "iface:c_-6_-10:maxX:-10200.3",
+                "reasons": [
+                  "not selected: 2 interfaces already accepted"
+                ]
+              }
+            ],
+            "outcome": "connection",
+            "reason": "2 chicagoGrid road(s) accepted as entry gates of the new fezOrganicCore chunk (organic lanes adapt locally; chicagoGrid unchanged)",
+            "plan": null,
+            "allowedChanges": "entry gates of the new chunk -5,-10 only",
+            "modifiedObjects": [],
+            "generatedObjects": [
+              "c_-5_-10",
+              "c_-5_-10:e21"
+            ],
+            "result": {
+              "grown": true,
+              "growthEventId": "growth:fezOrganicCore:2",
+              "newChunkId": "c_-5_-10"
+            },
+            "crossCityConnections": [
+              {
+                "connectionId": "xconn:c_-6_-10:maxX:-10000.3",
+                "roadClass": "primary",
+                "parent": {
+                  "chunkId": "c_-6_-10",
+                  "nodeId": 51,
+                  "edgeId": 47
+                },
+                "child": {
+                  "chunkId": "c_-5_-10",
+                  "nodeId": 40,
+                  "edgeId": 43,
+                  "roadClass": "primary"
+                },
+                "positionErrorM": 0.3,
+                "elevationStepM": 0.19,
+                "crossCity": {
+                  "cityA": "chicagoGrid",
+                  "cityB": "fezOrganicCore"
+                }
+              },
+              {
+                "connectionId": "xconn:c_-6_-10:maxX:-9800.3",
+                "roadClass": "primary",
+                "parent": {
+                  "chunkId": "c_-6_-10",
+                  "nodeId": 64,
+                  "edgeId": 59
+                },
+                "child": {
+                  "chunkId": "c_-5_-10",
+                  "nodeId": 42,
+                  "edgeId": 45,
+                  "roadClass": "primary"
+                },
+                "positionErrorM": 0.3,
+                "elevationStepM": -0.85,
+                "crossCity": {
+                  "cityA": "chicagoGrid",
+                  "cityB": "fezOrganicCore"
+                }
+              }
+            ],
+            "unmatched": []
+          }
+        ],
+        "topology": {
+          "crossCityJoins": 2,
+          "maxEndpointErrorM": 0.3,
+          "maxElevationStepM": 0.85,
+          "uniqueConnectionIds": true,
+          "uniqueChildNodes": true,
+          "uniqueParentNodes": true,
+          "unmatchedAcceptedEntries": 0,
+          "path": {
+            "reachable": true,
+            "crossings": 2,
+            "lengthM": 2288,
+            "from": "c_-7_-10:47",
+            "to": "c_-4_-10:28",
+            "nodes": 31,
+            "chunks": [
+              "c_-7_-10",
+              "c_-6_-10",
+              "c_-5_-10",
+              "c_-4_-10"
+            ]
+          },
+          "invalidCrossings": "not measured (no segment-intersection test); joins are identities of existing boundary nodes, no segment is generated across the edge"
+        },
+        "chunkMetrics": {
+          "c_-4_-10": {
+            "cityId": "fezOrganicCore",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "fezOrganicCore",
+            "dominantOrientationDeg": 88.84,
+            "orientationConcentration": 0.755,
+            "roadDensityKmPerKm2": 5.89,
+            "primaryKm": 2.05,
+            "blockAreaMedianM2": 17954,
+            "blockAspectMedian": 1.04,
+            "parcelFrontageMedianM": 9,
+            "buildingCoverage": 0.578,
+            "heightMeanM": 5.2,
+            "heightP90M": 6.4,
+            "heightMaxM": 9.6,
+            "deadEnds": 16,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 2,
+                "areaM2": 448093
+              },
+              "maxX": {
+                "count": 2,
+                "areaM2": 497504
+              },
+              "minZ": {
+                "count": 2,
+                "areaM2": 453831
+              },
+              "maxZ": {
+                "count": 2,
+                "areaM2": 491766
+              }
+            },
+            "counts": {
+              "roadKm": 6.17,
+              "networkEdges": 54,
+              "blocks": 10,
+              "parcels": 1051,
+              "buildings": 891
+            }
+          },
+          "c_-5_-10": {
+            "cityId": "fezOrganicCore",
+            "role": "growth",
+            "landform": "plain",
+            "resolvedDNA": "fezOrganicCore",
+            "dominantOrientationDeg": 87.73,
+            "orientationConcentration": 0.653,
+            "roadDensityKmPerKm2": 6.53,
+            "primaryKm": 2.25,
+            "blockAreaMedianM2": 12442,
+            "blockAspectMedian": 1.2,
+            "parcelFrontageMedianM": 9,
+            "buildingCoverage": 0.59,
+            "heightMeanM": 4.6,
+            "heightP90M": 6.4,
+            "heightMaxM": 6.4,
+            "deadEnds": 10,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 2,
+                "areaM2": 447995
+              },
+              "maxX": {
+                "count": 2,
+                "areaM2": 456326
+              },
+              "minZ": {
+                "count": 2,
+                "areaM2": 574113
+              },
+              "maxZ": {
+                "count": 2,
+                "areaM2": 330208
+              }
+            },
+            "counts": {
+              "roadKm": 6.84,
+              "networkEdges": 59,
+              "blocks": 15,
+              "parcels": 1094,
+              "buildings": 927
+            }
+          },
+          "c_-6_-10": {
+            "cityId": "chicagoGrid",
+            "role": "growth",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 15.63,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13560,
+            "blockAspectMedian": 2.12,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.516,
+            "heightMeanM": 19.5,
+            "heightP90M": 22.8,
+            "heightMaxM": 26.6,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 0,
+                "areaM2": 0
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 9672
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 110844
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 46194
+              }
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2330,
+              "buildings": 2068
+            }
+          },
+          "c_-7_-10": {
+            "cityId": "chicagoGrid",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 14.65,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13560,
+            "blockAspectMedian": 2.12,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.528,
+            "heightMeanM": 42.2,
+            "heightP90M": 98.8,
+            "heightMaxM": 171,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 6,
+                "areaM2": 14791
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 76032
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 112617
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 46959
+              }
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2273,
+              "buildings": 2068
+            }
+          }
+        }
+      },
+      "incompatible": {
+        "title": "Incompatible street geometry",
+        "worldSeed": 6201,
+        "row": {
+          "gx": -7,
+          "gy": -10
+        },
+        "ms": 21887,
+        "steps": [
+          {
+            "cityId": "fezOrganicCore",
+            "target": "-5,-10",
+            "grown": true,
+            "newChunkId": "c_-5_-10",
+            "sameCityJoins": 1,
+            "crossCityJoins": 0,
+            "failure": null,
+            "decisions": []
+          },
+          {
+            "cityId": "chicagoGrid",
+            "target": "-6,-10",
+            "grown": true,
+            "newChunkId": "c_-6_-10",
+            "sameCityJoins": 5,
+            "crossCityJoins": 0,
+            "failure": null,
+            "decisions": [
+              {
+                "outcome": "plan",
+                "reason": "chicagoGrid uses a grid network that keeps its own inherited lines; the generator has no safe hook to bend them toward fezOrganicCore ports, so no connector is generated"
+              }
+            ]
+          }
+        ],
+        "encounter": {
+          "encounterId": "enc:chicagoGrid|fezOrganicCore",
+          "cityA": "chicagoGrid",
+          "cityB": "fezOrganicCore",
+          "step": 2,
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": false,
+            "connectionCandidate": true,
+            "connected": false
+          },
+          "participatingChunkIds": [
+            "c_-5_-10",
+            "c_-6_-10"
+          ],
+          "distanceCells": 1,
+          "boundaryLocation": {
+            "kind": "sharedEdge",
+            "edges": [
+              {
+                "chunkA": "c_-6_-10",
+                "sideA": "maxX",
+                "chunkB": "c_-5_-10",
+                "sideB": "minX",
+                "point": {
+                  "x": -5632,
+                  "z": -10240
+                }
+              }
+            ]
+          },
+          "relevantGrowthFrontIds": [
+            "front:c_-5_-10:maxZ",
+            "front:c_-5_-10:minZ",
+            "front:c_-6_-10:maxZ",
+            "front:c_-6_-10:minZ"
+          ],
+          "terrainConditions": [
+            {
+              "edge": "c_-6_-10:maxX",
+              "medianHeightStepM": 1.51,
+              "maxHeightStepM": 4.12,
+              "waterShare": 0,
+              "barrier": false
+            }
+          ],
+          "roadInterfaceConditions": [
+            {
+              "edge": "c_-6_-10:maxX",
+              "portsA": 5,
+              "portsB": 1,
+              "primaryA": 5,
+              "primaryB": 1,
+              "alignedWithinTolerance": 0,
+              "nearestOffsetsM": [
+                360.3,
+                160.3,
+                39.7,
+                239.7,
+                439.7
+              ],
+              "elevationStepsM": [
+                -4.8,
+                -1.59,
+                1.63,
+                1.65,
+                0.6
+              ]
+            }
+          ],
+          "crossCityConnections": [],
+          "currentRelationship": "adjacent — connection plan pending",
+          "decisionReason": "chicagoGrid uses a grid network that keeps its own inherited lines; the generator has no safe hook to bend them toward fezOrganicCore ports, so no connector is generated",
+          "validationStatus": "pending (plan not generated)",
+          "decisions": [
+            "enc:chicagoGrid|fezOrganicCore:step2:chicagoGrid->-6,-10"
+          ]
+        },
+        "decisions": [
+          {
+            "decisionId": "enc:chicagoGrid|fezOrganicCore:step2:chicagoGrid->-6,-10",
+            "encounterId": "enc:chicagoGrid|fezOrganicCore",
+            "step": 2,
+            "worldSeed": 6201,
+            "version": "g03b-1",
+            "newcomer": "chicagoGrid",
+            "other": "fezOrganicCore",
+            "targetCell": {
+              "gx": -6,
+              "gy": -10
+            },
+            "otherChunkId": "c_-5_-10",
+            "otherSide": "minX",
+            "childSide": "maxX",
+            "newcomerFront": "front:c_-7_-10:maxX",
+            "constraintParams": {
+              "approachCells": 3,
+              "maxEntryStep": 3,
+              "maxGrade": 0.1,
+              "gradeRun": 32,
+              "maxCrossingDeg": 30,
+              "maxInterfaces": 2,
+              "minInterfaceSpacing": 200,
+              "barrierWaterShare": 0.5,
+              "portTolerance": 0.5
+            },
+            "boundaryContext": {
+              "newcomer": {
+                "chunkId": "c_-7_-10",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "strategy": "grid",
+                "road": {
+                  "orientationDeg": 0,
+                  "orientationConcentration": 1,
+                  "hierarchy": {
+                    "primary": 5,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -10600.3,
+                      "roadClass": "primary",
+                      "elevation": 26.14,
+                      "crossingDeg": 0,
+                      "nodeId": 11,
+                      "edgeId": 10
+                    },
+                    {
+                      "position": -10400.3,
+                      "roadClass": "primary",
+                      "elevation": 26.54,
+                      "crossingDeg": 0,
+                      "nodeId": 23,
+                      "edgeId": 21
+                    },
+                    {
+                      "position": -10200.3,
+                      "roadClass": "primary",
+                      "elevation": 24.37,
+                      "crossingDeg": 0,
+                      "nodeId": 35,
+                      "edgeId": 32
+                    },
+                    {
+                      "position": -10000.3,
+                      "roadClass": "primary",
+                      "elevation": 22.77,
+                      "crossingDeg": 0,
+                      "nodeId": 47,
+                      "edgeId": 43
+                    },
+                    {
+                      "position": -9800.3,
+                      "roadClass": "primary",
+                      "elevation": 22.43,
+                      "crossingDeg": 0,
+                      "nodeId": 59,
+                      "edgeId": 54
+                    }
+                  ],
+                  "spacingM": {
+                    "median": 200,
+                    "min": 200,
+                    "gridPrimary": 200
+                  },
+                  "connectivity": "unavailable (city graph not computed)"
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 13560,
+                  "blockOrientationDeg": 0,
+                  "blockAspectMedian": 2.12,
+                  "boundaryBlocks": {
+                    "count": 6,
+                    "areaM2": 76032
+                  },
+                  "parcelFrontageMedianM": 7,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.528,
+                  "heightM": {
+                    "mean": 42.2,
+                    "p90": 98.8,
+                    "max": 171
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 21.54,
+                    "median": 24.66,
+                    "max": 27.82
+                  },
+                  "cellMeanSlopeDeg": 1.06,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              },
+              "other": {
+                "chunkId": "c_-5_-10",
+                "cityId": "fezOrganicCore",
+                "side": "minX",
+                "strategy": "organic",
+                "road": {
+                  "orientationDeg": 84.42,
+                  "orientationConcentration": 0.659,
+                  "hierarchy": {
+                    "primary": 1,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -10240,
+                      "roadClass": "primary",
+                      "elevation": 22.42,
+                      "crossingDeg": 0,
+                      "nodeId": 18,
+                      "edgeId": 16
+                    }
+                  ],
+                  "spacingM": {
+                    "median": null,
+                    "min": null,
+                    "gridPrimary": "unavailable (no fixed grid: organic / canal network)"
+                  },
+                  "connectivity": {
+                    "reachableFromCoreShare": 1
+                  }
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 30751,
+                  "blockOrientationDeg": 84.42,
+                  "blockAspectMedian": 1.06,
+                  "boundaryBlocks": {
+                    "count": 2,
+                    "areaM2": 487178
+                  },
+                  "parcelFrontageMedianM": 9,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.577,
+                  "heightM": {
+                    "mean": 4.5,
+                    "p90": 6.4,
+                    "max": 6.4
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 20.09,
+                    "median": 21.74,
+                    "max": 24.94
+                  },
+                  "cellMeanSlopeDeg": 0.87,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              }
+            },
+            "candidates": [
+              {
+                "candidateId": "iface:c_-5_-10:minX:-10240",
+                "chunkId": "c_-5_-10",
+                "cityId": "fezOrganicCore",
+                "side": "minX",
+                "position": -10240,
+                "point": {
+                  "x": -5632,
+                  "z": -10240
+                },
+                "roadClass": "primary",
+                "elevation": 22.42,
+                "nodeId": 18,
+                "edgeId": 16,
+                "stepM": -1.05,
+                "grade": 0.02,
+                "crossingDeg": 0,
+                "score": 0.9,
+                "accepted": true,
+                "reasons": []
+              }
+            ],
+            "acceptedInterfaces": [
+              "iface:c_-5_-10:minX:-10240"
+            ],
+            "rejectedInterfaces": [],
+            "outcome": "plan",
+            "reason": "chicagoGrid uses a grid network that keeps its own inherited lines; the generator has no safe hook to bend them toward fezOrganicCore ports, so no connector is generated",
+            "plan": {
+              "status": "Pending verification (not generated)",
+              "proposal": "after the newcomer is generated, join each accepted interface to the nearest newcomer road on the shared edge with a short boundary connector",
+              "interfaces": [
+                "iface:c_-5_-10:minX:-10240"
+              ],
+              "connectors": [
+                {
+                  "candidateId": "iface:c_-5_-10:minX:-10240",
+                  "otherPosition": -10240,
+                  "newcomerPosition": -10200.3,
+                  "offsetM": 39.7,
+                  "elevationStepM": -1.63,
+                  "connectorLengthM": 39.7,
+                  "gradeAlongEdge": 0.04
+                }
+              ]
+            },
+            "allowedChanges": "none",
+            "modifiedObjects": [],
+            "generatedObjects": [
+              "c_-6_-10",
+              "c_-6_-10:e0",
+              "c_-6_-10:e12",
+              "c_-6_-10:e24",
+              "c_-6_-10:e36",
+              "c_-6_-10:e48"
+            ],
+            "result": {
+              "grown": true,
+              "growthEventId": "growth:chicagoGrid:2",
+              "newChunkId": "c_-6_-10"
+            },
+            "coincidentJoins": []
+          }
+        ],
+        "topology": {
+          "crossCityJoins": 0,
+          "maxEndpointErrorM": null,
+          "maxElevationStepM": null,
+          "uniqueConnectionIds": true,
+          "uniqueChildNodes": true,
+          "uniqueParentNodes": true,
+          "unmatchedAcceptedEntries": 0,
+          "path": null,
+          "invalidCrossings": "not measured (no segment-intersection test); joins are identities of existing boundary nodes, no segment is generated across the edge"
+        },
+        "chunkMetrics": {
+          "c_-4_-10": {
+            "cityId": "fezOrganicCore",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "fezOrganicCore",
+            "dominantOrientationDeg": 88.84,
+            "orientationConcentration": 0.755,
+            "roadDensityKmPerKm2": 5.89,
+            "primaryKm": 2.05,
+            "blockAreaMedianM2": 17954,
+            "blockAspectMedian": 1.04,
+            "parcelFrontageMedianM": 9,
+            "buildingCoverage": 0.578,
+            "heightMeanM": 5.2,
+            "heightP90M": 6.4,
+            "heightMaxM": 9.6,
+            "deadEnds": 16,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 2,
+                "areaM2": 448093
+              },
+              "maxX": {
+                "count": 2,
+                "areaM2": 497504
+              },
+              "minZ": {
+                "count": 2,
+                "areaM2": 453831
+              },
+              "maxZ": {
+                "count": 2,
+                "areaM2": 491766
+              }
+            },
+            "counts": {
+              "roadKm": 6.17,
+              "networkEdges": 54,
+              "blocks": 10,
+              "parcels": 1051,
+              "buildings": 891
+            }
+          },
+          "c_-5_-10": {
+            "cityId": "fezOrganicCore",
+            "role": "growth",
+            "landform": "plain",
+            "resolvedDNA": "fezOrganicCore",
+            "dominantOrientationDeg": 84.42,
+            "orientationConcentration": 0.659,
+            "roadDensityKmPerKm2": 5.71,
+            "primaryKm": 2.05,
+            "blockAreaMedianM2": 30751,
+            "blockAspectMedian": 1.06,
+            "parcelFrontageMedianM": 9,
+            "buildingCoverage": 0.577,
+            "heightMeanM": 4.5,
+            "heightP90M": 6.4,
+            "heightMaxM": 6.4,
+            "deadEnds": 13,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 2,
+                "areaM2": 487178
+              },
+              "maxX": {
+                "count": 2,
+                "areaM2": 457241
+              },
+              "minZ": {
+                "count": 2,
+                "areaM2": 502314
+              },
+              "maxZ": {
+                "count": 2,
+                "areaM2": 442105
+              }
+            },
+            "counts": {
+              "roadKm": 5.98,
+              "networkEdges": 45,
+              "blocks": 9,
+              "parcels": 1002,
+              "buildings": 852
+            }
+          },
+          "c_-6_-10": {
+            "cityId": "chicagoGrid",
+            "role": "growth",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 15.63,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13560,
+            "blockAspectMedian": 2.12,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.516,
+            "heightMeanM": 19.5,
+            "heightP90M": 22.8,
+            "heightMaxM": 26.6,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 0,
+                "areaM2": 0
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 9672
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 110844
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 46194
+              }
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2330,
+              "buildings": 2068
+            }
+          },
+          "c_-7_-10": {
+            "cityId": "chicagoGrid",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 14.65,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13560,
+            "blockAspectMedian": 2.12,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.528,
+            "heightMeanM": 42.2,
+            "heightP90M": 98.8,
+            "heightMaxM": 171,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 6,
+                "areaM2": 14791
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 76032
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 112617
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 46959
+              }
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2273,
+              "buildings": 2068
+            }
+          }
+        }
+      },
+      "barrier": {
+        "title": "Natural barrier",
+        "worldSeed": 6201,
+        "row": {
+          "gx": 1,
+          "gy": -7
+        },
+        "ms": 20782,
+        "steps": [
+          {
+            "cityId": "chicagoGrid",
+            "target": "2,-7",
+            "grown": true,
+            "newChunkId": "c_2_-7",
+            "sameCityJoins": 4,
+            "crossCityJoins": 0,
+            "failure": null,
+            "decisions": []
+          },
+          {
+            "cityId": "fezOrganicCore",
+            "target": "3,-7",
+            "grown": false,
+            "newChunkId": null,
+            "sameCityJoins": 0,
+            "crossCityJoins": 0,
+            "failure": "no eligible growth front toward the target",
+            "decisions": [
+              {
+                "outcome": "separation",
+                "reason": "fezOrganicCore cannot enter 3,-7: no road entry within 3 m of the target terrain (steps 51.49 m)"
+              }
+            ]
+          },
+          {
+            "cityId": "chicagoGrid",
+            "target": "3,-7",
+            "grown": false,
+            "newChunkId": null,
+            "sameCityJoins": 0,
+            "crossCityJoins": 0,
+            "failure": "no eligible growth front toward the target",
+            "decisions": [
+              {
+                "outcome": "separation",
+                "reason": "chicagoGrid cannot enter 3,-7: no road entry within 3 m of the target terrain (steps 42.72, 58.82, 54.21, 25.52, 31.64 m)"
+              }
+            ]
+          }
+        ],
+        "encounter": {
+          "encounterId": "enc:chicagoGrid|fezOrganicCore",
+          "cityA": "chicagoGrid",
+          "cityB": "fezOrganicCore",
+          "step": 3,
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "participatingChunkIds": [
+            "c_2_-7",
+            "c_4_-7"
+          ],
+          "distanceCells": 2,
+          "boundaryLocation": {
+            "kind": "gap",
+            "cells": [
+              "3,-7"
+            ],
+            "between": [
+              "c_2_-7",
+              "c_4_-7"
+            ],
+            "point": {
+              "x": 3072,
+              "z": -7168
+            }
+          },
+          "relevantGrowthFrontIds": [
+            "front:c_2_-7:maxX",
+            "front:c_4_-7:minX"
+          ],
+          "terrainConditions": [
+            {
+              "cell": "3,-7",
+              "landform": "riverValley",
+              "meanLandSlopeDeg": 11.2,
+              "buildableFraction": 0.46,
+              "waterFraction": 0.034,
+              "ecologicalConstraint": [],
+              "frontsInto": [
+                {
+                  "growthFrontId": "front:c_2_-7:maxX",
+                  "status": "rejected",
+                  "reason": "no road entry within 3 m of the target terrain (steps 42.72, 58.82, 54.21, 25.52, 31.64 m)"
+                },
+                {
+                  "growthFrontId": "front:c_4_-7:minX",
+                  "status": "rejected",
+                  "reason": "no road entry within 3 m of the target terrain (steps 51.49 m)"
+                }
+              ]
+            }
+          ],
+          "roadInterfaceConditions": [
+            {
+              "from": "c_2_-7:maxX",
+              "toward": "3,-7",
+              "ports": 5,
+              "passing": 0,
+              "rejected": [
+                {
+                  "position": -7559.4,
+                  "reasons": [
+                    "entry step 42.72 m > 3 m",
+                    "grade 1.35 > 0.1 over 32 m"
+                  ]
+                },
+                {
+                  "position": -7359.4,
+                  "reasons": [
+                    "entry step 58.82 m > 3 m",
+                    "grade 1.72 > 0.1 over 32 m"
+                  ]
+                },
+                {
+                  "position": -7159.4,
+                  "reasons": [
+                    "entry step 54.21 m > 3 m",
+                    "grade 1.67 > 0.1 over 32 m"
+                  ]
+                },
+                {
+                  "position": -6959.4,
+                  "reasons": [
+                    "entry step 25.52 m > 3 m",
+                    "grade 0.87 > 0.1 over 32 m"
+                  ]
+                },
+                {
+                  "position": -6759.4,
+                  "reasons": [
+                    "entry step 31.64 m > 3 m",
+                    "grade 1.03 > 0.1 over 32 m"
+                  ]
+                }
+              ]
+            },
+            {
+              "from": "c_4_-7:minX",
+              "toward": "3,-7",
+              "ports": 1,
+              "passing": 0,
+              "rejected": [
+                {
+                  "position": -7168,
+                  "reasons": [
+                    "entry step 51.49 m > 3 m",
+                    "grade 1.67 > 0.1 over 32 m"
+                  ]
+                }
+              ]
+            }
+          ],
+          "crossCityConnections": [],
+          "currentRelationship": "approaching — barrier between",
+          "decisionReason": "chicagoGrid cannot enter 3,-7: no road entry within 3 m of the target terrain (steps 42.72, 58.82, 54.21, 25.52, 31.64 m)",
+          "validationStatus": "not applicable (no connection)",
+          "decisions": [
+            "enc:chicagoGrid|fezOrganicCore:step2:fezOrganicCore->3,-7",
+            "enc:chicagoGrid|fezOrganicCore:step3:chicagoGrid->3,-7"
+          ]
+        },
+        "decisions": [
+          {
+            "decisionId": "enc:chicagoGrid|fezOrganicCore:step2:fezOrganicCore->3,-7",
+            "encounterId": "enc:chicagoGrid|fezOrganicCore",
+            "step": 2,
+            "worldSeed": 6201,
+            "version": "g03b-1",
+            "newcomer": "fezOrganicCore",
+            "other": "chicagoGrid",
+            "targetCell": {
+              "gx": 3,
+              "gy": -7
+            },
+            "otherChunkId": "c_2_-7",
+            "otherSide": "maxX",
+            "childSide": "minX",
+            "newcomerFront": null,
+            "constraintParams": {
+              "approachCells": 3,
+              "maxEntryStep": 3,
+              "maxGrade": 0.1,
+              "gradeRun": 32,
+              "maxCrossingDeg": 30,
+              "maxInterfaces": 2,
+              "minInterfaceSpacing": 200,
+              "barrierWaterShare": 0.5,
+              "portTolerance": 0.5
+            },
+            "boundaryContext": {
+              "newcomer": null,
+              "other": {
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "strategy": "grid",
+                "road": {
+                  "orientationDeg": 0,
+                  "orientationConcentration": 1,
+                  "hierarchy": {
+                    "primary": 5,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -7559.4,
+                      "roadClass": "primary",
+                      "elevation": 21.46,
+                      "crossingDeg": 0,
+                      "nodeId": 11,
+                      "edgeId": 10
+                    },
+                    {
+                      "position": -7359.4,
+                      "roadClass": "primary",
+                      "elevation": 22.16,
+                      "crossingDeg": 0,
+                      "nodeId": 23,
+                      "edgeId": 21
+                    },
+                    {
+                      "position": -7159.4,
+                      "roadClass": "primary",
+                      "elevation": 21.71,
+                      "crossingDeg": 0,
+                      "nodeId": 35,
+                      "edgeId": 32
+                    },
+                    {
+                      "position": -6959.4,
+                      "roadClass": "primary",
+                      "elevation": 25.07,
+                      "crossingDeg": 0,
+                      "nodeId": 47,
+                      "edgeId": 43
+                    },
+                    {
+                      "position": -6759.4,
+                      "roadClass": "primary",
+                      "elevation": 26.05,
+                      "crossingDeg": 0,
+                      "nodeId": 59,
+                      "edgeId": 54
+                    }
+                  ],
+                  "spacingM": {
+                    "median": 200,
+                    "min": 200,
+                    "gridPrimary": 200
+                  },
+                  "connectivity": {
+                    "reachableFromCoreShare": 1
+                  }
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 13593,
+                  "blockOrientationDeg": 0,
+                  "blockAspectMedian": 2.13,
+                  "boundaryBlocks": {
+                    "count": 6,
+                    "areaM2": 28035
+                  },
+                  "parcelFrontageMedianM": 7,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.524,
+                  "heightM": {
+                    "mean": 20.1,
+                    "p90": 22.8,
+                    "max": 60.8
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 19.5,
+                    "median": 22.52,
+                    "max": 26.27
+                  },
+                  "cellMeanSlopeDeg": 1.01,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              }
+            },
+            "candidates": [
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7559.4",
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -7559.4,
+                "point": {
+                  "x": 2560,
+                  "z": -7559.4
+                },
+                "roadClass": "primary",
+                "elevation": 21.46,
+                "nodeId": 11,
+                "edgeId": 10,
+                "stepM": 42.72,
+                "grade": 1.35,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 42.72 m > 3 m",
+                  "grade 1.35 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7359.4",
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -7359.4,
+                "point": {
+                  "x": 2560,
+                  "z": -7359.4
+                },
+                "roadClass": "primary",
+                "elevation": 22.16,
+                "nodeId": 23,
+                "edgeId": 21,
+                "stepM": 58.82,
+                "grade": 1.72,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 58.82 m > 3 m",
+                  "grade 1.72 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7159.4",
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -7159.4,
+                "point": {
+                  "x": 2560,
+                  "z": -7159.4
+                },
+                "roadClass": "primary",
+                "elevation": 21.71,
+                "nodeId": 35,
+                "edgeId": 32,
+                "stepM": 54.21,
+                "grade": 1.67,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 54.21 m > 3 m",
+                  "grade 1.67 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-6959.4",
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -6959.4,
+                "point": {
+                  "x": 2560,
+                  "z": -6959.4
+                },
+                "roadClass": "primary",
+                "elevation": 25.07,
+                "nodeId": 47,
+                "edgeId": 43,
+                "stepM": 25.52,
+                "grade": 0.87,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 25.52 m > 3 m",
+                  "grade 0.87 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-6759.4",
+                "chunkId": "c_2_-7",
+                "cityId": "chicagoGrid",
+                "side": "maxX",
+                "position": -6759.4,
+                "point": {
+                  "x": 2560,
+                  "z": -6759.4
+                },
+                "roadClass": "primary",
+                "elevation": 26.05,
+                "nodeId": 59,
+                "edgeId": 54,
+                "stepM": 31.64,
+                "grade": 1.03,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 31.64 m > 3 m",
+                  "grade 1.03 > 0.1 over 32 m"
+                ]
+              }
+            ],
+            "acceptedInterfaces": [],
+            "rejectedInterfaces": [
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7559.4",
+                "reasons": [
+                  "entry step 42.72 m > 3 m",
+                  "grade 1.35 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7359.4",
+                "reasons": [
+                  "entry step 58.82 m > 3 m",
+                  "grade 1.72 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-7159.4",
+                "reasons": [
+                  "entry step 54.21 m > 3 m",
+                  "grade 1.67 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-6959.4",
+                "reasons": [
+                  "entry step 25.52 m > 3 m",
+                  "grade 0.87 > 0.1 over 32 m"
+                ]
+              },
+              {
+                "candidateId": "iface:c_2_-7:maxX:-6759.4",
+                "reasons": [
+                  "entry step 31.64 m > 3 m",
+                  "grade 1.03 > 0.1 over 32 m"
+                ]
+              }
+            ],
+            "outcome": "separation",
+            "reason": "fezOrganicCore cannot enter 3,-7: no road entry within 3 m of the target terrain (steps 51.49 m)",
+            "plan": null,
+            "allowedChanges": "none",
+            "modifiedObjects": [],
+            "generatedObjects": [],
+            "result": {
+              "grown": false,
+              "reason": "no eligible growth front toward the target"
+            }
+          },
+          {
+            "decisionId": "enc:chicagoGrid|fezOrganicCore:step3:chicagoGrid->3,-7",
+            "encounterId": "enc:chicagoGrid|fezOrganicCore",
+            "step": 3,
+            "worldSeed": 6201,
+            "version": "g03b-1",
+            "newcomer": "chicagoGrid",
+            "other": "fezOrganicCore",
+            "targetCell": {
+              "gx": 3,
+              "gy": -7
+            },
+            "otherChunkId": "c_4_-7",
+            "otherSide": "minX",
+            "childSide": "maxX",
+            "newcomerFront": null,
+            "constraintParams": {
+              "approachCells": 3,
+              "maxEntryStep": 3,
+              "maxGrade": 0.1,
+              "gradeRun": 32,
+              "maxCrossingDeg": 30,
+              "maxInterfaces": 2,
+              "minInterfaceSpacing": 200,
+              "barrierWaterShare": 0.5,
+              "portTolerance": 0.5
+            },
+            "boundaryContext": {
+              "newcomer": null,
+              "other": {
+                "chunkId": "c_4_-7",
+                "cityId": "fezOrganicCore",
+                "side": "minX",
+                "strategy": "organic",
+                "road": {
+                  "orientationDeg": 2.74,
+                  "orientationConcentration": 0.647,
+                  "hierarchy": {
+                    "primary": 1,
+                    "secondary": 0,
+                    "other": 0
+                  },
+                  "endpoints": [
+                    {
+                      "position": -7168,
+                      "roadClass": "primary",
+                      "elevation": 24.63,
+                      "crossingDeg": 0,
+                      "nodeId": 26,
+                      "edgeId": 24
+                    }
+                  ],
+                  "spacingM": {
+                    "median": null,
+                    "min": null,
+                    "gridPrimary": "unavailable (no fixed grid: organic / canal network)"
+                  },
+                  "connectivity": {
+                    "reachableFromCoreShare": 1
+                  }
+                },
+                "morphology": {
+                  "blockAreaMedianM2": 31831,
+                  "blockOrientationDeg": 2.74,
+                  "blockAspectMedian": 1.02,
+                  "boundaryBlocks": {
+                    "count": 2,
+                    "areaM2": 466814
+                  },
+                  "parcelFrontageMedianM": 9,
+                  "parcelDepthM": "unavailable (parcel depth is not stored by the parcel generator)",
+                  "buildingCoverage": 0.577,
+                  "heightM": {
+                    "mean": 5.3,
+                    "p90": 6.4,
+                    "max": 9.6
+                  }
+                },
+                "geography": {
+                  "edgeHeightM": {
+                    "min": 18.54,
+                    "median": 24.5,
+                    "max": 28.42
+                  },
+                  "cellMeanSlopeDeg": 1.04,
+                  "edgeWaterShare": 0,
+                  "edgeBuildableShare": 1,
+                  "constraints": []
+                }
+              }
+            },
+            "candidates": [
+              {
+                "candidateId": "iface:c_4_-7:minX:-7168",
+                "chunkId": "c_4_-7",
+                "cityId": "fezOrganicCore",
+                "side": "minX",
+                "position": -7168,
+                "point": {
+                  "x": 3584,
+                  "z": -7168
+                },
+                "roadClass": "primary",
+                "elevation": 24.63,
+                "nodeId": 26,
+                "edgeId": 24,
+                "stepM": 51.49,
+                "grade": 1.67,
+                "crossingDeg": 0,
+                "score": 0,
+                "accepted": false,
+                "reasons": [
+                  "entry step 51.49 m > 3 m",
+                  "grade 1.67 > 0.1 over 32 m"
+                ]
+              }
+            ],
+            "acceptedInterfaces": [],
+            "rejectedInterfaces": [
+              {
+                "candidateId": "iface:c_4_-7:minX:-7168",
+                "reasons": [
+                  "entry step 51.49 m > 3 m",
+                  "grade 1.67 > 0.1 over 32 m"
+                ]
+              }
+            ],
+            "outcome": "separation",
+            "reason": "chicagoGrid cannot enter 3,-7: no road entry within 3 m of the target terrain (steps 42.72, 58.82, 54.21, 25.52, 31.64 m)",
+            "plan": null,
+            "allowedChanges": "none",
+            "modifiedObjects": [],
+            "generatedObjects": [],
+            "result": {
+              "grown": false,
+              "reason": "no eligible growth front toward the target"
+            }
+          }
+        ],
+        "topology": {
+          "crossCityJoins": 0,
+          "maxEndpointErrorM": null,
+          "maxElevationStepM": null,
+          "uniqueConnectionIds": true,
+          "uniqueChildNodes": true,
+          "uniqueParentNodes": true,
+          "unmatchedAcceptedEntries": 0,
+          "path": null,
+          "invalidCrossings": "not measured (no segment-intersection test); joins are identities of existing boundary nodes, no segment is generated across the edge"
+        },
+        "chunkMetrics": {
+          "c_1_-7": {
+            "cityId": "chicagoGrid",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 15.63,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13593,
+            "blockAspectMedian": 2.13,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.521,
+            "heightMeanM": 40.2,
+            "heightP90M": 95,
+            "heightMaxM": 171,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 0,
+                "areaM2": 0
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 7059
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 85223
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 71434
+              }
+            },
+            "counts": {
+              "roadKm": 16.38,
+              "networkEdges": 126,
+              "blocks": 66,
+              "parcels": 2290,
+              "buildings": 2059
+            }
+          },
+          "c_2_-7": {
+            "cityId": "chicagoGrid",
+            "role": "growth",
+            "landform": "plain",
+            "resolvedDNA": "chicagoGrid",
+            "dominantOrientationDeg": 0,
+            "orientationConcentration": 1,
+            "roadDensityKmPerKm2": 14.65,
+            "primaryKm": 5.12,
+            "blockAreaMedianM2": 13593,
+            "blockAspectMedian": 2.13,
+            "parcelFrontageMedianM": 7,
+            "buildingCoverage": 0.524,
+            "heightMeanM": 20.1,
+            "heightP90M": 22.8,
+            "heightMaxM": 60.8,
+            "deadEnds": 0,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 6,
+                "areaM2": 62832
+              },
+              "maxX": {
+                "count": 6,
+                "areaM2": 28035
+              },
+              "minZ": {
+                "count": 11,
+                "areaM2": 86910
+              },
+              "maxZ": {
+                "count": 11,
+                "areaM2": 72846
+              }
+            },
+            "counts": {
+              "roadKm": 15.36,
+              "networkEdges": 115,
+              "blocks": 66,
+              "parcels": 2320,
+              "buildings": 2087
+            }
+          },
+          "c_4_-7": {
+            "cityId": "fezOrganicCore",
+            "role": "core",
+            "landform": "plain",
+            "resolvedDNA": "fezOrganicCore",
+            "dominantOrientationDeg": 2.74,
+            "orientationConcentration": 0.647,
+            "roadDensityKmPerKm2": 5.41,
+            "primaryKm": 2.05,
+            "blockAreaMedianM2": 31831,
+            "blockAspectMedian": 1.02,
+            "parcelFrontageMedianM": 9,
+            "buildingCoverage": 0.577,
+            "heightMeanM": 5.3,
+            "heightP90M": 6.4,
+            "heightMaxM": 9.6,
+            "deadEnds": 12,
+            "boundaryBlocks": {
+              "minX": {
+                "count": 2,
+                "areaM2": 466814
+              },
+              "maxX": {
+                "count": 2,
+                "areaM2": 468577
+              },
+              "minZ": {
+                "count": 2,
+                "areaM2": 456952
+              },
+              "maxZ": {
+                "count": 2,
+                "areaM2": 478439
+              }
+            },
+            "counts": {
+              "roadKm": 5.67,
+              "networkEdges": 43,
+              "blocks": 9,
+              "parcels": 951,
+              "buildings": 805
+            }
+          }
+        }
+      }
+    },
+    "morphology": {
+      "orientationDiffAcrossEdgeDeg": {
+        "compatible": 2.27,
+        "incompatible": 5.58
+      },
+      "boundaryBlocks": {
+        "compatible": {
+          "chicago": {
+            "count": 6,
+            "areaM2": 9672
+          },
+          "fez": {
+            "count": 2,
+            "areaM2": 447995
+          }
+        },
+        "incompatible": {
+          "chicago": {
+            "count": 6,
+            "areaM2": 9672
+          },
+          "fez": {
+            "count": 2,
+            "areaM2": 487178
+          }
+        }
+      },
+      "existingUnchanged": {
+        "chicagoCore": true,
+        "fezCore": true,
+        "chicagoGrowthChunk": true,
+        "chicagoModifiedObjects": 0
+      },
+      "newcomer": {
+        "keys": [
+          "dominantOrientationDeg",
+          "orientationConcentration",
+          "roadDensityKmPerKm2",
+          "primaryKm",
+          "blockAreaMedianM2",
+          "blockAspectMedian",
+          "parcelFrontageMedianM",
+          "buildingCoverage",
+          "heightMeanM",
+          "deadEnds"
+        ],
+        "withNegotiation": {
+          "cityId": "fezOrganicCore",
+          "role": "growth",
+          "landform": "plain",
+          "resolvedDNA": "fezOrganicCore",
+          "dominantOrientationDeg": 87.73,
+          "orientationConcentration": 0.653,
+          "roadDensityKmPerKm2": 6.53,
+          "primaryKm": 2.25,
+          "blockAreaMedianM2": 12442,
+          "blockAspectMedian": 1.2,
+          "parcelFrontageMedianM": 9,
+          "buildingCoverage": 0.59,
+          "heightMeanM": 4.6,
+          "heightP90M": 6.4,
+          "heightMaxM": 6.4,
+          "deadEnds": 10,
+          "boundaryBlocks": {
+            "minX": {
+              "count": 2,
+              "areaM2": 447995
+            },
+            "maxX": {
+              "count": 2,
+              "areaM2": 456326
+            },
+            "minZ": {
+              "count": 2,
+              "areaM2": 574113
+            },
+            "maxZ": {
+              "count": 2,
+              "areaM2": 330208
+            }
+          },
+          "counts": {
+            "roadKm": 6.84,
+            "networkEdges": 59,
+            "blocks": 15,
+            "parcels": 1094,
+            "buildings": 927
+          }
+        },
+        "withoutNegotiation": {
+          "cityId": "fezOrganicCore",
+          "role": "growth",
+          "landform": "plain",
+          "resolvedDNA": "fezOrganicCore",
+          "dominantOrientationDeg": 84.42,
+          "orientationConcentration": 0.659,
+          "roadDensityKmPerKm2": 5.71,
+          "primaryKm": 2.05,
+          "blockAreaMedianM2": 30751,
+          "blockAspectMedian": 1.06,
+          "parcelFrontageMedianM": 9,
+          "buildingCoverage": 0.577,
+          "heightMeanM": 4.5,
+          "heightP90M": 6.4,
+          "heightMaxM": 6.4,
+          "deadEnds": 13,
+          "boundaryBlocks": {
+            "minX": {
+              "count": 2,
+              "areaM2": 487178
+            },
+            "maxX": {
+              "count": 2,
+              "areaM2": 457241
+            },
+            "minZ": {
+              "count": 2,
+              "areaM2": 502314
+            },
+            "maxZ": {
+              "count": 2,
+              "areaM2": 442105
+            }
+          },
+          "counts": {
+            "roadKm": 5.98,
+            "networkEdges": 45,
+            "blocks": 9,
+            "parcels": 1002,
+            "buildings": 852
+          }
+        },
+        "signaturesDiffer": true,
+        "parcels": {
+          "withNegotiation": {
+            "parcels": 1094,
+            "abnormal": 0
+          },
+          "withoutNegotiation": {
+            "parcels": 1002,
+            "abnormal": 0
+          }
+        }
+      },
+      "abnormalParcels": {
+        "compatible": {
+          "c_-6_-10": {
+            "parcels": 2330,
+            "abnormal": 0
+          },
+          "c_-5_-10": {
+            "parcels": 1094,
+            "abnormal": 0
+          }
+        },
+        "incompatible": {
+          "c_-5_-10": {
+            "parcels": 1002,
+            "abnormal": 0
+          },
+          "c_-6_-10": {
+            "parcels": 2330,
+            "abnormal": 0
+          }
+        },
+        "barrier": {
+          "c_2_-7": {
+            "parcels": 2320,
+            "abnormal": 0
+          }
+        }
+      }
+    },
+    "identity": {
+      "compatible": {
+        "c_-4_-10": {
+          "cityId": "fezOrganicCore",
+          "resolvedDNA": "fezOrganicCore",
+          "orientationConcentration": 0.755,
+          "recognisable": false
+        },
+        "c_-5_-10": {
+          "cityId": "fezOrganicCore",
+          "resolvedDNA": "fezOrganicCore",
+          "orientationConcentration": 0.653,
+          "recognisable": false
+        },
+        "c_-6_-10": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        },
+        "c_-7_-10": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        }
+      },
+      "incompatible": {
+        "c_-4_-10": {
+          "cityId": "fezOrganicCore",
+          "resolvedDNA": "fezOrganicCore",
+          "orientationConcentration": 0.755,
+          "recognisable": false
+        },
+        "c_-5_-10": {
+          "cityId": "fezOrganicCore",
+          "resolvedDNA": "fezOrganicCore",
+          "orientationConcentration": 0.659,
+          "recognisable": false
+        },
+        "c_-6_-10": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        },
+        "c_-7_-10": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        }
+      },
+      "barrier": {
+        "c_1_-7": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        },
+        "c_2_-7": {
+          "cityId": "chicagoGrid",
+          "resolvedDNA": "chicagoGrid",
+          "orientationConcentration": 1,
+          "recognisable": true
+        },
+        "c_4_-7": {
+          "cityId": "fezOrganicCore",
+          "resolvedDNA": "fezOrganicCore",
+          "orientationConcentration": 0.647,
+          "recognisable": false
+        }
+      }
+    },
+    "stability": {
+      "coresEqualIndependentGeneration": {
+        "chicagoGrid": true,
+        "fezOrganicCore": true
+      },
+      "twinIdentical": true,
+      "twinEncounters": true,
+      "saveMidwayLoadContinue": {
+        "signaturesAfterLoad": true,
+        "uninterrupted": true
+      },
+      "saveEndLoad": {
+        "connectionsReproduced": true,
+        "events": 2,
+        "encountersReproduced": true,
+        "rerunAddsNothing": true,
+        "before": {
+          "decisions": 1,
+          "chunks": 4,
+          "joins": 2
+        },
+        "after": {
+          "decisions": 1,
+          "chunks": 4,
+          "joins": 2
+        }
+      },
+      "scope": "no City Invasion, no six-city world, no 3×3, no new DNA, no terrain edits (the fixture world has two cities and ≤ 4 chunks)"
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "before": "docs/assets/screenshots/procedural-mini-world/g03b-before-meeting.png",
+      "fronts": "docs/assets/screenshots/procedural-mini-world/g03b-growth-fronts-interfaces.png",
+      "candidates": "docs/assets/screenshots/procedural-mini-world/g03b-candidate-analysis.png",
+      "connection": "docs/assets/screenshots/procedural-mini-world/g03b-connection-closeup.png",
+      "states": "docs/assets/screenshots/procedural-mini-world/g03b-encounter-state-topology.png",
+      "noBorders": "docs/assets/screenshots/procedural-mini-world/g03b-compatible-no-borders.png",
+      "afterFez": "docs/assets/screenshots/procedural-mini-world/g03b-fez-edge-after.png",
+      "plan": "docs/assets/screenshots/procedural-mini-world/g03b-incompatible-plan-closeup.png",
+      "beforeFez": "docs/assets/screenshots/procedural-mini-world/g03b-fez-edge-before.png",
+      "barrier": "docs/assets/screenshots/procedural-mini-world/g03b-barrier-separation.png",
+      "compare": "docs/assets/screenshots/procedural-mini-world/g03b-before-after-compare.png"
+    },
+    "errors": []
+  }
+}

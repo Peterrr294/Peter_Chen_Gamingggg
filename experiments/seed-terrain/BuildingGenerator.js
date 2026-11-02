@@ -112,7 +112,10 @@ export function generateBuildings(parcelsResult, fields, cityMatch, config, opti
   };
   // Seeded height centre (independent stream; never touches terrain or network seeds).
   const centreRandom = new SeededRandom(config.seed, 'buildings-centre', dna);
-  const centre = { x: originX + (centreRandom.next() - 0.5) * size * 0.5, z: originZ + (centreRandom.next() - 0.5) * size * 0.5 };
+  const drawnCentre = { x: originX + (centreRandom.next() - 0.5) * size * 0.5, z: originZ + (centreRandom.next() - 0.5) * size * 0.5 };
+  // G02b (optional): a growth chunk inherits its city's height centre (world point, may lie outside the chunk), so the
+  // height gradient continues from the city core instead of re-rolling a new centre per chunk.
+  const centre = options.centre ? { x: options.centre.x, z: options.centre.z } : drawnCentre;
   const centroidOf = parcel => [parcel.polygon.reduce((sum, p) => sum + p.x, 0) / parcel.polygon.length, parcel.polygon.reduce((sum, p) => sum + p.z, 0) / parcel.polygon.length];
   // Height area reference: largest parcel under the DNA rule (07.1: fusion-zone parcels do not rescale the rest).
   // 07.1a spatial identity: largest parcel of the parcel's own block (local; a changed block elsewhere cannot rescale it).
@@ -199,7 +202,7 @@ export function generateBuildings(parcelsResult, fields, cityMatch, config, opti
   const footprintArea = buildings.reduce((sum, b) => sum + b.footprintArea, 0);
   const result = {
     version: '05.1',
-    source: { dna, seed: config.seed, landform: config.landform, parcelsSignature: parcelsResult.signature, centre },
+    source: { dna, seed: config.seed, landform: config.landform, parcelsSignature: parcelsResult.signature, centre, centreSource: options.centre ? 'inherited' : 'seeded' },
     units: { length: 'm', area: 'm²', height: 'm', floors: 'count' },
     rules: { ...rules, rule: dnaRule },
     ...(identity ? { identity: { scheme: 'spatial', worldSeed: identity.worldSeed, areaReference: 'largest parcel of the same block' } } : {}),

@@ -1,0 +1,841 @@
+{
+  "version": 1,
+  "step": 30,
+  "constraintRules": {
+    "steepTerrain": {
+      "metric": "meanLandSlope",
+      "op": ">=",
+      "value": 18,
+      "unit": "°",
+      "meaning": "mean slope of the land in the cell is too steep for urban fabric"
+    },
+    "unbuildable": {
+      "metric": "buildableFraction",
+      "op": "<",
+      "value": 0.05,
+      "unit": "share",
+      "meaning": "less than 5 % buildable land (same threshold as G01 / G02)"
+    },
+    "waterBody": {
+      "metric": "waterFraction",
+      "op": ">=",
+      "value": 0.5,
+      "unit": "share",
+      "meaning": "the cell is mostly water"
+    }
+  },
+  "evaluatedCells": [
+    "-1,-1",
+    "-1,-2",
+    "-1,-3",
+    "-1,-4",
+    "-1,-5",
+    "-1,0",
+    "-1,1",
+    "-1,2",
+    "-1,3",
+    "-1,4",
+    "-1,5",
+    "-1,6",
+    "-1,7",
+    "-2,-1",
+    "-2,-2",
+    "-2,-3",
+    "-2,-4",
+    "-2,-5",
+    "-2,0",
+    "-2,1",
+    "-2,2",
+    "-2,3",
+    "-2,4",
+    "-2,5",
+    "-2,6",
+    "-3,-1",
+    "-3,-2",
+    "-3,-3",
+    "-3,-4",
+    "-3,-5",
+    "-3,0",
+    "-3,1",
+    "-3,5",
+    "-4,-1",
+    "-4,-2",
+    "-4,-3",
+    "-4,-4",
+    "-4,1",
+    "-4,3",
+    "-5,0",
+    "-5,1",
+    "0,-3",
+    "0,-4",
+    "0,-5",
+    "0,-6",
+    "0,0",
+    "0,1",
+    "0,2",
+    "0,3",
+    "0,4",
+    "0,5",
+    "0,6",
+    "0,7",
+    "0,8",
+    "1,-2",
+    "1,-4",
+    "1,-5",
+    "1,-6",
+    "1,-7",
+    "1,2",
+    "1,3",
+    "1,4",
+    "1,5",
+    "1,6",
+    "1,7",
+    "1,8",
+    "2,-4",
+    "2,-5",
+    "2,-6",
+    "2,0",
+    "2,2",
+    "2,3",
+    "2,4",
+    "2,7",
+    "3,-4",
+    "3,-5",
+    "3,-6",
+    "3,1",
+    "3,2",
+    "3,3",
+    "3,4",
+    "3,5",
+    "4,-1",
+    "4,-3",
+    "4,-4",
+    "4,-5",
+    "4,-6",
+    "4,0",
+    "4,1",
+    "4,3",
+    "5,-1",
+    "5,-2",
+    "5,-4",
+    "5,-5",
+    "5,-6",
+    "5,-7",
+    "5,0",
+    "5,1",
+    "5,2",
+    "6,-1",
+    "6,-2",
+    "6,-5",
+    "6,-6",
+    "6,0",
+    "6,1",
+    "6,2",
+    "7,-1",
+    "7,-2",
+    "7,0",
+    "7,1",
+    "8,-1"
+  ],
+  "cellStates": [
+    "1,-7:frontier",
+    "5,-7:frontier",
+    "0,-6:frontier",
+    "1,-6:urbanTerritory:chicagoGrid",
+    "2,-6:frontier",
+    "3,-6:evaluated",
+    "4,-6:frontier",
+    "5,-6:urbanTerritory:chicagoGrid",
+    "6,-6:frontier",
+    "-3,-5:evaluated",
+    "-2,-5:frontier",
+    "-1,-5:frontier",
+    "0,-5:frontier",
+    "1,-5:urbanTerritory:chicagoGrid",
+    "2,-5:urbanTerritory:chicagoGrid",
+    "3,-5:urbanTerritory:chicagoGrid",
+    "4,-5:urbanTerritory:chicagoGrid",
+    "5,-5:urbanTerritory:chicagoGrid",
+    "6,-5:frontier",
+    "-4,-4:evaluated",
+    "-3,-4:frontier",
+    "-2,-4:urbanTerritory:fezOrganicCore",
+    "-1,-4:urbanTerritory:fezOrganicCore",
+    "0,-4:urbanTerritory:fezOrganicCore",
+    "1,-4:frontier",
+    "2,-4:frontier",
+    "3,-4:evaluated",
+    "4,-4:urbanTerritory:chicagoGrid",
+    "5,-4:evaluated",
+    "-4,-3:evaluated",
+    "-3,-3:frontier",
+    "-2,-3:frontier",
+    "-1,-3:urbanTerritory:fezOrganicCore",
+    "0,-3:frontier",
+    "4,-3:ecologicalConstraint:steepTerrain",
+    "-4,-2:frontier",
+    "-3,-2:urbanTerritory:manhattanGrid",
+    "-2,-2:urbanTerritory:manhattanGrid",
+    "-1,-2:frontier",
+    "1,-2:evaluated",
+    "5,-2:frontier",
+    "6,-2:ecologicalConstraint:steepTerrain",
+    "7,-2:frontier",
+    "-4,-1:evaluated",
+    "-3,-1:ecologicalConstraint:steepTerrain",
+    "-2,-1:urbanTerritory:manhattanGrid",
+    "-1,-1:frontier",
+    "4,-1:ecologicalConstraint:steepTerrain",
+    "5,-1:urbanTerritory:lisbonHillCore:steepTerrain",
+    "6,-1:urbanTerritory:lisbonHillCore",
+    "7,-1:urbanTerritory:lisbonHillCore",
+    "8,-1:frontier",
+    "-5,0:evaluated",
+    "-3,0:ecologicalConstraint:steepTerrain",
+    "-2,0:urbanTerritory:manhattanGrid",
+    "-1,0:urbanTerritory:manhattanGrid",
+    "0,0:ecologicalConstraint:steepTerrain",
+    "2,0:evaluated",
+    "4,0:ecologicalConstraint:steepTerrain",
+    "5,0:urbanTerritory:lisbonHillCore",
+    "6,0:urbanTerritory:lisbonHillCore",
+    "7,0:ecologicalConstraint:steepTerrain",
+    "-5,1:ecologicalConstraint:steepTerrain",
+    "-4,1:ecologicalConstraint:steepTerrain",
+    "-3,1:ecologicalConstraint:steepTerrain",
+    "-2,1:urbanTerritory:manhattanGrid",
+    "-1,1:urbanTerritory:manhattanGrid",
+    "0,1:ecologicalConstraint:steepTerrain",
+    "3,1:evaluated",
+    "4,1:evaluated",
+    "5,1:ecologicalConstraint:steepTerrain",
+    "6,1:urbanTerritory:lisbonHillCore",
+    "7,1:ecologicalConstraint:steepTerrain",
+    "-2,2:ecologicalConstraint:steepTerrain",
+    "-1,2:urbanTerritory:manhattanGrid",
+    "0,2:ecologicalConstraint:steepTerrain",
+    "1,2:evaluated",
+    "2,2:frontier",
+    "3,2:ecologicalConstraint:steepTerrain",
+    "5,2:evaluated",
+    "6,2:frontier",
+    "-4,3:evaluated",
+    "-2,3:evaluated",
+    "-1,3:urbanTerritory:amsterdamCanalRing",
+    "0,3:urbanTerritory:amsterdamCanalRing",
+    "1,3:urbanTerritory:amsterdamCanalRing",
+    "2,3:urbanTerritory:amsterdamCanalRing",
+    "3,3:urbanTerritory:amsterdamCanalRing",
+    "4,3:frontier",
+    "-2,4:evaluated",
+    "-1,4:frontier",
+    "0,4:ecologicalConstraint:steepTerrain",
+    "1,4:ecologicalConstraint:steepTerrain",
+    "2,4:frontier",
+    "3,4:frontier",
+    "-3,5:evaluated",
+    "-2,5:evaluated",
+    "-1,5:ecologicalConstraint:steepTerrain",
+    "0,5:urbanTerritory:veniceWaterNetwork",
+    "1,5:ecologicalConstraint:steepTerrain",
+    "3,5:evaluated",
+    "-2,6:frontier",
+    "-1,6:urbanTerritory:veniceWaterNetwork",
+    "0,6:urbanTerritory:veniceWaterNetwork",
+    "1,6:frontier",
+    "-1,7:evaluated",
+    "0,7:urbanTerritory:veniceWaterNetwork",
+    "1,7:urbanTerritory:veniceWaterNetwork",
+    "2,7:frontier",
+    "0,8:frontier",
+    "1,8:evaluated"
+  ],
+  "territories": [
+    {
+      "cityId": "amsterdamCanalRing",
+      "originChunkId": "c_0_3",
+      "occupiedChunkIds": [
+        "c_0_3",
+        "c_-1_3",
+        "c_1_3",
+        "c_2_3",
+        "c_3_3"
+      ],
+      "chunkCount": 5,
+      "territoryArea": {
+        "chunkCoverageKm2": 5.243,
+        "builtFootprintKm2": 0.098,
+        "parcelKm2": 0.179,
+        "roadKm": 12.55,
+        "waterInsideKm2": 1.332,
+        "otherNonBuildableInsideKm2": 1.358
+      },
+      "maxGeneration": 3,
+      "active": 5,
+      "blocked": 7,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [
+        "manhattanGrid"
+      ],
+      "boundaryLengthM": {
+        "external": 12288,
+        "byType": {
+          "urbanEcological": 4096,
+          "urbanSameCity": 8192,
+          "urbanOtherCity": 1024,
+          "urbanEvaluated": 7168
+        }
+      }
+    },
+    {
+      "cityId": "chicagoGrid",
+      "originChunkId": "c_4_-4",
+      "occupiedChunkIds": [
+        "c_4_-4",
+        "c_4_-5",
+        "c_3_-5",
+        "c_5_-5",
+        "c_2_-5",
+        "c_1_-5",
+        "c_5_-6",
+        "c_1_-6"
+      ],
+      "chunkCount": 8,
+      "territoryArea": {
+        "chunkCoverageKm2": 8.389,
+        "builtFootprintKm2": 1.039,
+        "parcelKm2": 1.982,
+        "roadKm": 70.99,
+        "waterInsideKm2": 0.179,
+        "otherNonBuildableInsideKm2": 2.494
+      },
+      "maxGeneration": 5,
+      "active": 10,
+      "blocked": 4,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [],
+      "boundaryLengthM": {
+        "external": 18432,
+        "byType": {
+          "urbanSameCity": 14336,
+          "urbanEcological": 1024,
+          "urbanEvaluated": 17408
+        }
+      }
+    },
+    {
+      "cityId": "fezOrganicCore",
+      "originChunkId": "c_-1_-3",
+      "occupiedChunkIds": [
+        "c_-1_-3",
+        "c_-1_-4",
+        "c_-2_-4",
+        "c_0_-4"
+      ],
+      "chunkCount": 4,
+      "territoryArea": {
+        "chunkCoverageKm2": 4.194,
+        "builtFootprintKm2": 0.248,
+        "parcelKm2": 0.429,
+        "roadKm": 17.57,
+        "waterInsideKm2": 0.106,
+        "otherNonBuildableInsideKm2": 1.335
+      },
+      "maxGeneration": 2,
+      "active": 8,
+      "blocked": 0,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [],
+      "boundaryLengthM": {
+        "external": 10240,
+        "byType": {
+          "urbanSameCity": 6144,
+          "urbanEvaluated": 10240
+        }
+      }
+    },
+    {
+      "cityId": "lisbonHillCore",
+      "originChunkId": "c_5_0",
+      "occupiedChunkIds": [
+        "c_5_0",
+        "c_6_0",
+        "c_6_-1",
+        "c_6_1",
+        "c_7_-1",
+        "c_5_-1"
+      ],
+      "chunkCount": 6,
+      "territoryArea": {
+        "chunkCoverageKm2": 6.291,
+        "builtFootprintKm2": 0.349,
+        "parcelKm2": 0.553,
+        "roadKm": 38.34,
+        "waterInsideKm2": 1.256,
+        "otherNonBuildableInsideKm2": 2.161
+      },
+      "maxGeneration": 3,
+      "active": 10,
+      "blocked": 0,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [],
+      "boundaryLengthM": {
+        "external": 12288,
+        "byType": {
+          "urbanSameCity": 12288,
+          "urbanEcological": 8192,
+          "urbanEvaluated": 4096
+        }
+      }
+    },
+    {
+      "cityId": "manhattanGrid",
+      "originChunkId": "c_-2_0",
+      "occupiedChunkIds": [
+        "c_-2_0",
+        "c_-2_1",
+        "c_-1_1",
+        "c_-1_0",
+        "c_-2_-1",
+        "c_-1_2",
+        "c_-2_-2",
+        "c_-3_-2"
+      ],
+      "chunkCount": 8,
+      "territoryArea": {
+        "chunkCoverageKm2": 8.389,
+        "builtFootprintKm2": 3.489,
+        "parcelKm2": 4.803,
+        "roadKm": 135.38,
+        "waterInsideKm2": 0.037,
+        "otherNonBuildableInsideKm2": 0.509
+      },
+      "maxGeneration": 3,
+      "active": 5,
+      "blocked": 8,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [
+        "amsterdamCanalRing"
+      ],
+      "boundaryLengthM": {
+        "external": 16384,
+        "byType": {
+          "urbanSameCity": 16384,
+          "urbanEcological": 9216,
+          "urbanEvaluated": 6144,
+          "urbanOtherCity": 1024
+        }
+      }
+    },
+    {
+      "cityId": "veniceWaterNetwork",
+      "originChunkId": "c_0_6",
+      "occupiedChunkIds": [
+        "c_0_6",
+        "c_0_7",
+        "c_0_5",
+        "c_-1_6",
+        "c_1_7"
+      ],
+      "chunkCount": 5,
+      "territoryArea": {
+        "chunkCoverageKm2": 5.243,
+        "builtFootprintKm2": 0.175,
+        "parcelKm2": 0.331,
+        "roadKm": 25.42,
+        "waterInsideKm2": 1.125,
+        "otherNonBuildableInsideKm2": 1.445
+      },
+      "maxGeneration": 2,
+      "active": 4,
+      "blocked": 5,
+      "status": "growing",
+      "stopReason": null,
+      "neighboringCities": [],
+      "boundaryLengthM": {
+        "external": 12288,
+        "byType": {
+          "urbanSameCity": 8192,
+          "urbanEvaluated": 8192,
+          "urbanEcological": 4096
+        }
+      }
+    }
+  ],
+  "adjacencies": [
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "manhattanGrid"
+      ],
+      "chunks": [
+        "c_-1_3",
+        "c_-1_2"
+      ],
+      "terrain": {
+        "geometry": "step",
+        "maxDh": 16.29,
+        "hydrology": "continuous",
+        "wetMismatch": 0,
+        "landforms": [
+          "coast",
+          "plain"
+        ]
+      },
+      "roadInterface": {
+        "portsA": 0,
+        "portsB": 13,
+        "alignedPorts": 0,
+        "status": "ports not aligned"
+      },
+      "waterInterface": {
+        "sharedWetSamples": 0,
+        "status": "no shared water on the edge"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "chicagoGrid"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_3_3",
+          "c_4_-4"
+        ],
+        "centreDistanceM": 7241,
+        "gapCells": 7
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "fezOrganicCore"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_-1_3",
+          "c_-1_-3"
+        ],
+        "centreDistanceM": 6144,
+        "gapCells": 5
+      },
+      "barrierStatus": "none",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "lisbonHillCore"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_3_3",
+          "c_5_0"
+        ],
+        "centreDistanceM": 3692,
+        "gapCells": 4
+      },
+      "barrierStatus": "unknown",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "manhattanGrid"
+      ],
+      "relation": "directAdjacency",
+      "cornerContact": false,
+      "sharedEdges": 1,
+      "nearest": {
+        "chunks": [
+          "c_-1_3",
+          "c_-1_2"
+        ],
+        "centreDistanceM": 1024,
+        "gapCells": 0
+      },
+      "barrierStatus": "n/a",
+      "verifiedConnection": "none: no aligned ports"
+    },
+    {
+      "cities": [
+        "amsterdamCanalRing",
+        "veniceWaterNetwork"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_0_3",
+          "c_0_5"
+        ],
+        "centreDistanceM": 2048,
+        "gapCells": 1
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "chicagoGrid",
+        "fezOrganicCore"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": true,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_1_-5",
+          "c_0_-4"
+        ],
+        "centreDistanceM": 1448,
+        "gapCells": 1
+      },
+      "barrierStatus": "n/a",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "chicagoGrid",
+        "lisbonHillCore"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_4_-4",
+          "c_5_-1"
+        ],
+        "centreDistanceM": 3238,
+        "gapCells": 3
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "chicagoGrid",
+        "manhattanGrid"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_1_-5",
+          "c_-2_-2"
+        ],
+        "centreDistanceM": 4344,
+        "gapCells": 5
+      },
+      "barrierStatus": "none",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "chicagoGrid",
+        "veniceWaterNetwork"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_4_-4",
+          "c_0_5"
+        ],
+        "centreDistanceM": 10085,
+        "gapCells": 12
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "fezOrganicCore",
+        "lisbonHillCore"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_0_-4",
+          "c_5_-1"
+        ],
+        "centreDistanceM": 5971,
+        "gapCells": 7
+      },
+      "barrierStatus": "unknown",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "fezOrganicCore",
+        "manhattanGrid"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": true,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_-1_-3",
+          "c_-2_-2"
+        ],
+        "centreDistanceM": 1448,
+        "gapCells": 1
+      },
+      "barrierStatus": "n/a",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "fezOrganicCore",
+        "veniceWaterNetwork"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_-1_-3",
+          "c_0_5"
+        ],
+        "centreDistanceM": 8256,
+        "gapCells": 8
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "lisbonHillCore",
+        "manhattanGrid"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_5_0",
+          "c_-1_0"
+        ],
+        "centreDistanceM": 6144,
+        "gapCells": 5
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "lisbonHillCore",
+        "veniceWaterNetwork"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_5_0",
+          "c_0_5"
+        ],
+        "centreDistanceM": 7241,
+        "gapCells": 9
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    },
+    {
+      "cities": [
+        "manhattanGrid",
+        "veniceWaterNetwork"
+      ],
+      "relation": "spatialSeparation",
+      "cornerContact": false,
+      "sharedEdges": 0,
+      "nearest": {
+        "chunks": [
+          "c_-1_2",
+          "c_0_5"
+        ],
+        "centreDistanceM": 3238,
+        "gapCells": 3
+      },
+      "barrierStatus": "present",
+      "verifiedConnection": "none: no infrastructure outside generated chunks"
+    }
+  ],
+  "metrics": {
+    "step": 30,
+    "totalChunks": 36,
+    "urbanized": {
+      "chunkCoverageKm2": 37.749,
+      "builtFootprintKm2": 5.398,
+      "parcelKm2": 8.277,
+      "viableChunks": 34
+    },
+    "cells": {
+      "urbanTerritory": 36,
+      "frontier": 32,
+      "evaluated": 22,
+      "ecologicalConstraint": 21,
+      "urbanOnConstrainedTerrain": 1,
+      "protected": 0
+    },
+    "evaluatedNonUrbanKm2": 56.623,
+    "ecologicalConstraintKm2": 22.02,
+    "interCityAdjacencies": {
+      "sharedEdges": 1,
+      "cityPairs": 1,
+      "cornerContactPairs": 2
+    },
+    "distribution": {
+      "amsterdamCanalRing": {
+        "chunks": 5,
+        "share": 0.139
+      },
+      "chicagoGrid": {
+        "chunks": 8,
+        "share": 0.222
+      },
+      "fezOrganicCore": {
+        "chunks": 4,
+        "share": 0.111
+      },
+      "lisbonHillCore": {
+        "chunks": 6,
+        "share": 0.167
+      },
+      "manhattanGrid": {
+        "chunks": 8,
+        "share": 0.222
+      },
+      "veniceWaterNetwork": {
+        "chunks": 5,
+        "share": 0.139
+      }
+    },
+    "stoppedCities": []
+  }
+}

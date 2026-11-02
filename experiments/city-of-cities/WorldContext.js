@@ -12,6 +12,10 @@
 // except for their generation status and outputs (filled once by generateChunk).
 import { computeMatchMetrics, matchCity } from '../seed-terrain/CityMatcher.js';
 import { generateUrbanLayer } from '../world-grid/WorldGrid.js';
+import { generateNetwork } from '../seed-terrain/NetworkGenerator.js';
+import { generateBlocks } from '../seed-terrain/BlockGenerator.js';
+import { generateParcels } from '../seed-terrain/ParcelGenerator.js';
+import { generateBuildings } from '../seed-terrain/BuildingGenerator.js';
 import { cellOf, landformAt } from '../growing-world/growthConfig.js';
 import { networkOf, terrainOf } from '../growing-world/WorldGrowthController.js';
 import { CHUNK_SIZE, CITY_IDS, ORIGIN_PROFILES, SCHEMA_VERSION, STATE_KIND, chunkIdOf, citySeedOf, cityLabel, growthOf, morphologyOf, normaliseParams, urbanSeedOf } from './originConfig.js';
@@ -124,9 +128,12 @@ export class WorldContext {
     const cell = this.cell(chunk.worldCoordinate.gx, chunk.worldCoordinate.gy);
     const terrain = terrainOf(cell);
     const t1 = now();
-    const net = networkOf(cell, chunk.cityId, terrain);
+    // G02b: a chunk with a growthContext continues its parent's road skeleton (grid anchor) and city height centre
+    // through the generators' optional arguments; without it the G01 / G02 path below is unchanged.
+    const ctx = chunk.generationParameters.growthContext ?? null;
+    const net = ctx ? growthNetwork(cell, chunk.cityId, terrain, ctx) : networkOf(cell, chunk.cityId, terrain);
     const t2 = now();
-    const city = generateUrbanLayer(terrain, net, net.network, null, { worldSeed: chunk.generationParameters.urbanSeed });
+    const city = ctx ? growthUrban(terrain, net, chunk.generationParameters.urbanSeed, ctx) : generateUrbanLayer(terrain, net, net.network, null, { worldSeed: chunk.generationParameters.urbanSeed });
     const t3 = now();
     const outputs = {
       resolvedDNA: city.cityMatch.selectedDNA.id, fitScore: city.cityMatch.selectedDNA.fitScore,
@@ -135,6 +142,12 @@ export class WorldContext {
       ms: { terrain: Math.round(t1 - t0), network: Math.round(t2 - t1), urban: Math.round(t3 - t2), total: Math.round(t3 - t0) },
       // G02: road / canal ports per side (growth infrastructure term) and 8 m edge profiles (conflict records).
       ports: portsBySide(city.network), profiles: edgeProfiles(terrain.fields),
+      // G03a: real built quantities (m²), kept apart from the 1024 × 1024 m chunk coverage.
+      grid: city.network.grid ?? null, buildingCentre: city.buildings.source.centre, centreSource: city.buildings.source.centreSource,
+      boundaryBlocks: boundaryBlocks(city.blocks, terrain.fields.grid),
+      roadGraph: city.network.edges.filter(e => e.kind !== 'canal').map(e => [e.from, e.to, Math.round(e.length), e.roadClass]), // G02b: city-level reachability
+      morph: morphologyMetrics(city, terrain.fields.grid),
+      areas: { builtFootprintM2: Math.round((city.buildings.buildings ?? []).reduce((s, x) => s + (x.footprintArea ?? 0), 0)), parcelM2: Math.round((city.parcels.parcels ?? []).reduce((s, x) => s + (x.area ?? 0), 0)) },
     };
     this.chunks.set(chunkId, { ...chunk, generationStatus: 'generated', outputs });
     const origin = this.cities.get(chunk.cityId);
@@ -145,7 +158,7 @@ export class WorldContext {
   // ---------- G02: growth chunks ----------
   // Registers one growth chunk (planned; generateChunk fills its outputs). Checks: free cell, parent of the same city,
   // parent edge-adjacent. Terrain seed and variation come from the cell (world-owned); urbanSeed from the citySeed.
-  addGrowthChunk({ cityId, gx, gy, parentChunkId, step, reason }) {
+  addGrowthChunk({ cityId, gx, gy, parentChunkId, step, reason, growthContext = null }) {
     const parent = this.chunks.get(parentChunkId);
     if (!parent || parent.cityId !== cityId) throw new Error(`Parent ${parentChunkId} is not a chunk of ${cityId}`);
     if (Math.abs(parent.worldCoordinate.gx - gx) + Math.abs(parent.worldCoordinate.gy - gy) !== 1) throw new Error(`Parent ${parentChunkId} is not edge-adjacent to ${gx},${gy}`);
@@ -156,7 +169,7 @@ export class WorldContext {
     const chunk = {
       chunkId, cityId, role: 'growth', parentChunkId, coreChunkId: parent.coreChunkId, generation: parent.generation + 1, growthStep: step,
       worldCoordinate: { gx, gy }, worldOrigin: cell.worldOrigin, terrainSeed: cell.terrainSeed, terrainType: cell.landform,
-      generationParameters: { variation: cell.variation, transitionWidth: 128, chunkSize: this.chunkSize, urbanSeed: urbanSeedOf(citySeed, chunkId), idMode: 'spatial (07.1a)', terrainMode: 'raw (no seam correction)' },
+      generationParameters: { variation: cell.variation, transitionWidth: 128, chunkSize: this.chunkSize, urbanSeed: urbanSeedOf(citySeed, chunkId), idMode: 'spatial (07.1a)', terrainMode: 'raw (no seam correction)', ...(growthContext ? { growthContext } : {}) },
       growthReason: reason ?? null, generationStatus: 'planned', outputs: null,
     };
     this.chunks.set(chunkId, chunk);
@@ -207,7 +220,7 @@ export class WorldContext {
         expectedSignatures: c.outputs?.signatures ?? c.expectedSignatures ?? null,
       })),
       placement: this.placement ? { placementVersion: this.placement.placementVersion ?? 1, order: this.placement.order, failures: this.placement.failures } : null,
-      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
+      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
     };
   }
 
@@ -228,13 +241,13 @@ export class WorldContext {
     for (const chunk of saved.chunks.filter(c => c.role === 'growth').sort((a, b) => a.growthStep - b.growthStep)) {
       const event = saved.growth.history.find(e => e.newChunkId === chunk.chunkId);
       if (!event || event.step !== chunk.growthStep || event.parentChunkId !== chunk.parentChunkId) throw new Error(`Growth chunk ${chunk.chunkId} has no matching history event`);
-      const rebuilt = world.addGrowthChunk({ cityId: chunk.cityId, gx: chunk.worldCoordinate.gx, gy: chunk.worldCoordinate.gy, parentChunkId: chunk.parentChunkId, step: chunk.growthStep, reason: event.growthReason });
+      const rebuilt = world.addGrowthChunk({ cityId: chunk.cityId, gx: chunk.worldCoordinate.gx, gy: chunk.worldCoordinate.gy, parentChunkId: chunk.parentChunkId, step: chunk.growthStep, reason: event.growthReason, growthContext: chunk.generationParameters.growthContext ?? null });
       if (rebuilt.terrainSeed !== chunk.terrainSeed || rebuilt.generation !== chunk.generation || JSON.stringify(rebuilt.generationParameters) !== JSON.stringify(chunk.generationParameters)) throw new Error(`Growth chunk ${chunk.chunkId} does not match the world rules`);
       world.chunks.set(chunk.chunkId, { ...rebuilt, expectedSignatures: chunk.expectedSignatures });
     }
     // States saved before placement v2 keep their stored origins (cells are restored, never re-placed).
     world.placement = saved.placement ? { placementVersion: 1, ...saved.placement, placed: [], candidates: null } : null;
-    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history] };
+    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])] };
     return world;
   }
 }
@@ -260,7 +273,7 @@ function distanceToWater(fields) {
 
 function portsBySide(network) {
   const out = { minX: [], maxX: [], minZ: [], maxZ: [] };
-  for (const p of network.edgePorts) out[p.side].push({ position: Math.round(p.position * 10) / 10, type: p.type, roadClass: p.roadClass });
+  for (const p of network.edgePorts) out[p.side].push({ position: Math.round(p.position * 10) / 10, type: p.type, roadClass: p.roadClass, nodeId: p.nodeId, edgeId: p.edgeId, elevation: Math.round(p.elevation * 100) / 100, directionDeg: Math.round((p.directionDeg ?? 0) * 10) / 10 }); // G02b: ids + elevation; G03b: road direction at the port (additive)
   return out;
 }
 
@@ -296,4 +309,70 @@ function waterfrontBuildable(fields) {
     }
   }
   return n / waterMask.length;
+}
+
+// ---------- G02b helpers (generators called with their optional growth arguments) ----------
+function growthNetwork(cell, cityId, terrain, ctx) {
+  const t0 = now();
+  const cityMatch = matchCity(terrain.analysis, { override: cityId });
+  const network = generateNetwork(terrain.fields, terrain.analysis, cityMatch, terrain.config, { loops: true, growth: { grid: ctx.grid ?? null, entryPorts: [...(ctx.entryPorts ?? []), ...(ctx.crossCityEntries ?? [])], side: ctx.side } });
+  return { key: `${terrain.key}|${cityId}|growth`, empty: false, cityMatch, network, ms: now() - t0, stageMs: {} };
+}
+function growthUrban(terrain, net, urbanSeed, ctx) {
+  const { config, fields, analysis } = terrain;
+  const id = { identity: { worldSeed: urbanSeed } };
+  const blocks = generateBlocks(fields, analysis, net.network, net.cityMatch, config, id);
+  const parcels = generateParcels(blocks, fields, net.network, net.cityMatch, config, id);
+  const buildings = generateBuildings(parcels, fields, net.cityMatch, config, { ...id, ...(ctx.centre ? { centre: ctx.centre } : {}) });
+  return { cityMatch: net.cityMatch, network: net.network, rawNetwork: net.network, blocks, parcels, buildings };
+}
+// Blocks that touch each chunk side (within 2 m): the block growth front of that side.
+function boundaryBlocks(blocks, grid) {
+  const { originX, originZ, size } = grid; const h = size / 2; const tol = 2;
+  const out = { minX: { count: 0, areaM2: 0 }, maxX: { count: 0, areaM2: 0 }, minZ: { count: 0, areaM2: 0 }, maxZ: { count: 0, areaM2: 0 } };
+  for (const b of blocks.blocks ?? []) {
+    const sides = new Set();
+    for (const p of b.polygon) {
+      if (Math.abs(p.x - (originX - h)) < tol) sides.add('minX'); if (Math.abs(p.x - (originX + h)) < tol) sides.add('maxX');
+      if (Math.abs(p.z - (originZ - h)) < tol) sides.add('minZ'); if (Math.abs(p.z - (originZ + h)) < tol) sides.add('maxZ');
+    }
+    for (const side of sides) { out[side].count += 1; out[side].areaM2 += Math.round(b.area ?? 0); }
+  }
+  return out;
+}
+
+// G02b morphology metrics of one generated chunk (all from generated data).
+function morphologyMetrics(city, grid) {
+  const km2 = (grid.size * grid.size) / 1e6;
+  const roads = city.network.edges.filter(e => e.kind !== 'canal' && e.kind !== 'tunnel');
+  // Dominant orientation: length-weighted circular mean of 4θ (orthogonal families fold together), in [0°, 90°).
+  let sx = 0; let sz = 0; let total = 0;
+  for (const e of roads) { const a = (e.axisDeg * Math.PI) / 180 * 4; sx += Math.cos(a) * e.length; sz += Math.sin(a) * e.length; total += e.length; }
+  const dominantDeg = total ? ((((Math.atan2(sz, sx) * 180) / Math.PI / 4) % 90) + 90) % 90 : null;
+  const quantile = (list, q) => { if (!list.length) return null; const s = [...list].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; };
+  const theta = ((dominantDeg ?? 0) * Math.PI) / 180; const u = [Math.cos(theta), Math.sin(theta)]; const v = [-u[1], u[0]];
+  const aspects = (city.blocks.blocks ?? []).map(b => {
+    const a = b.polygon.map(p => p.x * u[0] + p.z * u[1]); const c = b.polygon.map(p => p.x * v[0] + p.z * v[1]);
+    const w = Math.max(...a) - Math.min(...a); const h = Math.max(...c) - Math.min(...c);
+    return Math.max(w, h) / Math.max(1e-6, Math.min(w, h));
+  });
+  const frontage = (city.parcels.parcels ?? []).map(p => (p.frontages ?? []).reduce((s, f) => s + f.length, 0)).filter(x => x > 0);
+  const heights = (city.buildings.buildings ?? []).map(b => b.height);
+  const footprint = (city.buildings.buildings ?? []).reduce((s, b) => s + (b.footprintArea ?? 0), 0);
+  const parcelArea = (city.parcels.parcels ?? []).reduce((s, p) => s + (p.area ?? 0), 0);
+  const r = (x, d = 2) => (x === null || x === undefined ? null : +Number(x).toFixed(d));
+  return {
+    dominantOrientationDeg: r(dominantDeg, 2), orientationConcentration: r(total ? Math.hypot(sx, sz) / total : null, 3),
+    roadDensityKmPerKm2: r(total / 1000 / km2, 2), primaryKm: r(roads.filter(e => e.roadClass === 'primary').reduce((s, e) => s + e.length, 0) / 1000, 2),
+    blockAreaMedianM2: r(quantile((city.blocks.blocks ?? []).map(b => b.area), 0.5), 0), blockAspectMedian: r(quantile(aspects, 0.5), 2),
+    parcelFrontageMedianM: r(quantile(frontage, 0.5), 1), buildingCoverage: r(parcelArea ? footprint / parcelArea : null, 3),
+    heightMeanM: r(heights.length ? heights.reduce((a, b) => a + b, 0) / heights.length : null, 1), heightP90M: r(quantile(heights, 0.9), 1), heightMaxM: r(heights.length ? Math.max(...heights) : null, 1),
+    deadEnds: deadEnds(city.network, grid),
+  };
+}
+// Road nodes of degree 1 that are not on the chunk boundary (the boundary ends are ports, not dead ends).
+function deadEnds(network, grid) {
+  const deg = new Map();
+  for (const e of network.edges) if (e.kind !== 'canal') { deg.set(e.from, (deg.get(e.from) ?? 0) + 1); deg.set(e.to, (deg.get(e.to) ?? 0) + 1); }
+  return network.nodes.filter(n => deg.get(n.id) === 1 && !n.onBoundary).length;
 }
