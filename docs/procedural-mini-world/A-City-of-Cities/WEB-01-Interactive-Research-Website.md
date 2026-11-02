@@ -4,6 +4,18 @@ Written for anyone maintaining or reviewing the site. Status: **stage complete, 
 
 WEB-01 ending does not finish the research. Natural city encounters, road-first growth in the scheduler and calibration of the City DNA stay open as separate research tasks.
 
+## Release
+
+| | |
+| --- | --- |
+| Public site | <https://gameeeee-zc626.web.app> |
+| Commit and tag | `ad6acd6`, `release/city-of-cities-web-v1` |
+| Released | 2026-11-02 UTC, by the `main` workflow |
+| Final checks | 141 / 141 local; 22 / 22 and `verify:live` 10 / 10 at the public address |
+| Rollback | `firebase hosting:clone gameeeee-zc626:pre-web01-backup gameeeee-zc626:live`, for 30 days |
+
+![The released site](../../assets/screenshots/procedural-mini-world/web01f-production-home-after.png)
+
 ## Structure
 
 | Page | Holds |

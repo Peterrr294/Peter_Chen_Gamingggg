@@ -1,11 +1,11 @@
 {
- "base": "https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app",
- "at": "2026-11-02T02:21:35.259Z",
+ "base": "https://gameeeee-zc626.web.app",
+ "at": "2026-11-02T02:54:03.326Z",
  "checks": [
   {
    "name": "home: Guided Tour with real geometry",
    "pass": true,
-   "detail": "2971 ms to the model"
+   "detail": "2780 ms to the model"
   },
   {
    "name": "navigation names",
@@ -20,12 +20,12 @@
   {
    "name": "six speeds work",
    "pass": true,
-   "detail": "{\"1\":0.999,\"2\":1.999,\"4\":4.01,\"0.25\":0.249,\"0.5\":0.501,\"1.5\":1.501}"
+   "detail": "{\"1\":1.004,\"2\":2.007,\"4\":4.01,\"0.25\":0.249,\"0.5\":0.5,\"1.5\":1.504}"
   },
   {
    "name": "Part II: replay loads, event equals the saved history",
    "pass": true,
-   "detail": "step 30, 1882 ms to load"
+   "detail": "step 30, 1865 ms to load"
   },
   {
    "name": "Inspector: data source and values load",
@@ -40,7 +40,7 @@
   {
    "name": "Recorded Film: the deployed file plays",
    "pass": true,
-   "detail": "452 ms to the first frame"
+   "detail": "822 ms to the first frame"
   },
   {
    "name": "Encounter marked Controlled Experiment",
@@ -115,10 +115,10 @@
  ],
  "errors": [],
  "timings": {
-  "tourTextMs": 867,
-  "firstModelMs": 2971,
-  "worldReplayLoadMs": 1882,
-  "filmFirstFrameMs": 452
+  "tourTextMs": 792,
+  "firstModelMs": 2780,
+  "worldReplayLoadMs": 1865,
+  "filmFirstFrameMs": 822
  },
  "passed": 22,
  "failed": 0

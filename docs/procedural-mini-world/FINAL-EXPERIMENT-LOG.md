@@ -1564,3 +1564,30 @@ Starting from the 10 high-priority candidates, complete two-source verification,
 - **Go / No-Go:** **Go** for sharing this preview for review. **No-Go** for production until a person signs the review, watches the film, and tests a real phone and laptop.
 - **Review status:** Pending review.
 - **Next single task:** human review of the preview, stop here.
+
+### WEB-01f — Final release and project freeze
+
+- **Date / Stage / Single question:** 2026-11-02 / release, by user instruction / Can the verified site go public, traceable to its source, and WEB-01 close?
+- **Release:** https://gameeeee-zc626.web.app · commit `ad6acd6` · tag `release/city-of-cities-web-v1` · `main` fast-forwarded from `1f63e6f` to `ad6acd6` · GitHub Actions run 41380010790, success · live channel released 2026-11-01 21:53 local time.
+- **Order followed:** acceptance, commit and tag, preview channel `web01f-rc` (https://gameeeee-zc626--web01f-rc-ihg8f2tg.web.app) checked at its public address, backup of the old live site, fast-forward of `main`, deployment by the existing workflow, check of the public address.
+- **Rollback:** the previous site (`1f63e6f`) is kept on channel `pre-web01-backup` (https://gameeeee-zc626--pre-web01-backup-u7vghh10.web.app), expiring after 30 days. To restore it: `firebase hosting:clone gameeeee-zc626:pre-web01-backup gameeeee-zc626:live`. After 30 days: a new release from a chosen commit.
+- **Content corrected:**
+  - Amsterdam read as a "Canal ring" though the run holds 1 canal and no ring. Venice read as a water network with 1 canal. Cities page and Inspector now say so.
+  - How it works states that it is a simplified summary compared by an AI, human review pending.
+  - Road inheritance (Not Available in G02), growth history (saved events only), Controlled Experiment and Planned labels were re-checked.
+- **Recorded film:** the 77 MB class film is real output but older, dark and edited, with its own timing, and stays git-ignored. The release uses `part2-film.mp4` (8.9 MB), recorded from the current Live 3D render with a quality check, and present in the deployed build.
+- **Review:** [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md) holds 26 statements (the brief counted 24; origin order and canals were added): 19 Accurate, 3 Simplified, 4 Corrected, by an AI reading of the code. **0 signed by a human.**
+- **Verification:**
+  - Before release: `verify-procedural-film.mjs` 141 / 141, desktop and phone; `verify-inspector-docs.mjs` passes; `verify-markdown-links.mjs` passes.
+  - Preview address: `verify-preview.mjs` 22 / 22, `verify-live-release` 10 / 10.
+  - **Production address: `verify-preview.mjs` 22 / 22, `verify:live` 10 / 10,** 0 browser errors. First model 2.8 s, replay 1.9 s, film first frame 0.8 s from this connection.
+- **Performance, automated and headless:** RTX 4060: about 143 fps in all views. Low-end proxy (software WebGL, CPU ÷ 4, 1366 × 768, not a real device): Part I 19.6 fps; Part II Live 3D 3.4, Lightweight Replay 11.5, Recorded Film plays. Geometries after six city switches: 10 → 10.
+- **Screenshots (production):**
+  - ![Home](../assets/screenshots/procedural-mini-world/web01f-production-home-after.png)
+  - ![Recorded Film](../assets/screenshots/procedural-mini-world/web01f-production-film-after.png)
+  - ![Controlled Experiment](../assets/screenshots/procedural-mini-world/web01f-production-case-after.png)
+  - ![Phone](../assets/screenshots/procedural-mini-world/web01f-production-mobile-after.png)
+- **Not verified:** Firefox, Safari, real phones, real low-end devices; sign-in and saving on archived pages; the Save / Load round trip (last verified in G02-V).
+- **Noted, not changed:** `website-submission.zip` has been tracked since `effd5b9` (3 files, 1 MB, no sensitive file names). The two deleted root PNGs stay uncommitted. Nobody has accepted a task yet, and film pacing has not been judged by a person.
+- **Status:** WEB-01 complete as a stage, Maintenance Mode. Natural encounters, road-first growth in the scheduler and DNA calibration stay open as research.
+- **Next single task:** G02c / G03c, in the growth research.

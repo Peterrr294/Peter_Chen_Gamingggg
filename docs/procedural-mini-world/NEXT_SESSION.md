@@ -1,6 +1,15 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-02: WEB-01e (read first)
+## Update 2026-11-02: WEB-01 frozen, back to growth research (read first)
+
+- **Next work:** G02c / G03c: road-first growth and encounters in the multi-city scheduler, with morphological continuity. Start from the [G02b note](./A-City-of-Cities/G02b-Morphological-Growth.md) and the [G03b note](./A-City-of-Cities/G03b-Urban-Encounter.md), then the [Research Compass](./A-City-of-Cities-Research-Compass.md) and compass §1. Code: `experiments/city-of-cities/`. Choose the single task first; it is not chosen yet.
+- **Website:** https://gameeeee-zc626.web.app, commit `ad6acd6`, tag `release/city-of-cities-web-v1`. Maintenance only: see [WEB-01 summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md).
+- **Careful:** a push to `main` deploys. Develop on `experiment/procedural-growing-world`.
+- **If generators change:** the bake stops when output differs from the saved state. That is expected for new behaviour: keep the released replay until a new verified run exists.
+- **Still with a person:** sign [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md) (0 of 26), and try Firefox, Safari, a real phone, an ordinary laptop.
+- **Rollback until about 2026-12-02:** `firebase hosting:clone gameeeee-zc626:pre-web01-backup gameeeee-zc626:live`.
+
+## Update 2026-11-02: WEB-01e
 
 - **Preview:** https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app (commit `84488ab`, channel `web01e-rc1`, expires after 14 days). Production and `main` are unchanged.
 - **Branch:** `experiment/procedural-growing-world`, pushed.
