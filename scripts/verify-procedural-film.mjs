@@ -340,6 +340,9 @@ try {
     check('road stage: part of the roads, no blocks yet', middle.roadEdges > 0 && middle.blocks === 0 && middle.buildings === 0, JSON.stringify(middle));
     await seek(page, PART_ONE_END); await sleep(300);
     check('end: Inspector counts equal the generated data', (await dd('#inLive', 'Buildings generated')).startsWith(`${facts.buildingCount} of ${facts.buildingCount}`), await dd('#inLive', 'Buildings generated'));
+    await page.locator('#inHowBox summary').click(); await sleep(150);
+    check('How it works says human review is pending', (await page.locator('#inHow').innerText()).includes('Human review is pending'));
+    await page.locator('#inHowBox summary').click();
     check('Inspector shows no invented growth numbers in this film', (await dd('#inLive', 'Growth chunks')).startsWith('Not Available'));
 
     // Debug layers.

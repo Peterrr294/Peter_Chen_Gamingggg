@@ -29,10 +29,10 @@ export const PROCESS = [
 
 // Values: experiments/seed-terrain/evidence/city-dna-comparison.json (`suitable` terrain of each DNA, 06.1 run). scripts/verify-procedural-film.mjs checks them.
 export const CITIES = [
-  { id: 'veniceWaterNetwork', name: 'Venice', dna: 'Water network and islands', site: 'Coast, seed 1101', fit: 0.23, roadKm: 5.21, deadEnds: 25, parcels: 535, frontage: 8.5, buildings: 438, height: 10.3, note: 'Weak terrain fit: no lagoon landform exists yet.' },
+  { id: 'veniceWaterNetwork', name: 'Venice', dna: 'Water network and islands', site: 'Coast, seed 1101', fit: 0.23, roadKm: 5.21, deadEnds: 25, parcels: 535, frontage: 8.5, buildings: 438, height: 10.3, note: 'Weak terrain fit: no lagoon landform exists yet. This site holds 1 canal, not a water network.' },
   { id: 'manhattanGrid', name: 'Manhattan', dna: 'Orthogonal grid with avenues and cross streets', site: 'Plain, seed 1101', fit: 0.8, roadKm: 18.43, deadEnds: 0, parcels: 1836, frontage: 16.6, buildings: 1679, height: 60.2, note: 'Spatial study exists. Measured values are still planned.' },
   { id: 'fezOrganicCore', name: 'Fez', dna: 'Organic historic core', site: 'Coast, seed 1101', fit: 0.43, roadKm: 6.12, deadEnds: 38, parcels: 717, frontage: 9.4, buildings: 589, height: 5.6, note: 'Prototype city of the research base. Thresholds are assumptions.' },
-  { id: 'amsterdamCanalRing', name: 'Amsterdam', dna: 'Canal ring', site: 'Coast, seed 1101', fit: 0.31, roadKm: 5.68, deadEnds: 35, parcels: 564, frontage: 6.3, buildings: 513, height: 11.7, note: 'No research row. Never wins auto-match; some grown chunks stay empty.' },
+  { id: 'amsterdamCanalRing', name: 'Amsterdam', dna: 'Canal-street rules, after the canal ring', site: 'Coast, seed 1101', fit: 0.31, roadKm: 5.68, deadEnds: 35, parcels: 564, frontage: 6.3, buildings: 513, height: 11.7, note: 'No research row. This site holds 1 canal and no ring forms. Never wins auto-match; 2 of 5 grown-world chunks hold no buildings.' },
   { id: 'lisbonHillCore', name: 'Lisbon', dna: 'Hills and valley axis', site: 'Coast, seed 2202', fit: 0.47, roadKm: 7.87, deadEnds: 35, parcels: 854, frontage: 7.4, buildings: 723, height: 11.6, note: 'No research row. Thresholds are assumptions.' },
   { id: 'chicagoGrid', name: 'Chicago', dna: 'Survey grid with river cut', site: 'Plain, seed 1101', fit: 0.62, roadKm: 15.36, deadEnds: 0, parcels: 2260, frontage: 6.8, buildings: 2013, height: 40.1, note: 'No research row. Road-first growth is refused on world seed 6201 (G02b).' },
 ];

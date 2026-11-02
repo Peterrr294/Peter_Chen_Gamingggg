@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CHAPTERS, DEFAULT_CITY, DURATION, FILM_CITIES, PART_ONE_END, PART_ONE_LAST, STAGES, STAGE_START, TOUR, stageEnd } from './stageManifest.js';
 import { AUTO_THRESHOLDS, CASE_ORDER, CASE_SECONDS, GROWTH_STEP_SECONDS, LEVELS, REVEAL_SECONDS, chunkStarts, sceneOf } from './sceneManifest.js';
 import { WorldScene } from './WorldScene.js';
+import algorithmReview from './algorithm-review.json';
 import { SnapshotSource } from './SnapshotSource.js';
 import { TimelineController } from './TimelineController.js';
 import { FilmScene } from './FilmScene.js';
@@ -524,7 +525,9 @@ function fillHow(how) {
   for (const [label, href] of [...how.files.map(([file, url]) => [`View source: ${file}`, url]), ['Read more', how.more]]) {
     const a = document.createElement('a'); a.href = href; a.target = '_top'; a.textContent = label; links.append(a, document.createElement('br'));
   }
-  $('inHow').replaceChildren(steps, notes, links);
+  const review = document.createElement('p'); review.className = 'note';
+  review.textContent = `A simplified summary, compared with the code by an AI on ${algorithmReview.reviewedAt}. Human review is pending.`;
+  $('inHow').replaceChildren(steps, notes, review, links);
 }
 
 function renderInspectorStage() {

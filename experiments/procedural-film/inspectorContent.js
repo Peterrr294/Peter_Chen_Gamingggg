@@ -14,6 +14,7 @@ export function identityRows({ cityMatch, config, fields }) {
     ['Scene', 'Part I: live single chunk. Unrelated to the world run in Part II.'],
     ['City ID', dna.id],
     ['City name', dna.label],
+    ['Reference, not result', 'The name is the reference for the rules. Whether this chunk reads as that city is unreviewed.'],
     ['DNA family', dna.family ?? NA('not recorded')],
     ['DNA choice', `${dna.mode} · auto-match would pick ${dna.autoTopId}`],
     ['Terrain fit', `${dna.score.toFixed(2)} (fit ${dna.fitScore.toFixed(2)} × coverage ${dna.evidenceCoverage.toFixed(2)}) · measures terrain only`],
@@ -89,6 +90,7 @@ export function paramRows(stageId, snapshot) {
       const km2 = (fields.grid.size / 1000) ** 2;
       return [
         ['Network type', `${network.strategy} (${p.label})`],
+        ['Canals generated', `${st.edgesByKind.canal} edge(s) on existing water`],
         ['Road density', `${(st.roadLength / 1000 / km2).toFixed(1)} km per km²`],
         ['Spacing', p.primarySpacing ? `${p.primarySpacing} m avenues · ${p.secondarySpacing} m cross streets` : NA(`${network.strategy} has no fixed spacing`)],
         ['Maximum road slope', `${p.maxSlopeDeg}°`],
@@ -169,7 +171,7 @@ export function howItWorks(stageId, snapshot) {
   const table = {
     terrain: { steps: [`rules = LANDFORM_RULES.${config.landform}(seeded noise, layout)`, 'for each sample (x, z): height, water = rules(x, z)', 'slope = gradient of height', 'buildable = slope ≤ limit and above water + freeboard'], constraints: 'Fixed 1024 m chunk. Same seed gives the same field.', files: [['TerrainGenerator.js', source('TerrainGenerator.js')], ['TerrainFields.js', source('TerrainFields.js')]], more: docs('terrain-and-water.md') },
     analysis: { steps: ['class = slope band (≤ 5°, ≤ 10°, ≤ 20°, steeper or water)', 'label connected buildable and water regions', 'report a direction only if a candidate passes its evidence test', 'score each DNA: fit × evidence coverage'], constraints: 'Reads terrain only and never changes it.', files: [['TerrainAnalysis.js', source('TerrainAnalysis.js')], ['CityMatcher.js', source('CityMatcher.js')]], more: docs('terrain-analysis.md') },
-    roads: { steps: [...(NETWORK_STEPS[network.strategy] ?? []), 'resolve crossings, prune short pieces, link separated components'], constraints: `Strategy ${network.strategy}. All spacings are design assumptions.`, files: [['NetworkGenerator.js', source('NetworkGenerator.js')], ['networkStrategies.js', source('networkStrategies.js')]], more: docs('road-and-tunnel.md') },
+    roads: { steps: [...(NETWORK_STEPS[network.strategy] ?? []), 'resolve crossings, prune short pieces, link separated components'], constraints: `Strategy ${network.strategy}. All spacings are design assumptions. Canals follow water the terrain already has: no canal ring or lagoon is built.`, files: [['NetworkGenerator.js', source('NetworkGenerator.js')], ['networkStrategies.js', source('networkStrategies.js')]], more: docs('road-and-tunnel.md') },
     blocks: { steps: ['a(p) = min(distance to road − ½ width, height − water surface)', 'blocks = 4-connected regions where a > 0', 'boundary = a = 0 contour (marching squares)', 'each block records its roads, water and chunk edge'], constraints: `Blocks under ${snapshot.blocks.rules.minBlockArea} m² become fragments, nothing is deleted.`, files: [['BlockGenerator.js', source('BlockGenerator.js')], ['BlockRefinement.js', source('BlockRefinement.js')]], more: docs('block-and-parcel.md') },
     parcels: { steps: ['walk frontage runs along the roads of each block', `cut each run into lots near ${parcels.rules.target.targetFrontage} m`, 'merge remainders, form corner lots', 'give each buildable sample to its nearest lot, up to maximum depth', 'build polygons with exact shared lines'], constraints: 'Every parcel fronts a road; deeper land stays reserve.', files: [['ParcelGenerator.js', source('ParcelGenerator.js')], ['parcelRules.js', source('parcelRules.js')]], more: docs('block-and-parcel.md') },
     buildings: { steps: ['keep or leave each parcel empty by the occupancy rule', 'footprint = parcel inset by setbacks, limited by depth', `leave vacant if the ground drops over ${buildings.rules.maxPlinth} m under it`, 'mix = centre·e^(−d²/r²) + road class + parcel area, with bounded jitter', 'floors = minimum + (maximum − minimum) · mix', 'height = floors × floor height'], constraints: 'Terrain and network seeds are not touched.', files: [['BuildingGenerator.js', source('BuildingGenerator.js')], ['buildingRules.js', source('buildingRules.js')]], more: docs('building-extrusion.md') },

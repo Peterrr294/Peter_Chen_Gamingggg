@@ -115,6 +115,16 @@
           "correction": "None",
           "basis": "generateNetwork body",
           "humanReview": "Needs Human Review"
+        },
+        {
+          "displayed": "no canal ring or lagoon is built",
+          "file": "experiments/seed-terrain/NetworkGenerator.js",
+          "symbol": "canalStreetStrategy",
+          "parameters": "canalRegionMinArea",
+          "assessment": "Corrected",
+          "correction": "Added in WEB-01f. The Amsterdam label suggested a ring; the 06.1 run holds 1 canal",
+          "basis": "canalStreetStrategy works on existing water regions; canals = 1 in the 06.1 evidence for Venice and Amsterdam",
+          "humanReview": "Needs Human Review"
         }
       ]
     },
