@@ -1,0 +1,592 @@
+{
+  "task": "PRESENTATION-01",
+  "title": "A CITY OF CITIES",
+  "subtitle": "The Emergence of a Plural Urban World through Procedural Growth",
+  "createdAt": "2026-10-28T08:20:17.017Z",
+  "source": {
+    "branch": "experiment/procedural-growing-world",
+    "commit": "91efb1e",
+    "page": "/presentation/city-of-cities/",
+    "generators": "unchanged experiments/seed-terrain chain via experiments/city-of-cities WorldContext + WorldGrowthController (G01 placement v2, G02)"
+  },
+  "film": {
+    "title": "A CITY OF CITIES",
+    "subtitle": "The Emergence of a Plural Urban World through Procedural Growth",
+    "worldSeed": 6201,
+    "growthSteps": 30,
+    "focusCity": "lisbonHillCore",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 75,
+    "codec": "avc1.640028 (H.264 High, level 4.0)",
+    "bitrate": 8000000,
+    "background": "#0f1215",
+    "camera": {
+      "type": "orthographic axonometric",
+      "elevationDeg": 32
+    }
+  },
+  "timeline": {
+    "scenes": [
+      [
+        "TITLE",
+        0,
+        4
+      ],
+      [
+        "S01 The Land Before the City",
+        4,
+        12
+      ],
+      [
+        "S02 From Terrain to Urban DNA",
+        12,
+        28
+      ],
+      [
+        "S03 Six Autonomous Urban Origins",
+        28,
+        42
+      ],
+      [
+        "S04 Procedural Urban Growth",
+        42,
+        62
+      ],
+      [
+        "S05 A City of Cities",
+        62,
+        75
+      ]
+    ],
+    "stageTimes": [
+      [
+        "TERRAIN",
+        12
+      ],
+      [
+        "TERRAIN ANALYSIS",
+        14.67
+      ],
+      [
+        "ROAD NETWORK",
+        17.33
+      ],
+      [
+        "URBAN BLOCKS",
+        20
+      ],
+      [
+        "PARCELS",
+        22.67
+      ],
+      [
+        "BUILDINGS",
+        25.33
+      ]
+    ],
+    "stepTimes": [
+      [
+        1,
+        44
+      ],
+      [
+        2,
+        45
+      ],
+      [
+        3,
+        46
+      ],
+      [
+        4,
+        47
+      ],
+      [
+        5,
+        48
+      ],
+      [
+        6,
+        49
+      ],
+      [
+        7,
+        49.6
+      ],
+      [
+        8,
+        50.2
+      ],
+      [
+        9,
+        50.8
+      ],
+      [
+        10,
+        51.4
+      ],
+      [
+        11,
+        52
+      ],
+      [
+        12,
+        52.4
+      ],
+      [
+        13,
+        52.8
+      ],
+      [
+        14,
+        53.2
+      ],
+      [
+        15,
+        53.6
+      ],
+      [
+        16,
+        54
+      ],
+      [
+        17,
+        54.4
+      ],
+      [
+        18,
+        54.8
+      ],
+      [
+        19,
+        55.2
+      ],
+      [
+        20,
+        55.6
+      ],
+      [
+        21,
+        56
+      ],
+      [
+        22,
+        56.4
+      ],
+      [
+        23,
+        56.8
+      ],
+      [
+        24,
+        57.2
+      ],
+      [
+        25,
+        57.6
+      ],
+      [
+        26,
+        58
+      ],
+      [
+        27,
+        58.4
+      ],
+      [
+        28,
+        58.8
+      ],
+      [
+        29,
+        59.2
+      ],
+      [
+        30,
+        59.6
+      ]
+    ]
+  },
+  "cameras": {
+    "s1a": {
+      "target": [
+        5120,
+        15,
+        0
+      ],
+      "orthoHeight": 1039,
+      "azimuthDeg": 28,
+      "elevationDeg": 32
+    },
+    "s1b": {
+      "target": [
+        5120,
+        15,
+        0
+      ],
+      "orthoHeight": 994,
+      "azimuthDeg": 38,
+      "elevationDeg": 32
+    },
+    "s2a": {
+      "target": [
+        5120,
+        15,
+        0
+      ],
+      "orthoHeight": 994,
+      "azimuthDeg": 38,
+      "elevationDeg": 32
+    },
+    "s2b": {
+      "target": [
+        5120,
+        15,
+        0
+      ],
+      "orthoHeight": 994,
+      "azimuthDeg": 52,
+      "elevationDeg": 32
+    },
+    "cores": {
+      "target": [
+        1536,
+        16,
+        1024
+      ],
+      "orthoHeight": 8358,
+      "azimuthDeg": 45,
+      "elevationDeg": 32
+    },
+    "all": {
+      "target": [
+        2048,
+        153,
+        512
+      ],
+      "orthoHeight": 10793,
+      "azimuthDeg": 45,
+      "elevationDeg": 32
+    },
+    "allWide": {
+      "target": [
+        2048,
+        153,
+        512
+      ],
+      "orthoHeight": 11404,
+      "azimuthDeg": 45,
+      "elevationDeg": 32
+    },
+    "close": {
+      "target": [
+        4608,
+        54,
+        -5120
+      ],
+      "orthoHeight": 2013,
+      "azimuthDeg": 30,
+      "elevationDeg": 32
+    }
+  },
+  "world": {
+    "worldSeed": 6201,
+    "origins": 6,
+    "growthSteps": 30,
+    "chunks": 36,
+    "focusChunk": "c_5_0",
+    "closeUpChunk": "c_5_-5",
+    "historyMatchesVerifiedG02": true,
+    "history": [
+      {
+        "step": 1,
+        "chunkId": "c_-2_1",
+        "cityId": "manhattanGrid",
+        "parent": "c_-2_0",
+        "score": 0.9019,
+        "buildings": 1706
+      },
+      {
+        "step": 2,
+        "chunkId": "c_4_-5",
+        "cityId": "chicagoGrid",
+        "parent": "c_4_-4",
+        "score": 0.6014,
+        "buildings": 315
+      },
+      {
+        "step": 3,
+        "chunkId": "c_6_0",
+        "cityId": "lisbonHillCore",
+        "parent": "c_5_0",
+        "score": 0.7121,
+        "buildings": 795
+      },
+      {
+        "step": 4,
+        "chunkId": "c_-1_-4",
+        "cityId": "fezOrganicCore",
+        "parent": "c_-1_-3",
+        "score": 0.8045,
+        "buildings": 376
+      },
+      {
+        "step": 5,
+        "chunkId": "c_0_7",
+        "cityId": "veniceWaterNetwork",
+        "parent": "c_0_6",
+        "score": 0.8102,
+        "buildings": 382
+      },
+      {
+        "step": 6,
+        "chunkId": "c_-1_1",
+        "cityId": "manhattanGrid",
+        "parent": "c_-2_1",
+        "score": 0.9459,
+        "buildings": 1705
+      },
+      {
+        "step": 7,
+        "chunkId": "c_-1_3",
+        "cityId": "amsterdamCanalRing",
+        "parent": "c_0_3",
+        "score": 0.6119,
+        "buildings": 0
+      },
+      {
+        "step": 8,
+        "chunkId": "c_3_-5",
+        "cityId": "chicagoGrid",
+        "parent": "c_4_-5",
+        "score": 0.6831,
+        "buildings": 451
+      },
+      {
+        "step": 9,
+        "chunkId": "c_-1_0",
+        "cityId": "manhattanGrid",
+        "parent": "c_-1_1",
+        "score": 1.0136,
+        "buildings": 1588
+      },
+      {
+        "step": 10,
+        "chunkId": "c_-2_-4",
+        "cityId": "fezOrganicCore",
+        "parent": "c_-1_-4",
+        "score": 0.7979,
+        "buildings": 327
+      },
+      {
+        "step": 11,
+        "chunkId": "c_5_-5",
+        "cityId": "chicagoGrid",
+        "parent": "c_4_-5",
+        "score": 0.7443,
+        "buildings": 2071
+      },
+      {
+        "step": 12,
+        "chunkId": "c_2_-5",
+        "cityId": "chicagoGrid",
+        "parent": "c_3_-5",
+        "score": 0.8137,
+        "buildings": 2045
+      },
+      {
+        "step": 13,
+        "chunkId": "c_6_-1",
+        "cityId": "lisbonHillCore",
+        "parent": "c_6_0",
+        "score": 0.5905,
+        "buildings": 882
+      },
+      {
+        "step": 14,
+        "chunkId": "c_1_3",
+        "cityId": "amsterdamCanalRing",
+        "parent": "c_0_3",
+        "score": 0.6036,
+        "buildings": 137
+      },
+      {
+        "step": 15,
+        "chunkId": "c_0_5",
+        "cityId": "veniceWaterNetwork",
+        "parent": "c_0_6",
+        "score": 0.7167,
+        "buildings": 363
+      },
+      {
+        "step": 16,
+        "chunkId": "c_1_-5",
+        "cityId": "chicagoGrid",
+        "parent": "c_2_-5",
+        "score": 0.7233,
+        "buildings": 386
+      },
+      {
+        "step": 17,
+        "chunkId": "c_-2_-1",
+        "cityId": "manhattanGrid",
+        "parent": "c_-2_0",
+        "score": 0.5509,
+        "buildings": 425
+      },
+      {
+        "step": 18,
+        "chunkId": "c_6_1",
+        "cityId": "lisbonHillCore",
+        "parent": "c_6_0",
+        "score": 0.8145,
+        "buildings": 882
+      },
+      {
+        "step": 19,
+        "chunkId": "c_-1_6",
+        "cityId": "veniceWaterNetwork",
+        "parent": "c_0_6",
+        "score": 0.6358,
+        "buildings": 376
+      },
+      {
+        "step": 20,
+        "chunkId": "c_5_-6",
+        "cityId": "chicagoGrid",
+        "parent": "c_5_-5",
+        "score": 0.643,
+        "buildings": 487
+      },
+      {
+        "step": 21,
+        "chunkId": "c_2_3",
+        "cityId": "amsterdamCanalRing",
+        "parent": "c_1_3",
+        "score": 0.6851,
+        "buildings": 0
+      },
+      {
+        "step": 22,
+        "chunkId": "c_-1_2",
+        "cityId": "manhattanGrid",
+        "parent": "c_-1_1",
+        "score": 0.8789,
+        "buildings": 1651
+      },
+      {
+        "step": 23,
+        "chunkId": "c_0_-4",
+        "cityId": "fezOrganicCore",
+        "parent": "c_-1_-4",
+        "score": 0.8284,
+        "buildings": 348
+      },
+      {
+        "step": 24,
+        "chunkId": "c_-2_-2",
+        "cityId": "manhattanGrid",
+        "parent": "c_-2_-1",
+        "score": 0.7504,
+        "buildings": 1731
+      },
+      {
+        "step": 25,
+        "chunkId": "c_7_-1",
+        "cityId": "lisbonHillCore",
+        "parent": "c_6_-1",
+        "score": 0.7753,
+        "buildings": 644
+      },
+      {
+        "step": 26,
+        "chunkId": "c_1_-6",
+        "cityId": "chicagoGrid",
+        "parent": "c_1_-5",
+        "score": 0.5891,
+        "buildings": 411
+      },
+      {
+        "step": 27,
+        "chunkId": "c_1_7",
+        "cityId": "veniceWaterNetwork",
+        "parent": "c_0_7",
+        "score": 0.7486,
+        "buildings": 327
+      },
+      {
+        "step": 28,
+        "chunkId": "c_5_-1",
+        "cityId": "lisbonHillCore",
+        "parent": "c_5_0",
+        "score": 0.3767,
+        "buildings": 101
+      },
+      {
+        "step": 29,
+        "chunkId": "c_-3_-2",
+        "cityId": "manhattanGrid",
+        "parent": "c_-2_-2",
+        "score": 0.8793,
+        "buildings": 1577
+      },
+      {
+        "step": 30,
+        "chunkId": "c_3_3",
+        "cityId": "amsterdamCanalRing",
+        "parent": "c_2_3",
+        "score": 0.5651,
+        "buildings": 355
+      }
+    ]
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "renderMsPerFrame": 54,
+  "prepareMs": 105035,
+  "encode": {
+    "frames": 2250,
+    "bytes": 77445738,
+    "ms": 13534
+  },
+  "verification": {
+    "duration": 75,
+    "width": 1920,
+    "height": 1080,
+    "aspect": 1.7778,
+    "playedTo": 1.49,
+    "fileMB": 73.9,
+    "decodedFrames": [
+      3,
+      10,
+      20,
+      27,
+      32,
+      38,
+      47,
+      60,
+      66,
+      73
+    ]
+  },
+  "stills": [
+    "storyboard/02.4-title.png",
+    "storyboard/0009-s01-landscape.png",
+    "storyboard/13.5-s02-terrain.png",
+    "storyboard/0016-s02-analysis.png",
+    "storyboard/18.6-s02-roads.png",
+    "storyboard/21.2-s02-blocks.png",
+    "storyboard/23.8-s02-parcels.png",
+    "storyboard/0027-s02-buildings.png",
+    "storyboard/32.8-s03-origins.png",
+    "storyboard/0038-s03-six-cities.png",
+    "storyboard/0043-s04-step00.png",
+    "storyboard/46.2-s04-step03.png",
+    "storyboard/51.5-s04-step10.png",
+    "storyboard/0061-s04-step30.png",
+    "storyboard/0064-s05-close.png",
+    "storyboard/0073-s05-final.png"
+  ],
+  "browserErrors": []
+}

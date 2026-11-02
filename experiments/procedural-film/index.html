@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Watch one real city generate from terrain to buildings. A City of Cities, an interactive procedural film." />
+    <title>A City of Cities — Interactive Procedural Film</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../../typography.css" />
+    <link rel="stylesheet" href="./film.css" />
+  </head>
+  <body>
+    <canvas id="filmCanvas" aria-label="Three-dimensional model of the generated city. Drag to orbit, scroll to zoom."></canvas>
+    <img id="still" alt="" hidden />
+
+    <header class="hero">
+      <h1>A City of Cities</h1>
+      <p class="subtitle">One real city, generated from terrain to buildings. Six cities, growing into one world.</p>
+      <a class="explore" href="../../index.html#world" target="_top">Open the world experiment <span>Prototype</span></a>
+    </header>
+
+    <div class="topbar">
+      <p id="readout" class="readout" aria-live="off"></p>
+      <div class="mode-switch" role="group" aria-label="Viewing path">
+        <button id="viewTour" type="button" aria-pressed="true">Guided Tour</button>
+        <button id="viewExplore" type="button" aria-pressed="false">Explore</button>
+      </div>
+      <div id="modeGroup" class="mode-switch" role="group" aria-label="Viewing mode">
+        <button id="modeWatch" type="button" aria-pressed="true">Watch</button>
+        <button id="modeInspect" type="button" aria-pressed="false">Inspect</button>
+      </div>
+    </div>
+
+    <aside id="inspector" class="inspector" aria-label="Algorithm Inspector" hidden>
+      <header class="inspector-head">
+        <h2>Algorithm Inspector</h2>
+        <button id="inspectorCollapse" type="button" aria-expanded="true">Collapse</button>
+        <button id="inspectorClose" type="button" aria-label="Close Inspector">Close</button>
+      </header>
+      <div id="inspectorBody" class="inspector-body" tabindex="0">
+        <p id="inSummary" class="summary"></p>
+        <section id="inSelection" hidden></section>
+        <section id="inSourceBox"><h3>Data source / validation status</h3><dl id="inSource"></dl><ul id="inLimits" class="limits"></ul></section>
+        <section><h3 id="inStageTitle"></h3><div id="inFlow"></div></section>
+        <section><h3>Parameters</h3><dl id="inParams"></dl></section>
+        <section><h3>Generated so far</h3><dl id="inLive"></dl></section>
+        <details id="inLayersBox"><summary>Debug layers</summary><div id="inLayers"></div></details>
+        <details id="inIdentityBox"><summary>World and city identity</summary><dl id="inIdentity"></dl></details>
+        <details id="inHowBox"><summary>How it works</summary><div id="inHow"></div></details>
+      </div>
+    </aside>
+
+    <p id="sceneTag" class="scene-tag" hidden></p>
+    <div id="chapterCard" class="chapter-card" hidden><p id="chapterTitle"></p><p id="chapterNote"></p></div>
+    <div id="labels" class="labels"></div>
+
+    <div id="loading" class="loading" role="status">
+      <p id="loadingTitle">Generating the city</p>
+      <ol id="loadingStages"></ol>
+      <button id="retry" type="button" hidden>Try again</button>
+    </div>
+
+    <section class="player" aria-label="Film controls">
+      <div id="tourCard" class="tour-card">
+        <div class="tour-text">
+          <p id="tourIndex" class="stage-index"></p>
+          <h2 id="tourTitle" aria-live="polite"></h2>
+          <p id="tourLine" class="stage-line"></p>
+          <p id="tourStage" class="tour-stage"></p>
+        </div>
+        <div class="tour-actions buttons">
+          <button id="tourPlay" class="primary" type="button">Play</button>
+          <button id="tourPrev" type="button">Previous</button>
+          <button id="tourNext" type="button">Next Chapter</button>
+          <button id="tourInspect" type="button">Inspect the Algorithm</button>
+        </div>
+      </div>
+      <div class="stage-info">
+        <div class="stage-heading">
+          <span id="stageIndex" class="stage-index"></span>
+          <h2 id="stageTitle" aria-live="polite"></h2>
+          <span id="stageStatus" class="status"></span>
+        </div>
+        <p id="stageLine" class="stage-line"></p>
+        <p id="stageMetric" class="stage-metric"></p>
+      </div>
+
+      <div class="timeline">
+        <div id="chapters" class="chapters"></div>
+        <input id="scrub" type="range" min="0" max="1000" step="1" value="0" aria-label="Film timeline" />
+        <ol id="stageTicks" class="ticks"></ol>
+      </div>
+
+      <div class="controls">
+        <div class="buttons">
+          <button id="play" class="primary" type="button">Play</button>
+          <button id="prev" type="button" aria-label="Previous stage">Prev</button>
+          <button id="next" type="button" aria-label="Next stage">Next</button>
+          <button id="restart" type="button">Restart</button>
+        </div>
+        <label>Speed
+          <select id="rate" aria-label="Playback speed">
+            <option value="0.25">0.25 ×</option><option value="0.5">0.5 ×</option><option value="1" selected>1 ×</option><option value="1.5">1.5 ×</option><option value="2">2 ×</option><option value="4">4 ×</option>
+          </select>
+        </label>
+        <label>City <select id="city"></select></label>
+        <label>Camera
+          <select id="camera">
+            <option value="film">Follow film</option>
+            <option value="terrain">Terrain view</option>
+            <option value="plan">Network view</option>
+            <option value="axon">Morphology view</option>
+            <option value="close">Close-up</option>
+            <option value="world" hidden>World view</option>
+            <option value="encounter" hidden>Encounter view</option>
+            <option value="free" hidden>Free</option>
+          </select>
+        </label>
+        <details class="advanced">
+          <summary>More</summary>
+          <div class="advanced-panel">
+            <label class="check"><input id="staticView" type="checkbox" /> Static view (no animation)</label>
+            <dl id="details"></dl>
+            <p class="note">The reveal order is derived from the data's own topology. The generators do not log events, so this is not a replay of the algorithm's run.</p>
+            <p class="note"><a id="rawLink" target="_top">Open this chunk in the raw generator</a></p>
+          </div>
+        </details>
+      </div>
+    </section>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

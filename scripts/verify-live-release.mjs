@@ -44,7 +44,7 @@ for (const route of ['/', '/experiments/world-grid/', '/experiments/seed-terrain
   const assets = [];
   for (const s of scripts) { const r = await fetch(base + s); assets.push({ s, status: r.status, type: r.headers.get('content-type') }); }
   check(`http ${route}`, res.status === 200 && scripts.length > 0 && assets.every(a => a.status === 200 && /javascript/.test(a.type ?? '')),
-    { status: res.status, title: html.match(/<title>([^<]*)/)?.[1], assets, hasMiniWorldNav: html.includes('#miniWorld') });
+    { status: res.status, title: html.match(/<title>([^<]*)/)?.[1], assets, hasArchiveNav: html.includes('#archive') });
 }
 
 const browser = await chromium.launch({ executablePath: await browserPath(), headless: true });
@@ -54,8 +54,8 @@ try {
   watch(page, 'hub');
   const started = Date.now();
   await page.goto(`${base}/#miniWorld`, { waitUntil: 'load' });
-  const hub = await page.evaluate(() => ({ navCurrent: document.querySelector('nav a[aria-current]')?.textContent, frameSrc: document.querySelector('iframe.project-frame')?.getAttribute('src') }));
-  check('hub routes #miniWorld to the world-grid iframe', hub.frameSrc === './experiments/world-grid/index.html' && hub.navCurrent === 'Mini World', hub);
+  const hub = await page.evaluate(() => ({ navCurrent: document.querySelector('.archive-link[aria-current]')?.textContent, frameSrc: document.querySelector('iframe.project-frame')?.getAttribute('src') }));
+  check('hub routes #miniWorld to the world-grid iframe', hub.frameSrc === './experiments/world-grid/index.html' && hub.navCurrent === 'Archive', hub);
   const frame = await (await page.waitForSelector('iframe.project-frame')).contentFrame();
   await frame.waitForFunction(() => window.__worldGridLab?.ready === true, null, { timeout: 300000, polling: 1000 });
   const loadMs = Date.now() - started;

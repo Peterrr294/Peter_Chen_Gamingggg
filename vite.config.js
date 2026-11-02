@@ -24,6 +24,7 @@ export default defineConfig({
         worldGrid: 'experiments/world-grid/index.html',
         growingWorld: 'experiments/growing-world/index.html',
         cityOfCities: 'experiments/city-of-cities/index.html',
+        proceduralFilm: 'experiments/procedural-film/index.html',
       },
     },
   },

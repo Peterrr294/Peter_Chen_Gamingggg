@@ -1,0 +1,3 @@
+# Large render outputs (re-export with capture.mjs)
+*.mp4
+storyboard/decoded-from-mp4/

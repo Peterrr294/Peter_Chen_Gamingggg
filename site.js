@@ -1,10 +1,15 @@
-import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { auth, googleProvider } from './src/firebase.js';
 import { renderMarkdown } from './markdown-viewer.js';
+import { showArchive, showCities, showProcess, showResearch } from './web-pages.js';
 
 // 每个栏目描述它的名称与页面位置；新增页面时先在这里登记。
 export const sections = {
-  home: { title: 'HOME / PROJECT HUB' },
+  // WEB-01 main structure (main: true). Everything else stays reachable at its old hash through the Archive.
+  home: { title: 'A CITY OF CITIES', page: './experiments/procedural-film/index.html', main: true, filmLink: true },
+  process: { title: 'THE PROCESS', main: true },
+  cities: { title: 'URBAN IDENTITIES', main: true },
+  research: { title: 'RESEARCH', main: true },
+  archive: { title: 'ARCHIVE', main: true },
+  world: { title: 'EXPLORE THE WORLD / PROTOTYPE: SIX ORIGINS AND GROWTH', page: './experiments/city-of-cities/index.html', main: true, navKey: 'home', keepBar: true },
   miniWorld: { title: 'PROCEDURAL MINI WORLD / 3 × 3 WORLD GRID', navLabel: '3 × 3 WORLD GRID', page: './experiments/world-grid/index.html', description: 'Nine 1024 m chunks: seed terrain, City DNA per slot, roads, parcels, buildings, and harmonised seams.' },
   seedTerrain: { title: 'PROCEDURAL MINI WORLD / SINGLE CHUNK', navLabel: 'SINGLE CHUNK', page: './experiments/seed-terrain/index.html', description: 'One seed-terrain chunk through the full chain: terrain fields, City DNA match, network, blocks, parcels, buildings.', parent: 'miniWorld' },
   manhattanTerrain: { title: 'MANHATTAN TERRAIN / GREYBOX', page: './experiments/manhattan-terrain-greybox/index.html', description: 'Earlier seeded Manhattan terrain, water, slope, and buildability study.', parent: 'miniWorld' },
@@ -46,6 +51,7 @@ const content = document.querySelector('#content');
 const title = document.querySelector('#sectionTitle');
 const openPage = document.querySelector('#openPage');
 let activeSection;
+let activeFragment;
 let fileRequest = 0;
 
 function relatedProjects(key) {
@@ -54,7 +60,7 @@ function relatedProjects(key) {
   return children.length ? [root, ...children] : [];
 }
 
-function showProject(key, section) {
+function showProject(key, section, query = '') {
   const project = document.createElement('section');
   project.className = 'project-view';
   const related = relatedProjects(key);
@@ -72,7 +78,7 @@ function showProject(key, section) {
     project.append(switcher);
   }
   const frame = document.createElement('iframe');
-  frame.src = section.page;
+  frame.src = section.filmLink && query ? `${section.page}?${query}` : section.page;
   frame.title = section.title;
   frame.className = 'project-frame';
   project.append(frame);
@@ -83,7 +89,13 @@ const authButton = document.querySelector('#authButton');
 const authStatus = document.querySelector('#authStatus');
 const userPhoto = document.querySelector('#userPhoto');
 
-onAuthStateChanged(auth, user => {
+// Sign-in only serves the archived terrain saves: Firebase loads when an archive page first opens, not on the film.
+let authLoaded = false;
+async function startAuth() {
+  if (authLoaded) return;
+  authLoaded = true;
+  const [{ onAuthStateChanged }, { auth }] = await Promise.all([import('firebase/auth'), import('./src/firebase.js')]);
+  onAuthStateChanged(auth, user => {
   authButton.disabled = false;
   if (user) {
     authStatus.textContent = user.displayName || user.email || 'Signed in';
@@ -102,11 +114,13 @@ onAuthStateChanged(auth, user => {
     userPhoto.hidden = true;
     userPhoto.removeAttribute('src');
   }
-});
+  });
+}
 
 authButton.addEventListener('click', async () => {
   authButton.disabled = true;
   try {
+    const [{ signInWithPopup, signOut }, { auth, googleProvider }] = await Promise.all([import('firebase/auth'), import('./src/firebase.js')]);
     if (auth.currentUser) await signOut(auth);
     else await signInWithPopup(auth, googleProvider);
   } catch (error) {
@@ -115,30 +129,6 @@ authButton.addEventListener('click', async () => {
     authButton.disabled = false;
   }
 });
-
-function showHome() {
-  const intro = document.createElement('section');
-  intro.className = 'hub';
-  intro.innerHTML = `<p class="eyebrow">A PLACE FOR EVERY EXPERIMENT</p>
-    <h1>Games, experiments, and learning.<br>One place to explore.</h1>
-    <p class="intro">Choose a category to play a game, explore terrain, or read the notes behind the code.</p>
-    <p class="hint">Switching categories ends the current run. Choose “Open Separately” to keep a project running.</p>
-    <div class="cards"></div>`;
-  const cards = intro.querySelector('.cards');
-  for (const [key, section] of Object.entries(sections)) {
-    if (key === 'home' || section.parent) continue;
-    const card = document.createElement('a');
-    card.href = '#' + key;
-    card.className = 'card';
-    const heading = document.createElement('h2');
-    heading.textContent = section.title;
-    const description = document.createElement('p');
-    description.textContent = section.description;
-    card.append(heading, description);
-    cards.append(card);
-  }
-  content.append(intro);
-}
 
 function showFiles(initialPath = './docs/README.md') {
   const library = document.createElement('section');
@@ -277,7 +267,8 @@ function navigate() {
   const requested = (queryStart === -1 ? fragment : fragment.slice(0, queryStart)) || 'home';
   const query = new URLSearchParams(queryStart === -1 ? '' : fragment.slice(queryStart + 1));
   const key = Object.hasOwn(sections, requested) ? requested : 'home';
-  if (key === activeSection) return;
+  if (fragment === activeFragment && key === activeSection) return;
+  activeFragment = fragment;
   cleanup?.();
   cleanup = null;
   ++fileRequest;
@@ -286,17 +277,25 @@ function navigate() {
   // 移除旧 iframe 会卸载它的页面，停止旧游戏与实验的动画。
   content.replaceChildren();
   title.textContent = section.title;
-  document.title = section.title + " — Peter's Game Lab";
-  const navKey = section.parent || key;
-  document.querySelectorAll('.site-header nav a').forEach(link => {
+  document.title = key === 'home' ? 'A City of Cities' : `${section.title} — A City of Cities`;
+  const navKey = section.navKey ?? (section.main ? key : 'archive');
+  document.body.dataset.section = key;
+  document.body.dataset.main = section.main && !section.keepBar ? 'on' : 'off';
+  document.body.dataset.auth = section.main ? 'off' : 'on';
+  document.querySelector('.auth-panel').hidden = Boolean(section.main);
+  if (!section.main) startAuth();
+  document.querySelectorAll('.site-header nav a, .site-header .archive-link').forEach(link => {
     if (link.hash === '#' + navKey) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   });
   openPage.hidden = !section.page;
   if (section.page) {
     openPage.href = section.page;
-    showProject(key, section);
-  } else if (key === 'home') showHome();
+    showProject(key, section, queryStart === -1 ? '' : fragment.slice(queryStart + 1));
+  } else if (key === 'process') showProcess(content, documentImages);
+  else if (key === 'cities') showCities(content, documentImages);
+  else if (key === 'research') showResearch(content, documentImages);
+  else if (key === 'archive') showArchive(content, sections);
   else cleanup = showFiles(query.get('file') || './docs/README.md');
 }
 window.addEventListener('hashchange', navigate);

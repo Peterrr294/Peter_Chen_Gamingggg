@@ -1,0 +1,915 @@
+{
+ "task": "WEB-01",
+ "at": "2026-11-02T01:31:18.596Z",
+ "checks": [
+  {
+   "name": "real output: veniceWaterNetwork signatures = 06.1 evidence (coast 1101)",
+   "pass": true,
+   "detail": "B725A28B 5D3C81A6 776661B0 62834523 · 438 buildings"
+  },
+  {
+   "name": "real output: manhattanGrid signatures = 06.1 evidence (plain 1101)",
+   "pass": true,
+   "detail": "259D4E0E 7DC97D5A 95D5B6C4 0FA279C3 · 1679 buildings"
+  },
+  {
+   "name": "real output: fezOrganicCore signatures = 06.1 evidence (coast 1101)",
+   "pass": true,
+   "detail": "45DF7292 8B458B7D 18AE08CD 85122883 · 589 buildings"
+  },
+  {
+   "name": "real output: amsterdamCanalRing signatures = 06.1 evidence (coast 1101)",
+   "pass": true,
+   "detail": "5BB850F1 F0C7C120 48D65017 2F339027 · 513 buildings"
+  },
+  {
+   "name": "real output: lisbonHillCore signatures = 06.1 evidence (coast 2202)",
+   "pass": true,
+   "detail": "1652F055 02C686D1 505AC5E6 AD666BED · 723 buildings"
+  },
+  {
+   "name": "real output: chicagoGrid signatures = 06.1 evidence (plain 1101)",
+   "pass": true,
+   "detail": "6097A097 4469E0A9 C14A2A8F 948F4C5E · 2013 buildings"
+  },
+  {
+   "name": "stages differ visibly (6 distinct frames)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Play advances the timeline",
+   "pass": true,
+   "detail": "t = 53.37"
+  },
+  {
+   "name": "Pause holds the timeline",
+   "pass": true,
+   "detail": "t = 53.39"
+  },
+  {
+   "name": "scrubbing never changes the model (same t = same frame)",
+   "pass": true,
+   "detail": "worst 4 pixels, delta 1"
+  },
+  {
+   "name": "Next goes to the next stage",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Prev goes to the previous stage",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "a stage label jumps to that stage",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "the slider scrubs and pauses",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Restart replays from the start",
+   "pass": true,
+   "detail": "t = 0.41"
+  },
+  {
+   "name": "no camera jump in the film (each 50 ms step: < 12 m, < 1°, < 3 % zoom)",
+   "pass": true,
+   "detail": "{\"target\":3.1645530727619295,\"angle\":0.01674622473337528,\"zoom\":0.011552427538533154,\"atT\":33.40000000000024}"
+  },
+  {
+   "name": "same seed, reload: same frame at 6 times",
+   "pass": true,
+   "detail": "worst 5 pixels, delta 1"
+  },
+  {
+   "name": "reveal order reproducible",
+   "pass": true,
+   "detail": "80264A8D"
+  },
+  {
+   "name": "refresh restores position, paused",
+   "pass": true,
+   "detail": "[27,false,\"blocks\"]"
+  },
+  {
+   "name": "dragging orbits from the current view without a jump",
+   "pass": true,
+   "detail": "az 0.663 → -0.017, camera select = free"
+  },
+  {
+   "name": "timeline still works in free camera",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "camera preset: Plan",
+   "pass": true,
+   "detail": "el 1.22 rad"
+  },
+  {
+   "name": "loading state lists the real generation stages",
+   "pass": true,
+   "detail": "6 rows"
+  },
+  {
+   "name": "fresh visit: film starts by itself within 15 s",
+   "pass": true,
+   "detail": "2263 ms"
+  },
+  {
+   "name": "playback frame rate ≥ 24 fps (this machine)",
+   "pass": true,
+   "detail": "139.6 fps, worst frame 242 ms (capped at 100)"
+  },
+  {
+   "name": "reduced motion: no autoplay, finished model, static view on",
+   "pass": true,
+   "detail": "[false,\"buildings\",true]"
+  },
+  {
+   "name": "reduced motion: stages still step",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no WebGL: real stills, stage controls still work",
+   "pass": true,
+   "detail": "web01-film-analysis-after.png"
+  },
+  {
+   "name": "phone: no horizontal overflow",
+   "pass": true,
+   "detail": "390 / 390"
+  },
+  {
+   "name": "phone: controls leave the model at least half the screen",
+   "pass": true,
+   "detail": "{\"scrollW\":390,\"width\":390,\"playerTop\":581.796875,\"playerH\":262.203125,\"heroBottom\":41.84375,\"height\":844}"
+  },
+  {
+   "name": "phone: Play works by tap",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "six speeds, default 1×",
+   "pass": true,
+   "detail": "0.25 × 0.5 × 1 × 1.5 × 2 × 4 ×"
+  },
+  {
+   "name": "each speed drives the timeline at its rate (± 15 %)",
+   "pass": true,
+   "detail": "{\"1\":0.9989448694236609,\"2\":2.0017177589930806,\"4\":3.988572947148245,\"0.25\":0.2499834830827398,\"0.5\":0.5009259871664865,\"1.5\":1.4983184965380751}"
+  },
+  {
+   "name": "fast speed changes while playing never reset or jump the timeline",
+   "pass": true,
+   "detail": "t = 6.41"
+  },
+  {
+   "name": "pause, resume and scrub keep the speed",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "0.25× and 4× reach the same final frame of the film",
+   "pass": true,
+   "detail": "0 pixels differ"
+  },
+  {
+   "name": "speed never re-runs the generators",
+   "pass": true,
+   "detail": "1 run"
+  },
+  {
+   "name": "refresh keeps the chosen speed",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Watch mode hides the technical controls and the panel",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Watch → Inspect keeps world, time, camera direction, city; nothing regenerates",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Inspector City ID comes from the generated data",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "standalone chunk: world seed, chunk ID, growth step say Not Available",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "six stages: title, real module names and parameters follow the timeline",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "stage 1: no later output counted as generated",
+   "pass": true,
+   "detail": "{\"roadEdges\":0,\"roadLength\":0,\"blocks\":0,\"parcels\":0,\"buildings\":0}"
+  },
+  {
+   "name": "road stage: part of the roads, no blocks yet",
+   "pass": true,
+   "detail": "{\"roadEdges\":44,\"roadLength\":4894.8681640625,\"blocks\":0,\"parcels\":0,\"buildings\":0}"
+  },
+  {
+   "name": "end: Inspector counts equal the generated data",
+   "pass": true,
+   "detail": "723 of 723"
+  },
+  {
+   "name": "Inspector shows no invented growth numbers in this film",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "debug layers start folded",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "a surface layer changes the view",
+   "pass": true,
+   "detail": "16.9 % of pixels"
+  },
+  {
+   "name": "turning it off restores the same frame",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "layer switches change the view (no buildings, nodes and footprints on)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "layers of later stages stay locked until the timeline reaches them",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "clicking the model selects a real object with its stable ID",
+   "pass": true,
+   "detail": "Selected: Block B8"
+  },
+  {
+   "name": "selecting does not regenerate",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "clicking empty space returns to the stage overview",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "panel is 25–30 % of a 1440 px view and leaves the model visible",
+   "pass": true,
+   "detail": "388.796875 px"
+  },
+  {
+   "name": "panel is semi-transparent",
+   "pass": true,
+   "detail": "rgba(247, 245, 240, 0.88)"
+  },
+  {
+   "name": "panel collapses and expands",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "closing the panel leaves the film playing",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "reopening shows the current stage",
+   "pass": true,
+   "detail": "Stage: Terrain Analysis"
+  },
+  {
+   "name": "playback with the panel open ≥ 24 fps (this machine)",
+   "pass": true,
+   "detail": "142.6 fps"
+  },
+  {
+   "name": "switching city updates City ID and DNA, keeps the position in Inspect",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone Inspect: bottom sheet, no overflow, model area stays",
+   "pass": true,
+   "detail": "{\"sheet\":270.078125,\"player\":227.828125,\"gap\":-0.171875,\"over\":false,\"height\":844,\"heroBottom\":41.84375,\"top\":345.921875}"
+  },
+  {
+   "name": "Stage 7 shows exactly the six saved origin chunks",
+   "pass": true,
+   "detail": "c_-1_-3 c_-2_0 c_0_3 c_0_6 c_4_-4 c_5_0"
+  },
+  {
+   "name": "Part II says it is a separate run (seed, tag)",
+   "pass": true,
+   "detail": "Recorded replay · world seed 6201 · not the chunk of Part I"
+  },
+  {
+   "name": "city names can be shown",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Inspector data source: recorded replay of world seed 6201",
+   "pass": true,
+   "detail": "Recorded Simulation / Snapshot Replay"
+  },
+  {
+   "name": "clicking a city enters it: real seed and suitability, camera moved, nothing generated",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Follow film returns to the six-city view",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Part I shows no world seed; its terrain seed is its own",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Part I Chunk ID stays Not Available",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "growth replay plays the saved history, step by step",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "after step 30: exactly the 36 saved chunks, no more",
+   "pass": true,
+   "detail": "36 chunks"
+  },
+  {
+   "name": "Inspector follows the step after a scrub",
+   "pass": true,
+   "detail": "15 of 30"
+  },
+  {
+   "name": "Growth Inspector: source, parent, chunk and score are the saved values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no invented road inheritance or connections",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Version names the baked commit once the data has loaded",
+   "pass": true,
+   "detail": "baked from the working tree after commit 91efb1e; signatures checked"
+  },
+  {
+   "name": "speeds work in the world replay (± 15 %)",
+   "pass": true,
+   "detail": "{\"1\":1.0006636140381004,\"4\":3.999999999984358,\"0.25\":0.24981692297558908}"
+  },
+  {
+   "name": "speed never changes the growth result (same t = same frame)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "clicking the world selects a real chunk, nothing generated",
+   "pass": true,
+   "detail": "c_-1_-3"
+  },
+  {
+   "name": "clicking empty space clears the chunk",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "world layers change the view",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "world camera keeps its direction and eases as the world grows",
+   "pass": true,
+   "detail": "{\"target\":29.48020027310531,\"zoom\":0.0029571123685920644}"
+  },
+  {
+   "name": "entering the case study says what it is",
+   "pass": true,
+   "detail": "Controlled Case Study · hand-placed test row · Compatible road interface"
+  },
+  {
+   "name": "three scenarios equal the G03b evidence, marked Controlled Case Study",
+   "pass": true,
+   "detail": "compatible: connected · incompatible: adjacent — connection plan pending · barrier: approaching — barrier between"
+  },
+  {
+   "name": "the recorded world does not show during the case study",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "returning to Part I shows the single chunk again",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "light view: fewer triangles, says so, same events and chunks",
+   "pass": true,
+   "detail": "{\"triangles\":750444,\"step\":30,\"chunks\":36}"
+  },
+  {
+   "name": "the viewer can turn buildings back on",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "missing replay data: clear message, film waits, nothing is drawn",
+   "pass": true,
+   "detail": "The recorded run could not load: http://localhost:5193/experiments/procedural-film/world/world-6201-step30.json: HTTP 404"
+  },
+  {
+   "name": "phone: world replay with the panel, no overflow, model area stays",
+   "pass": true,
+   "detail": "{\"over\":false,\"tag\":93.9375,\"sheet\":345.921875,\"sheetBottom\":616,\"player\":616.171875,\"version\":\"baked from the working tree after commit 91efb1e; signatures checked\"}"
+  },
+  {
+   "name": "phone: the panel never covers the control bar",
+   "pass": true,
+   "detail": "616 / 616.171875"
+  },
+  {
+   "name": "panel opened before the data arrived still updates",
+   "pass": true,
+   "detail": "baked from the working tree after commit 91efb1e; signatures checked"
+  },
+  {
+   "name": "first visit opens the Guided Tour, playing, with few controls",
+   "pass": true,
+   "detail": "{\"view\":\"tour\",\"title\":\"The Landscape\",\"hidden\":true,\"playing\":true}"
+  },
+  {
+   "name": "Next Chapter walks all six chapters in order",
+   "pass": true,
+   "detail": "The Landscape → The Urban Rules → The Generated City → Six Urban Identities → Procedural Growth → A City of Cities"
+  },
+  {
+   "name": "the last chapter says natural encounters are planned",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "chapters run on the one film timeline",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Inspect the Algorithm opens the panel; switching to Explore regenerates nothing",
+   "pass": true,
+   "detail": "1 run"
+  },
+  {
+   "name": "Encounter view is offered in the case study, not the Part I views",
+   "pass": true,
+   "detail": "Follow film, Network view, Close-up, World view, Encounter view"
+  },
+  {
+   "name": "Part I offers Terrain, Network and Morphology views",
+   "pass": true,
+   "detail": "Follow film, Terrain view, Network view, Morphology view, Close-up"
+  },
+  {
+   "name": "keyboard: N, Space, I and Esc work",
+   "pass": true,
+   "detail": "analysis"
+  },
+  {
+   "name": "keyboard: Tab reaches the tour buttons",
+   "pass": true,
+   "detail": "4 of 3"
+  },
+  {
+   "name": "text contrast ≥ 4.5 : 1 on paper",
+   "pass": true,
+   "detail": "lowest 4.92"
+  },
+  {
+   "name": "phone: tour leaves the model most of the screen, no overflow",
+   "pass": true,
+   "detail": "{\"over\":false,\"player\":213,\"height\":844}"
+  },
+  {
+   "name": "home opens on the film, controls within 5 s",
+   "pass": true,
+   "detail": "448 ms"
+  },
+  {
+   "name": "main navigation: 4 entries, Archive apart, no old exercises",
+   "pass": true,
+   "detail": "Explore · Process · Cities · Research"
+  },
+  {
+   "name": "film in the home frame shows real geometry",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "#process: opens, nav marked, images load, no overflow",
+   "pass": true,
+   "detail": "Process · 9 images"
+  },
+  {
+   "name": "#cities: opens, nav marked, images load, no overflow",
+   "pass": true,
+   "detail": "Cities · 6 images"
+  },
+  {
+   "name": "#research: opens, nav marked, images load, no overflow",
+   "pass": true,
+   "detail": "Research · 10 images"
+  },
+  {
+   "name": "#archive: opens, nav marked, images load, no overflow",
+   "pass": true,
+   "detail": "Archive · 0 images"
+  },
+  {
+   "name": "old route #noise still opens its page",
+   "pass": true,
+   "detail": "./experiments/cellular-noise/index.html"
+  },
+  {
+   "name": "old route #voxel still opens its page",
+   "pass": true,
+   "detail": "./experiments/voxel-terrain/index.html"
+  },
+  {
+   "name": "old route #flavor still opens its page",
+   "pass": true,
+   "detail": "./experiments/flavor-clash-prototype/index.html"
+  },
+  {
+   "name": "old route #miniWorld still opens its page",
+   "pass": true,
+   "detail": "./experiments/world-grid/index.html"
+  },
+  {
+   "name": "old route #seedTerrain still opens its page",
+   "pass": true,
+   "detail": "./experiments/seed-terrain/index.html"
+  },
+  {
+   "name": "old route #world still opens its page",
+   "pass": true,
+   "detail": "./experiments/city-of-cities/index.html"
+  },
+  {
+   "name": "Files & Notes still loads",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "research page has links to records, GitHub and experiments",
+   "pass": true,
+   "detail": "19 links, 17 to secondary routes"
+  },
+  {
+   "name": "Inspector source link opens the real generator file",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "a city card opens that city in the film",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "city page numbers equal the 06.1 evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no dead links on the main pages",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone #home: no horizontal overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone #process: no horizontal overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone #cities: no horizontal overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone #research: no horizontal overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "phone #archive: no horizontal overflow",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "no browser errors",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "issues": [],
+ "browserErrors": [],
+ "measurements": {
+  "cities": {
+   "veniceWaterNetwork": {
+    "landform": "coast",
+    "seed": 1101,
+    "signatures": {
+     "network": "B725A28B",
+     "blocks": "5D3C81A6",
+     "parcels": "776661B0",
+     "buildings": "62834523",
+     "reveal": "82F1796D",
+     "buildingCount": 438,
+     "cityId": "veniceWaterNetwork",
+     "timings": {
+      "terrain": 61,
+      "analysis": 54,
+      "roads": 492,
+      "blocks": 230,
+      "parcels": 552,
+      "buildings": 182
+     }
+    },
+    "loadMs": 2277,
+    "buildMs": 125,
+    "triangles": 197804
+   },
+   "manhattanGrid": {
+    "landform": "plain",
+    "seed": 1101,
+    "signatures": {
+     "network": "259D4E0E",
+     "blocks": "7DC97D5A",
+     "parcels": "95D5B6C4",
+     "buildings": "0FA279C3",
+     "reveal": "626DD889",
+     "buildingCount": 1679,
+     "cityId": "manhattanGrid",
+     "timings": {
+      "terrain": 81,
+      "analysis": 69,
+      "roads": 8,
+      "blocks": 292,
+      "parcels": 2987,
+      "buildings": 1266
+     }
+    },
+    "loadMs": 5300,
+    "buildMs": 280,
+    "triangles": 199992
+   },
+   "fezOrganicCore": {
+    "landform": "coast",
+    "seed": 1101,
+    "signatures": {
+     "network": "45DF7292",
+     "blocks": "8B458B7D",
+     "parcels": "18AE08CD",
+     "buildings": "85122883",
+     "reveal": "48FD1FB1",
+     "buildingCount": 589,
+     "cityId": "fezOrganicCore",
+     "timings": {
+      "terrain": 96,
+      "analysis": 79,
+      "roads": 941,
+      "blocks": 311,
+      "parcels": 943,
+      "buildings": 421
+     }
+    },
+    "loadMs": 3281,
+    "buildMs": 176,
+    "triangles": 210848
+   },
+   "amsterdamCanalRing": {
+    "landform": "coast",
+    "seed": 1101,
+    "signatures": {
+     "network": "5BB850F1",
+     "blocks": "F0C7C120",
+     "parcels": "48D65017",
+     "buildings": "2F339027",
+     "reveal": "7172D961",
+     "buildingCount": 513,
+     "cityId": "amsterdamCanalRing",
+     "timings": {
+      "terrain": 89,
+      "analysis": 73,
+      "roads": 421,
+      "blocks": 306,
+      "parcels": 1206,
+      "buildings": 1285
+     }
+    },
+    "loadMs": 3822,
+    "buildMs": 174,
+    "triangles": 200820
+   },
+   "lisbonHillCore": {
+    "landform": "coast",
+    "seed": 2202,
+    "signatures": {
+     "network": "1652F055",
+     "blocks": "02C686D1",
+     "parcels": "505AC5E6",
+     "buildings": "AD666BED",
+     "reveal": "80264A8D",
+     "buildingCount": 723,
+     "cityId": "lisbonHillCore",
+     "timings": {
+      "terrain": 97,
+      "analysis": 84,
+      "roads": 591,
+      "blocks": 375,
+      "parcels": 886,
+      "buildings": 365
+     }
+    },
+    "loadMs": 2865,
+    "buildMs": 176,
+    "triangles": 189448
+   },
+   "chicagoGrid": {
+    "landform": "plain",
+    "seed": 1101,
+    "signatures": {
+     "network": "6097A097",
+     "blocks": "4469E0A9",
+     "parcels": "C14A2A8F",
+     "buildings": "948F4C5E",
+     "reveal": "7C0E981D",
+     "buildingCount": 2013,
+     "cityId": "chicagoGrid",
+     "timings": {
+      "terrain": 84,
+      "analysis": 68,
+      "roads": 6,
+      "blocks": 275,
+      "parcels": 3766,
+      "buildings": 1294
+     }
+    },
+    "loadMs": 6091,
+    "buildMs": 284,
+    "triangles": 199992
+   }
+  },
+  "cameraMaxStepPer50ms": {
+   "target": 3.1645530727619295,
+   "angle": 0.01674622473337528,
+   "zoom": 0.011552427538533154,
+   "atT": 33.40000000000024
+  },
+  "freshVisitReadyMs": 2263,
+  "playback": {
+   "frames": 1713,
+   "worst": 0.24170000000000028,
+   "sum": 12.27130000000002,
+   "fps": 139.59401204436347
+  },
+  "mobile": {
+   "scrollW": 390,
+   "width": 390,
+   "playerTop": 581.796875,
+   "playerH": 262.203125,
+   "heroBottom": 41.84375,
+   "height": 844
+  },
+  "speedRates": {
+   "1": 0.9989448694236609,
+   "2": 2.0017177589930806,
+   "4": 3.988572947148245,
+   "0.25": 0.2499834830827398,
+   "0.5": 0.5009259871664865,
+   "1.5": 1.4983184965380751
+  },
+  "playbackAfterInspect": {
+   "frames": 1111,
+   "worst": 0.025099999999998544,
+   "sum": 7.789499999999974,
+   "fps": 142.6278965273771
+  },
+  "mobileInspect": {
+   "sheet": 270.078125,
+   "player": 227.828125,
+   "gap": -0.171875,
+   "over": false,
+   "height": 844,
+   "heroBottom": 41.84375,
+   "top": 345.921875
+  },
+  "worldSpeedRates": {
+   "1": 1.0006636140381004,
+   "4": 3.999999999984358,
+   "0.25": 0.24981692297558908
+  },
+  "worldCameraMaxStepPer50ms": {
+   "target": 29.48020027310531,
+   "zoom": 0.0029571123685920644
+  },
+  "lightWorld": {
+   "triangles": 750444,
+   "tag": "Recorded replay · world seed 6201 · not the chunk of Part I · Light view: building volumes and lots hidden for this device (Debug layers)",
+   "event": 30,
+   "chunks": 36
+  },
+  "tourFirstTextMs": 180,
+  "contrast": [
+   [
+    ".stage-line",
+    5.59
+   ],
+   [
+    ".stage-index",
+    5.59
+   ],
+   [
+    "#stageStatus",
+    5.34
+   ],
+   [
+    ".readout",
+    5.91
+   ],
+   [
+    "#inspector dt",
+    5.9
+   ],
+   [
+    "#inspector dd",
+    13.94
+   ],
+   [
+    "#inspector dd.na",
+    4.92
+   ],
+   [
+    ".scene-tag",
+    13.97
+   ],
+   [
+    ".explore span",
+    5.29
+   ],
+   [
+    ".ticks button",
+    5.59
+   ],
+   [
+    "label",
+    4.92
+   ],
+   [
+    ".note",
+    5.9
+   ]
+  ],
+  "homeControlsMs": 448,
+  "researchLinks": 19
+ },
+ "passed": 129,
+ "failed": 0
+}

@@ -1,0 +1,177 @@
+{
+  "note": "Semantic checklist of the How it works summaries. 'basis' says what each statement was compared with. An AI review is not a human review.",
+  "reviewedAt": "2026-11-02",
+  "reviewedBy": "Claude (AI), checklist compared with the code on 2026-11-02; no human review",
+  "humanReview": "pending",
+  "stages": {
+    "terrain": {
+      "files": {
+        "experiments/seed-terrain/TerrainGenerator.js": "e389fa3fe20cfe09",
+        "experiments/seed-terrain/TerrainFields.js": "e97c1667e2e0b095"
+      },
+      "checklist": [
+        {
+          "statement": "Each sample's height and water come from the landform rules",
+          "basis": "generateChunk loop over LANDFORM_RULES[config.landform]"
+        },
+        {
+          "statement": "Buildable means slope within the limit, not water, not low shore",
+          "basis": "TerrainFields.js buildableMask line"
+        }
+      ]
+    },
+    "analysis": {
+      "files": {
+        "experiments/seed-terrain/TerrainAnalysis.js": "4ae04b430b658f67",
+        "experiments/seed-terrain/CityMatcher.js": "157090a9c146d8e4"
+      },
+      "checklist": [
+        {
+          "statement": "Slope bands 5, 10 and 20 degrees",
+          "basis": "analysis.thresholds.suitability read from a real run"
+        },
+        {
+          "statement": "A direction is reported only if a candidate passes its test",
+          "basis": "dominantDirection.candidates with pass flags, real run"
+        },
+        {
+          "statement": "DNA score is fit times evidence coverage",
+          "basis": "cityMatchRules.js header comment"
+        }
+      ]
+    },
+    "roads": {
+      "files": {
+        "experiments/seed-terrain/NetworkGenerator.js": "055f7922374b9b2b",
+        "experiments/seed-terrain/networkStrategies.js": "f3113a7e9e1737de"
+      },
+      "checklist": [
+        {
+          "statement": "Grid: two street families at set spacing, truncated on steep ground, main streets may bridge short water",
+          "basis": "gridStrategy and STRATEGIES.grid (maxSlopeDeg, minStubLength, maxBridgeSpan)"
+        },
+        {
+          "statement": "Organic: gates and centres joined by least-cost paths, lanes, loops",
+          "basis": "organicStrategy, params slopePenalty, climbPenalty, reuseDiscount; closeLoops"
+        },
+        {
+          "statement": "Canal: canals on water, quays inland",
+          "basis": "canalStreetStrategy comments 1 and 2"
+        },
+        {
+          "statement": "Crossings resolved, short pieces pruned, components linked",
+          "basis": "generateNetwork body"
+        }
+      ]
+    },
+    "blocks": {
+      "files": {
+        "experiments/seed-terrain/BlockGenerator.js": "6e2bc0dfd54566b9",
+        "experiments/seed-terrain/BlockRefinement.js": "cc5ff6c8047776b8"
+      },
+      "checklist": [
+        {
+          "statement": "Availability field, regions above zero, contour boundaries",
+          "basis": "BlockGenerator.js header comment steps 1 to 3"
+        },
+        {
+          "statement": "Small remnants are kept as fragments",
+          "basis": "BlockGenerator.js line creating fragments: kept and classified, never deleted"
+        }
+      ]
+    },
+    "parcels": {
+      "files": {
+        "experiments/seed-terrain/ParcelGenerator.js": "e2bb7878be1b69b9",
+        "experiments/seed-terrain/parcelRules.js": "ffe3e8b6c243323c"
+      },
+      "checklist": [
+        {
+          "statement": "Frontage runs cut at target frontage, remainders merged, corner lots",
+          "basis": "ParcelGenerator.js comments 2 and 3"
+        },
+        {
+          "statement": "Samples go to the nearest lot; polygons from a local field",
+          "basis": "ParcelGenerator.js comments 4 and 6"
+        }
+      ]
+    },
+    "buildings": {
+      "files": {
+        "experiments/seed-terrain/BuildingGenerator.js": "fce63758f3a8999d",
+        "experiments/seed-terrain/buildingRules.js": "a80639cba6488f48"
+      },
+      "checklist": [
+        {
+          "statement": "A parcel may stay empty by the occupancy rule",
+          "basis": "BuildingGenerator.js: random.next() < rule.occupancy"
+        },
+        {
+          "statement": "Vacant when the ground drops more than the plinth limit",
+          "basis": "BuildingGenerator.js plinthHeight > rules.maxPlinth"
+        },
+        {
+          "statement": "Height mix of centre, road class, parcel area, jitter",
+          "basis": "BuildingGenerator.js mix, floors and height lines"
+        }
+      ]
+    },
+    "origins": {
+      "files": {
+        "experiments/city-of-cities/OriginPlacement.js": "cfeb1387d9d116d5",
+        "experiments/city-of-cities/WorldContext.js": "3bd6c350d29a3edf"
+      },
+      "checklist": [
+        {
+          "statement": "Sites screened, probed, scored by five terms, drawn by weight at minimum distance",
+          "basis": "G01 note section 4, OriginPlacement.js exports, saved placement reasons"
+        },
+        {
+          "statement": "A failure registers no city",
+          "basis": "WorldContext.initialiseSteps comment: atomic"
+        }
+      ]
+    },
+    "growth": {
+      "files": {
+        "experiments/city-of-cities/WorldGrowthController.js": "1d7f64eeee3665da",
+        "experiments/city-of-cities/growthDNA.js": "6496f6caddd9ffcc",
+        "experiments/city-of-cities/GrowthEvaluation.js": "7b3bd4490a2722e0"
+      },
+      "checklist": [
+        {
+          "statement": "Bid formula",
+          "basis": "WorldGrowthController.step: rate * best / (1 + grown) * (1 + cityJitter * seeded)"
+        },
+        {
+          "statement": "Highest bid wins, then a cell is drawn weighted by score to the power of sharpness",
+          "basis": "WorldGrowthController.step: bidding sort, keyed pick with selectionSharpness 4"
+        },
+        {
+          "statement": "Chunks are independent here, seams recorded only",
+          "basis": "G02 note limitation 4; generationParameters.terrainMode raw"
+        }
+      ]
+    },
+    "encounter": {
+      "files": {
+        "experiments/city-of-cities/UrbanEncounter.js": "d4da870760bf5a79",
+        "experiments/city-of-cities/encounterFixture.js": "e22221abacd2e511"
+      },
+      "checklist": [
+        {
+          "statement": "Cores placed by hand",
+          "basis": "encounterFixture.js header: TEST ONLY"
+        },
+        {
+          "statement": "Decision is connection, plan or separation",
+          "basis": "saved decisions in urban-encounter.json, three scenarios"
+        },
+        {
+          "statement": "Connection verified by a route over the road graph",
+          "basis": "UrbanEncounter.path; validationStatus path 2288 m"
+        }
+      ]
+    }
+  }
+}
