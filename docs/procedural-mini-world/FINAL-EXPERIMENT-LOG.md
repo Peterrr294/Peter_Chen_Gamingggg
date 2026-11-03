@@ -35,7 +35,9 @@
 - **Update (2026-11-02, task WEB-01f by user instruction):** WEB-01 is complete as a stage and in Maintenance Mode ([summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md)). Release details: entry WEB-01f.
 - **Update (2026-11-01, task G02c-01 by user instruction):** the multi-city scheduler can take its candidates from real road fronts (opt-in `growthMode: 'road'`), with Plan → Generate → Validate → Commit. Default G01 / G02 path unchanged. Verified on 6201 / 6202 / 6203, pending review (entry G02c-01).
 - **Update (2026-11-02, task G02c-02 by user instruction):** grade-aware road connection: ramps with sampled vertical alignment in the uncommitted chunk, joins continuous in height and graph; the old 3 m steps were all terrain seams (entry G02c-02). Default paths and G02c-01 unchanged. Pending review.
-- **Current single task:** G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate.
+- **Update (2026-11-02, task G03c-01 by user instruction):** natural encounters are detected inside real six-city growth (6 % ramp plan); one adjacency on the known seeds (6202, Chicago × Fez, adaptation proposed); nothing connected (entry G03c-01). Pending review.
+- **Current single task:** G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate.
+- *Previous (superseded 2026-11-02, G03c-01):* "G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate."
 - *Previous (superseded 2026-11-02, G02c-02):* "Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started."
 - *Previous (superseded 2026-11-01, G02c-01):* "Return to urban growth research: choose G02c / G03c (road-first growth and encounters in the multi-city scheduler). Website work: maintenance only."
 - *Previous (superseded 2026-11-02, WEB-01f):* "Human review of the preview and of [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md), a test on a real phone and an ordinary laptop; then a production decision."
@@ -1656,3 +1658,28 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - Amsterdam 6203 core without roads.
 - **Review status:** Pending review. Note: [G02c-02](./A-City-of-Cities/G02c-02-Grade-Aware-Road-Growth.md).
 - **Next single task:** G03c-01 (user instruction), gate on this entry.
+
+### G03c-01 — Emergent urban encounter
+
+- **Date / Stage / Single question:** 2026-11-02 / G03 / Do cities meet when they grow by their own rules, and what does the meeting say about roads, terrain and morphology?
+- **Gate:** G02c-02 pass (51 of 51 joins continuous; save / load).
+- **Reused:** G03b detection ideas, boundary context and path; G02c-02 ramp planner; G03a constraint rules; the road-driven scheduler.
+- **Changed:** new `EmergentEncounter.js`, `EmergentEncounterView.js`, `verify-emergent-encounter.mjs`, `search-emergent-encounters.mjs`; changed `WorldGrowthController.js` (detection after commit), `UrbanEncounter.js` (path reads neighbour joins, validates joins), `WorldContext.js` (encounters in the state, world terrain in the layers), `main.js`, `index.html`.
+- **Seeds / parameters:** 6201 / 6202 / 6203, 6 % profile, budget 60 steps; approaching 3 cells, adaptation offset 48 m (assumptions). Seed search 6204–6233, 30 steps.
+- **Result:**
+  - 6201: 7 steps, stalled; Fez × Manhattan approaching from step 2.
+  - 6202: 16 steps, stalled; 5 encounters by growth. Chicago × Fez became adjacent at step 16: 10 Chicago street ends, 1 Fez lane end; nearest pair 26.4 m apart, so adaptation proposed; 9 separated.
+  - 6203: 1 step, stalled.
+  - No connection. Every check of the task list passes; detection does not change growth.
+  - Determinism, save / load / continue, browser parity pass.
+  - Reference run without the ramp plan: 3 adjacencies (adaptation proposed twice, separation once).
+- **Seed search:** in progress at this checkpoint (`emergent-encounter-search.json`); its summary follows in the next entry.
+- **Screenshots (task G03c-01):**
+  - ![Adjacent](../assets/screenshots/procedural-mini-world/g03c-01-adjacent-road-proposals.png) seed 6202, step 16, Chicago × Fez, layers boundary / proposals / states;
+  - ![Local](../assets/screenshots/procedural-mini-world/g03c-01-seed6201-encounter-local.png) seed 6201, step 7, Fez × Manhattan approaching.
+- **Open issues:**
+  - growth stalls early;
+  - no generator hook for grid connectors;
+  - organic newcomers do not read neighbours before commit.
+- **Review status:** Pending review. Note: [G03c-01](./A-City-of-Cities/G03c-01-Emergent-Urban-Encounter.md).
+- **Next single task:** G03c-02 (user instruction).

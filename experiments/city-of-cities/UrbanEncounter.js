@@ -202,10 +202,21 @@ export class UrbanEncounter {
     const w = this.world; const adj = new Map(); const nodes = new Set();
     const add = (a, b, len) => { for (const n of [a, b]) { if (!adj.has(n)) adj.set(n, []); nodes.add(n); } adj.get(a).push([b, len]); adj.get(b).push([a, len]); };
     for (const c of [...this.chunksOf(cityA), ...this.chunksOf(cityB)]) for (const [f, t, len] of c.outputs.roadGraph) add(`${c.chunkId}:${f}`, `${c.chunkId}:${t}`, len);
-    let crossings = 0;
+    // G03c-01: every recorded join (parent, same-city neighbour, cross-city) enters only if both nodes are in the road
+    // graphs, it is not a duplicate, and, where a ramp plan exists, the two ends meet in height. Rejected ends are never joins.
+    let crossings = 0; const seen = new Set(); const invalid = [];
+    const inGraph = id => nodes.has(id);
+    const join = (l, cross, ramped) => {
+      const a = `${l.parent.chunkId}:${l.parent.nodeId}`; const b = `${l.child.chunkId}:${l.child.nodeId}`; const k = [a, b].sort().join('~');
+      if (!inGraph(a) || !inGraph(b)) { invalid.push({ connectionId: l.connectionId, reason: 'node not in the road graph' }); return; }
+      if (ramped && Math.abs(l.elevationStepM) > 0.06) { invalid.push({ connectionId: l.connectionId, reason: `height step ${l.elevationStepM} m` }); return; }
+      if (seen.has(k)) return; seen.add(k); add(a, b, 0); if (cross) crossings += 1;
+    };
     for (const e of w.growth.history.filter(x => x.mode === 'g02b-road-first' && [cityA, cityB].includes(x.cityId))) {
-      for (const l of e.connections) add(`${l.parent.chunkId}:${l.parent.nodeId}`, `${l.child.chunkId}:${l.child.nodeId}`, 0);
-      for (const l of e.crossCityConnections ?? []) { add(`${l.parent.chunkId}:${l.parent.nodeId}`, `${l.child.chunkId}:${l.child.nodeId}`, 0); crossings += 1; }
+      const ramped = Boolean(e.ramps);
+      for (const l of e.connections) join(l, false, ramped);
+      for (const l of e.neighbourConnections ?? []) join(l, false, ramped);
+      for (const l of e.crossCityConnections ?? []) join(l, true, ramped);
     }
     const src = [...nodes].filter(n => n.startsWith(`${w.cities.get(cityA).originChunkId}:`));
     const dst = new Set([...nodes].filter(n => n.startsWith(`${w.cities.get(cityB).originChunkId}:`)));
@@ -218,9 +229,9 @@ export class UrbanEncounter {
       if (dst.has(u)) { hit = u; break; }
       for (const [v, len] of adj.get(u)) { if (done.has(v)) continue; const d = dist.get(u) + len; if (!dist.has(v) || d < dist.get(v)) { dist.set(v, d); prev.set(v, u); open.add(v); } }
     }
-    if (!hit) return { reachable: false, crossings, lengthM: null, chunks: [] };
+    if (!hit) return { reachable: false, crossings, lengthM: null, chunks: [], invalidJoins: invalid, joinsUsed: seen.size };
     const route = [hit]; while (prev.has(route[0])) route.unshift(prev.get(route[0]));
-    return { reachable: true, crossings, lengthM: Math.round(dist.get(hit)), from: route[0], to: hit, nodes: route.length, chunks: [...new Set(route.map(n => n.split(':')[0]))] };
+    return { reachable: true, crossings, lengthM: Math.round(dist.get(hit)), from: route[0], to: hit, nodes: route.length, chunks: [...new Set(route.map(n => n.split(':')[0]))], invalidJoins: invalid, joinsUsed: seen.size };
   }
 
   // ---------- Negotiation: newcomer `cityId` wants to grow into `target` ----------

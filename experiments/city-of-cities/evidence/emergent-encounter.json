@@ -1,0 +1,2491 @@
+{
+  "task": "G03c-01 Emergent Urban Encounter",
+  "testedAt": "2026-11-03T04:51:00.653Z",
+  "rules": {
+    "approachCells": 3,
+    "adaptationOffsetM": 48
+  },
+  "node": {
+    "gate": {
+      "g02c02": "pass",
+      "joinsChecked": 51,
+      "graphJoins": 51,
+      "maxResidualM": 0,
+      "maxXYM": 0,
+      "maxGrade": 0.0748,
+      "saveLoad": {
+        "savedAtStep": 6,
+        "chunks": 12,
+        "rampRecordsReproduced": true,
+        "joinEventsReproduced": 6,
+        "continuedEqualsUninterrupted": true,
+        "cacheEntriesSaved": 2
+      },
+      "seamDiagnosis": "97 of 97",
+      "freeGrowthStalls": {
+        "6201": 7,
+        "6202": 12,
+        "6203": 1
+      }
+    },
+    "runs": {
+      "6201": {
+        "initial": {
+          "step": 0,
+          "chunks": 6,
+          "segments": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_3:c_0_6",
+              "states": [
+                "approaching",
+                "constrained"
+              ],
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        "milestones": {},
+        "steps": 7,
+        "stalled": {
+          "step": 8,
+          "reason": "every eligible road candidate failed validation"
+        },
+        "ms": 80107,
+        "grown": {
+          "amsterdamCanalRing": 0,
+          "chicagoGrid": 0,
+          "fezOrganicCore": 6,
+          "lisbonHillCore": 0,
+          "manhattanGrid": 1,
+          "veniceWaterNetwork": 0
+        },
+        "detection": {
+          "calls": 7,
+          "meanMs": 281,
+          "maxMs": 574
+        },
+        "checks": {
+          "cityIds": 2,
+          "territory": 2,
+          "adjacency": 2,
+          "roadFronts": 1,
+          "roadPorts": 0,
+          "elevationTrace": 0,
+          "proposalNotConnected": 2
+        },
+        "encounters": [
+          {
+            "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_3:c_0_6",
+            "origin": "placement",
+            "firstStep": 0,
+            "lastStep": 0,
+            "cities": [
+              "amsterdamCanalRing",
+              "veniceWaterNetwork"
+            ],
+            "minDistanceCells": 3,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "3 cell(s) apart, a constrained cell between: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "0,4",
+              "0,5"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [],
+            "relatedRoadFronts": [],
+            "terrainConditions": [
+              {
+                "cell": "0,4",
+                "landform": "mountain",
+                "meanLandSlopeDeg": 28.04,
+                "waterFraction": 0,
+                "buildableFraction": 0.158,
+                "occupiedBy": null,
+                "ecologicalConstraint": [
+                  {
+                    "rule": "steepTerrain",
+                    "value": 28.04,
+                    "threshold": ">= 18°"
+                  }
+                ]
+              },
+              {
+                "cell": "0,5",
+                "landform": "coast",
+                "meanLandSlopeDeg": 8.41,
+                "waterFraction": 0.169,
+                "buildableFraction": 0.536,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              }
+            ],
+            "timeline": [
+              {
+                "step": 0,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-1_-2:c_-2_0",
+            "origin": "growth",
+            "firstStep": 2,
+            "lastStep": 7,
+            "cities": [
+              "fezOrganicCore",
+              "manhattanGrid"
+            ],
+            "minDistanceCells": 2,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "2 cell(s) apart: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "-2,-1"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:fezOrganicCore:2",
+              "growth:fezOrganicCore:3",
+              "growth:fezOrganicCore:4",
+              "growth:fezOrganicCore:5",
+              "growth:fezOrganicCore:7"
+            ],
+            "relatedRoadFronts": [
+              {
+                "cityId": "fezOrganicCore",
+                "candidateId": "road:fezOrganicCore:-2:-1",
+                "growthFrontId": null,
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 36.46 m)"
+              },
+              {
+                "cityId": "manhattanGrid",
+                "candidateId": "road:manhattanGrid:-2:-1",
+                "growthFrontId": "rgf:c_-2_0:minZ:-2158.1",
+                "status": "eligible",
+                "reason": null
+              }
+            ],
+            "terrainConditions": [
+              {
+                "cell": "-2,-1",
+                "landform": "riverValley",
+                "meanLandSlopeDeg": 11.3,
+                "waterFraction": 0.035,
+                "buildableFraction": 0.48,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              }
+            ],
+            "timeline": [
+              {
+                "step": 2,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 3,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 3,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 4,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 4,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 5,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 7,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          }
+        ],
+        "counts": {
+          "segments": 2,
+          "emergedByGrowth": 1,
+          "adjacent": 0,
+          "connectionCandidate": 0,
+          "connected": 0,
+          "byDecision": {
+            "unresolved": 2
+          }
+        }
+      },
+      "6202": {
+        "initial": {
+          "step": 0,
+          "chunks": 6,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+              "states": [
+                "approaching"
+              ],
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        "milestones": {
+          "12": {
+            "step": 12,
+            "chunks": 18,
+            "segments": [
+              {
+                "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ]
+          }
+        },
+        "steps": 16,
+        "stalled": {
+          "step": 17,
+          "reason": "every eligible road candidate failed validation"
+        },
+        "ms": 162516,
+        "grown": {
+          "amsterdamCanalRing": 0,
+          "chicagoGrid": 5,
+          "fezOrganicCore": 4,
+          "lisbonHillCore": 0,
+          "manhattanGrid": 7,
+          "veniceWaterNetwork": 0
+        },
+        "detection": {
+          "calls": 16,
+          "meanMs": 128,
+          "maxMs": 592
+        },
+        "checks": {
+          "cityIds": 6,
+          "territory": 6,
+          "adjacency": 6,
+          "roadFronts": 0,
+          "roadPorts": 10,
+          "elevationTrace": 0,
+          "proposalNotConnected": 6
+        },
+        "encounters": [
+          {
+            "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+            "origin": "placement",
+            "firstStep": 0,
+            "lastStep": 11,
+            "cities": [
+              "chicagoGrid",
+              "veniceWaterNetwork"
+            ],
+            "minDistanceCells": 3,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "3 cell(s) apart: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "1,1",
+              "1,0"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:chicagoGrid:6",
+              "growth:chicagoGrid:11"
+            ],
+            "relatedRoadFronts": [],
+            "terrainConditions": [
+              {
+                "cell": "1,1",
+                "landform": "riverValley",
+                "meanLandSlopeDeg": 12.09,
+                "waterFraction": 0.036,
+                "buildableFraction": 0.461,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              },
+              {
+                "cell": "1,0",
+                "landform": "plain",
+                "meanLandSlopeDeg": 0.97,
+                "waterFraction": 0,
+                "buildableFraction": 1,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              }
+            ],
+            "timeline": [
+              {
+                "step": 0,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 6,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 11,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+            "origin": "growth",
+            "firstStep": 4,
+            "lastStep": 14,
+            "cities": [
+              "fezOrganicCore",
+              "lisbonHillCore"
+            ],
+            "minDistanceCells": 2,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "2 cell(s) apart, a constrained cell between: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "5,-2"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:fezOrganicCore:4",
+              "growth:fezOrganicCore:8",
+              "growth:fezOrganicCore:14"
+            ],
+            "relatedRoadFronts": [
+              {
+                "cityId": "fezOrganicCore",
+                "candidateId": "road:fezOrganicCore:5:-2",
+                "growthFrontId": null,
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 259.97 m)"
+              },
+              {
+                "cityId": "lisbonHillCore",
+                "candidateId": "road:lisbonHillCore:5:-2",
+                "growthFrontId": null,
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              }
+            ],
+            "terrainConditions": [
+              {
+                "cell": "5,-2",
+                "landform": "mountain",
+                "meanLandSlopeDeg": 23.7,
+                "waterFraction": 0,
+                "buildableFraction": 0.194,
+                "occupiedBy": null,
+                "ecologicalConstraint": [
+                  {
+                    "rule": "steepTerrain",
+                    "value": 23.7,
+                    "threshold": ">= 18°"
+                  }
+                ]
+              }
+            ],
+            "timeline": [
+              {
+                "step": 4,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 8,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 14,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+            "origin": "growth",
+            "firstStep": 6,
+            "lastStep": 16,
+            "cities": [
+              "chicagoGrid",
+              "fezOrganicCore"
+            ],
+            "minDistanceCells": 1,
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "adaptationProposed",
+            "decisionReason": "1 road end(s) adaptationProposed of 10 across 1 shared edge(s)",
+            "validationStatus": "not connected",
+            "sharedEdges": [
+              "c_3_0|c_3_-1"
+            ],
+            "gapCells": [],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 1,
+              "separationAccepted": 9,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:chicagoGrid:6",
+              "growth:chicagoGrid:9",
+              "growth:chicagoGrid:11",
+              "growth:fezOrganicCore:14",
+              "growth:fezOrganicCore:16"
+            ],
+            "relatedRoadFronts": [],
+            "terrainConditions": [
+              {
+                "edge": "c_3_-1|c_3_0",
+                "medianSeamM": 4.11,
+                "maxSeamM": 7.17,
+                "waterShare": 0,
+                "barrier": false
+              }
+            ],
+            "timeline": [
+              {
+                "step": 6,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 9,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 9,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 11,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 11,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 11,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 14,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 14,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 16,
+                "states": [
+                  "approaching",
+                  "adjacent"
+                ],
+                "relationshipStatus": "adaptationProposed"
+              },
+              {
+                "step": 16,
+                "states": [
+                  "approaching",
+                  "adjacent"
+                ],
+                "relationshipStatus": "adaptationProposed"
+              },
+              {
+                "step": 16,
+                "states": [
+                  "approaching",
+                  "adjacent"
+                ],
+                "relationshipStatus": "adaptationProposed"
+              }
+            ],
+            "edgeEvaluations": [
+              {
+                "key": "c_3_-1|c_3_0",
+                "step": 16,
+                "evaluated": true,
+                "gradeProfile": "baseline",
+                "newerChunkId": "c_3_-1",
+                "sideNewer": "maxZ",
+                "olderChunkId": "c_3_0",
+                "sideOlder": "minZ",
+                "terrain": {
+                  "medianSeamM": 4.11,
+                  "maxSeamM": 7.17,
+                  "waterShare": 0,
+                  "barrier": false
+                },
+                "morphology": {
+                  "strategies": [
+                    "grid",
+                    "organic"
+                  ],
+                  "orientationDeg": [
+                    0,
+                    87.61
+                  ],
+                  "blockMedianM2": [
+                    13590,
+                    37579
+                  ],
+                  "heightMeanM": [
+                    19.5,
+                    4.5
+                  ]
+                },
+                "ports": [
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:2598.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 2598.4,
+                    "roadClass": "secondary",
+                    "elevation": 23.63,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 473.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 473.6 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:2698.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 2698.4,
+                    "roadClass": "secondary",
+                    "elevation": 22.79,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 373.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 373.6 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:2798.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 2798.4,
+                    "roadClass": "secondary",
+                    "elevation": 22.68,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 273.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 273.6 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:2898.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 2898.4,
+                    "roadClass": "secondary",
+                    "elevation": 21.94,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 173.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 173.6 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:2998.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 2998.4,
+                    "roadClass": "secondary",
+                    "elevation": 21.03,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 73.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 73.6 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:3098.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 3098.4,
+                    "roadClass": "secondary",
+                    "elevation": 20.6,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 26.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "adaptationProposed",
+                    "reason": "nearest fezOrganicCore road 26.4 m along the edge: a connector would be needed (no generator hook)"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:3198.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 3198.4,
+                    "roadClass": "secondary",
+                    "elevation": 21.31,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 126.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 126.4 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:3298.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 3298.4,
+                    "roadClass": "secondary",
+                    "elevation": 21.55,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 226.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 226.4 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:3398.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 3398.4,
+                    "roadClass": "secondary",
+                    "elevation": 22.21,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 326.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 326.4 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_3_0:minZ:3498.4",
+                    "cityId": "chicagoGrid",
+                    "chunkId": "c_3_0",
+                    "side": "minZ",
+                    "position": 3498.4,
+                    "roadClass": "secondary",
+                    "elevation": 19.43,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_3_-1",
+                    "nearestOffsetM": 426.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 426.4 m away along the edge"
+                  }
+                ],
+                "roadEndsOfNewer": 1
+              }
+            ]
+          },
+          {
+            "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+            "origin": "growth",
+            "firstStep": 12,
+            "lastStep": 12,
+            "cities": [
+              "amsterdamCanalRing",
+              "manhattanGrid"
+            ],
+            "minDistanceCells": 3,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "3 cell(s) apart: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "-4,-3",
+              "-4,-2"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:manhattanGrid:12"
+            ],
+            "relatedRoadFronts": [],
+            "terrainConditions": [
+              {
+                "cell": "-4,-3",
+                "landform": "coast",
+                "meanLandSlopeDeg": 7.43,
+                "waterFraction": 0.325,
+                "buildableFraction": 0.483,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              },
+              {
+                "cell": "-4,-2",
+                "landform": "plain",
+                "meanLandSlopeDeg": 1.03,
+                "waterFraction": 0,
+                "buildableFraction": 1,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              }
+            ],
+            "timeline": [
+              {
+                "step": 12,
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_4_-1:c_1_-1",
+            "origin": "growth",
+            "firstStep": 14,
+            "lastStep": 16,
+            "cities": [
+              "fezOrganicCore",
+              "veniceWaterNetwork"
+            ],
+            "minDistanceCells": 2,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "2 cell(s) apart, a constrained cell between: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "2,-1"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:fezOrganicCore:14",
+              "growth:fezOrganicCore:16"
+            ],
+            "relatedRoadFronts": [
+              {
+                "cityId": "fezOrganicCore",
+                "candidateId": "road:fezOrganicCore:2:-1",
+                "growthFrontId": null,
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 158.26 m)"
+              },
+              {
+                "cityId": "veniceWaterNetwork",
+                "candidateId": "road:veniceWaterNetwork:2:-1",
+                "growthFrontId": null,
+                "status": "rejected",
+                "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)"
+              }
+            ],
+            "terrainConditions": [
+              {
+                "cell": "2,-1",
+                "landform": "mountain",
+                "meanLandSlopeDeg": 29.82,
+                "waterFraction": 0,
+                "buildableFraction": 0.116,
+                "occupiedBy": null,
+                "ecologicalConstraint": [
+                  {
+                    "rule": "steepTerrain",
+                    "value": 29.82,
+                    "threshold": ">= 18°"
+                  }
+                ]
+              }
+            ],
+            "timeline": [
+              {
+                "step": 14,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "step": 16,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:chicagoGrid|manhattanGrid:c_1_3:c_-2_3",
+            "origin": "growth",
+            "firstStep": 15,
+            "lastStep": 15,
+            "cities": [
+              "chicagoGrid",
+              "manhattanGrid"
+            ],
+            "minDistanceCells": 3,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "decisionReason": "3 cell(s) apart, a constrained cell between: no shared edge to evaluate yet",
+            "validationStatus": "not connected",
+            "sharedEdges": [],
+            "gapCells": [
+              "0,3",
+              "-1,3"
+            ],
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "relatedGrowthEventIds": [
+              "growth:manhattanGrid:15"
+            ],
+            "relatedRoadFronts": [],
+            "terrainConditions": [
+              {
+                "cell": "0,3",
+                "landform": "plain",
+                "meanLandSlopeDeg": 0.88,
+                "waterFraction": 0,
+                "buildableFraction": 1,
+                "occupiedBy": null,
+                "ecologicalConstraint": []
+              },
+              {
+                "cell": "-1,3",
+                "landform": "mountain",
+                "meanLandSlopeDeg": 23.8,
+                "waterFraction": 0,
+                "buildableFraction": 0.237,
+                "occupiedBy": null,
+                "ecologicalConstraint": [
+                  {
+                    "rule": "steepTerrain",
+                    "value": 23.8,
+                    "threshold": ">= 18°"
+                  }
+                ]
+              }
+            ],
+            "timeline": [
+              {
+                "step": 15,
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ],
+            "edgeEvaluations": []
+          }
+        ],
+        "counts": {
+          "segments": 6,
+          "emergedByGrowth": 5,
+          "adjacent": 1,
+          "connectionCandidate": 0,
+          "connected": 0,
+          "byDecision": {
+            "unresolved": 5,
+            "adaptationProposed": 1
+          }
+        }
+      },
+      "6203": {
+        "initial": {
+          "step": 0,
+          "chunks": 6,
+          "segments": []
+        },
+        "milestones": {},
+        "steps": 1,
+        "stalled": {
+          "step": 2,
+          "reason": "every eligible road candidate failed validation"
+        },
+        "ms": 31302,
+        "grown": {
+          "amsterdamCanalRing": 0,
+          "chicagoGrid": 0,
+          "fezOrganicCore": 0,
+          "lisbonHillCore": 0,
+          "manhattanGrid": 1,
+          "veniceWaterNetwork": 0
+        },
+        "detection": {
+          "calls": 1,
+          "meanMs": 0,
+          "maxMs": 0
+        },
+        "checks": {
+          "cityIds": 0,
+          "territory": 0,
+          "adjacency": 0,
+          "roadFronts": 0,
+          "roadPorts": 0,
+          "elevationTrace": 0,
+          "proposalNotConnected": 0
+        },
+        "encounters": [],
+        "counts": {
+          "segments": 0,
+          "emergedByGrowth": 0,
+          "adjacent": 0,
+          "connectionCandidate": 0,
+          "connected": 0,
+          "byDecision": {}
+        }
+      }
+    },
+    "detectionNeutral": {
+      "seed": 6202,
+      "steps": 12,
+      "identicalGrowth": true,
+      "msWith": 91398,
+      "msWithout": 96522,
+      "overheadShare": -0.053
+    },
+    "stability": {
+      "registryOrderReversed": "identical encounters and growth (seed 6202, 12 steps)",
+      "saveLoad": {
+        "savedAtStep": 6,
+        "encountersRestored": 3,
+        "continuedEqualsUninterrupted": true,
+        "encounterIdsStable": true
+      }
+    },
+    "path": {
+      "seed": 6202,
+      "cities": [
+        "chicagoGrid",
+        "manhattanGrid"
+      ],
+      "joinsRecorded": 63,
+      "joinsUsed": 63,
+      "invalidJoins": 0,
+      "reachable": false,
+      "note": "parent and neighbour joins enter the graph; no cross-city join exists, so no path"
+    },
+    "reference": {
+      "6201": {
+        "mode": "G02c-01 joins (height steps up to 3 m, not continuous); reference only",
+        "steps": 14,
+        "stalled": {
+          "step": 15,
+          "reason": "no city has an eligible frontier candidate"
+        },
+        "ms": 68950,
+        "milestones": {
+          "12": {
+            "step": 12,
+            "chunks": 18,
+            "segments": [
+              {
+                "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_3:c_0_6",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-1_-3:c_-1_0",
+                "states": [
+                  "approaching",
+                  "adjacent"
+                ],
+                "relationshipStatus": "adaptationProposed"
+              },
+              {
+                "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_0_3:c_-1_1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ]
+          }
+        },
+        "encounters": [
+          {
+            "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_3:c_0_6",
+            "origin": "placement",
+            "firstStep": 0,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-1_-3:c_-1_0",
+            "origin": "growth",
+            "firstStep": 2,
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "adaptationProposed",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 1,
+              "separationAccepted": 12,
+              "unresolved": 0
+            },
+            "sharedEdges": [
+              "c_-1_-1|c_-1_0"
+            ],
+            "edgeEvaluations": [
+              {
+                "key": "c_-1_-1|c_-1_0",
+                "step": 7,
+                "evaluated": true,
+                "gradeProfile": "baseline",
+                "newerChunkId": "c_-1_-1",
+                "sideNewer": "maxZ",
+                "olderChunkId": "c_-1_0",
+                "sideOlder": "minZ",
+                "terrain": {
+                  "medianSeamM": 4.58,
+                  "maxSeamM": 8.92,
+                  "waterShare": 0,
+                  "barrier": false
+                },
+                "morphology": {
+                  "strategies": [
+                    "grid",
+                    "organic"
+                  ],
+                  "orientationDeg": [
+                    0,
+                    3.92
+                  ],
+                  "blockMedianM2": [
+                    12234,
+                    209577
+                  ],
+                  "heightMeanM": [
+                    39.1,
+                    4.5
+                  ]
+                },
+                "ports": [
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1038.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1038.1,
+                    "roadClass": "secondary",
+                    "elevation": 23.33,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 14.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "adaptationProposed",
+                    "reason": "nearest fezOrganicCore road 14.1 m along the edge: a connector would be needed (no generator hook)"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1118.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1118.1,
+                    "roadClass": "secondary",
+                    "elevation": 23.5,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 94.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 94.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1198.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1198.1,
+                    "roadClass": "secondary",
+                    "elevation": 21.93,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 174.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 174.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1278.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1278.1,
+                    "roadClass": "secondary",
+                    "elevation": 20.88,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 254.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 254.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1358.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1358.1,
+                    "roadClass": "secondary",
+                    "elevation": 22.67,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 334.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 334.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1438.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1438.1,
+                    "roadClass": "secondary",
+                    "elevation": 23.6,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 414.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 414.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-1518.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -1518.1,
+                    "roadClass": "secondary",
+                    "elevation": 23.39,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 494.1,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 494.1 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-558.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -558.1,
+                    "roadClass": "secondary",
+                    "elevation": 19.06,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 465.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 465.9 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-638.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -638.1,
+                    "roadClass": "secondary",
+                    "elevation": 18.95,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 385.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 385.9 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-718.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -718.1,
+                    "roadClass": "secondary",
+                    "elevation": 20.28,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 305.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 305.9 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-798.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -798.1,
+                    "roadClass": "secondary",
+                    "elevation": 20.67,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 225.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 225.9 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-878.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -878.1,
+                    "roadClass": "secondary",
+                    "elevation": 20.74,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 145.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 145.9 m away along the edge"
+                  },
+                  {
+                    "connectionId": "xconn:c_-1_0:minZ:-958.1",
+                    "cityId": "manhattanGrid",
+                    "chunkId": "c_-1_0",
+                    "side": "minZ",
+                    "position": -958.1,
+                    "roadClass": "secondary",
+                    "elevation": 22.37,
+                    "otherCityId": "fezOrganicCore",
+                    "otherChunkId": "c_-1_-1",
+                    "nearestOffsetM": 65.9,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest fezOrganicCore road 65.9 m away along the edge"
+                  }
+                ],
+                "roadEndsOfNewer": 1
+              }
+            ]
+          },
+          {
+            "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_0_3:c_-1_1",
+            "origin": "growth",
+            "firstStep": 4,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_4_-4:c_1_-4",
+            "origin": "growth",
+            "firstStep": 14,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          }
+        ]
+      },
+      "6202": {
+        "mode": "G02c-01 joins (height steps up to 3 m, not continuous); reference only",
+        "steps": 30,
+        "stalled": null,
+        "ms": 191919,
+        "milestones": {
+          "12": {
+            "step": 12,
+            "chunks": 18,
+            "segments": [
+              {
+                "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_2:c_-2_1",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ]
+          },
+          "30": {
+            "step": 30,
+            "chunks": 36,
+            "segments": [
+              {
+                "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_2:c_-2_1",
+                "states": [
+                  "approaching",
+                  "constrained"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              },
+              {
+                "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+                "states": [
+                  "approaching",
+                  "adjacent",
+                  "constrained"
+                ],
+                "relationshipStatus": "adaptationProposed"
+              },
+              {
+                "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_4_-1:c_1_-1",
+                "states": [
+                  "approaching"
+                ],
+                "relationshipStatus": "unresolved"
+              }
+            ]
+          }
+        },
+        "encounters": [
+          {
+            "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+            "origin": "placement",
+            "firstStep": 0,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+            "origin": "growth",
+            "firstStep": 4,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_2:c_-2_1",
+            "origin": "growth",
+            "firstStep": 7,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+            "origin": "growth",
+            "firstStep": 9,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          },
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+            "origin": "growth",
+            "firstStep": 14,
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "adaptationProposed",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 1,
+              "separationAccepted": 1,
+              "unresolved": 0
+            },
+            "sharedEdges": [
+              "c_3_0|c_3_-1",
+              "c_4_1|c_5_1"
+            ],
+            "edgeEvaluations": [
+              {
+                "key": "c_4_1|c_5_1",
+                "step": 18,
+                "evaluated": true,
+                "gradeProfile": "baseline",
+                "newerChunkId": "c_4_1",
+                "sideNewer": "maxX",
+                "olderChunkId": "c_5_1",
+                "sideOlder": "minX",
+                "terrain": {
+                  "medianSeamM": 7.22,
+                  "maxSeamM": 10.79,
+                  "waterShare": 0,
+                  "barrier": true
+                },
+                "morphology": {
+                  "strategies": [
+                    "organic",
+                    "grid"
+                  ],
+                  "orientationDeg": [
+                    1.99,
+                    0
+                  ],
+                  "blockMedianM2": [
+                    17479,
+                    13590
+                  ],
+                  "heightMeanM": [
+                    6.1,
+                    19.5
+                  ]
+                },
+                "ports": [
+                  {
+                    "connectionId": "xconn:c_5_1:minX:1024",
+                    "cityId": "fezOrganicCore",
+                    "chunkId": "c_5_1",
+                    "side": "minX",
+                    "position": 1024,
+                    "roadClass": "primary",
+                    "elevation": 29.03,
+                    "otherCityId": "chicagoGrid",
+                    "otherChunkId": "c_4_1",
+                    "nearestOffsetM": 52.6,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest chicagoGrid road 52.6 m away along the edge"
+                  }
+                ],
+                "roadEndsOfNewer": 5
+              },
+              {
+                "key": "c_3_-1|c_3_0",
+                "step": 23,
+                "evaluated": true,
+                "gradeProfile": "baseline",
+                "newerChunkId": "c_3_0",
+                "sideNewer": "minZ",
+                "olderChunkId": "c_3_-1",
+                "sideOlder": "maxZ",
+                "terrain": {
+                  "medianSeamM": 4.11,
+                  "maxSeamM": 7.17,
+                  "waterShare": 0,
+                  "barrier": false
+                },
+                "morphology": {
+                  "strategies": [
+                    "organic",
+                    "grid"
+                  ],
+                  "orientationDeg": [
+                    87.61,
+                    0
+                  ],
+                  "blockMedianM2": [
+                    37579,
+                    13590
+                  ],
+                  "heightMeanM": [
+                    4.5,
+                    19.5
+                  ]
+                },
+                "ports": [
+                  {
+                    "connectionId": "xconn:c_3_-1:maxZ:3072",
+                    "cityId": "fezOrganicCore",
+                    "chunkId": "c_3_-1",
+                    "side": "maxZ",
+                    "position": 3072,
+                    "roadClass": "primary",
+                    "elevation": 26,
+                    "otherCityId": "chicagoGrid",
+                    "otherChunkId": "c_3_0",
+                    "nearestOffsetM": 26.4,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "adaptationProposed",
+                    "reason": "nearest chicagoGrid road 26.4 m along the edge: a connector would be needed (no generator hook)"
+                  }
+                ],
+                "roadEndsOfNewer": 10
+              }
+            ]
+          },
+          {
+            "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_4_-1:c_1_-1",
+            "origin": "growth",
+            "firstStep": 15,
+            "states": {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 0,
+              "unresolved": 0
+            },
+            "sharedEdges": [],
+            "edgeEvaluations": []
+          }
+        ]
+      },
+      "6203": {
+        "mode": "G02c-01 joins (height steps up to 3 m, not continuous); reference only",
+        "steps": 30,
+        "stalled": null,
+        "ms": 202060,
+        "milestones": {
+          "12": {
+            "step": 12,
+            "chunks": 18,
+            "segments": [
+              {
+                "encounterId": "enc:fezOrganicCore|manhattanGrid:c_1_6:c_3_5",
+                "states": [
+                  "approaching",
+                  "adjacent",
+                  "constrained"
+                ],
+                "relationshipStatus": "separationAccepted"
+              }
+            ]
+          },
+          "30": {
+            "step": 30,
+            "chunks": 36,
+            "segments": [
+              {
+                "encounterId": "enc:fezOrganicCore|manhattanGrid:c_1_6:c_3_5",
+                "states": [
+                  "approaching",
+                  "adjacent",
+                  "constrained"
+                ],
+                "relationshipStatus": "separationAccepted"
+              }
+            ]
+          }
+        },
+        "encounters": [
+          {
+            "encounterId": "enc:fezOrganicCore|manhattanGrid:c_1_6:c_3_5",
+            "origin": "growth",
+            "firstStep": 3,
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "separationAccepted",
+            "proposalCounts": {
+              "connectionProposed": 0,
+              "rampConnectionProposed": 0,
+              "adaptationProposed": 0,
+              "separationAccepted": 1,
+              "unresolved": 0
+            },
+            "sharedEdges": [
+              "c_1_6|c_2_6"
+            ],
+            "edgeEvaluations": [
+              {
+                "key": "c_1_6|c_2_6",
+                "step": 10,
+                "evaluated": true,
+                "gradeProfile": "baseline",
+                "newerChunkId": "c_2_6",
+                "sideNewer": "minX",
+                "olderChunkId": "c_1_6",
+                "sideOlder": "maxX",
+                "terrain": {
+                  "medianSeamM": 41.96,
+                  "maxSeamM": 60.31,
+                  "waterShare": 0.04,
+                  "barrier": true
+                },
+                "morphology": {
+                  "strategies": [
+                    "organic",
+                    "grid"
+                  ],
+                  "orientationDeg": [
+                    89.1,
+                    0
+                  ],
+                  "blockMedianM2": [
+                    105383,
+                    12238
+                  ],
+                  "heightMeanM": [
+                    6,
+                    38.5
+                  ]
+                },
+                "ports": [
+                  {
+                    "connectionId": "xconn:c_1_6:maxX:6500",
+                    "cityId": "fezOrganicCore",
+                    "chunkId": "c_1_6",
+                    "side": "maxX",
+                    "position": 6500,
+                    "roadClass": "secondary",
+                    "elevation": 74.99,
+                    "otherCityId": "manhattanGrid",
+                    "otherChunkId": "c_2_6",
+                    "nearestOffsetM": 99,
+                    "elevationDifferenceM": null,
+                    "rampStatus": "networkConflict",
+                    "ramp": null,
+                    "proposal": "separationAccepted",
+                    "reason": "nearest manhattanGrid road 99 m away along the edge"
+                  }
+                ],
+                "roadEndsOfNewer": 5
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "search": {
+      "settings": {
+        "firstSeed": 6204,
+        "seeds": 30,
+        "stepBudget": 30,
+        "gradeProfile": "baseline",
+        "scheduler": "road-driven + ramp plan",
+        "stopCondition": "world stalled or step budget reached"
+      },
+      "summary": "not finished",
+      "seeds": [
+        {
+          "seed": 6204,
+          "placement": "ok",
+          "steps": 3,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 3,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 0,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 1,
+          "adjacentByGrowth": [],
+          "ms": 68542,
+          "segments": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_1_3:c_1_0",
+              "origin": "growth",
+              "firstStep": 1,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6205,
+          "placement": "ok",
+          "steps": 26,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 11,
+            "fezOrganicCore": 4,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 11,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 4,
+          "adjacentByGrowth": [],
+          "ms": 319034,
+          "segments": [
+            {
+              "encounterId": "enc:fezOrganicCore|manhattanGrid:c_6_0:c_3_0",
+              "origin": "growth",
+              "firstStep": 13,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_-4_-3:c_-1_-3",
+              "origin": "growth",
+              "firstStep": 14,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|lisbonHillCore:c_-2_-3:c_-2_0",
+              "origin": "growth",
+              "firstStep": 22,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_-2:c_3_-2",
+              "origin": "growth",
+              "firstStep": 26,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6206,
+          "placement": "ok",
+          "steps": 19,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 3,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 16,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 1,
+          "adjacentByGrowth": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_3:c_-5_0",
+              "step": 12
+            }
+          ],
+          "savedState": "world-6206-g03c-encounter-state.json",
+          "ms": 221425,
+          "segments": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_3:c_-5_0",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "adaptationProposed"
+            },
+            {
+              "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_-4_0:c_-1_0",
+              "origin": "growth",
+              "firstStep": 7,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6207,
+          "placement": "ok",
+          "steps": 30,
+          "stalled": null,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 15,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 15,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 2,
+          "adjacentByGrowth": [
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_4_-4:c_2_-5",
+              "step": 17
+            }
+          ],
+          "ms": 264862,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_4_-4:c_2_-5",
+              "origin": "growth",
+              "firstStep": 4,
+              "relationshipStatus": "adaptationProposed"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|lisbonHillCore:c_6_-3:c_6_0",
+              "origin": "growth",
+              "firstStep": 15,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6208,
+          "placement": "ok",
+          "steps": 3,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 0,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 3,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 0,
+          "adjacentByGrowth": [],
+          "ms": 82045,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_-2_-3:c_-2_0",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_-2_4:c_1_4",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:lisbonHillCore|manhattanGrid:c_1_4:c_4_4",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6209,
+          "placement": "ok",
+          "steps": 25,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 13,
+            "fezOrganicCore": 12,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 0,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 5,
+          "adjacentByGrowth": [
+            {
+              "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-1_-3:c_-1_0",
+              "step": 12
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-2_0:c_-3_2",
+              "step": 25
+            }
+          ],
+          "ms": 280953,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|lisbonHillCore:c_0_-4:c_3_-4",
+              "origin": "growth",
+              "firstStep": 6,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-1_-3:c_-1_0",
+              "origin": "growth",
+              "firstStep": 10,
+              "relationshipStatus": "adaptationProposed"
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-2_0:c_-3_2",
+              "origin": "growth",
+              "firstStep": 20,
+              "relationshipStatus": "separationAccepted"
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_4_1:c_5_3",
+              "origin": "growth",
+              "firstStep": 21,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_3_-1:c_3_-4",
+              "origin": "growth",
+              "firstStep": 23,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6210,
+          "placement": "ok",
+          "steps": 27,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 16,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 11,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 1,
+          "adjacentByGrowth": [
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_5_0:c_3_1",
+              "step": 13
+            }
+          ],
+          "ms": 343935,
+          "segments": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_-3_5:c_0_5",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_5_0:c_3_1",
+              "origin": "growth",
+              "firstStep": 5,
+              "relationshipStatus": "adaptationProposed"
+            }
+          ]
+        },
+        {
+          "seed": 6211,
+          "placement": "ok",
+          "steps": 14,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 14,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 0,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 1,
+          "adjacentByGrowth": [],
+          "ms": 291603,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_-1_5:c_2_5",
+              "origin": "growth",
+              "firstStep": 4,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6212,
+          "placement": "ok",
+          "steps": 0,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 0,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 0,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 0,
+          "adjacentByGrowth": [],
+          "ms": 37545,
+          "segments": [
+            {
+              "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_-3_-3:c_0_-3",
+              "origin": "placement",
+              "firstStep": 0,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6213,
+          "placement": "ok",
+          "steps": 30,
+          "stalled": null,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 15,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 15,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 5,
+          "adjacentByGrowth": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-2_-2:c_0_-1",
+              "step": 29
+            },
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_3_-1:c_0_-1",
+              "step": 27
+            }
+          ],
+          "ms": 336245,
+          "segments": [
+            {
+              "encounterId": "enc:chicagoGrid|fezOrganicCore:c_4_-3:c_2_-4",
+              "origin": "growth",
+              "firstStep": 9,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-2_-2:c_0_-1",
+              "origin": "growth",
+              "firstStep": 15,
+              "relationshipStatus": "adaptationProposed"
+            },
+            {
+              "encounterId": "enc:chicagoGrid|manhattanGrid:c_3_-1:c_0_-1",
+              "origin": "growth",
+              "firstStep": 16,
+              "relationshipStatus": "adaptationProposed"
+            },
+            {
+              "encounterId": "enc:fezOrganicCore|manhattanGrid:c_2_-4:c_1_-2",
+              "origin": "growth",
+              "firstStep": 22,
+              "relationshipStatus": "unresolved"
+            },
+            {
+              "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_-2_-1:c_-5_-1",
+              "origin": "growth",
+              "firstStep": 29,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        },
+        {
+          "seed": 6214,
+          "placement": "ok",
+          "steps": 25,
+          "stalled": "every eligible road candidate failed validation",
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 10,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 15,
+            "veniceWaterNetwork": 0
+          },
+          "emergedApproaching": 1,
+          "adjacentByGrowth": [],
+          "ms": 347341,
+          "segments": [
+            {
+              "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_4_2:c_1_2",
+              "origin": "growth",
+              "firstStep": 5,
+              "relationshipStatus": "unresolved"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "origins": "docs/assets/screenshots/procedural-mini-world/g03c-01-seed6201-origins.png",
+      "grown": "docs/assets/screenshots/procedural-mini-world/g03c-01-seed6201-grown.png",
+      "local": "docs/assets/screenshots/procedural-mini-world/g03c-01-seed6201-encounter-local.png",
+      "noBorders": "docs/assets/screenshots/procedural-mini-world/g03c-01-seed6201-encounter-no-borders.png",
+      "adjacent": "docs/assets/screenshots/procedural-mini-world/g03c-01-adjacent-road-proposals.png"
+    },
+    "captions": {
+      "origins": "seed 6201, step 0, six cores; layers: encounter boundary / proposals / states; camera: overview top",
+      "grown": "seed 6201, step 7 (stalled); same layers; overview top",
+      "local": "enc:fezOrganicCore|manhattanGrid:c_-1_-2:c_-2_0, approaching, unresolved",
+      "noBorders": "same camera, all debug layers and chunk borders hidden",
+      "adjacent": "world seed 6202, step 16, enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1: adaptationProposed; {\"connectionProposed\":0,\"rampConnectionProposed\":0,\"adaptationProposed\":1,\"separationAccepted\":9,\"unresolved\":0}"
+    },
+    "errors": []
+  }
+}

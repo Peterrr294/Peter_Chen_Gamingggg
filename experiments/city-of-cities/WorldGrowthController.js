@@ -17,11 +17,12 @@ import { CITY_IDS } from './originConfig.js';
 import { DIRECTIONS, GROWTH_DNA, GROWTH_RULES } from './growthDNA.js';
 import { evaluateCandidate } from './GrowthEvaluation.js';
 import { FAILURE, RoadGrowthFrontAdapter } from './RoadGrowthFrontAdapter.js';
+import { EmergentEncounterTracker } from './EmergentEncounter.js';
 
 const now = () => (globalThis.performance ?? Date).now();
 
 export class WorldGrowthController {
-  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true } = {}) {
+  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true, encounters = Boolean(world.growth.encounters) } = {}) {
     this.world = world;
     this.dna = dna; // per-city Growth DNA (Experiment C can pass a uniform table)
     this.lastFrontier = null; // evaluated candidates of the last step (debug, not saved)
@@ -34,6 +35,8 @@ export class WorldGrowthController {
       if (gradeProfile) { world.growth.gradeProfile = gradeProfile; world.growth.candidateCache ??= {}; } // G02c-02
       this.adapter = new RoadGrowthFrontAdapter(world, undefined, gradeProfile);
       this.adapter.replayKeepsUnconnected = Boolean(replay);
+      // G03c-01: encounters are detected after each commit, from the new chunk outward; detection never generates.
+      if (encounters) { const fresh = !world.growth.encounters; this.encounters = new EmergentEncounterTracker(world, this); this.initialEncountersPending = fresh && world.growth.step === 0; this.initialEncounters(); }
     }
   }
 
@@ -106,6 +109,7 @@ export class WorldGrowthController {
     const step = w.growth.step + 1;
     const t0 = now();
     const planned = this.replay?.[step - 1] ?? null;
+    if (this.encounters) this.initialEncounters();
     if (planned) this.adapter.forcedParents.set(`${planned.gx},${planned.gy}`, planned.parentChunkId);
     const frontier = this.evaluate(step);
     if (planned) for (const cityId of CITY_IDS) for (const cand of frontier[cityId]) if (cand.status === 'eligible' && (cityId !== planned.cityId || cand.gx !== planned.gx || cand.gy !== planned.gy)) { cand.status = 'rejected'; cand.rejectionReason = 'not the planned event of this replay'; }
@@ -153,6 +157,13 @@ export class WorldGrowthController {
     w.growth.generation = Math.max(w.growth.generation, chunk.generation);
     w.growth.stalled = null;
     return { event, chunk: generated, layers, frontier };
+  }
+
+  // G03c-01: pairs of cores already near at placement; waits until every core is generated (a page builds them later).
+  initialEncounters() {
+    if (!this.initialEncountersPending || this.world.cities.size !== 6 || [...this.world.chunks.values()].some(c => !c.outputs)) return;
+    this.initialEncountersPending = false;
+    this.encounters.initial();
   }
 
   // Reproducible weighted order of a city's eligible candidates (key −ln u / score^k).
@@ -212,6 +223,7 @@ export class WorldGrowthController {
     };
     w.growth.history.push(committed);
     w.growth.step = step;
+    if (this.encounters) { const r = this.encounters.afterCommit(committed, layers); committed.encounterUpdates = r.updated; committed.ms.encounters = r.ms; }
     w.growth.generation = Math.max(w.growth.generation, chunk.generation);
     w.growth.stalled = null;
     this.adapter.morph.terrainCache.clear();

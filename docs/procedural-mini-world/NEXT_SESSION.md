@@ -1,6 +1,12 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-02: G02c-02 grade-aware ramps (read first)
+## Update 2026-11-02: G03c-01 natural encounters (read first)
+
+- **Done:** detection after every commit. Note: [G03c-01](./A-City-of-Cities/G03c-01-Emergent-Urban-Encounter.md). Verify: `node --max-old-space-size=8192 scripts/verify-emergent-encounter.mjs`. View: `/experiments/city-of-cities/?growthMode=road&grade=baseline&emergent=1`.
+- **Finding:** one adjacency on the known seeds (6202, Chicago × Fez), adaptation proposed, not connected.
+- **Seed search:** `node --max-old-space-size=8192 scripts/search-emergent-encounters.mjs 6204 30` (about 5 min per seed).
+
+## Update 2026-11-02: G02c-02 grade-aware ramps
 
 - **Done:** ramps in the uncommitted chunk, joins continuous in height and graph. Note: [G02c-02](./A-City-of-Cities/G02c-02-Grade-Aware-Road-Growth.md). Verify: `node --max-old-space-size=12288 scripts/verify-grade-aware-growth.mjs` (slow: hours for the full Node part). View: `/experiments/city-of-cities/?growthMode=road&grade=baseline`.
 - **Key fact:** every old height step was the raw terrain seam.

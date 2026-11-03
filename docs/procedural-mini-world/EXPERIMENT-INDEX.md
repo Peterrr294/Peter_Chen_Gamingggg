@@ -125,6 +125,7 @@ Seed terrain (T1) → terrain analysis (T2) → City DNA match (T3) → road / c
 | WEB-01f | Final release, freeze of WEB-01 | [summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md) | Live at the public address; 22 / 22, `verify:live` 10 / 10 | [production](../assets/screenshots/procedural-mini-world/web01f-production-home-after.png) | logged pass | Maintenance Mode | Growth research |
 | G02c-01 | Road-driven candidates in the six-city scheduler | [note](./A-City-of-Cities/G02c-Road-Driven-Growth.md) | 36 events from real ports on 3 seeds, graph reaches every grown chunk; 3 of 6 cities grow | [scheduler](../assets/screenshots/procedural-mini-world/g02c-01-six-city-scheduler-after.png) | logged pass | Pending review | Unjoined road ends, then G03c |
 | G02c-02 | Grade-aware ramps for grown roads | [note](./A-City-of-Cities/G02c-02-Grade-Aware-Road-Growth.md) | All old steps were terrain seams; 51 joins continuous in 3D on the 6202 replay; free growth stalls | [after](../assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-after.png) | logged pass | Pending review | G03c-01 |
+| G03c-01 | Natural encounters in real growth | [note](./A-City-of-Cities/G03c-01-Emergent-Urban-Encounter.md) | Encounters by growth on 6201 / 6202; one adjacency (Chicago × Fez), adaptation proposed; none connected | [adjacent](../assets/screenshots/procedural-mini-world/g03c-01-adjacent-road-proposals.png) | logged pass | Pending review | G03c-02 |
 
 ## Archived experiments (before Procedural Mini World)
 

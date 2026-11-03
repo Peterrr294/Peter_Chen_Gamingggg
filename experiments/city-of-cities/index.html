@@ -42,6 +42,7 @@
             <div><dt>Urban encounter (G03b)</dt><dd id="encounterInfo">—</dd></div>
             <div><dt>Morphological growth (G02b)</dt><dd id="morphInfo">—</dd></div>
             <div><dt>Road-driven scheduler (G02c-01)</dt><dd id="roadInfo">—</dd></div>
+            <div><dt>Natural encounters (G03c-01)</dt><dd id="emergentInfo">—</dd></div>
             <div><dt>City territory (G03a)</dt><dd id="territoryInfo">—</dd></div>
             <div><dt>World territory (G03a)</dt><dd id="worldTerritoryInfo">—</dd></div>
             <div><dt>City relationships (G03a)</dt><dd id="relationInfo">—</dd></div>
@@ -51,6 +52,7 @@
           <div class="legend">
             <p><i class="cand"></i> Urban encounter (G03b, test fixture): strip / square = encounter zone (cyan connected, amber plan pending, red barrier); green / red posts = interfaces accepted / rejected by the negotiation; magenta posts + white lines = cross-city road joins and the roads that start there; amber line = pending connector plan (not generated); cyan route = verified core ↔ core path</p>
             <p><i class="cand"></i> Morphological growth (G02b): green / red posts = road entries of a growth front within / beyond the 3 m entry step; cyan posts = recorded cross-chunk road joins; white lines = child roads that continue a parent road; labels = parent → child metrics</p>
+            <p><i class="cand"></i> Natural encounters (G03c-01): solid line = shared edge between two cities, dashed square = free cell between approaching cities. Posts per road end: cyan = connection proposed (same point and height), blue = ramp connection proposed, amber = adaptation proposed (connector needed), red = separation accepted (needs a structure), grey = unresolved, green = verified connection. A proposal is not a connection.</p>
             <p><i class="terr"></i> Territory (G03a): City ID fill; boundaries: other city (white) · ecological constraint (green) · evaluated land (amber) · unexplored (grey); hatched green = ecological constraint (steep / unbuildable / water body), grey outline = evaluated non-urban, dashed white = growth frontier, nothing = unexplored; graph: shared edge (thick), corner contact (dashed white), separation (grey, distance + barrier)</p>
             <p><i class="own"></i> City frame: Venice · Manhattan · Fez · Amsterdam · Lisbon · Chicago; pillar = origin</p>
             <p><i class="cand"></i> Growth frontier (G02): solid = eligible candidate (score, selection weight), dashed = rejected (reason), white = the cell chosen in the step; arrows = growth history (step number)</p>

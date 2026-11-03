@@ -164,7 +164,7 @@ export class WorldContext {
     if (chunk.role === 'core') this.cities.set(chunk.cityId, { ...origin, generationStatus: 'core generated' });
     // The page draws the corridor; every measurement above keeps the world terrain.
     const shown = vertical ? { ...terrain, fields: { ...terrain.fields, height: vertical.height } } : terrain;
-    return { chunk: this.chunks.get(chunkId), layers: { terrain: shown, net, city } };
+    return { chunk: this.chunks.get(chunkId), layers: { terrain: shown, worldTerrain: terrain, net, city } };
   }
 
   // ---------- G02: growth chunks ----------
@@ -241,7 +241,7 @@ export class WorldContext {
         expectedSignatures: c.outputs?.signatures ?? c.expectedSignatures ?? null,
       })),
       placement: this.placement ? { placementVersion: this.placement.placementVersion ?? 1, order: this.placement.order, failures: this.placement.failures } : null,
-      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), ...(this.growth.gradeProfile ? { gradeProfile: this.growth.gradeProfile, candidateCache: this.growth.candidateCache ?? {} } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
+      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), ...(this.growth.gradeProfile ? { gradeProfile: this.growth.gradeProfile, candidateCache: this.growth.candidateCache ?? {} } : {}), ...(this.growth.encounters ? { encounters: this.growth.encounters } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
     };
   }
 
@@ -268,7 +268,7 @@ export class WorldContext {
     }
     // States saved before placement v2 keep their stored origins (cells are restored, never re-placed).
     world.placement = saved.placement ? { placementVersion: 1, ...saved.placement, placed: [], candidates: null } : null;
-    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}), ...(saved.growth.gradeProfile ? { gradeProfile: saved.growth.gradeProfile, candidateCache: { ...(saved.growth.candidateCache ?? {}) } } : {}) };
+    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}), ...(saved.growth.gradeProfile ? { gradeProfile: saved.growth.gradeProfile, candidateCache: { ...(saved.growth.candidateCache ?? {}) } } : {}), ...(saved.growth.encounters ? { encounters: JSON.parse(JSON.stringify(saved.growth.encounters)) } : {}) };
     return world;
   }
 }
