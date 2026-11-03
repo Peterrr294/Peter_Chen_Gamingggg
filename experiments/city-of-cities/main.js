@@ -36,6 +36,7 @@ import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encou
 // G02c-01: ?growthMode=road (or the folder "Road-driven growth") makes the scheduler take its candidates from real road fronts.
 // G02c-02: &grade=conservative|baseline|permissive adds the ramp plan (vertical alignment) to road-driven growth.
 // G03c-01: &emergent=1 lets the scheduler detect natural encounters after every commit (road mode only).
+// G03c-02: &intercity=1 lets a newcomer chunk take other cities' road ends on a shared edge into its ramp plan.
 // URL: ?worldSeed=… &candidates=1 &debug=1 &frontier=1 &focus=<cityId> &start=0 &steps=N (grow N after the origins)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/a-city-of-cities/world-state';
@@ -56,8 +57,8 @@ sun.position.set(-2000, 3200, 1600);
 scene.add(sun);
 
 const paramsFromQuery = Object.fromEntries([...Object.keys(PARAMS), ...Object.keys(GROWTH_PARAMS)].filter(k => query.has(k)).map(k => [k, Number(query.get(k))]));
-const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', gradeProfile: GRADE_PROFILES[query.get('grade')] ? query.get('grade') : 'none', rampAccepted: false, rampRejected: false, rampSeam: false, rampLabels: false, emergent: query.get('emergent') === '1', encBoundary: false, encPorts: false, encLabels: false, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
-function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...(ui.growthMode === 'road' && ui.emergent ? { encounters: true } : {}), ...extra }; }
+const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', gradeProfile: GRADE_PROFILES[query.get('grade')] ? query.get('grade') : 'none', rampAccepted: false, rampRejected: false, rampSeam: false, rampLabels: false, emergent: query.get('emergent') === '1', interCity: query.get('intercity') === '1', encBoundary: false, encPorts: false, encLabels: false, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
+function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...(ui.growthMode === 'road' && ui.emergent ? { encounters: true } : {}), ...(ui.growthMode === 'road' && ui.interCity && GRADE_PROFILES[ui.gradeProfile] ? { interCity: true } : {}), ...extra }; }
 let world = new WorldContext(ui);
 let growth = new WorldGrowthController(world, controllerOptions());
 const growthOverlay = new GrowthOverlay(scene);
@@ -365,6 +366,7 @@ rd.add(ui, 'rampSeam').name('Show terrain seam conflicts').onChange(applyVisibil
 rd.add(ui, 'rampLabels').name('Show ramp numbers').onChange(applyVisibility);
 const em = gui.addFolder('Natural encounters (G03c-01)');
 em.add(ui, 'emergent').name('Detect encounters (apply on Generate)');
+em.add(ui, 'interCity').name('Inter-city connections, G03c-02 (apply on Generate)');
 em.add(ui, 'encBoundary').name('Show encounter boundaries').onChange(applyVisibility);
 em.add(ui, 'encPorts').name('Show proposals per road end').onChange(applyVisibility);
 em.add(ui, 'encLabels').name('Show encounter states').onChange(applyVisibility);
@@ -499,6 +501,7 @@ window.__originLab = {
   roadReplay: replay => { growth = new WorldGrowthController(world, controllerOptions({ growthMode: 'road', replay })); },
   rampEvents: () => world.growth.history.filter(e => e.ramps),
   emergentEncounters: () => world.growth.encounters ?? [],
+  interCityConnections: () => world.growth.interCityConnections ?? [],
   roadReach: cityId => cityRoadReach(world, cityId),
   morphGrow: cityId => growMorph(cityId),
   morphFronts: cityId => morph.fronts(cityId),

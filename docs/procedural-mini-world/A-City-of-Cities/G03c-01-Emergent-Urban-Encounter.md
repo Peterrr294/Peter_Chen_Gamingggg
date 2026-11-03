@@ -111,7 +111,18 @@ Settings:
 - road-driven scheduler with the 6 % ramp plan and encounter detection;
 - stop at a stall or after 30 steps.
 
-The record holds every seed, including failures. The summary is in the log entry G03c-01 and in `emergent-encounter-search.json`.
+The record holds every seed, including failures (`emergent-encounter-search.json`, total 1.8 h):
+
+| Measure | Result |
+| --- | --- |
+| Placement failed | 0 of 30 |
+| Stalled before 30 steps | 21 of 30 (0 to 28 steps) |
+| Encounter by growth (approaching) | 24 of 30 seeds |
+| **Adjacent by growth** | **17 of 30 seeds**, first at step 3 or 4 |
+| Pairs that became adjacent | Chicago × Manhattan 9, Chicago × Fez 3, Fez × Manhattan 3, Amsterdam × Manhattan 2, one each Fez × Venice, Chicago × Lisbon, Amsterdam × Chicago, Lisbon × Manhattan |
+| First saved state | seed 6206 (Amsterdam × Manhattan adjacent at step 12) |
+
+Natural encounters are therefore common when growth runs long enough; the three known seeds were unlucky. The search did not evaluate connections; G03c-02 did, on 6209 and 6215.
 
 ## 7. Verification
 

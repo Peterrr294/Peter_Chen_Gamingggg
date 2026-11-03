@@ -1,0 +1,1087 @@
+{
+  "task": "G03c-02 Inter-City Road Connection",
+  "testedAt": "2026-11-03T05:20:59.614Z",
+  "rules": {
+    "interCity": {
+      "maxGroundOffsetM": 6,
+      "maxCrossingDeg": 30,
+      "maxInterfaces": 2,
+      "minInterfaceSpacing": 200,
+      "score": {
+        "primary": 0.4,
+        "secondary": 0.2,
+        "other": 0.1,
+        "step": 0.3,
+        "crossing": 0.3
+      }
+    },
+    "ramp": {
+      "classFactor": {
+        "primary": 1,
+        "secondary": 1.25,
+        "lane": 1.5
+      },
+      "curveShare": 0.25,
+      "junctionStandoffM": 12,
+      "sampleM": 4,
+      "runStepM": 8,
+      "maxGroundOffsetM": 6,
+      "maxGradeChangePerSample": 0.03,
+      "shoulderM": 1.5,
+      "sideSlopeRunPerM": 2,
+      "endpointToleranceM": 0.05,
+      "snapToleranceM": 2,
+      "buildingClearanceM": 0.25
+    }
+  },
+  "node": {
+    "gate": {
+      "g02c02": "pass",
+      "g03c01": "pass",
+      "adjacentEncounterOnKnownSeeds": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1"
+    },
+    "testA": {
+      "compatible": {
+        "label": "Controlled Experiment (TEST ONLY, cores placed by hand)",
+        "schedulerRule": "a grown chunk must join a parent road",
+        "steps": [
+          {
+            "cityId": "chicagoGrid",
+            "target": {
+              "gx": -6,
+              "gy": -10
+            },
+            "chunk": "c_-6_-10",
+            "parentJoins": 0,
+            "crossJoins": 0,
+            "interfaces": [],
+            "crossRamps": [],
+            "grown": false,
+            "reason": "refused: no parent road joined (insufficientLength 0.97 m, insufficientLength -0.72 m, insufficientLength -0.34 m, insufficientLength -0.6 m, insufficientLength 0.52 m)"
+          },
+          {
+            "cityId": "fezOrganicCore",
+            "target": {
+              "gx": -5,
+              "gy": -10
+            },
+            "chunk": "c_-5_-10",
+            "parentJoins": 1,
+            "crossJoins": 0,
+            "interfaces": [],
+            "crossRamps": [],
+            "grown": true
+          }
+        ],
+        "connected": false
+      },
+      "incompatible": {
+        "label": "Controlled Experiment (TEST ONLY, cores placed by hand)",
+        "schedulerRule": "a grown chunk must join a parent road",
+        "steps": [
+          {
+            "cityId": "fezOrganicCore",
+            "target": {
+              "gx": -5,
+              "gy": -10
+            },
+            "chunk": "c_-5_-10",
+            "parentJoins": 1,
+            "crossJoins": 0,
+            "interfaces": [],
+            "crossRamps": [],
+            "grown": true
+          },
+          {
+            "cityId": "chicagoGrid",
+            "target": {
+              "gx": -6,
+              "gy": -10
+            },
+            "chunk": "c_-6_-10",
+            "parentJoins": 0,
+            "crossJoins": 0,
+            "interfaces": [
+              {
+                "connectionId": "xconn:c_-5_-10:minX:-10240",
+                "stepM": -1.05,
+                "crossingDeg": 0,
+                "accepted": true,
+                "reason": null
+              }
+            ],
+            "crossRamps": [
+              {
+                "rampId": "ramp:c_-6_-10:c_-5_-10:minX:-10240",
+                "connectionId": "xconn:c_-5_-10:minX:-10240",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-5_-10:e16",
+                "parentChunkId": "c_-5_-10",
+                "targetChunkId": "c_-6_-10",
+                "side": "maxX",
+                "position": -10240,
+                "roadClass": "primary",
+                "elevationSource": 22.42,
+                "status": "networkConflict",
+                "reason": "nearest child road end is 39.74 m away on the boundary",
+                "horizontalM": 39.74
+              }
+            ],
+            "grown": false,
+            "reason": "refused: no parent road joined (insufficientLength 0.97 m, insufficientLength -0.72 m, insufficientLength -0.34 m, insufficientLength -0.6 m, insufficientLength 0.52 m)"
+          }
+        ],
+        "connected": false
+      },
+      "barrier": {
+        "label": "Controlled Experiment (TEST ONLY, cores placed by hand)",
+        "schedulerRule": "a grown chunk must join a parent road",
+        "steps": [
+          {
+            "cityId": "chicagoGrid",
+            "target": {
+              "gx": 2,
+              "gy": -7
+            },
+            "chunk": "c_2_-7",
+            "parentJoins": 4,
+            "crossJoins": 0,
+            "interfaces": [],
+            "crossRamps": [],
+            "grown": true
+          },
+          {
+            "cityId": "fezOrganicCore",
+            "target": {
+              "gx": 3,
+              "gy": -7
+            },
+            "grown": false,
+            "reason": "no growth front toward 3,-7 with a usable road entry"
+          },
+          {
+            "cityId": "chicagoGrid",
+            "target": {
+              "gx": 3,
+              "gy": -7
+            },
+            "grown": false,
+            "reason": "no growth front toward 3,-7 with a usable road entry"
+          }
+        ],
+        "connected": false
+      },
+      "rampConnection": {
+        "label": "Controlled Experiment (TEST ONLY, cores placed by hand)",
+        "schedulerRule": "a grown chunk must join a parent road",
+        "steps": [
+          {
+            "cityId": "fezOrganicCore",
+            "target": {
+              "gx": -5,
+              "gy": -10
+            },
+            "chunk": "c_-5_-10",
+            "parentJoins": 1,
+            "crossJoins": 0,
+            "interfaces": [],
+            "crossRamps": [],
+            "grown": true
+          },
+          {
+            "cityId": "fezOrganicCore",
+            "target": {
+              "gx": -6,
+              "gy": -10
+            },
+            "chunk": "c_-6_-10",
+            "parentJoins": 0,
+            "crossJoins": 1,
+            "interfaces": [
+              {
+                "connectionId": "xconn:c_-7_-10:maxX:-10600.3",
+                "stepM": -0.6,
+                "crossingDeg": 0,
+                "accepted": true,
+                "reason": null
+              },
+              {
+                "connectionId": "xconn:c_-7_-10:maxX:-10400.3",
+                "stepM": -0.34,
+                "crossingDeg": 0,
+                "accepted": true,
+                "reason": null
+              },
+              {
+                "connectionId": "xconn:c_-7_-10:maxX:-10200.3",
+                "stepM": -0.72,
+                "crossingDeg": 0,
+                "accepted": false,
+                "reason": "not selected: 2 gates already accepted"
+              },
+              {
+                "connectionId": "xconn:c_-7_-10:maxX:-10000.3",
+                "stepM": 0.97,
+                "crossingDeg": 0,
+                "accepted": false,
+                "reason": "not selected: 2 gates already accepted"
+              },
+              {
+                "connectionId": "xconn:c_-7_-10:maxX:-9800.3",
+                "stepM": 0.52,
+                "crossingDeg": 0,
+                "accepted": false,
+                "reason": "not selected: 2 gates already accepted"
+              }
+            ],
+            "crossRamps": [
+              {
+                "rampId": "ramp:c_-6_-10:c_-7_-10:maxX:-10400.3",
+                "connectionId": "xconn:c_-7_-10:maxX:-10400.3",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-7_-10:e21",
+                "parentChunkId": "c_-7_-10",
+                "targetChunkId": "c_-6_-10",
+                "side": "minX",
+                "position": -10400.3,
+                "roadClass": "primary",
+                "elevationSource": 26.54,
+                "xySnapM": 0.3,
+                "horizontalM": 0.3,
+                "childNodeId": 10,
+                "childEdgeId": 8,
+                "elevationChild": 26.2,
+                "deltaM": -0.34,
+                "childRoadClass": "primary",
+                "directionDeg": 180,
+                "availableM": 192,
+                "approachM": 204,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 6,
+                "status": "accepted",
+                "reason": null,
+                "rampLengthM": 24,
+                "startElevation": 26.54,
+                "endElevation": 26.25,
+                "maxGrade": 0.016,
+                "meanGrade": 0.012,
+                "maxGradeChange": 0.009,
+                "fillMaxM": 0.34,
+                "cutMaxM": 0.01,
+                "corridorCells": 23,
+                "corridorAreaM2": 368,
+                "residualM": 0
+              },
+              {
+                "rampId": "ramp:c_-6_-10:c_-7_-10:maxX:-10600.3",
+                "connectionId": "xconn:c_-7_-10:maxX:-10600.3",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-7_-10:e10",
+                "parentChunkId": "c_-7_-10",
+                "targetChunkId": "c_-6_-10",
+                "side": "minX",
+                "position": -10600.3,
+                "roadClass": "primary",
+                "elevationSource": 26.14,
+                "xySnapM": 0.3,
+                "horizontalM": 0.3,
+                "childNodeId": 8,
+                "childEdgeId": 6,
+                "elevationChild": 25.55,
+                "deltaM": -0.59,
+                "childRoadClass": "primary",
+                "directionDeg": 180,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 10,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              }
+            ],
+            "grown": false,
+            "reason": "refused: no parent road joined (insufficientLength -1.05 m)"
+          }
+        ],
+        "connected": false
+      }
+    },
+    "constructionCheck": {
+      "label": "Controlled Experiment, scheduler rule off: shows construction and validation, not a valid world",
+      "steps": [
+        {
+          "cityId": "chicagoGrid",
+          "chunk": "c_-6_-10",
+          "parentJoins": 0,
+          "crossJoins": 0
+        },
+        {
+          "cityId": "fezOrganicCore",
+          "chunk": "c_-5_-10",
+          "parentJoins": 1,
+          "crossJoins": 1
+        }
+      ],
+      "connection": {
+        "connectionId": "icx:chicagoGrid|fezOrganicCore:c_-6_-10:maxX:-9800.3",
+        "encounterId": null,
+        "worldSeed": 6201,
+        "growthStep": 2,
+        "cityA": "chicagoGrid",
+        "cityB": "fezOrganicCore",
+        "sourceRoadA": "c_-6_-10:e59",
+        "sourceRoadB": "c_-5_-10:e45",
+        "sourceChunkA": "c_-6_-10",
+        "sourceChunkB": "c_-5_-10",
+        "builtIn": "c_-5_-10",
+        "connectionGeometry": {
+          "joinNode": {
+            "x": -5632,
+            "y": 21.82,
+            "z": -9800.3
+          },
+          "otherCityNode": {
+            "chunkId": "c_-6_-10",
+            "nodeId": 64,
+            "edgeId": 59
+          },
+          "newcomerNode": {
+            "chunkId": "c_-5_-10",
+            "nodeId": 42,
+            "edgeId": 45,
+            "roadClass": "primary"
+          },
+          "rampId": "ramp:c_-5_-10:c_-6_-10:maxX:-9800.3",
+          "rampStatus": "accepted",
+          "rampLengthM": 40
+        },
+        "roadClass": {
+          "chicagoGrid": "primary",
+          "fezOrganicCore": "primary"
+        },
+        "elevationProfile": [
+          [
+            0,
+            21.82,
+            20.97
+          ],
+          [
+            4,
+            21.78,
+            20.97
+          ],
+          [
+            8,
+            21.65,
+            20.86
+          ],
+          [
+            12,
+            21.44,
+            20.74
+          ],
+          [
+            16,
+            21.23,
+            20.62
+          ],
+          [
+            20,
+            21.01,
+            20.51
+          ],
+          [
+            24,
+            20.79,
+            20.42
+          ],
+          [
+            28,
+            20.58,
+            20.34
+          ],
+          [
+            32,
+            20.37,
+            20.28
+          ],
+          [
+            36,
+            20.24,
+            20.24
+          ],
+          [
+            40,
+            20.2,
+            20.2
+          ],
+          [
+            44,
+            20.17,
+            20.17
+          ]
+        ],
+        "maximumGrade": 0.054,
+        "decisionParameters": {
+          "interCity": {
+            "maxGroundOffsetM": 6,
+            "maxCrossingDeg": 30,
+            "maxInterfaces": 2,
+            "minInterfaceSpacing": 200,
+            "score": {
+              "primary": 0.4,
+              "secondary": 0.2,
+              "other": 0.1,
+              "step": 0.3,
+              "crossing": 0.3
+            }
+          },
+          "gradeProfile": "baseline",
+          "ramp": {
+            "maxGroundOffsetM": 6,
+            "endpointToleranceM": 0.05
+          }
+        },
+        "sourceGrowthEvents": [
+          "growth:chicagoGrid:1",
+          "growth:fezOrganicCore:2"
+        ],
+        "validationResults": {
+          "xyM": 0,
+          "dzM": 0,
+          "withinTolerance": true,
+          "path": null
+        },
+        "connectionStatus": "committed (no core-to-core path)"
+      },
+      "ramp": {
+        "status": "accepted",
+        "deltaM": -0.85,
+        "lengthM": 40,
+        "maxGrade": 0.054,
+        "allowedGrade": 0.06,
+        "xySnapM": 0.3,
+        "cutM": 0,
+        "fillM": 0.85,
+        "geometryPoints": 52
+      },
+      "graph": {
+        "joinToFezCore": true,
+        "chicagoCoreToFezCore": false,
+        "reason": "Chicago's growth chunk c_-6_-10 joined no parent road (0), so the join reaches Fez but not Chicago's core"
+      },
+      "saveLoad": {
+        "chunksReproduced": 4,
+        "joinsReproduced": 2
+      }
+    },
+    "testB": {
+      "6202": {
+        "steps": 16,
+        "stalled": "every eligible road candidate failed validation",
+        "ms": 146914,
+        "msWithout": 164285,
+        "sameChunkSequence": true,
+        "attempts": [
+          {
+            "step": 16,
+            "cityId": "fezOrganicCore",
+            "chunk": "c_3_-1",
+            "edges": [
+              {
+                "otherChunkId": "c_3_0",
+                "otherCityId": "chicagoGrid",
+                "newcomerStrategy": "organic",
+                "mode": "gates (lanes adapt in the new chunk)",
+                "interfaces": [
+                  {
+                    "position": 2598.4,
+                    "stepM": 0.97,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": 2698.4,
+                    "stepM": 1.74,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 2798.4,
+                    "stepM": 1.26,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": 2898.4,
+                    "stepM": 2.35,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 2998.4,
+                    "stepM": 4.22,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 3098.4,
+                    "stepM": 5.8,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 3198.4,
+                    "stepM": 4.62,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 3298.4,
+                    "stepM": 4.27,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 3398.4,
+                    "stepM": 4.29,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 3498.4,
+                    "stepM": 7.1,
+                    "accepted": false,
+                    "reason": "terrain seam 7.1 m over the 6 m earthwork limit"
+                  }
+                ]
+              }
+            ],
+            "crossRamps": [
+              {
+                "rampId": "ramp:c_3_-1:c_3_0:minZ:2598.4",
+                "connectionId": "xconn:c_3_0:minZ:2598.4",
+                "kind": "crossCity",
+                "sourceRoadId": "c_3_0:e55",
+                "parentChunkId": "c_3_0",
+                "targetChunkId": "c_3_-1",
+                "side": "maxZ",
+                "position": 2598.4,
+                "roadClass": "secondary",
+                "elevationSource": 23.63,
+                "xySnapM": 1.6,
+                "horizontalM": 1.6,
+                "childNodeId": 47,
+                "childEdgeId": 53,
+                "elevationChild": 24.6,
+                "deltaM": 0.97,
+                "childRoadClass": "primary",
+                "directionDeg": 90,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 17,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              },
+              {
+                "rampId": "ramp:c_3_-1:c_3_0:minZ:2798.4",
+                "connectionId": "xconn:c_3_0:minZ:2798.4",
+                "kind": "crossCity",
+                "sourceRoadId": "c_3_0:e67",
+                "parentChunkId": "c_3_0",
+                "targetChunkId": "c_3_-1",
+                "side": "maxZ",
+                "position": 2798.4,
+                "roadClass": "secondary",
+                "elevationSource": 22.68,
+                "xySnapM": 1.6,
+                "horizontalM": 1.6,
+                "childNodeId": 48,
+                "childEdgeId": 54,
+                "elevationChild": 23.94,
+                "deltaM": 1.26,
+                "childRoadClass": "primary",
+                "directionDeg": 90,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 21,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              }
+            ],
+            "crossJoins": 0
+          }
+        ],
+        "crossRampOutcomes": {
+          "insufficientLength": 2
+        },
+        "connections": [],
+        "encounters": [
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "unresolved",
+            "validationStatus": "not connected"
+          }
+        ]
+      },
+      "6209": {
+        "steps": 16,
+        "stalled": null,
+        "ms": 141206,
+        "msWithout": 123813,
+        "sameChunkSequence": false,
+        "attempts": [
+          {
+            "step": 12,
+            "cityId": "chicagoGrid",
+            "chunk": "c_-1_-1",
+            "edges": [
+              {
+                "otherChunkId": "c_-1_0",
+                "otherCityId": "fezOrganicCore",
+                "newcomerStrategy": "grid",
+                "mode": "grid: own lines only; a mismatch stays a plan (no connector hook)",
+                "interfaces": [
+                  {
+                    "position": -1024,
+                    "stepM": 5.63,
+                    "accepted": true,
+                    "reason": null
+                  }
+                ]
+              }
+            ],
+            "crossRamps": [
+              {
+                "rampId": "ramp:c_-1_-1:c_-1_0:minZ:-1024",
+                "connectionId": "xconn:c_-1_0:minZ:-1024",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-1_0:e0",
+                "parentChunkId": "c_-1_0",
+                "targetChunkId": "c_-1_-1",
+                "side": "maxZ",
+                "position": -1024,
+                "roadClass": "primary",
+                "elevationSource": 20.63,
+                "status": "networkConflict",
+                "reason": "nearest child road end is 37.84 m away on the boundary",
+                "horizontalM": 37.84
+              }
+            ],
+            "crossJoins": 0
+          },
+          {
+            "step": 15,
+            "cityId": "fezOrganicCore",
+            "chunk": "c_0_-1",
+            "edges": [
+              {
+                "otherChunkId": "c_0_-2",
+                "otherCityId": "chicagoGrid",
+                "newcomerStrategy": "organic",
+                "mode": "gates (lanes adapt in the new chunk)",
+                "interfaces": [
+                  {
+                    "position": -461.8,
+                    "stepM": -8.37,
+                    "accepted": false,
+                    "reason": "terrain seam 8.37 m over the 6 m earthwork limit"
+                  },
+                  {
+                    "position": -361.8,
+                    "stepM": -7.85,
+                    "accepted": false,
+                    "reason": "terrain seam 7.85 m over the 6 m earthwork limit"
+                  },
+                  {
+                    "position": -261.8,
+                    "stepM": -4.71,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": -161.8,
+                    "stepM": -4.09,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": -61.8,
+                    "stepM": -2.97,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": 38.2,
+                    "stepM": -2.38,
+                    "accepted": false,
+                    "reason": "not selected: closer than 200 m to an accepted gate"
+                  },
+                  {
+                    "position": 138.2,
+                    "stepM": 2.22,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": 238.2,
+                    "stepM": 4.41,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 338.2,
+                    "stepM": 4.77,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": 438.2,
+                    "stepM": 3.46,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  }
+                ]
+              },
+              {
+                "otherChunkId": "c_-1_-1",
+                "otherCityId": "chicagoGrid",
+                "newcomerStrategy": "organic",
+                "mode": "gates (lanes adapt in the new chunk)",
+                "interfaces": [
+                  {
+                    "position": -1471.6,
+                    "stepM": -5.53,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": -1271.6,
+                    "stepM": -3.95,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": -1071.6,
+                    "stepM": -5.84,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  },
+                  {
+                    "position": -871.6,
+                    "stepM": -4.04,
+                    "accepted": true,
+                    "reason": null
+                  },
+                  {
+                    "position": -671.6,
+                    "stepM": -4.03,
+                    "accepted": false,
+                    "reason": "not selected: 2 gates already accepted"
+                  }
+                ]
+              }
+            ],
+            "crossRamps": [
+              {
+                "rampId": "ramp:c_0_-1:c_-1_-1:maxX:-1271.6",
+                "connectionId": "xconn:c_-1_-1:maxX:-1271.6",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-1_-1:e21",
+                "parentChunkId": "c_-1_-1",
+                "targetChunkId": "c_0_-1",
+                "side": "minX",
+                "position": -1271.6,
+                "roadClass": "primary",
+                "elevationSource": 23.81,
+                "xySnapM": 0.4,
+                "horizontalM": 0.4,
+                "childNodeId": 12,
+                "childEdgeId": 9,
+                "elevationChild": 19.85,
+                "deltaM": -3.96,
+                "childRoadClass": "primary",
+                "directionDeg": 180,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 66,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              },
+              {
+                "rampId": "ramp:c_0_-1:c_-1_-1:maxX:-871.6",
+                "connectionId": "xconn:c_-1_-1:maxX:-871.6",
+                "kind": "crossCity",
+                "sourceRoadId": "c_-1_-1:e43",
+                "parentChunkId": "c_-1_-1",
+                "targetChunkId": "c_0_-1",
+                "side": "minX",
+                "position": -871.6,
+                "roadClass": "primary",
+                "elevationSource": 26.53,
+                "xySnapM": 0.4,
+                "horizontalM": 0.4,
+                "childNodeId": 38,
+                "childEdgeId": 44,
+                "elevationChild": 22.48,
+                "deltaM": -4.05,
+                "childRoadClass": "primary",
+                "directionDeg": 180,
+                "availableM": 4,
+                "approachM": 16,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 68,
+                "status": "insufficientLength",
+                "reason": "needs 92 m at 6.0 %, 4 m available",
+                "neededM": 92
+              },
+              {
+                "rampId": "ramp:c_0_-1:c_0_-2:maxZ:-61.8",
+                "connectionId": "xconn:c_0_-2:maxZ:-61.8",
+                "kind": "crossCity",
+                "sourceRoadId": "c_0_-2:e84",
+                "parentChunkId": "c_0_-2",
+                "targetChunkId": "c_0_-1",
+                "side": "minZ",
+                "position": -61.8,
+                "roadClass": "secondary",
+                "elevationSource": 23.85,
+                "xySnapM": 1.8,
+                "horizontalM": 1.8,
+                "childNodeId": 0,
+                "childEdgeId": 0,
+                "elevationChild": 20.88,
+                "deltaM": -2.97,
+                "childRoadClass": "primary",
+                "directionDeg": 270,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 50,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              },
+              {
+                "rampId": "ramp:c_0_-1:c_0_-2:maxZ:138.2",
+                "connectionId": "xconn:c_0_-2:maxZ:138.2",
+                "kind": "crossCity",
+                "sourceRoadId": "c_0_-2:e96",
+                "parentChunkId": "c_0_-2",
+                "targetChunkId": "c_0_-1",
+                "side": "minZ",
+                "position": 138.2,
+                "roadClass": "secondary",
+                "elevationSource": 20.96,
+                "xySnapM": 1.8,
+                "horizontalM": 1.8,
+                "childNodeId": 2,
+                "childEdgeId": 1,
+                "elevationChild": 23.23,
+                "deltaM": 2.27,
+                "childRoadClass": "primary",
+                "directionDeg": 270,
+                "availableM": -8,
+                "approachM": 4,
+                "approachEnd": "junction",
+                "allowedGrade": 0.06,
+                "requiredRunM": 38,
+                "status": "insufficientLength",
+                "reason": "no road length before the junction (4 m, stand-off 12 m)"
+              }
+            ],
+            "crossJoins": 0
+          }
+        ],
+        "crossRampOutcomes": {
+          "networkConflict": 1,
+          "insufficientLength": 4
+        },
+        "connections": [],
+        "encounters": [
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-1_-3:c_-1_0",
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "adaptationProposed",
+            "validationStatus": "not connected"
+          }
+        ]
+      },
+      "6215": {
+        "steps": 18,
+        "stalled": null,
+        "ms": 121898,
+        "msWithout": 123855,
+        "sameChunkSequence": true,
+        "attempts": [
+          {
+            "step": 14,
+            "cityId": "chicagoGrid",
+            "chunk": "c_2_-1",
+            "edges": [
+              {
+                "otherChunkId": "c_1_-1",
+                "otherCityId": "fezOrganicCore",
+                "newcomerStrategy": "grid",
+                "mode": "grid: own lines only; a mismatch stays a plan (no connector hook)",
+                "interfaces": [
+                  {
+                    "position": -776,
+                    "stepM": -49.63,
+                    "accepted": false,
+                    "reason": "terrain seam 49.63 m over the 6 m earthwork limit"
+                  }
+                ]
+              }
+            ],
+            "crossRamps": [],
+            "crossJoins": 0
+          }
+        ],
+        "crossRampOutcomes": {},
+        "connections": [],
+        "encounters": [
+          {
+            "encounterId": "enc:chicagoGrid|fezOrganicCore:c_4_-1:c_1_-1",
+            "states": {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            },
+            "relationshipStatus": "separationAccepted",
+            "validationStatus": "not connected"
+          }
+        ]
+      }
+    },
+    "stability": {
+      "registryOrderReversed": "identical (seed 6202, 16 steps, inter-city on)",
+      "saveLoad": {
+        "savedAtStep": 10,
+        "continuedEqualsUninterrupted": true,
+        "interCityModeRestored": true
+      }
+    },
+    "regression": {
+      "g02c02ReplayStatuses": {
+        "was": {
+          "accepted": 51,
+          "insufficientLength": 34,
+          "terrainDiscontinuity": 12
+        },
+        "now": {
+          "accepted": 51,
+          "insufficientLength": 34,
+          "terrainDiscontinuity": 12
+        },
+        "equal": true
+      },
+      "g03c01Encounters6202": {
+        "equal": true,
+        "now": [
+          [
+            "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+            "unresolved",
+            {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ],
+          [
+            "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+            "unresolved",
+            {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ],
+          [
+            "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+            "adaptationProposed",
+            {
+              "approaching": true,
+              "adjacent": true,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ],
+          [
+            "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+            "unresolved",
+            {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": false,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ],
+          [
+            "enc:fezOrganicCore|veniceWaterNetwork:c_4_-1:c_1_-1",
+            "unresolved",
+            {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ],
+          [
+            "enc:chicagoGrid|manhattanGrid:c_1_3:c_-2_3",
+            "unresolved",
+            {
+              "approaching": true,
+              "adjacent": false,
+              "constrained": true,
+              "connectionCandidate": false,
+              "connected": false
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "natural": "docs/assets/screenshots/procedural-mini-world/g03c-02-seed6202-intercity-attempt.png",
+      "longSection": "docs/assets/screenshots/procedural-mini-world/g03c-02-controlled-cross-ramp-long-section.png"
+    },
+    "captions": {
+      "natural": "seed 6202, step 16, fezOrganicCore newcomer c_3_-1 at chicagoGrid c_3_0; layers: unconnected road ends, seam conflicts, ramp numbers, encounter; status: no connection"
+    },
+    "errors": []
+  },
+  "nodeMs": 1811128
+}

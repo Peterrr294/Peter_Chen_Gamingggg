@@ -11,6 +11,7 @@ import { DIRECTIONS } from './growthDNA.js';
 import { evaluateCandidate } from './GrowthEvaluation.js';
 import { MORPH_RULES, MorphologicalGrowth } from './MorphologicalGrowth.js';
 import { RAMP_RULES } from './RoadRampPlanner.js';
+import { interCityPlan } from './InterCityConnectionPlanner.js';
 
 export const FAILURE = Object.freeze({ candidate: 'candidateRejected', terrain: 'terrainConflict', network: 'networkConflict', generation: 'generationFailure', stalled: 'growthStalled' });
 // Strategies whose generator takes parent road entries. canalStreet ignores them while a canal region exists, so a
@@ -82,6 +83,7 @@ export class RoadGrowthFrontAdapter {
   constructor(world, morph = new MorphologicalGrowth(world), gradeProfile = null) {
     this.world = world; this.morph = morph; this.gradeProfile = gradeProfile;
     this.forcedParents = new Map(); // replay test: 'gx,gy' → parent chunk id
+    this.interCity = false; // G03c-02: newcomers read other cities' road ends on edges they will share
     this.replayKeepsUnconnected = false; // replay test only: keep a planned chunk with no join, so a whole old run can be compared
     if (gradeProfile) morph.entryLimit = RAMP_RULES.maxGroundOffsetM; // a road end beyond this cannot get a ramp; the plan decides the rest
   }
@@ -172,7 +174,7 @@ export class RoadGrowthFrontAdapter {
     const w = this.world;
     const chunkId = `c_${candidate.gx}_${candidate.gy}`;
     let built;
-    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step, { vertical: this.gradeProfile }); } catch (error) {
+    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step, { vertical: this.gradeProfile, ...(this.interCity ? { interCityPlan: interCityPlan(w, this.morph, candidate.cityId, candidate.targetCoordinate) } : {}) }); } catch (error) {
       if (w.chunks.get(chunkId)?.growthStep === step) w.removeGrowthChunk(chunkId);
       return { failure: { failureClass: FAILURE.generation, reason: `generator error: ${error.message}` } };
     }
@@ -196,7 +198,7 @@ export class RoadGrowthFrontAdapter {
     const crossings = roadCrossings(layers.city.network);
     if (crossings) return { failureClass: FAILURE.network, reason: `${crossings} road crossing(s) without a shared node` };
     if (this.gradeProfile) {
-      const off = event.connections.filter(c => Math.abs(c.elevationStepM) > RAMP_RULES.endpointToleranceM + 0.01);
+      const off = [...event.connections, ...(event.crossCityConnections ?? [])].filter(c => Math.abs(c.elevationStepM) > RAMP_RULES.endpointToleranceM + 0.01);
       if (off.length) return { failureClass: FAILURE.network, reason: `${off.length} joined road(s) still differ in height` };
     }
     return null;

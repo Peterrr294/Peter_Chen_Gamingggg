@@ -885,7 +885,1343 @@
     }
    ],
    "ms": 316871
+  },
+  {
+   "seed": 6216,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 23,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 7,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_-6:c_0_-3",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_2_3:c_3_1",
+     "origin": "growth",
+     "firstStep": 2,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 10,
+      "separationAccepted": 46,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_3_-3:c_0_-3",
+     "origin": "growth",
+     "firstStep": 13,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-1_3:c_-3_4",
+     "origin": "growth",
+     "firstStep": 21,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_-1:c_0_-3",
+     "origin": "growth",
+     "firstStep": 26,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 4,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_2_3:c_3_1",
+     "step": 4
+    }
+   ],
+   "ms": 337216
+  },
+  {
+   "seed": 6217,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 8,
+    "fezOrganicCore": 7,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 15,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_-2_-1:c_-5_-1",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "separationAccepted",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 1,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-2_-2:c_0_-3",
+     "origin": "growth",
+     "firstStep": 15,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_-2_-1:c_-5_-1",
+     "step": 24
+    }
+   ],
+   "ms": 249250
+  },
+  {
+   "seed": 6218,
+   "placement": "ok",
+   "steps": 10,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 6,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 4,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_5_2:c_5_-1",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 10,
+      "separationAccepted": 10,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_2_4:c_4_3",
+     "origin": "growth",
+     "firstStep": 3,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_5_2:c_5_-1",
+     "step": 4
+    }
+   ],
+   "ms": 167503
+  },
+  {
+   "seed": 6219,
+   "placement": "ok",
+   "steps": 27,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 13,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 14,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-3_3:c_-1_4",
+     "origin": "growth",
+     "firstStep": 3,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-1_-4:c_-4_-4",
+     "origin": "growth",
+     "firstStep": 14,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_-3_2:c_-3_-1",
+     "origin": "growth",
+     "firstStep": 16,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 22,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_-6_1:c_-6_-2",
+     "origin": "growth",
+     "firstStep": 17,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": true,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 4,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_-3_2:c_-3_-1",
+     "step": 19
+    }
+   ],
+   "ms": 346243
+  },
+  {
+   "seed": 6220,
+   "placement": "ok",
+   "steps": 11,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 0,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 11,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [],
+   "emergedApproaching": 0,
+   "adjacentByGrowth": [],
+   "ms": 115570
+  },
+  {
+   "seed": 6221,
+   "placement": "ok",
+   "steps": 0,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 0,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 0,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [],
+   "emergedApproaching": 0,
+   "adjacentByGrowth": [],
+   "ms": 24090
+  },
+  {
+   "seed": 6222,
+   "placement": "ok",
+   "steps": 28,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 1,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 27,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_4_-1:c_4_-4",
+     "origin": "growth",
+     "firstStep": 1,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [],
+   "ms": 291237
+  },
+  {
+   "seed": 6223,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 4,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 26,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:amsterdamCanalRing|fezOrganicCore:c_-2_1:c_1_1",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|lisbonHillCore:c_-4_-2:c_-4_-5",
+     "origin": "growth",
+     "firstStep": 4,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "separationAccepted",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 1,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_1_1:c_0_3",
+     "origin": "growth",
+     "firstStep": 5,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "separationAccepted",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-2_1:c_0_2",
+     "origin": "growth",
+     "firstStep": 9,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_2_2:c_5_2",
+     "origin": "growth",
+     "firstStep": 28,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 4,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|lisbonHillCore:c_-4_-2:c_-4_-5",
+     "step": 7
+    },
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_1_1:c_0_3",
+     "step": 19
+    }
+   ],
+   "ms": 192925
+  },
+  {
+   "seed": 6224,
+   "placement": "ok",
+   "steps": 2,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 2,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 0,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [],
+   "emergedApproaching": 0,
+   "adjacentByGrowth": [],
+   "ms": 43203
+  },
+  {
+   "seed": 6225,
+   "placement": "ok",
+   "steps": 6,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 0,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 6,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-2_-5:c_1_-5",
+     "origin": "growth",
+     "firstStep": 2,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [],
+   "ms": 122992
+  },
+  {
+   "seed": 6226,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 15,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 15,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_0_-2:c_-3_-2",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_0_-2:c_0_1",
+     "origin": "growth",
+     "firstStep": 1,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 2,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_-1_5:c_0_3",
+     "origin": "growth",
+     "firstStep": 9,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 25,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:lisbonHillCore|manhattanGrid:c_-3_-2:c_-1_-1",
+     "origin": "growth",
+     "firstStep": 15,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_0_5:c_3_5",
+     "origin": "growth",
+     "firstStep": 18,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 4,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_0_-2:c_0_1",
+     "step": 22
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_-1_5:c_0_3",
+     "step": 18
+    }
+   ],
+   "ms": 369574
+  },
+  {
+   "seed": 6227,
+   "placement": "ok",
+   "steps": 14,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 14,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 0,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:lisbonHillCore|manhattanGrid:c_-4_4:c_-4_1",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_4_3:c_4_0",
+     "origin": "growth",
+     "firstStep": 1,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 1,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_3_0:c_0_0",
+     "origin": "growth",
+     "firstStep": 6,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 2,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_4_3:c_4_0",
+     "step": 3
+    }
+   ],
+   "ms": 169367
+  },
+  {
+   "seed": 6228,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 11,
+    "fezOrganicCore": 6,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 13,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-4_4:c_-4_1",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 1,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_-3_6:c_0_6",
+     "origin": "growth",
+     "firstStep": 6,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|chicagoGrid:c_-1_3:c_-4_3",
+     "origin": "growth",
+     "firstStep": 11,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-2_-1:c_-1_-3",
+     "origin": "growth",
+     "firstStep": 30,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 3,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-4_4:c_-4_1",
+     "step": 18
+    }
+   ],
+   "ms": 257136
+  },
+  {
+   "seed": 6229,
+   "placement": "ok",
+   "steps": 4,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 3,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 1,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:chicagoGrid|lisbonHillCore:c_-2_-3:c_-5_-3",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 2,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-3_-3:c_-3_0",
+     "origin": "growth",
+     "firstStep": 1,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [],
+   "ms": 63630
+  },
+  {
+   "seed": 6230,
+   "placement": "ok",
+   "steps": 30,
+   "stalled": null,
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 16,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 14,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:amsterdamCanalRing|fezOrganicCore:c_-5_0:c_-5_3",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:lisbonHillCore|veniceWaterNetwork:c_1_4:c_-2_4",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_1_-3:c_-2_-3",
+     "origin": "growth",
+     "firstStep": 7,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "separationAccepted",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 5,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_0:c_-5_-3",
+     "origin": "growth",
+     "firstStep": 10,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 2,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_1_-3:c_-2_-3",
+     "step": 20
+    }
+   ],
+   "ms": 245768
+  },
+  {
+   "seed": 6231,
+   "placement": "ok",
+   "steps": 21,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 20,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 1,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:lisbonHillCore|manhattanGrid:c_-2_-5:c_-1_-3",
+     "origin": "growth",
+     "firstStep": 2,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_0:c_-1_-2",
+     "origin": "growth",
+     "firstStep": 5,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 12,
+      "separationAccepted": 5,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:chicagoGrid|fezOrganicCore:c_3_0:c_3_-3",
+     "origin": "growth",
+     "firstStep": 12,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 3,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:chicagoGrid|manhattanGrid:c_0_0:c_-1_-2",
+     "step": 8
+    }
+   ],
+   "ms": 254424
+  },
+  {
+   "seed": 6232,
+   "placement": "ok",
+   "steps": 0,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 0,
+    "fezOrganicCore": 0,
+    "lisbonHillCore": 0,
+    "manhattanGrid": 0,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:amsterdamCanalRing|fezOrganicCore:c_0_3:c_-3_3",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    },
+    {
+     "encounterId": "enc:manhattanGrid|veniceWaterNetwork:c_1_-3:c_1_-6",
+     "origin": "placement",
+     "firstStep": 0,
+     "minDistanceCells": 3,
+     "states": {
+      "approaching": true,
+      "adjacent": false,
+      "constrained": true,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "unresolved",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 0,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 0,
+   "adjacentByGrowth": [],
+   "ms": 27644
+  },
+  {
+   "seed": 6233,
+   "placement": "ok",
+   "steps": 16,
+   "stalled": "every eligible road candidate failed validation",
+   "grown": {
+    "amsterdamCanalRing": 0,
+    "chicagoGrid": 0,
+    "fezOrganicCore": 4,
+    "lisbonHillCore": 2,
+    "manhattanGrid": 10,
+    "veniceWaterNetwork": 0
+   },
+   "segments": [
+    {
+     "encounterId": "enc:lisbonHillCore|manhattanGrid:c_-4_2:c_-4_-1",
+     "origin": "growth",
+     "firstStep": 7,
+     "minDistanceCells": 1,
+     "states": {
+      "approaching": true,
+      "adjacent": true,
+      "constrained": false,
+      "connectionCandidate": false,
+      "connected": false
+     },
+     "relationshipStatus": "adaptationProposed",
+     "proposalCounts": {
+      "connectionProposed": 0,
+      "rampConnectionProposed": 0,
+      "adaptationProposed": 1,
+      "separationAccepted": 0,
+      "unresolved": 0
+     }
+    }
+   ],
+   "emergedApproaching": 1,
+   "adjacentByGrowth": [
+    {
+     "encounterId": "enc:lisbonHillCore|manhattanGrid:c_-4_2:c_-4_-1",
+     "step": 15
+    }
+   ],
+   "ms": 158050
   }
  ],
- "finishedAt": null
+ "summary": {
+  "seeds": 30,
+  "placementFailed": 0,
+  "errors": 0,
+  "stalledBeforeBudget": 21,
+  "withEmergedApproach": 24,
+  "withAdjacencyByGrowth": 17,
+  "firstSavedState": "world-6206-g03c-encounter-state.json",
+  "totalMs": 6346223
+ },
+ "finishedAt": "2026-11-03T05:51:23.976Z"
 }

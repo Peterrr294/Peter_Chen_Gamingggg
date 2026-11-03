@@ -24,6 +24,7 @@ export const RAMP_RULES = Object.freeze({
   shoulderM: 1.5, // flat ground beside the road surface
   sideSlopeRunPerM: 2, // metres of side slope per metre of height
   endpointToleranceM: 0.05, // same-node height test: port elevations are stored to 0.01 m, terrain samples 4 m apart
+  snapToleranceM: 2, // G03c-02: half a terrain sample: a gate placed on the 4 m grid lands within this of its target; the uncommitted end moves onto it
   buildingClearanceM: 0.25, // a building is vacated where the corridor moves its ground by more than this
 });
 export const RAMP_STATUS = Object.freeze({
@@ -152,9 +153,11 @@ export function planVertical(network, fields, sampler, vertical) {
     const rec = { rampId, connectionId: e.connectionId, kind: e.kind, sourceRoadId: `${e.parentChunkId}:e${e.parentEdgeId}`, parentChunkId: e.parentChunkId, targetChunkId: vertical.chunkId, side: e.side, position: e.position, roadClass: e.roadClass, elevationSource: e.elevation };
     const done = (status, reason, extra = {}) => { records.push({ ...rec, status, reason, ...extra }); };
     const ports = network.edgePorts.filter(p => p.side === e.side && p.type === 'road').map(p => ({ p, d: Math.abs(p.position - e.position) })).sort((a, b) => a.d - b.d);
-    if (!ports.length || ports[0].d > R.endpointToleranceM) { done(RAMP_STATUS.network, ports.length ? `nearest child road end is ${r2(ports[0].d)} m away on the boundary` : 'no child road on this side', { horizontalM: ports.length ? r2(ports[0].d) : null }); continue; }
+    // A gate placed on the 4 m terrain grid can miss the other road end by a few decimetres: the uncommitted end moves onto it.
+    if (!ports.length || ports[0].d > R.snapToleranceM) { done(RAMP_STATUS.network, ports.length ? `nearest child road end is ${r2(ports[0].d)} m away on the boundary` : 'no child road on this side', { horizontalM: ports.length ? r2(ports[0].d) : null }); continue; }
     const port = ports[0].p; const node = network.nodes[port.nodeId];
     const dh = node.y - e.elevation;
+    if (ports[0].d > R.endpointToleranceM) rec.xySnapM = r2(ports[0].d);
     Object.assign(rec, { horizontalM: r2(ports[0].d), childNodeId: node.id, childEdgeId: port.edgeId, elevationChild: r2(node.y), deltaM: r2(dh), childRoadClass: port.roadClass, directionDeg: r2(port.directionDeg) });
     if (others.filter(x => x.from === node.id || x.to === node.id).length !== 1) { done(RAMP_STATUS.network, 'child road end has more than one road'); continue; }
     if (Math.abs(dh) <= R.endpointToleranceM) { done(RAMP_STATUS.flush, 'heights already meet', { residualM: r3(Math.abs(dh)) }); continue; }
@@ -198,6 +201,17 @@ export function planVertical(network, fields, sampler, vertical) {
     });
     nodes[a.node.id].y = a.elevation;
     for (const p of edgePorts) if (p.nodeId === a.node.id) p.elevation = a.elevation;
+  }
+  // Moved road ends (recorded as xySnapM): the node, the end of its road and its port take the other end's position.
+  for (const rec of records.filter(x => x.xySnapM && (x.status === RAMP_STATUS.accepted || x.status === RAMP_STATUS.flush))) {
+    const n = nodes[rec.childNodeId]; const was = { x: n.x, z: n.z };
+    if (rec.side.endsWith('X')) n.z = rec.position; else n.x = rec.position;
+    for (const x of edges.filter(q => q.from === n.id || q.to === n.id)) {
+      const pts = x.points.map(q => ({ ...q }));
+      for (const k of [0, pts.length - 1]) if (Math.hypot(pts[k].x - was.x, pts[k].z - was.z) < 1e-6) { pts[k].x = n.x; pts[k].z = n.z; }
+      edges[x.id] = { ...edges[x.id], points: pts };
+    }
+    for (const q of edgePorts) if (q.nodeId === n.id) q.position = rec.position;
   }
   for (const rec of records.filter(x => x.status === RAMP_STATUS.flush)) { nodes[rec.childNodeId].y = rec.elevationSource; for (const p of edgePorts) if (p.nodeId === rec.childNodeId) p.elevation = rec.elevationSource; }
   const height = Float32Array.from(fields.height);

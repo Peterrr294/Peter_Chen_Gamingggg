@@ -57,12 +57,13 @@ export class EmergentEncounterTracker {
     const w = this.world; const n = w.chunks.get(event.newChunkId);
     const near = [...w.chunks.values()].filter(c => c.cityId !== n.cityId && c.outputs && dist(c, n) <= EMERGENT_RULES.approachCells).sort((a, b) => dist(a, n) - dist(b, n) || a.chunkId.localeCompare(b.chunkId));
     const ids = new Set();
-    for (const other of near) ids.add(this.touch(n, other, { step: event.step, eventId: event.growthEventId, origin: 'growth', layers }));
+    const joined = new Set((event.crossCityConnections ?? []).map(c => c.connectionId)); // G03c-02
+    for (const other of near) ids.add(this.touch(n, other, { step: event.step, eventId: event.growthEventId, origin: 'growth', layers, joined }));
     return { updated: [...ids].sort(), ms: Math.round((globalThis.performance ?? Date).now() - t0) };
   }
 
   // Create or update the segment of one near pair, then re-derive its states and decision.
-  touch(x, y, { step, eventId, origin, layers = null }) {
+  touch(x, y, { step, eventId, origin, layers = null, joined = new Set() }) {
     const [a, b] = x.cityId < y.cityId ? [x, y] : [y, x];
     const pairOf = s => s.cityA === a.cityId && s.cityB === b.cityId;
     let seg = this.segments.filter(pairOf).sort((p, q) => p.encounterId.localeCompare(q.encounterId)).find(s => s.involvedChunkIds.some(id => { const c = this.world.chunks.get(id); return c.chunkId === y.chunkId || c.chunkId === x.chunkId || (c.cityId === x.cityId ? dist(c, x) : dist(c, y)) <= EMERGENT_RULES.approachCells; }));
@@ -82,7 +83,7 @@ export class EmergentEncounterTracker {
         const older = newer === a ? b : a;
         const [sideNewer, sideOlder] = SIDE[`${older.worldCoordinate.gx - (newer ?? a).worldCoordinate.gx},${older.worldCoordinate.gy - (newer ?? a).worldCoordinate.gy}`];
         seg.sharedEdges.push({ key, chunkA: a.chunkId, chunkB: b.chunkId, newerChunkId: newer?.chunkId ?? null, step });
-        seg.edgeEvaluations.push(newer ? this.evaluateEdge(newer, sideNewer, older, sideOlder, layers, step) : { key, step, evaluated: false, reason: 'shared at placement: no generation layers for a newer side' });
+        seg.edgeEvaluations.push(newer ? this.evaluateEdge(newer, sideNewer, older, sideOlder, layers, step, joined) : { key, step, evaluated: false, reason: 'shared at placement: no generation layers for a newer side' });
       }
     }
     this.derive(seg);
@@ -91,7 +92,7 @@ export class EmergentEncounterTracker {
   }
 
   // Road ends of the older chunk facing the newer one, evaluated as if the newer chunk could still take a ramp.
-  evaluateEdge(newer, sideNewer, older, sideOlder, layers, step) {
+  evaluateEdge(newer, sideNewer, older, sideOlder, layers, step, joined = new Set()) {
     const w = this.world; const profile = this.controller.adapter.gradeProfile ?? 'baseline';
     const fields = layers.worldTerrain.fields;
     const entries = older.outputs.ports[sideOlder].filter(p => p.type === 'road').map(p => ({ connectionId: `xconn:${older.chunkId}:${sideOlder}:${p.position}`, kind: 'crossCity', parentChunkId: older.chunkId, parentNodeId: p.nodeId, parentEdgeId: p.edgeId, side: sideNewer, position: p.position, roadClass: p.roadClass, elevation: p.elevation }));
@@ -108,7 +109,7 @@ export class EmergentEncounterTracker {
       else if (r.status === RAMP_STATUS.network && nearest && nearest.d <= EMERGENT_RULES.adaptationOffsetM) { proposal = PROPOSAL.adaptation; reason = `nearest ${newer.cityId} road ${r2(nearest.d)} m along the edge: a connector would be needed (no generator hook)`; }
       else if (r.status === RAMP_STATUS.network) { proposal = PROPOSAL.separation; reason = nearest ? `nearest ${newer.cityId} road ${r2(nearest.d)} m away along the edge` : `no ${newer.cityId} road on this edge`; }
       else proposal = PROPOSAL.unresolved;
-      return { connectionId: r.connectionId, cityId: older.cityId, chunkId: older.chunkId, side: sideOlder, position: r.position, roadClass: r.roadClass, elevation: r.elevationSource, otherCityId: newer.cityId, otherChunkId: newer.chunkId, nearestOffsetM: nearest ? r2(nearest.d) : null, elevationDifferenceM: r.deltaM ?? null, rampStatus: r.status, ramp: r.status === RAMP_STATUS.accepted ? { lengthM: r.rampLengthM, maxGrade: r.maxGrade, allowedGrade: r.allowedGrade, cutM: r.cutMaxM, fillM: r.fillMaxM } : null, proposal, reason };
+      return { connectionId: r.connectionId, cityId: older.cityId, chunkId: older.chunkId, side: sideOlder, position: r.position, roadClass: r.roadClass, elevation: r.elevationSource, otherCityId: newer.cityId, otherChunkId: newer.chunkId, nearestOffsetM: nearest ? r2(nearest.d) : null, elevationDifferenceM: r.deltaM ?? null, rampStatus: r.status, joined: joined.has(r.connectionId), ramp: r.status === RAMP_STATUS.accepted ? { lengthM: r.rampLengthM, maxGrade: r.maxGrade, allowedGrade: r.allowedGrade, cutM: r.cutMaxM, fillM: r.fillMaxM } : null, proposal, reason };
     });
     return {
       key: `${[older.chunkId, newer.chunkId].sort().join('|')}`, step, evaluated: true, gradeProfile: profile, newerChunkId: newer.chunkId, sideNewer, olderChunkId: older.chunkId, sideOlder,

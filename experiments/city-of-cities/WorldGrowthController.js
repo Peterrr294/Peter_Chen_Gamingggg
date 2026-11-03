@@ -18,11 +18,13 @@ import { DIRECTIONS, GROWTH_DNA, GROWTH_RULES } from './growthDNA.js';
 import { evaluateCandidate } from './GrowthEvaluation.js';
 import { FAILURE, RoadGrowthFrontAdapter } from './RoadGrowthFrontAdapter.js';
 import { EmergentEncounterTracker } from './EmergentEncounter.js';
+import { connectionRecords } from './InterCityConnectionPlanner.js';
+import { UrbanEncounter } from './UrbanEncounter.js';
 
 const now = () => (globalThis.performance ?? Date).now();
 
 export class WorldGrowthController {
-  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true, encounters = Boolean(world.growth.encounters) } = {}) {
+  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true, encounters = Boolean(world.growth.encounters), interCity = Boolean(world.growth.interCity) } = {}) {
     this.world = world;
     this.dna = dna; // per-city Growth DNA (Experiment C can pass a uniform table)
     this.lastFrontier = null; // evaluated candidates of the last step (debug, not saved)
@@ -35,6 +37,7 @@ export class WorldGrowthController {
       if (gradeProfile) { world.growth.gradeProfile = gradeProfile; world.growth.candidateCache ??= {}; } // G02c-02
       this.adapter = new RoadGrowthFrontAdapter(world, undefined, gradeProfile);
       this.adapter.replayKeepsUnconnected = Boolean(replay);
+      if (interCity) { world.growth.interCity = true; world.growth.interCityConnections ??= []; this.adapter.interCity = true; } // G03c-02
       // G03c-01: encounters are detected after each commit, from the new chunk outward; detection never generates.
       if (encounters) { const fresh = !world.growth.encounters; this.encounters = new EmergentEncounterTracker(world, this); this.initialEncountersPending = fresh && world.growth.step === 0; this.initialEncounters(); }
     }
@@ -224,6 +227,13 @@ export class WorldGrowthController {
     w.growth.history.push(committed);
     w.growth.step = step;
     if (this.encounters) { const r = this.encounters.afterCommit(committed, layers); committed.encounterUpdates = r.updated; committed.ms.encounters = r.ms; }
+    if (this.adapter.interCity && committed.crossCityConnections?.length) {
+      const encounterOf = (a, b) => (w.growth.encounters ?? []).find(s => s.involvedChunkIds.includes(a) && s.involvedChunkIds.includes(b))?.encounterId ?? null;
+      const records = connectionRecords(w, committed, encounterOf, (x, y) => new UrbanEncounter(w, null).path(x, y));
+      const known = new Set(w.growth.interCityConnections.map(r => r.connectionId));
+      for (const r of records) if (known.has(r.connectionId)) throw new Error(`duplicate inter-city connection ${r.connectionId}`);
+      w.growth.interCityConnections.push(...records); committed.interCityConnectionIds = records.map(r => r.connectionId);
+    }
     w.growth.generation = Math.max(w.growth.generation, chunk.generation);
     w.growth.stalled = null;
     this.adapter.morph.terrainCache.clear();

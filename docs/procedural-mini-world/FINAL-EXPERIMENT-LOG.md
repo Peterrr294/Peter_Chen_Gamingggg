@@ -36,7 +36,9 @@
 - **Update (2026-11-01, task G02c-01 by user instruction):** the multi-city scheduler can take its candidates from real road fronts (opt-in `growthMode: 'road'`), with Plan → Generate → Validate → Commit. Default G01 / G02 path unchanged. Verified on 6201 / 6202 / 6203, pending review (entry G02c-01).
 - **Update (2026-11-02, task G02c-02 by user instruction):** grade-aware road connection: ramps with sampled vertical alignment in the uncommitted chunk, joins continuous in height and graph; the old 3 m steps were all terrain seams (entry G02c-02). Default paths and G02c-01 unchanged. Pending review.
 - **Update (2026-11-02, task G03c-01 by user instruction):** natural encounters are detected inside real six-city growth (6 % ramp plan); one adjacency on the known seeds (6202, Chicago × Fez, adaptation proposed); nothing connected (entry G03c-01). Pending review.
-- **Current single task:** G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate.
+- **Update (2026-11-03, task G03c-02 by user instruction):** inter-city connection planned inside the newcomer's commit; no connection in real growth (6202 / 6209 / 6215) and none Connected in the controlled cases; blocker: ramps end before the first junction (entry G03c-02). Pending review.
+- **Current single task:** G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification.
+- *Previous (superseded 2026-11-03, G03c-02):* "G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate."
 - *Previous (superseded 2026-11-02, G03c-01):* "G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate."
 - *Previous (superseded 2026-11-02, G02c-02):* "Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started."
 - *Previous (superseded 2026-11-01, G02c-01):* "Return to urban growth research: choose G02c / G03c (road-first growth and encounters in the multi-city scheduler). Website work: maintenance only."
@@ -1673,7 +1675,7 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - No connection. Every check of the task list passes; detection does not change growth.
   - Determinism, save / load / continue, browser parity pass.
   - Reference run without the ramp plan: 3 adjacencies (adaptation proposed twice, separation once).
-- **Seed search:** in progress at this checkpoint (`emergent-encounter-search.json`); its summary follows in the next entry.
+- **Seed search:** in progress at this checkpoint; finished afterwards: 30 of 30 seeds placed, 21 stalled before 30 steps, 24 with an encounter by growth, **17 with an adjacency by growth** (Chicago × Manhattan 9). Summary added to the G03c-01 note §6 with the G03c-02 checkpoint.
 - **Screenshots (task G03c-01):**
   - ![Adjacent](../assets/screenshots/procedural-mini-world/g03c-01-adjacent-road-proposals.png) seed 6202, step 16, Chicago × Fez, layers boundary / proposals / states;
   - ![Local](../assets/screenshots/procedural-mini-world/g03c-01-seed6201-encounter-local.png) seed 6201, step 7, Fez × Manhattan approaching.
@@ -1683,3 +1685,22 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - organic newcomers do not read neighbours before commit.
 - **Review status:** Pending review. Note: [G03c-01](./A-City-of-Cities/G03c-01-Emergent-Urban-Encounter.md).
 - **Next single task:** G03c-02 (user instruction).
+
+### G03c-02 — Inter-city road connection
+
+- **Date / Stage / Single question:** 2026-11-03 / G03 / Can cities that meet by growth be joined by a 3D-continuous road with a real core-to-core path?
+- **Gate:** G02c-02 pass, G03c-01 pass.
+- **Changed:** new `InterCityConnectionPlanner.js`, `verify-inter-city-connection.mjs`, evidence `inter-city-connection.json`; changed `MorphologicalGrowth.js`, `RoadGrowthFrontAdapter.js`, `WorldGrowthController.js`, `RoadRampPlanner.js` (snap tolerance 2 m, half a terrain sample, uncommitted ends only), `EmergentEncounter.js`, `WorldContext.js`, `RampView.js`, `main.js`.
+- **Result:**
+  - Controlled (TEST ONLY): under the scheduler rule every scenario loses its growth step before a connection; with the rule off a cross-city ramp is built (40 m, 5.4 %, XY and height 0 m), reaches the Fez core, but is not Connected (Chicago's chunk has no path to its core).
+  - Natural: seeds 6202, 6209, 6215: 0 connections.
+    - 6202: 2 × insufficient length;
+    - 6209: 4 × insufficient length + 1 grid offset 37.8 m;
+    - 6215: seam 49.6 m.
+  - Determinism and save / load pass; G02c-02 and G03c-01 regressions unchanged.
+- **Blocker:** ramps end before the first junction (organic gates meet a junction 4 m inside the edge). Proposed G02c-03: ramps through the first junction.
+- **Screenshots (task G03c-02):**
+  - ![Seed 6202](../assets/screenshots/procedural-mini-world/g03c-02-seed6202-intercity-attempt.png) seed 6202, step 16, Fez × Chicago, layers unconnected ends / labels / encounter;
+  - ![Long section](../assets/screenshots/procedural-mini-world/g03c-02-controlled-cross-ramp-long-section.png) controlled fixture, seed 6201.
+- **Review status:** Pending review. Note: [G03c-02](./A-City-of-Cities/G03c-02-Inter-City-Road-Connection.md).
+- **Next single task:** G03c-03 Phase A (user instruction).

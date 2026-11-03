@@ -1,6 +1,13 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-02: G03c-01 natural encounters (read first)
+## Update 2026-11-03: G03c-02 inter-city connection (read first)
+
+- **Done:** connection planned inside the newcomer's commit. Note: [G03c-02](./A-City-of-Cities/G03c-02-Inter-City-Road-Connection.md). Verify: `node --max-old-space-size=8192 scripts/verify-inter-city-connection.mjs`. View: add `&intercity=1`.
+- **Finding:** no real connection; the blocker is that a ramp must end before the first junction.
+- **Next fix proposed:** G02c-03 ramps through a junction.
+- **Seed search:** finished, 17 of 30 seeds become adjacent by growth.
+
+## Update 2026-11-02: G03c-01 natural encounters
 
 - **Done:** detection after every commit. Note: [G03c-01](./A-City-of-Cities/G03c-01-Emergent-Urban-Encounter.md). Verify: `node --max-old-space-size=8192 scripts/verify-emergent-encounter.mjs`. View: `/experiments/city-of-cities/?growthMode=road&grade=baseline&emergent=1`.
 - **Finding:** one adjacency on the known seeds (6202, Chicago × Fez), adaptation proposed, not connected.

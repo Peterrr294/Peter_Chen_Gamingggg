@@ -33,12 +33,12 @@ export class RampView {
             this.groups.accepted.add(line);
           }
           this.groups.accepted.add(post(point.x, r.startElevation, point.z, 0x3fd17a));
-          const label = textSprite([`${r.roadClass} · ${r.startElevation} → ${r.endElevation} m (seam ${r.deltaM > 0 ? '+' : ''}${r.deltaM} m)`, `${r.rampLengthM} m, max ${(r.maxGrade * 100).toFixed(1)} % · connected`], { width: 620, scale: 300, colors: ['#7fe3a0', '#e6e9eb'] });
+          const label = textSprite([`${r.kind === 'crossCity' ? 'INTER-CITY · ' : ''}${r.roadClass} · ${r.startElevation} → ${r.endElevation} m (seam ${r.deltaM > 0 ? '+' : ''}${r.deltaM} m)`, `${r.rampLengthM} m, max ${(r.maxGrade * 100).toFixed(1)} % · ${r.kind === 'crossCity' ? 'joined; Connected only with a verified core path' : 'connected'}`], { width: 620, scale: 300, colors: ['#7fe3a0', '#e6e9eb'] });
           label.position.set(point.x, r.startElevation + 130, point.z); this.groups.labels.add(label);
         } else if (r.status !== S.flush) {
           const group = r.status === S.terrain ? this.groups.seam : this.groups.rejected;
           group.add(post(point.x, r.elevationSource, point.z, STATUS_COLOR[r.status]));
-          const label = textSprite([LABEL[r.status], (r.reason ?? '').slice(0, 52)], { width: 620, scale: 300, colors: [`#${STATUS_COLOR[r.status].toString(16).padStart(6, '0')}`, '#e6e9eb'] });
+          const label = textSprite([`${r.kind === 'crossCity' ? 'INTER-CITY · ' : ''}${LABEL[r.status]}`, (r.reason ?? '').slice(0, 52)], { width: 620, scale: 300, colors: [`#${STATUS_COLOR[r.status].toString(16).padStart(6, '0')}`, '#e6e9eb'] });
           label.position.set(point.x, r.elevationSource + 130, point.z); this.groups.labels.add(label);
         }
       }

@@ -128,6 +128,8 @@ export class MorphologicalGrowth {
     const core = w.chunks.get(w.cities.get(cityId).originChunkId);
     const strategy = DNA_STRATEGY[cityId];
     const entries = chosen.entries.filter(e => e.usable);
+    const ic = opts.interCityPlan ?? null; // G03c-02: computed by the adapter before generation
+    const crossEntries = opts.crossCityEntries?.length ? opts.crossCityEntries : ic?.gates ?? [];
     const growthContext = {
       mode: 'road-first', growthEventId: `growth:${cityId}:${step}`, parentChunkId: parent.chunkId, sourceGrowthFrontId: chosen.growthFrontId, side: OPPOSITE[chosen.side],
       sourceRoadIds: [...new Set(entries.map(e => `${e.parentChunkId}:e${e.parentEdgeId}`))],
@@ -135,13 +137,13 @@ export class MorphologicalGrowth {
       grid: MORPH_RULES.strategiesWithGridInheritance.includes(strategy) && parent.outputs.grid ? { ...parent.outputs.grid, fromChunkId: parent.chunkId } : null,
       centre: core.outputs.buildingCentre ? { x: r2(core.outputs.buildingCentre.x), z: r2(core.outputs.buildingCentre.z), fromChunkId: core.chunkId } : null,
       generationIndex: w.chunks.size,
-      ...(opts.vertical ? { vertical: { profile: opts.vertical, entries: this.verticalEntries(parent, chosen, OPPOSITE[chosen.side]) } } : {}),
-      ...(opts.crossCityEntries?.length ? { crossCityEntries: opts.crossCityEntries, encounterId: opts.encounterId ?? null } : {}),
+      ...(opts.vertical ? { vertical: { profile: opts.vertical, entries: [...this.verticalEntries(parent, chosen, OPPOSITE[chosen.side]), ...(ic?.vertical ?? [])] } } : {}),
+      ...(crossEntries.length ? { crossCityEntries: crossEntries, encounterId: opts.encounterId ?? null } : {}),
     };
     const chunk = w.addGrowthChunk({ cityId, gx: chosen.target.gx, gy: chosen.target.gy, parentChunkId: parent.chunkId, step, reason: { text: `road-first growth ${chosen.direction} from ${parent.chunkId} (${chosen.usable.primary} primary / ${chosen.usable.all} usable road entries)`, front: chosen.growthFrontId }, growthContext });
     const { chunk: generated, layers } = w.generateChunk(chunk.chunkId);
     const link = this.connect(parent, generated, chosen.side, joinableEntries(generated, growthContext));
-    const cross = crossConnect(w, this, generated, growthContext.crossCityEntries ?? []);
+    const cross = crossConnect(w, this, generated, joinableCross(generated, growthContext.crossCityEntries ?? []));
     const generatedRoadIds = [...new Set(link.connections.map(c => c.child.edgeId))];
     const blocks = layers.city.blocks.blocks ?? []; const parcels = layers.city.parcels.parcels ?? [];
     const event = {
@@ -158,6 +160,7 @@ export class MorphologicalGrowth {
       connections: link.connections,
       ...(generated.outputs.ramps ? { ramps: generated.outputs.ramps.records, vacatedBuildings: generated.outputs.ramps.vacatedBuildings, gradeProfile: generated.outputs.ramps.profile } : {}),
       ...(growthContext.crossCityEntries ? { encounterId: growthContext.encounterId, crossCityConnections: cross.connections, crossCityUnmatched: cross.unmatchedEntries } : {}),
+      ...(ic ? { interCity: { edges: ic.edges } } : {}),
       selectionScore: chosen.terrain.score, growthReason: { text: `road-first ${chosen.direction} from ${parent.chunkId}`, front: chosen.growthFrontId, usable: chosen.usable },
       outputs: { resolvedDNA: generated.outputs.resolvedDNA, counts: generated.outputs.counts }, conflicts: [],
     };
@@ -265,7 +268,7 @@ export function verifyConnections(world) {
     const parent = world.chunks.get(e.parentChunkId); const child = world.chunks.get(e.newChunkId);
     const side = Object.entries(OPPOSITE).find(([, b]) => b === child.generationParameters.growthContext.side)[0];
     const now = g.connect(parent, child, side, joinableEntries(child, child.generationParameters.growthContext));
-    const cross = crossConnect(world, g, child, child.generationParameters.growthContext.crossCityEntries ?? []);
+    const cross = crossConnect(world, g, child, joinableCross(child, child.generationParameters.growthContext.crossCityEntries ?? []));
     const sameNeighbours = !e.neighbourConnections || JSON.stringify(g.connectNeighboursAt(child, e.parentChunkId, e.step).connections) === JSON.stringify(e.neighbourConnections);
     out.push({ step: e.step, same: JSON.stringify(now.connections) === JSON.stringify(e.connections) && JSON.stringify(cross.connections) === JSON.stringify(e.crossCityConnections ?? []) && sameNeighbours });
   }
@@ -277,6 +280,13 @@ function joinableEntries(child, ctx) {
   if (!child.outputs.ramps) return ctx.entryPorts;
   const ok = new Set(child.outputs.ramps.records.filter(r => r.status === RAMP_STATUS.accepted || r.status === RAMP_STATUS.flush).map(r => r.connectionId));
   return ctx.entryPorts.filter(e => ok.has(e.connectionId));
+}
+
+// G03c-02: the same rule for the other city's road ends: only ends the ramp plan connects in height may join.
+function joinableCross(child, entries) {
+  if (!child.outputs.ramps) return entries;
+  const ok = new Set(child.outputs.ramps.records.filter(r => r.status === RAMP_STATUS.accepted || r.status === RAMP_STATUS.flush).map(r => r.connectionId));
+  return entries.filter(e => ok.has(e.connectionId));
 }
 
 // G03b: join accepted cross-city entries to the child's ports, grouped by the other city's chunk and side.
