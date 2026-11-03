@@ -1,6 +1,11 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-03: G03c-03 urban interface, Phase A (read first)
+## Update 2026-11-03: VIS-01a growth observatory (read first)
+
+- **Done:** stage timeline of one real event. Note: [VIS-01](./A-City-of-Cities/VIS-01-Procedural-Growth-Observatory.md). Open `/experiments/city-of-cities/?worldSeed=6202&growthMode=road&grade=baseline&replay=1`. Verify: `node --max-old-space-size=8192 scripts/verify-growth-observatory.mjs`.
+- **Waiting:** review of VIS-01a before VIS-01b.
+
+## Update 2026-11-03: G03c-03 urban interface, Phase A
 
 - **Done:** height lineage and continuity analysis. Note: [G03c-03](./A-City-of-Cities/G03c-03-Urban-Interface.md). Verify: `node --max-old-space-size=8192 scripts/verify-urban-interface.mjs`.
 - **Finding:** the Chicago drop is the single-centre DNA rule, not a reset. No building changed.

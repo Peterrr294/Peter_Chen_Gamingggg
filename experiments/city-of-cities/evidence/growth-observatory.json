@@ -1,0 +1,173 @@
+{
+  "task": "VIS-01a single growth event timeline",
+  "testedAt": "2026-11-03T06:13:10.985Z",
+  "seed": 6202,
+  "step": 1,
+  "gradeProfile": "baseline",
+  "checks": [
+    {
+      "name": "page event equals the Node reference",
+      "pass": true,
+      "detail": "c_1_2 → c_1_3, 10 joins"
+    },
+    {
+      "name": "stage 1 Before growth (recorded)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain hidden, roads hidden"
+    },
+    {
+      "name": "stage 2 Terrain / site evaluation (recorded)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain suitability, roads hidden"
+    },
+    {
+      "name": "stage 3 Growth front selection (recorded)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain classes, roads hidden"
+    },
+    {
+      "name": "stage 4 Road extension / ramp evaluation (recorded)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain classes, roads shown"
+    },
+    {
+      "name": "stage 5 Block generation (reconstructed)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain blocks, roads shown"
+    },
+    {
+      "name": "stage 6 Parcel subdivision (reconstructed)",
+      "pass": true,
+      "detail": "buildings 0 of 1927, terrain parcels, roads shown"
+    },
+    {
+      "name": "stage 7 Building generation (presentation)",
+      "pass": true,
+      "detail": "buildings 963 of 1927, terrain classes, roads shown"
+    },
+    {
+      "name": "stage 8 Growth commit (recorded)",
+      "pass": true,
+      "detail": "buildings 1927 of 1927, terrain classes, roads shown"
+    },
+    {
+      "name": "same t gives the same state after seeking away and back",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "play at 4× advances about 4 / 2.5 stages per second",
+      "pass": true,
+      "detail": "t 4.81 after 3.0 s"
+    },
+    {
+      "name": "pause, seek and play regenerate nothing",
+      "pass": true,
+      "detail": "chunk built 1 time(s)"
+    },
+    {
+      "name": "a continued road names its parent road",
+      "pass": true,
+      "detail": "c_1_3:e55 ← c_1_2:e60"
+    },
+    {
+      "name": "a road made inside the chunk says its parent is Not available",
+      "pass": true,
+      "detail": "c_1_3:e0 of 115 roads"
+    },
+    {
+      "name": "Inspector shows the event id as source",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "stages": [
+    {
+      "stage": 1,
+      "id": "before",
+      "kind": "recorded",
+      "terrainMode": null,
+      "networkVisible": false,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage1-before.png"
+    },
+    {
+      "stage": 2,
+      "id": "site",
+      "kind": "recorded",
+      "terrainMode": "suitability",
+      "networkVisible": false,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage2-site.png"
+    },
+    {
+      "stage": 3,
+      "id": "front",
+      "kind": "recorded",
+      "terrainMode": "classes",
+      "networkVisible": false,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage3-front.png"
+    },
+    {
+      "stage": 4,
+      "id": "roads",
+      "kind": "recorded",
+      "terrainMode": "classes",
+      "networkVisible": true,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage4-roads.png"
+    },
+    {
+      "stage": 5,
+      "id": "blocks",
+      "kind": "reconstructed",
+      "terrainMode": "blocks",
+      "networkVisible": true,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage5-blocks.png"
+    },
+    {
+      "stage": 6,
+      "id": "parcels",
+      "kind": "reconstructed",
+      "terrainMode": "parcels",
+      "networkVisible": true,
+      "visibleBuildings": 0,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage6-parcels.png"
+    },
+    {
+      "stage": 7,
+      "id": "buildings",
+      "kind": "presentation",
+      "terrainMode": "classes",
+      "networkVisible": true,
+      "visibleBuildings": 963,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage7-buildings.png"
+    },
+    {
+      "stage": 8,
+      "id": "commit",
+      "kind": "recorded",
+      "terrainMode": "classes",
+      "networkVisible": true,
+      "visibleBuildings": 1927,
+      "totalBuildings": 1927,
+      "screenshot": "docs/assets/screenshots/procedural-mini-world/vis-01a-stage8-commit.png"
+    }
+  ],
+  "errors": [],
+  "passed": 16
+}

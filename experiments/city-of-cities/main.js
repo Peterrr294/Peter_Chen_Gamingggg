@@ -21,6 +21,7 @@ import { EncounterView } from './EncounterView.js';
 import { cityRoadReach } from './RoadGrowthFrontAdapter.js';
 import { RampView } from './RampView.js';
 import { EmergentEncounterView } from './EmergentEncounterView.js';
+import { ReplayController } from './ReplayController.js';
 import { GRADE_PROFILES } from './RoadRampPlanner.js';
 import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encounterFixture.js';
 
@@ -37,6 +38,7 @@ import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encou
 // G02c-02: &grade=conservative|baseline|permissive adds the ramp plan (vertical alignment) to road-driven growth.
 // G03c-01: &emergent=1 lets the scheduler detect natural encounters after every commit (road mode only).
 // G03c-02: &intercity=1 lets a newcomer chunk take other cities' road ends on a shared edge into its ramp plan.
+// VIS-01a: &replay=N grows N real steps, then opens the stage timeline of step N (visibility only, nothing regenerated).
 // URL: ?worldSeed=… &candidates=1 &debug=1 &frontier=1 &focus=<cityId> &start=0 &steps=N (grow N after the origins)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/a-city-of-cities/world-state';
@@ -61,6 +63,7 @@ const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...O
 function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...(ui.growthMode === 'road' && ui.emergent ? { encounters: true } : {}), ...(ui.growthMode === 'road' && ui.interCity && GRADE_PROFILES[ui.gradeProfile] ? { interCity: true } : {}), ...extra }; }
 let world = new WorldContext(ui);
 let growth = new WorldGrowthController(world, controllerOptions());
+let replay = null; // VIS-01a
 const growthOverlay = new GrowthOverlay(scene);
 const rampView = new RampView(scene); // G02c-02
 const emergentView = new EmergentEncounterView(scene); // G03c-01
@@ -126,6 +129,7 @@ function applyVisibility() {
   emergentView.setVisible(ui);
   encounterView.setVisible(ui);
   territoryView.setVisible(ui);
+  replay?.seek(replay.t); // the stage timeline owns the event chunk's visibility
 }
 
 function refreshOverlays() {
@@ -257,6 +261,7 @@ function growSteps(n) {
       await nextFrame();
       const t0 = performance.now();
       const r = growth.step();
+      if (!r.stalled && Number(query.get('replay')) === r.event.step) state.replayData = { event: r.event, layers: r.layers };
       if (r.stalled) break;
       territory.applyEvent(r.event); territory.refresh(growth); // G03a: incremental ownership, derived analysis
       const t1 = performance.now();
@@ -459,6 +464,11 @@ const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2(); le
 canvas.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
 canvas.addEventListener('pointerup', e => {
   if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 4) return;
+  if (replay && replay.view.network.root.visible) {
+    const rect0 = canvas.getBoundingClientRect(); pointer.set(((e.clientX - rect0.left) / rect0.width) * 2 - 1, -((e.clientY - rect0.top) / rect0.height) * 2 + 1); raycaster.setFromCamera(pointer, camera);
+    const road = raycaster.intersectObjects([replay.view.network.root], true).find(h => /^edge-\d+ /.test(h.object.name));
+    if (road) { replay.pick(Number(road.object.name.match(/^edge-(\d+)/)[1])); return; }
+  }
   const rect = canvas.getBoundingClientRect();
   pointer.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
   raycaster.setFromCamera(pointer, camera);
@@ -501,6 +511,12 @@ window.__originLab = {
   roadReplay: replay => { growth = new WorldGrowthController(world, controllerOptions({ growthMode: 'road', replay })); },
   rampEvents: () => world.growth.history.filter(e => e.ramps),
   emergentEncounters: () => world.growth.encounters ?? [],
+  // VIS-01a
+  replayState: () => replay?.state() ?? null,
+  replaySeek: t => replay?.seek(t),
+  replayPlay: on => replay?.setPlaying(on),
+  replayPickEdge: id => replay?.pick(id) ?? null,
+  replayEvent: () => state.replayData?.event ?? null,
   interCityConnections: () => world.growth.interCityConnections ?? [],
   roadReach: cityId => cityRoadReach(world, cityId),
   morphGrow: cityId => growMorph(cityId),
@@ -529,6 +545,16 @@ window.__originLab = {
 
 fitOverview();
 renderPanel();
+function startReplay() {
+  return run('REPLAY TIMELINE', async () => {
+    const d = state.replayData;
+    if (!d) throw new Error(`growth step ${query.get('replay')} was not reached (stalled or not grown)`);
+    replay = new ReplayController({ scene, world, event: d.event, layers: d.layers, view: views.get(d.event.newChunkId), chunkTop: chunkTop.get(d.event.newChunkId), mount: canvas });
+    const a = world.chunks.get(d.event.parentChunkId).worldCoordinate; const b = d.event.targetCoordinate;
+    window.__originLab.fitRegion(Math.min(a.gx, b.gx), Math.min(a.gy, b.gy), Math.max(a.gx, b.gx), Math.max(a.gy, b.gy));
+  });
+}
+if (query.has('replay')) { ui.autoFit = false; generate(); growSteps(Number(query.get('replay'))); startReplay(); } else
 if (query.has('fixture')) runFixture(query.get('fixture'), query.has('upTo') ? Number(query.get('upTo')) : Infinity);
 else if (query.get('start') === '0') { $('#statusText').textContent = 'READY · NO WORLD'; window.__originLab.ready = true; } else {
   generate();

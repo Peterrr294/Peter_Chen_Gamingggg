@@ -38,7 +38,9 @@
 - **Update (2026-11-02, task G03c-01 by user instruction):** natural encounters are detected inside real six-city growth (6 % ramp plan); one adjacency on the known seeds (6202, Chicago × Fez, adaptation proposed); nothing connected (entry G03c-01). Pending review.
 - **Update (2026-11-03, task G03c-02 by user instruction):** inter-city connection planned inside the newcomer's commit; no connection in real growth (6202 / 6209 / 6215) and none Connected in the controlled cases; blocker: ramps end before the first junction (entry G03c-02). Pending review.
 - **Update (2026-11-03, task G03c-03 by user instruction):** Phase A: the Chicago 171 m / 38 m drop is a continuous single-centre gradient, not a chunk reset; every building height is decomposed and reproduced (41,755 of 41,755); no height changed; inter-city interfaces classified (no connected type) (entry G03c-03). Pending review.
-- **Current single task:** VIS-01 Procedural Growth Observatory, VIS-01a first (by user instruction 2026-11-03).
+- **Update (2026-11-03, task VIS-01a by user instruction):** stage timeline of one real growth event in the World Viewer, every stage labelled recorded / reconstructed / presentation; browser 16 of 16 (entry VIS-01a). Pending review.
+- **Current single task:** Review VIS-01a; VIS-01b only after that review.
+- *Previous (superseded 2026-11-03, VIS-01a):* "VIS-01 Procedural Growth Observatory, VIS-01a first (by user instruction 2026-11-03)."
 - *Previous (superseded 2026-11-03, G03c-03):* "G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification."
 - *Previous (superseded 2026-11-03, G03c-02):* "G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate."
 - *Previous (superseded 2026-11-02, G03c-01):* "G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate."
@@ -1730,3 +1732,27 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - Inspector needs-review items.
 - **Review status:** Pending review. Note: [G03c-03](./A-City-of-Cities/G03c-03-Urban-Interface.md).
 - **Next single task:** VIS-01a (user instruction).
+
+### VIS-01a — Single growth event timeline
+
+- **Date / Stage / Single question:** 2026-11-03 / visualisation / Can one real growth event be followed stage by stage, from real data, without the picture claiming more than the data holds?
+- **Changed:** new `GrowthReplay.js`, `ReplayController.js`, `verify-growth-observatory.mjs`, evidence `growth-observatory.json`; `main.js` (`&replay=N`, road click). No generator changed; WEB-01 untouched.
+- **Event:** seed 6202, step 1, Chicago c_1_2 → c_1_3, 6 % ramp plan; equal to the Node reference.
+- **Result:** 8 stages, each labelled:
+  - recorded: before, site, front, roads, commit;
+  - reconstructed: blocks, parcels;
+  - presentation: building order.
+
+  Six speeds, play / pause / seek, Inspector with source, road origin on click. Browser: 16 of 16 checks; seeking regenerates nothing; 4× plays at the right rate; 0 errors.
+- **Screenshots (seed 6202, step 1, chicagoGrid, fixed top camera):**
+  - ![Front](../assets/screenshots/procedural-mini-world/vis-01a-stage3-front.png)
+  - ![Roads](../assets/screenshots/procedural-mini-world/vis-01a-stage4-roads.png)
+  - ![Buildings](../assets/screenshots/procedural-mini-world/vis-01a-stage7-buildings.png)
+  - ![Commit](../assets/screenshots/procedural-mini-world/vis-01a-stage8-commit.png)
+- **Open issues:**
+  - ramps hard to read at this camera;
+  - the real pointer click is not automated;
+  - other viewer verifiers not re-run;
+  - VIS-01b–d not started (stop condition).
+- **Review status:** Pending review. Note: [VIS-01](./A-City-of-Cities/VIS-01-Procedural-Growth-Observatory.md).
+- **Next single task:** review VIS-01a, then VIS-01b.
