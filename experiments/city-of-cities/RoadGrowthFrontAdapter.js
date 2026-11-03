@@ -10,6 +10,7 @@ import { DNA_STRATEGY } from '../seed-terrain/networkStrategies.js';
 import { DIRECTIONS } from './growthDNA.js';
 import { evaluateCandidate } from './GrowthEvaluation.js';
 import { MORPH_RULES, MorphologicalGrowth } from './MorphologicalGrowth.js';
+import { RAMP_RULES } from './RoadRampPlanner.js';
 
 export const FAILURE = Object.freeze({ candidate: 'candidateRejected', terrain: 'terrainConflict', network: 'networkConflict', generation: 'generationFailure', stalled: 'growthStalled' });
 // Strategies whose generator takes parent road entries. canalStreet ignores them while a canal region exists, so a
@@ -78,7 +79,12 @@ export function cityRoadReach(world, cityId) {
 }
 
 export class RoadGrowthFrontAdapter {
-  constructor(world, morph = new MorphologicalGrowth(world)) { this.world = world; this.morph = morph; }
+  constructor(world, morph = new MorphologicalGrowth(world), gradeProfile = null) {
+    this.world = world; this.morph = morph; this.gradeProfile = gradeProfile;
+    this.forcedParents = new Map(); // replay test: 'gx,gy' → parent chunk id
+    this.replayKeepsUnconnected = false; // replay test only: keep a planned chunk with no join, so a whole old run can be compared
+    if (gradeProfile) morph.entryLimit = RAMP_RULES.maxGroundOffsetM; // a road end beyond this cannot get a ramp; the plan decides the rest
+  }
 
   // Every road port of this front as a traceable record. Terrain fields are null when the front was refused before the entry check.
   roadFronts(chunk, front) {
@@ -88,9 +94,9 @@ export class RoadGrowthFrontAdapter {
       return {
         growthFrontId: `rgf:${chunk.chunkId}:${front.side}:${p.position}`, cityId: chunk.cityId, sourceChunkId: chunk.chunkId, sourceRoadId: `${chunk.chunkId}:e${p.edgeId}`, sourceNodeId: p.nodeId,
         targetChunkCoordinate: front.target, roadClass: p.roadClass, roadDirection: p.directionDeg, roadElevation: p.elevation,
-        terrainConstraints: entry ? { targetGround: entry.targetGround, stepM: entry.stepM, maxEntryStepM: MORPH_RULES.maxEntryStep } : null,
+        terrainConstraints: entry ? { targetGround: entry.targetGround, stepM: entry.stepM, maxEntryStepM: this.morph.entryLimit } : null,
         usable: entry?.usable ?? false,
-        rejectionReason: entry ? (entry.usable ? null : `entry step ${entry.stepM} m > ${MORPH_RULES.maxEntryStep} m`) : front.reason,
+        rejectionReason: entry ? (entry.usable ? null : `entry step ${entry.stepM} m > ${this.morph.entryLimit} m`) : front.reason,
       };
     });
   }
@@ -140,7 +146,8 @@ export class RoadGrowthFrontAdapter {
       }
       // Parent rule of G02 on usable ports: most primary entries, then most entries, then lowest generation, then chunk id.
       ok.sort((a, b) => b.usable.primary - a.usable.primary || b.usable.all - a.usable.all || w.chunks.get(a.sourceChunkId).generation - w.chunks.get(b.sourceChunkId).generation || a.sourceChunkId.localeCompare(b.sourceChunkId));
-      const front = ok[0];
+      const forced = this.forcedParents.get(`${gx},${gy}`);
+      const front = ok.find(f => f.sourceChunkId === forced) ?? ok[0];
       const parent = w.chunks.get(front.sourceChunkId);
       const lead = records.filter(r => r.sourceChunkId === parent.chunkId && r.usable).sort((a, b) => (CLASS_RANK[a.roadClass] ?? 2) - (CLASS_RANK[b.roadClass] ?? 2) || Math.abs(a.terrainConstraints.stepM) - Math.abs(b.terrainConstraints.stepM) || a.growthFrontId.localeCompare(b.growthFrontId))[0];
       const parents = list.map(f => ({ chunk: w.chunks.get(f.sourceChunkId), direction: f.direction, sideParent: f.side, sideCell: OPPOSITE[f.side], ports: f.entries.filter(e => e.usable) }));
@@ -165,7 +172,7 @@ export class RoadGrowthFrontAdapter {
     const w = this.world;
     const chunkId = `c_${candidate.gx}_${candidate.gy}`;
     let built;
-    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step); } catch (error) {
+    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step, { vertical: this.gradeProfile }); } catch (error) {
       if (w.chunks.get(chunkId)?.growthStep === step) w.removeGrowthChunk(chunkId);
       return { failure: { failureClass: FAILURE.generation, reason: `generator error: ${error.message}` } };
     }
@@ -174,13 +181,24 @@ export class RoadGrowthFrontAdapter {
     return { built };
   }
 
+  // Everything the outcome of a generated candidate depends on. Same text, same result: the attempt need not run again.
+  candidateSignature(candidate) {
+    const w = this.world; const { gx, gy } = candidate;
+    const neighbours = Object.values(DIRECTIONS).map(([dx, dy, , otherSide]) => { const c = w.chunkAt(gx + dx, gy + dy); return c ? `${c.chunkId}:${c.cityId}:${c.cityId === candidate.cityId ? c.outputs.signatures.network : ''}:${otherSide}` : '-'; });
+    return JSON.stringify({ front: candidate.sourceGrowthFrontId, parent: w.chunks.get(candidate.sourceChunkId).outputs.signatures.network, terrain: w.cell(gx, gy).terrainSeed, neighbours, profile: this.gradeProfile, rules: RAMP_RULES });
+  }
+
   validate({ event, chunk, layers }) {
     const counts = chunk.outputs.counts;
-    if (!event.connections.length) return { failureClass: FAILURE.network, reason: `no parent road joined a child road (${event.localAdaptations.unmatchedEntries.length} usable entries unmatched)` };
+    if (!event.connections.length && !this.replayKeepsUnconnected) return { failureClass: FAILURE.network, reason: `no parent road joined a child road (${event.localAdaptations.unmatchedEntries.length} usable entries unmatched)` };
     const empty = ['networkEdges', 'blocks', 'parcels', 'buildings'].filter(k => !counts[k]);
     if (empty.length) return { failureClass: FAILURE.generation, reason: `incomplete chunk: no ${empty.join(', ')}` };
     const crossings = roadCrossings(layers.city.network);
     if (crossings) return { failureClass: FAILURE.network, reason: `${crossings} road crossing(s) without a shared node` };
+    if (this.gradeProfile) {
+      const off = event.connections.filter(c => Math.abs(c.elevationStepM) > RAMP_RULES.endpointToleranceM + 0.01);
+      if (off.length) return { failureClass: FAILURE.network, reason: `${off.length} joined road(s) still differ in height` };
+    }
     return null;
   }
 }

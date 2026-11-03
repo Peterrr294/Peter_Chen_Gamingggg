@@ -67,7 +67,7 @@ export class NetworkView {
         const x = a.x + (b.x - a.x) * t;
         const z = a.z + (b.z - a.z) * t;
         // Roads follow the terrain; canals and bridges interpolate their stored elevations.
-        const y = edge.kind === 'road' ? heightAt(x, z) : a.y + (b.y - a.y) * t;
+        const y = edge.kind === 'road' && !edge.ramp ? heightAt(x, z) : a.y + (b.y - a.y) * t; // G02c-02: ramps too
         result.push({ position: { x, y, z }, normal: { x: 0, y: 1, z: 0 }, valid: true, distance: distance + length * t });
       }
       distance += length;

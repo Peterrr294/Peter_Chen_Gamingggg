@@ -1,0 +1,6614 @@
+{
+  "task": "G02c-02 Grade-Aware Road Growth & Ramp Connection",
+  "testedAt": "2026-11-03T03:51:42.573Z",
+  "rules": {
+    "classFactor": {
+      "primary": 1,
+      "secondary": 1.25,
+      "lane": 1.5
+    },
+    "curveShare": 0.25,
+    "junctionStandoffM": 12,
+    "sampleM": 4,
+    "runStepM": 8,
+    "maxGroundOffsetM": 6,
+    "maxGradeChangePerSample": 0.03,
+    "shoulderM": 1.5,
+    "sideSlopeRunPerM": 2,
+    "endpointToleranceM": 0.05,
+    "buildingClearanceM": 0.25
+  },
+  "profiles": {
+    "conservative": {
+      "id": "conservative",
+      "grade": 0.04
+    },
+    "baseline": {
+      "id": "baseline",
+      "grade": 0.06
+    },
+    "permissive": {
+      "id": "permissive",
+      "grade": 0.08
+    }
+  },
+  "node": {
+    "diagnosis": {
+      "seed": 6202,
+      "rows": [
+        {
+          "connectionId": "conn:c_1_2:maxZ:1098.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e90",
+          "roadB": "c_1_3:e85",
+          "endpointA": {
+            "x": 1098.4,
+            "y": 23.18,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 1098.4,
+            "y": 26.1,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.92,
+          "sourceTerrainElevationA": 23.18,
+          "sourceTerrainElevationB": 26.1,
+          "roadElevationA": 23.18,
+          "roadElevationB": 26.1,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.071
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:1198.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e96",
+          "roadB": "c_1_3:e91",
+          "endpointA": {
+            "x": 1198.4,
+            "y": 24.34,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 1198.4,
+            "y": 26.9,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.56,
+          "sourceTerrainElevationA": 24.34,
+          "sourceTerrainElevationB": 26.9,
+          "roadElevationA": 24.34,
+          "roadElevationB": 26.9,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.06
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:1298.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e102",
+          "roadB": "c_1_3:e97",
+          "endpointA": {
+            "x": 1298.4,
+            "y": 23.6,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 1298.4,
+            "y": 27.81,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.21,
+          "sourceTerrainElevationA": 23.6,
+          "sourceTerrainElevationB": 27.81,
+          "roadElevationA": 23.6,
+          "roadElevationB": 27.81,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.21 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.073
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:1398.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e108",
+          "roadB": "c_1_3:e103",
+          "endpointA": {
+            "x": 1398.4,
+            "y": 23.1,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 1398.4,
+            "y": 26.88,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.78,
+          "sourceTerrainElevationA": 23.1,
+          "sourceTerrainElevationB": 26.88,
+          "roadElevationA": 23.1,
+          "roadElevationB": 26.88,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.78 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.069
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:1498.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e114",
+          "roadB": "c_1_3:e109",
+          "endpointA": {
+            "x": 1498.4,
+            "y": 24.21,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 1498.4,
+            "y": 26.4,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.19,
+          "sourceTerrainElevationA": 24.21,
+          "sourceTerrainElevationB": 26.4,
+          "roadElevationA": 24.21,
+          "roadElevationB": 26.4,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.061
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:598.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e60",
+          "roadB": "c_1_3:e55",
+          "endpointA": {
+            "x": 598.4,
+            "y": 21.94,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 598.4,
+            "y": 24.61,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.67,
+          "sourceTerrainElevationA": 21.94,
+          "sourceTerrainElevationB": 24.61,
+          "roadElevationA": 21.94,
+          "roadElevationB": 24.61,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.065
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:698.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e66",
+          "roadB": "c_1_3:e61",
+          "endpointA": {
+            "x": 698.4,
+            "y": 21.11,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 698.4,
+            "y": 24.96,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.85,
+          "sourceTerrainElevationA": 21.11,
+          "sourceTerrainElevationB": 24.96,
+          "roadElevationA": 21.11,
+          "roadElevationB": 24.96,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.85 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 88,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:798.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e72",
+          "roadB": "c_1_3:e67",
+          "endpointA": {
+            "x": 798.4,
+            "y": 21.92,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 798.4,
+            "y": 25.54,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.62,
+          "sourceTerrainElevationA": 21.92,
+          "sourceTerrainElevationB": 25.54,
+          "roadElevationA": 21.92,
+          "roadElevationB": 25.54,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.62 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 80,
+            "maxGrade": 0.067
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:898.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e78",
+          "roadB": "c_1_3:e73",
+          "endpointA": {
+            "x": 898.4,
+            "y": 22.1,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 898.4,
+            "y": 26.05,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.95,
+          "sourceTerrainElevationA": 22.1,
+          "sourceTerrainElevationB": 26.05,
+          "roadElevationA": 22.1,
+          "roadElevationB": 26.05,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.95 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 72,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxZ:998.4",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_1_3",
+          "roadA": "c_1_2:e84",
+          "roadB": "c_1_3:e79",
+          "endpointA": {
+            "x": 998.4,
+            "y": 22.12,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 998.4,
+            "y": 25.33,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.21,
+          "sourceTerrainElevationA": 22.12,
+          "sourceTerrainElevationB": 25.33,
+          "roadElevationA": 22.12,
+          "roadElevationB": 25.33,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.21 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.061
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxX:-157.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-3_0",
+          "roadA": "c_-4_0:e27",
+          "roadB": "c_-3_0:e14",
+          "endpointA": {
+            "x": -3584,
+            "y": 21.15,
+            "z": -157.3
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 23.66,
+            "z": -157.3
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.51,
+          "sourceTerrainElevationA": 21.15,
+          "sourceTerrainElevationB": 23.66,
+          "roadElevationA": 21.15,
+          "roadElevationB": 23.66,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 52,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "no ramp length fits 51 m",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxX:-357.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-3_0",
+          "roadA": "c_-4_0:e13",
+          "roadB": "c_-3_0:e0",
+          "endpointA": {
+            "x": -3584,
+            "y": 19.6,
+            "z": -357.3
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 24.06,
+            "z": -357.3
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.46,
+          "sourceTerrainElevationA": 19.6,
+          "sourceTerrainElevationB": 24.06,
+          "roadElevationA": 19.6,
+          "roadElevationB": 24.06,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 52,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.46 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 108 m at 6.0 %, 51 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxX:242.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-3_0",
+          "roadA": "c_-4_0:e55",
+          "roadB": "c_-3_0:e42",
+          "endpointA": {
+            "x": -3584,
+            "y": 24.78,
+            "z": 242.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 21.55,
+            "z": 242.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.23,
+          "sourceTerrainElevationA": 24.78,
+          "sourceTerrainElevationB": 21.55,
+          "roadElevationA": 24.78,
+          "roadElevationB": 21.55,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 52,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -3.23 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 97 m at 6.0 %, 51 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxX:42.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-3_0",
+          "roadA": "c_-4_0:e41",
+          "roadB": "c_-3_0:e28",
+          "endpointA": {
+            "x": -3584,
+            "y": 23.89,
+            "z": 42.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 19.93,
+            "z": 42.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.96,
+          "sourceTerrainElevationA": 23.88,
+          "sourceTerrainElevationB": 19.93,
+          "roadElevationA": 23.89,
+          "roadElevationB": 19.93,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 52,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -3.96 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 74 m at 6.0 %, 51 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxX:442.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-3_0",
+          "roadA": "c_-4_0:e69",
+          "roadB": "c_-3_0:e56",
+          "endpointA": {
+            "x": -3584,
+            "y": 25.4,
+            "z": 442.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 18.78,
+            "z": 442.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -6.62,
+          "sourceTerrainElevationA": 25.4,
+          "sourceTerrainElevationB": 18.78,
+          "roadElevationA": 25.4,
+          "roadElevationB": 18.78,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -6.62 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.62 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxX:1676.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_2_2",
+          "roadA": "c_1_2:e10",
+          "roadB": "c_2_2:e0",
+          "endpointA": {
+            "x": 1536,
+            "y": 25.51,
+            "z": 1676.6
+          },
+          "endpointB": {
+            "x": 1536,
+            "y": 24.54,
+            "z": 1676.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.97,
+          "sourceTerrainElevationA": 25.51,
+          "sourceTerrainElevationB": 24.54,
+          "roadElevationA": 25.51,
+          "roadElevationB": 24.54,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 50,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.056
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxX:1876.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_2_2",
+          "roadA": "c_1_2:e21",
+          "roadB": "c_2_2:e11",
+          "endpointA": {
+            "x": 1536,
+            "y": 24.73,
+            "z": 1876.6
+          },
+          "endpointB": {
+            "x": 1536,
+            "y": 23.93,
+            "z": 1876.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.8,
+          "sourceTerrainElevationA": 24.73,
+          "sourceTerrainElevationB": 23.93,
+          "roadElevationA": 24.73,
+          "roadElevationB": 23.93,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 50,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 24,
+            "maxGrade": 0.04
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxX:2076.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_2_2",
+          "roadA": "c_1_2:e32",
+          "roadB": "c_2_2:e22",
+          "endpointA": {
+            "x": 1536,
+            "y": 25.11,
+            "z": 2076.6
+          },
+          "endpointB": {
+            "x": 1536,
+            "y": 23.85,
+            "z": 2076.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.26,
+          "sourceTerrainElevationA": 25.11,
+          "sourceTerrainElevationB": 23.85,
+          "roadElevationA": 25.11,
+          "roadElevationB": 23.85,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 50,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 32,
+            "maxGrade": 0.028
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxX:2276.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_2_2",
+          "roadA": "c_1_2:e43",
+          "roadB": "c_2_2:e33",
+          "endpointA": {
+            "x": 1536,
+            "y": 25.22,
+            "z": 2276.6
+          },
+          "endpointB": {
+            "x": 1536,
+            "y": 26.62,
+            "z": 2276.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.4,
+          "sourceTerrainElevationA": 25.22,
+          "sourceTerrainElevationB": 26.62,
+          "roadElevationA": 25.22,
+          "roadElevationB": 26.62,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 50,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 48,
+            "maxGrade": 0.054
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:maxX:2476.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_2_2",
+          "roadA": "c_1_2:e54",
+          "roadB": "c_2_2:e44",
+          "endpointA": {
+            "x": 1536,
+            "y": 23.3,
+            "z": 2476.6
+          },
+          "endpointB": {
+            "x": 1536,
+            "y": 27.05,
+            "z": 2476.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.75,
+          "sourceTerrainElevationA": 23.3,
+          "sourceTerrainElevationB": 27.04,
+          "roadElevationA": 23.3,
+          "roadElevationB": 27.05,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 50,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.75 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 74 m at 6.0 %, 50 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_5_1:minZ:5120",
+          "kind": "parent",
+          "cityId": "fezOrganicCore",
+          "chunkA": "c_5_1",
+          "chunkB": "c_5_0",
+          "roadA": "c_5_1:e0",
+          "roadB": "c_5_0:e48",
+          "endpointA": {
+            "x": 5120,
+            "y": 24.79,
+            "z": 512
+          },
+          "endpointB": {
+            "x": 5120,
+            "y": 22.89,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.9,
+          "sourceTerrainElevationA": 24.79,
+          "sourceTerrainElevationB": 22.89,
+          "roadElevationA": 24.79,
+          "roadElevationB": 22.89,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 124,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 48,
+            "maxGrade": 0.056
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2560.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e147",
+          "roadB": "c_-3_1:e142",
+          "endpointA": {
+            "x": -2560.3,
+            "y": 22.46,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2560.3,
+            "y": 29.18,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 6.72,
+          "sourceTerrainElevationA": 22.46,
+          "sourceTerrainElevationB": 29.18,
+          "roadElevationA": 22.46,
+          "roadElevationB": 29.18,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 6.72 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.72 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2640.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e141",
+          "roadB": "c_-3_1:e136",
+          "endpointA": {
+            "x": -2640.3,
+            "y": 23.8,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2640.3,
+            "y": 26.84,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.04,
+          "sourceTerrainElevationA": 23.8,
+          "sourceTerrainElevationB": 26.84,
+          "roadElevationA": 23.8,
+          "roadElevationB": 26.84,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.04 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.071
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2720.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e135",
+          "roadB": "c_-3_1:e130",
+          "endpointA": {
+            "x": -2720.3,
+            "y": 23.51,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2720.3,
+            "y": 25.13,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.62,
+          "sourceTerrainElevationA": 23.51,
+          "sourceTerrainElevationB": 25.13,
+          "roadElevationA": 23.51,
+          "roadElevationB": 25.13,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 48,
+            "maxGrade": 0.053
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2800.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e129",
+          "roadB": "c_-3_1:e124",
+          "endpointA": {
+            "x": -2800.3,
+            "y": 22.68,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2800.3,
+            "y": 24.87,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.19,
+          "sourceTerrainElevationA": 22.68,
+          "sourceTerrainElevationB": 24.87,
+          "roadElevationA": 22.68,
+          "roadElevationB": 24.87,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.047
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2880.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e123",
+          "roadB": "c_-3_1:e118",
+          "endpointA": {
+            "x": -2880.3,
+            "y": 22.65,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2880.3,
+            "y": 24.62,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.97,
+          "sourceTerrainElevationA": 22.65,
+          "sourceTerrainElevationB": 24.62,
+          "roadElevationA": 22.65,
+          "roadElevationB": 24.62,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.062
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-2960.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e117",
+          "roadB": "c_-3_1:e112",
+          "endpointA": {
+            "x": -2960.3,
+            "y": 22.03,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -2960.3,
+            "y": 25.3,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.27,
+          "sourceTerrainElevationA": 22.03,
+          "sourceTerrainElevationB": 25.3,
+          "roadElevationA": 22.03,
+          "roadElevationB": 25.3,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.27 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.057
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3040.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e111",
+          "roadB": "c_-3_1:e106",
+          "endpointA": {
+            "x": -3040.3,
+            "y": 21.01,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3040.3,
+            "y": 25.74,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.73,
+          "sourceTerrainElevationA": 21.01,
+          "sourceTerrainElevationB": 25.74,
+          "roadElevationA": 21.01,
+          "roadElevationB": 25.74,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.73 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 88,
+            "maxGrade": 0.064
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3120.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e105",
+          "roadB": "c_-3_1:e100",
+          "endpointA": {
+            "x": -3120.3,
+            "y": 20.5,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3120.3,
+            "y": 26.54,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 6.04,
+          "sourceTerrainElevationA": 20.5,
+          "sourceTerrainElevationB": 26.54,
+          "roadElevationA": 20.5,
+          "roadElevationB": 26.54,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 6.04 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.04 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3200.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e99",
+          "roadB": "c_-3_1:e94",
+          "endpointA": {
+            "x": -3200.3,
+            "y": 20.23,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3200.3,
+            "y": 25.58,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.35,
+          "sourceTerrainElevationA": 20.23,
+          "sourceTerrainElevationB": 25.58,
+          "roadElevationA": 20.23,
+          "roadElevationB": 25.58,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.35 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 88,
+            "maxGrade": 0.069
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3280.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e93",
+          "roadB": "c_-3_1:e88",
+          "endpointA": {
+            "x": -3280.3,
+            "y": 19.06,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3280.3,
+            "y": 23.37,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.31,
+          "sourceTerrainElevationA": 19.06,
+          "sourceTerrainElevationB": 23.37,
+          "roadElevationA": 19.06,
+          "roadElevationB": 23.37,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.31 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 88,
+            "maxGrade": 0.071
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3360.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e87",
+          "roadB": "c_-3_1:e82",
+          "endpointA": {
+            "x": -3360.3,
+            "y": 18.83,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3360.3,
+            "y": 22.17,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.34,
+          "sourceTerrainElevationA": 18.83,
+          "sourceTerrainElevationB": 22.17,
+          "roadElevationA": 18.83,
+          "roadElevationB": 22.17,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.34 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 96,
+            "maxGrade": 0.072
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3440.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e81",
+          "roadB": "c_-3_1:e76",
+          "endpointA": {
+            "x": -3440.3,
+            "y": 18.38,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3440.3,
+            "y": 20.78,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.4,
+          "sourceTerrainElevationA": 18.38,
+          "sourceTerrainElevationB": 20.78,
+          "roadElevationA": 18.38,
+          "roadElevationB": 20.78,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 80,
+            "maxGrade": 0.055
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_0:maxZ:-3520.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_0",
+          "chunkB": "c_-3_1",
+          "roadA": "c_-3_0:e75",
+          "roadB": "c_-3_1:e70",
+          "endpointA": {
+            "x": -3520.3,
+            "y": 17.41,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3520.3,
+            "y": 19.57,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.16,
+          "sourceTerrainElevationA": 17.41,
+          "sourceTerrainElevationB": 19.57,
+          "roadElevationA": 17.41,
+          "roadElevationB": 19.57,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.044
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:minX:1676.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_0_2",
+          "roadA": "c_1_2:e0",
+          "roadB": "c_0_2:e11",
+          "endpointA": {
+            "x": 512,
+            "y": 22.13,
+            "z": 1676.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 25.83,
+            "z": 1676.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.7,
+          "sourceTerrainElevationA": 22.13,
+          "sourceTerrainElevationB": 25.83,
+          "roadElevationA": 22.13,
+          "roadElevationB": 25.83,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.7 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 83 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:minX:1876.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_0_2",
+          "roadA": "c_1_2:e11",
+          "roadB": "c_0_2:e23",
+          "endpointA": {
+            "x": 512,
+            "y": 20.82,
+            "z": 1876.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 22.53,
+            "z": 1876.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.71,
+          "sourceTerrainElevationA": 20.82,
+          "sourceTerrainElevationB": 22.53,
+          "roadElevationA": 20.82,
+          "roadElevationB": 22.53,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 40 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:minX:2076.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_0_2",
+          "roadA": "c_1_2:e22",
+          "roadB": "c_0_2:e35",
+          "endpointA": {
+            "x": 512,
+            "y": 21.03,
+            "z": 2076.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 20.62,
+            "z": 2076.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.41,
+          "sourceTerrainElevationA": 21.03,
+          "sourceTerrainElevationB": 20.62,
+          "roadElevationA": 21.03,
+          "roadElevationB": 20.62,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 10 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:minX:2276.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_0_2",
+          "roadA": "c_1_2:e33",
+          "roadB": "c_0_2:e47",
+          "endpointA": {
+            "x": 512,
+            "y": 21.62,
+            "z": 2276.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 20.72,
+            "z": 2276.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.9,
+          "sourceTerrainElevationA": 21.62,
+          "sourceTerrainElevationB": 20.72,
+          "roadElevationA": 21.62,
+          "roadElevationB": 20.72,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 21 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_2:minX:2476.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_2",
+          "chunkB": "c_0_2",
+          "roadA": "c_1_2:e44",
+          "roadB": "c_0_2:e59",
+          "endpointA": {
+            "x": 512,
+            "y": 21.65,
+            "z": 2476.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 17.96,
+            "z": 2476.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.69,
+          "sourceTerrainElevationA": 21.65,
+          "sourceTerrainElevationB": 17.96,
+          "roadElevationA": 21.65,
+          "roadElevationB": 17.96,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -3.69 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 83 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:maxX:1042.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-2_1",
+          "roadA": "c_-3_1:e41",
+          "roadB": "c_-2_1:e26",
+          "endpointA": {
+            "x": -2560,
+            "y": 24.65,
+            "z": 1042.7
+          },
+          "endpointB": {
+            "x": -2560,
+            "y": 23.56,
+            "z": 1042.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.09,
+          "sourceTerrainElevationA": 24.65,
+          "sourceTerrainElevationB": 23.56,
+          "roadElevationA": 24.65,
+          "roadElevationB": 23.56,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 68,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 48,
+            "maxGrade": 0.048
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:maxX:1242.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-2_1",
+          "roadA": "c_-3_1:e55",
+          "roadB": "c_-2_1:e39",
+          "endpointA": {
+            "x": -2560,
+            "y": 27.86,
+            "z": 1242.7
+          },
+          "endpointB": {
+            "x": -2560,
+            "y": 22.44,
+            "z": 1242.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -5.42,
+          "sourceTerrainElevationA": 27.86,
+          "sourceTerrainElevationB": 22.44,
+          "roadElevationA": 27.86,
+          "roadElevationB": 22.44,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 68,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -5.42 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 106 m at 6.0 %, 67 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:maxX:1442.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-2_1",
+          "roadA": "c_-3_1:e69",
+          "roadB": "c_-2_1:e52",
+          "endpointA": {
+            "x": -2560,
+            "y": 26.26,
+            "z": 1442.7
+          },
+          "endpointB": {
+            "x": -2560,
+            "y": 24.26,
+            "z": 1442.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -2,
+          "sourceTerrainElevationA": 26.26,
+          "sourceTerrainElevationB": 24.26,
+          "roadElevationA": 26.26,
+          "roadElevationB": 24.26,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 68,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 48,
+            "maxGrade": 0.056
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:maxX:642.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-2_1",
+          "roadA": "c_-3_1:e13",
+          "roadB": "c_-2_1:e0",
+          "endpointA": {
+            "x": -2560,
+            "y": 29.15,
+            "z": 642.7
+          },
+          "endpointB": {
+            "x": -2560,
+            "y": 21.18,
+            "z": 642.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -7.97,
+          "sourceTerrainElevationA": 29.14,
+          "sourceTerrainElevationB": 21.18,
+          "roadElevationA": 29.15,
+          "roadElevationB": 21.18,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -7.97 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 7.97 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:maxX:842.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-2_1",
+          "roadA": "c_-3_1:e27",
+          "roadB": "c_-2_1:e13",
+          "endpointA": {
+            "x": -2560,
+            "y": 28.3,
+            "z": 842.7
+          },
+          "endpointB": {
+            "x": -2560,
+            "y": 22.95,
+            "z": 842.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -5.35,
+          "sourceTerrainElevationA": 28.3,
+          "sourceTerrainElevationB": 22.95,
+          "roadElevationA": 28.3,
+          "roadElevationB": 22.95,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 0,
+            "b": 180
+          },
+          "availableTransitionLength": 68,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -5.35 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 141 m at 6.0 %, 67 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-1.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e95",
+          "roadB": "c_0_3:e90",
+          "endpointA": {
+            "x": -1.6,
+            "y": 19.83,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -1.6,
+            "y": 25.68,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.85,
+          "sourceTerrainElevationA": 19.83,
+          "sourceTerrainElevationB": 25.68,
+          "roadElevationA": 19.83,
+          "roadElevationB": 25.68,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 5.85 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 96,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-101.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e89",
+          "roadB": "c_0_3:e84",
+          "endpointA": {
+            "x": -101.6,
+            "y": 20.91,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -101.6,
+            "y": 25.23,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.32,
+          "sourceTerrainElevationA": 20.91,
+          "sourceTerrainElevationB": 25.22,
+          "roadElevationA": 20.91,
+          "roadElevationB": 25.23,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 4.32 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 72,
+            "maxGrade": 0.069
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-201.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e83",
+          "roadB": "c_0_3:e78",
+          "endpointA": {
+            "x": -201.6,
+            "y": 19.72,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -201.6,
+            "y": 25.63,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.91,
+          "sourceTerrainElevationA": 19.72,
+          "sourceTerrainElevationB": 25.63,
+          "roadElevationA": 19.72,
+          "roadElevationB": 25.63,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 5.91 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 96,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-301.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e77",
+          "roadB": "c_0_3:e72",
+          "endpointA": {
+            "x": -301.6,
+            "y": 20.57,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -301.6,
+            "y": 26.66,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 6.09,
+          "sourceTerrainElevationA": 20.57,
+          "sourceTerrainElevationB": 26.66,
+          "roadElevationA": 20.57,
+          "roadElevationB": 26.66,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 6.09 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.09 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-401.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e71",
+          "roadB": "c_0_3:e66",
+          "endpointA": {
+            "x": -401.6,
+            "y": 20.7,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -401.6,
+            "y": 27.88,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 7.18,
+          "sourceTerrainElevationA": 20.7,
+          "sourceTerrainElevationB": 27.88,
+          "roadElevationA": 20.7,
+          "roadElevationB": 27.88,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 7.18 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 7.18 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:-501.6",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e65",
+          "roadB": "c_0_3:e60",
+          "endpointA": {
+            "x": -501.6,
+            "y": 21.09,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": -501.6,
+            "y": 28.85,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 7.76,
+          "sourceTerrainElevationA": 21.09,
+          "sourceTerrainElevationB": 28.85,
+          "roadElevationA": 21.09,
+          "roadElevationB": 28.85,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 7.76 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 7.76 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:198.4",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e107",
+          "roadB": "c_0_3:e102",
+          "endpointA": {
+            "x": 198.4,
+            "y": 18.84,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 198.4,
+            "y": 25.65,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 6.81,
+          "sourceTerrainElevationA": 18.84,
+          "sourceTerrainElevationB": 25.65,
+          "roadElevationA": 18.84,
+          "roadElevationB": 25.65,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 6.81 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.81 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:298.4",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e113",
+          "roadB": "c_0_3:e108",
+          "endpointA": {
+            "x": 298.4,
+            "y": 17.98,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 298.4,
+            "y": 25.9,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 7.92,
+          "sourceTerrainElevationA": 17.98,
+          "sourceTerrainElevationB": 25.9,
+          "roadElevationA": 17.98,
+          "roadElevationB": 25.9,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 7.92 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 7.92 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:398.4",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e119",
+          "roadB": "c_0_3:e114",
+          "endpointA": {
+            "x": 398.4,
+            "y": 17.64,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 398.4,
+            "y": 26.16,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 8.52,
+          "sourceTerrainElevationA": 17.64,
+          "sourceTerrainElevationB": 26.16,
+          "roadElevationA": 17.64,
+          "roadElevationB": 26.16,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 8.52 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 8.52 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:498.4",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e125",
+          "roadB": "c_0_3:e120",
+          "endpointA": {
+            "x": 498.4,
+            "y": 17.77,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 498.4,
+            "y": 26.07,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 8.3,
+          "sourceTerrainElevationA": 17.77,
+          "sourceTerrainElevationB": 26.07,
+          "roadElevationA": 17.77,
+          "roadElevationB": 26.07,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 8.3 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 8.3 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:maxZ:98.4",
+          "kind": "neighbour",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_0_3",
+          "roadA": "c_0_2:e101",
+          "roadB": "c_0_3:e96",
+          "endpointA": {
+            "x": 98.4,
+            "y": 20.05,
+            "z": 2560
+          },
+          "endpointB": {
+            "x": 98.4,
+            "y": 25.34,
+            "z": 2560
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.29,
+          "sourceTerrainElevationA": 20.05,
+          "sourceTerrainElevationB": 25.35,
+          "roadElevationA": 20.05,
+          "roadElevationB": 25.34,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 105,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step 5.29 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 96,
+            "maxGrade": 0.07
+          }
+        },
+        {
+          "connectionId": "conn:c_1_3:minX:2676.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_3",
+          "chunkB": "c_0_3",
+          "roadA": "c_1_3:e0",
+          "roadB": "c_0_3:e11",
+          "endpointA": {
+            "x": 512,
+            "y": 24.53,
+            "z": 2676.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 23.33,
+            "z": 2676.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.2,
+          "sourceTerrainElevationA": 24.53,
+          "sourceTerrainElevationB": 23.33,
+          "roadElevationA": 24.53,
+          "roadElevationB": 23.33,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 28 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_3:minX:2876.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_3",
+          "chunkB": "c_0_3",
+          "roadA": "c_1_3:e11",
+          "roadB": "c_0_3:e23",
+          "endpointA": {
+            "x": 512,
+            "y": 24.5,
+            "z": 2876.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 21.26,
+            "z": 2876.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.24,
+          "sourceTerrainElevationA": 24.5,
+          "sourceTerrainElevationB": 21.26,
+          "roadElevationA": 24.5,
+          "roadElevationB": 21.26,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -3.24 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 72 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_3:minX:3076.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_3",
+          "chunkB": "c_0_3",
+          "roadA": "c_1_3:e22",
+          "roadB": "c_0_3:e35",
+          "endpointA": {
+            "x": 512,
+            "y": 21.07,
+            "z": 3076.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 22.15,
+            "z": 3076.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.08,
+          "sourceTerrainElevationA": 21.07,
+          "sourceTerrainElevationB": 22.15,
+          "roadElevationA": 21.07,
+          "roadElevationB": 22.15,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 24 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_3:minX:3276.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_3",
+          "chunkB": "c_0_3",
+          "roadA": "c_1_3:e33",
+          "roadB": "c_0_3:e47",
+          "endpointA": {
+            "x": 512,
+            "y": 23.68,
+            "z": 3276.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 19.32,
+            "z": 3276.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -4.36,
+          "sourceTerrainElevationA": 23.68,
+          "sourceTerrainElevationB": 19.32,
+          "roadElevationA": 23.68,
+          "roadElevationB": 19.32,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -4.36 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 96 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_1_3:minX:3476.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_1_3",
+          "chunkB": "c_0_3",
+          "roadA": "c_1_3:e44",
+          "roadB": "c_0_3:e59",
+          "endpointA": {
+            "x": 512,
+            "y": 20.88,
+            "z": 3476.6
+          },
+          "endpointB": {
+            "x": 512,
+            "y": 17.73,
+            "z": 3476.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.15,
+          "sourceTerrainElevationA": 20.88,
+          "sourceTerrainElevationB": 17.73,
+          "roadElevationA": 20.88,
+          "roadElevationB": 17.73,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 2,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step -3.15 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 70 m at 6.0 %, 1 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-3600.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e142",
+          "roadB": "c_-4_-1:e147",
+          "endpointA": {
+            "x": -3600.3,
+            "y": 22.18,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -3600.3,
+            "y": 23.16,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 0.98,
+          "sourceTerrainElevationA": 22.18,
+          "sourceTerrainElevationB": 23.16,
+          "roadElevationA": 22.18,
+          "roadElevationB": 23.16,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 32,
+            "maxGrade": 0.057
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-3680.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e136",
+          "roadB": "c_-4_-1:e141",
+          "endpointA": {
+            "x": -3680.3,
+            "y": 20.18,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -3680.3,
+            "y": 23.38,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.2,
+          "sourceTerrainElevationA": 20.18,
+          "sourceTerrainElevationB": 23.37,
+          "roadElevationA": 20.18,
+          "roadElevationB": 23.38,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.2 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 57 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-3760.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e130",
+          "roadB": "c_-4_-1:e135",
+          "endpointA": {
+            "x": -3760.3,
+            "y": 18.79,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -3760.3,
+            "y": 23.82,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.03,
+          "sourceTerrainElevationA": 18.79,
+          "sourceTerrainElevationB": 23.82,
+          "roadElevationA": 18.79,
+          "roadElevationB": 23.82,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.03 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 99 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-3840.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e124",
+          "roadB": "c_-4_-1:e129",
+          "endpointA": {
+            "x": -3840.3,
+            "y": 18.93,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -3840.3,
+            "y": 24.52,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.59,
+          "sourceTerrainElevationA": 18.93,
+          "sourceTerrainElevationB": 24.52,
+          "roadElevationA": 18.93,
+          "roadElevationB": 24.52,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.59 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 89 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-3920.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e118",
+          "roadB": "c_-4_-1:e123",
+          "endpointA": {
+            "x": -3920.3,
+            "y": 20.14,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -3920.3,
+            "y": 25.49,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.35,
+          "sourceTerrainElevationA": 20.14,
+          "sourceTerrainElevationB": 25.49,
+          "roadElevationA": 20.14,
+          "roadElevationB": 25.49,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.35 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 81 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4000.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e112",
+          "roadB": "c_-4_-1:e117",
+          "endpointA": {
+            "x": -4000.3,
+            "y": 21.62,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4000.3,
+            "y": 25.21,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.59,
+          "sourceTerrainElevationA": 21.62,
+          "sourceTerrainElevationB": 25.21,
+          "roadElevationA": 21.62,
+          "roadElevationB": 25.21,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.59 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 61 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4080.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e106",
+          "roadB": "c_-4_-1:e111",
+          "endpointA": {
+            "x": -4080.3,
+            "y": 22.47,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4080.3,
+            "y": 25.58,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.11,
+          "sourceTerrainElevationA": 22.47,
+          "sourceTerrainElevationB": 25.58,
+          "roadElevationA": 22.47,
+          "roadElevationB": 25.58,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.11 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 55 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4160.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e100",
+          "roadB": "c_-4_-1:e105",
+          "endpointA": {
+            "x": -4160.3,
+            "y": 22.32,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4160.3,
+            "y": 26.11,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.79,
+          "sourceTerrainElevationA": 22.32,
+          "sourceTerrainElevationB": 26.11,
+          "roadElevationA": 22.32,
+          "roadElevationB": 26.11,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.79 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 75 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4240.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e94",
+          "roadB": "c_-4_-1:e99",
+          "endpointA": {
+            "x": -4240.3,
+            "y": 22.02,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4240.3,
+            "y": 26.33,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.31,
+          "sourceTerrainElevationA": 22.02,
+          "sourceTerrainElevationB": 26.33,
+          "roadElevationA": 22.02,
+          "roadElevationB": 26.33,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.31 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 89 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4320.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e88",
+          "roadB": "c_-4_-1:e93",
+          "endpointA": {
+            "x": -4320.3,
+            "y": 21.83,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4320.3,
+            "y": 27.08,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.25,
+          "sourceTerrainElevationA": 21.83,
+          "sourceTerrainElevationB": 27.08,
+          "roadElevationA": 21.83,
+          "roadElevationB": 27.08,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.25 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 104 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4400.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e82",
+          "roadB": "c_-4_-1:e87",
+          "endpointA": {
+            "x": -4400.3,
+            "y": 22.79,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4400.3,
+            "y": 28.42,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 5.63,
+          "sourceTerrainElevationA": 22.79,
+          "sourceTerrainElevationB": 28.42,
+          "roadElevationA": 22.79,
+          "roadElevationB": 28.42,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 5.63 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 101 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4480.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e76",
+          "roadB": "c_-4_-1:e81",
+          "endpointA": {
+            "x": -4480.3,
+            "y": 22.44,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4480.3,
+            "y": 28.72,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 6.28,
+          "sourceTerrainElevationA": 22.44,
+          "sourceTerrainElevationB": 28.72,
+          "roadElevationA": 22.44,
+          "roadElevationB": 28.72,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": null,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 6.28 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "terrainDiscontinuity",
+            "reason": "terrain seam 6.28 m exceeds 6 m without a structure",
+            "category": "B terrain seam discontinuity",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:minZ:-4560.3",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_-1",
+          "roadA": "c_-4_0:e70",
+          "roadB": "c_-4_-1:e75",
+          "endpointA": {
+            "x": -4560.3,
+            "y": 23.55,
+            "z": -512
+          },
+          "endpointB": {
+            "x": -4560.3,
+            "y": 28.04,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.49,
+          "sourceTerrainElevationA": 23.55,
+          "sourceTerrainElevationB": 28.04,
+          "roadElevationA": 23.55,
+          "roadElevationB": 28.04,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 33,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.49 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 73 m at 7.5 %, 33 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_5_0:minZ:5120",
+          "kind": "parent",
+          "cityId": "fezOrganicCore",
+          "chunkA": "c_5_0",
+          "chunkB": "c_5_-1",
+          "roadA": "c_5_0:e0",
+          "roadB": "c_5_-1:e49",
+          "endpointA": {
+            "x": 5120,
+            "y": 24.82,
+            "z": -512
+          },
+          "endpointB": {
+            "x": 5120,
+            "y": 22.37,
+            "z": -512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -2.45,
+          "sourceTerrainElevationA": 24.82,
+          "sourceTerrainElevationB": 22.37,
+          "roadElevationA": 24.82,
+          "roadElevationB": 22.37,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 270,
+            "b": 90
+          },
+          "availableTransitionLength": 124,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.054
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:minX:1676.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_-1_2",
+          "roadA": "c_0_2:e0",
+          "roadB": "c_-1_2:e10",
+          "endpointA": {
+            "x": -512,
+            "y": 27.27,
+            "z": 1676.6
+          },
+          "endpointB": {
+            "x": -512,
+            "y": 24.61,
+            "z": 1676.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -2.66,
+          "sourceTerrainElevationA": 27.27,
+          "sourceTerrainElevationB": 24.61,
+          "roadElevationA": 27.27,
+          "roadElevationB": 24.61,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 78,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.06
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:minX:1876.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_-1_2",
+          "roadA": "c_0_2:e12",
+          "roadB": "c_-1_2:e21",
+          "endpointA": {
+            "x": -512,
+            "y": 25.72,
+            "z": 1876.6
+          },
+          "endpointB": {
+            "x": -512,
+            "y": 24.14,
+            "z": 1876.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.58,
+          "sourceTerrainElevationA": 25.72,
+          "sourceTerrainElevationB": 24.14,
+          "roadElevationA": 25.72,
+          "roadElevationB": 24.14,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 78,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.045
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:minX:2076.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_-1_2",
+          "roadA": "c_0_2:e24",
+          "roadB": "c_-1_2:e32",
+          "endpointA": {
+            "x": -512,
+            "y": 24.72,
+            "z": 2076.6
+          },
+          "endpointB": {
+            "x": -512,
+            "y": 27.16,
+            "z": 2076.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 2.44,
+          "sourceTerrainElevationA": 24.72,
+          "sourceTerrainElevationB": 27.16,
+          "roadElevationA": 24.72,
+          "roadElevationB": 27.16,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 78,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.054
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:minX:2276.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_-1_2",
+          "roadA": "c_0_2:e36",
+          "roadB": "c_-1_2:e43",
+          "endpointA": {
+            "x": -512,
+            "y": 23.14,
+            "z": 2276.6
+          },
+          "endpointB": {
+            "x": -512,
+            "y": 27.05,
+            "z": 2276.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 3.91,
+          "sourceTerrainElevationA": 23.14,
+          "sourceTerrainElevationB": 27.05,
+          "roadElevationA": 23.14,
+          "roadElevationB": 27.05,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 78,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 3.91 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.06
+          }
+        },
+        {
+          "connectionId": "conn:c_0_2:minX:2476.6",
+          "kind": "parent",
+          "cityId": "chicagoGrid",
+          "chunkA": "c_0_2",
+          "chunkB": "c_-1_2",
+          "roadA": "c_0_2:e48",
+          "roadB": "c_-1_2:e54",
+          "endpointA": {
+            "x": -512,
+            "y": 21.23,
+            "z": 2476.6
+          },
+          "endpointB": {
+            "x": -512,
+            "y": 25.86,
+            "z": 2476.6
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 4.63,
+          "sourceTerrainElevationA": 21.23,
+          "sourceTerrainElevationB": 25.86,
+          "roadElevationA": 21.23,
+          "roadElevationB": 25.86,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 78,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "entry step 4.63 m > 3 m (G02c-01 rule)",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 92 m at 6.0 %, 77 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:minX:1042.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-3_1:e28",
+          "roadB": "c_-4_1:e41",
+          "endpointA": {
+            "x": -3584,
+            "y": 19.46,
+            "z": 1042.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 19.98,
+            "z": 1042.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 0.52,
+          "sourceTerrainElevationA": 19.46,
+          "sourceTerrainElevationB": 19.98,
+          "roadElevationA": 19.46,
+          "roadElevationB": 19.98,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 4,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 11 m at 6.0 %, 4 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:minX:1242.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-3_1:e42",
+          "roadB": "c_-4_1:e55",
+          "endpointA": {
+            "x": -3584,
+            "y": 20.66,
+            "z": 1242.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 21.09,
+            "z": 1242.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 0.43,
+          "sourceTerrainElevationA": 20.66,
+          "sourceTerrainElevationB": 21.09,
+          "roadElevationA": 20.66,
+          "roadElevationB": 21.09,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 4,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 11 m at 6.0 %, 4 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:minX:1442.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-3_1:e56",
+          "roadB": "c_-4_1:e69",
+          "endpointA": {
+            "x": -3584,
+            "y": 19.47,
+            "z": 1442.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 20.82,
+            "z": 1442.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.35,
+          "sourceTerrainElevationA": 19.47,
+          "sourceTerrainElevationB": 20.82,
+          "roadElevationA": 19.47,
+          "roadElevationB": 20.82,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 4,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 34 m at 6.0 %, 4 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:minX:642.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-3_1:e0",
+          "roadB": "c_-4_1:e13",
+          "endpointA": {
+            "x": -3584,
+            "y": 18.88,
+            "z": 642.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 20.63,
+            "z": 642.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.75,
+          "sourceTerrainElevationA": 18.88,
+          "sourceTerrainElevationB": 20.63,
+          "roadElevationA": 18.88,
+          "roadElevationB": 20.63,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 4,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 43 m at 6.0 %, 4 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-3_1:minX:842.7",
+          "kind": "parent",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-3_1",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-3_1:e14",
+          "roadB": "c_-4_1:e27",
+          "endpointA": {
+            "x": -3584,
+            "y": 20.95,
+            "z": 842.7
+          },
+          "endpointB": {
+            "x": -3584,
+            "y": 22.23,
+            "z": 842.7
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": 1.28,
+          "sourceTerrainElevationA": 20.95,
+          "sourceTerrainElevationB": 22.23,
+          "roadElevationA": 20.95,
+          "roadElevationB": 22.23,
+          "roadClass": "primary",
+          "localRoadDirection": {
+            "a": 180,
+            "b": 0
+          },
+          "availableTransitionLength": 4,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "insufficientLength",
+            "reason": "needs 29 m at 6.0 %, 4 m available",
+            "category": "D insufficient approach length",
+            "rampLengthM": null,
+            "maxGrade": null
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-3600.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e147",
+          "roadB": "c_-4_1:e142",
+          "endpointA": {
+            "x": -3600.3,
+            "y": 24.71,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3600.3,
+            "y": 19.2,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -5.51,
+          "sourceTerrainElevationA": 24.71,
+          "sourceTerrainElevationB": 19.2,
+          "roadElevationA": 24.71,
+          "roadElevationB": 19.2,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -5.51 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 80,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-3680.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e141",
+          "roadB": "c_-4_1:e136",
+          "endpointA": {
+            "x": -3680.3,
+            "y": 23.96,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3680.3,
+            "y": 19.82,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -4.14,
+          "sourceTerrainElevationA": 23.96,
+          "sourceTerrainElevationB": 19.82,
+          "roadElevationA": 23.96,
+          "roadElevationB": 19.82,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -4.14 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.065
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-3760.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e135",
+          "roadB": "c_-4_1:e130",
+          "endpointA": {
+            "x": -3760.3,
+            "y": 24.38,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3760.3,
+            "y": 19.78,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -4.6,
+          "sourceTerrainElevationA": 24.38,
+          "sourceTerrainElevationB": 19.78,
+          "roadElevationA": 24.38,
+          "roadElevationB": 19.78,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -4.6 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 80,
+            "maxGrade": 0.042
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-3840.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e129",
+          "roadB": "c_-4_1:e124",
+          "endpointA": {
+            "x": -3840.3,
+            "y": 24.67,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3840.3,
+            "y": 20.48,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -4.19,
+          "sourceTerrainElevationA": 24.67,
+          "sourceTerrainElevationB": 20.48,
+          "roadElevationA": 24.67,
+          "roadElevationB": 20.48,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -4.19 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 72,
+            "maxGrade": 0.044
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-3920.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e123",
+          "roadB": "c_-4_1:e118",
+          "endpointA": {
+            "x": -3920.3,
+            "y": 25.46,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -3920.3,
+            "y": 21.51,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.95,
+          "sourceTerrainElevationA": 25.46,
+          "sourceTerrainElevationB": 21.51,
+          "roadElevationA": 25.46,
+          "roadElevationB": 21.51,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -3.95 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.068
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4000.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e117",
+          "roadB": "c_-4_1:e112",
+          "endpointA": {
+            "x": -4000.3,
+            "y": 25.93,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4000.3,
+            "y": 21.59,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -4.34,
+          "sourceTerrainElevationA": 25.93,
+          "sourceTerrainElevationB": 21.6,
+          "roadElevationA": 25.93,
+          "roadElevationB": 21.59,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -4.34 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 64,
+            "maxGrade": 0.072
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4080.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e111",
+          "roadB": "c_-4_1:e106",
+          "endpointA": {
+            "x": -4080.3,
+            "y": 26.36,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4080.3,
+            "y": 21.25,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -5.11,
+          "sourceTerrainElevationA": 26.36,
+          "sourceTerrainElevationB": 21.25,
+          "roadElevationA": 26.36,
+          "roadElevationB": 21.25,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -5.11 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 72,
+            "maxGrade": 0.067
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4160.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e105",
+          "roadB": "c_-4_1:e100",
+          "endpointA": {
+            "x": -4160.3,
+            "y": 26.65,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4160.3,
+            "y": 21.61,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -5.04,
+          "sourceTerrainElevationA": 26.65,
+          "sourceTerrainElevationB": 21.61,
+          "roadElevationA": 26.65,
+          "roadElevationB": 21.61,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -5.04 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 72,
+            "maxGrade": 0.075
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4240.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e99",
+          "roadB": "c_-4_1:e94",
+          "endpointA": {
+            "x": -4240.3,
+            "y": 25.21,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4240.3,
+            "y": 22.14,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -3.07,
+          "sourceTerrainElevationA": 25.21,
+          "sourceTerrainElevationB": 22.14,
+          "roadElevationA": 25.21,
+          "roadElevationB": 22.14,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "not joined",
+          "previousRejectionReason": "height step -3.07 m > 3 m",
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.066
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4320.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e93",
+          "roadB": "c_-4_1:e88",
+          "endpointA": {
+            "x": -4320.3,
+            "y": 24.65,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4320.3,
+            "y": 23.8,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.85,
+          "sourceTerrainElevationA": 24.65,
+          "sourceTerrainElevationB": 23.79,
+          "roadElevationA": 24.65,
+          "roadElevationB": 23.8,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 24,
+            "maxGrade": 0.041
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4400.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e87",
+          "roadB": "c_-4_1:e82",
+          "endpointA": {
+            "x": -4400.3,
+            "y": 26.1,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4400.3,
+            "y": 24.41,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.69,
+          "sourceTerrainElevationA": 26.1,
+          "sourceTerrainElevationB": 24.41,
+          "roadElevationA": 26.1,
+          "roadElevationB": 24.41,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 56,
+            "maxGrade": 0.056
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4480.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e81",
+          "roadB": "c_-4_1:e76",
+          "endpointA": {
+            "x": -4480.3,
+            "y": 25.55,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4480.3,
+            "y": 24.89,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -0.66,
+          "sourceTerrainElevationA": 25.55,
+          "sourceTerrainElevationB": 24.89,
+          "roadElevationA": 25.55,
+          "roadElevationB": 24.89,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 24,
+            "maxGrade": 0.037
+          }
+        },
+        {
+          "connectionId": "conn:c_-4_0:maxZ:-4560.3",
+          "kind": "neighbour",
+          "cityId": "manhattanGrid",
+          "chunkA": "c_-4_0",
+          "chunkB": "c_-4_1",
+          "roadA": "c_-4_0:e75",
+          "roadB": "c_-4_1:e70",
+          "endpointA": {
+            "x": -4560.3,
+            "y": 26.68,
+            "z": 512
+          },
+          "endpointB": {
+            "x": -4560.3,
+            "y": 25.03,
+            "z": 512
+          },
+          "horizontalDistance": 0,
+          "elevationDifference": -1.65,
+          "sourceTerrainElevationA": 26.68,
+          "sourceTerrainElevationB": 25.03,
+          "roadElevationA": 26.68,
+          "roadElevationB": 25.03,
+          "roadClass": "secondary",
+          "localRoadDirection": {
+            "a": 90,
+            "b": 270
+          },
+          "availableTransitionLength": 119,
+          "existingGraphConnectivity": "joined in G02c-01",
+          "previousRejectionReason": null,
+          "seamIsTheStep": true,
+          "now": {
+            "status": "accepted",
+            "reason": null,
+            "category": "A road elevation mismatch, resolved",
+            "rampLengthM": 40,
+            "maxGrade": 0.065
+          }
+        }
+      ],
+      "roadEndsFacingGrownChunks": 97,
+      "seamIsTheStep": "97 of 97",
+      "historic41": {
+        "byNewStatus": {
+          "accepted": 13,
+          "insufficientLength": 23,
+          "terrainDiscontinuity": 5
+        },
+        "byCategory": {
+          "A road elevation mismatch, resolved": 13,
+          "D insufficient approach length": 23,
+          "B terrain seam discontinuity": 5
+        },
+        "horizontalDistanceMax": 0,
+        "stepAbsRange": [
+          3.04,
+          7.97
+        ]
+      },
+      "historic32": {
+        "byNewStatus": {
+          "accepted": 21,
+          "insufficientLength": 11
+        },
+        "maxResidualBeforeM": 2.92
+      },
+      "neighbours": {
+        "byBefore": {
+          "not joined": 20,
+          "joined in G02c-01": 4
+        },
+        "byNewStatus": {
+          "accepted": 17,
+          "terrainDiscontinuity": 7
+        }
+      }
+    },
+    "testB": {
+      "summary": {
+        "chunks": 18,
+        "events": 12,
+        "byStatus": {
+          "accepted": 51,
+          "insufficientLength": 34,
+          "terrainDiscontinuity": 12
+        },
+        "byKindStatus": {
+          "parent:accepted": 34,
+          "parent:insufficientLength": 34,
+          "parent:terrainDiscontinuity": 5,
+          "neighbour:accepted": 17,
+          "neighbour:terrainDiscontinuity": 7
+        },
+        "joins": {
+          "parent": 34,
+          "neighbour": 17
+        },
+        "unconnectedChildChunks": [
+          "c_-3_0",
+          "c_0_2",
+          "c_0_3",
+          "c_-4_1"
+        ],
+        "rampLengthM": {
+          "min": 24,
+          "median": 64,
+          "max": 96
+        },
+        "meanGrade": 0.0407,
+        "maxGrade": 0.075,
+        "terrainConflicts": 12,
+        "fillMaxM": 5.51,
+        "cutMaxM": 5.91,
+        "corridorAreaM2": 95280,
+        "vacatedBuildings": 414,
+        "vacatedShare": 0.0206,
+        "grown": {
+          "amsterdamCanalRing": 0,
+          "chicagoGrid": 5,
+          "fezOrganicCore": 2,
+          "lisbonHillCore": 0,
+          "manhattanGrid": 5,
+          "veniceWaterNetwork": 0
+        },
+        "reach": {
+          "amsterdamCanalRing": "1/1",
+          "chicagoGrid": "3/6",
+          "fezOrganicCore": "3/3",
+          "lisbonHillCore": "1/1",
+          "manhattanGrid": "3/6",
+          "veniceWaterNetwork": "1/1"
+        }
+      },
+      "checks": {
+        "checked": 51,
+        "maxResidualM": 0,
+        "maxXYM": 0,
+        "maxGrade": 0.0748,
+        "maxGradeByClass": {
+          "secondary": 0.0748,
+          "primary": 0.06
+        },
+        "maxGradeChange": 0.0289,
+        "maxGroundGapM": 0.1285,
+        "graphOk": 51
+      }
+    },
+    "testA": {
+      "seed": 6202,
+      "profile": "baseline",
+      "parent": "c_1_2",
+      "child": "c_1_3",
+      "ramps": [
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1098.4",
+          "connectionId": "conn:c_1_2:maxZ:1098.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e90",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 1098.4,
+          "roadClass": "secondary",
+          "elevationSource": 23.18,
+          "horizontalM": 0.02,
+          "childNodeId": 70,
+          "childEdgeId": 85,
+          "elevationChild": 26.1,
+          "deltaM": 2.92,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 39,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 40,
+          "startElevation": 23.18,
+          "endElevation": 25.32,
+          "maxGrade": 0.071,
+          "meanGrade": 0.046,
+          "maxGradeChange": 0.028,
+          "fillMaxM": 0,
+          "cutMaxM": 2.92,
+          "corridorCells": 89,
+          "corridorAreaM2": 1424,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1198.4",
+          "connectionId": "conn:c_1_2:maxZ:1198.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e96",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 1198.4,
+          "roadClass": "secondary",
+          "elevationSource": 24.34,
+          "horizontalM": 0.02,
+          "childNodeId": 72,
+          "childEdgeId": 91,
+          "elevationChild": 26.9,
+          "deltaM": 2.56,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 35,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 40,
+          "startElevation": 24.34,
+          "endElevation": 26.14,
+          "maxGrade": 0.06,
+          "meanGrade": 0.04,
+          "maxGradeChange": 0.023,
+          "fillMaxM": 0,
+          "cutMaxM": 2.56,
+          "corridorCells": 88,
+          "corridorAreaM2": 1408,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1298.4",
+          "connectionId": "conn:c_1_2:maxZ:1298.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e102",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 1298.4,
+          "roadClass": "secondary",
+          "elevationSource": 23.6,
+          "horizontalM": 0.02,
+          "childNodeId": 74,
+          "childEdgeId": 97,
+          "elevationChild": 27.81,
+          "deltaM": 4.21,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 57,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 64,
+          "startElevation": 23.6,
+          "endElevation": 27.11,
+          "maxGrade": 0.073,
+          "meanGrade": 0.052,
+          "maxGradeChange": 0.028,
+          "fillMaxM": 0,
+          "cutMaxM": 4.23,
+          "corridorCells": 146,
+          "corridorAreaM2": 2336,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1398.4",
+          "connectionId": "conn:c_1_2:maxZ:1398.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e108",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 1398.4,
+          "roadClass": "secondary",
+          "elevationSource": 23.1,
+          "horizontalM": 0.02,
+          "childNodeId": 76,
+          "childEdgeId": 103,
+          "elevationChild": 26.88,
+          "deltaM": 3.78,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 51,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 64,
+          "startElevation": 23.1,
+          "endElevation": 26.4,
+          "maxGrade": 0.069,
+          "meanGrade": 0.047,
+          "maxGradeChange": 0.017,
+          "fillMaxM": 0,
+          "cutMaxM": 3.78,
+          "corridorCells": 139,
+          "corridorAreaM2": 2224,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1498.4",
+          "connectionId": "conn:c_1_2:maxZ:1498.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e114",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 1498.4,
+          "roadClass": "secondary",
+          "elevationSource": 24.21,
+          "horizontalM": 0.02,
+          "childNodeId": 78,
+          "childEdgeId": 109,
+          "elevationChild": 26.4,
+          "deltaM": 2.19,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 30,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 40,
+          "startElevation": 24.21,
+          "endElevation": 26.03,
+          "maxGrade": 0.061,
+          "meanGrade": 0.04,
+          "maxGradeChange": 0.024,
+          "fillMaxM": 0,
+          "cutMaxM": 2.19,
+          "corridorCells": 86,
+          "corridorAreaM2": 1376,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:598.4",
+          "connectionId": "conn:c_1_2:maxZ:598.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e60",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 598.4,
+          "roadClass": "secondary",
+          "elevationSource": 21.94,
+          "horizontalM": 0.02,
+          "childNodeId": 60,
+          "childEdgeId": 55,
+          "elevationChild": 24.61,
+          "deltaM": 2.67,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 36,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 56,
+          "startElevation": 21.94,
+          "endElevation": 24.66,
+          "maxGrade": 0.065,
+          "meanGrade": 0.044,
+          "maxGradeChange": 0.018,
+          "fillMaxM": 0,
+          "cutMaxM": 2.67,
+          "corridorCells": 115,
+          "corridorAreaM2": 1840,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:698.4",
+          "connectionId": "conn:c_1_2:maxZ:698.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e66",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 698.4,
+          "roadClass": "secondary",
+          "elevationSource": 21.11,
+          "horizontalM": 0.02,
+          "childNodeId": 62,
+          "childEdgeId": 61,
+          "elevationChild": 24.96,
+          "deltaM": 3.85,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 52,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 88,
+          "startElevation": 21.11,
+          "endElevation": 25.57,
+          "maxGrade": 0.068,
+          "meanGrade": 0.048,
+          "maxGradeChange": 0.012,
+          "fillMaxM": 0.01,
+          "cutMaxM": 3.85,
+          "corridorCells": 185,
+          "corridorAreaM2": 2960,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:798.4",
+          "connectionId": "conn:c_1_2:maxZ:798.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e72",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 798.4,
+          "roadClass": "secondary",
+          "elevationSource": 21.92,
+          "horizontalM": 0.02,
+          "childNodeId": 64,
+          "childEdgeId": 67,
+          "elevationChild": 25.54,
+          "deltaM": 3.62,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 49,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 80,
+          "startElevation": 21.92,
+          "endElevation": 25.96,
+          "maxGrade": 0.067,
+          "meanGrade": 0.048,
+          "maxGradeChange": 0.013,
+          "fillMaxM": 0,
+          "cutMaxM": 3.63,
+          "corridorCells": 168,
+          "corridorAreaM2": 2688,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:898.4",
+          "connectionId": "conn:c_1_2:maxZ:898.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e78",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 898.4,
+          "roadClass": "secondary",
+          "elevationSource": 22.1,
+          "horizontalM": 0.02,
+          "childNodeId": 66,
+          "childEdgeId": 73,
+          "elevationChild": 26.05,
+          "deltaM": 3.95,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 53,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 72,
+          "startElevation": 22.1,
+          "endElevation": 25.76,
+          "maxGrade": 0.068,
+          "meanGrade": 0.048,
+          "maxGradeChange": 0.015,
+          "fillMaxM": 0,
+          "cutMaxM": 3.97,
+          "corridorCells": 158,
+          "corridorAreaM2": 2528,
+          "residualM": 0
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:998.4",
+          "connectionId": "conn:c_1_2:maxZ:998.4",
+          "kind": "parent",
+          "sourceRoadId": "c_1_2:e84",
+          "parentChunkId": "c_1_2",
+          "targetChunkId": "c_1_3",
+          "side": "minZ",
+          "position": 998.4,
+          "roadClass": "secondary",
+          "elevationSource": 22.12,
+          "horizontalM": 0.02,
+          "childNodeId": 68,
+          "childEdgeId": 79,
+          "elevationChild": 25.33,
+          "deltaM": 3.21,
+          "childRoadClass": "secondary",
+          "directionDeg": 270,
+          "availableM": 105,
+          "approachM": 117,
+          "approachEnd": "junction",
+          "allowedGrade": 0.075,
+          "requiredRunM": 43,
+          "status": "accepted",
+          "reason": null,
+          "rampLengthM": 56,
+          "startElevation": 22.12,
+          "endElevation": 24.69,
+          "maxGrade": 0.061,
+          "meanGrade": 0.043,
+          "maxGradeChange": 0.024,
+          "fillMaxM": 0,
+          "cutMaxM": 3.21,
+          "corridorCells": 121,
+          "corridorAreaM2": 1936,
+          "residualM": 0
+        }
+      ],
+      "profiles": [
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1098.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              23.18,
+              26.1
+            ],
+            [
+              3.89,
+              23.23,
+              25.99
+            ],
+            [
+              7.77,
+              23.4,
+              25.88
+            ],
+            [
+              11.66,
+              23.65,
+              25.77
+            ],
+            [
+              15.54,
+              23.93,
+              25.65
+            ],
+            [
+              19.43,
+              24.21,
+              25.55
+            ],
+            [
+              23.31,
+              24.48,
+              25.46
+            ],
+            [
+              27.2,
+              24.76,
+              25.4
+            ],
+            [
+              31.08,
+              25.03,
+              25.35
+            ],
+            [
+              34.97,
+              25.23,
+              25.33
+            ],
+            [
+              38.85,
+              25.31,
+              25.32
+            ],
+            [
+              42.74,
+              25.32,
+              25.32
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1198.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              24.34,
+              26.9
+            ],
+            [
+              3.89,
+              24.39,
+              26.83
+            ],
+            [
+              7.77,
+              24.52,
+              26.76
+            ],
+            [
+              11.66,
+              24.74,
+              26.69
+            ],
+            [
+              15.54,
+              24.97,
+              26.62
+            ],
+            [
+              19.43,
+              25.21,
+              26.56
+            ],
+            [
+              23.31,
+              25.44,
+              26.49
+            ],
+            [
+              27.2,
+              25.67,
+              26.42
+            ],
+            [
+              31.08,
+              25.9,
+              26.35
+            ],
+            [
+              34.97,
+              26.07,
+              26.28
+            ],
+            [
+              38.85,
+              26.14,
+              26.21
+            ],
+            [
+              42.74,
+              26.14,
+              26.14
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1298.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              23.6,
+              27.81
+            ],
+            [
+              3.89,
+              23.63,
+              27.86
+            ],
+            [
+              7.77,
+              23.74,
+              27.9
+            ],
+            [
+              11.66,
+              23.91,
+              27.94
+            ],
+            [
+              15.54,
+              24.15,
+              27.95
+            ],
+            [
+              19.43,
+              24.44,
+              27.95
+            ],
+            [
+              23.31,
+              24.72,
+              27.93
+            ],
+            [
+              27.2,
+              25,
+              27.9
+            ],
+            [
+              31.08,
+              25.29,
+              27.85
+            ],
+            [
+              34.97,
+              25.57,
+              27.8
+            ],
+            [
+              38.85,
+              25.86,
+              27.73
+            ],
+            [
+              42.74,
+              26.14,
+              27.66
+            ],
+            [
+              46.62,
+              26.43,
+              27.58
+            ],
+            [
+              50.51,
+              26.7,
+              27.5
+            ],
+            [
+              54.39,
+              26.9,
+              27.41
+            ],
+            [
+              58.28,
+              27.04,
+              27.31
+            ],
+            [
+              62.16,
+              27.1,
+              27.21
+            ],
+            [
+              66.05,
+              27.11,
+              27.11
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1398.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              23.1,
+              26.88
+            ],
+            [
+              3.89,
+              23.13,
+              26.81
+            ],
+            [
+              7.77,
+              23.23,
+              26.74
+            ],
+            [
+              11.66,
+              23.39,
+              26.67
+            ],
+            [
+              15.54,
+              23.62,
+              26.61
+            ],
+            [
+              19.43,
+              23.89,
+              26.55
+            ],
+            [
+              23.31,
+              24.15,
+              26.51
+            ],
+            [
+              27.2,
+              24.42,
+              26.47
+            ],
+            [
+              31.08,
+              24.69,
+              26.45
+            ],
+            [
+              34.97,
+              24.95,
+              26.43
+            ],
+            [
+              38.85,
+              25.22,
+              26.42
+            ],
+            [
+              42.74,
+              25.49,
+              26.42
+            ],
+            [
+              46.62,
+              25.75,
+              26.41
+            ],
+            [
+              50.51,
+              26.01,
+              26.41
+            ],
+            [
+              54.39,
+              26.2,
+              26.41
+            ],
+            [
+              58.28,
+              26.33,
+              26.41
+            ],
+            [
+              62.16,
+              26.39,
+              26.41
+            ],
+            [
+              66.05,
+              26.4,
+              26.4
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:1498.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              24.21,
+              26.4
+            ],
+            [
+              3.89,
+              24.26,
+              26.36
+            ],
+            [
+              7.77,
+              24.39,
+              26.32
+            ],
+            [
+              11.66,
+              24.61,
+              26.28
+            ],
+            [
+              15.54,
+              24.85,
+              26.25
+            ],
+            [
+              19.43,
+              25.09,
+              26.21
+            ],
+            [
+              23.31,
+              25.32,
+              26.18
+            ],
+            [
+              27.2,
+              25.56,
+              26.15
+            ],
+            [
+              31.08,
+              25.79,
+              26.12
+            ],
+            [
+              34.97,
+              25.96,
+              26.09
+            ],
+            [
+              38.85,
+              26.03,
+              26.06
+            ],
+            [
+              42.74,
+              26.03,
+              26.03
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:598.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              21.94,
+              24.61
+            ],
+            [
+              3.89,
+              21.97,
+              24.61
+            ],
+            [
+              7.77,
+              22.08,
+              24.63
+            ],
+            [
+              11.66,
+              22.25,
+              24.65
+            ],
+            [
+              15.54,
+              22.49,
+              24.68
+            ],
+            [
+              19.43,
+              22.75,
+              24.71
+            ],
+            [
+              23.31,
+              23,
+              24.74
+            ],
+            [
+              27.2,
+              23.25,
+              24.75
+            ],
+            [
+              31.08,
+              23.5,
+              24.76
+            ],
+            [
+              34.97,
+              23.75,
+              24.76
+            ],
+            [
+              38.85,
+              24,
+              24.74
+            ],
+            [
+              42.74,
+              24.25,
+              24.73
+            ],
+            [
+              46.62,
+              24.46,
+              24.71
+            ],
+            [
+              50.51,
+              24.59,
+              24.69
+            ],
+            [
+              54.39,
+              24.66,
+              24.67
+            ],
+            [
+              58.28,
+              24.66,
+              24.66
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:698.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              21.11,
+              24.96
+            ],
+            [
+              3.89,
+              21.13,
+              24.98
+            ],
+            [
+              7.77,
+              21.2,
+              24.99
+            ],
+            [
+              11.66,
+              21.32,
+              25
+            ],
+            [
+              15.54,
+              21.48,
+              25.02
+            ],
+            [
+              19.43,
+              21.69,
+              25.03
+            ],
+            [
+              23.31,
+              21.94,
+              25.05
+            ],
+            [
+              27.2,
+              22.2,
+              25.06
+            ],
+            [
+              31.08,
+              22.47,
+              25.09
+            ],
+            [
+              34.97,
+              22.73,
+              25.11
+            ],
+            [
+              38.85,
+              22.99,
+              25.15
+            ],
+            [
+              42.74,
+              23.25,
+              25.2
+            ],
+            [
+              46.62,
+              23.52,
+              25.27
+            ],
+            [
+              50.51,
+              23.78,
+              25.35
+            ],
+            [
+              54.39,
+              24.04,
+              25.43
+            ],
+            [
+              58.28,
+              24.3,
+              25.51
+            ],
+            [
+              62.16,
+              24.57,
+              25.58
+            ],
+            [
+              66.05,
+              24.83,
+              25.61
+            ],
+            [
+              69.93,
+              25.07,
+              25.62
+            ],
+            [
+              73.82,
+              25.26,
+              25.6
+            ],
+            [
+              77.7,
+              25.41,
+              25.57
+            ],
+            [
+              81.59,
+              25.51,
+              25.55
+            ],
+            [
+              85.47,
+              25.56,
+              25.55
+            ],
+            [
+              89.36,
+              25.57,
+              25.57
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:798.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              21.92,
+              25.54
+            ],
+            [
+              3.89,
+              21.95,
+              25.57
+            ],
+            [
+              7.77,
+              22.02,
+              25.61
+            ],
+            [
+              11.66,
+              22.15,
+              25.64
+            ],
+            [
+              15.54,
+              22.33,
+              25.67
+            ],
+            [
+              19.43,
+              22.56,
+              25.71
+            ],
+            [
+              23.31,
+              22.82,
+              25.76
+            ],
+            [
+              27.2,
+              23.08,
+              25.81
+            ],
+            [
+              31.08,
+              23.34,
+              25.87
+            ],
+            [
+              34.97,
+              23.6,
+              25.92
+            ],
+            [
+              38.85,
+              23.86,
+              25.97
+            ],
+            [
+              42.74,
+              24.13,
+              26
+            ],
+            [
+              46.62,
+              24.39,
+              26.02
+            ],
+            [
+              50.51,
+              24.65,
+              26.02
+            ],
+            [
+              54.39,
+              24.91,
+              26.01
+            ],
+            [
+              58.28,
+              25.17,
+              26
+            ],
+            [
+              62.16,
+              25.43,
+              25.98
+            ],
+            [
+              66.05,
+              25.64,
+              25.97
+            ],
+            [
+              69.93,
+              25.79,
+              25.97
+            ],
+            [
+              73.82,
+              25.9,
+              25.98
+            ],
+            [
+              77.7,
+              25.96,
+              25.97
+            ],
+            [
+              81.59,
+              25.96,
+              25.96
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:898.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              22.1,
+              26.05
+            ],
+            [
+              3.89,
+              22.13,
+              26.1
+            ],
+            [
+              7.77,
+              22.21,
+              26.14
+            ],
+            [
+              11.66,
+              22.36,
+              26.19
+            ],
+            [
+              15.54,
+              22.56,
+              26.22
+            ],
+            [
+              19.43,
+              22.81,
+              26.23
+            ],
+            [
+              23.31,
+              23.07,
+              26.23
+            ],
+            [
+              27.2,
+              23.33,
+              26.2
+            ],
+            [
+              31.08,
+              23.6,
+              26.16
+            ],
+            [
+              34.97,
+              23.86,
+              26.1
+            ],
+            [
+              38.85,
+              24.12,
+              26.04
+            ],
+            [
+              42.74,
+              24.39,
+              25.98
+            ],
+            [
+              46.62,
+              24.65,
+              25.93
+            ],
+            [
+              50.51,
+              24.92,
+              25.89
+            ],
+            [
+              54.39,
+              25.18,
+              25.86
+            ],
+            [
+              58.28,
+              25.41,
+              25.84
+            ],
+            [
+              62.16,
+              25.58,
+              25.82
+            ],
+            [
+              66.05,
+              25.7,
+              25.81
+            ],
+            [
+              69.93,
+              25.75,
+              25.79
+            ],
+            [
+              73.82,
+              25.76,
+              25.76
+            ]
+          ]
+        },
+        {
+          "rampId": "ramp:c_1_3:c_1_2:maxZ:998.4",
+          "roadClass": "secondary",
+          "allowedGrade": 0.075,
+          "profile": [
+            [
+              0,
+              22.12,
+              25.33
+            ],
+            [
+              3.89,
+              22.15,
+              25.31
+            ],
+            [
+              7.77,
+              22.25,
+              25.28
+            ],
+            [
+              11.66,
+              22.42,
+              25.25
+            ],
+            [
+              15.54,
+              22.64,
+              25.21
+            ],
+            [
+              19.43,
+              22.88,
+              25.18
+            ],
+            [
+              23.31,
+              23.12,
+              25.14
+            ],
+            [
+              27.2,
+              23.35,
+              25.1
+            ],
+            [
+              31.08,
+              23.59,
+              25.07
+            ],
+            [
+              34.97,
+              23.83,
+              25.03
+            ],
+            [
+              38.85,
+              24.07,
+              24.99
+            ],
+            [
+              42.74,
+              24.3,
+              24.94
+            ],
+            [
+              46.62,
+              24.49,
+              24.89
+            ],
+            [
+              50.51,
+              24.62,
+              24.83
+            ],
+            [
+              54.39,
+              24.68,
+              24.77
+            ],
+            [
+              58.28,
+              24.69,
+              24.69
+            ]
+          ]
+        }
+      ],
+      "vacatedBuildings": 92,
+      "buildingsKept": 1927,
+      "beforeJoins": 4,
+      "afterJoins": 10,
+      "reach": {
+        "c_1_2": {
+          "reachable": true,
+          "roadLengthShareOnCoreNetwork": 1,
+          "nearestNodeFromCoreM": 0,
+          "farthestNodeFromCoreM": 1869
+        },
+        "c_1_3": {
+          "reachable": true,
+          "roadLengthShareOnCoreNetwork": 1,
+          "nearestNodeFromCoreM": 969,
+          "farthestNodeFromCoreM": 2893
+        },
+        "c_2_2": {
+          "reachable": true,
+          "roadLengthShareOnCoreNetwork": 1,
+          "nearestNodeFromCoreM": 1024,
+          "farthestNodeFromCoreM": 2869
+        },
+        "c_0_2": {
+          "reachable": false,
+          "roadLengthShareOnCoreNetwork": 0,
+          "nearestNodeFromCoreM": null,
+          "farthestNodeFromCoreM": null
+        },
+        "c_0_3": {
+          "reachable": false,
+          "roadLengthShareOnCoreNetwork": 0,
+          "nearestNodeFromCoreM": null,
+          "farthestNodeFromCoreM": null
+        },
+        "c_-1_2": {
+          "reachable": false,
+          "roadLengthShareOnCoreNetwork": 0,
+          "nearestNodeFromCoreM": null,
+          "farthestNodeFromCoreM": null
+        }
+      }
+    },
+    "testC": {
+      "replay": {
+        "baseline": {
+          "chunks": 18,
+          "events": 12,
+          "byStatus": {
+            "accepted": 51,
+            "insufficientLength": 34,
+            "terrainDiscontinuity": 12
+          },
+          "byKindStatus": {
+            "parent:accepted": 34,
+            "parent:insufficientLength": 34,
+            "parent:terrainDiscontinuity": 5,
+            "neighbour:accepted": 17,
+            "neighbour:terrainDiscontinuity": 7
+          },
+          "joins": {
+            "parent": 34,
+            "neighbour": 17
+          },
+          "unconnectedChildChunks": [
+            "c_-3_0",
+            "c_0_2",
+            "c_0_3",
+            "c_-4_1"
+          ],
+          "rampLengthM": {
+            "min": 24,
+            "median": 64,
+            "max": 96
+          },
+          "meanGrade": 0.0407,
+          "maxGrade": 0.075,
+          "terrainConflicts": 12,
+          "fillMaxM": 5.51,
+          "cutMaxM": 5.91,
+          "corridorAreaM2": 95280,
+          "vacatedBuildings": 414,
+          "vacatedShare": 0.0206,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 5,
+            "fezOrganicCore": 2,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 5,
+            "veniceWaterNetwork": 0
+          },
+          "reach": {
+            "amsterdamCanalRing": "1/1",
+            "chicagoGrid": "3/6",
+            "fezOrganicCore": "3/3",
+            "lisbonHillCore": "1/1",
+            "manhattanGrid": "3/6",
+            "veniceWaterNetwork": "1/1"
+          }
+        },
+        "conservative": {
+          "chunks": 18,
+          "events": 12,
+          "byStatus": {
+            "accepted": 34,
+            "insufficientLength": 50,
+            "terrainDiscontinuity": 12,
+            "gradeExceeded": 1
+          },
+          "byKindStatus": {
+            "parent:accepted": 20,
+            "parent:insufficientLength": 47,
+            "parent:terrainDiscontinuity": 5,
+            "parent:gradeExceeded": 1,
+            "neighbour:insufficientLength": 3,
+            "neighbour:accepted": 14,
+            "neighbour:terrainDiscontinuity": 7
+          },
+          "joins": {
+            "parent": 20,
+            "neighbour": 14
+          },
+          "unconnectedChildChunks": [
+            "c_-3_0",
+            "c_0_2",
+            "c_-2_1",
+            "c_0_3",
+            "c_-4_-1",
+            "c_-4_1"
+          ],
+          "rampLengthM": {
+            "min": 32,
+            "median": 80,
+            "max": 112
+          },
+          "meanGrade": 0.0297,
+          "maxGrade": 0.05,
+          "terrainConflicts": 12,
+          "fillMaxM": 5.51,
+          "cutMaxM": 4.32,
+          "corridorAreaM2": 68928,
+          "vacatedBuildings": 312,
+          "vacatedShare": 0.0155,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 5,
+            "fezOrganicCore": 2,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 5,
+            "veniceWaterNetwork": 0
+          },
+          "reach": {
+            "amsterdamCanalRing": "1/1",
+            "chicagoGrid": "3/6",
+            "fezOrganicCore": "3/3",
+            "lisbonHillCore": "1/1",
+            "manhattanGrid": "2/6",
+            "veniceWaterNetwork": "1/1"
+          },
+          "checks": {
+            "checked": 34,
+            "maxResidualM": 0,
+            "maxXYM": 0,
+            "maxGrade": 0.0498,
+            "maxGradeByClass": {
+              "secondary": 0.0498,
+              "primary": 0.0371
+            },
+            "maxGradeChange": 0.0289,
+            "maxGroundGapM": 0.0894,
+            "graphOk": 34
+          }
+        },
+        "permissive": {
+          "chunks": 18,
+          "events": 12,
+          "byStatus": {
+            "accepted": 52,
+            "insufficientLength": 32,
+            "terrainDiscontinuity": 12,
+            "gradeExceeded": 1
+          },
+          "byKindStatus": {
+            "parent:accepted": 35,
+            "parent:insufficientLength": 32,
+            "parent:terrainDiscontinuity": 5,
+            "neighbour:accepted": 17,
+            "neighbour:terrainDiscontinuity": 7,
+            "parent:gradeExceeded": 1
+          },
+          "joins": {
+            "parent": 35,
+            "neighbour": 17
+          },
+          "unconnectedChildChunks": [
+            "c_0_2",
+            "c_0_3",
+            "c_-4_1"
+          ],
+          "rampLengthM": {
+            "min": 16,
+            "median": 48,
+            "max": 80
+          },
+          "meanGrade": 0.0485,
+          "maxGrade": 0.097,
+          "terrainConflicts": 12,
+          "fillMaxM": 5.51,
+          "cutMaxM": 5.91,
+          "corridorAreaM2": 82320,
+          "vacatedBuildings": 356,
+          "vacatedShare": 0.0177,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 5,
+            "fezOrganicCore": 2,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 5,
+            "veniceWaterNetwork": 0
+          },
+          "reach": {
+            "amsterdamCanalRing": "1/1",
+            "chicagoGrid": "3/6",
+            "fezOrganicCore": "3/3",
+            "lisbonHillCore": "1/1",
+            "manhattanGrid": "6/6",
+            "veniceWaterNetwork": "1/1"
+          },
+          "checks": {
+            "checked": 52,
+            "maxResidualM": 0,
+            "maxXYM": 0,
+            "maxGrade": 0.0971,
+            "maxGradeByClass": {
+              "secondary": 0.0971,
+              "primary": 0.0773
+            },
+            "maxGradeChange": 0.0298,
+            "maxGroundGapM": 0.147,
+            "graphOk": 52
+          }
+        }
+      },
+      "free": {
+        "6201": {
+          "g02c01Grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 0,
+            "fezOrganicCore": 8,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 4,
+            "veniceWaterNetwork": 0
+          },
+          "conservative": {
+            "chunks": 12,
+            "events": 6,
+            "byStatus": {
+              "accepted": 15,
+              "insufficientLength": 2,
+              "flush": 1,
+              "terrainDiscontinuity": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 15,
+              "parent:insufficientLength": 2,
+              "parent:flush": 1,
+              "neighbour:terrainDiscontinuity": 1
+            },
+            "joins": {
+              "parent": 16,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 64,
+              "max": 88
+            },
+            "meanGrade": 0.0233,
+            "maxGrade": 0.048,
+            "terrainConflicts": 1,
+            "fillMaxM": 1.49,
+            "cutMaxM": 3.72,
+            "corridorAreaM2": 15904,
+            "vacatedBuildings": 82,
+            "vacatedShare": 0.0138,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 5,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "6/6",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 31
+            },
+            "cacheHits": 17,
+            "ms": 96740,
+            "checks": {
+              "checked": 16,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0477,
+              "maxGradeByClass": {
+                "secondary": 0.0477,
+                "primary": 0.0396
+              },
+              "maxGradeChange": 0.0297,
+              "maxGroundGapM": 0.069,
+              "graphOk": 16
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 192.41 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 189.61 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -9.45 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 204.76 m)"
+              }
+            ]
+          },
+          "baseline": {
+            "chunks": 13,
+            "events": 7,
+            "byStatus": {
+              "accepted": 18,
+              "flush": 1,
+              "terrainDiscontinuity": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 18,
+              "parent:flush": 1,
+              "neighbour:terrainDiscontinuity": 1
+            },
+            "joins": {
+              "parent": 19,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 48,
+              "max": 80
+            },
+            "meanGrade": 0.0327,
+            "maxGrade": 0.073,
+            "terrainConflicts": 1,
+            "fillMaxM": 1.48,
+            "cutMaxM": 3.73,
+            "corridorAreaM2": 17072,
+            "vacatedBuildings": 89,
+            "vacatedShare": 0.0131,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 6,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "7/7",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 39
+            },
+            "cacheHits": 25,
+            "ms": 101155,
+            "checks": {
+              "checked": 19,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0734,
+              "maxGradeByClass": {
+                "secondary": 0.0734,
+                "primary": 0.0587
+              },
+              "maxGradeChange": 0.0297,
+              "maxGroundGapM": 0.092,
+              "graphOk": 19
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 192.41 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 189.61 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -9.45 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 204.76 m)"
+              }
+            ]
+          },
+          "permissive": {
+            "chunks": 15,
+            "events": 9,
+            "byStatus": {
+              "accepted": 20,
+              "flush": 1,
+              "terrainDiscontinuity": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 20,
+              "parent:flush": 1,
+              "neighbour:terrainDiscontinuity": 1
+            },
+            "joins": {
+              "parent": 21,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 48,
+              "max": 72
+            },
+            "meanGrade": 0.0382,
+            "maxGrade": 0.099,
+            "terrainConflicts": 1,
+            "fillMaxM": 4.63,
+            "cutMaxM": 3.72,
+            "corridorAreaM2": 17216,
+            "vacatedBuildings": 95,
+            "vacatedShare": 0.011,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 8,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "9/9",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 29
+            },
+            "cacheHits": 16,
+            "ms": 102711,
+            "checks": {
+              "checked": 21,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0994,
+              "maxGradeByClass": {
+                "secondary": 0.0994,
+                "primary": 0.0721
+              },
+              "maxGradeChange": 0.0298,
+              "maxGroundGapM": 0.0922,
+              "graphOk": 21
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 192.41 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 189.61 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:0",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -9.45 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 204.76 m)"
+              }
+            ]
+          }
+        },
+        "6202": {
+          "g02c01Grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 5,
+            "fezOrganicCore": 2,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 5,
+            "veniceWaterNetwork": 0
+          },
+          "conservative": {
+            "chunks": 17,
+            "events": 11,
+            "byStatus": {
+              "accepted": 56,
+              "insufficientLength": 14,
+              "gradeExceeded": 2,
+              "flush": 1,
+              "terrainDiscontinuity": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 56,
+              "parent:insufficientLength": 14,
+              "parent:gradeExceeded": 2,
+              "parent:flush": 1,
+              "parent:terrainDiscontinuity": 1
+            },
+            "joins": {
+              "parent": 57,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 48,
+              "max": 112
+            },
+            "meanGrade": 0.0256,
+            "maxGrade": 0.05,
+            "terrainConflicts": 1,
+            "fillMaxM": 5.51,
+            "cutMaxM": 4.25,
+            "corridorAreaM2": 80224,
+            "vacatedBuildings": 347,
+            "vacatedShare": 0.0196,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 5,
+              "fezOrganicCore": 3,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 3,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "6/6",
+              "fezOrganicCore": "4/4",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "4/4",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 41
+            },
+            "cacheHits": 27,
+            "ms": 182923,
+            "checks": {
+              "checked": 57,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0498,
+              "maxGradeByClass": {
+                "secondary": 0.0498,
+                "primary": 0.0371
+              },
+              "maxGradeChange": 0.0296,
+              "maxGroundGapM": 0.0888,
+              "graphOk": 57
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-4",
+                "status": "eligible",
+                "reason": null
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:-3",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:-3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 128.31 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:-2",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              }
+            ]
+          },
+          "baseline": {
+            "chunks": 18,
+            "events": 12,
+            "byStatus": {
+              "accepted": 64,
+              "insufficientLength": 21,
+              "gradeExceeded": 2,
+              "terrainDiscontinuity": 3,
+              "flush": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 64,
+              "parent:insufficientLength": 21,
+              "parent:gradeExceeded": 2,
+              "parent:terrainDiscontinuity": 3,
+              "parent:flush": 1
+            },
+            "joins": {
+              "parent": 65,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 40,
+              "max": 88
+            },
+            "meanGrade": 0.0338,
+            "maxGrade": 0.075,
+            "terrainConflicts": 3,
+            "fillMaxM": 5.51,
+            "cutMaxM": 4.23,
+            "corridorAreaM2": 79392,
+            "vacatedBuildings": 315,
+            "vacatedShare": 0.0157,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 5,
+              "fezOrganicCore": 2,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 5,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "6/6",
+              "fezOrganicCore": "3/3",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "6/6",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": null,
+            "failedAttempts": {
+              "networkConflict": 13
+            },
+            "cacheHits": 8,
+            "ms": 124258,
+            "checks": {
+              "checked": 65,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0748,
+              "maxGradeByClass": {
+                "secondary": 0.0748,
+                "primary": 0.0564
+              },
+              "maxGradeChange": 0.0296,
+              "maxGroundGapM": 0.1207,
+              "graphOk": 65
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-4",
+                "status": "eligible",
+                "reason": null
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:-3",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:-3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 128.31 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:-2",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              }
+            ]
+          },
+          "permissive": {
+            "chunks": 18,
+            "events": 12,
+            "byStatus": {
+              "accepted": 59,
+              "insufficientLength": 22,
+              "terrainDiscontinuity": 6,
+              "gradeExceeded": 3,
+              "flush": 1
+            },
+            "byKindStatus": {
+              "parent:accepted": 59,
+              "parent:insufficientLength": 22,
+              "parent:terrainDiscontinuity": 6,
+              "parent:gradeExceeded": 3,
+              "parent:flush": 1
+            },
+            "joins": {
+              "parent": 60,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 8,
+              "median": 40,
+              "max": 72
+            },
+            "meanGrade": 0.0392,
+            "maxGrade": 0.097,
+            "terrainConflicts": 6,
+            "fillMaxM": 4.51,
+            "cutMaxM": 5.35,
+            "corridorAreaM2": 67440,
+            "vacatedBuildings": 263,
+            "vacatedShare": 0.0131,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 5,
+              "fezOrganicCore": 2,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 5,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "1/1",
+              "chicagoGrid": "6/6",
+              "fezOrganicCore": "3/3",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "6/6",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": null,
+            "failedAttempts": {
+              "networkConflict": 11
+            },
+            "cacheHits": 7,
+            "ms": 221506,
+            "checks": {
+              "checked": 60,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0971,
+              "maxGradeByClass": {
+                "secondary": 0.0971,
+                "primary": 0.0737
+              },
+              "maxGradeChange": 0.0298,
+              "maxGroundGapM": 0.1293,
+              "graphOk": 60
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:5:-4",
+                "status": "eligible",
+                "reason": null
+              },
+              {
+                "candidateId": "road:lisbonHillCore:4:-3",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:6:-3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 128.31 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:5:-2",
+                "status": "rejected",
+                "reason": "no road port on this side (no road growth front)"
+              }
+            ]
+          }
+        },
+        "6203": {
+          "g02c01Grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 3,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 9,
+            "veniceWaterNetwork": 0
+          },
+          "conservative": {
+            "chunks": 7,
+            "events": 1,
+            "byStatus": {
+              "terrainDiscontinuity": 2,
+              "accepted": 11
+            },
+            "byKindStatus": {
+              "parent:terrainDiscontinuity": 2,
+              "parent:accepted": 11
+            },
+            "joins": {
+              "parent": 11,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 16,
+              "median": 88,
+              "max": 136
+            },
+            "meanGrade": 0.031,
+            "maxGrade": 0.049,
+            "terrainConflicts": 2,
+            "fillMaxM": 5.05,
+            "cutMaxM": 5.75,
+            "corridorAreaM2": 22384,
+            "vacatedBuildings": 90,
+            "vacatedShare": 0.0542,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 0,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "0/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "1/1",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 7
+            },
+            "cacheHits": 2,
+            "ms": 95838,
+            "checks": {
+              "checked": 11,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0488,
+              "maxGradeByClass": {
+                "secondary": 0.0488
+              },
+              "maxGradeChange": 0.0244,
+              "maxGroundGapM": 0.0244,
+              "graphOk": 11
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:-3:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 21.77 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-4:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -33.91 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-2:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -18.8 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-3:3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -45.4 m)"
+              }
+            ]
+          },
+          "baseline": {
+            "chunks": 7,
+            "events": 1,
+            "byStatus": {
+              "terrainDiscontinuity": 2,
+              "accepted": 11
+            },
+            "byKindStatus": {
+              "parent:terrainDiscontinuity": 2,
+              "parent:accepted": 11
+            },
+            "joins": {
+              "parent": 11,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 16,
+              "median": 64,
+              "max": 88
+            },
+            "meanGrade": 0.0438,
+            "maxGrade": 0.075,
+            "terrainConflicts": 2,
+            "fillMaxM": 5.05,
+            "cutMaxM": 5.75,
+            "corridorAreaM2": 16368,
+            "vacatedBuildings": 67,
+            "vacatedShare": 0.0404,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 0,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "0/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "1/1",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 7
+            },
+            "cacheHits": 2,
+            "ms": 93830,
+            "checks": {
+              "checked": 11,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0748,
+              "maxGradeByClass": {
+                "secondary": 0.0748
+              },
+              "maxGradeChange": 0.0294,
+              "maxGroundGapM": 0.0249,
+              "graphOk": 11
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:-3:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 21.77 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-4:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -33.91 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-2:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -18.8 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-3:3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -45.4 m)"
+              }
+            ]
+          },
+          "permissive": {
+            "chunks": 7,
+            "events": 1,
+            "byStatus": {
+              "terrainDiscontinuity": 2,
+              "accepted": 11
+            },
+            "byKindStatus": {
+              "parent:terrainDiscontinuity": 2,
+              "parent:accepted": 11
+            },
+            "joins": {
+              "parent": 11,
+              "neighbour": 0
+            },
+            "unconnectedChildChunks": [],
+            "rampLengthM": {
+              "min": 16,
+              "median": 64,
+              "max": 72
+            },
+            "meanGrade": 0.0508,
+            "maxGrade": 0.1,
+            "terrainConflicts": 2,
+            "fillMaxM": 5.05,
+            "cutMaxM": 5.75,
+            "corridorAreaM2": 14112,
+            "vacatedBuildings": 59,
+            "vacatedShare": 0.0355,
+            "grown": {
+              "amsterdamCanalRing": 0,
+              "chicagoGrid": 0,
+              "fezOrganicCore": 0,
+              "lisbonHillCore": 0,
+              "manhattanGrid": 1,
+              "veniceWaterNetwork": 0
+            },
+            "reach": {
+              "amsterdamCanalRing": "0/1",
+              "chicagoGrid": "1/1",
+              "fezOrganicCore": "1/1",
+              "lisbonHillCore": "1/1",
+              "manhattanGrid": "2/2",
+              "veniceWaterNetwork": "1/1"
+            },
+            "stalled": "every eligible road candidate failed validation",
+            "failedAttempts": {
+              "networkConflict": 7
+            },
+            "cacheHits": 2,
+            "ms": 92304,
+            "checks": {
+              "checked": 11,
+              "maxResidualM": 0,
+              "maxXYM": 0,
+              "maxGrade": 0.0997,
+              "maxGradeByClass": {
+                "secondary": 0.0997
+              },
+              "maxGradeChange": 0.0294,
+              "maxGroundGapM": 0.0261,
+              "graphOk": 11
+            },
+            "lisbonNext": [
+              {
+                "candidateId": "road:lisbonHillCore:-3:1",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps 21.77 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-4:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -33.91 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-2:2",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -18.8 m)"
+              },
+              {
+                "candidateId": "road:lisbonHillCore:-3:3",
+                "status": "rejected",
+                "reason": "no road entry within 6 m of the target terrain (steps -45.4 m)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "stability": {
+      "registryOrderReversed": "identical (seed 6202, 12 steps)",
+      "cacheOnOff": {
+        "seed": 6203,
+        "identicalChunksAndSignatures": true,
+        "cacheHits": 2,
+        "attemptsWithCache": 7,
+        "attemptsWithout": 7,
+        "cacheEntries": 5
+      },
+      "saveLoad": {
+        "savedAtStep": 6,
+        "chunks": 12,
+        "rampRecordsReproduced": true,
+        "joinEventsReproduced": 6,
+        "continuedEqualsUninterrupted": true,
+        "cacheEntriesSaved": 2
+      },
+      "failureInjection": {
+        "failureClass": "generationFailure",
+        "grewInstead": "c_2_2",
+        "leftNoChunk": true
+      }
+    },
+    "longRun": {
+      "seed": 6202,
+      "requestedSteps": 20,
+      "steps": 16,
+      "stalled": "every eligible road candidate failed validation",
+      "ms": 482230,
+      "chunks": 22,
+      "events": 16,
+      "byStatus": {
+        "accepted": 73,
+        "insufficientLength": 25,
+        "gradeExceeded": 2,
+        "terrainDiscontinuity": 10,
+        "flush": 1
+      },
+      "byKindStatus": {
+        "parent:accepted": 73,
+        "parent:insufficientLength": 25,
+        "parent:gradeExceeded": 2,
+        "parent:terrainDiscontinuity": 10,
+        "parent:flush": 1
+      },
+      "joins": {
+        "parent": 74,
+        "neighbour": 0
+      },
+      "unconnectedChildChunks": [],
+      "rampLengthM": {
+        "min": 8,
+        "median": 40,
+        "max": 88
+      },
+      "meanGrade": 0.0336,
+      "maxGrade": 0.075,
+      "terrainConflicts": 10,
+      "fillMaxM": 5.51,
+      "cutMaxM": 4.23,
+      "corridorAreaM2": 88880,
+      "vacatedBuildings": 366,
+      "vacatedShare": 0.0146,
+      "grown": {
+        "amsterdamCanalRing": 0,
+        "chicagoGrid": 5,
+        "fezOrganicCore": 4,
+        "lisbonHillCore": 0,
+        "manhattanGrid": 7,
+        "veniceWaterNetwork": 0
+      },
+      "reach": {
+        "amsterdamCanalRing": "1/1",
+        "chicagoGrid": "6/6",
+        "fezOrganicCore": "5/5",
+        "lisbonHillCore": "1/1",
+        "manhattanGrid": "8/8",
+        "veniceWaterNetwork": "1/1"
+      },
+      "checks": {
+        "checked": 74,
+        "maxResidualM": 0,
+        "maxXYM": 0,
+        "maxGrade": 0.0748,
+        "maxGradeByClass": {
+          "secondary": 0.0748,
+          "primary": 0.0564
+        },
+        "maxGradeChange": 0.0296,
+        "maxGroundGapM": 0.1207,
+        "graphOk": 74
+      }
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "before": "docs/assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-before.png",
+      "after": "docs/assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-after.png",
+      "debug": "docs/assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-debug.png",
+      "noBorders": "docs/assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-no-borders-after.png",
+      "worldBefore": "docs/assets/screenshots/procedural-mini-world/g02c-02-seed6202-before.png",
+      "worldAfter": "docs/assets/screenshots/procedural-mini-world/g02c-02-seed6202-after.png",
+      "longSections": "docs/assets/screenshots/procedural-mini-world/g02c-02-long-sections.png"
+    },
+    "pageEqualsNode": true,
+    "saveReloadLoad": true,
+    "errors": []
+  }
+}

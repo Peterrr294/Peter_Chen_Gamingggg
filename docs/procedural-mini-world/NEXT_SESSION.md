@@ -1,6 +1,12 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-01: G02c-01 road-driven growth (read first)
+## Update 2026-11-02: G02c-02 grade-aware ramps (read first)
+
+- **Done:** ramps in the uncommitted chunk, joins continuous in height and graph. Note: [G02c-02](./A-City-of-Cities/G02c-02-Grade-Aware-Road-Growth.md). Verify: `node --max-old-space-size=12288 scripts/verify-grade-aware-growth.mjs` (slow: hours for the full Node part). View: `/experiments/city-of-cities/?growthMode=road&grade=baseline`.
+- **Key fact:** every old height step was the raw terrain seam.
+- **Risk:** free growth stalls (6201: 7 chunks, 6203: 1).
+
+## Update 2026-11-01: G02c-01 road-driven growth
 
 - **Done:** real road fronts as scheduler candidates, opt-in by `growthMode: 'road'`. Note: [G02c-Road-Driven-Growth](./A-City-of-Cities/G02c-Road-Driven-Growth.md). Check with `node --max-old-space-size=8192 scripts/verify-road-driven-growth.mjs`. View at `/experiments/city-of-cities/?growthMode=road`.
 - **State:** pending review, uncommitted, on `experiment/procedural-growing-world`. Not on `main`, not on the site.

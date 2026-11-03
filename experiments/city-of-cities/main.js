@@ -19,6 +19,8 @@ import { MorphView } from './MorphView.js';
 import { UrbanEncounter } from './UrbanEncounter.js';
 import { EncounterView } from './EncounterView.js';
 import { cityRoadReach } from './RoadGrowthFrontAdapter.js';
+import { RampView } from './RampView.js';
+import { GRADE_PROFILES } from './RoadRampPlanner.js';
 import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encounterFixture.js';
 
 // A City of Cities — G01 Multi-Origin Initialization + G02 Procedural Urban Growth. Six city origins placed by the
@@ -31,6 +33,7 @@ import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encou
 // G03b: ?fixture=compatible|incompatible|barrier loads a TEST-ONLY Chicago × Fez world (cores placed by hand) and runs
 // its growth steps through UrbanEncounter (detection, boundary context, negotiation); EncounterView draws the result.
 // G02c-01: ?growthMode=road (or the folder "Road-driven growth") makes the scheduler take its candidates from real road fronts.
+// G02c-02: &grade=conservative|baseline|permissive adds the ramp plan (vertical alignment) to road-driven growth.
 // URL: ?worldSeed=… &candidates=1 &debug=1 &frontier=1 &focus=<cityId> &start=0 &steps=N (grow N after the origins)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/a-city-of-cities/world-state';
@@ -51,10 +54,12 @@ sun.position.set(-2000, 3200, 1600);
 scene.add(sun);
 
 const paramsFromQuery = Object.fromEntries([...Object.keys(PARAMS), ...Object.keys(GROWTH_PARAMS)].filter(k => query.has(k)).map(k => [k, Number(query.get(k))]));
-const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
+const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', gradeProfile: GRADE_PROFILES[query.get('grade')] ? query.get('grade') : 'none', rampAccepted: false, rampRejected: false, rampSeam: false, rampLabels: false, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
+function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...extra }; }
 let world = new WorldContext(ui);
-let growth = new WorldGrowthController(world, { growthMode: ui.growthMode });
+let growth = new WorldGrowthController(world, controllerOptions());
 const growthOverlay = new GrowthOverlay(scene);
+const rampView = new RampView(scene); // G02c-02
 const territoryView = new TerritoryView(scene);
 let territory = null; // G03a TerritoryModel
 let morph = new MorphologicalGrowth(world); // G02b
@@ -75,7 +80,7 @@ const nextFrame = () => new Promise(resolve => requestAnimationFrame(() => setTi
 const disposeRoot = root => { root.traverse(o => { o.geometry?.dispose(); if (o.material) [o.material].flat().forEach(m => { m.map?.dispose(); m.dispose(); }); }); root.removeFromParent(); };
 function clearScene() {
   for (const v of views.values()) { disposeRoot(v.chunk.root); disposeRoot(v.network.root); disposeRoot(v.buildings.root); disposeRoot(v.label); }
-  views.clear(); growthView.clear(); originView.clear(); growthOverlay.clear(); territoryView.clear(); chunkTop.clear(); morphView.clear(); chunkEdges.clear(); encounterView.clear();
+  views.clear(); rampView.clear(); growthView.clear(); originView.clear(); growthOverlay.clear(); territoryView.clear(); chunkTop.clear(); morphView.clear(); chunkEdges.clear(); encounterView.clear();
 }
 function removeChunkView(chunkId) {
   const v = views.get(chunkId);
@@ -93,7 +98,7 @@ function renderChunk(chunk, layers) {
   v.network.update(city.network, createSampler(terrain.fields).height);
   v.network.markers.visible = false; // port / portal points are screen-sized; unreadable at world scale
   v.buildings.update(city.buildings);
-  if (chunk.generationParameters.growthContext) chunkEdges.set(chunk.chunkId, city.network.edges.map(e => ({ id: e.id, points: e.points })));
+  if (chunk.generationParameters.growthContext) chunkEdges.set(chunk.chunkId, city.network.edges.map(e => ({ id: e.id, points: e.points, ramp: e.ramp ?? null })));
   v.label = textSprite([`${cityLabel(chunk.cityId)} · ${chunk.chunkId}${chunk.role === 'growth' ? ` · step ${chunk.growthStep}` : ' · core'}`, `${chunk.terrainType} · terrain seed ${chunk.terrainSeed} · gen ${chunk.generation}`]);
   v.label.position.set(chunk.worldOrigin.x, terrain.fields.stats.maxHeight + 160, chunk.worldOrigin.z);
   scene.add(v.label);
@@ -113,6 +118,7 @@ function applyVisibility() {
   growthView.setVisible({ ownership: ui.ownership && ui.chunkBorders, frontier: ui.frontier, seams: false });
   growthOverlay.setVisible(ui);
   morphView.setVisible(ui);
+  rampView.setVisible(ui);
   encounterView.setVisible(ui);
   territoryView.setVisible(ui);
 }
@@ -144,6 +150,7 @@ function refreshOverlays() {
     state.encounterPaths = paths;
     encounterView.update({ encounters, decisions: world.growth.encounterDecisions ?? [], paths }, id => world.chunks.get(id), id => chunkTop.get(id), id => chunkEdges.get(id));
   }
+  rampView.update(world.growth.history.filter(e => e.ramps), id => world.chunks.get(id), id => chunkEdges.get(id));
   growthOverlay.updateHistory(world.growth.history, id => world.chunks.get(id));
   applyVisibility();
 }
@@ -218,12 +225,12 @@ function generate(label = 'PLACING CITY ORIGINS') {
   return run(label, async () => {
     clearScene(); state.builds.clear(); state.mismatches = [];
     world = new WorldContext(ui);
-    growth = new WorldGrowthController(world, { growthMode: ui.growthMode }); state.growthTiming = []; state.selectedChunk = null;
+    growth = new WorldGrowthController(world, controllerOptions()); state.growthTiming = []; state.selectedChunk = null;
     morph = new MorphologicalGrowth(world); state.morphFailure = null; state.morphRestore = null; encounter = new UrbanEncounter(world, morph);
     state.timing = { started: performance.now(), placementMs: 0, probes: 0, chunks: [], firstRenderMs: null, totalMs: 0, memoryMB: null };
     const it = world.initialiseSteps();
     for (let r = it.next(); !r.done; r = it.next()) { $('#statusText').textContent = `EVALUATING ORIGIN SITES · ${cityLabel(r.value.cityId).toUpperCase()} ${r.value.probed} / ${r.value.of}`; await nextFrame(); }
-    growth = new WorldGrowthController(world, { growthMode: ui.growthMode }); // placement clears the growth state, including its mode
+    growth = new WorldGrowthController(world, controllerOptions()); // placement clears the growth state, including its mode
     state.timing.placementMs = Math.round(performance.now() - state.timing.started); state.timing.probes = world.stats.probes;
     fitOverview();
     await buildChunks(false);
@@ -298,7 +305,7 @@ function load(saved) {
     clearScene(); state.builds.clear(); state.mismatches = [];
     world = WorldContext.restore(saved);
     growth = new WorldGrowthController(world); state.growthTiming = []; state.selectedChunk = null; // a saved road-driven world continues in that mode
-    ui.growthMode = growth.growthMode;
+    ui.growthMode = growth.growthMode; ui.gradeProfile = world.growth.gradeProfile ?? 'none';
     morph = new MorphologicalGrowth(world); state.morphFailure = null; encounter = new UrbanEncounter(world, morph);
     world.fixture = [...world.cities.values()][0]?.placementReason?.fixture?.split(':')[1] ?? null; // G03b test fixture
     Object.assign(ui, world.params, world.growthParams);
@@ -344,7 +351,12 @@ mg.add(ui, 'chunkBorders').name('Show chunk boundaries').onChange(applyVisibilit
 mg.add(ui, 'history').name('Show growth history').onChange(applyVisibility);
 const rd = gui.addFolder('Road-driven growth (G02c-01)');
 rd.add(ui, 'growthMode', { 'Chunk frontier (G02)': 'chunk', 'Real road fronts (G02c)': 'road' }).name('Scheduler candidates (apply on Generate)');
+rd.add(ui, 'gradeProfile', { 'No ramp plan (G02c-01: 3 m rule)': 'none', 'Conservative 4 %': 'conservative', 'Baseline 6 %': 'baseline', 'Permissive 8 %': 'permissive' }).name('Ramp grade (apply on Generate)');
 rd.add({ f: () => growSteps(1) }, 'f').name('Grow one scheduled step');
+rd.add(ui, 'rampAccepted').name('Show accepted ramps').onChange(applyVisibility);
+rd.add(ui, 'rampRejected').name('Show unconnected road ends').onChange(applyVisibility);
+rd.add(ui, 'rampSeam').name('Show terrain seam conflicts').onChange(applyVisibility);
+rd.add(ui, 'rampLabels').name('Show ramp numbers').onChange(applyVisibility);
 rd.add(ui, 'morphFronts').name('Show road growth fronts').onChange(() => refreshOverlays());
 rd.add(ui, 'growthFrontier').name('Show accepted / rejected candidates').onChange(applyVisibility);
 rd.add(ui, 'inheritedRoads').name('Show generated (continued) roads').onChange(applyVisibility);
@@ -417,7 +429,9 @@ function renderPanel() {
   $('#morphInfo').textContent = state.morphFailure ? `FAILED (${state.morphFailure.cityId}, step ${state.morphFailure.step}): ${state.morphFailure.reason} — ${state.morphFailure.fronts.map(f => `${f.growthFrontId.split(':').slice(1).join(' ')}: ${f.reason}`).join('; ')}` : me ? `${me.growthEventId}: ${me.sourceGrowthFrontId} → ${me.targetChunkId} · ${me.connections.length} roads joined (max position error ${Math.max(0, ...me.connections.map(c => c.positionErrorM))} m, max height step ${Math.max(0, ...me.connections.map(c => Math.abs(c.elevationStepM)))} m) · ${me.localAdaptations.unmatchedEntries.length} unmatched entries · ${me.generatedBlockIds.length} blocks, ${me.generatedParcelIds.length} / ${me.parcelsTotal} parcels on inherited roads · rejected: ${me.rejectedConstraints.map(r => r.growthFrontId.split(':').slice(1).join(' ')).join(', ') || 'none'}${mc ? ` · road graph: ${mc.components} component(s), ${Math.round(mc.mainComponentShare * 100)} % connected to the core` : ''}${state.morphRestore ? ` · load: ${state.morphRestore}` : ''}` : 'no G02b growth yet';
   const re = world.growth.history.filter(e => e.scheduler === 'g02c-01').at(-1);
   const attempts = world.growth.roadAttempts ?? [];
-  $('#roadInfo').textContent = growth.growthMode !== 'road' ? 'chunk frontier (G02); choose real road fronts and Generate' : re ? `${re.growthReason.text} · ${re.connections.length} parent + ${re.neighbourConnections.length} neighbour joins, ${re.localAdaptations.unmatchedEntries.length} unmatched · ${attempts.length} failed attempt(s) so far${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}` : `no road-driven step yet${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}`;
+  const ramps = world.growth.history.flatMap(e => e.ramps ?? []);
+  const rampText = world.growth.gradeProfile ? ` · ramps (${world.growth.gradeProfile}): ${ramps.filter(r => r.status === 'accepted').length} accepted, ${ramps.filter(r => r.status === 'flush').length} flush, ${ramps.filter(r => !['accepted', 'flush'].includes(r.status)).length} unconnected` : '';
+  $('#roadInfo').textContent = growth.growthMode !== 'road' ? 'chunk frontier (G02); choose real road fronts and Generate' : rampText + ' · ' + (re ? `${re.growthReason.text} · ${re.connections.length} parent + ${re.neighbourConnections.length} neighbour joins, ${re.localAdaptations.unmatchedEntries.length} unmatched · ${attempts.length} failed attempt(s) so far${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}` : `no road-driven step yet${world.growth.stalled ? ` · STALLED: ${world.growth.stalled.reason}` : ''}`);
   const encs = world.fixture ? state.encounters ?? [] : [];
   $('#encounterInfo').textContent = world.fixture ? `TEST FIXTURE ${world.fixture} (cores placed by hand) · ` + (encs.map(e => `${e.encounterId}: ${e.currentRelationship} · states ${Object.entries(e.states).filter(([, v]) => v).map(([k]) => k).join(', ')} · ${e.validationStatus} · ${e.decisionReason}`).join(' | ') || 'no encounter (cities more than 3 cells apart)') + ` · decisions: ${(world.growth.encounterDecisions ?? []).map(d => `${d.newcomer}→${d.targetCell.gx},${d.targetCell.gy}: ${d.outcome} (${d.acceptedInterfaces.length} accepted / ${d.rejectedInterfaces.length} rejected)`).join('; ') || 'none'}` : 'no fixture loaded (Urban encounter folder)';
   const last = state.growthTiming.at(-1);
@@ -468,7 +482,9 @@ window.__originLab = {
   // G02
   growSteps, resetToOrigins,
   // G02c-01
-  roadCities: cities => { growth = new WorldGrowthController(world, { growthMode: 'road', cities }); },
+  roadCities: cities => { growth = new WorldGrowthController(world, controllerOptions({ growthMode: 'road', cities })); },
+  roadReplay: replay => { growth = new WorldGrowthController(world, controllerOptions({ growthMode: 'road', replay })); },
+  rampEvents: () => world.growth.history.filter(e => e.ramps),
   roadReach: cityId => cityRoadReach(world, cityId),
   morphGrow: cityId => growMorph(cityId),
   morphFronts: cityId => morph.fronts(cityId),

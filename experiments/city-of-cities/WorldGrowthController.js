@@ -21,13 +21,20 @@ import { FAILURE, RoadGrowthFrontAdapter } from './RoadGrowthFrontAdapter.js';
 const now = () => (globalThis.performance ?? Date).now();
 
 export class WorldGrowthController {
-  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS } = {}) {
+  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true } = {}) {
     this.world = world;
     this.dna = dna; // per-city Growth DNA (Experiment C can pass a uniform table)
     this.lastFrontier = null; // evaluated candidates of the last step (debug, not saved)
     this.growthMode = growthMode;
     this.cities = cities; // G02c: cities allowed to bid (single-city test); all six by default
-    if (growthMode === 'road') { world.growth.mode = 'road'; world.growth.roadAttempts ??= []; this.adapter = new RoadGrowthFrontAdapter(world); }
+    this.replay = replay; // comparison tests: the planned events { cityId, gx, gy, parentChunkId } in order
+    this.useCache = candidateCache;
+    if (growthMode === 'road') {
+      world.growth.mode = 'road'; world.growth.roadAttempts ??= [];
+      if (gradeProfile) { world.growth.gradeProfile = gradeProfile; world.growth.candidateCache ??= {}; } // G02c-02
+      this.adapter = new RoadGrowthFrontAdapter(world, undefined, gradeProfile);
+      this.adapter.replayKeepsUnconnected = Boolean(replay);
+    }
   }
 
   // Growth Frontier of one city: merged candidates (one per free cell), parents sorted by the parent rule.
@@ -98,7 +105,10 @@ export class WorldGrowthController {
     for (const c of w.chunks.values()) if (!c.outputs) throw new Error(`Chunk ${c.chunkId} is not generated (generate or restore it first)`);
     const step = w.growth.step + 1;
     const t0 = now();
+    const planned = this.replay?.[step - 1] ?? null;
+    if (planned) this.adapter.forcedParents.set(`${planned.gx},${planned.gy}`, planned.parentChunkId);
     const frontier = this.evaluate(step);
+    if (planned) for (const cityId of CITY_IDS) for (const cand of frontier[cityId]) if (cand.status === 'eligible' && (cityId !== planned.cityId || cand.gx !== planned.gx || cand.gy !== planned.gy)) { cand.status = 'rejected'; cand.rejectionReason = 'not the planned event of this replay'; }
     this.lastFrontier = frontier;
     const bids = CITY_IDS.map(cityId => {
       const eligible = frontier[cityId].filter(c => c.status === 'eligible');
@@ -160,10 +170,15 @@ export class WorldGrowthController {
       for (let i = 0; i < keyed.length; i += 1) {
         const chosen = keyed[i].c;
         const t1 = now();
-        const r = this.adapter.attempt(chosen, step);
+        // G02c-02: the same candidate under the same conditions failed before: no need to generate it again.
+        const cache = w.growth.candidateCache;
+        const signature = cache ? this.adapter.candidateSignature(chosen) : null;
+        const known = this.useCache && cache?.[chosen.candidateId]?.signature === signature ? cache[chosen.candidateId] : null;
+        const r = known ? { failure: { failureClass: known.previousResult, reason: known.rejectionReason, cached: true } } : this.adapter.attempt(chosen, step);
+        if (cache && r.failure && !known && r.failure.failureClass === FAILURE.network) cache[chosen.candidateId] = { candidateId: chosen.candidateId, sourceRoadId: chosen.sourceRoadId, targetRegion: chosen.targetCoordinate, signature, evaluatedParameters: w.growth.gradeProfile, previousResult: r.failure.failureClass, rejectionReason: r.failure.reason, stateVersion: step };
         if (r.failure) {
           chosen.status = 'rejected'; chosen.failureClass = r.failure.failureClass; chosen.rejectionReason = r.failure.reason;
-          const record = { step, cityId, candidateId: chosen.candidateId, growthFrontId: chosen.growthFrontId, failureClass: r.failure.failureClass, reason: r.failure.reason };
+          const record = { step, cityId, candidateId: chosen.candidateId, growthFrontId: chosen.growthFrontId, failureClass: r.failure.failureClass, reason: r.failure.reason, ...(r.failure.cached ? { cached: true } : {}) };
           failed.push(record); w.growth.roadAttempts.push(record);
           continue;
         }
@@ -234,7 +249,7 @@ export class WorldGrowthController {
   resetToOrigins() {
     const w = this.world;
     for (const c of [...w.chunks.values()]) if (c.role === 'growth') { w.chunks.delete(c.chunkId); w.occupancy.delete(`${c.worldCoordinate.gx},${c.worldCoordinate.gy}`); }
-    w.growth = { generation: 0, step: 0, history: [], stalled: null, ...(this.growthMode === 'road' ? { mode: 'road', roadAttempts: [] } : {}) };
+    w.growth = { generation: 0, step: 0, history: [], stalled: null, ...(this.growthMode === 'road' ? { mode: 'road', roadAttempts: [] } : {}), ...(w.growth.gradeProfile ? { gradeProfile: w.growth.gradeProfile, candidateCache: {} } : {}) };
     this.lastFrontier = null;
   }
 }

@@ -8,13 +8,15 @@
 //   4. save after step 6 → load → signatures, joins → continue = uninterrupted run;
 //   5. failure handling: generator error and failed validation leave no chunk; natural failures are counted by class.
 // Part B (browser): the page reproduces the Node events; save → reload → load → continue; screenshots.
-// Usage: node --max-old-space-size=8192 scripts/verify-road-driven-growth.mjs [--node-only | --browser-only]
+// Usage: node --max-old-space-size=8192 scripts/verify-road-driven-growth.mjs [--node-only | --browser-only] [--no-record]
+// --no-record: a regression run that leaves the G02c-01 record and state files as they are.
 import { spawn } from 'node:child_process';
-import { access, readFile, writeFile } from 'node:fs/promises';
+import { access, readFile, writeFile as writeRecord } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+const writeFile = process.argv.includes('--no-record') ? async () => {} : writeRecord;
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const mod = f => import(pathToFileURL(path.join(root, f)));
 const { WorldContext } = await mod('experiments/city-of-cities/WorldContext.js');

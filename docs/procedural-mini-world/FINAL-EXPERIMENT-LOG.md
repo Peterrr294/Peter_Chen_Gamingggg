@@ -34,7 +34,9 @@
 - **Update (2026-11-02, task WEB-01e by user instruction):** first public preview. Branch pushed; site commit `84488ab` deployed to Firebase Preview Channel `web01e-rc1` (https://gameeeee-zc626--web01e-rc1-jt90taw2.web.app), expiring after 14 days. Production Hosting and `main` are unchanged. Part II has three viewing levels. Pending review (entry WEB-01e).
 - **Update (2026-11-02, task WEB-01f by user instruction):** WEB-01 is complete as a stage and in Maintenance Mode ([summary](./A-City-of-Cities/WEB-01-Interactive-Research-Website.md)). Release details: entry WEB-01f.
 - **Update (2026-11-01, task G02c-01 by user instruction):** the multi-city scheduler can take its candidates from real road fronts (opt-in `growthMode: 'road'`), with Plan → Generate → Validate → Commit. Default G01 / G02 path unchanged. Verified on 6201 / 6202 / 6203, pending review (entry G02c-01).
-- **Current single task:** Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started.
+- **Update (2026-11-02, task G02c-02 by user instruction):** grade-aware road connection: ramps with sampled vertical alignment in the uncommitted chunk, joins continuous in height and graph; the old 3 m steps were all terrain seams (entry G02c-02). Default paths and G02c-01 unchanged. Pending review.
+- **Current single task:** G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate.
+- *Previous (superseded 2026-11-02, G02c-02):* "Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started."
 - *Previous (superseded 2026-11-01, G02c-01):* "Return to urban growth research: choose G02c / G03c (road-first growth and encounters in the multi-city scheduler). Website work: maintenance only."
 - *Previous (superseded 2026-11-02, WEB-01f):* "Human review of the preview and of [Algorithm-Review.md](./A-City-of-Cities/Algorithm-Review.md), a test on a real phone and an ordinary laptop; then a production decision."
 - *Previous (superseded 2026-11-02, WEB-01e):* "Human review of the site in a browser (WEB-01b to WEB-01d) and of the Inspector checklist; then a deployment decision; then G02c / G03c (road-first growth and encounters in the multi-city scheduler)."
@@ -1627,3 +1629,30 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - the site on `main` is unchanged.
 - **Review status:** Pending review.
 - **Next single task:** Review G02c-01, then decide the unjoined road ends before G03c.
+
+### G02c-02 — Grade-aware road growth and ramp connection
+
+- **Date / Stage / Single question:** 2026-11-02 / G02 / Can grown chunks continue roads in 3D (same point, same height, one graph), and say why not when they cannot?
+- **Reused:** G02c-01 scheduler, fronts, joins, rollback; terrain samplers; NetworkView ribbons.
+- **Changed:** new `RoadRampPlanner.js`, `RampView.js`, `verify-grade-aware-growth.mjs`, evidence `grade-aware-growth.json`; changed `WorldContext.js`, `MorphologicalGrowth.js`, `RoadGrowthFrontAdapter.js`, `WorldGrowthController.js`, `main.js`, `NetworkView.js`; `verify-road-driven-growth.mjs` gained `--no-record`. Baseline commit `e3457f4` (G02c-01).
+- **Seed / parameters:** 6202 replay of the G02c-01 run; free runs 6201 / 6202 / 6203; profiles 4 / 6 / 8 %, class factors 1 / 1.25 / 1.5, junction stand-off 12 m, earthwork limit 6 m, tolerance 0.05 m (all assumptions).
+- **Result:**
+  - Diagnosis: 97 of 97 steps are terrain seams, 0 m horizontal offset.
+  - Historic 41: 13 resolved, 23 insufficient length, 5 seam above 6 m.
+  - Historic 32 (joined with steps up to 2.92 m): 21 resolved, 11 now unjoined.
+  - Replay 6 %: 51 continuous joins, residual 0 m, max grade 7.48 %, 414 buildings vacated (2.1 %).
+  - Free runs stall: 6201 at 7 chunks, 6203 at 1, long run at 16 of 20 steps.
+  - Determinism, cache on / off, save / load / continue, failure injection, browser parity pass.
+- **Screenshots (seed 6202, chicagoGrid, task G02c-02):**
+  - ![Before](../assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-before.png)
+  - ![After](../assets/screenshots/procedural-mini-world/g02c-02-chicago-ramp-after.png)
+  - ![Long sections](../assets/screenshots/procedural-mini-world/g02c-02-long-sections.png)
+- **Open issues:**
+  - growth stalls under the strict rule;
+  - ramps stop before the first junction;
+  - vacated buildings;
+  - seams beside the corridor remain;
+  - `verify-inspector-docs.mjs` needs-review items (see below);
+  - Amsterdam 6203 core without roads.
+- **Review status:** Pending review. Note: [G02c-02](./A-City-of-Cities/G02c-02-Grade-Aware-Road-Growth.md).
+- **Next single task:** G03c-01 (user instruction), gate on this entry.

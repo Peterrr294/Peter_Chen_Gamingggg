@@ -21,6 +21,8 @@ import { networkOf, terrainOf } from '../growing-world/WorldGrowthController.js'
 import { CHUNK_SIZE, CITY_IDS, ORIGIN_PROFILES, SCHEMA_VERSION, STATE_KIND, chunkIdOf, citySeedOf, cityLabel, growthOf, morphologyOf, normaliseParams, urbanSeedOf } from './originConfig.js';
 import { placeOriginsSteps } from './OriginPlacement.js';
 import { normaliseGrowthParams } from './growthDNA.js';
+import { createSampler } from '../seed-terrain/NetworkGenerator.js';
+import { planVertical, rampSignature, vacateBuildings } from './RoadRampPlanner.js';
 
 const now = () => (globalThis.performance ?? Date).now();
 const round = (v, d = 3) => +Number(v).toFixed(d);
@@ -135,9 +137,16 @@ export class WorldContext {
     const t2 = now();
     const city = ctx ? growthUrban(terrain, net, chunk.generationParameters.urbanSeed, ctx) : generateUrbanLayer(terrain, net, net.network, null, { worldSeed: chunk.generationParameters.urbanSeed });
     const t3 = now();
+    // G02c-02: vertical alignment of this uncommitted chunk. Plan geometry, blocks and parcels stay those of the generated network.
+    const vertical = ctx?.vertical ? planVertical(net.network, terrain.fields, createSampler(terrain.fields), { ...ctx.vertical, chunkId }) : null;
+    let vacated = [];
+    if (vertical) {
+      city.network = vertical.network;
+      ({ buildings: city.buildings, vacated } = vacateBuildings(city.buildings, terrain.fields, vertical.height));
+    }
     const outputs = {
       resolvedDNA: city.cityMatch.selectedDNA.id, fitScore: city.cityMatch.selectedDNA.fitScore,
-      signatures: { height: terrain.fields.stats.heightSignature, water: terrain.fields.stats.waterSignature, network: city.network.signature, blocks: city.blocks.signature, parcels: city.parcels.signature, buildings: city.buildings.signature },
+      signatures: { height: terrain.fields.stats.heightSignature, water: terrain.fields.stats.waterSignature, network: city.network.signature, blocks: city.blocks.signature, parcels: city.parcels.signature, buildings: city.buildings.signature, ...(vertical ? { ramps: rampSignature(vertical.records, vacated) } : {}) },
       counts: { roadKm: round(city.network.stats.roadLength / 1000, 2), networkEdges: city.network.edges.length, blocks: city.blocks.stats.blocks, parcels: city.parcels.stats.parcels, buildings: city.buildings.stats.buildings },
       ms: { terrain: Math.round(t1 - t0), network: Math.round(t2 - t1), urban: Math.round(t3 - t2), total: Math.round(t3 - t0) },
       // G02: road / canal ports per side (growth infrastructure term) and 8 m edge profiles (conflict records).
@@ -147,12 +156,15 @@ export class WorldContext {
       boundaryBlocks: boundaryBlocks(city.blocks, terrain.fields.grid),
       roadGraph: city.network.edges.filter(e => e.kind !== 'canal').map(e => [e.from, e.to, Math.round(e.length), e.roadClass]), // G02b: city-level reachability
       morph: morphologyMetrics(city, terrain.fields.grid),
+      ...(vertical ? { ramps: { profile: ctx.vertical.profile, records: vertical.records, vacatedBuildings: vacated, corridorCells: vertical.corridorCells.size } } : {}),
       areas: { builtFootprintM2: Math.round((city.buildings.buildings ?? []).reduce((s, x) => s + (x.footprintArea ?? 0), 0)), parcelM2: Math.round((city.parcels.parcels ?? []).reduce((s, x) => s + (x.area ?? 0), 0)) },
     };
     this.chunks.set(chunkId, { ...chunk, generationStatus: 'generated', outputs });
     const origin = this.cities.get(chunk.cityId);
     if (chunk.role === 'core') this.cities.set(chunk.cityId, { ...origin, generationStatus: 'core generated' });
-    return { chunk: this.chunks.get(chunkId), layers: { terrain, net, city } };
+    // The page draws the corridor; every measurement above keeps the world terrain.
+    const shown = vertical ? { ...terrain, fields: { ...terrain.fields, height: vertical.height } } : terrain;
+    return { chunk: this.chunks.get(chunkId), layers: { terrain: shown, net, city } };
   }
 
   // ---------- G02: growth chunks ----------
@@ -229,7 +241,7 @@ export class WorldContext {
         expectedSignatures: c.outputs?.signatures ?? c.expectedSignatures ?? null,
       })),
       placement: this.placement ? { placementVersion: this.placement.placementVersion ?? 1, order: this.placement.order, failures: this.placement.failures } : null,
-      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
+      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), ...(this.growth.gradeProfile ? { gradeProfile: this.growth.gradeProfile, candidateCache: this.growth.candidateCache ?? {} } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
     };
   }
 
@@ -256,7 +268,7 @@ export class WorldContext {
     }
     // States saved before placement v2 keep their stored origins (cells are restored, never re-placed).
     world.placement = saved.placement ? { placementVersion: 1, ...saved.placement, placed: [], candidates: null } : null;
-    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}) };
+    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}), ...(saved.growth.gradeProfile ? { gradeProfile: saved.growth.gradeProfile, candidateCache: { ...(saved.growth.candidateCache ?? {}) } } : {}) };
     return world;
   }
 }
