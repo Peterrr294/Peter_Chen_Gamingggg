@@ -1,0 +1,2113 @@
+{
+  "task": "G03c-03 Urban Interface & Morphological Transition",
+  "testedAt": "2026-11-03T05:54:30.201Z",
+  "node": {
+    "gate": {
+      "g02c": {
+        "roadInheritance": "verified (G02c-01, G02c-02)",
+        "ramps3d": "51 of 51 joins continuous"
+      },
+      "g03c01": {
+        "encountersFromRealGrowth": true,
+        "adjacentOnKnownSeeds": 1
+      },
+      "g03c02": {
+        "naturalConnectionsBuilt": 0,
+        "controlledConstruction": "committed (no core-to-core path)",
+        "verdict": "no verified inter-city connection: inter-city morphology stays a proposal"
+      }
+    },
+    "phaseA": {
+      "chicago6202History": {
+        "source": "world-6202-g02c-step12-state.json (G02c-01 run, the reported 171 m / 38 m case)",
+        "cityId": "chicagoGrid",
+        "chunks": 6,
+        "buildings": 12195,
+        "heightsReproduced": "12195 of 12195",
+        "chunkHeights": {
+          "c_1_2": {
+            "role": "core",
+            "maxM": 171,
+            "meanM": 39.4,
+            "buildings": 2047
+          },
+          "c_1_3": {
+            "role": "growth",
+            "maxM": 38,
+            "meanM": 19.9,
+            "buildings": 2019
+          },
+          "c_2_2": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.4,
+            "buildings": 2036
+          },
+          "c_0_2": {
+            "role": "growth",
+            "maxM": 30.4,
+            "meanM": 19.7,
+            "buildings": 2012
+          },
+          "c_0_3": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.4,
+            "buildings": 2000
+          },
+          "c_-1_2": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.5,
+            "buildings": 2081
+          }
+        },
+        "heightSources": {
+          "road / area led": 11303,
+          "centre-led (centre factor ≥ 0.05)": 892
+        },
+        "edges": [
+          {
+            "edge": "c_1_2|c_1_3",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 154,
+              "meanM": 30.05,
+              "p50M": 26.599999999999998,
+              "p90M": 49.4,
+              "maxM": 60.8,
+              "meanDistanceToCentreM": 429
+            },
+            "sideB": {
+              "buildings": 223,
+              "meanM": 23.04,
+              "p50M": 22.799999999999997,
+              "p90M": 30.4,
+              "maxM": 38,
+              "meanDistanceToCentreM": 489
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "300-400",
+                "meanA": 32.53,
+                "meanB": 28,
+                "differenceM": -4.53
+              },
+              {
+                "ringM": "400-500",
+                "meanA": 21.49,
+                "meanB": 22.32,
+                "differenceM": 0.83
+              },
+              {
+                "ringM": "500-600",
+                "meanA": 19.69,
+                "meanB": 19.34,
+                "differenceM": -0.35
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 19.48,
+                "meanB": 19.97,
+                "differenceM": 0.49
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 19.23,
+                "meanB": 19.25,
+                "differenceM": 0.02
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.1,
+                "meanB": 19.87,
+                "differenceM": 0.77
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.14,
+                "meanB": 19.26,
+                "differenceM": 0.13
+              }
+            ],
+            "maxSameDistanceDifferenceM": 4.53,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.52,
+                0.518
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_1_2|c_2_2",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 206,
+              "meanM": 19.35,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 747
+            },
+            "sideB": {
+              "buildings": 188,
+              "meanM": 19.26,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 22.799999999999997,
+              "meanDistanceToCentreM": 841
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "700-800",
+                "meanA": 19.23,
+                "meanB": 19.41,
+                "differenceM": 0.18
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.1,
+                "meanB": 19.43,
+                "differenceM": 0.33
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.14,
+                "meanB": 19.46,
+                "differenceM": 0.32
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.33,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.52,
+                0.516
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_0_2|c_0_3",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 142,
+              "meanM": 19.27,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 892
+            },
+            "sideB": {
+              "buildings": 225,
+              "meanM": 19.17,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 919
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "500-600",
+                "meanA": 19.76,
+                "meanB": 19.46,
+                "differenceM": -0.29
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 19.47,
+                "meanB": 19.38,
+                "differenceM": -0.09
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 19.55,
+                "meanB": 19.63,
+                "differenceM": 0.07
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.42,
+                "meanB": 19.44,
+                "differenceM": 0.03
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.32,
+                "meanB": 19.38,
+                "differenceM": 0.06
+              },
+              {
+                "ringM": "1000-1100",
+                "meanA": 19.35,
+                "meanB": 19.39,
+                "differenceM": 0.04
+              },
+              {
+                "ringM": "1100-1200",
+                "meanA": 19.45,
+                "meanB": 19.6,
+                "differenceM": 0.15
+              },
+              {
+                "ringM": "1200-1300",
+                "meanA": 19.42,
+                "meanB": 19.38,
+                "differenceM": -0.04
+              },
+              {
+                "ringM": "1300-1400",
+                "meanA": 19.59,
+                "meanB": 19.43,
+                "differenceM": -0.17
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 19.43,
+                "meanB": 19.5,
+                "differenceM": 0.07
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.29,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                15.63,
+                15.63
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.514,
+                0.515
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_1_2|c_0_2",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 134,
+              "meanM": 31.36,
+              "p50M": 26.599999999999998,
+              "p90M": 49.4,
+              "maxM": 57,
+              "meanDistanceToCentreM": 430
+            },
+            "sideB": {
+              "buildings": 206,
+              "meanM": 22.06,
+              "p50M": 22.799999999999997,
+              "p90M": 26.599999999999998,
+              "maxM": 30.4,
+              "meanDistanceToCentreM": 513
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "300-400",
+                "meanA": 32.53,
+                "meanB": 26.91,
+                "differenceM": -5.62
+              },
+              {
+                "ringM": "400-500",
+                "meanA": 21.49,
+                "meanB": 21.34,
+                "differenceM": -0.15
+              },
+              {
+                "ringM": "500-600",
+                "meanA": 19.69,
+                "meanB": 19.76,
+                "differenceM": 0.07
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 19.48,
+                "meanB": 19.47,
+                "differenceM": -0.01
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 19.23,
+                "meanB": 19.55,
+                "differenceM": 0.33
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.1,
+                "meanB": 19.42,
+                "differenceM": 0.32
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.14,
+                "meanB": 19.32,
+                "differenceM": 0.19
+              }
+            ],
+            "maxSameDistanceDifferenceM": 5.62,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                15.63
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.52,
+                0.514
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_1_3|c_0_3",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 137,
+              "meanM": 20.22,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 892
+            },
+            "sideB": {
+              "buildings": 205,
+              "meanM": 19.54,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 915
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "500-600",
+                "meanA": 19.34,
+                "meanB": 19.46,
+                "differenceM": 0.12
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 19.97,
+                "meanB": 19.38,
+                "differenceM": -0.59
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 19.25,
+                "meanB": 19.63,
+                "differenceM": 0.37
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.87,
+                "meanB": 19.44,
+                "differenceM": -0.43
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.26,
+                "meanB": 19.38,
+                "differenceM": 0.12
+              },
+              {
+                "ringM": "1000-1100",
+                "meanA": 20.01,
+                "meanB": 19.39,
+                "differenceM": -0.62
+              },
+              {
+                "ringM": "1100-1200",
+                "meanA": 19.34,
+                "meanB": 19.6,
+                "differenceM": 0.26
+              },
+              {
+                "ringM": "1200-1300",
+                "meanA": 19.83,
+                "meanB": 19.38,
+                "differenceM": -0.44
+              },
+              {
+                "ringM": "1300-1400",
+                "meanA": 18.67,
+                "meanB": 19.43,
+                "differenceM": 0.76
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 17.87,
+                "meanB": 19.5,
+                "differenceM": 1.63
+              }
+            ],
+            "maxSameDistanceDifferenceM": 1.63,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                15.63
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.518,
+                0.515
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_0_2|c_-1_2",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 208,
+              "meanM": 19.58,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 1333
+            },
+            "sideB": {
+              "buildings": 149,
+              "meanM": 20.2,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 1437
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "1300-1400",
+                "meanA": 19.59,
+                "meanB": 23.05,
+                "differenceM": 3.46
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 19.43,
+                "meanB": 19.36,
+                "differenceM": -0.07
+              }
+            ],
+            "maxSameDistanceDifferenceM": 3.46,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                15.63,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.514,
+                0.524
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          }
+        ]
+      },
+      "fez6202History": {
+        "cityId": "fezOrganicCore",
+        "chunks": 3,
+        "buildings": 2561,
+        "heightsReproduced": "2561 of 2561",
+        "chunkHeights": {
+          "c_5_1": {
+            "role": "core",
+            "maxM": 9.600000000000001,
+            "meanM": 6.1,
+            "buildings": 908
+          },
+          "c_5_0": {
+            "role": "growth",
+            "maxM": 6.4,
+            "meanM": 4.5,
+            "buildings": 832
+          },
+          "c_5_-1": {
+            "role": "growth",
+            "maxM": 6.4,
+            "meanM": 4.7,
+            "buildings": 821
+          }
+        },
+        "heightSources": {
+          "centre-led (centre factor ≥ 0.05)": 823,
+          "road / area led": 749,
+          "DNA minimum": 989
+        },
+        "edges": [
+          {
+            "edge": "c_5_1|c_5_0",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 52,
+              "meanM": 4.62,
+              "p50M": 3.2,
+              "p90M": 6.4,
+              "maxM": 6.4,
+              "meanDistanceToCentreM": 583
+            },
+            "sideB": {
+              "buildings": 25,
+              "meanM": 5.89,
+              "p50M": 6.4,
+              "p90M": 6.4,
+              "maxM": 6.4,
+              "meanDistanceToCentreM": 647
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "600-700",
+                "meanA": 3.46,
+                "meanB": 6.4,
+                "differenceM": 2.94
+              }
+            ],
+            "maxSameDistanceDifferenceM": 2.94,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                1.99,
+                1.6
+              ],
+              "roadDensityKmPerKm2": [
+                6.25,
+                5.72
+              ],
+              "blockAreaMedianM2": [
+                17479,
+                33914
+              ],
+              "parcelFrontageMedianM": [
+                9,
+                9
+              ],
+              "buildingCoverage": [
+                0.58,
+                0.565
+              ],
+              "grid": "no fixed grid"
+            }
+          },
+          {
+            "edge": "c_5_0|c_5_-1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 45,
+              "meanM": 4.69,
+              "p50M": 3.2,
+              "p90M": 6.4,
+              "maxM": 6.4,
+              "meanDistanceToCentreM": 1539
+            },
+            "sideB": {
+              "buildings": 39,
+              "meanM": 5.17,
+              "p50M": 6.4,
+              "p90M": 6.4,
+              "maxM": 6.4,
+              "meanDistanceToCentreM": 1681
+            },
+            "sameDistanceRings": [],
+            "maxSameDistanceDifferenceM": null,
+            "reading": "no common distance to compare",
+            "fabric": {
+              "orientationDeg": [
+                1.6,
+                87.79
+              ],
+              "roadDensityKmPerKm2": [
+                5.72,
+                5.8
+              ],
+              "blockAreaMedianM2": [
+                33914,
+                16396
+              ],
+              "parcelFrontageMedianM": [
+                9,
+                9
+              ],
+              "buildingCoverage": [
+                0.565,
+                0.574
+              ],
+              "grid": "no fixed grid"
+            }
+          }
+        ]
+      },
+      "coreStability": {
+        "chunk": "c_1_2",
+        "buildings": 2047,
+        "identicalAfter12Steps": true
+      },
+      "chicago6202Grade": {
+        "cityId": "chicagoGrid",
+        "chunks": 6,
+        "buildings": 12000,
+        "heightsReproduced": "12000 of 12000",
+        "chunkHeights": {
+          "c_1_2": {
+            "role": "core",
+            "maxM": 171,
+            "meanM": 39.4,
+            "buildings": 2047
+          },
+          "c_1_3": {
+            "role": "growth",
+            "maxM": 30.4,
+            "meanM": 19.7,
+            "buildings": 1927
+          },
+          "c_2_2": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.3,
+            "buildings": 2019
+          },
+          "c_2_1": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.5,
+            "buildings": 1984
+          },
+          "c_3_1": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.5,
+            "buildings": 2038
+          },
+          "c_3_0": {
+            "role": "growth",
+            "maxM": 26.599999999999998,
+            "meanM": 19.5,
+            "buildings": 1985
+          }
+        },
+        "heightSources": {
+          "road / area led": 11181,
+          "centre-led (centre factor ≥ 0.05)": 819
+        },
+        "edges": [
+          {
+            "edge": "c_1_2|c_1_3",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 154,
+              "meanM": 30.05,
+              "p50M": 26.599999999999998,
+              "p90M": 49.4,
+              "maxM": 60.8,
+              "meanDistanceToCentreM": 429
+            },
+            "sideB": {
+              "buildings": 131,
+              "meanM": 21.93,
+              "p50M": 22.799999999999997,
+              "p90M": 26.599999999999998,
+              "maxM": 30.4,
+              "meanDistanceToCentreM": 514
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "300-400",
+                "meanA": 32.53,
+                "meanB": 25.04,
+                "differenceM": -7.5
+              },
+              {
+                "ringM": "400-500",
+                "meanA": 21.49,
+                "meanB": 22.5,
+                "differenceM": 1.02
+              },
+              {
+                "ringM": "500-600",
+                "meanA": 19.69,
+                "meanB": 19.36,
+                "differenceM": -0.32
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 19.48,
+                "meanB": 20.03,
+                "differenceM": 0.55
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 19.23,
+                "meanB": 19.26,
+                "differenceM": 0.03
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.1,
+                "meanB": 19.87,
+                "differenceM": 0.77
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.14,
+                "meanB": 19.26,
+                "differenceM": 0.13
+              }
+            ],
+            "maxSameDistanceDifferenceM": 7.5,
+            "reading": "possible reset: heights differ at the same distance",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.52,
+                0.492
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_1_2|c_2_2",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 206,
+              "meanM": 19.35,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 747
+            },
+            "sideB": {
+              "buildings": 171,
+              "meanM": 18.91,
+              "p50M": 19,
+              "p90M": 19,
+              "maxM": 22.799999999999997,
+              "meanDistanceToCentreM": 845
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "700-800",
+                "meanA": 19.23,
+                "meanB": 19,
+                "differenceM": -0.23
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 19.1,
+                "meanB": 19.33,
+                "differenceM": 0.24
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 19.14,
+                "meanB": 19.39,
+                "differenceM": 0.26
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.26,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.52,
+                0.512
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_2_2|c_2_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 230,
+              "meanM": 18.64,
+              "p50M": 19,
+              "p90M": 19,
+              "maxM": 19,
+              "meanDistanceToCentreM": 1385
+            },
+            "sideB": {
+              "buildings": 125,
+              "meanM": 21.01,
+              "p50M": 22.799999999999997,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 1467
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "1000-1100",
+                "meanA": 19.52,
+                "meanB": 20.75,
+                "differenceM": 1.24
+              },
+              {
+                "ringM": "1100-1200",
+                "meanA": 19.42,
+                "meanB": 19.4,
+                "differenceM": -0.01
+              },
+              {
+                "ringM": "1200-1300",
+                "meanA": 19.33,
+                "meanB": 19.82,
+                "differenceM": 0.49
+              },
+              {
+                "ringM": "1300-1400",
+                "meanA": 19.38,
+                "meanB": 19.67,
+                "differenceM": 0.29
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 19.47,
+                "meanB": 19.45,
+                "differenceM": -0.02
+              },
+              {
+                "ringM": "1500-1600",
+                "meanA": 19.39,
+                "meanB": 19.57,
+                "differenceM": 0.18
+              },
+              {
+                "ringM": "1600-1700",
+                "meanA": 19.15,
+                "meanB": 19.62,
+                "differenceM": 0.47
+              },
+              {
+                "ringM": "1700-1800",
+                "meanA": 19.24,
+                "meanB": 19.62,
+                "differenceM": 0.38
+              },
+              {
+                "ringM": "1800-1900",
+                "meanA": 18.24,
+                "meanB": 19.51,
+                "differenceM": 1.27
+              }
+            ],
+            "maxSameDistanceDifferenceM": 1.27,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.512,
+                0.511
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_2_1|c_3_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 199,
+              "meanM": 18.81,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 2086
+            },
+            "sideB": {
+              "buildings": 199,
+              "meanM": 19.61,
+              "p50M": 19,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 2162
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "1900-2000",
+                "meanA": 19.34,
+                "meanB": 19.43,
+                "differenceM": 0.09
+              },
+              {
+                "ringM": "2000-2100",
+                "meanA": 19.41,
+                "meanB": 19.52,
+                "differenceM": 0.11
+              },
+              {
+                "ringM": "2100-2200",
+                "meanA": 19.03,
+                "meanB": 19.5,
+                "differenceM": 0.47
+              },
+              {
+                "ringM": "2200-2300",
+                "meanA": 19.35,
+                "meanB": 19.5,
+                "differenceM": 0.15
+              },
+              {
+                "ringM": "2300-2400",
+                "meanA": 18.79,
+                "meanB": 19.61,
+                "differenceM": 0.82
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.82,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.511,
+                0.526
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_3_1|c_3_0",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 211,
+              "meanM": 18.87,
+              "p50M": 19,
+              "p90M": 19,
+              "maxM": 19,
+              "meanDistanceToCentreM": 2799
+            },
+            "sideB": {
+              "buildings": 178,
+              "meanM": 20.77,
+              "p50M": 22.799999999999997,
+              "p90M": 22.799999999999997,
+              "maxM": 26.599999999999998,
+              "meanDistanceToCentreM": 2881
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "2500-2600",
+                "meanA": 19.71,
+                "meanB": 20.09,
+                "differenceM": 0.38
+              },
+              {
+                "ringM": "2600-2700",
+                "meanA": 19.51,
+                "meanB": 19.63,
+                "differenceM": 0.12
+              },
+              {
+                "ringM": "2700-2800",
+                "meanA": 19.53,
+                "meanB": 19.83,
+                "differenceM": 0.3
+              },
+              {
+                "ringM": "2800-2900",
+                "meanA": 19.44,
+                "meanB": 19.46,
+                "differenceM": 0.02
+              },
+              {
+                "ringM": "2900-3000",
+                "meanA": 19.41,
+                "meanB": 19.71,
+                "differenceM": 0.3
+              },
+              {
+                "ringM": "3000-3100",
+                "meanA": 19.32,
+                "meanB": 19.68,
+                "differenceM": 0.36
+              },
+              {
+                "ringM": "3100-3200",
+                "meanA": 19.71,
+                "meanB": 19.64,
+                "differenceM": -0.07
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.38,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                14.65,
+                14.65
+              ],
+              "blockAreaMedianM2": [
+                13590,
+                13590
+              ],
+              "parcelFrontageMedianM": [
+                7,
+                7
+              ],
+              "buildingCoverage": [
+                0.526,
+                0.52
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          }
+        ]
+      },
+      "manhattan6202Grade": {
+        "cityId": "manhattanGrid",
+        "chunks": 6,
+        "buildings": 9938,
+        "heightsReproduced": "9938 of 9938",
+        "chunkHeights": {
+          "c_-4_0": {
+            "role": "core",
+            "maxM": 115.2,
+            "meanM": 63.9,
+            "buildings": 1740
+          },
+          "c_-4_1": {
+            "role": "growth",
+            "maxM": 54,
+            "meanM": 38.9,
+            "buildings": 1621
+          },
+          "c_-3_1": {
+            "role": "growth",
+            "maxM": 50.4,
+            "meanM": 38.4,
+            "buildings": 1640
+          },
+          "c_-2_1": {
+            "role": "growth",
+            "maxM": 50.4,
+            "meanM": 38.6,
+            "buildings": 1611
+          },
+          "c_-3_2": {
+            "role": "growth",
+            "maxM": 50.4,
+            "meanM": 38.5,
+            "buildings": 1629
+          },
+          "c_-4_-1": {
+            "role": "growth",
+            "maxM": 57.6,
+            "meanM": 39.2,
+            "buildings": 1697
+          }
+        },
+        "heightSources": {
+          "centre-led (centre factor ≥ 0.05)": 1950,
+          "road / area led": 7988
+        },
+        "edges": [
+          {
+            "edge": "c_-4_0|c_-4_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 173,
+              "meanM": 49.03,
+              "p50M": 46.800000000000004,
+              "p90M": 57.6,
+              "maxM": 68.4,
+              "meanDistanceToCentreM": 540
+            },
+            "sideB": {
+              "buildings": 88,
+              "meanM": 40.58,
+              "p50M": 39.6,
+              "p90M": 46.800000000000004,
+              "maxM": 46.800000000000004,
+              "meanDistanceToCentreM": 650
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "500-600",
+                "meanA": 47.34,
+                "meanB": 44.4,
+                "differenceM": -2.94
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 41.93,
+                "meanB": 42.37,
+                "differenceM": 0.44
+              }
+            ],
+            "maxSameDistanceDifferenceM": 2.94,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12197,
+                12197
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.735,
+                0.693
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_-3_1|c_-3_2",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 143,
+              "meanM": 37.41,
+              "p50M": 36,
+              "p90M": 43.2,
+              "maxM": 46.800000000000004,
+              "meanDistanceToCentreM": 1813
+            },
+            "sideB": {
+              "buildings": 113,
+              "meanM": 38.64,
+              "p50M": 39.6,
+              "p90M": 43.2,
+              "maxM": 46.800000000000004,
+              "meanDistanceToCentreM": 1913
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "1700-1800",
+                "meanA": 38.28,
+                "meanB": 38.99,
+                "differenceM": 0.71
+              },
+              {
+                "ringM": "1800-1900",
+                "meanA": 38.29,
+                "meanB": 38.71,
+                "differenceM": 0.42
+              },
+              {
+                "ringM": "1900-2000",
+                "meanA": 38.19,
+                "meanB": 38.72,
+                "differenceM": 0.52
+              },
+              {
+                "ringM": "2000-2100",
+                "meanA": 38.36,
+                "meanB": 38.37,
+                "differenceM": 0.01
+              }
+            ],
+            "maxSameDistanceDifferenceM": 0.71,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12197,
+                12197
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.721,
+                0.713
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_-4_1|c_-3_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 172,
+              "meanM": 38.85,
+              "p50M": 39.6,
+              "p90M": 43.2,
+              "maxM": 50.4,
+              "meanDistanceToCentreM": 1154
+            },
+            "sideB": {
+              "buildings": 143,
+              "meanM": 38.64,
+              "p50M": 39.6,
+              "p90M": 43.2,
+              "maxM": 50.4,
+              "meanDistanceToCentreM": 1161
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "700-800",
+                "meanA": 39.31,
+                "meanB": 40.8,
+                "differenceM": 1.49
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 39.54,
+                "meanB": 38.86,
+                "differenceM": -0.68
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 38.04,
+                "meanB": 38.28,
+                "differenceM": 0.24
+              },
+              {
+                "ringM": "1000-1100",
+                "meanA": 38.78,
+                "meanB": 38.61,
+                "differenceM": -0.16
+              },
+              {
+                "ringM": "1100-1200",
+                "meanA": 37.98,
+                "meanB": 38.53,
+                "differenceM": 0.55
+              },
+              {
+                "ringM": "1200-1300",
+                "meanA": 39.1,
+                "meanB": 38.46,
+                "differenceM": -0.64
+              },
+              {
+                "ringM": "1300-1400",
+                "meanA": 37.87,
+                "meanB": 38.64,
+                "differenceM": 0.77
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 38.5,
+                "meanB": 38.41,
+                "differenceM": -0.09
+              },
+              {
+                "ringM": "1500-1600",
+                "meanA": 37.05,
+                "meanB": 38.36,
+                "differenceM": 1.32
+              }
+            ],
+            "maxSameDistanceDifferenceM": 1.49,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12197,
+                12197
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.693,
+                0.721
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_-3_1|c_-2_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 156,
+              "meanM": 38.03,
+              "p50M": 39.6,
+              "p90M": 43.2,
+              "maxM": 50.4,
+              "meanDistanceToCentreM": 1798
+            },
+            "sideB": {
+              "buildings": 144,
+              "meanM": 39,
+              "p50M": 39.6,
+              "p90M": 46.800000000000004,
+              "maxM": 50.4,
+              "meanDistanceToCentreM": 1890
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "1600-1700",
+                "meanA": 38.47,
+                "meanB": 41.51,
+                "differenceM": 3.04
+              },
+              {
+                "ringM": "1700-1800",
+                "meanA": 38.28,
+                "meanB": 38.25,
+                "differenceM": -0.03
+              },
+              {
+                "ringM": "1800-1900",
+                "meanA": 38.29,
+                "meanB": 38.95,
+                "differenceM": 0.66
+              },
+              {
+                "ringM": "1900-2000",
+                "meanA": 38.19,
+                "meanB": 39.63,
+                "differenceM": 1.44
+              },
+              {
+                "ringM": "2000-2100",
+                "meanA": 38.36,
+                "meanB": 38.13,
+                "differenceM": -0.24
+              }
+            ],
+            "maxSameDistanceDifferenceM": 3.04,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                16.6
+              ],
+              "blockAreaMedianM2": [
+                12197,
+                12197
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.721,
+                0.725
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_-4_0|c_-4_-1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 168,
+              "meanM": 46.76,
+              "p50M": 46.800000000000004,
+              "p90M": 54,
+              "maxM": 61.2,
+              "meanDistanceToCentreM": 549
+            },
+            "sideB": {
+              "buildings": 166,
+              "meanM": 44.59,
+              "p50M": 46.800000000000004,
+              "p90M": 50.4,
+              "maxM": 57.6,
+              "meanDistanceToCentreM": 642
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "500-600",
+                "meanA": 47.34,
+                "meanB": 48.44,
+                "differenceM": 1.11
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 41.93,
+                "meanB": 42.69,
+                "differenceM": 0.76
+              }
+            ],
+            "maxSameDistanceDifferenceM": 1.11,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12197,
+                12197
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.735,
+                0.726
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          }
+        ]
+      },
+      "saveLoadLineage": "identical (seed 6202, 6 % run, Chicago)",
+      "manhattan6201G02b": {
+        "cityId": "manhattanGrid",
+        "chunks": 3,
+        "buildings": 5061,
+        "heightsReproduced": "5061 of 5061",
+        "chunkHeights": {
+          "c_-2_0": {
+            "role": "core",
+            "maxM": 115.2,
+            "meanM": 63.6,
+            "buildings": 1637
+          },
+          "c_-1_0": {
+            "role": "growth",
+            "maxM": 57.6,
+            "meanM": 39.1,
+            "buildings": 1687
+          },
+          "c_-1_1": {
+            "role": "growth",
+            "maxM": 50.4,
+            "meanM": 38.5,
+            "buildings": 1737
+          }
+        },
+        "heightSources": {
+          "centre-led (centre factor ≥ 0.05)": 1643,
+          "road / area led": 3418
+        },
+        "edges": [
+          {
+            "edge": "c_-1_0|c_-1_1",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 139,
+              "meanM": 38.9,
+              "p50M": 39.6,
+              "p90M": 46.800000000000004,
+              "maxM": 54,
+              "meanDistanceToCentreM": 1105
+            },
+            "sideB": {
+              "buildings": 191,
+              "meanM": 38.51,
+              "p50M": 39.6,
+              "p90M": 43.2,
+              "maxM": 50.4,
+              "meanDistanceToCentreM": 1127
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "700-800",
+                "meanA": 39.78,
+                "meanB": 40.18,
+                "differenceM": 0.4
+              },
+              {
+                "ringM": "800-900",
+                "meanA": 38.93,
+                "meanB": 38.86,
+                "differenceM": -0.07
+              },
+              {
+                "ringM": "900-1000",
+                "meanA": 38.69,
+                "meanB": 38.17,
+                "differenceM": -0.52
+              },
+              {
+                "ringM": "1000-1100",
+                "meanA": 38.21,
+                "meanB": 38.92,
+                "differenceM": 0.71
+              },
+              {
+                "ringM": "1100-1200",
+                "meanA": 38.45,
+                "meanB": 38.77,
+                "differenceM": 0.32
+              },
+              {
+                "ringM": "1200-1300",
+                "meanA": 38.81,
+                "meanB": 38.62,
+                "differenceM": -0.2
+              },
+              {
+                "ringM": "1300-1400",
+                "meanA": 38.32,
+                "meanB": 38.56,
+                "differenceM": 0.24
+              },
+              {
+                "ringM": "1400-1500",
+                "meanA": 38.77,
+                "meanB": 38.58,
+                "differenceM": -0.2
+              },
+              {
+                "ringM": "1500-1600",
+                "meanA": 38.57,
+                "meanB": 38.08,
+                "differenceM": -0.5
+              },
+              {
+                "ringM": "1600-1700",
+                "meanA": 37.73,
+                "meanB": 38.76,
+                "differenceM": 1.03
+              }
+            ],
+            "maxSameDistanceDifferenceM": 1.03,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12234,
+                12234
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.723,
+                0.733
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          },
+          {
+            "edge": "c_-2_0|c_-1_0",
+            "bandM": 100,
+            "sideA": {
+              "buildings": 153,
+              "meanM": 46.42,
+              "p50M": 46.800000000000004,
+              "p90M": 54,
+              "maxM": 64.8,
+              "meanDistanceToCentreM": 585
+            },
+            "sideB": {
+              "buildings": 184,
+              "meanM": 41.97,
+              "p50M": 39.6,
+              "p90M": 46.800000000000004,
+              "maxM": 57.6,
+              "meanDistanceToCentreM": 671
+            },
+            "sameDistanceRings": [
+              {
+                "ringM": "500-600",
+                "meanA": 47.58,
+                "meanB": 44.35,
+                "differenceM": -3.24
+              },
+              {
+                "ringM": "600-700",
+                "meanA": 42.13,
+                "meanB": 42.14,
+                "differenceM": 0.01
+              },
+              {
+                "ringM": "700-800",
+                "meanA": 39.86,
+                "meanB": 39.78,
+                "differenceM": -0.07
+              }
+            ],
+            "maxSameDistanceDifferenceM": 3.24,
+            "reading": "continuous field: heights differ by distance to the centre, not by chunk",
+            "fabric": {
+              "orientationDeg": [
+                0,
+                0
+              ],
+              "roadDensityKmPerKm2": [
+                17.58,
+                17.58
+              ],
+              "blockAreaMedianM2": [
+                12234,
+                12234
+              ],
+              "parcelFrontageMedianM": [
+                14,
+                14
+              ],
+              "buildingCoverage": [
+                0.723,
+                0.723
+              ],
+              "grid": {
+                "axis": [
+                  0,
+                  0
+                ],
+                "inherited": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "interfaces": {
+      "list": [
+        {
+          "source": "G03c-01 run, seed 6201",
+          "encounterId": "enc:amsterdamCanalRing|veniceWaterNetwork:c_0_3:c_0_6",
+          "origin": "placement",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching, constrained cell between)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6201",
+          "encounterId": "enc:fezOrganicCore|manhattanGrid:c_-1_-2:c_-2_0",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:chicagoGrid|veniceWaterNetwork:c_1_2:c_1_-1",
+          "origin": "placement",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:fezOrganicCore|lisbonHillCore:c_5_0:c_5_-3",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching, constrained cell between)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "adaptationProposed",
+          "classification": "B adjacent but disconnected",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:amsterdamCanalRing|manhattanGrid:c_-5_-3:c_-4_-1",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:fezOrganicCore|veniceWaterNetwork:c_4_-1:c_1_-1",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching, constrained cell between)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-01 run, seed 6202",
+          "encounterId": "enc:chicagoGrid|manhattanGrid:c_1_3:c_-2_3",
+          "origin": "growth",
+          "states": {
+            "approaching": true,
+            "adjacent": false,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "D unresolved (approaching, constrained cell between)",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-02 regrowth with inter-city connection, seed 6202",
+          "encounterId": "enc:chicagoGrid|fezOrganicCore:c_2_1:c_5_1",
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "unresolved",
+          "classification": "B adjacent but disconnected",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-02 regrowth with inter-city connection, seed 6209",
+          "encounterId": "enc:chicagoGrid|fezOrganicCore:c_-1_-3:c_-1_0",
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": false,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "adaptationProposed",
+          "classification": "B adjacent but disconnected",
+          "publicSpace": "none: no verified road connection"
+        },
+        {
+          "source": "G03c-02 regrowth with inter-city connection, seed 6215",
+          "encounterId": "enc:chicagoGrid|fezOrganicCore:c_4_-1:c_1_-1",
+          "states": {
+            "approaching": true,
+            "adjacent": true,
+            "constrained": true,
+            "connectionCandidate": false,
+            "connected": false
+          },
+          "relationshipStatus": "separationAccepted",
+          "classification": "C geographic separation",
+          "publicSpace": "none: no verified road connection"
+        }
+      ],
+      "counts": {
+        "D unresolved (approaching, constrained cell between)": 4,
+        "D unresolved (approaching)": 3,
+        "B adjacent but disconnected": 3,
+        "C geographic separation": 1
+      },
+      "publicSpaceNodes": 0,
+      "reason": "Road Junction Public Node requires a verified inter-city connection; none exists in real growth"
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "axonometric": "docs/assets/screenshots/procedural-mini-world/g03c-03-chicago-axonometric.png",
+      "profile": "docs/assets/screenshots/procedural-mini-world/g03c-03-chicago-height-profile.png"
+    },
+    "captions": {
+      "axonometric": "seed 6202, G02c-01 state step 12, Chicago core c_1_2 (back) and growth c_1_3 (front), chunk borders hidden, camera focusPoint 1500 m on the shared edge midpoint"
+    },
+    "errors": []
+  },
+  "nodeMs": 443038
+}

@@ -1,6 +1,11 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-03: G03c-02 inter-city connection (read first)
+## Update 2026-11-03: G03c-03 urban interface, Phase A (read first)
+
+- **Done:** height lineage and continuity analysis. Note: [G03c-03](./A-City-of-Cities/G03c-03-Urban-Interface.md). Verify: `node --max-old-space-size=8192 scripts/verify-urban-interface.mjs`.
+- **Finding:** the Chicago drop is the single-centre DNA rule, not a reset. No building changed.
+
+## Update 2026-11-03: G03c-02 inter-city connection
 
 - **Done:** connection planned inside the newcomer's commit. Note: [G03c-02](./A-City-of-Cities/G03c-02-Inter-City-Road-Connection.md). Verify: `node --max-old-space-size=8192 scripts/verify-inter-city-connection.mjs`. View: add `&intercity=1`.
 - **Finding:** no real connection; the blocker is that a ramp must end before the first junction.

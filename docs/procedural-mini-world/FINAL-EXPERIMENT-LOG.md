@@ -37,7 +37,9 @@
 - **Update (2026-11-02, task G02c-02 by user instruction):** grade-aware road connection: ramps with sampled vertical alignment in the uncommitted chunk, joins continuous in height and graph; the old 3 m steps were all terrain seams (entry G02c-02). Default paths and G02c-01 unchanged. Pending review.
 - **Update (2026-11-02, task G03c-01 by user instruction):** natural encounters are detected inside real six-city growth (6 % ramp plan); one adjacency on the known seeds (6202, Chicago × Fez, adaptation proposed); nothing connected (entry G03c-01). Pending review.
 - **Update (2026-11-03, task G03c-02 by user instruction):** inter-city connection planned inside the newcomer's commit; no connection in real growth (6202 / 6209 / 6215) and none Connected in the controlled cases; blocker: ramps end before the first junction (entry G03c-02). Pending review.
-- **Current single task:** G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification.
+- **Update (2026-11-03, task G03c-03 by user instruction):** Phase A: the Chicago 171 m / 38 m drop is a continuous single-centre gradient, not a chunk reset; every building height is decomposed and reproduced (41,755 of 41,755); no height changed; inter-city interfaces classified (no connected type) (entry G03c-03). Pending review.
+- **Current single task:** VIS-01 Procedural Growth Observatory, VIS-01a first (by user instruction 2026-11-03).
+- *Previous (superseded 2026-11-03, G03c-03):* "G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification."
 - *Previous (superseded 2026-11-03, G03c-02):* "G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate."
 - *Previous (superseded 2026-11-02, G03c-01):* "G03c-01 Emergent Urban Encounter (by user instruction 2026-11-02), after the G02c-02 gate."
 - *Previous (superseded 2026-11-02, G02c-02):* "Review G02c-01 ([note](./A-City-of-Cities/G02c-Road-Driven-Growth.md)), especially the 41 visually aligned but unjoined road ends. G03c is not started."
@@ -1704,3 +1706,27 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - ![Long section](../assets/screenshots/procedural-mini-world/g03c-02-controlled-cross-ramp-long-section.png) controlled fixture, seed 6201.
 - **Review status:** Pending review. Note: [G03c-02](./A-City-of-Cities/G03c-02-Inter-City-Road-Connection.md).
 - **Next single task:** G03c-03 Phase A (user instruction).
+
+### G03c-03 — Urban interface (Phase A)
+
+- **Date / Stage / Single question:** 2026-11-03 / G03 / Is the Chicago height drop a chunk reset or a gradient, and does the city keep one morphology across chunks?
+- **Gate:** G02c pass; G03c-01 pass; G03c-02: no verified inter-city connection, so the inter-city part is classification only.
+- **Changed:** new `UrbanMorphologyField.js` (analysis), `verify-urban-interface.mjs`, evidence `urban-interface.json`; no generator changed.
+- **Result:**
+  - The case is reproduced (core 171 m, growth 38 m).
+  - At equal distance from the inherited centre the two sides differ by 0.8 m or less beyond 400 m (−4.5 m in the 300–400 m ring).
+  - Cause: the Chicago rule concentrates height in one 220 m centre, so the city is a 19–23 m plateau beyond 450 m. Not a reset.
+  - Lineage: 41,755 of 41,755 heights reproduced exactly from the rule.
+  - 18 of 20 same-city edges read continuous; the flagged one is explained by 92 buildings vacated by ramp corridors.
+  - Core lineage stable after growth and after save / load.
+  - Interfaces: A 0, B 3, C 1, D 7. No public space (no verified connection).
+- **Screenshots (seed 6202, Chicago, task G03c-03):**
+  - ![Profile](../assets/screenshots/procedural-mini-world/g03c-03-chicago-height-profile.png)
+  - ![Axonometric](../assets/screenshots/procedural-mini-world/g03c-03-chicago-axonometric.png)
+- **Open issues:**
+  - the single-centre rule (a DNA decision);
+  - corridor vacancies;
+  - no viewer layer for the field;
+  - Inspector needs-review items.
+- **Review status:** Pending review. Note: [G03c-03](./A-City-of-Cities/G03c-03-Urban-Interface.md).
+- **Next single task:** VIS-01a (user instruction).
