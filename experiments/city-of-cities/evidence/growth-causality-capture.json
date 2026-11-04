@@ -1,0 +1,321 @@
+{
+  "task": "P00a causal visualization",
+  "testedAt": "2026-11-04T06:05:32.635Z",
+  "event": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0",
+  "screenshots": {
+    "p00a-2-existing-network-before.png": "docs/assets/screenshots/procedural-mini-world/p00a-2-existing-network-before.png",
+    "p00a-1-environment-site.png": "docs/assets/screenshots/procedural-mini-world/p00a-1-environment-site.png",
+    "p00a-3-growth-front.png": "docs/assets/screenshots/procedural-mini-world/p00a-3-growth-front.png",
+    "p00a-4-generated-roads.png": "docs/assets/screenshots/procedural-mini-world/p00a-4-generated-roads.png",
+    "p00a-7-committed-geometry.png": "docs/assets/screenshots/procedural-mini-world/p00a-7-committed-geometry.png",
+    "p00a-5-6-candidates-decision.png": "docs/assets/screenshots/procedural-mini-world/p00a-5-6-candidates-decision.png",
+    "p00a-8-resulting-network.png": "docs/assets/screenshots/procedural-mini-world/p00a-8-resulting-network.png"
+  },
+  "captions": {
+    "p00a-2-existing-network-before.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; stage 1 before growth (recorded): the committed roads that exist before the step",
+    "p00a-1-environment-site.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; stage 2 terrain / site evaluation (recorded): the target cell terrain and the evaluation terms",
+    "p00a-3-growth-front.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; stage 3 growth front (recorded): parent road ends toward the cell, usable (orange) / refused (red)",
+    "p00a-4-generated-roads.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; stage 4 roads (recorded network; reveal order is presentation): the one network the generator built for the whole cell",
+    "p00a-7-committed-geometry.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; stage 8 commit (recorded): blocks, parcels and buildings generated from that network",
+    "p00a-5-6-candidates-decision.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; free growth (no replay forcing); candidate cells of step 2 with status (accepted / rejected / selected) and the parent-child link; candidates are whole 1024 m cells",
+    "p00a-8-resulting-network.png": "seed 6202, step 2, manhattanGrid c_-4_0 -> c_-3_0; free growth after step 2; road network by city-level component (G02c-R1 debug layer); green = reached from the city root"
+  },
+  "data": {
+    "event": {
+      "id": "growth:manhattanGrid:2",
+      "parent": "c_-4_0",
+      "child": "c_-3_0",
+      "cityId": "manhattanGrid",
+      "step": 2
+    },
+    "p00a-2-existing-network-before.png": {
+      "t": 0.999,
+      "stage": "before",
+      "kind": "recorded",
+      "visibleBuildings": 0,
+      "totalBuildings": 1660,
+      "networkVisible": false,
+      "terrainVisible": false,
+      "terrainMode": null,
+      "playing": false,
+      "inspector": "World seed\n6202\nGrowth step\n2\nCity ID\nmanhattanGrid\nChunk\nc_-3_0 (parent c_-4_0)\nAlgorithm\nWorld State before the step\nInput\n7 committed chunks\nParameters\nworld seed 6202\nDecision\nnone yet\nOutput\nmanhattanGrid at c_-4_0\nValidation\ncommitted earlier\nSource\nGrowth History up to this step"
+    },
+    "p00a-1-environment-site.png": {
+      "t": 1.999,
+      "stage": "site",
+      "kind": "recorded",
+      "visibleBuildings": 0,
+      "totalBuildings": 1660,
+      "networkVisible": false,
+      "terrainVisible": true,
+      "terrainMode": "suitability",
+      "playing": false,
+      "inspector": "World seed\n6202\nGrowth step\n2\nCity ID\nmanhattanGrid\nChunk\nc_-3_0 (parent c_-4_0)\nAlgorithm\nGrowthEvaluation.evaluateCandidate\nInput\ncell (-3, 0), plain, terrain seed 4126\nParameters\nterrain 3, water 1.5, infrastructure 2, urban 2\nDecision\nscore 1.0021: terrain 0.979, water 1, infrastructure 1, urban 0.798\nOutput\nmean land slope 1.04°, buildable 1, DNA fit 0.9333\nValidation\neligible (terrain rules passed)\nSource\nhistory growth:manhattanGrid:2.growthReason"
+    },
+    "p00a-3-growth-front.png": {
+      "t": 2.999,
+      "stage": "front",
+      "kind": "recorded",
+      "visibleBuildings": 0,
+      "totalBuildings": 1660,
+      "networkVisible": false,
+      "terrainVisible": true,
+      "terrainMode": "classes",
+      "playing": false,
+      "inspector": "World seed\n6202\nGrowth step\n2\nCity ID\nmanhattanGrid\nChunk\nc_-3_0 (parent c_-4_0)\nAlgorithm\nRoadGrowthFrontAdapter.candidates + scheduler bid and pick\nInput\nfront rgf:c_-4_0:maxX:-157.3 on c_-4_0:e27 (primary, 21.15 m)\nParameters\nusable entries 4, refused 1, entry limit 6 m\nDecision\nmanhattanGrid extends road c_-4_0:e27 (primary) into (-3, 0): score 1.0021; weighted pick 1 of 3; city bid 0.90538\nOutput\n1 other cell(s) of manhattanGrid refused; 0 failed attempt(s) this step\nValidation\nselected by the scheduler\nSource\nhistory growth:manhattanGrid:2.roadCandidate, .growthReason.bids, .rejectedCandidates"
+    },
+    "p00a-4-generated-roads.png": {
+      "t": 3.999,
+      "stage": "roads",
+      "kind": "recorded",
+      "visibleBuildings": 0,
+      "totalBuildings": 1660,
+      "networkVisible": true,
+      "terrainVisible": true,
+      "terrainMode": "classes",
+      "playing": false,
+      "inspector": "World seed\n6202\nGrowth step\n2\nCity ID\nmanhattanGrid\nChunk\nc_-3_0 (parent c_-4_0)\nAlgorithm\nNetworkGenerator (grid continued from the parent anchor) + RoadRampPlanner\nInput\n4 parent road ends, 5 road ends for the ramp plan\nParameters\ngrade profile baseline\nDecision\n1 ramp(s) accepted, 0 flush, 4 unconnected with reason\nOutput\n148 road edges, 18.43 km\nValidation\n1 parent join(s), 0 neighbour join(s); crossings 0 required\nSource\nhistory growth:manhattanGrid:2.ramps, .connections; chunk c_-3_0.growthContext"
+    },
+    "p00a-7-committed-geometry.png": {
+      "t": 8,
+      "stage": "commit",
+      "kind": "recorded",
+      "visibleBuildings": 1660,
+      "totalBuildings": 1660,
+      "networkVisible": true,
+      "terrainVisible": true,
+      "terrainMode": "classes",
+      "playing": false,
+      "inspector": "World seed\n6202\nGrowth step\n2\nCity ID\nmanhattanGrid\nChunk\nc_-3_0 (parent c_-4_0)\nAlgorithm\nValidate → Commit (WorldGrowthController.commitRoad)\nInput\nchunk c_-3_0\nParameters\nat least one parent join, no empty layer, no crossing, joins equal in height\nDecision\ncommitted\nOutput\nc_-3_0 owned by manhattanGrid; step 2\nValidation\n1 join(s) by identity; residual height within 0.05 m\nSource\nhistory growth:manhattanGrid:2"
+    },
+    "freeHistory": [
+      "1 chicagoGrid c_1_2 -> c_1_3",
+      "2 manhattanGrid c_-4_0 -> c_-3_0"
+    ],
+    "frontierStep2": {
+      "amsterdamCanalRing": [
+        {
+          "cell": "-5,-4",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_-5_-3"
+        },
+        {
+          "cell": "-6,-3",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_-5_-3"
+        },
+        {
+          "cell": "-4,-3",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_-5_-3"
+        },
+        {
+          "cell": "-5,-2",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_-5_-3"
+        }
+      ],
+      "chicagoGrid": [
+        {
+          "cell": "1,1",
+          "status": "rejected",
+          "score": null,
+          "reason": "terrain: slope barrier: mean land slope 12.09° > 12°",
+          "parent": "c_1_2"
+        },
+        {
+          "cell": "0,2",
+          "status": "eligible",
+          "score": 0.973,
+          "reason": null,
+          "parent": "c_1_2"
+        },
+        {
+          "cell": "2,2",
+          "status": "eligible",
+          "score": 0.9586,
+          "reason": null,
+          "parent": "c_1_2"
+        },
+        {
+          "cell": "0,3",
+          "status": "eligible",
+          "score": 0.9673,
+          "reason": null,
+          "parent": "c_1_3"
+        },
+        {
+          "cell": "2,3",
+          "status": "rejected",
+          "score": null,
+          "reason": "terrain: terrain type mountain incompatible",
+          "parent": "c_1_3"
+        },
+        {
+          "cell": "1,4",
+          "status": "rejected",
+          "score": null,
+          "reason": "terrain: terrain type mountain incompatible",
+          "parent": "c_1_3"
+        }
+      ],
+      "fezOrganicCore": [
+        {
+          "cell": "5,0",
+          "status": "eligible",
+          "score": 0.698,
+          "reason": null,
+          "parent": "c_5_1"
+        },
+        {
+          "cell": "4,1",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road entry within 6 m of the target terrain (steps -7.22 m)",
+          "parent": "c_5_1"
+        },
+        {
+          "cell": "6,1",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road entry within 6 m of the target terrain (steps 128.33 m)",
+          "parent": "c_5_1"
+        },
+        {
+          "cell": "5,2",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road entry within 6 m of the target terrain (steps 188.67 m)",
+          "parent": "c_5_1"
+        }
+      ],
+      "lisbonHillCore": [
+        {
+          "cell": "5,-4",
+          "status": "eligible",
+          "score": 0.313,
+          "reason": null,
+          "parent": "c_5_-3"
+        },
+        {
+          "cell": "4,-3",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road port on this side (no road growth front)",
+          "parent": "c_5_-3"
+        },
+        {
+          "cell": "6,-3",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road entry within 6 m of the target terrain (steps 128.31 m)",
+          "parent": "c_5_-3"
+        },
+        {
+          "cell": "5,-2",
+          "status": "rejected",
+          "score": null,
+          "reason": "no road port on this side (no road growth front)",
+          "parent": "c_5_-3"
+        }
+      ],
+      "manhattanGrid": [
+        {
+          "cell": "-4,-1",
+          "status": "eligible",
+          "score": 0.827,
+          "reason": null,
+          "parent": "c_-4_0"
+        },
+        {
+          "cell": "-5,0",
+          "status": "rejected",
+          "score": null,
+          "reason": "terrain: 02.6 DNA conflict: noContinuousLand",
+          "parent": "c_-4_0"
+        },
+        {
+          "cell": "-3,0",
+          "status": "selected",
+          "score": 1.0021,
+          "reason": null,
+          "parent": "c_-4_0"
+        },
+        {
+          "cell": "-4,1",
+          "status": "eligible",
+          "score": 0.8491,
+          "reason": null,
+          "parent": "c_-4_0"
+        }
+      ],
+      "veniceWaterNetwork": [
+        {
+          "cell": "1,-2",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_1_-1"
+        },
+        {
+          "cell": "0,-1",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_1_-1"
+        },
+        {
+          "cell": "2,-1",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_1_-1"
+        },
+        {
+          "cell": "1,0",
+          "status": "rejected",
+          "score": null,
+          "reason": "canalStreet city: waterfront growth mode not implemented (G02c-01 grows road-led cities only)",
+          "parent": "c_1_-1"
+        }
+      ]
+    },
+    "integrity": {
+      "chicagoGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_1_2:n0",
+        "coreComponents": 1,
+        "chunks": 2,
+        "roadLengthM": 30720,
+        "rootReachableLengthM": 30720,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      },
+      "manhattanGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_-4_0:n0",
+        "coreComponents": 1,
+        "chunks": 2,
+        "roadLengthM": 36864,
+        "rootReachableLengthM": 36864,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      }
+    }
+  },
+  "errors": []
+}

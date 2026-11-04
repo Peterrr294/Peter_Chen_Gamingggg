@@ -1,0 +1,511 @@
+{
+  "task": "P00a generative causality audit",
+  "testedAt": "2026-11-04T06:03:18.885Z",
+  "node": "v24.20.0",
+  "configuration": {
+    "growthMode": "road",
+    "gradeProfile": "baseline",
+    "junctionRamps": true,
+    "networkIntegrity": false
+  },
+  "event": {
+    "id": "growth:manhattanGrid:2",
+    "seed": 6202,
+    "step": 2,
+    "cityId": "manhattanGrid",
+    "parent": "c_-4_0",
+    "child": "c_-3_0",
+    "previousEvent": "growth:chicagoGrid:1",
+    "environment": {
+      "cell": {
+        "gx": -3,
+        "gy": 0,
+        "chunkId": "g_-3_0",
+        "worldOrigin": {
+          "x": -3072,
+          "z": 0
+        },
+        "landform": "plain",
+        "terrainSeed": 4126,
+        "variation": 0.614
+      },
+      "probe": {
+        "gx": -3,
+        "gy": 0,
+        "landform": "plain",
+        "terrainSeed": 4126,
+        "waterFraction": 0,
+        "buildableFraction": 1,
+        "largestBuildable": 1,
+        "lowSlope": 1,
+        "mixedSlope": 0,
+        "heightSignature": "5CEF2180",
+        "meanLandSlope": 1.04,
+        "slopeP95": 2.2,
+        "maxLandSlope": 4.84,
+        "distanceToWater": null,
+        "waterfrontBuildable": 0
+      }
+    },
+    "origin": {
+      "order": 4,
+      "score": 0.9872,
+      "terms": {
+        "slope": 1,
+        "buildable": 1,
+        "water": 1,
+        "terrainType": 1,
+        "dnaFit": 0.933
+      },
+      "weights": {
+        "slope": 3,
+        "buildable": 3,
+        "water": 0.5,
+        "terrainType": 2,
+        "dnaFit": 2
+      },
+      "water": {
+        "fraction": 0,
+        "wetNeighbours": 0,
+        "waterfrontBuildable": 0
+      },
+      "landform": "plain",
+      "rankInWeightedOrder": 1,
+      "qualified": 8,
+      "probed": 8,
+      "screened": 34,
+      "searchRadius": 6,
+      "searchRounds": 1,
+      "placementVersion": 2,
+      "rejected": 0,
+      "constrainedBy": [],
+      "hypothesis": "weights and profiles are design assumptions (A), not calibrated",
+      "text": "plain site (-4, 0): suitability 0.9872 (slope 1, buildable 1, water 1, terrainType 1, dnaFit 0.933); weighted choice 1 of 8 qualified; claim order 4"
+    },
+    "dna": {
+      "strategy": "grid",
+      "networkParams": {
+        "label": "Grid",
+        "primarySpacing": 200,
+        "secondarySpacing": 80,
+        "maxSlopeDeg": 10,
+        "minStubLength": 16,
+        "bridgePrimaryOnly": true,
+        "maxBridgeSpan": 80
+      },
+      "growthDNA": {
+        "rate": 1,
+        "slope": "flat",
+        "water": "neutral",
+        "direction": "roadAxis",
+        "compactness": 0.4,
+        "infraDependency": 1,
+        "barrier": "stopAtSlope",
+        "hypothesis": "extends along existing main-road ports, keeps flat land for the orthogonal grid"
+      }
+    },
+    "scheduler": {
+      "bids": [
+        {
+          "cityId": "amsterdamCanalRing",
+          "bid": null,
+          "eligible": 0
+        },
+        {
+          "cityId": "chicagoGrid",
+          "bid": 0.54572,
+          "best": 0.973,
+          "eligible": 3,
+          "rate": 1.1
+        },
+        {
+          "cityId": "fezOrganicCore",
+          "bid": 0.53135,
+          "best": 0.698,
+          "eligible": 1,
+          "rate": 0.7
+        },
+        {
+          "cityId": "lisbonHillCore",
+          "bid": 0.23503,
+          "best": 0.313,
+          "eligible": 1,
+          "rate": 0.8
+        },
+        {
+          "cityId": "manhattanGrid",
+          "bid": 0.90538,
+          "best": 1.0021,
+          "eligible": 3,
+          "rate": 1
+        },
+        {
+          "cityId": "veniceWaterNetwork",
+          "bid": null,
+          "eligible": 0
+        }
+      ],
+      "cityOrder": [
+        "manhattanGrid",
+        "chicagoGrid",
+        "fezOrganicCore",
+        "lisbonHillCore"
+      ]
+    },
+    "frontier": {
+      "manhattan": {
+        "candidates": 4,
+        "eligible": 3,
+        "rejected": {
+          "terrain: # DNA conflict: noContinuousLand": 1
+        }
+      },
+      "allCities": {
+        "amsterdamCanalRing": {
+          "rejected": 4
+        },
+        "chicagoGrid": {
+          "rejected": 3,
+          "eligible": 3
+        },
+        "fezOrganicCore": {
+          "eligible": 1,
+          "rejected": 3
+        },
+        "lisbonHillCore": {
+          "eligible": 1,
+          "rejected": 3
+        },
+        "manhattanGrid": {
+          "eligible": 2,
+          "rejected": 1,
+          "selected": 1
+        },
+        "veniceWaterNetwork": {
+          "rejected": 4
+        }
+      }
+    },
+    "chosen": {
+      "candidateId": "road:manhattanGrid:-3:0",
+      "score": 1.0021,
+      "groups": {
+        "terrain": 0.979,
+        "water": 1,
+        "infrastructure": 1,
+        "urban": 0.798
+      },
+      "terms": {
+        "slope": 0.938,
+        "meanLandSlope": 1.04,
+        "slopeP95": 2.2,
+        "maxLandSlope": 4.84,
+        "buildable": 1,
+        "terrainType": 1,
+        "landform": "plain",
+        "waterCoverage": 0,
+        "distanceToWater": null,
+        "wetNeighbours": 0.5,
+        "waterTerm": 1,
+        "portsTowardCell": 4,
+        "mainRoadPorts": 4,
+        "joiningEdgeBuildable": 1,
+        "accessibility": 1,
+        "dnaFit": 0.9333,
+        "direction": "roadAxis",
+        "directionTerm": 1,
+        "sameCityNeighbours": 1,
+        "compactTerm": 0.3
+      },
+      "roadFronts": 5,
+      "usableRoadFronts": 4,
+      "refusedFronts": 0,
+      "sourceRoadId": "c_-4_0:e27"
+    },
+    "attemptsThisStep": [
+      {
+        "step": 2,
+        "cityId": "manhattanGrid",
+        "candidateId": "road:manhattanGrid:-3:0",
+        "generated": true,
+        "ok": true,
+        "failureClass": null,
+        "reason": null,
+        "ms": 4430
+      }
+    ],
+    "generationInput": {
+      "side": "minX",
+      "entryPorts": 4,
+      "grid": {
+        "axisDeg": 0,
+        "primarySpacing": 200,
+        "secondarySpacing": 80,
+        "fromChunkId": "c_-4_0"
+      },
+      "centre": {
+        "x": -4076.36,
+        "z": 8.7,
+        "fromChunkId": "c_-4_0"
+      },
+      "verticalEntries": 5,
+      "terrainSeed": 4126,
+      "urbanSeed": 981975
+    },
+    "generated": {
+      "edges": 148,
+      "sources": {
+        "grid-line": 148
+      },
+      "gridCounts": {
+        "segments": 148,
+        "truncated": 0,
+        "dropped": 0,
+        "bridges": 0
+      },
+      "removed": {
+        "shortComponents": 0,
+        "duplicateEdges": 0
+      },
+      "counts": {
+        "roadKm": 18.43,
+        "networkEdges": 148,
+        "blocks": 78,
+        "parcels": 1820,
+        "buildings": 1660
+      }
+    },
+    "joins": {
+      "parent": 1,
+      "unmatchedEntries": 0,
+      "newPortsOnSharedEdge": 4,
+      "neighbour": 0
+    },
+    "ramps": {
+      "accepted": 1,
+      "junctionConstraint": 2,
+      "geometryCollision": 1,
+      "terrainDiscontinuity": 1
+    },
+    "vacatedBuildings": 9,
+    "impact": {
+      "committedBuildingsAffected": 0,
+      "committedNote": "by construction: only the chunk being generated is reshaped",
+      "newBuildingCandidatesExcluded": 9,
+      "excludedFootprintM2": 2247,
+      "candidatesBefore": 1669,
+      "corridorAreaM2": 2208,
+      "blocksTouched": 3,
+      "blockAreaAffectedM2": 608,
+      "parcelsTouched": 5,
+      "parcelAreaAffectedM2": 208
+    },
+    "feedback": {
+      "roadEdgesBefore": 667,
+      "roadEdgesAfter": 815,
+      "newFronts": 36,
+      "manhattanGrownCount": 1,
+      "nextBid": null
+    }
+  },
+  "seeds": {
+    "6201": {
+      "steps": 12,
+      "stalled": null,
+      "ms": 59881,
+      "grown": {
+        "manhattanGrid": 8,
+        "fezOrganicCore": 4
+      },
+      "frontSources": {
+        "grid road ports (13 source road(s) per event, mean)": 2,
+        "grid road ports (5 source road(s) per event, mean)": 4,
+        "organic road ports (1 source road(s) per event, mean)": 4,
+        "grid road ports (10 source road(s) per event, mean)": 1,
+        "grid road ports (8 source road(s) per event, mean)": 1
+      },
+      "preGeneration": {
+        "refusals": 293,
+        "byReason": {
+          "canalStreet city: waterfront growth mode not implemented (G#c# grows road-led cities only)": 96,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, #, #, #, #, # m)": 12,
+          "terrain: slope barrier: mean land slope #° > #°": 34,
+          "terrain: terrain type mountain incompatible": 12,
+          "no road entry within # m of the target terrain (steps # m)": 74,
+          "terrain: # DNA conflict: noContinuousLand": 49,
+          "no parent road joined a child road (# usable entries unmatched)": 3,
+          "occupied by c_# (manhattanGrid)": 7,
+          "occupied by c_# (fezOrganicCore)": 6
+        },
+        "byClass": {
+          "candidateRejected": 158,
+          "terrainConflict": 132,
+          "networkConflict": 3
+        }
+      },
+      "postGeneration": {
+        "generatedChunks": 15,
+        "discarded": 3,
+        "committed": 12,
+        "byReason": {
+          "no parent road joined a child road (# usable entries unmatched)": 3
+        },
+        "msDiscarded": 7793,
+        "msCommitted": 45430
+      },
+      "cachedRefusals": 0,
+      "connection": {
+        "parentJoins": 51,
+        "neighbourJoins": 13,
+        "unmatchedEntries": 0,
+        "rampStatuses": {
+          "accepted": 63,
+          "geometryCollision": 14,
+          "flush": 1,
+          "terrainDiscontinuity": 8,
+          "gradeExceeded": 3
+        },
+        "vacatedBuildings": 329
+      },
+      "generatedSources": {
+        "grid anchor inherited": 8,
+        "entry ports only (organic)": 4
+      }
+    },
+    "6202": {
+      "steps": 12,
+      "stalled": null,
+      "ms": 61562,
+      "grown": {
+        "chicagoGrid": 5,
+        "manhattanGrid": 5,
+        "fezOrganicCore": 2
+      },
+      "frontSources": {
+        "grid road ports (10 source road(s) per event, mean)": 1,
+        "grid road ports (4 source road(s) per event, mean)": 2,
+        "grid road ports (5 source road(s) per event, mean)": 5,
+        "organic road ports (1 source road(s) per event, mean)": 2,
+        "grid road ports (11 source road(s) per event, mean)": 1,
+        "grid road ports (12 source road(s) per event, mean)": 1
+      },
+      "preGeneration": {
+        "refusals": 285,
+        "byReason": {
+          "canalStreet city: waterfront growth mode not implemented (G#c# grows road-led cities only)": 96,
+          "terrain: slope barrier: mean land slope #° > #°": 22,
+          "no road entry within # m of the target terrain (steps # m)": 68,
+          "no road port on this side (no road growth front)": 24,
+          "terrain: # DNA conflict: noContinuousLand": 17,
+          "terrain: terrain type mountain incompatible": 40,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, #, #, #, #, #, # m)": 6,
+          "no parent road joined a child road (# usable entries unmatched)": 6,
+          "no road entry within # m of the target terrain (steps #, #, #, #, # m)": 5,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, #, #, #, #, # m)": 1
+        },
+        "byClass": {
+          "candidateRejected": 137,
+          "terrainConflict": 142,
+          "networkConflict": 6
+        }
+      },
+      "postGeneration": {
+        "generatedChunks": 13,
+        "discarded": 1,
+        "committed": 12,
+        "byReason": {
+          "no parent road joined a child road (# usable entries unmatched)": 1
+        },
+        "msDiscarded": 1234,
+        "msCommitted": 52422
+      },
+      "cachedRefusals": 5,
+      "connection": {
+        "parentJoins": 45,
+        "neighbourJoins": 17,
+        "unmatchedEntries": 0,
+        "rampStatuses": {
+          "accepted": 62,
+          "junctionConstraint": 15,
+          "geometryCollision": 7,
+          "terrainDiscontinuity": 13
+        },
+        "vacatedBuildings": 495
+      },
+      "generatedSources": {
+        "grid anchor inherited": 10,
+        "entry ports only (organic)": 2
+      }
+    },
+    "6203": {
+      "steps": 12,
+      "stalled": null,
+      "ms": 90915,
+      "grown": {
+        "chicagoGrid": 6,
+        "manhattanGrid": 6
+      },
+      "frontSources": {
+        "grid road ports (5 source road(s) per event, mean)": 4,
+        "grid road ports (11 source road(s) per event, mean)": 1,
+        "grid road ports (4 source road(s) per event, mean)": 2,
+        "grid road ports (13 source road(s) per event, mean)": 1,
+        "grid road ports (9 source road(s) per event, mean)": 1,
+        "grid road ports (8 source road(s) per event, mean)": 1,
+        "grid road ports (12 source road(s) per event, mean)": 2
+      },
+      "preGeneration": {
+        "refusals": 308,
+        "byReason": {
+          "canalStreet city: waterfront growth mode not implemented (G#c# grows road-led cities only)": 96,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, #, #, #, #, # m)": 20,
+          "no road port on this side (no road growth front)": 14,
+          "no road entry within # m of the target terrain (steps # m)": 82,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, #, #, #, #, #, #, #, ": 16,
+          "no road entry within # m of the target terrain (steps #, #, #, #, #, # m)": 12,
+          "terrain: slope barrier: mean land slope #° > #°": 15,
+          "no parent road joined a child road (# usable entries unmatched)": 14,
+          "no road entry within # m of the target terrain (steps #, #, #, #, # m)": 13,
+          "terrain: terrain type mountain incompatible": 16,
+          "occupied by c_# (manhattanGrid)": 4,
+          "occupied by c_# (fezOrganicCore)": 4,
+          "no road entry within # m of the target terrain (steps #, #, # m)": 2
+        },
+        "byClass": {
+          "candidateRejected": 118,
+          "terrainConflict": 176,
+          "networkConflict": 14
+        }
+      },
+      "postGeneration": {
+        "generatedChunks": 18,
+        "discarded": 6,
+        "committed": 12,
+        "byReason": {
+          "no parent road joined a child road (# usable entries unmatched)": 6
+        },
+        "msDiscarded": 25182,
+        "msCommitted": 57584
+      },
+      "cachedRefusals": 8,
+      "connection": {
+        "parentJoins": 76,
+        "neighbourJoins": 0,
+        "unmatchedEntries": 0,
+        "rampStatuses": {
+          "junctionConstraint": 5,
+          "accepted": 73,
+          "geometryCollision": 5,
+          "terrainDiscontinuity": 12,
+          "gradeExceeded": 1,
+          "flush": 3,
+          "networkConflict": 8
+        },
+        "vacatedBuildings": 537
+      },
+      "generatedSources": {
+        "grid anchor inherited": 12
+      }
+    }
+  }
+}

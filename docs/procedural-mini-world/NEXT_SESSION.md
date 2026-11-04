@@ -1,6 +1,47 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-04: G02c-03a ramp through one junction (read first)
+## Next: P00b — Minimal Autonomous Road-Front Growth (read first)
+
+- **Goal:**
+  - generate candidate roads from the real road-network front;
+  - evaluate them beforehand on a continuous world terrain field (slope and water as costs, before any block or building is generated);
+  - use chunks only as spatial storage units.
+- **Where:** an isolated new folder, `experiments/p00b-road-front/`. Plan: [P00a section 10](./A-City-of-Cities/P00a-GENERATIVE-CAUSALITY-AUDIT.md).
+- **Legacy Baseline:** the existing G02c / G03c code in `experiments/city-of-cities/` stays as the baseline to compare against. Do not change it for P00b.
+- **Status:** not started. Start only on a new instruction.
+
+**State at this checkpoint:**
+
+| Item | Status |
+|---|---|
+| P00a audit | Done; pending human review |
+| P00b | Plan only, not implemented |
+| G02c-R1 network integrity gate | Implemented and tested; **off by default** (`&integrity=1`); pending human review |
+| G02c-R | CONDITIONAL GO |
+| G02c-03b | **Not implemented** |
+| G02c-R Review Board | **Not completed** (Pending) |
+| Node / Chrome network signatures | **4 differ** (Amsterdam, Venice and Lisbon cores, Fez `c_3_-1`; seed 6202); not fixed |
+| Human spatial review | Not done for any of G02c-R, G02c-R1, P00a |
+| G02c / G03c feature work | Frozen |
+
+## Update 2026-11-04: P00a generative causality audit
+
+- **State:** P-Series started; G02c / G03c feature work is **frozen**.
+- **Done:** audit [P00a](./A-City-of-Cities/P00a-GENERATIVE-CAUSALITY-AUDIT.md). Read-only scripts: `node --max-old-space-size=8192 scripts/audit-growth-causality.mjs` (about 6 min) and `node scripts/capture-growth-causality.mjs`.
+- **Finding:** the chunk template decides city form; terrain enters as a cell summary and as post-generation repairs; City DNA selects a template and score weights.
+- **Proposed, not started:** P00b, a minimal road-front growth prototype in `experiments/p00b-road-front/` (audit section 10).
+- **Also done before the freeze:** [G02c-R1](./A-City-of-Cities/G02c-R1-Network-Integrity.md), an opt-in network integrity gate (`&integrity=1`), verified, pending review.
+- **Open from G02c-R:** the Review Board and browser check 10 are **Pending**; the Node / Chrome network-signature difference is not fixed.
+- **Rule:** do not edit source files while a browser verifier runs (Vite reloads the page).
+
+## Update 2026-11-04: G02c-R road growth milestone review
+
+- **Done:** review only. Report: [G02c-R](./A-City-of-Cities/G02c-ROAD-GROWTH-MILESTONE-REVIEW.md); note: [G02c-R note](./A-City-of-Cities/G02c-R-Road-Growth-Review.md). Measure: `node --max-old-space-size=12288 scripts/review-road-growth.mjs` (about 15 min); browser: `node scripts/review-road-growth-browser.mjs`; board: `node scripts/render-road-review-board.mjs`.
+- **Recommendation:** CONDITIONAL GO, pending human review (5 items in section 13).
+- **Defects found, not fixed:** unreachable street pieces inside accepted chunks; Amsterdam 6203 core without roads.
+- **Not implemented:** G02c-03b. **Not started:** G03c-02.
+
+## Update 2026-11-04: G02c-03a ramp through one junction
 
 - **Done:** opt-in `junctionRamps` (`&junctions=1`). Note: [G02c-03a](./A-City-of-Cities/G02c-03a-Intersection-Aware-Ramp.md). Verify: `node --max-old-space-size=8192 scripts/verify-junction-ramp.mjs` (Node about 17 min).
 - **Waiting:** human spatial review. G02c-03b (two junctions) was requested but not started, because its own gate requires G02c-03a to pass review.

@@ -40,7 +40,12 @@
 - **Update (2026-11-03, task G03c-03 by user instruction):** Phase A: the Chicago 171 m / 38 m drop is a continuous single-centre gradient, not a chunk reset; every building height is decomposed and reproduced (41,755 of 41,755); no height changed; inter-city interfaces classified (no connected type) (entry G03c-03). Pending review.
 - **Update (2026-11-03, task VIS-01a by user instruction):** stage timeline of one real growth event in the World Viewer, every stage labelled recorded / reconstructed / presentation; browser 16 of 16 (entry VIS-01a). Pending review.
 - **Update (2026-11-04, tasks G02c-03a / G02c-03b gate by user instruction):** ramps may pass one junction (opt-in); G02c-03a verified in Node and the browser. G02c-03b not started: its brief requires G02c-03a to pass first, and this stage stops for human review (entry G02c-03a). Pending review.
-- **Current single task:** Human spatial review of G02c-03a; then G02c-03b (up to two junctions).
+- **Update (2026-11-04, task G02c-R by user instruction):** road growth milestone review (review only, no generator change). Recommendation CONDITIONAL GO; two defects recorded, not fixed (unreachable street pieces accepted; Amsterdam 6203 core without roads); G02c-03b NOT IMPLEMENTED (entry G02c-R). Pending review.
+- **Update (2026-11-04, task G02c-R1 by user instruction):** opt-in network integrity gate (`&integrity=1`); all root-reachable ratios 1 on 6202 / 6203; 6201 unchanged (entry G02c-R1). Pending review. Then frozen by P00a.
+- **Update (2026-11-04, task P00a by user instruction):** P-Series started; G02c / G03c feature work frozen. Generative causality audit done; three architectural bottlenecks and a P00b prototype proposed (entry P00a). Pending review.
+- **Current single task:** Next entry: P00b, Minimal Autonomous Road-Front Growth (plan in P00a section 10; not started). Human review of P00a, G02c-R and G02c-R1 is still open. G02c / G03c code is kept as the Legacy Baseline.
+- *Previous (superseded 2026-11-04, P00a):* "Human review of G02c-R (5 items); then the task chosen there (suggested: refuse or trim unreachable street pieces; then G02c-03b). G03c-02 not started."
+- *Previous (superseded 2026-11-04, G02c-R):* "Human spatial review of G02c-03a; then G02c-03b (up to two junctions)."
 - *Previous (superseded 2026-11-04, G02c-03a):* "Review VIS-01a; VIS-01b only after that review."
 - *Previous (superseded 2026-11-03, VIS-01a):* "VIS-01 Procedural Growth Observatory, VIS-01a first (by user instruction 2026-11-03)."
 - *Previous (superseded 2026-11-03, G03c-03):* "G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification."
@@ -1792,3 +1797,53 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - Chicago Hierarchical Polycentricity recorded as a Proposed Design Decision, not implemented.
 - **Review status:** Pending human spatial review. Note: [G02c-03a](./A-City-of-Cities/G02c-03a-Intersection-Aware-Ramp.md).
 - **Next single task:** human review, then G02c-03b.
+
+### G02c-R — Road growth milestone review
+
+- **Date / Stage / Single question:** 2026-11-04 / G02 / Does the road system support continuous, terrain-aware and morphologically meaningful urban growth?
+- **Changed:** no generator code. Added test scripts `review-road-growth.mjs`, `review-road-growth-browser.mjs` and `render-road-review-board.mjs`; evidence `road-growth-review.json`, `road-growth-review-browser.json` and `world-6202-g02c-review-state.json`.
+- **Parameters:** grade baseline 6 %, junction ramps on, budget 60 steps, seeds 6201 / 6202 / 6203.
+- **Result:**
+  - Joins continuous (residual 0).
+  - Aligned same-city ends joined, seed 6202 replay: 36 → 51 → 62 of 97 (G02c-01 → 02 → 03a).
+  - Free growth: 107/150, 421/634 and 290/433 aligned ends joined.
+  - Steps reached: 19 / 60 / 41.
+  - Committed chunks and buildings changed 0; new candidates excluded about 2.4 %; max grade 7.36 %.
+  - Determinism and save / load pass.
+- **Defects (recorded, not fixed):**
+  - Accepted chunks carry street pieces with no road link: Manhattan 14 and 15 components, Chicago 6203 8. The cause is the base grid on split land; validation needs one join only.
+  - The Amsterdam 6203 core has 0 road edges and no warning.
+  - G02c-03b NOT IMPLEMENTED.
+- **Screenshot:** ![Junction pick](../assets/screenshots/procedural-mini-world/g02c-r-junction-pick-debug.png). Seed 6202, step 2, Manhattan c_-4_0 to c_-3_0, junction ramps on, real click on junction 16. Review Board: Pending (not rendered).
+- **Review status:** Recommendation CONDITIONAL GO. Pending human review (5 items). Report: [G02c-R](./A-City-of-Cities/G02c-ROAD-GROWTH-MILESTONE-REVIEW.md).
+- **Next single task:** human review; G03c-02 not started.
+
+### G02c-R1 — Network integrity gate
+
+- **Date / Stage / Single question:** 2026-11-04 / G02 / Can growth refuse chunks whose roads cannot be traced to the city root, and explain every piece it keeps?
+- **Changed:**
+  - new `NetworkIntegrity.js` and `NetworkIntegrityView.js`;
+  - option plumbing in `RoadGrowthFrontAdapter.js`, `WorldGrowthController.js`, `WorldContext.js`, `main.js`;
+  - verifiers `verify-network-integrity.mjs` and `verify-network-integrity-browser.mjs`.
+- **Parameters:** 1 public rule, `geographicIsolation: record | reject`. Classes use the DNA's `maxSlopeDeg` and water.
+- **Result:**
+  - Root cause: grid lines cut by terrain, plus validation that needed one join. 6202: 12 orphan + 1 slope piece; 6203: 19 orphan + 2 slope; none separated by water alone.
+  - With the gate: every root-reachable ratio is 1 on 6202 (60 steps) and 6203 (30 steps); steps reached are unchanged. 6203 valid commit rate 0.714 → 0.638.
+  - 6201: 0 refusals.
+  - Stability and save / load pass. Browser 9 of 9.
+- **Screenshot:** ![After](../assets/screenshots/procedural-mini-world/g02c-r1-component-map-after.png). Seed 6202, Manhattan, 60 steps, gate on; refused cells `c_-4_-3` (step 45) and `c_-3_-1` (step 43).
+- **Review status:** Pending human review. Note: [G02c-R1](./A-City-of-Cities/G02c-R1-Network-Integrity.md).
+
+### P00a — Generative causality audit
+
+- **Date / Stage / Single question:** 2026-11-04 / P-Series / Who decides where a city grows, and why?
+- **Changed:** no generator code. Added read-only scripts `audit-growth-causality.mjs` and `capture-growth-causality.mjs`; records `growth-causality-audit.json` and `growth-causality-capture.json`.
+- **Result:**
+  - The scheduler picks a 1024 m cell, then a full DNA template is generated there. In the traced event (6202 step 2), 148 grid edges were generated and 1 road joined.
+  - Terrain enters as a cell summary before generation, and as cuts, ramps and refusals after.
+  - Feedback is limited to ports, the bid divisor and compactness.
+  - Whole chunks discarded after generation in 12 steps: 3 / 1 / 6 (6201 / 6202 / 6203).
+  - No seed-specific rule was found.
+- **Screenshot:** ![Front](../assets/screenshots/procedural-mini-world/p00a-3-growth-front.png). Seed 6202, Manhattan, step 2, recorded growth front.
+- **Review status:** Pending human review. Three changes and P00b are Proposed. Note: [P00a](./A-City-of-Cities/P00a-GENERATIVE-CAUSALITY-AUDIT.md).
+- **Next single task:** human review; then P00b only if accepted.
