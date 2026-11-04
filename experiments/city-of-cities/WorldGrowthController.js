@@ -24,7 +24,7 @@ import { UrbanEncounter } from './UrbanEncounter.js';
 const now = () => (globalThis.performance ?? Date).now();
 
 export class WorldGrowthController {
-  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true, encounters = Boolean(world.growth.encounters), interCity = Boolean(world.growth.interCity), junctionRamps = Boolean(world.growth.junctionRamps) } = {}) {
+  constructor(world, { dna = GROWTH_DNA, growthMode = world.growth.mode ?? 'chunk', cities = CITY_IDS, gradeProfile = world.growth.gradeProfile ?? null, replay = null, candidateCache = true, encounters = Boolean(world.growth.encounters), interCity = Boolean(world.growth.interCity), junctionRamps = Boolean(world.growth.junctionRamps), networkIntegrity = Boolean(world.growth.networkIntegrity) } = {}) {
     this.world = world;
     this.dna = dna; // per-city Growth DNA (Experiment C can pass a uniform table)
     this.lastFrontier = null; // evaluated candidates of the last step (debug, not saved)
@@ -38,6 +38,7 @@ export class WorldGrowthController {
       this.adapter = new RoadGrowthFrontAdapter(world, undefined, gradeProfile);
       this.adapter.replayKeepsUnconnected = Boolean(replay);
       if (junctionRamps && gradeProfile) { world.growth.junctionRamps = true; this.adapter.throughJunction = true; } // G02c-03a
+      if (networkIntegrity) { world.growth.networkIntegrity = true; this.adapter.networkIntegrity = true; } // G02c-R1
       if (interCity) { world.growth.interCity = true; world.growth.interCityConnections ??= []; this.adapter.interCity = true; } // G03c-02
       // G03c-01: encounters are detected after each commit, from the new chunk outward; detection never generates.
       if (encounters) { const fresh = !world.growth.encounters; this.encounters = new EmergentEncounterTracker(world, this); this.initialEncountersPending = fresh && world.growth.step === 0; this.initialEncounters(); }
@@ -193,7 +194,7 @@ export class WorldGrowthController {
         if (cache && r.failure && !known && r.failure.failureClass === FAILURE.network) cache[chosen.candidateId] = { candidateId: chosen.candidateId, sourceRoadId: chosen.sourceRoadId, targetRegion: chosen.targetCoordinate, signature, evaluatedParameters: w.growth.gradeProfile, previousResult: r.failure.failureClass, rejectionReason: r.failure.reason, stateVersion: step };
         if (r.failure) {
           chosen.status = 'rejected'; chosen.failureClass = r.failure.failureClass; chosen.rejectionReason = r.failure.reason;
-          const record = { step, cityId, candidateId: chosen.candidateId, growthFrontId: chosen.growthFrontId, failureClass: r.failure.failureClass, reason: r.failure.reason, ...(r.failure.cached ? { cached: true } : {}) };
+          const record = { step, cityId, candidateId: chosen.candidateId, growthFrontId: chosen.growthFrontId, failureClass: r.failure.failureClass, reason: r.failure.reason, ...(r.failure.cached ? { cached: true } : {}), ...(r.failure.integrity ? { integrity: r.failure.integrity } : {}) };
           failed.push(record); w.growth.roadAttempts.push(record);
           continue;
         }

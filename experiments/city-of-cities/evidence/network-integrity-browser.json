@@ -1,0 +1,187 @@
+{
+  "task": "G02c-R1 browser evidence",
+  "testedAt": "2026-11-04T05:31:52.118Z",
+  "checks": [
+    {
+      "name": "1 before state (6202, 60 steps, no gate) loads",
+      "pass": true,
+      "detail": "60 steps, 66 chunks; signature mismatches c_-5_-3, c_1_-1, c_5_-3, c_3_-1 (known cross-runtime network difference, G02c-R)"
+    },
+    {
+      "name": "2 real click on the layer checkbox classifies every unreachable piece",
+      "pass": true,
+      "detail": "{\"orphan\":12,\"geographicSlope\":1}"
+    },
+    {
+      "name": "3 real click on an orphan piece in c_-4_-3 shows its record",
+      "pass": true,
+      "detail": "Component c_-4_-3:n11 / City manhattanGrid · source chunk c_-4_-3 (growth step 45) · road length 1769 m · 24 edges"
+    },
+    {
+      "name": "4 real click on the riverside piece c_-3_-1:n0: orphan, land continues to a root-connected chunk",
+      "pass": true,
+      "detail": "Reachable from core: no · class orphan / Reason: passable land runs from it to the maxZ edge, shared with root-connected c_-3_0; its roads are not joined there"
+    },
+    {
+      "name": "4b real click on a geographically separated piece in c_-3_-1 shows the terrain reason",
+      "pass": true,
+      "detail": "Reachable from core: no · class geographicSlope / Reason: every land path to a root-reached road (inside c_-3_-1, or across the maxZ edge to c_-3_0) crosses slopes above 10° (the DNA road limit)"
+    },
+    {
+      "name": "5 after state (6202, gate on) loads",
+      "pass": true,
+      "detail": "60 steps, 66 chunks; mismatches c_-5_-3, c_1_-1, c_5_-3, c_3_-1"
+    },
+    {
+      "name": "6 after: no orphan piece is committed; refused candidates are drawn",
+      "pass": true,
+      "detail": "{}; 2 refused cell(s)"
+    },
+    {
+      "name": "7 real click on a refused candidate cell shows the gate reason and its pieces",
+      "pass": true,
+      "detail": "Refused growth candidate road:manhattanGrid:-4:-3 (step 45, manhattanGrid) / network integrity: 9 orphan road component(s), 4957 m, on passable land not reachable from the city root"
+    },
+    {
+      "name": "no browser errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "screenshots": {
+    "g02c-r1-network-top-before.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-network-top-before.png",
+    "g02c-r1-component-map-before.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-component-map-before.png",
+    "g02c-r1-orphan-pick-debug.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-orphan-pick-debug.png",
+    "g02c-r1-water-evidence-debug.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-water-evidence-debug.png",
+    "g02c-r1-geographic-pick-debug.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-geographic-pick-debug.png",
+    "g02c-r1-network-top-after.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-network-top-after.png",
+    "g02c-r1-component-map-after.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-component-map-after.png",
+    "g02c-r1-refused-candidate-debug.png": "docs/assets/screenshots/procedural-mini-world/g02c-r1-refused-candidate-debug.png"
+  },
+  "captions": {
+    "g02c-r1-network-top-before.png": "seed 6202, G02c-R state (60 steps, no gate), integrity layer by class; whole world top view",
+    "g02c-r1-component-map-before.png": "seed 6202, no gate, 60 steps; Manhattan c_-4_-3 (step 45) and c_-3_-1 (step 43); one colour per city-level road component (green: reached from the city root)",
+    "g02c-r1-orphan-pick-debug.png": "seed 6202, no gate; Manhattan c_-4_-3 (growth step 45, committed without the gate); real click on orphan c_-4_-3:n11 (1769 m)",
+    "g02c-r1-water-evidence-debug.png": "seed 6202, no gate; Manhattan c_-3_-1 (growth step 43, river valley); tint: blue water, orange land steeper than 10°; real click on c_-3_-1:n0 (riverside, orphan: land runs to an edge shared with a root-connected chunk)",
+    "g02c-r1-geographic-pick-debug.png": "seed 6202, no gate; Manhattan c_-3_-1 (growth step 43); real click on c_-3_-1:n17 (160 m, geographicSlope); tint as above",
+    "g02c-r1-network-top-after.png": "seed 6202, G02c-R1 state (60 steps, gate on), integrity layer by class; whole world top view; red squares: cells the gate refused",
+    "g02c-r1-component-map-after.png": "seed 6202, gate on, same camera as the before map; one colour per city-level road component",
+    "g02c-r1-refused-candidate-debug.png": "seed 6202, gate on; refused candidate road:manhattanGrid:-4:-3 at step 45; real click"
+  },
+  "before": {
+    "load": {
+      "steps": 60,
+      "chunks": 66,
+      "mismatches": [
+        "c_-5_-3",
+        "c_1_-1",
+        "c_5_-3",
+        "c_3_-1"
+      ],
+      "err": null
+    },
+    "classes": {
+      "orphan": 12,
+      "geographicSlope": 1
+    },
+    "report": {
+      "chicagoGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_1_2:n0",
+        "coreComponents": 1,
+        "chunks": 10,
+        "roadLengthM": 156672,
+        "rootReachableLengthM": 156672,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      },
+      "fezOrganicCore": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_5_1:n0",
+        "coreComponents": 1,
+        "chunks": 5,
+        "roadLengthM": 30831,
+        "rootReachableLengthM": 30831,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      },
+      "manhattanGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_-4_0:n0",
+        "coreComponents": 1,
+        "chunks": 48,
+        "roadLengthM": 851225,
+        "rootReachableLengthM": 843550,
+        "rootReachableRatio": 0.991,
+        "disconnectedComponents": 13,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 7675
+      }
+    }
+  },
+  "after": {
+    "load": {
+      "steps": 60,
+      "chunks": 66,
+      "mismatches": [
+        "c_-5_-3",
+        "c_1_-1",
+        "c_5_-3",
+        "c_3_-1"
+      ],
+      "err": null
+    },
+    "classes": {},
+    "refused": 2,
+    "report": {
+      "chicagoGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_1_2:n0",
+        "coreComponents": 1,
+        "chunks": 10,
+        "roadLengthM": 156672,
+        "rootReachableLengthM": 156672,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      },
+      "fezOrganicCore": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_5_1:n0",
+        "coreComponents": 1,
+        "chunks": 5,
+        "roadLengthM": 30831,
+        "rootReachableLengthM": 30831,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      },
+      "manhattanGrid": {
+        "rootStatus": "ok",
+        "rootComponentId": "c_-4_0:n0",
+        "coreComponents": 1,
+        "chunks": 48,
+        "roadLengthM": 876544,
+        "rootReachableLengthM": 876544,
+        "rootReachableRatio": 1,
+        "disconnectedComponents": 0,
+        "orphanLengthM": 0,
+        "geographicLengthM": 0,
+        "unclassifiedLengthM": 0
+      }
+    }
+  },
+  "errors": [],
+  "ms": 590429
+}

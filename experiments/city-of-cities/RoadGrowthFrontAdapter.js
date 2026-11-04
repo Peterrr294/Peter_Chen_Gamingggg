@@ -12,6 +12,7 @@ import { evaluateCandidate } from './GrowthEvaluation.js';
 import { MORPH_RULES, MorphologicalGrowth } from './MorphologicalGrowth.js';
 import { RAMP_RULES } from './RoadRampPlanner.js';
 import { interCityPlan } from './InterCityConnectionPlanner.js';
+import { cityRoot, integrityOfCandidate } from './NetworkIntegrity.js';
 
 export const FAILURE = Object.freeze({ candidate: 'candidateRejected', terrain: 'terrainConflict', network: 'networkConflict', generation: 'generationFailure', stalled: 'growthStalled' });
 // Strategies whose generator takes parent road entries. canalStreet ignores them while a canal region exists, so a
@@ -86,6 +87,8 @@ export class RoadGrowthFrontAdapter {
     this.throughJunction = false; // G02c-03a: a ramp may pass one junction when it has no room before it
     this.interCity = false; // G03c-02: newcomers read other cities' road ends on edges they will share
     this.replayKeepsUnconnected = false; // replay test only: keep a planned chunk with no join, so a whole old run can be compared
+    this.networkIntegrity = false; // G02c-R1: new roads must reach the city root; unexplained pieces refuse the candidate
+    this.rootMemo = null;
     if (gradeProfile) morph.entryLimit = RAMP_RULES.maxGroundOffsetM; // a road end beyond this cannot get a ramp; the plan decides the rest
   }
 
@@ -188,7 +191,15 @@ export class RoadGrowthFrontAdapter {
   candidateSignature(candidate) {
     const w = this.world; const { gx, gy } = candidate;
     const neighbours = Object.values(DIRECTIONS).map(([dx, dy, , otherSide]) => { const c = w.chunkAt(gx + dx, gy + dy); return c ? `${c.chunkId}:${c.cityId}:${c.cityId === candidate.cityId ? c.outputs.signatures.network : ''}:${otherSide}` : '-'; });
-    return JSON.stringify({ front: candidate.sourceGrowthFrontId, parent: w.chunks.get(candidate.sourceChunkId).outputs.signatures.network, terrain: w.cell(gx, gy).terrainSeed, neighbours, profile: this.gradeProfile, rules: RAMP_RULES });
+    return JSON.stringify({ front: candidate.sourceGrowthFrontId, parent: w.chunks.get(candidate.sourceChunkId).outputs.signatures.network, terrain: w.cell(gx, gy).terrainSeed, neighbours, profile: this.gradeProfile, rules: RAMP_RULES, ...(this.networkIntegrity ? { rootPorts: this.rootPorts(candidate) } : {}) });
+  }
+
+  // G02c-R1: which road ends of the parent and same-city neighbours the city root reaches (part of the cache signature).
+  rootPorts(candidate) {
+    const w = this.world; const memoKey = `${candidate.cityId}|${w.growth.history.length}`;
+    if (this.rootMemo?.key !== memoKey) this.rootMemo = { key: memoKey, root: cityRoot(w, candidate.cityId) };
+    const { reach } = this.rootMemo.root;
+    return Object.values(DIRECTIONS).map(([dx, dy, , otherSide]) => { const c = w.chunkAt(candidate.gx + dx, candidate.gy + dy); return c && c.cityId === candidate.cityId ? c.outputs.ports[otherSide].filter(p => p.type === 'road' && reach.has(`${c.chunkId}:${p.nodeId}`)).map(p => p.position).join(',') : '-'; });
   }
 
   validate({ event, chunk, layers }) {
@@ -201,6 +212,14 @@ export class RoadGrowthFrontAdapter {
     if (this.gradeProfile) {
       const off = [...event.connections, ...(event.crossCityConnections ?? [])].filter(c => Math.abs(c.elevationStepM) > RAMP_RULES.endpointToleranceM + 0.01);
       if (off.length) return { failureClass: FAILURE.network, reason: `${off.length} joined road(s) still differ in height` };
+    }
+    // G02c-R1: Analyze Network → Validate, before commit. The joins are those the commit would record.
+    if (this.networkIntegrity) {
+      const joins = [...event.connections, ...this.morph.connectNeighbours(chunk, event.parentChunkId).connections];
+      const r = integrityOfCandidate(this.world, { event, chunk, layers }, joins);
+      const { components, ...summary } = r;
+      event.networkIntegrity = { ...summary, components: components.map(({ sources, ...c }) => c) };
+      if (r.result === 'rejected') return { failureClass: FAILURE.network, reason: r.reason, integrity: { ...summary, components: components.filter(c => !c.rootReachable).map(({ sources, ...c }) => c) } };
     }
     return null;
   }

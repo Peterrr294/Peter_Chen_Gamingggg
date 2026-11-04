@@ -1,0 +1,2204 @@
+{
+  "task": "G02c-R1 network integrity gate",
+  "testedAt": "2026-11-04T05:25:00.788Z",
+  "node": "v24.20.0",
+  "budget": 30,
+  "diagnosis": {
+    "6202": {
+      "steps": 60,
+      "cities": {
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-4_0:n0",
+          "coreComponents": 1,
+          "chunks": 48,
+          "roadLengthM": 851225,
+          "rootReachableLengthM": 843550,
+          "rootReachableRatio": 0.991,
+          "disconnectedComponents": 13,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 7675
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_2:n0",
+          "coreComponents": 1,
+          "chunks": 10,
+          "roadLengthM": 156672,
+          "rootReachableLengthM": 156672,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_1:n0",
+          "coreComponents": 1,
+          "chunks": 5,
+          "roadLengthM": 30831,
+          "rootReachableLengthM": 30831,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "pieces": [
+        {
+          "componentId": "c_-3_-1:n0",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-3_-1",
+          "growthStep": 43,
+          "parentEvent": "growth:manhattanGrid:43",
+          "parentChunkId": "c_-3_0",
+          "nodeCount": 15,
+          "edgeCount": 14,
+          "lengthM": 1414,
+          "roadClasses": {
+            "primary": 6,
+            "secondary": 8
+          },
+          "sources": {
+            "grid-line (truncated)": 7,
+            "grid-line": 7
+          },
+          "boundaryPorts": 1,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.035,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the maxZ edge, shared with root-connected c_-3_0; its roads are not joined there"
+        },
+        {
+          "componentId": "c_-3_-1:n7",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-3_-1",
+          "growthStep": 43,
+          "parentEvent": "growth:manhattanGrid:43",
+          "parentChunkId": "c_-3_0",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 160,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 1
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.035,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_-4_-1; its roads are not joined there"
+        },
+        {
+          "componentId": "c_-3_-1:n17",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-3_-1",
+          "growthStep": 43,
+          "parentEvent": "growth:manhattanGrid:43",
+          "parentChunkId": "c_-3_0",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 160,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line": 1,
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.035,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "geographicSlope",
+          "reason": "every land path to a root-reached road (inside c_-3_-1, or across the maxZ edge to c_-3_0) crosses slopes above 10° (the DNA road limit)"
+        },
+        {
+          "componentId": "c_-3_-1:n27",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-3_-1",
+          "growthStep": 43,
+          "parentEvent": "growth:manhattanGrid:43",
+          "parentChunkId": "c_-3_0",
+          "nodeCount": 13,
+          "edgeCount": 12,
+          "lengthM": 984,
+          "roadClasses": {
+            "primary": 6,
+            "secondary": 6
+          },
+          "sources": {
+            "grid-line (truncated)": 7,
+            "grid-line": 5
+          },
+          "boundaryPorts": 2,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.035,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the maxZ edge, shared with root-connected c_-3_0; its roads are not joined there"
+        },
+        {
+          "componentId": "c_-4_-3:n0",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 6,
+          "edgeCount": 5,
+          "lengthM": 232,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 3
+          },
+          "sources": {
+            "grid-line (truncated)": 4,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n3",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 156,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 1
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n6",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 11,
+          "edgeCount": 10,
+          "lengthM": 636,
+          "roadClasses": {
+            "primary": 4,
+            "secondary": 6
+          },
+          "sources": {
+            "grid-line (truncated)": 8,
+            "grid-line": 2
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n11",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 25,
+          "edgeCount": 24,
+          "lengthM": 1769,
+          "roadClasses": {
+            "primary": 10,
+            "secondary": 14
+          },
+          "sources": {
+            "grid-line (truncated)": 19,
+            "mountain connector": 3,
+            "grid-line": 2
+          },
+          "boundaryPorts": 1,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n20",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 8,
+          "edgeCount": 7,
+          "lengthM": 494,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 6,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n24",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 316,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line": 1,
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 1,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n31",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 311,
+          "roadClasses": {
+            "primary": 1,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n35",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 7,
+          "edgeCount": 6,
+          "lengthM": 413,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 3
+          },
+          "sources": {
+            "grid-line (truncated)": 5,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-4_-3:n39",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_-4_-3",
+          "growthStep": 45,
+          "parentEvent": "growth:manhattanGrid:45",
+          "parentChunkId": "c_-4_-2",
+          "nodeCount": 8,
+          "edgeCount": 7,
+          "lengthM": 630,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 4,
+            "grid-line": 3
+          },
+          "boundaryPorts": 2,
+          "landform": "coast",
+          "chunkWaterShare": 0.326,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-4_-3; the generator left it unlinked"
+        }
+      ],
+      "classes": {
+        "orphan": 12,
+        "geographicSlope": 1
+      }
+    },
+    "6203": {
+      "steps": 41,
+      "cities": {
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_4_4:n0",
+          "coreComponents": 1,
+          "chunks": 36,
+          "roadLengthM": 630667,
+          "rootReachableLengthM": 624663,
+          "rootReachableRatio": 0.9905,
+          "disconnectedComponents": 14,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 6004
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_-4:n0",
+          "coreComponents": 1,
+          "chunks": 7,
+          "roadLengthM": 98493,
+          "rootReachableLengthM": 96416,
+          "rootReachableRatio": 0.9789,
+          "disconnectedComponents": 7,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 2077
+        }
+      },
+      "pieces": [
+        {
+          "componentId": "c_2_10:n7",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_2_10",
+          "growthStep": 18,
+          "parentEvent": "growth:manhattanGrid:18",
+          "parentChunkId": "c_2_9",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 151,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 1
+          },
+          "sources": {
+            "grid-line": 1,
+            "grid-line (truncated)": 2
+          },
+          "boundaryPorts": 1,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.033,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+        },
+        {
+          "componentId": "c_2_10:n25",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_2_10",
+          "growthStep": 18,
+          "parentEvent": "growth:manhattanGrid:18",
+          "parentChunkId": "c_2_9",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 150,
+          "roadClasses": {
+            "primary": 1,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.033,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "geographicSlope",
+          "reason": "every land path to a root-reached road (inside c_2_10, or across the minZ edge to c_2_9) crosses slopes above 10° (the DNA road limit)"
+        },
+        {
+          "componentId": "c_2_10:n27",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_2_10",
+          "growthStep": 18,
+          "parentEvent": "growth:manhattanGrid:18",
+          "parentChunkId": "c_2_9",
+          "nodeCount": 6,
+          "edgeCount": 5,
+          "lengthM": 173,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.033,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+        },
+        {
+          "componentId": "c_2_10:n44",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_2_10",
+          "growthStep": 18,
+          "parentEvent": "growth:manhattanGrid:18",
+          "parentChunkId": "c_2_9",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 176,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4
+          },
+          "boundaryPorts": 0,
+          "landform": "riverValley",
+          "chunkWaterShare": 0.033,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the maxZ edge, shared with root-connected c_2_11; its roads are not joined there"
+        },
+        {
+          "componentId": "c_4_14:n0",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 259,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n3",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 276,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n6",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 168,
+          "roadClasses": {
+            "primary": 1,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_3_14; its roads are not joined there"
+        },
+        {
+          "componentId": "c_4_14:n8",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 160,
+          "roadClasses": {
+            "primary": 1,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_3_14; its roads are not joined there"
+        },
+        {
+          "componentId": "c_4_14:n13",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 6,
+          "edgeCount": 5,
+          "lengthM": 414,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 3
+          },
+          "sources": {
+            "grid-line (truncated)": 4,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n16",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 10,
+          "edgeCount": 9,
+          "lengthM": 496,
+          "roadClasses": {
+            "primary": 4,
+            "secondary": 5
+          },
+          "sources": {
+            "grid-line (truncated)": 7,
+            "grid-line": 2
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "geographicSlope",
+          "reason": "every land path to a root-reached road (inside c_4_14, or across the minX edge to c_3_14) crosses slopes above 10° (the DNA road limit)"
+        },
+        {
+          "componentId": "c_4_14:n21",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 7,
+          "edgeCount": 6,
+          "lengthM": 462,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 3
+          },
+          "sources": {
+            "grid-line (truncated)": 5,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n25",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 7,
+          "edgeCount": 6,
+          "lengthM": 532,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 5,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n28",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 42,
+          "edgeCount": 41,
+          "lengthM": 2302,
+          "roadClasses": {
+            "primary": 17,
+            "secondary": 24
+          },
+          "sources": {
+            "grid-line (truncated)": 26,
+            "grid-line": 12,
+            "mountain connector": 3
+          },
+          "boundaryPorts": 4,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_4_14; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_4_14:n38",
+          "cityId": "manhattanGrid",
+          "chunkId": "c_4_14",
+          "growthStep": 41,
+          "parentEvent": "growth:manhattanGrid:41",
+          "parentChunkId": "c_3_14",
+          "nodeCount": 8,
+          "edgeCount": 7,
+          "lengthM": 285,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 5,
+            "grid-line": 2
+          },
+          "boundaryPorts": 1,
+          "landform": "coast",
+          "chunkWaterShare": 0.37,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land runs from it to the minX edge, shared with root-connected c_3_14; its roads are not joined there"
+        },
+        {
+          "componentId": "c_-1_-1:n8",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 3,
+          "edgeCount": 2,
+          "lengthM": 212,
+          "roadClasses": {
+            "primary": 1,
+            "secondary": 1
+          },
+          "sources": {
+            "grid-line (truncated)": 2
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n10",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 212,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n13",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 163,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 3,
+            "grid-line": 1
+          },
+          "boundaryPorts": 1,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n27",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 10,
+          "edgeCount": 9,
+          "lengthM": 668,
+          "roadClasses": {
+            "primary": 5,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 5,
+            "grid-line": 4
+          },
+          "boundaryPorts": 2,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n35",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 5,
+          "edgeCount": 4,
+          "lengthM": 156,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 2
+          },
+          "sources": {
+            "grid-line (truncated)": 4
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n41",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 8,
+          "edgeCount": 7,
+          "lengthM": 494,
+          "roadClasses": {
+            "primary": 3,
+            "secondary": 4
+          },
+          "sources": {
+            "grid-line (truncated)": 6,
+            "grid-line": 1
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        },
+        {
+          "componentId": "c_-1_-1:n51",
+          "cityId": "chicagoGrid",
+          "chunkId": "c_-1_-1",
+          "growthStep": 10,
+          "parentEvent": "growth:chicagoGrid:10",
+          "parentChunkId": "c_-1_-2",
+          "nodeCount": 4,
+          "edgeCount": 3,
+          "lengthM": 172,
+          "roadClasses": {
+            "primary": 2,
+            "secondary": 1
+          },
+          "sources": {
+            "grid-line (truncated)": 3
+          },
+          "boundaryPorts": 0,
+          "landform": "coast",
+          "chunkWaterShare": 0.329,
+          "maxSlopeDeg": 10,
+          "reachableFromCore": false,
+          "class": "orphan",
+          "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+        }
+      ],
+      "classes": {
+        "orphan": 19,
+        "geographicSlope": 2
+      }
+    }
+  },
+  "runs": {
+    "6201-off": {
+      "seed": 6201,
+      "gate": false,
+      "steps": 19,
+      "stalled": {
+        "step": 20,
+        "reasons": {
+          "no parent road joined a child road (# usable entries unmatched)": 7
+        }
+      },
+      "ms": 97715,
+      "milestones": {
+        "12": {
+          "ms": 56281,
+          "grown": {
+            "manhattanGrid": 8,
+            "fezOrganicCore": 4
+          },
+          "built": {
+            "blocks": 700,
+            "parcels": 18794,
+            "buildings": 16624,
+            "roadKm": 171.19
+          },
+          "cities": {
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-1_-3:n0",
+              "coreComponents": 1,
+              "chunks": 5,
+              "roadLengthM": 29826,
+              "rootReachableLengthM": 29826,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-2_0:n0",
+              "coreComponents": 1,
+              "chunks": 9,
+              "roadLengthM": 165888,
+              "rootReachableLengthM": 165888,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 15,
+          "gateRefusals": 0,
+          "cachedRefusals": 0,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.8,
+          "accepted": {
+            "not checked": 12
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_0_3:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5281,
+          "rootReachableLengthM": 5281,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_4_-4:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 15360,
+          "rootReachableLengthM": 15360,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-1_-3:n0",
+          "coreComponents": 1,
+          "chunks": 8,
+          "roadLengthM": 48528,
+          "rootReachableLengthM": 48528,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_0:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6831,
+          "rootReachableLengthM": 6831,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-2_0:n0",
+          "coreComponents": 1,
+          "chunks": 13,
+          "roadLengthM": 239616,
+          "rootReachableLengthM": 239616,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_0_6:n4",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5102,
+          "rootReachableLengthM": 5102,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    },
+    "6201-gate": {
+      "seed": 6201,
+      "gate": true,
+      "steps": 19,
+      "stalled": {
+        "step": 20,
+        "reasons": {
+          "no parent road joined a child road (# usable entries unmatched)": 7
+        }
+      },
+      "ms": 95647,
+      "milestones": {
+        "12": {
+          "ms": 54492,
+          "grown": {
+            "manhattanGrid": 8,
+            "fezOrganicCore": 4
+          },
+          "built": {
+            "blocks": 700,
+            "parcels": 18794,
+            "buildings": 16624,
+            "roadKm": 171.19
+          },
+          "cities": {
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-1_-3:n0",
+              "coreComponents": 1,
+              "chunks": 5,
+              "roadLengthM": 29826,
+              "rootReachableLengthM": 29826,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-2_0:n0",
+              "coreComponents": 1,
+              "chunks": 9,
+              "roadLengthM": 165888,
+              "rootReachableLengthM": 165888,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 15,
+          "gateRefusals": 0,
+          "cachedRefusals": 0,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.8,
+          "accepted": {
+            "connected": 12
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_0_3:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5281,
+          "rootReachableLengthM": 5281,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_4_-4:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 15360,
+          "rootReachableLengthM": 15360,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-1_-3:n0",
+          "coreComponents": 1,
+          "chunks": 8,
+          "roadLengthM": 48528,
+          "rootReachableLengthM": 48528,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_0:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6831,
+          "rootReachableLengthM": 6831,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-2_0:n0",
+          "coreComponents": 1,
+          "chunks": 13,
+          "roadLengthM": 239616,
+          "rootReachableLengthM": 239616,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_0_6:n4",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5102,
+          "rootReachableLengthM": 5102,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    },
+    "6202-off": {
+      "seed": 6202,
+      "gate": false,
+      "steps": 30,
+      "stalled": null,
+      "ms": 151997,
+      "milestones": {
+        "12": {
+          "ms": 60323,
+          "grown": {
+            "chicagoGrid": 5,
+            "manhattanGrid": 5,
+            "fezOrganicCore": 2
+          },
+          "built": {
+            "blocks": 753,
+            "parcels": 22401,
+            "buildings": 19649,
+            "roadKm": 182.05
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_2:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 94208,
+              "rootReachableLengthM": 94208,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_5_1:n0",
+              "coreComponents": 1,
+              "chunks": 3,
+              "roadLengthM": 18634,
+              "rootReachableLengthM": 18634,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-4_0:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 109568,
+              "rootReachableLengthM": 109568,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 13,
+          "gateRefusals": 0,
+          "cachedRefusals": 5,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.923,
+          "accepted": {
+            "not checked": 12
+          }
+        },
+        "30": {
+          "ms": 151995,
+          "grown": {
+            "chicagoGrid": 9,
+            "manhattanGrid": 17,
+            "fezOrganicCore": 4
+          },
+          "built": {
+            "blocks": 2011,
+            "parcels": 55150,
+            "buildings": 48921,
+            "roadKm": 475.85
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_2:n0",
+              "coreComponents": 1,
+              "chunks": 10,
+              "roadLengthM": 156672,
+              "rootReachableLengthM": 156672,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_5_1:n0",
+              "coreComponents": 1,
+              "chunks": 5,
+              "roadLengthM": 30831,
+              "rootReachableLengthM": 30831,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-4_0:n0",
+              "coreComponents": 1,
+              "chunks": 18,
+              "roadLengthM": 328704,
+              "rootReachableLengthM": 328704,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 34,
+          "gateRefusals": 0,
+          "cachedRefusals": 28,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.882,
+          "accepted": {
+            "not checked": 30
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-5_-3:n2",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5941,
+          "rootReachableLengthM": 5941,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_2:n0",
+          "coreComponents": 1,
+          "chunks": 10,
+          "roadLengthM": 156672,
+          "rootReachableLengthM": 156672,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_1:n0",
+          "coreComponents": 1,
+          "chunks": 5,
+          "roadLengthM": 30831,
+          "rootReachableLengthM": 30831,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_-3:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5343,
+          "rootReachableLengthM": 5343,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-4_0:n0",
+          "coreComponents": 1,
+          "chunks": 18,
+          "roadLengthM": 328704,
+          "rootReachableLengthM": 328704,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_-1:n2",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6307,
+          "rootReachableLengthM": 6307,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    },
+    "6202-gate": {
+      "seed": 6202,
+      "gate": true,
+      "steps": 30,
+      "stalled": null,
+      "ms": 149114,
+      "milestones": {
+        "12": {
+          "ms": 58988,
+          "grown": {
+            "chicagoGrid": 5,
+            "manhattanGrid": 5,
+            "fezOrganicCore": 2
+          },
+          "built": {
+            "blocks": 753,
+            "parcels": 22401,
+            "buildings": 19649,
+            "roadKm": 182.05
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_2:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 94208,
+              "rootReachableLengthM": 94208,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_5_1:n0",
+              "coreComponents": 1,
+              "chunks": 3,
+              "roadLengthM": 18634,
+              "rootReachableLengthM": 18634,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-4_0:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 109568,
+              "rootReachableLengthM": 109568,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 13,
+          "gateRefusals": 0,
+          "cachedRefusals": 5,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.923,
+          "accepted": {
+            "connected": 12
+          }
+        },
+        "30": {
+          "ms": 149112,
+          "grown": {
+            "chicagoGrid": 9,
+            "manhattanGrid": 17,
+            "fezOrganicCore": 4
+          },
+          "built": {
+            "blocks": 2011,
+            "parcels": 55150,
+            "buildings": 48921,
+            "roadKm": 475.85
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_2:n0",
+              "coreComponents": 1,
+              "chunks": 10,
+              "roadLengthM": 156672,
+              "rootReachableLengthM": 156672,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "fezOrganicCore": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_5_1:n0",
+              "coreComponents": 1,
+              "chunks": 5,
+              "roadLengthM": 30831,
+              "rootReachableLengthM": 30831,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_-4_0:n0",
+              "coreComponents": 1,
+              "chunks": 18,
+              "roadLengthM": 328704,
+              "rootReachableLengthM": 328704,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 34,
+          "gateRefusals": 0,
+          "cachedRefusals": 28,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.882,
+          "accepted": {
+            "connected": 30
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-5_-3:n2",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5941,
+          "rootReachableLengthM": 5941,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_2:n0",
+          "coreComponents": 1,
+          "chunks": 10,
+          "roadLengthM": 156672,
+          "rootReachableLengthM": 156672,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_1:n0",
+          "coreComponents": 1,
+          "chunks": 5,
+          "roadLengthM": 30831,
+          "rootReachableLengthM": 30831,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_5_-3:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 5343,
+          "rootReachableLengthM": 5343,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-4_0:n0",
+          "coreComponents": 1,
+          "chunks": 18,
+          "roadLengthM": 328704,
+          "rootReachableLengthM": 328704,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_-1:n2",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6307,
+          "rootReachableLengthM": 6307,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    },
+    "6203-off": {
+      "seed": 6203,
+      "gate": false,
+      "steps": 30,
+      "stalled": null,
+      "ms": 186392,
+      "milestones": {
+        "12": {
+          "ms": 85321,
+          "grown": {
+            "chicagoGrid": 6,
+            "manhattanGrid": 6
+          },
+          "built": {
+            "blocks": 839,
+            "parcels": 23340,
+            "buildings": 20753,
+            "roadKm": 193.71
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_-4:n0",
+              "coreComponents": 1,
+              "chunks": 7,
+              "roadLengthM": 98493,
+              "rootReachableLengthM": 96416,
+              "rootReachableRatio": 0.9789,
+              "disconnectedComponents": 7,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 2077
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_4_4:n0",
+              "coreComponents": 1,
+              "chunks": 7,
+              "roadLengthM": 130048,
+              "rootReachableLengthM": 130048,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 18,
+          "gateRefusals": 0,
+          "cachedRefusals": 8,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.667,
+          "accepted": {
+            "not checked": 12
+          }
+        },
+        "30": {
+          "ms": 186390,
+          "grown": {
+            "chicagoGrid": 6,
+            "manhattanGrid": 24
+          },
+          "built": {
+            "blocks": 2249,
+            "parcels": 54884,
+            "buildings": 49028,
+            "roadKm": 509.59
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_-4:n0",
+              "coreComponents": 1,
+              "chunks": 7,
+              "roadLengthM": 98493,
+              "rootReachableLengthM": 96416,
+              "rootReachableRatio": 0.9789,
+              "disconnectedComponents": 7,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 2077
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_4_4:n0",
+              "coreComponents": 1,
+              "chunks": 25,
+              "roadLengthM": 445926,
+              "rootReachableLengthM": 445276,
+              "rootReachableRatio": 0.9985,
+              "disconnectedComponents": 4,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 650
+            }
+          },
+          "generatedAttempts": 42,
+          "gateRefusals": 0,
+          "cachedRefusals": 91,
+          "gateRejectionRate": 0,
+          "validCommitRate": 0.714,
+          "accepted": {
+            "not checked": 30
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "noRoadNetwork",
+          "rootComponentId": null,
+          "coreComponents": 0,
+          "chunks": 1,
+          "roadLengthM": 0,
+          "rootReachableLengthM": 0,
+          "rootReachableRatio": null,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_-4:n0",
+          "coreComponents": 1,
+          "chunks": 7,
+          "roadLengthM": 98493,
+          "rootReachableLengthM": 96416,
+          "rootReachableRatio": 0.9789,
+          "disconnectedComponents": 7,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 2077
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_6:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 4917,
+          "rootReachableLengthM": 4917,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-3_2:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6593,
+          "rootReachableLengthM": 6593,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_4_4:n0",
+          "coreComponents": 1,
+          "chunks": 25,
+          "roadLengthM": 445926,
+          "rootReachableLengthM": 445276,
+          "rootReachableRatio": 0.9985,
+          "disconnectedComponents": 4,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 650
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-5_-1:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 4635,
+          "rootReachableLengthM": 4635,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    },
+    "6203-gate": {
+      "seed": 6203,
+      "gate": true,
+      "steps": 30,
+      "stalled": null,
+      "ms": 204997,
+      "milestones": {
+        "12": {
+          "ms": 90613,
+          "grown": {
+            "chicagoGrid": 5,
+            "manhattanGrid": 7
+          },
+          "built": {
+            "blocks": 912,
+            "parcels": 24662,
+            "buildings": 21963,
+            "roadKm": 205.81
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_-4:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 92160,
+              "rootReachableLengthM": 92160,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_4_4:n0",
+              "coreComponents": 1,
+              "chunks": 8,
+              "roadLengthM": 148480,
+              "rootReachableLengthM": 148480,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 19,
+          "gateRefusals": 1,
+          "cachedRefusals": 10,
+          "gateRejectionRate": 0.053,
+          "validCommitRate": 0.632,
+          "accepted": {
+            "connected": 12
+          }
+        },
+        "30": {
+          "ms": 204993,
+          "grown": {
+            "chicagoGrid": 5,
+            "manhattanGrid": 25
+          },
+          "built": {
+            "blocks": 2376,
+            "parcels": 57385,
+            "buildings": 51300,
+            "roadKm": 532.47
+          },
+          "cities": {
+            "chicagoGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_1_-4:n0",
+              "coreComponents": 1,
+              "chunks": 6,
+              "roadLengthM": 92160,
+              "rootReachableLengthM": 92160,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            },
+            "manhattanGrid": {
+              "rootStatus": "ok",
+              "rootComponentId": "c_4_4:n0",
+              "coreComponents": 1,
+              "chunks": 26,
+              "roadLengthM": 475136,
+              "rootReachableLengthM": 475136,
+              "rootReachableRatio": 1,
+              "disconnectedComponents": 0,
+              "orphanLengthM": 0,
+              "geographicLengthM": 0,
+              "unclassifiedLengthM": 0
+            }
+          },
+          "generatedAttempts": 47,
+          "gateRefusals": 3,
+          "cachedRefusals": 110,
+          "gateRejectionRate": 0.064,
+          "validCommitRate": 0.638,
+          "accepted": {
+            "connected": 30
+          }
+        }
+      },
+      "final": {
+        "amsterdamCanalRing": {
+          "rootStatus": "noRoadNetwork",
+          "rootComponentId": null,
+          "coreComponents": 0,
+          "chunks": 1,
+          "roadLengthM": 0,
+          "rootReachableLengthM": 0,
+          "rootReachableRatio": null,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "chicagoGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_-4:n0",
+          "coreComponents": 1,
+          "chunks": 6,
+          "roadLengthM": 92160,
+          "rootReachableLengthM": 92160,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "fezOrganicCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_1_6:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 4917,
+          "rootReachableLengthM": 4917,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "lisbonHillCore": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-3_2:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 6593,
+          "rootReachableLengthM": 6593,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "manhattanGrid": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_4_4:n0",
+          "coreComponents": 1,
+          "chunks": 26,
+          "roadLengthM": 475136,
+          "rootReachableLengthM": 475136,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        },
+        "veniceWaterNetwork": {
+          "rootStatus": "ok",
+          "rootComponentId": "c_-5_-1:n0",
+          "coreComponents": 1,
+          "chunks": 1,
+          "roadLengthM": 4635,
+          "rootReachableLengthM": 4635,
+          "rootReachableRatio": 1,
+          "disconnectedComponents": 0,
+          "orphanLengthM": 0,
+          "geographicLengthM": 0,
+          "unclassifiedLengthM": 0
+        }
+      },
+      "refusals": [
+        {
+          "step": 10,
+          "cityId": "chicagoGrid",
+          "candidateId": "road:chicagoGrid:-1:-1",
+          "reason": "network integrity: 7 orphan road component(s), 2077 m, on passable land not reachable from the city root",
+          "components": [
+            {
+              "componentId": "c_-1_-1:n8",
+              "class": "orphan",
+              "lengthM": 212,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n10",
+              "class": "orphan",
+              "lengthM": 212,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n13",
+              "class": "orphan",
+              "lengthM": 163,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n27",
+              "class": "orphan",
+              "lengthM": 668,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n35",
+              "class": "orphan",
+              "lengthM": 156,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n41",
+              "class": "orphan",
+              "lengthM": 494,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            },
+            {
+              "componentId": "c_-1_-1:n51",
+              "class": "orphan",
+              "lengthM": 172,
+              "reason": "passable land (no water, slope ≤ 10°) joins it to root-reached roads inside c_-1_-1; the generator left it unlinked"
+            }
+          ]
+        },
+        {
+          "step": 18,
+          "cityId": "manhattanGrid",
+          "candidateId": "road:manhattanGrid:2:10",
+          "reason": "network integrity: 2 orphan road component(s), 324 m, on passable land not reachable from the city root",
+          "components": [
+            {
+              "componentId": "c_2_10:n7",
+              "class": "orphan",
+              "lengthM": 151,
+              "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+            },
+            {
+              "componentId": "c_2_10:n25",
+              "class": "geographicSlope",
+              "lengthM": 150,
+              "reason": "every land path to a root-reached road (inside c_2_10, or across the minZ edge to c_2_9) crosses slopes above 10° (the DNA road limit)"
+            },
+            {
+              "componentId": "c_2_10:n27",
+              "class": "orphan",
+              "lengthM": 173,
+              "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+            },
+            {
+              "componentId": "c_2_10:n44",
+              "class": "geographicSlope",
+              "lengthM": 176,
+              "reason": "every land path to a root-reached road (inside c_2_10, or across the minZ edge to c_2_9) crosses slopes above 10° (the DNA road limit)"
+            }
+          ]
+        },
+        {
+          "step": 23,
+          "cityId": "manhattanGrid",
+          "candidateId": "road:manhattanGrid:2:10",
+          "reason": "network integrity: 3 orphan road component(s), 500 m, on passable land not reachable from the city root",
+          "components": [
+            {
+              "componentId": "c_2_10:n7",
+              "class": "orphan",
+              "lengthM": 151,
+              "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+            },
+            {
+              "componentId": "c_2_10:n25",
+              "class": "geographicSlope",
+              "lengthM": 150,
+              "reason": "every land path to a root-reached road (inside c_2_10, or across the minZ edge to c_2_9) crosses slopes above 10° (the DNA road limit)"
+            },
+            {
+              "componentId": "c_2_10:n27",
+              "class": "orphan",
+              "lengthM": 173,
+              "reason": "passable land runs from it to the minX edge, shared with root-connected c_1_10; its roads are not joined there"
+            },
+            {
+              "componentId": "c_2_10:n44",
+              "class": "orphan",
+              "lengthM": 176,
+              "reason": "passable land runs from it to the maxZ edge, shared with root-connected c_2_11; its roads are not joined there"
+            }
+          ]
+        }
+      ],
+      "geographicAccepted": [],
+      "committedChunksChanged": 0
+    }
+  },
+  "stability": {
+    "seed": 6202,
+    "steps": 30,
+    "registryOrderReversedIdentical": true,
+    "saveAt15SignaturesReproduced": true,
+    "optionRestored": true,
+    "integrityReportReproducedAt15": true,
+    "continuedTo30EqualsUninterrupted": true,
+    "rejectionHistoryEqual": true,
+    "finalReportEqual": true
+  }
+}

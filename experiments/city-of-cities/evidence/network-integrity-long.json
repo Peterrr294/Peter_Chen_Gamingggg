@@ -1,0 +1,75 @@
+{
+  "task": "G02c-R1 long run (evidence)",
+  "seed": 6202,
+  "budget": 60,
+  "steps": 60,
+  "stalled": null,
+  "ms": 368351,
+  "grown": {
+    "chicagoGrid": 9,
+    "manhattanGrid": 47,
+    "fezOrganicCore": 4
+  },
+  "report": {
+    "chicagoGrid": {
+      "rootStatus": "ok",
+      "rootComponentId": "c_1_2:n0",
+      "coreComponents": 1,
+      "chunks": 10,
+      "roadLengthM": 156672,
+      "rootReachableLengthM": 156672,
+      "rootReachableRatio": 1,
+      "disconnectedComponents": 0,
+      "orphanLengthM": 0,
+      "geographicLengthM": 0,
+      "unclassifiedLengthM": 0,
+      "pieces": []
+    },
+    "fezOrganicCore": {
+      "rootStatus": "ok",
+      "rootComponentId": "c_5_1:n0",
+      "coreComponents": 1,
+      "chunks": 5,
+      "roadLengthM": 30831,
+      "rootReachableLengthM": 30831,
+      "rootReachableRatio": 1,
+      "disconnectedComponents": 0,
+      "orphanLengthM": 0,
+      "geographicLengthM": 0,
+      "unclassifiedLengthM": 0,
+      "pieces": []
+    },
+    "manhattanGrid": {
+      "rootStatus": "ok",
+      "rootComponentId": "c_-4_0:n0",
+      "coreComponents": 1,
+      "chunks": 48,
+      "roadLengthM": 876544,
+      "rootReachableLengthM": 876544,
+      "rootReachableRatio": 1,
+      "disconnectedComponents": 0,
+      "orphanLengthM": 0,
+      "geographicLengthM": 0,
+      "unclassifiedLengthM": 0,
+      "pieces": []
+    }
+  },
+  "gateRefusals": [
+    {
+      "step": 43,
+      "candidateId": "road:manhattanGrid:-3:-1",
+      "reason": "network integrity: 3 orphan road component(s), 2558 m, on passable land not reachable from the city root",
+      "cached": false
+    },
+    {
+      "step": 45,
+      "candidateId": "road:manhattanGrid:-4:-3",
+      "reason": "network integrity: 9 orphan road component(s), 4957 m, on passable land not reachable from the city root",
+      "cached": false
+    }
+  ],
+  "accepted": {
+    "connected": 60
+  },
+  "geographicAccepted": []
+}
