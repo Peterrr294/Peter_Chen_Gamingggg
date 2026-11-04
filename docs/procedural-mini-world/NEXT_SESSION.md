@@ -1,6 +1,12 @@
 # Next Session — Procedural Mini World Hand-off
 
-## Update 2026-11-03: VIS-01a growth observatory (read first)
+## Update 2026-11-04: G02c-03a ramp through one junction (read first)
+
+- **Done:** opt-in `junctionRamps` (`&junctions=1`). Note: [G02c-03a](./A-City-of-Cities/G02c-03a-Intersection-Aware-Ramp.md). Verify: `node --max-old-space-size=8192 scripts/verify-junction-ramp.mjs` (Node about 17 min).
+- **Waiting:** human spatial review. G02c-03b (two junctions) was requested but not started, because its own gate requires G02c-03a to pass review.
+- **Known:** the G01 page verifier fails on an outdated saved state (pre-existing since G02b).
+
+## Update 2026-11-03: VIS-01a growth observatory
 
 - **Done:** stage timeline of one real event. Note: [VIS-01](./A-City-of-Cities/VIS-01-Procedural-Growth-Observatory.md). Open `/experiments/city-of-cities/?worldSeed=6202&growthMode=road&grade=baseline&replay=1`. Verify: `node --max-old-space-size=8192 scripts/verify-growth-observatory.mjs`.
 - **Waiting:** review of VIS-01a before VIS-01b.

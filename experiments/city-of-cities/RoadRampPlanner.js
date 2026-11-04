@@ -26,10 +26,15 @@ export const RAMP_RULES = Object.freeze({
   endpointToleranceM: 0.05, // same-node height test: port elevations are stored to 0.01 m, terrain samples 4 m apart
   snapToleranceM: 2, // G03c-02: half a terrain sample: a gate placed on the 4 m grid lands within this of its target; the uncommitted end moves onto it
   buildingClearanceM: 0.25, // a building is vacated where the corridor moves its ground by more than this
+  // G02c-03a (opt-in): a ramp may pass ONE junction. Every road meeting there shares the junction height and is graded back.
+  junctionLevelM: 8, // the roads stay level at the junction height for this distance on every side (cautious junction rule)
+  junctionStraightDeg: 30, // the main road continues on the junction road closest to straight, within this angle
+  junctionHeightSteps: 20, // junction heights tried between the source elevation and the junction ground (fraction steps)
 });
 export const RAMP_STATUS = Object.freeze({
   flush: 'flush', accepted: 'accepted', length: 'insufficientLength', grade: 'gradeExceeded', terrain: 'terrainDiscontinuity',
   collision: 'geometryCollision', network: 'networkConflict', infrastructure: 'requiresInfrastructure',
+  junction: 'junctionConstraint', // G02c-03a: a ramp through the junction was tried; the junction or one of its roads failed
 });
 const r2 = v => +Number(v).toFixed(2);
 const r3 = v => +Number(v).toFixed(3);
@@ -141,6 +146,82 @@ function corridorOf(fields, samples, ys, L, width) {
   return cells;
 }
 
+// Profile that starts level at yStart for `level` metres, then ramps to the ground: the shortest that passes, or the reason.
+function rampFromLevel(samples, yStart, level, allowed, available) {
+  const shifted = samples.filter(q => q.s >= level - 1e-6).map(q => ({ ...q, s: q.s - level }));
+  if (!shifted.length) return { status: RAMP_STATUS.length, reason: 'road ends inside the level junction zone' };
+  const found = searchProfile(shifted, yStart, allowed, available - level);
+  if (found.status) return found;
+  const ys = samples.map(q => (q.s < level ? yStart : found.ys[shifted.findIndex(x => Math.abs(x.s + level - q.s) < 1e-6)]));
+  return { L: found.L + level, ys, m: measure(samples, ys, found.L + level) };
+}
+
+// G02c-03a: a ramp through one junction. main = road from the boundary through the junction J and on to its next node;
+// branches = every other road at J. One height zJ for J; all roads level within junctionLevelM of J; each graded to the
+// ground before its next junction. Any failing road refuses the whole plan.
+function planJunction(network, sampler, wet, approach, y0, allowedOf) {
+  const R = RAMP_RULES; const roads = network.edges.filter(e => e.kind !== 'canal');
+  const J = approach.endNode; const arrive = approach.parts.at(-1); const nodeJ = network.nodes[J];
+  const incident = roads.filter(e => (e.from === J || e.to === J) && e.id !== arrive.edge.id);
+  const dirAway = e => { const pts = e.from === J ? e.points : [...e.points].reverse(); const a = pts[0]; const b = pts[Math.min(pts.length - 1, 1)]; return Math.atan2(b.z - a.z, b.x - a.x); };
+  const inPts = arrive.forward ? arrive.edge.points : [...arrive.edge.points].reverse(); const ia = inPts.at(-2); const ib = inPts.at(-1);
+  const heading = Math.atan2(ib.z - ia.z, ib.x - ia.x);
+  const turn = e => { const d = Math.abs(((dirAway(e) - heading) * 180) / Math.PI) % 360; return Math.min(d, 360 - d); };
+  const candidates = incident.filter(e => e.kind === 'road').map(e => ({ e, t: turn(e) })).sort((a, b) => a.t - b.t || a.e.id - b.e.id);
+  const info = { nodeId: J, x: r2(nodeJ.x), z: r2(nodeJ.z), groundM: r2(nodeJ.y), degree: incident.length + 1, levelM: R.junctionLevelM };
+  if (incident.some(e => e.kind !== 'road')) return { status: RAMP_STATUS.infrastructure, reason: 'a bridge or tunnel meets the junction', junction: info };
+  if (!candidates.length || candidates[0].t > R.junctionStraightDeg) return { status: RAMP_STATUS.junction, reason: `no straight continuation at junction ${J} (closest turn ${candidates.length ? Math.round(candidates[0].t) : '—'}°)`, junction: info };
+  const cont = candidates[0].e;
+  const after = approachOf(network, J, cont);
+  if (after.endsAtJunction && after.endNode === J) return { status: RAMP_STATUS.junction, reason: 'continuation loops back to the junction', junction: info };
+  const main = { parts: [...approach.parts, ...after.parts], endsAtJunction: after.endsAtJunction, endNode: after.endNode };
+  const ms = sampleApproach(main, sampler.height, wet);
+  const sJ = ms.samples[approach.parts.length ? ms.marks[approach.parts.length] : 0].s;
+  const branchesIn = incident.filter(e => e.id !== cont.id).map(e => { const a = approachOf(network, J, e); return { edge: e, approach: a, sampled: sampleApproach(a, sampler.height, wet) }; });
+  info.mainContinuationEdge = cont.id; info.branchEdges = branchesIn.map(b => b.edge.id);
+  if (sJ <= R.junctionLevelM) return { status: RAMP_STATUS.junction, reason: `junction only ${r2(sJ)} m from the shared edge: no room before its level zone`, junction: info };
+  if ([ms, ...branchesIn.map(b => b.sampled)].some(x => x.samples.some(q => q.wet))) return { status: RAMP_STATUS.infrastructure, reason: 'a road at the junction crosses water', junction: info };
+  const allowedMain = allowedOf(arrive.edge.roadClass); const gJ = nodeJ.y;
+  let best = null; const failures = new Map(); const fail = x => { const k = x.reason.replace(/-?[0-9.]+/g, "#"); if (!failures.has(k)) failures.set(k, x); };
+  for (let k = 0; k <= R.junctionHeightSteps; k += 1) {
+    const zJ = y0 + (gJ - y0) * (k / R.junctionHeightSteps);
+    if (Math.abs(zJ - gJ) > R.maxGroundOffsetM) { fail({ status: RAMP_STATUS.terrain, reason: `junction would sit ${r2(Math.abs(zJ - gJ))} m off its ground` }); continue; }
+    // Main road: boundary → level zone around J → back to the ground.
+    const L1 = sJ - R.junctionLevelM;
+    const avail2 = ms.total - (main.endsAtJunction ? R.junctionStandoffM : 0);
+    const ys = ms.samples.map(q => (q.s <= L1 ? y0 + (zJ - y0) * rampShape(q.s / L1) : zJ));
+    const after2 = rampFromLevel(ms.samples.map(q => ({ ...q, s: q.s - (sJ - R.junctionLevelM) })).filter(q => q.s >= 0), zJ, 2 * R.junctionLevelM, allowedMain, avail2 - L1);
+    if (after2.status) { fail({ status: RAMP_STATUS.junction, reason: `main road past the junction: ${after2.reason}` }); continue; }
+    const first = ms.samples.findIndex(q => q.s >= L1);
+    for (let i = first; i < ms.samples.length; i += 1) ys[i] = after2.ys[i - first] ?? ms.samples[i].ground;
+    const mainEnd = L1 + after2.L;
+    const mm = measure(ms.samples, ys, mainEnd);
+    const off = Math.max(...ms.samples.filter(q => q.s <= mainEnd).map(q => Math.abs(ys[ms.samples.indexOf(q)] - q.ground)));
+    if (mm.maxGrade > allowedMain + 1e-9 || mm.maxChange > R.maxGradeChangePerSample + 1e-9) { fail({ status: RAMP_STATUS.grade, reason: `main road through the junction: grade ${(mm.maxGrade * 100).toFixed(1)} %, change ${(mm.maxChange * 100).toFixed(1)} %` }); continue; }
+    if (off > R.maxGroundOffsetM) { fail({ status: RAMP_STATUS.terrain, reason: `main road ${r2(off)} m off the ground` }); continue; }
+    // Every branch: level at zJ, then down to the ground before its own next junction.
+    const branches = []; let failed = null;
+    for (const b of branchesIn) {
+      const allowed = allowedOf(b.edge.roadClass);
+      const avail = b.sampled.total - (b.approach.endsAtJunction ? R.junctionStandoffM : 0);
+      const r = rampFromLevel(b.sampled.samples, zJ, R.junctionLevelM, allowed, avail);
+      if (r.status) { failed = { status: RAMP_STATUS.junction, reason: `branch ${b.edge.id} (${b.edge.roadClass}, ${Math.round(b.sampled.total)} m to its next node): ${r.reason}` }; break; }
+      const offB = Math.max(...b.sampled.samples.filter(q => q.s <= r.L).map((q, i) => Math.abs(r.ys[i] - q.ground)));
+      if (offB > R.maxGroundOffsetM) { failed = { status: RAMP_STATUS.terrain, reason: `branch ${b.edge.id} ${r2(offB)} m off the ground` }; break; }
+      branches.push({ ...b, ys: r.ys, L: r.L, m: r.m, allowed });
+    }
+    if (failed) { fail(failed); continue; }
+    const earthwork = ms.samples.reduce((s, q, i) => s + Math.abs(ys[i] - q.ground), 0) + branches.reduce((s, b) => s + b.sampled.samples.reduce((t, q, i) => t + Math.abs(b.ys[i] - q.ground), 0), 0);
+    if (!best || earthwork < best.earthwork - 1e-9) best = { zJ, ys, mainEnd, mm, branches, earthwork, k };
+  }
+  if (!best) { const list = [...failures.values()]; const branch = list.find(x => x.reason.startsWith('branch')); return { status: (branch ?? list[0])?.status ?? RAMP_STATUS.junction, reason: `no junction height passes: ${list.map(x => x.reason).slice(0, 3).join('; ')}`, junction: info }; }
+  return {
+    junction: { ...info, junctionZ: r2(best.zJ), heightStep: `${best.k} of ${R.junctionHeightSteps}`, branches: best.branches.map(b => ({ edgeId: b.edge.id, roadClass: b.edge.roadClass, lengthToNextNodeM: Math.round(b.sampled.total), rampLengthM: b.L, maxGrade: r3(b.m.maxGrade), allowedGrade: r3(b.allowed), endsAt: b.approach.endsAtJunction ? 'junction' : b.approach.endsOnBoundary ? 'boundary' : 'road end' })) },
+    paths: [{ approach: main, samples: ms.samples, marks: ms.marks, ys: best.ys, L: best.mainEnd, width: arrive.edge.width }, ...best.branches.map(b => ({ approach: b.approach, samples: b.sampled.samples, marks: b.sampled.marks, ys: b.ys, L: b.L, width: b.edge.width }))],
+    main: { L: best.mainEnd, m: best.mm, ys: best.ys, samples: ms.samples },
+  };
+}
+
 // entries: { connectionId, kind: parent | neighbour, parentChunkId, parentNodeId, parentEdgeId, side (child side), position, roadClass, elevation }
 export function planVertical(network, fields, sampler, vertical) {
   const R = RAMP_RULES;
@@ -171,34 +252,47 @@ export function planVertical(network, fields, sampler, vertical) {
     if (approach.parts.some(({ edge }) => claimedEdges.has(edge.id))) { done(RAMP_STATUS.collision, 'approach already used by another ramp'); continue; }
     const allowed = base * (R.classFactor[port.roadClass] ?? 1);
     Object.assign(rec, { allowedGrade: r3(allowed), requiredRunM: Math.ceil(Math.abs(dh) / allowed) });
-    if (available <= 0) { done(RAMP_STATUS.length, `no road length before the junction (${Math.round(total)} m, stand-off ${R.junctionStandoffM} m)`); continue; }
-    const found = searchProfile(samples, e.elevation, allowed, available);
+    let found = available <= 0 ? { status: RAMP_STATUS.length, reason: `no road length before the junction (${Math.round(total)} m, stand-off ${R.junctionStandoffM} m)` } : searchProfile(samples, e.elevation, allowed, available);
+    let paths = null; let junction = null;
+    if (found.status === RAMP_STATUS.length && approach.endsAtJunction && vertical.throughJunction) {
+      const jp = planJunction(network, sampler, wet, approach, e.elevation, cls => base * (R.classFactor[cls] ?? 1));
+      if (jp.status) { done(jp.status, jp.reason, { simpleRampReason: found.reason, junction: jp.junction }); continue; }
+      if (jp.paths.some(pa => pa.approach.parts.some(({ edge }) => claimedEdges.has(edge.id)))) { done(RAMP_STATUS.collision, 'a road of the junction plan is already used by another ramp', { simpleRampReason: found.reason, junction: jp.junction }); continue; }
+      paths = jp.paths; junction = jp.junction; found = { L: jp.main.L, ys: jp.main.ys, m: jp.main.m };
+      rec.simpleRampReason = `${available <= 0 ? `no road length before the junction (${Math.round(total)} m, stand-off ${R.junctionStandoffM} m)` : 'too short before the junction'}`;
+    }
     if (found.status) { done(found.status, found.reason, { neededM: found.required ? Math.ceil(found.required) : null }); continue; }
-    const cells = corridorOf(fields, samples, found.ys, found.L, network.edges[port.edgeId].width);
+    paths ??= [{ approach, samples, marks, ys: found.ys, L: found.L, width: network.edges[port.edgeId].width }];
+    const pathSamples = paths[0].samples;
+    const cells = new Map();
+    for (const pa of paths) for (const [i, c] of corridorOf(fields, pa.samples, pa.ys, pa.L, pa.width)) { const old = cells.get(i); if (!old || c.d < old.d) cells.set(i, c); }
     // Collisions: another ramp's ground, or another road running over this ramp's reshaped ground.
     const clash = [...cells.keys()].some(i => claimedCells.has(i) && Math.abs(claimedCells.get(i) - fields.height[i]) > R.buildingClearanceM && Math.abs(cells.get(i).h - fields.height[i]) > R.buildingClearanceM);
-    const own = new Set(approach.parts.map(({ edge }) => edge.id));
+    const own = new Set(paths.flatMap(pa => pa.approach.parts.map(({ edge }) => edge.id)));
     const moved = (x, z) => { const { originX, originZ, size, spacing, columns } = fields.grid; const i = Math.round((z - originZ + size / 2) / spacing) * columns + Math.round((x - originX + size / 2) / spacing); const c = cells.get(i); return c ? Math.abs(c.h - fields.height[i]) : 0; };
     const crossed = others.filter(x => !own.has(x.id)).some(x => x.points.some((a, i) => { if (!i) return false; const b = x.points[i - 1]; const n = Math.ceil(Math.hypot(b.x - a.x, b.z - a.z) / R.sampleM); for (let k = 0; k <= n; k += 1) if (moved(a.x + (b.x - a.x) * (k / n), a.z + (b.z - a.z) * (k / n)) > R.buildingClearanceM) return true; return false; }));
     if (clash || crossed) { done(RAMP_STATUS.collision, clash ? 'corridor overlaps another ramp corridor' : 'corridor reshapes the ground under another road'); continue; }
     for (const [i, c] of cells) claimedCells.set(i, c.h);
-    approach.parts.forEach(({ edge }) => claimedEdges.add(edge.id));
-    const offsets = samples.map((q, i) => found.ys[i] - q.ground).filter((_, i) => samples[i].s <= found.L);
-    const profile = samples.filter(q => q.s <= found.L + RAMP_RULES.sampleM).map(q => { const i = samples.indexOf(q); return [r2(q.s), r2(found.ys[i]), r2(q.ground)]; });
+    paths.forEach(pa => pa.approach.parts.forEach(({ edge }) => claimedEdges.add(edge.id)));
+    const offsets = pathSamples.map((q, i) => found.ys[i] - q.ground).filter((_, i) => pathSamples[i].s <= found.L);
+    const profile = pathSamples.filter(q => q.s <= found.L + RAMP_RULES.sampleM).map(q => { const i = pathSamples.indexOf(q); return [r2(q.s), r2(found.ys[i]), r2(q.ground)]; });
     done(RAMP_STATUS.accepted, null, {
-      rampLengthM: found.L, startElevation: r2(e.elevation), endElevation: r2(found.ys[samples.findIndex(q => q.s >= found.L)]), maxGrade: r3(found.m.maxGrade), meanGrade: r3(found.m.meanGrade), maxGradeChange: r3(found.m.maxChange),
+      ...(junction ? { through: 'junction', junction } : {}),
+      rampLengthM: found.L, startElevation: r2(e.elevation), endElevation: r2(found.ys[Math.max(0, pathSamples.findIndex(q => q.s >= found.L))]), maxGrade: r3(found.m.maxGrade), meanGrade: r3(found.m.meanGrade), maxGradeChange: r3(found.m.maxChange),
       fillMaxM: r2(Math.max(0, ...offsets)), cutMaxM: r2(Math.max(0, ...offsets.map(v => -v))), corridorCells: cells.size, corridorAreaM2: cells.size * fields.grid.spacing * fields.grid.spacing, residualM: 0, profile,
     });
-    accepted.push({ rec, approach, samples, marks, ys: found.ys, port, node, elevation: e.elevation });
+    accepted.push({ rec, paths, port, node, elevation: e.elevation, junction });
   }
   // Apply to copies: plan geometry is the same, the generated network object stays untouched.
   const nodes = network.nodes.map(n => ({ ...n })); const edges = network.edges.map(x => ({ ...x }));
   const edgePorts = network.edgePorts.map(p => ({ ...p }));
   for (const a of accepted) {
-    a.approach.parts.forEach(({ edge, forward }, k) => {
-      const ptsOf = a.samples.slice(a.marks[k], a.marks[k + 1] + 1).map(q => { const i = a.samples.indexOf(q); return { x: q.x, y: a.ys[i], z: q.z }; });
-      edges[edge.id] = { ...edges[edge.id], points: forward ? ptsOf : ptsOf.reverse(), ramp: a.rec.rampId };
-    });
+    a.paths.forEach((pa, pIndex) => pa.approach.parts.forEach(({ edge, forward }, k) => {
+      const ptsOf = pa.samples.slice(pa.marks[k], pa.marks[k + 1] + 1).map(q => { const i = pa.samples.indexOf(q); return { x: q.x, y: pa.ys[i], z: q.z }; });
+      edges[edge.id] = { ...edges[edge.id], points: forward ? ptsOf : ptsOf.reverse(), ramp: a.rec.rampId, ...(a.junction ? { rampRole: pIndex === 0 ? 'main' : 'branch' } : {}) };
+      const endNode = forward ? edge.to : edge.from; if (!network.nodes[endNode].onBoundary) nodes[endNode].y = pa.ys[pa.marks[k + 1]]; // G02c-03a: graph nodes take the road height
+    }));
+    if (a.junction) nodes[a.junction.nodeId].y = a.junction.junctionZ;
     nodes[a.node.id].y = a.elevation;
     for (const p of edgePorts) if (p.nodeId === a.node.id) p.elevation = a.elevation;
   }
@@ -230,6 +324,22 @@ export function vacateBuildings(buildings, fields, height) {
     if ([{ x: cx, z: cz }, ...ring].some(p => movedAt(p.x, p.z) > RAMP_RULES.buildingClearanceM)) vacated.push(b.id); else kept.push(b);
   }
   return { buildings: { ...buildings, buildings: kept, stats: { ...buildings.stats, buildings: kept.length } }, vacated };
+}
+
+// G02c-03a impact report of one chunk's corridor. Only the chunk being generated is ever reshaped, so no committed building
+// can be affected; what is lost are the new chunk's own building candidates on reshaped ground.
+export function rampImpact(fields, height, blocks, parcels, buildings, vacated) {
+  const { columns, spacing, originX, originZ, size } = fields.grid; const x0 = originX - size / 2; const z0 = originZ - size / 2;
+  const moved = []; for (let i = 0; i < height.length; i += 1) if (Math.abs(height[i] - fields.height[i]) > RAMP_RULES.buildingClearanceM) moved.push({ x: x0 + (i % columns) * spacing, z: z0 + Math.floor(i / columns) * spacing });
+  const inside = (poly, x, z) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i, i += 1) { const a = poly[i]; const b = poly[j]; if ((a.z > z) !== (b.z > z) && x < ((b.x - a.x) * (z - a.z)) / (b.z - a.z) + a.x) c = !c; } return c; };
+  const areaOn = list => { let cells = 0; let touched = 0; for (const o of list) { const poly = o.polygon; const xs = poly.map(q => q.x); const zs = poly.map(q => q.z); const lo = { x: Math.min(...xs), z: Math.min(...zs) }; const hi = { x: Math.max(...xs), z: Math.max(...zs) }; const n = moved.filter(q => q.x >= lo.x && q.x <= hi.x && q.z >= lo.z && q.z <= hi.z && inside(poly, q.x, q.z)).length; if (n) { cells += n; touched += 1; } } return { touched, areaM2: cells * spacing * spacing }; };
+  const gone = new Set(vacated); const lost = (buildings.buildings ?? []).filter(b => gone.has(b.id));
+  const b = areaOn(blocks.blocks ?? []); const pa = areaOn(parcels.parcels ?? []);
+  return {
+    committedBuildingsAffected: 0, committedNote: 'by construction: only the chunk being generated is reshaped',
+    newBuildingCandidatesExcluded: lost.length, excludedFootprintM2: Math.round(lost.reduce((s, x) => s + (x.footprintArea ?? 0), 0)), candidatesBefore: (buildings.buildings ?? []).length,
+    corridorAreaM2: moved.length * spacing * spacing, blocksTouched: b.touched, blockAreaAffectedM2: b.areaM2, parcelsTouched: pa.touched, parcelAreaAffectedM2: pa.areaM2,
+  };
 }
 
 export function rampSignature(records, vacated) {

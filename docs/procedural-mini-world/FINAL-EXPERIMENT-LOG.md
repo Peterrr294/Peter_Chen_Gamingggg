@@ -39,7 +39,9 @@
 - **Update (2026-11-03, task G03c-02 by user instruction):** inter-city connection planned inside the newcomer's commit; no connection in real growth (6202 / 6209 / 6215) and none Connected in the controlled cases; blocker: ramps end before the first junction (entry G03c-02). Pending review.
 - **Update (2026-11-03, task G03c-03 by user instruction):** Phase A: the Chicago 171 m / 38 m drop is a continuous single-centre gradient, not a chunk reset; every building height is decomposed and reproduced (41,755 of 41,755); no height changed; inter-city interfaces classified (no connected type) (entry G03c-03). Pending review.
 - **Update (2026-11-03, task VIS-01a by user instruction):** stage timeline of one real growth event in the World Viewer, every stage labelled recorded / reconstructed / presentation; browser 16 of 16 (entry VIS-01a). Pending review.
-- **Current single task:** Review VIS-01a; VIS-01b only after that review.
+- **Update (2026-11-04, tasks G02c-03a / G02c-03b gate by user instruction):** ramps may pass one junction (opt-in); G02c-03a verified in Node and the browser. G02c-03b not started: its brief requires G02c-03a to pass first, and this stage stops for human review (entry G02c-03a). Pending review.
+- **Current single task:** Human spatial review of G02c-03a; then G02c-03b (up to two junctions).
+- *Previous (superseded 2026-11-04, G02c-03a):* "Review VIS-01a; VIS-01b only after that review."
 - *Previous (superseded 2026-11-03, VIS-01a):* "VIS-01 Procedural Growth Observatory, VIS-01a first (by user instruction 2026-11-03)."
 - *Previous (superseded 2026-11-03, G03c-03):* "G03c-03 Urban Interface (by user instruction 2026-11-03): Phase A (same-city morphology); inter-city part limited to classification."
 - *Previous (superseded 2026-11-03, G03c-02):* "G03c-02 Inter-City Road Connection (by user instruction 2026-11-02), after the G03c-01 gate."
@@ -1756,3 +1758,37 @@ Starting from the 10 high-priority candidates, complete two-source verification,
   - VIS-01b–d not started (stop condition).
 - **Review status:** Pending review. Note: [VIS-01](./A-City-of-Cities/VIS-01-Procedural-Growth-Observatory.md).
 - **Next single task:** review VIS-01a, then VIS-01b.
+
+### G02c-03a — Intersection-aware ramp
+
+- **Date / Stage / Single question:** 2026-11-04 / G02 / Can a ramp pass one real junction, with every road at that junction sharing its height and the graph intact, without touching committed buildings?
+- **Gate for G02c-03b:** this entry. G02c-03b was requested next, but its brief stops at an unverified G02c-03a, so only G02c-03a was finished.
+- **Changed:** `RoadRampPlanner.js` (single-junction plan, level zone, impact report, node heights along ramps), new `ConnectionOverlay.js`, `junctionFixture.js` (TEST ONLY), `verify-junction-ramp.mjs`, evidence `junction-ramp.json`; option plumbing in `MorphologicalGrowth.js`, `RoadGrowthFrontAdapter.js`, `WorldGrowthController.js`, `WorldContext.js`, `main.js`; `RampView.js` (junction status); Inspector review record (`algorithm-review.json`, AI re-read only).
+- **Parameters (assumptions):** level zone 8 m each side of the junction, straight continuation within 30°, 21 junction heights tried; G02c-02 grades and limits unchanged.
+- **Result:**
+  - Fixture: feasible case accepted (junction raised 20 → 20.75 m, max 5.8 %); seam 8 m and 20 m branches refused with reasons.
+  - Replay 6202: accepted 51 → 62 (11 through a junction), chunks without a parent join 4 → 0, Chicago and Manhattan 6 of 6 chunks reachable.
+  - Free growth: 6201 7 → 19 steps (stalled at 20), 6202 12 → 30, 6203 1 → 30 (budgets 12 and 30).
+  - Committed chunks changed 0 everywhere; junction height spread at most 0.0045 m; node / road gaps at most 0.046 m (tolerance 0.05); max grade 7.36 % (limit 7.5 %).
+  - New candidates excluded about 2 %.
+  - Browser: real clicks on a junction and a ramp, overlay on / off, timeline, impact off / on, 0 errors.
+  - Determinism and save / load pass; option off equals G02c-02.
+- **Regressions:**
+  - G02c-01, G02b, G03b (Node) pass.
+  - G02, G03a, G02b, G03b page verifiers pass.
+  - **G01 page verifier fails, pre-existing:** its saved state predates two empty fields added by G02b. Not changed.
+  - VIS-01a passes 16 / 16.
+  - G03c full verifiers not re-run.
+- **Screenshots (seed 6202, step 2, Manhattan c_-4_0 → c_-3_0, junction 16):**
+  - ![Top](../assets/screenshots/procedural-mini-world/g02c-03a-overlay-top.png)
+  - ![3D](../assets/screenshots/procedural-mini-world/g02c-03a-junction-3d.png)
+  - ![Profile](../assets/screenshots/procedural-mini-world/g02c-03a-junction-pick-profile.png)
+  - ![Impact on](../assets/screenshots/procedural-mini-world/g02c-03a-building-impact-on.png)
+- **Open issues:**
+  - one junction only;
+  - overlay marks whole edges;
+  - about 2 % candidates excluded;
+  - three cities still do not grow;
+  - Chicago Hierarchical Polycentricity recorded as a Proposed Design Decision, not implemented.
+- **Review status:** Pending human spatial review. Note: [G02c-03a](./A-City-of-Cities/G02c-03a-Intersection-Aware-Ramp.md).
+- **Next single task:** human review, then G02c-03b.

@@ -1,0 +1,1316 @@
+{
+  "task": "G02c-03a Intersection-Aware Road Ramp",
+  "testedAt": "2026-11-04T02:54:53.522Z",
+  "rules": {
+    "classFactor": {
+      "primary": 1,
+      "secondary": 1.25,
+      "lane": 1.5
+    },
+    "curveShare": 0.25,
+    "junctionStandoffM": 12,
+    "sampleM": 4,
+    "runStepM": 8,
+    "maxGroundOffsetM": 6,
+    "maxGradeChangePerSample": 0.03,
+    "shoulderM": 1.5,
+    "sideSlopeRunPerM": 2,
+    "endpointToleranceM": 0.05,
+    "snapToleranceM": 2,
+    "buildingClearanceM": 0.25,
+    "junctionLevelM": 8,
+    "junctionStraightDeg": 30,
+    "junctionHeightSteps": 20
+  },
+  "node": {
+    "fixture": {
+      "feasible": {
+        "label": "Controlled Fixture (TEST ONLY)",
+        "title": "Seam 3 m, junction 60 m in, full cross street",
+        "simple": {
+          "status": "insufficientLength",
+          "reason": "needs 67 m at 6.0 %, 48 m available"
+        },
+        "through": {
+          "status": "accepted",
+          "reason": null,
+          "maxGrade": 0.058,
+          "rampLengthM": 92
+        },
+        "check": {
+          "rampId": "ramp:fixture:fixture:maxZ:0",
+          "junctionNode": 1,
+          "junctionGroundM": 20,
+          "junctionZ": 20.75,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 0,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0577
+              },
+              {
+                "edgeId": 1,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0417
+              },
+              {
+                "edgeId": 3,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0417
+              },
+              {
+                "edgeId": 4,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0417
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 3,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 512,
+              "rampLengthM": 32,
+              "maxGrade": 0.042,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            },
+            {
+              "edgeId": 4,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 512,
+              "rampLengthM": 32,
+              "maxGrade": 0.042,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            }
+          ]
+        },
+        "nodeEdgeGapM": 0
+      },
+      "seamTooHigh": {
+        "label": "Controlled Fixture (TEST ONLY)",
+        "title": "Seam 8 m (over the 6 m earthwork limit)",
+        "simple": {
+          "status": "terrainDiscontinuity",
+          "reason": "terrain seam 8 m exceeds 6 m without a structure"
+        },
+        "through": {
+          "status": "terrainDiscontinuity",
+          "reason": "terrain seam 8 m exceeds 6 m without a structure"
+        }
+      },
+      "shortBranches": {
+        "label": "Controlled Fixture (TEST ONLY)",
+        "title": "Cross street arms 20 m, dead ends",
+        "simple": {
+          "status": "insufficientLength",
+          "reason": "needs 67 m at 6.0 %, 48 m available"
+        },
+        "through": {
+          "status": "junctionConstraint",
+          "reason": "no junction height passes: branch 3 (secondary, 20 m to its next node): needs 54 m at 7.5 %, 12 m available; main road through the junction: grade 5.8 %, change 3.5 %"
+        }
+      },
+      "conservative": {
+        "label": "Controlled Fixture (TEST ONLY)",
+        "title": "Same as feasible at 4 %",
+        "simple": {
+          "status": "insufficientLength",
+          "reason": "needs 100 m at 4.0 %, 48 m available"
+        },
+        "through": {
+          "status": "accepted",
+          "reason": null,
+          "maxGrade": 0.038,
+          "rampLengthM": 124
+        },
+        "check": {
+          "rampId": "ramp:fixture:fixture:maxZ:0",
+          "junctionNode": 1,
+          "junctionGroundM": 20,
+          "junctionZ": 21.5,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 0,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0385
+              },
+              {
+                "edgeId": 1,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0357
+              },
+              {
+                "edgeId": 3,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0417
+              },
+              {
+                "edgeId": 4,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0417
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 3,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 512,
+              "rampLengthM": 56,
+              "maxGrade": 0.042,
+              "allowedGrade": 0.05,
+              "endsAt": "boundary"
+            },
+            {
+              "edgeId": 4,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 512,
+              "rampLengthM": 56,
+              "maxGrade": 0.042,
+              "allowedGrade": 0.05,
+              "endsAt": "boundary"
+            }
+          ]
+        },
+        "nodeEdgeGapM": 0
+      }
+    },
+    "replay6202": {
+      "before": {
+        "source": "G02c-02 replay (no junction ramps)",
+        "statuses": {
+          "accepted": 51,
+          "insufficientLength": 34,
+          "terrainDiscontinuity": 12
+        },
+        "joins": {
+          "parent": 34,
+          "neighbour": 17
+        },
+        "unconnectedChunks": [
+          "c_-3_0",
+          "c_0_2",
+          "c_0_3",
+          "c_-4_1"
+        ],
+        "reach": {
+          "amsterdamCanalRing": "1/1",
+          "chicagoGrid": "3/6",
+          "fezOrganicCore": "3/3",
+          "lisbonHillCore": "1/1",
+          "manhattanGrid": "3/6",
+          "veniceWaterNetwork": "1/1"
+        }
+      },
+      "after": {
+        "statuses": {
+          "accepted": 62,
+          "junctionConstraint": 15,
+          "geometryCollision": 7,
+          "terrainDiscontinuity": 13
+        },
+        "throughJunction": 11,
+        "joins": {
+          "parent": 45,
+          "neighbour": 17
+        },
+        "unconnectedChunks": [],
+        "reach": {
+          "chicagoGrid": "6/6",
+          "manhattanGrid": "6/6",
+          "fezOrganicCore": "3/3"
+        },
+        "committedChunksChanged": 0,
+        "maxNodeEdgeGapM": 0.0045,
+        "impact": {
+          "committedBuildingsAffected": 0,
+          "excluded": 495,
+          "candidates": 20144,
+          "excludedFootprintM2": 104182,
+          "corridorAreaM2": 106992,
+          "blockAreaAffectedM2": 36912,
+          "parcelAreaAffectedM2": 24256
+        }
+      },
+      "junctionRejections": [
+        {
+          "rampId": "ramp:c_-3_0:c_-4_0:maxX:-357.3",
+          "reason": "no junction height passes: main road past the junction: needs 116 m at 6.0 %, 60 m available; main road past the junction: no ramp length fits 60 m; main road through the junction: grade 6.8 %, change 2.1 %",
+          "simpleRampReason": "needs 108 m at 6.0 %, 51 m available"
+        },
+        {
+          "rampId": "ramp:c_-3_0:c_-4_0:maxX:242.7",
+          "reason": "no junction height passes: main road past the junction: needs 111 m at 6.0 %, 60 m available; main road past the junction: no ramp length fits 60 m; main road through the junction: grade 6.2 %, change 1.8 %",
+          "simpleRampReason": "needs 97 m at 6.0 %, 51 m available"
+        },
+        {
+          "rampId": "ramp:c_0_2:c_1_2:minX:1676.6",
+          "reason": "no junction height passes: main road past the junction: needs 93 m at 6.0 %, 80 m available; main road through the junction: grade 13.9 %, change 7.7 %",
+          "simpleRampReason": "needs 83 m at 6.0 %, 1 m available"
+        },
+        {
+          "rampId": "ramp:c_0_2:c_1_2:minX:1876.6",
+          "reason": "no junction height passes: main road past the junction: needs 91 m at 6.0 %, 80 m available; main road through the junction: grade 9.9 %, change 5.5 %",
+          "simpleRampReason": "needs 40 m at 6.0 %, 1 m available"
+        },
+        {
+          "rampId": "ramp:c_0_2:c_1_2:minX:2476.6",
+          "reason": "no junction height passes: main road past the junction: needs 85 m at 6.0 %, 80 m available; main road through the junction: grade 7.1 %, change 3.9 %",
+          "simpleRampReason": "needs 83 m at 6.0 %, 1 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-3760.3",
+          "reason": "no junction height passes: branch 66 (primary, 80 m to its next node): needs 110 m at 6.0 %, 60 m available; main road through the junction: grade 8.0 %, change 3.2 %",
+          "simpleRampReason": "needs 99 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-3840.3",
+          "reason": "no junction height passes: branch 65 (primary, 80 m to its next node): needs 120 m at 6.0 %, 60 m available; main road through the junction: grade 7.8 %, change 3.2 %",
+          "simpleRampReason": "needs 89 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-3920.3",
+          "reason": "no junction height passes: branch 64 (primary, 80 m to its next node): needs 112 m at 6.0 %, 60 m available; main road through the junction: grade 7.8 %, change 3.2 %",
+          "simpleRampReason": "needs 81 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4160.3",
+          "reason": "no junction height passes: branch 61 (primary, 80 m to its next node): needs 107 m at 6.0 %, 60 m available; main road through the junction: grade 8.1 %, change 3.3 %",
+          "simpleRampReason": "needs 75 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4240.3",
+          "reason": "no junction height passes: branch 60 (primary, 80 m to its next node): needs 125 m at 6.0 %, 60 m available; main road through the junction: grade 7.4 %, change 3.0 %",
+          "simpleRampReason": "needs 89 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4320.3",
+          "reason": "no junction height passes: branch 59 (primary, 80 m to its next node): needs 145 m at 6.0 %, 60 m available; main road through the junction: grade 8.3 %, change 3.4 %",
+          "simpleRampReason": "needs 104 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4400.3",
+          "reason": "no junction height passes: branch 58 (primary, 80 m to its next node): needs 126 m at 6.0 %, 60 m available; main road through the junction: grade 7.9 %, change 3.2 %",
+          "simpleRampReason": "needs 101 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4560.3",
+          "reason": "no junction height passes: branch 56 (primary, 48 m to its next node): needs 76 m at 6.0 %, 39 m available; branch 56 (primary, 48 m to its next node): no ramp length fits 39 m; branch 56 (primary, 48 m to its next node): sampled grade 6.2 % over 6.0 %",
+          "simpleRampReason": "needs 73 m at 7.5 %, 33 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_1:c_-3_1:minX:1442.7",
+          "reason": "no junction height passes: main road past the junction: needs 61 m at 6.0 %, 60 m available; main road past the junction: no ramp length fits 60 m; main road through the junction: grade 5.7 %, change 3.1 %",
+          "simpleRampReason": "needs 34 m at 6.0 %, 4 m available"
+        },
+        {
+          "rampId": "ramp:c_-4_1:c_-3_1:minX:642.7",
+          "reason": "no junction height passes: main road past the junction: needs 62 m at 6.0 %, 60 m available; main road past the junction: no ramp length fits 60 m; main road through the junction: grade 5.8 %, change 3.9 %",
+          "simpleRampReason": "needs 43 m at 6.0 %, 4 m available"
+        }
+      ],
+      "checks": [
+        {
+          "rampId": "ramp:c_-3_0:c_-4_0:maxX:-157.3",
+          "junctionNode": 16,
+          "junctionGroundM": 23.34,
+          "junctionZ": 23.34,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0014,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 14,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0524
+              },
+              {
+                "edgeId": 15,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0111
+              },
+              {
+                "edgeId": 71,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0452
+              },
+              {
+                "edgeId": 72,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0398
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 71,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 32,
+              "maxGrade": 0.045,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 72,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 64,
+              "maxGrade": 0.04,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_2_2:c_1_2:maxX:2476.6",
+          "junctionNode": 49,
+          "junctionGroundM": 26.6,
+          "junctionZ": 25.61,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0025,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 44,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0565
+              },
+              {
+                "edgeId": 45,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0518
+              },
+              {
+                "edgeId": 59,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0368
+              },
+              {
+                "edgeId": 60,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0441
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 59,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 40,
+              "maxGrade": 0.037,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 60,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 83,
+              "rampLengthM": 32,
+              "maxGrade": 0.044,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_0_2:c_1_2:minX:2076.6",
+          "junctionNode": 37,
+          "junctionGroundM": 20.64,
+          "junctionZ": 20.76,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0029,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 34,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0333
+              },
+              {
+                "edgeId": 35,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0518
+              },
+              {
+                "edgeId": 122,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.02
+              },
+              {
+                "edgeId": 123,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0157
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 122,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 48,
+              "maxGrade": 0.02,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 123,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 16,
+              "maxGrade": 0.011,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_-2_1:c_-3_1:maxX:1242.7",
+          "junctionNode": 43,
+          "junctionGroundM": 23.25,
+          "junctionZ": 24.86,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0024,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 39,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0558
+              },
+              {
+                "edgeId": 40,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0586
+              },
+              {
+                "edgeId": 68,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0431
+              },
+              {
+                "edgeId": 69,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0554
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 68,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 56,
+              "maxGrade": 0.043,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 69,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 48,
+              "maxGrade": 0.055,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_0_3:c_1_3:minX:2676.6",
+          "junctionNode": 11,
+          "junctionGroundM": 23.26,
+          "junctionZ": 24.28,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0045,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 10,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0474
+              },
+              {
+                "edgeId": 11,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0483
+              },
+              {
+                "edgeId": 120,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0297
+              },
+              {
+                "edgeId": 121,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0504
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 120,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 117,
+              "rampLengthM": 40,
+              "maxGrade": 0.026,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            },
+            {
+              "edgeId": 121,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 64,
+              "maxGrade": 0.05,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_0_3:c_1_3:minX:3076.6",
+          "junctionNode": 37,
+          "junctionGroundM": 22.09,
+          "junctionZ": 21.32,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0041,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 34,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0459
+              },
+              {
+                "edgeId": 35,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0482
+              },
+              {
+                "edgeId": 122,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0306
+              },
+              {
+                "edgeId": 123,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0319
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 122,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 32,
+              "maxGrade": 0.031,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 123,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 40,
+              "maxGrade": 0.019,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_0_3:c_1_3:minX:3476.6",
+          "junctionNode": 63,
+          "junctionGroundM": 17.8,
+          "junctionZ": 20.73,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0039,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 58,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0511
+              },
+              {
+                "edgeId": 59,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0292
+              },
+              {
+                "edgeId": 124,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0716
+              },
+              {
+                "edgeId": 125,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0623
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 124,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 56,
+              "maxGrade": 0.072,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 125,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 107,
+              "rampLengthM": 64,
+              "maxGrade": 0.062,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-3680.3",
+          "junctionNode": 72,
+          "junctionGroundM": 23.4,
+          "junctionZ": 22.11,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0016,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 67,
+                "role": "branch",
+                "roadClass": "primary",
+                "maxGrade": 0.0502
+              },
+              {
+                "edgeId": 68,
+                "role": "branch",
+                "roadClass": "primary",
+                "maxGrade": 0.05
+              },
+              {
+                "edgeId": 140,
+                "role": "main",
+                "roadClass": "secondary",
+                "maxGrade": 0.0458
+              },
+              {
+                "edgeId": 141,
+                "role": "main",
+                "roadClass": "secondary",
+                "maxGrade": 0.0691
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 67,
+              "roadClass": "primary",
+              "lengthToNextNodeM": 80,
+              "rampLengthM": 64,
+              "maxGrade": 0.05,
+              "allowedGrade": 0.06,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 68,
+              "roadClass": "primary",
+              "lengthToNextNodeM": 80,
+              "rampLengthM": 48,
+              "maxGrade": 0.05,
+              "allowedGrade": 0.06,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_-4_-1:c_-4_0:minZ:-4000.3",
+          "junctionNode": 68,
+          "junctionGroundM": 25.05,
+          "junctionZ": 23.68,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0022,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 63,
+                "role": "branch",
+                "roadClass": "primary",
+                "maxGrade": 0.0501
+              },
+              {
+                "edgeId": 64,
+                "role": "branch",
+                "roadClass": "primary",
+                "maxGrade": 0.0589
+              },
+              {
+                "edgeId": 116,
+                "role": "main",
+                "roadClass": "secondary",
+                "maxGrade": 0.0721
+              },
+              {
+                "edgeId": 117,
+                "role": "main",
+                "roadClass": "secondary",
+                "maxGrade": 0.0736
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 63,
+              "roadClass": "primary",
+              "lengthToNextNodeM": 80,
+              "rampLengthM": 56,
+              "maxGrade": 0.05,
+              "allowedGrade": 0.06,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 64,
+              "roadClass": "primary",
+              "lengthToNextNodeM": 80,
+              "rampLengthM": 40,
+              "maxGrade": 0.059,
+              "allowedGrade": 0.06,
+              "endsAt": "junction"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_-1_2:c_0_2:minX:2476.6",
+          "junctionNode": 58,
+          "junctionGroundM": 25.02,
+          "junctionZ": 24.83,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0037,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 53,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0115
+              },
+              {
+                "edgeId": 54,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0588
+              },
+              {
+                "edgeId": 113,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0401
+              },
+              {
+                "edgeId": 114,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0194
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 113,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 24,
+              "maxGrade": 0.04,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 114,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 83,
+              "rampLengthM": 16,
+              "maxGrade": 0.019,
+              "allowedGrade": 0.075,
+              "endsAt": "boundary"
+            }
+          ]
+        },
+        {
+          "rampId": "ramp:c_-4_1:c_-3_1:minX:1042.7",
+          "junctionNode": 43,
+          "junctionGroundM": 19.91,
+          "junctionZ": 19.71,
+          "degree": 4,
+          "heightSpreadAtJunctionM": 0.0038,
+          "grades": {
+            "edges": [
+              {
+                "edgeId": 40,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0267
+              },
+              {
+                "edgeId": 41,
+                "role": "main",
+                "roadClass": "primary",
+                "maxGrade": 0.0392
+              },
+              {
+                "edgeId": 144,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0466
+              },
+              {
+                "edgeId": 145,
+                "role": "branch",
+                "roadClass": "secondary",
+                "maxGrade": 0.0341
+              }
+            ],
+            "levelZoneMaxGrade": 0
+          },
+          "paths": {
+            "mainEnd": true,
+            "toJunction": true,
+            "branches": [
+              true,
+              true
+            ]
+          },
+          "branches": [
+            {
+              "edgeId": 144,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 56,
+              "maxGrade": 0.012,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            },
+            {
+              "edgeId": 145,
+              "roadClass": "secondary",
+              "lengthToNextNodeM": 200,
+              "rampLengthM": 40,
+              "maxGrade": 0.034,
+              "allowedGrade": 0.075,
+              "endsAt": "junction"
+            }
+          ]
+        }
+      ],
+      "comparability": "same 12 target cells and parents (replay); the candidate set per chunk is the same road ends, so statuses compare by connection id"
+    },
+    "free": {
+      "6201": {
+        "before": {
+          "source": "G02c-02 free run, 12 steps, no junction ramps",
+          "steps": 7,
+          "stalled": "every eligible road candidate failed validation"
+        },
+        "after": {
+          "steps": 19,
+          "stalled": "every eligible road candidate failed validation",
+          "stalledAtStep": 20,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 0,
+            "fezOrganicCore": 7,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 12,
+            "veniceWaterNetwork": 0
+          },
+          "statuses": {
+            "accepted": 106,
+            "geometryCollision": 19,
+            "flush": 1,
+            "terrainDiscontinuity": 16,
+            "gradeExceeded": 3,
+            "junctionConstraint": 5
+          },
+          "throughJunction": 25,
+          "committedChunksChanged": 0,
+          "maxNodeEdgeGapM": 0.0278,
+          "impact": {
+            "committedBuildingsAffected": 0,
+            "excluded": 600,
+            "candidates": 26559,
+            "excludedFootprintM2": 165993,
+            "corridorAreaM2": 112960,
+            "blockAreaAffectedM2": 40064,
+            "parcelAreaAffectedM2": 19024
+          },
+          "ms": 103858,
+          "failedAttempts": 14,
+          "cacheHits": 5
+        },
+        "firstThroughJunctionStep": {
+          "step": 2,
+          "chunk": "c_-1_0",
+          "cityId": "manhattanGrid",
+          "parent": "c_-2_0"
+        },
+        "checks": 25
+      },
+      "6202": {
+        "before": {
+          "source": "G02c-02 free run, 12 steps, no junction ramps",
+          "steps": 12,
+          "stalled": null
+        },
+        "after": {
+          "steps": 30,
+          "stalled": null,
+          "stalledAtStep": null,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 9,
+            "fezOrganicCore": 4,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 17,
+            "veniceWaterNetwork": 0
+          },
+          "statuses": {
+            "accepted": 167,
+            "junctionConstraint": 50,
+            "geometryCollision": 17,
+            "terrainDiscontinuity": 18,
+            "gradeExceeded": 3,
+            "flush": 2
+          },
+          "throughJunction": 33,
+          "committedChunksChanged": 0,
+          "maxNodeEdgeGapM": 0.0387,
+          "impact": {
+            "committedBuildingsAffected": 0,
+            "excluded": 952,
+            "candidates": 49873,
+            "excludedFootprintM2": 224758,
+            "corridorAreaM2": 216912,
+            "blockAreaAffectedM2": 69344,
+            "parcelAreaAffectedM2": 44512
+          },
+          "ms": 167842,
+          "failedAttempts": 32,
+          "cacheHits": 28
+        },
+        "firstThroughJunctionStep": {
+          "step": 2,
+          "chunk": "c_-3_0",
+          "cityId": "manhattanGrid",
+          "parent": "c_-4_0"
+        },
+        "checks": 33
+      },
+      "6203": {
+        "before": {
+          "source": "G02c-02 free run, 12 steps, no junction ramps",
+          "steps": 1,
+          "stalled": "every eligible road candidate failed validation"
+        },
+        "after": {
+          "steps": 30,
+          "stalled": null,
+          "stalledAtStep": null,
+          "grown": {
+            "amsterdamCanalRing": 0,
+            "chicagoGrid": 6,
+            "fezOrganicCore": 0,
+            "lisbonHillCore": 0,
+            "manhattanGrid": 24,
+            "veniceWaterNetwork": 0
+          },
+          "statuses": {
+            "junctionConstraint": 41,
+            "accepted": 202,
+            "geometryCollision": 22,
+            "terrainDiscontinuity": 33,
+            "gradeExceeded": 6,
+            "flush": 6,
+            "networkConflict": 19
+          },
+          "throughJunction": 46,
+          "committedChunksChanged": 0,
+          "maxNodeEdgeGapM": 0.0461,
+          "impact": {
+            "committedBuildingsAffected": 0,
+            "excluded": 1246,
+            "candidates": 50274,
+            "excludedFootprintM2": 330589,
+            "corridorAreaM2": 298032,
+            "blockAreaAffectedM2": 107104,
+            "parcelAreaAffectedM2": 59104
+          },
+          "ms": 188537,
+          "failedAttempts": 103,
+          "cacheHits": 91
+        },
+        "firstThroughJunctionStep": {
+          "step": 1,
+          "chunk": "c_0_-4",
+          "cityId": "chicagoGrid",
+          "parent": "c_1_-4"
+        },
+        "checks": 46
+      }
+    },
+    "stability": {
+      "registryOrderReversed": "identical (seed 6202, 12 steps, junction ramps on)",
+      "saveLoad": {
+        "savedAtStep": 6,
+        "rampRecordsReproduced": true,
+        "optionRestored": true,
+        "continuedEqualsUninterrupted": true
+      },
+      "defaultPathEqualsG02c02": {
+        "accepted": 51,
+        "insufficientLength": 34,
+        "terrainDiscontinuity": 12
+      }
+    }
+  },
+  "browser": {
+    "screenshots": {
+      "top": "docs/assets/screenshots/procedural-mini-world/g02c-03a-overlay-top.png",
+      "pickJunction": "docs/assets/screenshots/procedural-mini-world/g02c-03a-junction-pick-profile.png",
+      "three": "docs/assets/screenshots/procedural-mini-world/g02c-03a-junction-3d.png",
+      "plain": "docs/assets/screenshots/procedural-mini-world/g02c-03a-overlay-off-roads-stage.png",
+      "impact_off": "docs/assets/screenshots/procedural-mini-world/g02c-03a-building-impact-off.png",
+      "impact_on": "docs/assets/screenshots/procedural-mini-world/g02c-03a-building-impact-on.png"
+    },
+    "captions": {
+      "top": "seed 6202, step 2, manhattanGrid c_-4_0 → c_-3_0; connection overlay on; replay stage 8 (commit); camera fitted to both chunks",
+      "pickJunction": "same camera; real click on junction of ramp:c_-3_0:c_-4_0:maxX:-157.3; long section from the ramp record",
+      "three": "seed 6202, step 2, junction node 16 of c_-3_0 (shared height 23.34 m, ground 23.34 m); camera focusPoint 420 m; overlay on",
+      "plain": "same event, overlay off, replay stage 4 (roads); real road widths",
+      "impact_off": "seed 6202, step 2, same targets replayed; junction ramps off; 1669 buildings in c_-3_0; camera focusPoint 900 m on junction 16",
+      "impact_on": "seed 6202, step 2, same targets replayed; junction ramps on; 1660 buildings in c_-3_0; camera focusPoint 900 m on junction 16"
+    },
+    "checks": [
+      {
+        "name": "page event is the Node event with a ramp through a junction",
+        "pass": true,
+        "detail": "c_-4_0 → c_-3_0, 1 ramp(s) through a junction"
+      },
+      {
+        "name": "real click on the junction marker opens the junction",
+        "pass": true,
+        "detail": "Junction 16 of c_-3_0"
+      },
+      {
+        "name": "real click on the ramp road opens the ramp",
+        "pass": true,
+        "detail": "Ramp road e14 (main) · ramp:c_-3_0:c_-4_0:maxX:-157.3"
+      },
+      {
+        "name": "overlay off, timeline seek, nothing regenerated",
+        "pass": true,
+        "detail": "stage roads, built 1 time(s)"
+      },
+      {
+        "name": "building impact recorded with the option off and on",
+        "pass": true,
+        "detail": "1669 → 1660 buildings in the new chunk"
+      },
+      {
+        "name": "no browser errors",
+        "pass": true,
+        "detail": ""
+      }
+    ],
+    "impact": {
+      "off": {
+        "buildings": 1669,
+        "impact": {
+          "committedBuildingsAffected": 0,
+          "committedNote": "by construction: only the chunk being generated is reshaped",
+          "newBuildingCandidatesExcluded": 0,
+          "excludedFootprintM2": 0,
+          "candidatesBefore": 1669,
+          "corridorAreaM2": 0,
+          "blocksTouched": 0,
+          "blockAreaAffectedM2": 0,
+          "parcelsTouched": 0,
+          "parcelAreaAffectedM2": 0
+        }
+      },
+      "on": {
+        "buildings": 1660,
+        "impact": {
+          "committedBuildingsAffected": 0,
+          "committedNote": "by construction: only the chunk being generated is reshaped",
+          "newBuildingCandidatesExcluded": 9,
+          "excludedFootprintM2": 2247,
+          "candidatesBefore": 1669,
+          "corridorAreaM2": 2208,
+          "blocksTouched": 3,
+          "blockAreaAffectedM2": 608,
+          "parcelsTouched": 5,
+          "parcelAreaAffectedM2": 208
+        }
+      }
+    },
+    "errors": []
+  }
+}

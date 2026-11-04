@@ -22,7 +22,7 @@ import { CHUNK_SIZE, CITY_IDS, ORIGIN_PROFILES, SCHEMA_VERSION, STATE_KIND, chun
 import { placeOriginsSteps } from './OriginPlacement.js';
 import { normaliseGrowthParams } from './growthDNA.js';
 import { createSampler } from '../seed-terrain/NetworkGenerator.js';
-import { planVertical, rampSignature, vacateBuildings } from './RoadRampPlanner.js';
+import { planVertical, rampImpact, rampSignature, vacateBuildings } from './RoadRampPlanner.js';
 
 const now = () => (globalThis.performance ?? Date).now();
 const round = (v, d = 3) => +Number(v).toFixed(d);
@@ -142,7 +142,9 @@ export class WorldContext {
     let vacated = [];
     if (vertical) {
       city.network = vertical.network;
+      const before = city.buildings;
       ({ buildings: city.buildings, vacated } = vacateBuildings(city.buildings, terrain.fields, vertical.height));
+      vertical.impact = rampImpact(terrain.fields, vertical.height, city.blocks, city.parcels, before, vacated); // G02c-03a: what the corridor costs
     }
     const outputs = {
       resolvedDNA: city.cityMatch.selectedDNA.id, fitScore: city.cityMatch.selectedDNA.fitScore,
@@ -156,7 +158,7 @@ export class WorldContext {
       boundaryBlocks: boundaryBlocks(city.blocks, terrain.fields.grid),
       roadGraph: city.network.edges.filter(e => e.kind !== 'canal').map(e => [e.from, e.to, Math.round(e.length), e.roadClass]), // G02b: city-level reachability
       morph: morphologyMetrics(city, terrain.fields.grid),
-      ...(vertical ? { ramps: { profile: ctx.vertical.profile, records: vertical.records, vacatedBuildings: vacated, corridorCells: vertical.corridorCells.size } } : {}),
+      ...(vertical ? { ramps: { profile: ctx.vertical.profile, records: vertical.records, vacatedBuildings: vacated, impact: vertical.impact, corridorCells: vertical.corridorCells.size } } : {}),
       areas: { builtFootprintM2: Math.round((city.buildings.buildings ?? []).reduce((s, x) => s + (x.footprintArea ?? 0), 0)), parcelM2: Math.round((city.parcels.parcels ?? []).reduce((s, x) => s + (x.area ?? 0), 0)) },
     };
     this.chunks.set(chunkId, { ...chunk, generationStatus: 'generated', outputs });
@@ -241,7 +243,7 @@ export class WorldContext {
         expectedSignatures: c.outputs?.signatures ?? c.expectedSignatures ?? null,
       })),
       placement: this.placement ? { placementVersion: this.placement.placementVersion ?? 1, order: this.placement.order, failures: this.placement.failures } : null,
-      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), ...(this.growth.gradeProfile ? { gradeProfile: this.growth.gradeProfile, candidateCache: this.growth.candidateCache ?? {} } : {}), ...(this.growth.encounters ? { encounters: this.growth.encounters } : {}), ...(this.growth.interCity ? { interCity: true, interCityConnections: this.growth.interCityConnections ?? [] } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
+      growth: { generation: this.growth.generation, step: this.growth.step, stalled: this.growth.stalled, history: this.growth.history, encounterDecisions: this.growth.encounterDecisions ?? [], morphFailures: this.growth.morphFailures ?? [], ...(this.growth.mode ? { mode: this.growth.mode, roadAttempts: this.growth.roadAttempts ?? [] } : {}), ...(this.growth.gradeProfile ? { gradeProfile: this.growth.gradeProfile, candidateCache: this.growth.candidateCache ?? {} } : {}), ...(this.growth.encounters ? { encounters: this.growth.encounters } : {}), ...(this.growth.interCity ? { interCity: true, interCityConnections: this.growth.interCityConnections ?? [] } : {}), ...(this.growth.junctionRamps ? { junctionRamps: true } : {}), historySchema: '{ step, cityId, parentChunkId, newChunkId, targetCoordinate, selectionScore, selectionWeight, growthReason, worldSeed, generationParameters, conflicts }' },
     };
   }
 
@@ -268,7 +270,7 @@ export class WorldContext {
     }
     // States saved before placement v2 keep their stored origins (cells are restored, never re-placed).
     world.placement = saved.placement ? { placementVersion: 1, ...saved.placement, placed: [], candidates: null } : null;
-    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}), ...(saved.growth.gradeProfile ? { gradeProfile: saved.growth.gradeProfile, candidateCache: { ...(saved.growth.candidateCache ?? {}) } } : {}), ...(saved.growth.encounters ? { encounters: JSON.parse(JSON.stringify(saved.growth.encounters)) } : {}), ...(saved.growth.interCity ? { interCity: true, interCityConnections: JSON.parse(JSON.stringify(saved.growth.interCityConnections ?? [])) } : {}) };
+    world.growth = { generation: saved.growth.generation, step: saved.growth.step ?? 0, stalled: saved.growth.stalled ?? null, history: [...saved.growth.history], encounterDecisions: [...(saved.growth.encounterDecisions ?? [])], morphFailures: [...(saved.growth.morphFailures ?? [])], ...(saved.growth.mode ? { mode: saved.growth.mode, roadAttempts: [...(saved.growth.roadAttempts ?? [])] } : {}), ...(saved.growth.gradeProfile ? { gradeProfile: saved.growth.gradeProfile, candidateCache: { ...(saved.growth.candidateCache ?? {}) } } : {}), ...(saved.growth.encounters ? { encounters: JSON.parse(JSON.stringify(saved.growth.encounters)) } : {}), ...(saved.growth.interCity ? { interCity: true, interCityConnections: JSON.parse(JSON.stringify(saved.growth.interCityConnections ?? [])) } : {}), ...(saved.growth.junctionRamps ? { junctionRamps: true } : {}) };
     return world;
   }
 }

@@ -1,7 +1,7 @@
 {
   "note": "Semantic review of the How it works summaries. assessment = AI comparison with the code. humanReview stays Needs Human Review until the author signs it.",
-  "reviewedAt": "2026-11-02",
-  "reviewedBy": "Claude (AI), checklist compared with the code on 2026-11-02; no human review",
+  "reviewedAt": "2026-11-04",
+  "reviewedBy": "Claude (AI) re-read of origins, growth, encounter summaries on 2026-11-04",
   "humanReview": "Needs Human Review (0 signed)",
   "stages": {
     "terrain": {
@@ -225,7 +225,7 @@
     "origins": {
       "files": {
         "experiments/city-of-cities/OriginPlacement.js": "cfeb1387d9d116d5",
-        "experiments/city-of-cities/WorldContext.js": "3bd6c350d29a3edf"
+        "experiments/city-of-cities/WorldContext.js": "b3b1ddb5ecaa2b74"
       },
       "checklist": [
         {
@@ -262,9 +262,9 @@
     },
     "growth": {
       "files": {
-        "experiments/city-of-cities/WorldGrowthController.js": "1d7f64eeee3665da",
+        "experiments/city-of-cities/WorldGrowthController.js": "81070ee509937696",
         "experiments/city-of-cities/growthDNA.js": "6496f6caddd9ffcc",
-        "experiments/city-of-cities/GrowthEvaluation.js": "7b3bd4490a2722e0"
+        "experiments/city-of-cities/GrowthEvaluation.js": "dfb146462cbdcc75"
       },
       "checklist": [
         {
@@ -301,7 +301,7 @@
     },
     "encounter": {
       "files": {
-        "experiments/city-of-cities/UrbanEncounter.js": "d4da870760bf5a79",
+        "experiments/city-of-cities/UrbanEncounter.js": "f0758871e1dd2aca",
         "experiments/city-of-cities/encounterFixture.js": "e22221abacd2e511"
       },
       "checklist": [

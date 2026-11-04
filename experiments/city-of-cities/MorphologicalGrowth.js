@@ -137,7 +137,7 @@ export class MorphologicalGrowth {
       grid: MORPH_RULES.strategiesWithGridInheritance.includes(strategy) && parent.outputs.grid ? { ...parent.outputs.grid, fromChunkId: parent.chunkId } : null,
       centre: core.outputs.buildingCentre ? { x: r2(core.outputs.buildingCentre.x), z: r2(core.outputs.buildingCentre.z), fromChunkId: core.chunkId } : null,
       generationIndex: w.chunks.size,
-      ...(opts.vertical ? { vertical: { profile: opts.vertical, entries: [...this.verticalEntries(parent, chosen, OPPOSITE[chosen.side]), ...(ic?.vertical ?? [])] } } : {}),
+      ...(opts.vertical ? { vertical: { profile: opts.vertical, ...(opts.throughJunction ? { throughJunction: true } : {}), entries: [...this.verticalEntries(parent, chosen, OPPOSITE[chosen.side]), ...(ic?.vertical ?? [])] } } : {}),
       ...(crossEntries.length ? { crossCityEntries: crossEntries, encounterId: opts.encounterId ?? null } : {}),
     };
     const chunk = w.addGrowthChunk({ cityId, gx: chosen.target.gx, gy: chosen.target.gy, parentChunkId: parent.chunkId, step, reason: { text: `road-first growth ${chosen.direction} from ${parent.chunkId} (${chosen.usable.primary} primary / ${chosen.usable.all} usable road entries)`, front: chosen.growthFrontId }, growthContext });

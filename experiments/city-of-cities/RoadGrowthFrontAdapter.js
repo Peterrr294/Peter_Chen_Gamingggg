@@ -83,6 +83,7 @@ export class RoadGrowthFrontAdapter {
   constructor(world, morph = new MorphologicalGrowth(world), gradeProfile = null) {
     this.world = world; this.morph = morph; this.gradeProfile = gradeProfile;
     this.forcedParents = new Map(); // replay test: 'gx,gy' → parent chunk id
+    this.throughJunction = false; // G02c-03a: a ramp may pass one junction when it has no room before it
     this.interCity = false; // G03c-02: newcomers read other cities' road ends on edges they will share
     this.replayKeepsUnconnected = false; // replay test only: keep a planned chunk with no join, so a whole old run can be compared
     if (gradeProfile) morph.entryLimit = RAMP_RULES.maxGroundOffsetM; // a road end beyond this cannot get a ramp; the plan decides the rest
@@ -174,7 +175,7 @@ export class RoadGrowthFrontAdapter {
     const w = this.world;
     const chunkId = `c_${candidate.gx}_${candidate.gy}`;
     let built;
-    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step, { vertical: this.gradeProfile, ...(this.interCity ? { interCityPlan: interCityPlan(w, this.morph, candidate.cityId, candidate.targetCoordinate) } : {}) }); } catch (error) {
+    try { built = this.morph.buildFront(candidate.front, candidate.allFronts, step, { vertical: this.gradeProfile, ...(this.throughJunction ? { throughJunction: true } : {}), ...(this.interCity ? { interCityPlan: interCityPlan(w, this.morph, candidate.cityId, candidate.targetCoordinate) } : {}) }); } catch (error) {
       if (w.chunks.get(chunkId)?.growthStep === step) w.removeGrowthChunk(chunkId);
       return { failure: { failureClass: FAILURE.generation, reason: `generator error: ${error.message}` } };
     }

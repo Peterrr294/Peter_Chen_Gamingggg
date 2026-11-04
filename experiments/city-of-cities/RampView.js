@@ -10,8 +10,8 @@ import { RAMP_STATUS as S } from './RoadRampPlanner.js';
 //   labels    numbers of each ramp
 const disposeGroup = g => { g.traverse(o => { o.geometry?.dispose(); if (o.material) [o.material].flat().forEach(m => { m.map?.dispose(); m.dispose(); }); }); g.clear(); };
 const post = (x, y, z, color, h = 90, r = 8) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 10), new THREE.MeshBasicMaterial({ color, depthTest: false })); m.position.set(x, y + h / 2, z); m.renderOrder = 19; return m; };
-export const STATUS_COLOR = { [S.length]: 0xffb020, [S.grade]: 0xff6a00, [S.terrain]: 0xff2d55, [S.collision]: 0xc56bff, [S.network]: 0xffffff, [S.infrastructure]: 0x8f9bff };
-const LABEL = { [S.length]: 'Insufficient Length', [S.grade]: 'Grade Exceeded', [S.terrain]: 'Terrain Discontinuity', [S.collision]: 'Geometry Collision', [S.network]: 'Network Conflict', [S.infrastructure]: 'Requires Infrastructure' };
+export const STATUS_COLOR = { [S.length]: 0xffb020, [S.grade]: 0xff6a00, [S.terrain]: 0xff2d55, [S.collision]: 0xc56bff, [S.network]: 0xffffff, [S.infrastructure]: 0x8f9bff, [S.junction]: 0xff7ad9 };
+const LABEL = { [S.length]: 'Insufficient Length', [S.grade]: 'Grade Exceeded', [S.terrain]: 'Terrain Discontinuity', [S.collision]: 'Geometry Collision', [S.network]: 'Network Conflict', [S.infrastructure]: 'Requires Infrastructure', [S.junction]: 'Junction Constraint' };
 
 export class RampView {
   constructor(scene) {
@@ -33,7 +33,7 @@ export class RampView {
             this.groups.accepted.add(line);
           }
           this.groups.accepted.add(post(point.x, r.startElevation, point.z, 0x3fd17a));
-          const label = textSprite([`${r.kind === 'crossCity' ? 'INTER-CITY · ' : ''}${r.roadClass} · ${r.startElevation} → ${r.endElevation} m (seam ${r.deltaM > 0 ? '+' : ''}${r.deltaM} m)`, `${r.rampLengthM} m, max ${(r.maxGrade * 100).toFixed(1)} % · ${r.kind === 'crossCity' ? 'joined; Connected only with a verified core path' : 'connected'}`], { width: 620, scale: 300, colors: ['#7fe3a0', '#e6e9eb'] });
+          const label = textSprite([`${r.kind === 'crossCity' ? 'INTER-CITY · ' : ''}${r.roadClass} · ${r.startElevation} → ${r.endElevation} m (seam ${r.deltaM > 0 ? '+' : ''}${r.deltaM} m)`, `${(+r.rampLengthM).toFixed(1)} m, max ${(r.maxGrade * 100).toFixed(1)} % · ${r.kind === 'crossCity' ? 'joined; Connected only with a verified core path' : 'connected'}`], { width: 620, scale: 300, colors: ['#7fe3a0', '#e6e9eb'] });
           label.position.set(point.x, r.startElevation + 130, point.z); this.groups.labels.add(label);
         } else if (r.status !== S.flush) {
           const group = r.status === S.terrain ? this.groups.seam : this.groups.rejected;

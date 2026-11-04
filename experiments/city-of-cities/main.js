@@ -22,6 +22,7 @@ import { cityRoadReach } from './RoadGrowthFrontAdapter.js';
 import { RampView } from './RampView.js';
 import { EmergentEncounterView } from './EmergentEncounterView.js';
 import { ReplayController } from './ReplayController.js';
+import { ConnectionOverlay, describePick } from './ConnectionOverlay.js';
 import { GRADE_PROFILES } from './RoadRampPlanner.js';
 import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encounterFixture.js';
 
@@ -39,6 +40,8 @@ import { ENCOUNTER_FIXTURES, createFixtureWorld, runFixtureSteps } from './encou
 // G03c-01: &emergent=1 lets the scheduler detect natural encounters after every commit (road mode only).
 // G03c-02: &intercity=1 lets a newcomer chunk take other cities' road ends on a shared edge into its ramp plan.
 // VIS-01a: &replay=N grows N real steps, then opens the stage timeline of step N (visibility only, nothing regenerated).
+// G02c-03a: &junctions=1 lets a ramp pass one junction; the Connection Overlay (debug, off by default) shows ramps at a
+// readable screen width and opens the real long section of a clicked ramp or junction.
 // URL: ?worldSeed=… &candidates=1 &debug=1 &frontier=1 &focus=<cityId> &start=0 &steps=N (grow N after the origins)
 const query = new URLSearchParams(location.search);
 const STORAGE_KEY = 'procedural-mini-world/a-city-of-cities/world-state';
@@ -59,14 +62,16 @@ sun.position.set(-2000, 3200, 1600);
 scene.add(sun);
 
 const paramsFromQuery = Object.fromEntries([...Object.keys(PARAMS), ...Object.keys(GROWTH_PARAMS)].filter(k => query.has(k)).map(k => [k, Number(query.get(k))]));
-const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', gradeProfile: GRADE_PROFILES[query.get('grade')] ? query.get('grade') : 'none', rampAccepted: false, rampRejected: false, rampSeam: false, rampLabels: false, emergent: query.get('emergent') === '1', interCity: query.get('intercity') === '1', encBoundary: false, encPorts: false, encLabels: false, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
-function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...(ui.growthMode === 'road' && ui.emergent ? { encounters: true } : {}), ...(ui.growthMode === 'road' && ui.interCity && GRADE_PROFILES[ui.gradeProfile] ? { interCity: true } : {}), ...extra }; }
+const ui = { ...normaliseParams({ ...DEFAULT_PARAMS, ...paramsFromQuery }), ...Object.fromEntries(Object.entries(GROWTH_PARAMS).map(([k, p]) => [k, paramsFromQuery[k] ?? p.initial])), steps: 10, growthMode: query.get('growthMode') === 'road' ? 'road' : 'chunk', gradeProfile: GRADE_PROFILES[query.get('grade')] ? query.get('grade') : 'none', rampAccepted: false, rampRejected: false, rampSeam: false, rampLabels: false, junctionRamps: query.get('junctions') === '1', rampOverlay: false, emergent: query.get('emergent') === '1', interCity: query.get('intercity') === '1', encBoundary: false, encPorts: false, encLabels: false, growthFrontier: false, history: false, morphCity: query.get('morphCity') ?? 'manhattanGrid', morphFronts: false, inheritedRoads: false, morphology: false, connectivity: false, chunkBorders: true, encounterZones: query.get('encounters') === '1', candidateConnections: false, interfaces: false, encounterConnectivity: false, morphDifference: false, fixture: query.get('fixture') ?? 'compatible', territory: query.get('territory') === '1', boundaries: query.get('boundaries') === '1', constraints: query.get('constraints') === '1', relationships: query.get('relationships') === '1', city: query.get('focus') ?? 'manhattanGrid', candidates: query.get('candidates') === '1', debug: query.get('debug') === '1', frontier: query.get('frontier') === '1', ownership: true, seams: false, visible: Object.fromEntries(CITY_IDS.map(id => [id, true])) };
+function controllerOptions(extra = {}) { return { growthMode: ui.growthMode, ...(ui.growthMode === 'road' && GRADE_PROFILES[ui.gradeProfile] ? { gradeProfile: ui.gradeProfile } : {}), ...(ui.growthMode === 'road' && ui.emergent ? { encounters: true } : {}), ...(ui.growthMode === 'road' && ui.junctionRamps && GRADE_PROFILES[ui.gradeProfile] ? { junctionRamps: true } : {}), ...(ui.growthMode === 'road' && ui.interCity && GRADE_PROFILES[ui.gradeProfile] ? { interCity: true } : {}), ...extra }; }
 let world = new WorldContext(ui);
 let growth = new WorldGrowthController(world, controllerOptions());
 let replay = null; // VIS-01a
 const growthOverlay = new GrowthOverlay(scene);
 const rampView = new RampView(scene); // G02c-02
 const emergentView = new EmergentEncounterView(scene); // G03c-01
+const overlay = new ConnectionOverlay(scene); // G02c-03a
+const overlaySize = () => new THREE.Vector2(canvas.clientWidth, canvas.clientHeight);
 const territoryView = new TerritoryView(scene);
 let territory = null; // G03a TerritoryModel
 let morph = new MorphologicalGrowth(world); // G02b
@@ -105,7 +110,7 @@ function renderChunk(chunk, layers) {
   v.network.update(city.network, createSampler(terrain.fields).height);
   v.network.markers.visible = false; // port / portal points are screen-sized; unreadable at world scale
   v.buildings.update(city.buildings);
-  if (chunk.generationParameters.growthContext) chunkEdges.set(chunk.chunkId, city.network.edges.map(e => ({ id: e.id, points: e.points, ramp: e.ramp ?? null })));
+  if (chunk.generationParameters.growthContext) chunkEdges.set(chunk.chunkId, city.network.edges.map(e => ({ id: e.id, points: e.points, ramp: e.ramp ?? null, rampRole: e.rampRole ?? null })));
   v.label = textSprite([`${cityLabel(chunk.cityId)} · ${chunk.chunkId}${chunk.role === 'growth' ? ` · step ${chunk.growthStep}` : ' · core'}`, `${chunk.terrainType} · terrain seed ${chunk.terrainSeed} · gen ${chunk.generation}`]);
   v.label.position.set(chunk.worldOrigin.x, terrain.fields.stats.maxHeight + 160, chunk.worldOrigin.z);
   scene.add(v.label);
@@ -127,6 +132,7 @@ function applyVisibility() {
   morphView.setVisible(ui);
   rampView.setVisible(ui);
   emergentView.setVisible(ui);
+  overlay.setVisible(ui.rampOverlay);
   encounterView.setVisible(ui);
   territoryView.setVisible(ui);
   replay?.seek(replay.t); // the stage timeline owns the event chunk's visibility
@@ -161,6 +167,7 @@ function refreshOverlays() {
   }
   rampView.update(world.growth.history.filter(e => e.ramps), id => world.chunks.get(id), id => chunkEdges.get(id));
   emergentView.update(world.growth.encounters ?? [], id => world.chunks.get(id), id => chunkTop.get(id));
+  overlay.update(world.growth.history.filter(e => e.ramps), id => world.chunks.get(id), id => chunkEdges.get(id), overlaySize());
   growthOverlay.updateHistory(world.growth.history, id => world.chunks.get(id));
   applyVisibility();
 }
@@ -369,6 +376,8 @@ rd.add(ui, 'rampAccepted').name('Show accepted ramps').onChange(applyVisibility)
 rd.add(ui, 'rampRejected').name('Show unconnected road ends').onChange(applyVisibility);
 rd.add(ui, 'rampSeam').name('Show terrain seam conflicts').onChange(applyVisibility);
 rd.add(ui, 'rampLabels').name('Show ramp numbers').onChange(applyVisibility);
+rd.add(ui, 'junctionRamps').name('Ramps may pass one junction, G02c-03a (apply on Generate)');
+rd.add(ui, 'rampOverlay').name('Connection overlay (debug)').onChange(applyVisibility);
 const em = gui.addFolder('Natural encounters (G03c-01)');
 em.add(ui, 'emergent').name('Detect encounters (apply on Generate)');
 em.add(ui, 'interCity').name('Inter-city connections, G03c-02 (apply on Generate)');
@@ -464,6 +473,11 @@ const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2(); le
 canvas.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
 canvas.addEventListener('pointerup', e => {
   if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 4) return;
+  if (ui.rampOverlay) {
+    const rect1 = canvas.getBoundingClientRect();
+    const it = overlay.pick(e.clientX - rect1.left, e.clientY - rect1.top, projectToCanvas);
+    if (it) { showPick(it); return; }
+  }
   if (replay && replay.view.network.root.visible) {
     const rect0 = canvas.getBoundingClientRect(); pointer.set(((e.clientX - rect0.left) / rect0.width) * 2 - 1, -((e.clientY - rect0.top) / rect0.height) * 2 + 1); raycaster.setFromCamera(pointer, camera);
     const road = raycaster.intersectObjects([replay.view.network.root], true).find(h => /^edge-\d+ /.test(h.object.name));
@@ -476,9 +490,16 @@ canvas.addEventListener('pointerup', e => {
   if (hit) { state.selected = hit.object.userData.cityId; state.selectedChunk = hit.object.userData.chunkId; ui.city = state.selected; gui.controllersRecursive().forEach(x => x.updateDisplay()); refreshOverlays(); renderPanel(); }
 });
 
+// G02c-03a: a world point in canvas pixels (for overlay picking and tests).
+function projectToCanvas(p) { const v = new THREE.Vector3(p.x, p.y + 2, p.z).project(camera); return { x: ((v.x + 1) / 2) * canvas.clientWidth, y: ((1 - v.y) / 2) * canvas.clientHeight }; }
+function showPick(it) {
+  let el = document.querySelector('#rampPick');
+  if (!el) { el = document.createElement('div'); el.id = 'rampPick'; el.style.cssText = 'margin:8px 0 0;background:rgba(12,16,19,0.92);color:#e6e9eb;font:12px/1.45 "Segoe UI",Arial;padding:8px 10px;border:1px solid #2c363c;border-radius:6px;white-space:pre-wrap'; canvas.insertAdjacentElement('afterend', el); }
+  const d = describePick(it); el.innerHTML = `<b>Connection overlay · selected</b>\n${d.text.replace(/</g, '&lt;')}${d.svg}`; state.pick = { kind: it.kind, rampId: it.rampId, edgeId: it.edgeId ?? null, text: d.text, profile: Boolean(d.svg) };
+}
 function resize() {
   const { clientWidth: w, clientHeight: h } = canvas;
-  if (canvas.width !== Math.round(w * renderer.getPixelRatio()) || canvas.height !== Math.round(h * renderer.getPixelRatio())) { renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+  if (canvas.width !== Math.round(w * renderer.getPixelRatio()) || canvas.height !== Math.round(h * renderer.getPixelRatio())) { renderer.setSize(w, h, false); overlay.setResolution(new THREE.Vector2(w, h)); camera.aspect = w / h; camera.updateProjectionMatrix(); }
 }
 renderer.setAnimationLoop(() => { resize(); controls.update(); renderer.render(scene, camera); });
 
@@ -511,6 +532,10 @@ window.__originLab = {
   roadReplay: replay => { growth = new WorldGrowthController(world, controllerOptions({ growthMode: 'road', replay })); },
   rampEvents: () => world.growth.history.filter(e => e.ramps),
   emergentEncounters: () => world.growth.encounters ?? [],
+  // G02c-03a
+  overlayItems: () => overlay.items.map(it => ({ kind: it.kind, rampId: it.rampId, role: it.role ?? null, edgeId: it.edgeId ?? null, chunkId: it.chunkId, point: it.points[Math.floor(it.points.length / 2)] })),
+  projectToCanvas: p => projectToCanvas(p),
+  picked: () => state.pick ?? null,
   // VIS-01a
   replayState: () => replay?.state() ?? null,
   replaySeek: t => replay?.seek(t),
